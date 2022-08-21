@@ -3,8 +3,8 @@
 Clone our repository with this command.
 
 ```sh
-git clone https://github.com/BCSDLab/JJBACSA_FRONT_END
-cd JJBACSA_FRONT_END
+git clone https://github.com/BCSDLab/JJBAKSA_FRONT_END
+cd JJBAKSA_FRONT_END
 ```
 
 Install dependency package and Start the development server!

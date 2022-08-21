@@ -30,14 +30,13 @@ Must be one of the following:
 * **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 * **refactor**: A code change that neither fixes a bug nor adds a feature
 * **perf**: A code change that improves performance
-* **test**: Adding missing or correcting existing tests
 * **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
 
 ### Subject
 * use the imperative, __present__ tense: "change" not "changed" nor "changes"  
 * don't capitalize first letter
 * no dot (.) at the end
-* reference GitHub issues at the end. If the commit doesn’t completely fix the issue, then use `(refs #1234)` instead of `(fixes #1234)`.
+* you can use Korean
 
 ### Body
 
