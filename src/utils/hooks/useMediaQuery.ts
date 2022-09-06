@@ -1,24 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const MOBILE_MEDIA_QUERY = '(max-width: 576px)';
 
-const useMediaQuery = () => {
-  const [state, setState] = useState({
-    windowWidth: window.innerWidth,
-    isMobile: window.matchMedia(MOBILE_MEDIA_QUERY).matches,
-  });
+export default function useMediaQuery() {
+  const [matches, setMatches] = useState(() => window.matchMedia(MOBILE_MEDIA_QUERY).matches);
+  const matchMediaRef = useRef<MediaQueryList | null>(null);
 
   useEffect(() => {
-    const resizeHandler = () => {
-      const currentWindowWidth = window.innerWidth;
-      const isMobile = window.matchMedia(MOBILE_MEDIA_QUERY).matches;
-      setState({ windowWidth: currentWindowWidth, isMobile });
+    const matchMedia = window.matchMedia(MOBILE_MEDIA_QUERY);
+    matchMediaRef.current = matchMedia;
+    function handleChange() {
+      setMatches(window.matchMedia(MOBILE_MEDIA_QUERY).matches);
+    }
+    handleChange();
+    matchMediaRef?.current.addEventListener('change', handleChange);
+
+    return () => {
+      matchMediaRef.current?.removeEventListener('change', handleChange);
     };
-    window.addEventListener('resize', resizeHandler);
-    return () => window.removeEventListener('resize', resizeHandler);
-  }, [state.windowWidth]);
 
-  return state.isMobile;
-};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-export default useMediaQuery;
+  return { isMobile: matches };
+}
