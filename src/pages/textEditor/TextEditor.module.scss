@@ -1,4 +1,58 @@
-.tamplate {
+.template {
   display: grid;
-  color: blue;
+  margin: 12px;
+}
+
+.editor__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-bottom: 1px solid black;
+  margin: 12px 0px 12px 0px;
+  padding-bottom: 24px;
+
+  .before__button {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    border: none;
+    background-color: white;
+  }
+  .editor__shopname {
+    font-size: 24px;
+    margin: 16px;
+  }
+  .starcontainer {
+    display: flex;
+    font-size: 24px;
+  }
+}
+
+.editor__main {
+  font-size: 12px;
+  height: auto;
+}
+
+.editor__tools {
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    border: none;
+    font-size: 12px;
+    padding: 8px;
+    margin:4px;
+  }
+  .picture__button {
+    border-radius: 50%;
+  }
+  .texttool__button {
+    border-radius: 50%;
+  }
+  .save__button {
+    background-color: orange;
+    color: white;
+    border-radius: 16px;
+  }
 }
