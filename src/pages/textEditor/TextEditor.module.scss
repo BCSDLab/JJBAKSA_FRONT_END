@@ -3,7 +3,7 @@
   margin: 12px;
 }
 
-.editor__title {
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,47 +12,43 @@
   margin: 12px 0px 12px 0px;
   padding-bottom: 24px;
 
-  .before__button {
+  &__button {
     position: absolute;
     left: 8px;
     top: 8px;
     border: none;
     background-color: white;
   }
-  .editor__shopname {
+  &__shopname {
     font-size: 24px;
     margin: 16px;
   }
-  .starcontainer {
+  &__star-container {
     display: flex;
     font-size: 24px;
   }
 }
 
-.editor__main {
+.editor {
   font-size: 12px;
   height: auto;
 }
 
-.editor__tools {
+.item {
   display: flex;
   justify-content: space-between;
 
-  button {
+  &__button {
     border: none;
     font-size: 12px;
     padding: 8px;
     margin:4px;
-  }
-  .picture__button {
-    border-radius: 50%;
-  }
-  .texttool__button {
     border-radius: 50%;
   }
   .save__button {
     background-color: orange;
     color: white;
+    padding: 8px 12px 8px 12px;
     border-radius: 16px;
   }
 }
