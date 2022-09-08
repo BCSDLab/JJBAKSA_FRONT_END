@@ -3,8 +3,12 @@
   padding: 0;
 }
 
+body,
+html {
+  font-family: "SUIT";
+}
+
 body {
-  font-family: sans-serif;
   min-height: 100vh;
   min-width: 1148px;
 }

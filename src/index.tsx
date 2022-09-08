@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './assets/fonts/SUIT.scss';
 import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
