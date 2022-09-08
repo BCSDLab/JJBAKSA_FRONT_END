@@ -31,14 +31,17 @@ function BottomNavigation(): JSX.Element {
       <ul className={styles.tab}>
         {navTabs.map((tab) => (
           <li
-            aria-label={`${tab.text}으로 이동`}
             key={tab.text}
             className={cn({
               [styles.tab__item]: true,
               [styles['tab__item--focused']]: pathname === tab.pathname,
             })}
           >
-            <Link className={styles.tab__link} to={tab.pathname}>
+            <Link
+              className={styles.tab__link}
+              to={tab.pathname}
+              aria-label={`${tab.text}으로 이동`}
+            >
               <tab.icon className={styles.tab__icon} />
               <div className={styles.tab__text}>{tab.text}</div>
             </Link>
