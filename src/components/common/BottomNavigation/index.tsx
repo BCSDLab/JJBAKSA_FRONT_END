@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import styles from './BottomNavigation.module.scss';
 
-const navTabs = [
+const NAV_TABS = [
   {
     pathname: '/',
     icon: HomeIcon,
@@ -29,20 +29,16 @@ function BottomNavigation(): JSX.Element {
   return (
     <nav className={styles['bottom-navigation']}>
       <ul className={styles.tab}>
-        {navTabs.map((tab) => (
+        {NAV_TABS.map((tab) => (
           <li
             key={tab.text}
             className={cn({
               [styles.tab__item]: true,
-              [styles['tab__item--focused']]: pathname === tab.pathname,
+              [styles['tab__item--matched']]: pathname === tab.pathname,
             })}
           >
-            <Link
-              className={styles.tab__link}
-              to={tab.pathname}
-              aria-label={`${tab.text}으로 이동`}
-            >
-              <tab.icon className={styles.tab__icon} />
+            <Link className={styles.tab__link} to={tab.pathname}>
+              <tab.icon className={styles.tab__icon} aria-hidden />
               <div className={styles.tab__text}>{tab.text}</div>
             </Link>
           </li>

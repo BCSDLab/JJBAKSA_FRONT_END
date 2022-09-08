@@ -1,4 +1,4 @@
-@import "src/utils/styles/mediaQuery";
+@use "src/utils/styles/mediaQuery";
 
 .bottom-navigation {
   position: fixed;
@@ -23,6 +23,7 @@
     gap: 8px;
     height: 100%;
     text-decoration: none;
+    outline: none;
   }
 
   &__icon {
@@ -40,13 +41,13 @@
   &__item {
     position: relative;
 
-    &--focused {
+    &--matched {
       .tab__link {
-        color: #222222;
+        color: #222222 !important;
       }
 
       path {
-        stroke: #222222;
+        stroke: #222222 !important;
       }
 
       .tab__link::before {
@@ -57,6 +58,17 @@
         position: absolute;
         border: 1px black solid;
         border-radius: 1px;
+      }
+    }
+
+    &:hover,
+    &:focus-within {
+      .tab__link {
+        color: #6d6d6d;
+      }
+
+      path {
+        stroke: #6d6d6d;
       }
     }
   }
