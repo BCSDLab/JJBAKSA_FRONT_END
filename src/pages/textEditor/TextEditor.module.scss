@@ -9,7 +9,7 @@
   align-items: center;
   position: relative;
   border-bottom: 1px solid black;
-  margin: 12px 0px 12px 0px;
+  margin: 12px 0;
   padding-bottom: 24px;
 
   &__button {
@@ -19,10 +19,12 @@
     border: none;
     background-color: white;
   }
+
   &__shopname {
     font-size: 24px;
     margin: 16px;
   }
+
   &__star-container {
     display: flex;
     font-size: 24px;
@@ -42,13 +44,14 @@
     border: none;
     font-size: 12px;
     padding: 8px;
-    margin:4px;
+    margin: 4px;
     border-radius: 50%;
   }
+
   .save__button {
     background-color: orange;
     color: white;
-    padding: 8px 12px 8px 12px;
+    padding: 8px 12px;
     border-radius: 16px;
   }
 }
