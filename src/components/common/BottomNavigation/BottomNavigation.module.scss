@@ -1,0 +1,62 @@
+@import "src/utils/styles/mediaQuery";
+
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+}
+
+.tab {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 100%;
+  list-style: none;
+
+  &__link {
+    color: #c4c4c4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 100%;
+    text-decoration: none;
+  }
+
+  &__icon {
+    path {
+      stroke: #c4c4c4;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+  }
+
+  &__item {
+    position: relative;
+
+    &--focused {
+      .tab__link {
+        color: #222222;
+      }
+
+      path {
+        stroke: #222222;
+      }
+
+      .tab__link::before {
+        content: "";
+        width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        border: 1px black solid;
+      }
+    }
+  }
+}
