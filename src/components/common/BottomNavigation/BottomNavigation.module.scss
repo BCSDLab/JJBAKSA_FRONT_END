@@ -41,13 +41,24 @@
   &__item {
     position: relative;
 
-    &--matched {
+    &:hover,
+    &:focus-within {
       .tab__link {
-        color: #222222 !important;
+        color: #6d6d6d;
       }
 
       path {
-        stroke: #222222 !important;
+        stroke: #6d6d6d;
+      }
+    }
+
+    &--matched {
+      &.tab__item > .tab__link {
+        color: #222222;
+
+        & > svg path {
+          stroke: #222222;
+        }
       }
 
       .tab__link::before {
@@ -58,17 +69,6 @@
         position: absolute;
         border: 1px black solid;
         border-radius: 1px;
-      }
-    }
-
-    &:hover,
-    &:focus-within {
-      .tab__link {
-        color: #6d6d6d;
-      }
-
-      path {
-        stroke: #6d6d6d;
       }
     }
   }

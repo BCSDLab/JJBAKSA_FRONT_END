@@ -12,7 +12,7 @@ export default function useMediaQuery() {
     function handleChange() {
       setMatches(window.matchMedia(MOBILE_MEDIA_QUERY).matches);
     }
-    matchMediaRef?.current.addEventListener('change', handleChange);
+    matchMediaRef.current.addEventListener('change', handleChange);
 
     return () => {
       matchMediaRef.current?.removeEventListener('change', handleChange);
