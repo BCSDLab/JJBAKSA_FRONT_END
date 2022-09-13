@@ -1,10 +1,27 @@
+@forward "src/styles/fonts.scss";
+
 * {
   margin: 0;
   padding: 0;
 }
 
+body,
+html {
+  /* https://css-tricks.com/snippets/css/system-font-stack/ */
+  font-family:
+    SUIT,
+    system-ui,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
 body {
-  font-family: sans-serif;
   min-height: 100vh;
   min-width: 1148px;
 }
