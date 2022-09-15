@@ -1,13 +1,4 @@
 @use "../utils/styles/mixin/index";
-@include index.font-face("SUIT", "/assets/fonts/SUIT-Thin", "100");
-
-/*
-@include font-face("SUIT", "/assets/fonts/SUIT-ExtraLight", "200");
-@include font-face("SUIT", "/assets/fonts/SUIT-Light", "300");
-@include font-face("SUIT", "/assets/fonts/SUIT-Regular", "400");
-@include font-face("SUIT", "/assets/fonts/SUIT-Medium", "500");
-@include font-face("SUIT", "/assets/fonts/SUIT-SemiBold", "600");
-@include font-face("SUIT", "/assets/fonts/SUIT-Bold", "700");
-@include font-face("SUIT", "/assets/fonts/SUIT-ExtraBold", "800");
-@include font-face("SUIT", "/assets/fonts/SUIT-Heavy", "900");
-*/
+@include index.font-face("SUIT", "/assets/fonts/SUIT-Regular", "400");
+@include index.font-face("SUIT", "/assets/fonts/SUIT-Medium", "500");
+@include index.font-face("SUIT", "/assets/fonts/SUIT-Bold", "700");
