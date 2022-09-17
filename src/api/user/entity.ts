@@ -6,7 +6,7 @@ export interface ILoginResponse {
 export interface IRefreshResponse extends ILoginResponse {}
 
 export interface ILoginParams {
-  accound: string;
+  account: string;
   password: string;
 }
 

@@ -7,7 +7,7 @@ const accessToken = sessionStorage.getItem('accessToken');
 const userApi = axios.create({
   baseURL: `${API_PATH}/user`,
   headers: accessToken
-    ? { authorization: accessToken }
+    ? { authorization: `Bearer ${accessToken}` }
     : { 'Content-type': 'application/json' },
   timeout: 2000,
 });
