@@ -2,13 +2,9 @@ import axios from 'axios';
 import { IRefreshResponse } from './entity';
 
 const API_PATH = process.env.REACT_APP_API_PATH!;
-const accessToken = sessionStorage.getItem('accessToken');
 
 const userApi = axios.create({
   baseURL: `${API_PATH}/user`,
-  headers: accessToken
-    ? { authorization: `Bearer ${accessToken}` }
-    : { 'Content-type': 'application/json' },
   timeout: 2000,
 });
 
@@ -20,9 +16,18 @@ const refreshAccessToken = () => userApi.post<IRefreshResponse>('/refresh')
     localStorage.setItem('refreshToken', res.data.refreshToken);
   })
   .catch(() => {
-    localStorage.removeItem('refreshToken');
     sessionStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   });
+
+userApi.interceptors.request.use(
+  (config) => {
+    const accessToken = sessionStorage.getItem('accessToken');
+    // eslint-disable-next-line no-param-reassign
+    if (config.headers && accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
+    return config;
+  },
+);
 
 // App단에서 'user/me' 호출할 때 accessToken을 갱신하므로 userApi에 종속.
 userApi.interceptors.response.use(
