@@ -1,6 +1,6 @@
 import DefaultLayout from 'layout/DefaultLayout';
 import Home from 'pages/Home';
-import TextEditor from 'pages/textEditor';
+import TextEditor from 'pages/TextEditor';
 import { Routes, Route } from 'react-router-dom';
 
 function App(): JSX.Element {
