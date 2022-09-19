@@ -1,7 +1,6 @@
 import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.svg';
-import { ReactComponent as OutlineStar } from 'assets/svg/outline-star.svg';
-import { ReactComponent as FillStar } from 'assets/svg/fill-star.svg';
 import { ReactComponent as Picture } from 'assets/svg/picture.svg';
+import StarContainer from 'components/rating/StarContainer';
 import { useState } from 'react';
 import cn from 'utils/ts/classNames';
 import styles from './TextEditor.module.scss';
@@ -20,13 +19,7 @@ function TextEditor(): JSX.Element {
       <div className={styles.header}>
         <LeftAngleBraketIcon type="button" className={styles.header__button} />
         <div className={styles.header__shopname}>여기에 가게명</div>
-        <div className={styles['header__star-container']}>
-          <FillStar className={styles.header__star} />
-          <OutlineStar className={styles.header__star} />
-          <OutlineStar className={styles.header__star} />
-          <OutlineStar className={styles.header__star} />
-          <OutlineStar className={styles.header__star} />
-        </div>
+        <StarContainer />
       </div>
       <div className={styles.editor}>에디터가 들어갈 공간</div>
       <span className={styles.item}>

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 160px;
+  height: 32px;
+  margin-bottom: 24px;
+
+  &__star {
+    height: 100%;
+    width: 32px;
+    color: #eeeeee;
+  }
+}
