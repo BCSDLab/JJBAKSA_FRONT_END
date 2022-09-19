@@ -54,9 +54,11 @@ function Search(): JSX.Element {
       </div>
       <div className={styles['search-trend']}>
         <strong>TRENDING</strong>
-        <ul className={styles['search-trend__tag-list']}>
-          {hash_tag.map((tag) => <li className={styles['search-trend__tag-list__tag']} key={tag.id}>{tag.text}</li>)}
-        </ul>
+        <div className={styles['search-trend__tag-list--wrapper']}>
+          <ul className={styles['search-trend__tag-list']}>
+            <div className={styles['search-trend__tag-list__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</div>
+          </ul>
+        </div>
       </div>
       <ul className={styles['search-list']}>
         {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item : IItem) => <li key={item.title} className={styles['search-list__item']}>{item.title}</li>)}

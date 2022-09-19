@@ -111,6 +111,7 @@
 // search-trend__tag-list__tag
 
 .search-trend {  
+  display: flex;
   width: 321px;
   margin-left: 27px;
   margin-top:8px;
@@ -120,15 +121,34 @@
   strong {
     padding-right: 16px;
   }
+  &__tag-list--wrapper {
+  }
 
   &__tag-list {
+    width: 240px;
     display: flex;
+    flex:0 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
     gap:8px;
     list-style: none;
 
     &__tag {
-      
+      animation: textLoop 10s linear infinite;
+      padding-right: 1.4881vw;
     }
+
+    @keyframes textLoop {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
   }
 
 
