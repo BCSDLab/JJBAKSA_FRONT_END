@@ -1,14 +1,14 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 160px;
+  justify-content: space-around;
   height: 32px;
   margin-bottom: 24px;
 
   &__star {
-    height: 100%;
-    width: 32px;
+    height: 25px;
+    width: 25px;
     color: #eeeeee;
   }
 }
