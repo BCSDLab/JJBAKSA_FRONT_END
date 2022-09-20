@@ -1,0 +1,17 @@
+.title{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+
+  &__logo{
+    margin-right: 14px;
+    margin-top:3px;
+  }
+  &__text{
+    font-size: 18px;
+    font-weight: 700; 
+  }
+}
