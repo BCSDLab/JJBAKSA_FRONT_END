@@ -1,9 +1,10 @@
 @use "src/utils/styles/mediaQuery";
 
-@keyframes showOut {
+@keyframes show-out {
   from {
     opacity: 0;
   }
+
   to {
     visibility: visible;
     opacity: 1;
@@ -51,6 +52,7 @@
     width: 160px;
     height: 32px;
     margin-bottom: 24px;
+
     &__star {
       height: 100%;
       width: 32px;
@@ -70,12 +72,12 @@
 .item {
   display: flex;
   width: auto;
-  margin: 16px 16px 40px 16px;
+  margin: 16px 16px 40px;
   justify-content: space-between;
 
   button {
     border: none;
-    font-family: "SUIT";
+    font-family: inherit;
     font-weight: 400;
   }
 
@@ -93,6 +95,7 @@
     color: #222222;
     background-color: #eeeeee;
     border-radius: 50px;
+
     &.buttonT {
       display: inline-block;
       font-weight: 200;
@@ -100,24 +103,28 @@
       height: 40px;
       box-sizing: border-box;
     }
+
     &--onclick {
       background-color: #d9d9d9d9;
       font-size: 16px;
-      margin: 0px 8px;
+      margin: 0 8px;
       height: 20px;
       line-height: 20px;
+
       &.buttonBold {
         font-weight: 700;
       }
+
       &.buttonUnderline {
         text-decoration-line: underline;
       }
+
       &.buttonThrough {
         text-decoration-line: line-through;
       }
     }
   }
-  
+
   &__text-tools {
     display: flex;
     align-items: center;
@@ -126,31 +133,40 @@
     border-radius: 20px;
     box-sizing: border-box;
     background-color: #d9d9d9d9;
+
     .item__span {
       visibility: hidden;
     }
+
     &.show {
       width: 170px;
+
       .item__span {
         :nth-child(n) {
-          animation: showOut 0.4s ease-out normal forwards;
+          animation: show-out 0.4s ease-out normal forwards;
         }
+
         :nth-child(1) {
           animation-delay: 0.1s;
         }
+
         :nth-child(2) {
           animation-delay: 0.2s;
         }
+
         :nth-child(3) {
           animation-delay: 0.3s;
         }
+
         :nth-child(4) {
           animation-delay: 0.4s;
         }
       }
     }
+
     transition: all 0.4s ease-out;
   }
+
   .save__button {
     border: none;
     width: 54px;
@@ -161,8 +177,9 @@
     line-height: 15px;
     color: white;
     background-color: #c4c4c4;
+
     &.active {
-      background-color: #FF7F23;
+      background-color: #ff7f23;
     }
   }
 }
