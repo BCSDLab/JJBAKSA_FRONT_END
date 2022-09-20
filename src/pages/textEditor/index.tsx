@@ -1,6 +1,7 @@
 import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.svg';
 import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import StarContainer from 'components/rating/StarContainer';
+import Wysiwyg from 'components/wysiwyg';
 import { useState } from 'react';
 import cn from 'utils/ts/classNames';
 import styles from './TextEditor.module.scss';
@@ -8,6 +9,7 @@ import styles from './TextEditor.module.scss';
 function TextEditor(): JSX.Element {
   const [showTextTools, setShowTextTools] = useState(false);
   const [saveActive, setSaveActive] = useState(false);
+
   const textToolHandler = () => {
     setShowTextTools(!showTextTools);
   };
@@ -21,7 +23,9 @@ function TextEditor(): JSX.Element {
         <div className={styles.header__shopname}>여기에 가게명</div>
         <StarContainer />
       </div>
-      <div className={styles.editor}>에디터가 들어갈 공간</div>
+      <div className={styles.editor}>
+        <Wysiwyg />
+      </div>
       <span className={styles.item}>
         <span className={styles.item__span}>
           <button type="button" className={styles.item__button}>

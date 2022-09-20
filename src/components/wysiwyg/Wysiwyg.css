@@ -1,0 +1,34 @@
+.container {
+  height: 100%;
+  width: 100%;
+}
+.auto-height {
+  height: 100% !important;
+}
+.toastui-editor-defaultUI {
+  border: none !important;
+  width: 100%;
+  height: 100% !important;
+}
+.toastui-editor-contents {
+  font-family:
+  SUIT,
+  system-ui,
+  "Segoe UI",
+  Roboto,
+  Helvetica,
+  Arial,
+  sans-serif,
+  "Apple Color Emoji",
+  "Segoe UI Emoji",
+  "Segoe UI Symbol";
+}
+.toastui-editor-toolbar {
+  display: none;
+}
+.toastui-editor-mode-switch {
+  display: none !important;
+}
+.ProseMirror {
+  padding: 0 !important;
+}
