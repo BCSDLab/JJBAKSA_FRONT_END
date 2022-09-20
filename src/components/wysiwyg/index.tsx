@@ -23,7 +23,7 @@ function Wysiwyg(): JSX.Element {
         initialValue="내용을 입력해 주세요."
         previewStyle="vertical"
         initialEditType="wysiwyg"
-        height="auto"
+        height="100%"
         useCommandShortcut
         toolbarItems={[]}
         ref={editorRef}

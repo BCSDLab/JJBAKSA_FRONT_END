@@ -23,6 +23,14 @@
   "Segoe UI Emoji",
   "Segoe UI Symbol";
 }
+.toastui-editor-contents::-webkit-scrollbar {
+  background: none;
+  width: 2px;
+}
+.toastui-editor-contents::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+
+}
 .toastui-editor-toolbar {
   display: none;
 }
