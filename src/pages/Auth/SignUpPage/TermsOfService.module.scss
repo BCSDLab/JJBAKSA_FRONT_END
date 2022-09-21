@@ -1,0 +1,152 @@
+
+$default: #222222;
+$main: #FF7F23;
+
+@mixin font-medium {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.templete {
+  min-height: 100vh;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.terms-of-service {
+  width: 368px;
+  height: 590px;
+  color: $default;
+  position: relative;
+
+  &__button {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 368px;
+    height: 40px;
+    background: #C4C4C4;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+
+    &--active {
+      background-color: $main;
+    }
+  }
+}
+
+.contents {
+  margin-top: 95px;
+
+  &__title {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 38px;
+  }
+}
+
+details[open] > summary:first-of-type {
+  .checkbox__icon {
+    transform: rotate(180deg);
+  }
+}
+
+.checkbox {
+  display: flex;
+  margin-bottom: 25px;
+  align-items: center;
+
+  &__entire {
+    @include font-medium;
+  }
+
+  &__summary {
+    @include font-medium;
+
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 373px;
+    list-style: none;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+  }
+
+  &__input {
+    cursor: pointer;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    box-sizing: border-box;
+    border-radius: 100%;
+    border: 1px solid #C4C4C4;
+    margin-right: 8px;
+
+    &:checked {
+      background: $main;
+    }
+  }
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    justify-content: end;
+    position: absolute;
+    right: 0;
+  }
+
+  &__info {
+    width: 320px;
+    height: 43px;
+    margin-top: 16px;
+    border: 1px solid #C4C4C4;
+    border-radius: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 16px 26px 26px 16px;
+    white-space: pre;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: none;
+      margin: 10px 8px 10px 0;
+      max-height: 100px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 2px;
+      border-radius: 3px;
+      border: 2px solid #C4C4C4;
+    }
+
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+
+    /* Firefox scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: gray transparent;
+  }
+}
