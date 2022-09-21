@@ -1,7 +1,7 @@
 import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.svg';
 import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import StarContainer from 'components/rating/StarContainer';
-import Wysiwyg from 'components/wysiwyg';
+import Wysiwyg from 'components/Wysiwyg';
 import { useState } from 'react';
 import cn from 'utils/ts/classNames';
 import styles from './TextEditor.module.scss';
@@ -19,8 +19,10 @@ function TextEditor(): JSX.Element {
   return (
     <div className={styles.template}>
       <div className={styles.header}>
-        <LeftAngleBraketIcon type="button" className={styles.header__button} />
-        <div className={styles.header__shopname}>여기에 가게명</div>
+        <div className={styles.header__title}>
+          <LeftAngleBraketIcon type="button" className={styles.header__button} />
+          <div className={styles.header__shopname}>여기에 가게명</div>
+        </div>
         <StarContainer />
       </div>
       <div className={styles.editor}>

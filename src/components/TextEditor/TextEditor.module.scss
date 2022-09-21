@@ -31,7 +31,7 @@
   &__button {
     position: absolute;
     left: 14px;
-    top: 24px;
+    top: 16px;
     border: none;
     background-color: none;
     color: #c4c4c4;
@@ -56,6 +56,131 @@
     &__star {
       height: 100%;
       width: 32px;
+    }
+  }
+}
+
+.editor {
+  width: auto;
+  height: 100%;
+  line-height: 15px;
+  font-size: 12px;
+  color: #222222;
+  margin-left: 24px;
+  margin-right: 8px;
+}
+
+.item {
+  display: flex;
+  width: auto;
+  margin: 16px 16px 40px;
+  justify-content: space-between;
+
+  button {
+    border: none;
+    font-family: inherit;
+    font-weight: 400;
+  }
+
+  &__span {
+    display: flex;
+  }
+
+  &__button {
+    display: inline-block;
+    font-size: 24px;
+    line-height: 30px;
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+    color: #222222;
+    background-color: #eeeeee;
+    border-radius: 50px;
+
+    &.buttonT {
+      display: inline-block;
+      font-weight: 200;
+      width: 40px;
+      height: 40px;
+      box-sizing: border-box;
+    }
+
+    &--onclick {
+      background-color: #d9d9d9d9;
+      font-size: 16px;
+      margin: 0 8px;
+      height: 20px;
+      line-height: 20px;
+
+      &.buttonBold {
+        font-weight: 700;
+      }
+
+      &.buttonUnderline {
+        text-decoration-line: underline;
+      }
+
+      &.buttonThrough {
+        text-decoration-line: line-through;
+      }
+    }
+  }
+
+  &__text-tools {
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #d9d9d9d9;
+
+    .item__span {
+      visibility: hidden;
+    }
+
+    &.show {
+      width: 170px;
+
+      .item__span {
+        :nth-child(n) {
+          animation: show-out 0.4s ease-out normal forwards;
+        }
+
+        :nth-child(1) {
+          animation-delay: 0.1s;
+        }
+
+        :nth-child(2) {
+          animation-delay: 0.2s;
+        }
+
+        :nth-child(3) {
+          animation-delay: 0.3s;
+        }
+
+        :nth-child(4) {
+          animation-delay: 0.4s;
+        }
+      }
+    }
+
+    transition: all 0.4s ease-out;
+  }
+
+  .save__button {
+    border: none;
+    width: 54px;
+    height: 40px;
+    padding: 12px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 15px;
+    color: white;
+    background-color: #c4c4c4;
+
+    &.active {
+      background-color: #ff7f23;
     }
   }
 }
