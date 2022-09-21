@@ -1,8 +1,11 @@
 import TextEditor from 'components/TextEditor';
+import styles from './Post.module.scss';
 
 function Post() {
   return (
-    <TextEditor />
+    <div className={styles.post}>
+      <TextEditor isShopname={false} />
+    </div>
   );
 }
 

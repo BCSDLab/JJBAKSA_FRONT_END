@@ -2,9 +2,18 @@ import { ReactComponent as Star } from 'assets/svg/star.svg';
 import { useState } from 'react';
 import styles from './StarContainer.module.scss';
 
-function StarContainer() {
+type StarContainerProps = {
+  checkRating: () => void;
+};
+
+function StarContainer({ checkRating }: StarContainerProps) {
   const [hovered, setHovered] = useState<number>(0);
   const [clicked, setClicked] = useState<number>(0);
+  const clickedHandler = (n: number) => {
+    setClicked(n);
+    checkRating();
+  };
+
   return (
     <div className={styles.container}>
       {[1, 2, 3, 4, 5].map((num) => (
@@ -14,7 +23,7 @@ function StarContainer() {
           className={styles.container__star}
           onMouseEnter={() => setHovered(num)}
           onMouseLeave={() => setHovered(0)}
-          onClick={() => setClicked(num)}
+          onClick={() => clickedHandler(num)}
         />
       ))}
     </div>
