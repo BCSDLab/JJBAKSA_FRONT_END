@@ -176,79 +176,91 @@
       margin-bottom: 16px;
     }
   }
-  &__link{
-    display:flex;
+
+  &__link {
+    display: flex;
     flex-direction: row;
     justify-content: center;
   }
-  &__google{
+
+  &__google {
     margin-right: 12px;
     margin-left: 12px;
-    background: #FFFFFF;
-    border: 0.5px solid #EEEEEE;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #ffffff;
+    border: 0.5px solid #eeeeee;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
     border-radius: 50%;
     width: 57px;
     height: 57px;
-    svg{
+
+    svg {
       padding-top: 18.5px;
     }
-    
   }
-  &__kakao{
+
+  &__kakao {
     margin-right: 12px;
     margin-left: 12px;
     border-radius: 50%;
     width: 57px;
     height: 57px;
-    background: #FEE500;
-    border: 0.5px solid #EFD54F;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    svg{
-      padding-top: 20.5px
+    background: #fee500;
+    border: 0.5px solid #efd54f;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+
+    svg {
+      padding-top: 20.5px;
     }
   }
-  &__naver{
+
+  &__naver {
     margin-right: 12px;
     margin-left: 12px;
     border-radius: 50%;
     width: 57px;
     height: 57px;
-    background: #03C75A;
-    border: 0.5px solid #2AAB15;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    svg{
-      padding-top: 22.5px
+    background: #03c75a;
+    border: 0.5px solid #2aab15;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+
+    svg {
+      padding-top: 22.5px;
     }
   }
+
   @include media.media-breakpoint-down(mobile) {
-    &__google{
+    &__google {
       margin-right: 6px;
       margin-left: 6px;
       width: 40px;
       height: 40px;
-      svg{
+
+      svg {
         width: 12px;
         height: 12px;
         padding-top: 14px;
       }
     }
-    &__kakao{
+
+    &__kakao {
       margin-right: 6px;
       margin-left: 6px;
       width: 40px;
       height: 40px;
-      svg{
+
+      svg {
         width: 12px;
         height: 11px;
         padding-top: 15px;
       }
     }
-    &__naver{
+
+    &__naver {
       margin-right: 6px;
       margin-left: 6px;
       width: 40px;
       height: 40px;
+
       svg {
         padding-top: 16px;
         width: 8px;
