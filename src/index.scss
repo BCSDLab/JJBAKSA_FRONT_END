@@ -1,4 +1,5 @@
 @forward "src/styles/fonts.scss";
+@use "src/utils/styles/mediaQuery" as media;
 
 * {
   margin: 0;
@@ -24,4 +25,8 @@ html {
 body {
   min-height: 100vh;
   min-width: 1148px;
+
+  @include media.media-breakpoint-down(mobile) {
+    min-width: 216px;
+  }
 }

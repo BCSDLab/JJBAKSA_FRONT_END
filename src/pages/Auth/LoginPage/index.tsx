@@ -1,5 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { ReactComponent as GoogleIcon } from 'assets/svg/google.svg';
+import { ReactComponent as NaverIcon } from 'assets/svg/naver.svg';
+import { ReactComponent as KakaoIcon } from 'assets/svg/kakao.svg';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { Link } from 'react-router-dom';
 import AuthTitle from 'components/common/AuthTitle';
 import Copyright from 'components/common/Copyright';
@@ -12,6 +16,7 @@ interface IFormInput {
 }
 
 function LoginPage(): JSX.Element {
+  const { isMobile } = useMediaQuery();
   const {
     register,
     handleSubmit,
@@ -45,13 +50,13 @@ function LoginPage(): JSX.Element {
           <div className={styles.social}>
             <div className={styles.social__title}>SNS계정으로 로그인하기</div>
             <div className={styles.social__link}>
-              <Link to="/">구글</Link>
-              <Link to="/">카카오</Link>
-              <Link to="/">네이버</Link>
+              <Link className={styles.social__google} to="/"><GoogleIcon /></Link>
+              <Link className={styles.social__kakao} to="/"><KakaoIcon /></Link>
+              <Link className={styles.social__naver} to="/"><NaverIcon /></Link>
             </div>
           </div>
         </div>
-        <Copyright />
+        {!isMobile && <Copyright />}
       </div>
     </div>
   );
