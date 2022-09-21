@@ -3,6 +3,7 @@ import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
 import StarContainer from 'components/rating/StarContainer';
 import Wysiwyg from 'components/Wysiwyg';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import styles from './TextEditor.module.scss';
@@ -16,6 +17,7 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
   const [saveActive, setSaveActive] = useState(false);
   const [checkAddShop, setCheckAddShop] = useState(false);
   const [checkRating, setCheckRating] = useState(false);
+  const navigate = useNavigate();
   useEffect(() => {
     setCheckAddShop(isShopname);
   }, [isShopname]);
@@ -43,7 +45,7 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
         [styles['header--active']]: checkAddShop,
       })}
       >
-        <LeftAngleBraketIcon type="button" className={styles['header__button--prev']} />
+        <LeftAngleBraketIcon type="button" className={styles['header__button--prev']} onClick={() => navigate(-1)} />
         { checkAddShop && <div className={styles.header__shopname}>여기에 가게명</div> }
         { checkAddShop && <StarContainer checkRating={checkRatingHandler} /> }
         { !checkAddShop && <Plus type="button" className={styles['header__button--add']} onClick={checkAddShopHandler} /> }
