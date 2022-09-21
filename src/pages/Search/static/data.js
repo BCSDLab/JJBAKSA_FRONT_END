@@ -1,4 +1,4 @@
-const robots = [{
+const list = [{
   title: 'Brown eggs',
   type: 'dairy',
   description: 'Raw organic brown eggs in a basket',
@@ -450,4 +450,4 @@ const robots = [{
   rating: 3,
 }];
 
-export default robots;
+export default list;
