@@ -9,17 +9,18 @@ import RECOMMEND_TEXT from './static/recommend';
 
 function Search(): JSX.Element {
   const [text, setText] = useState('');
-  const [isFocus, setIsFocus] = useState(false);
+  const [mode, setMode] = useState('trending');
   const recommendIdx = useRef(new Date().getSeconds() % 2);
   const navigate = useNavigate();
 
   const focusHandler = () => {
-    setIsFocus(true);
+    setMode('search');
   };
 
   const blurHandler = () => {
-    setIsFocus(false);
+    setMode('trending');
   };
+
   return (
     <div className={styles.search}>
       <div aria-label="상단 바" className={styles.search__nav}>
@@ -34,7 +35,7 @@ function Search(): JSX.Element {
         <h1 className={styles.search__nav__text}>검색</h1>
       </div>
       <div role="main">
-        {!isFocus && (
+        {mode === 'trending' && (
         <h1 className={styles.search__recommend}>
           {RECOMMEND_TEXT[recommendIdx.current]}
         </h1>
@@ -43,7 +44,7 @@ function Search(): JSX.Element {
           <input className={styles.search__bar__input} id="searchBarInput" onFocus={focusHandler} onBlur={blurHandler} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => setText(event.target.value)} />
           <LensIcon className={styles.search__bar__icon} />
         </label>
-        {!isFocus && (
+        {mode === 'trending' && (
         <div aria-label="맛집 트렌드 해시태그 리스트" className={styles['search__trend-banner']}>
           <strong aria-label="맛집 트렌드">TRENDING</strong>
           <ul className={styles['search__trend-banner__tag-list']}>
