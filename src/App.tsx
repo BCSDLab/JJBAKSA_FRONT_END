@@ -11,7 +11,7 @@ function App(): JSX.Element {
     <QueryClientProvider client={queryClient}>
       <Routes>
         <Route path="/" element={<DefaultLayout><Home /></DefaultLayout>} />
-        <Route path="/search" element={<DefaultLayout><Search /></DefaultLayout>} />
+        <Route path="/search" element={<Search />} />
       </Routes>
     </QueryClientProvider>
   );
