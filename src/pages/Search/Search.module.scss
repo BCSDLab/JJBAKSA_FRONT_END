@@ -12,6 +12,7 @@
   
   &__text {
     font-size: 18px;
+    font-weight: 500;
     width: 32px;
     height: 22px;
     padding-left: 16px;
@@ -86,6 +87,7 @@
     width: 18px;
     height: 18px;
     padding-right: 14px;
+    cursor: pointer;
   }
 }
 
@@ -130,12 +132,12 @@
     flex:0 0 auto;
     white-space: nowrap;
     overflow: hidden;
-    gap:8px;
+    gap:20px;
     list-style: none;
 
     &__tag {
       animation: textLoop 10s linear infinite;
-      padding-right: 1.4881vw;
+      font-weight: 400;
     }
 
     @keyframes textLoop {
