@@ -5,8 +5,8 @@ import { ReactComponent as KakaoIcon } from 'assets/svg/kakao.svg';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { Link } from 'react-router-dom';
-import AuthTitle from 'components/common/AuthTitle';
-import Copyright from 'components/common/Copyright';
+import AuthTitle from 'components/Auth/AuthTitle';
+import Copyright from 'components/Auth/Copyright';
 import styles from './LoginPage.module.scss';
 
 interface IFormInput {
