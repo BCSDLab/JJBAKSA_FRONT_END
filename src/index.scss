@@ -1,5 +1,6 @@
 @forward "src/styles/fonts.scss";
 @use "src/utils/styles/mediaQuery" as media;
+
 * {
   margin: 0;
   padding: 0;
@@ -29,4 +30,3 @@ body {
     min-width: 320px;
   }
 }
-

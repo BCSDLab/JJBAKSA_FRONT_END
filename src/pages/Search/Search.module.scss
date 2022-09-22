@@ -8,13 +8,14 @@
   @include media.media-breakpoint-up(mobile) {
     max-width: 720px;
   }
+
   // 상단 navbar
-  &__nav { 
+  &__nav {
     display: flex;
     margin-left: 30px;
     margin-top: 72px;
     align-items: center;
-    
+
     &__text {
       font-size: 18px;
       font-weight: 500;
@@ -25,7 +26,7 @@
 
     &__button {
       &--previous-button {
-      cursor: pointer;
+        cursor: pointer;
         background: none;
         border: none;
         width: 20px;
@@ -44,11 +45,10 @@
   // 검색 추천 문구
   &__recommend {
     height: 80px;
-    margin-top:64px;
+    margin-top: 64px;
     margin-right: 60px;
     margin-left: 30px;
     font-size: 32px;
-    font-family: 'SUIT';
     font-style: normal;
     font-weight: 700;
     line-height: 40px;
@@ -66,16 +66,13 @@
     margin-top: 32px;
     margin-right: 16px;
     margin-left: 16px;
-    background: #EEEEEE;  
+    background: #eeeeee;
 
-    
-  
     &__input {
       width: 100%;
       height: 15px;
       border: none;
       background: none;
-      font-family: 'SUIT';
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -83,15 +80,15 @@
       margin-left: 11px;
 
       &::placeholder {
-        color:#C4C4C4;
+        color: #c4c4c4;
         font-size: 12px;
       }
     }
-  
+
     &__input:focus {
       outline: none;
     }
-  
+
     &__icon {
       width: 18px;
       height: 18px;
@@ -101,39 +98,38 @@
   }
 
   // 트렌드 롤링 배너
-  &__trend-banner {  
+  &__trend-banner {
     display: flex;
     overflow: hidden;
-    margin-top:8px;
+    margin-top: 8px;
     margin-right: 27px;
     margin-left: 27px;
     height: 15px;
     font-size: 12px;
-  
+
     strong {
       padding-right: 16px;
     }
-  
+
     &__tag-list {
       display: flex;
-      flex:0 0 auto;
+      flex: 0 0 auto;
       white-space: nowrap;
       overflow: hidden;
       list-style: none;
-  
+
       &__tag {
-        animation: textLoop 10s linear infinite;
+        animation: text-loop 10s linear infinite;
         font-weight: 400;
         padding-right: 10px;
       }
-  
-      @keyframes textLoop {
+
+      @keyframes text-loop {
         0% {
-          -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
         }
+
         100% {
-          -webkit-transform: translate3d(-100%, 0, 0);
           transform: translate3d(-100%, 0, 0);
         }
       }
@@ -142,8 +138,8 @@
 
   // 검색창 결과 리스트
   &__query-list {
-    margin-top:24px;
-    
+    margin-top: 24px;
+
     &__item {
       display: flex;
       font-size: 14px;
@@ -153,7 +149,7 @@
       cursor: pointer;
 
       &:hover {
-        background: #EEEEEE;    
+        background: #eeeeee;
       }
     }
 
@@ -163,16 +159,10 @@
       font-size: 16px;
       line-height: 20px;
       text-align: center;
-      margin:0 auto;
+      margin: 0 auto;
       margin-top: 164px;
     }
   }
 }
 
-
-
-
-
 // searh result list
-
-
