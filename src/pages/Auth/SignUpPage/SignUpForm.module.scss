@@ -1,0 +1,105 @@
+@use "./TermsOfService.module.scss" as terms-of-service;
+
+$main: #FF7F23;
+$input-background: #EEEEEE;
+
+.template {
+  @include terms-of-service.template;
+}
+
+.content {
+  width: 368px;
+  height: 648px;
+  position: relative;
+
+  &__button {
+    @include terms-of-service.button;
+  }
+}
+
+.sign-up-form {
+  margin-top: 128px;
+
+  &__title {
+    @include terms-of-service.font-title(40px);
+  }
+
+  &__form {
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  &__input {
+    width: 356px;
+    height: 15px;
+    padding: 7px 0 8px 12px;
+    outline: none;
+    background: $input-background;
+    border-radius: 20px;
+    border: none;
+    font-size: 12px;
+    color: #222222;
+
+    // chrome 자동완성 background 제거
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px $input-background inset;
+      box-shadow: 0 0 0 1000px $input-background inset;
+    }
+
+    &::placeholder {
+      font-size: 12px;
+      color: #C4C4C4;
+    }
+
+    &--id {
+      width: 290px;
+    }
+
+    &--email {
+      width: 157px;
+    }
+  }
+
+  &__button {
+    background: $main;
+    border: 1px solid $main;
+    border-radius: 22px;
+    width: 96px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  &__select {
+    width: 169px;
+    height: 30px;
+    background: $input-background;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 7px 0 8px 12px;
+  }
+
+  &__option {
+    background: #FFFFFF;
+    border: 1px solid #EEEEEE;
+    border-radius: 15px;
+    padding: 4px 12px;
+  }
+
+  &__email-sign {
+    display: inline;
+    font-size: 14px;
+    color: #999999;
+    padding: 0 7px;
+  }
+}
