@@ -61,6 +61,16 @@ function Search({ currentMode = 'trending' } : ICurrentMode): JSX.Element {
         )}
         <menu aria-label="검색 결과" className={styles['search__query-list']}>
           {/* 이 부분은 검색창 리스트 필터링 확인을 위해서 임의로 목업 데이터 사용 */}
+          {list?.filter((item) => item.title.includes(text)).length === 0
+          && (
+          <div role="presentation" className={styles['search__query-list__not-found']}>
+            해당
+            {' '}
+            {text}
+            {' '}
+            관련 음식점/게시물을 찾을 수 없습니다.
+          </div>
+          )}
           {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item) => <li key={item.title} className={styles['search__query-list__item']}>{item.title}</li>)}
         </menu>
       </div>

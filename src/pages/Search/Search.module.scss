@@ -1,8 +1,13 @@
+@use "src/utils/styles/mediaQuery" as media;
+
 .search {
   width: 100%;
   height: 100vh;
   font-size: 32px;
 
+  @include media.media-breakpoint-up(mobile) {
+    max-width: 720px;
+  }
   // 상단 navbar
   &__nav { 
     display: flex;
@@ -62,6 +67,8 @@
     margin-right: 16px;
     margin-left: 16px;
     background: #EEEEEE;  
+
+    
   
     &__input {
       width: 100%;
@@ -136,7 +143,7 @@
   // 검색창 결과 리스트
   &__query-list {
     margin-top:24px;
-  
+    
     &__item {
       display: flex;
       font-size: 14px;
@@ -148,6 +155,16 @@
       &:hover {
         background: #EEEEEE;    
       }
+    }
+
+    &__not-found {
+      width: 275px;
+      height: 40px;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+      margin:0 auto;
+      margin-top: 164px;
     }
   }
 }
