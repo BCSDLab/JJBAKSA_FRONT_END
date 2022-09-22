@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import styles from './TermsOfService.module.scss';
 import privacy from './static/privacy';
-import { ReactComponent as CloseArrow } from '../../../assets/svg/arrow-close.svg';
+import { ReactComponent as Arrow } from '../../../assets/svg/arrow.svg';
 
 const useCheckbox = () => {
   const [checkedList, setCheckedList] = useState<boolean[]>(() => privacy.map(() => false));
@@ -58,7 +58,7 @@ export default function TermsOfService(): JSX.Element {
                   <summary className={styles.checkbox__summary}>
                     <input className={styles.checkbox__input} type="checkbox" onChange={() => changeCheck(index)} checked={checkedList[index]} />
                     <div>{res.summary}</div>
-                    <CloseArrow className={styles.checkbox__icon} />
+                    <Arrow className={styles.checkbox__icon} />
                   </summary>
                   <p className={styles.checkbox__info}>{res.content}</p>
                 </details>
