@@ -167,6 +167,7 @@
 
 .social {
   text-align: center;
+  margin-bottom: 155px;
 
   &__title {
     font-size: 16px;
@@ -230,6 +231,7 @@
   }
 
   @include media.media-breakpoint-down(mobile) {
+    margin-bottom: 0px;
     &__google {
       margin-right: 6px;
       margin-left: 6px;
