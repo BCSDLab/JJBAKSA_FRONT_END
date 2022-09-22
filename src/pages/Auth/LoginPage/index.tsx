@@ -20,7 +20,7 @@ function LoginPage(): JSX.Element {
   const {
     register,
     handleSubmit,
-    formState: { isDirty, isValid },
+    formState: { isValid },
   } = useForm<IFormInput>({ mode: 'onChange' });
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
@@ -38,7 +38,7 @@ function LoginPage(): JSX.Element {
               <input type="checkbox" id="checkbox" {...register('checkbox')} className={styles.checkbox} />
               <div className={styles.dot} />
             </label>
-            <button type="submit" disabled={!isValid || !isDirty} className={styles.loginform__button}>
+            <button type="submit" disabled={!isValid} className={styles.loginform__button}>
               로그인
             </button>
           </form>
