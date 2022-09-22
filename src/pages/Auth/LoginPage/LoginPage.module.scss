@@ -1,9 +1,10 @@
 @use "src/utils/styles/mediaQuery" as media;
 
 .template {
-  min-width: 100%;
-  min-height: 100vh;
   display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .content {
@@ -12,7 +13,7 @@
 
   @include media.media-breakpoint-down(mobile) {
     width: 216px;
-    margin: auto;
+    margin: 100px auto 80px;
   }
 }
 
