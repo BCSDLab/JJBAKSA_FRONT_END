@@ -7,9 +7,14 @@ import styles from './Search.module.scss';
 import hash_tag from './static/trend';
 import RECOMMEND_TEXT from './static/recommend';
 
-function Search(): JSX.Element {
+interface ICurrentMode {
+  // eslint-disable-next-line react/require-default-props
+  currentMode? : string;
+}
+
+function Search({ currentMode = 'trending' } : ICurrentMode): JSX.Element {
   const [text, setText] = useState('');
-  const [mode, setMode] = useState('trending');
+  const [mode, setMode] = useState(currentMode);
   const recommendIdx = useRef(new Date().getSeconds() % 2);
   const navigate = useNavigate();
 
