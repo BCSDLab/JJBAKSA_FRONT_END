@@ -1,6 +1,7 @@
 @use "./TermsOfService.module.scss" as terms-of-service;
 
-$main: #FF7F23;
+$active: #FF7F23;
+$passive: #C4C4C4;
 $input-background: #EEEEEE;
 
 .template {
@@ -67,8 +68,8 @@ $input-background: #EEEEEE;
   }
 
   &__button {
-    background: $main;
-    border: 1px solid $main;
+    background: $passive;
+    border: 1px solid $passive;
     border-radius: 22px;
     width: 96px;
     height: 30px;
@@ -77,6 +78,11 @@ $input-background: #EEEEEE;
     color: #FFFFFF;
     font-weight: 700;
     font-size: 12px;
+    cursor: pointer;
+
+    &--active {
+      background: $active;
+    }
   }
 
   &__select {

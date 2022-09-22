@@ -1,5 +1,6 @@
 $default: #222222;
-$main: #FF7F23;
+$active: #FF7F23;
+$passive: #C4C4C4;
 
 @mixin font-title($margin-bottom) {
   font-size: 16px;
@@ -29,7 +30,7 @@ $main: #FF7F23;
   justify-content: center;
   width: 368px;
   height: 40px;
-  background: #C4C4C4;
+  background: $passive;
   border: none;
   appearance: none;
   border-radius: 20px;
@@ -40,7 +41,7 @@ $main: #FF7F23;
   cursor: pointer;
 
   &--active {
-    background-color: $main;
+    background-color: $active;
   }
 }
 
@@ -107,7 +108,7 @@ details[open] > summary:first-of-type {
     margin-right: 8px;
 
     &:checked {
-      background: $main;
+      background: $active;
     }
   }
 
