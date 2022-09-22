@@ -1,6 +1,11 @@
-
 $default: #222222;
 $main: #FF7F23;
+
+@mixin font-title($margin-bottom) {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: $margin-bottom;
+}
 
 @mixin font-medium {
   font-size: 14px;
@@ -8,7 +13,7 @@ $main: #FF7F23;
   font-weight: 500;
 }
 
-.templete {
+@mixin template {
   min-height: 100vh;
   height: 800px;
   display: flex;
@@ -16,44 +21,49 @@ $main: #FF7F23;
   justify-content: center;
 }
 
-.terms-of-service {
+@mixin button {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 368px;
-  height: 590px;
-  color: $default;
-  position: relative;
+  height: 40px;
+  background: #C4C4C4;
+  border: none;
+  appearance: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
 
-  &__button {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 368px;
-    height: 40px;
-    background: #C4C4C4;
-    border: none;
-    appearance: none;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-
-    &--active {
-      background-color: $main;
-    }
+  &--active {
+    background-color: $main;
   }
 }
 
-.contents {
+.template {
+  @include template;
+}
+
+.container {
+  height: 590px;
+  position: relative;
+
+  &__button {
+    @include button;
+  }
+}
+
+.terms-of-service {
+  width: 368px;
+  color: $default;
   margin-top: 95px;
 
   &__title {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    margin-bottom: 38px;
+    @include font-title(38px);
   }
 }
 

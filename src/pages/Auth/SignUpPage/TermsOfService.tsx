@@ -28,18 +28,18 @@ const useCheckbox = () => {
   };
 };
 
-export default function TermsOfService(): JSX.Element {
+export default function TermsOfService() {
   const navigate = useNavigate();
   const {
     checkedList, changeCheck, allCheck, changeAllCheck,
   } = useCheckbox();
   return (
-    <div className={styles.templete}>
-      <div className={styles['terms-of-service']}>
+    <div className={styles.template}>
+      <div className={styles.container}>
         {/* 헤더 */}
         <div>쩝쩝박사</div>
-        <div className={styles.contents}>
-          <div className={styles.contents__title}>약관동의</div>
+        <div className={styles['terms-of-service']}>
+          <div className={styles['terms-of-service__title']}>약관동의</div>
           <div>
             <div className={styles.checkbox}>
               <div className={styles.checkbox_entire}>
@@ -69,8 +69,8 @@ export default function TermsOfService(): JSX.Element {
         <button
           type="button"
           className={cn({
-            [styles['terms-of-service__button']]: true,
-            [styles['terms-of-service__button--active']]: allCheck,
+            [styles.container__button]: true,
+            [styles['container__button--active']]: allCheck,
           })}
           disabled={!allCheck}
           onClick={() => navigate('/SignUp')}
