@@ -26,7 +26,7 @@ body {
   min-width: 1148px;
 
   @include media.media-breakpoint-down(mobile) {
-    min-width: 360px;
+    min-width: 320px;
   }
 }
 
