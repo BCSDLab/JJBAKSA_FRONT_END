@@ -3,7 +3,6 @@ import { ReactComponent as GoogleIcon } from 'assets/svg/google.svg';
 import { ReactComponent as NaverIcon } from 'assets/svg/naver.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/kakao.svg';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { Link } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
@@ -16,7 +15,6 @@ interface IFormInput {
 }
 
 function LoginPage(): JSX.Element {
-  const { isMobile } = useMediaQuery();
   const {
     register,
     handleSubmit,
@@ -56,7 +54,7 @@ function LoginPage(): JSX.Element {
             </div>
           </div>
         </div>
-        {!isMobile && <Copyright />}
+        <Copyright />
       </div>
     </div>
   );
