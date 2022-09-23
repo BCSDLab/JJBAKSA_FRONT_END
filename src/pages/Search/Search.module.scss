@@ -6,14 +6,15 @@
   font-size: 32px;
 
   @include media.media-breakpoint-up(mobile) {
-    max-width: 720px;
+    max-width: 767px;
+    margin: 0 auto;
   }
 
   // 상단 navbar
-  &__nav {
+  .search-nav {
     display: flex;
-    margin-left: 30px;
-    margin-top: 72px;
+    padding-left: 30px;
+    padding-top: 72px;
     align-items: center;
 
     &__text {
@@ -35,7 +36,7 @@
     }
 
     &__icon {
-      &__previous-icon {
+      &--previous-icon {
         width: 7px;
         height: 14px;
       }
@@ -44,10 +45,11 @@
 
   // 검색 추천 문구
   &__recommend {
+    word-break: keep-all;
     height: 80px;
-    margin-top: 64px;
-    margin-right: 60px;
-    margin-left: 30px;
+    padding-top: 64px;
+    padding-right: 60px;
+    padding-left: 30px;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -57,7 +59,7 @@
   }
 
   // 검색창
-  &__bar {
+  .search-bar {
     display: flex;
     border-radius: 15px;
     border: none;
@@ -98,7 +100,7 @@
   }
 
   // 트렌드 롤링 배너
-  &__trend-banner {
+  .search-banner {
     display: flex;
     overflow: hidden;
     margin-top: 8px;
@@ -118,12 +120,6 @@
       overflow: hidden;
       list-style: none;
 
-      &__tag {
-        animation: text-loop 10s linear infinite;
-        font-weight: 400;
-        padding-right: 10px;
-      }
-
       @keyframes text-loop {
         0% {
           transform: translate3d(0, 0, 0);
@@ -134,10 +130,16 @@
         }
       }
     }
+
+    &__tag {
+      animation: text-loop 10s linear infinite;
+      font-weight: 400;
+      padding-right: 10px;
+    }
   }
 
   // 검색창 결과 리스트
-  &__query-list {
+  .search-query-list {
     margin-top: 24px;
 
     &__item {
@@ -153,7 +155,8 @@
       }
     }
 
-    &__not-found {
+    &__text--not-found {
+      word-break: keep-all;
       width: 275px;
       height: 40px;
       font-size: 16px;
@@ -164,5 +167,3 @@
     }
   }
 }
-
-// searh result list

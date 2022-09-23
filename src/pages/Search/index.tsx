@@ -28,16 +28,16 @@ function Search({ currentMode = 'trending' } : ICurrentMode): JSX.Element {
 
   return (
     <div className={styles.search}>
-      <div aria-label="상단 바" className={styles.search__nav}>
+      <div aria-label="상단 바" className={styles['search-nav']}>
         <button
           aria-label="메인 페이지로 돌아가는 버튼"
-          className={styles['search__nav__button--previous-button']}
+          className={styles['search-nav__button--previous-button']}
           type="button"
           onClick={() => navigate('/')}
         >
-          <PreviousIcon className={styles['search__nav__icon--previous-icon']} />
+          <PreviousIcon className={styles['search-nav__icon--previous-icon']} />
         </button>
-        <h1 className={styles.search__nav__text}>검색</h1>
+        <h1 className={styles['search-nav__text']}>검색</h1>
       </div>
       <div role="main">
         {mode === 'trending' && (
@@ -45,33 +45,31 @@ function Search({ currentMode = 'trending' } : ICurrentMode): JSX.Element {
           {RECOMMEND_TEXT[recommendIdx.current]}
         </h1>
         )}
-        <label aria-label="검색창" className={styles.search__bar} htmlFor="searchBarInput">
-          <input className={styles.search__bar__input} id="searchBarInput" onFocus={focusHandler} onBlur={blurHandler} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => setText(event.target.value)} />
-          <LensIcon className={styles.search__bar__icon} />
+        <label aria-label="검색창" className={styles['search-bar']} htmlFor="searchBarInput">
+          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={focusHandler} onBlur={blurHandler} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => setText(event.target.value)} />
+          <LensIcon className={styles['search-bar__icon']} />
         </label>
         {mode === 'trending' && (
-        <div aria-label="맛집 트렌드 해시태그 리스트" className={styles['search__trend-banner']}>
+        <div aria-label="맛집 트렌드 해시태그 리스트" className={styles['search-banner']}>
           <strong aria-label="맛집 트렌드">TRENDING</strong>
-          <ul className={styles['search__trend-banner__tag-list']}>
-            <b className={styles['search__trend-banner__tag-list__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</b>
-            <b className={styles['search__trend-banner__tag-list__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</b>
-            <b className={styles['search__trend-banner__tag-list__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</b>
+          <ul className={styles['search-banner__tag-list']}>
+            <span className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</span>
+            <span aria-label="" className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</span>
+            <span aria-label="" className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</span>
           </ul>
         </div>
         )}
-        <menu aria-label="검색 결과" className={styles['search__query-list']}>
+        <menu aria-label="검색 결과" className={styles['search-query-list']}>
           {/* 이 부분은 검색창 리스트 필터링 확인을 위해서 임의로 목업 데이터 사용 */}
           {list?.filter((item) => item.title.includes(text)).length === 0
           && (
-          <div role="presentation" className={styles['search__query-list__not-found']}>
+          <div role="presentation" className={styles['search-query-list__text--not-found']}>
             해당
-            {' '}
-            {text}
-            {' '}
+            {` ${text} `}
             관련 음식점/게시물을 찾을 수 없습니다.
           </div>
           )}
-          {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item) => <li key={item.title} className={styles['search__query-list__item']}>{item.title}</li>)}
+          {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item) => <li key={item.title} className={styles['search-query-list__item']}>{item.title}</li>)}
         </menu>
       </div>
     </div>
