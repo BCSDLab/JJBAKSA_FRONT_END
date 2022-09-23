@@ -31,7 +31,3 @@ export interface IUser {
   oauthType: string;
   userType: string;
 }
-
-export interface ISearchQueryParams {
-  text : string;
-}
