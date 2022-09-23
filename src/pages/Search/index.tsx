@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import list from './static/data';
 import styles from './Search.module.scss';
 import hash_tag from './static/trend';
-import RECOMMEND_TEXT from './static/recommend';
+import recommend_text from './static/recommend';
 import useSearch from './useSearch';
 
 function Search(): JSX.Element {
@@ -32,7 +32,7 @@ function Search(): JSX.Element {
       <div role="main">
         {mode === 'trending' && (
         <h1 className={styles.search__recommend}>
-          {RECOMMEND_TEXT[recommendIdx.current]}
+          {recommend_text[recommendIdx.current]}
         </h1>
         )}
         <label aria-label="검색창" className={styles['search-bar']} htmlFor="searchBarInput">
