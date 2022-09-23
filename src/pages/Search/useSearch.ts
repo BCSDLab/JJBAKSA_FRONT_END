@@ -1,10 +1,10 @@
-import { SetStateAction, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export default function useSearch(state : 'search' | 'trending' | null) {
   const [text, setText] = useState('');
   const [mode, setMode] = useState(state);
 
-  const textHandler = (e: { target: { value: SetStateAction<string> } }) => {
+  const textHandler = (e : ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
 
