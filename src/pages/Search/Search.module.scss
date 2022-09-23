@@ -79,7 +79,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 15px;
-      margin-left: 11px;
+      padding-left: 11px;
 
       &::placeholder {
         color: #c4c4c4;
@@ -110,7 +110,7 @@
     font-size: 12px;
 
     strong {
-      padding-right: 16px;
+      margin-right: 16px;
     }
 
     &__tag-list {
