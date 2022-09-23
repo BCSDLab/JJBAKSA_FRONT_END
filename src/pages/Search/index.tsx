@@ -1,31 +1,26 @@
 import { ReactComponent as PreviousIcon } from 'assets/svg/previous.svg';
 import { ReactComponent as LensIcon } from 'assets/svg/lens.svg';
-import { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useRef } from 'react';
 import list from './static/data';
 import styles from './Search.module.scss';
 import hash_tag from './static/trend';
 import RECOMMEND_TEXT from './static/recommend';
+import useSearch from './useSearch';
 
-interface ICurrentMode {
-  // eslint-disable-next-line react/require-default-props
-  currentMode? : string;
-}
+// interface ICurrentMode {
+//   currentMode : 'trending' | 'search'
+// }
 
-function Search({ currentMode = 'trending' } : ICurrentMode): JSX.Element {
-  const [text, setText] = useState('');
-  const [mode, setMode] = useState(currentMode);
+function Search(): JSX.Element {
+  const [searchParams] = useSearchParams();
+  const curMode : string | null = searchParams.get('mode');
+  const {
+    text, mode, textHandler, focusHandler, blurHandler,
+  } = useSearch(curMode ? curMode as 'trending' | 'search' : 'trending');
+
   const recommendIdx = useRef(new Date().getSeconds() % 2);
   const navigate = useNavigate();
-
-  const focusHandler = () => {
-    setMode('search');
-  };
-
-  const blurHandler = () => {
-    setMode('trending');
-  };
-
   return (
     <div className={styles.search}>
       <div aria-label="상단 바" className={styles['search-nav']}>
@@ -46,7 +41,7 @@ function Search({ currentMode = 'trending' } : ICurrentMode): JSX.Element {
         </h1>
         )}
         <label aria-label="검색창" className={styles['search-bar']} htmlFor="searchBarInput">
-          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={focusHandler} onBlur={blurHandler} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => setText(event.target.value)} />
+          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={focusHandler} onBlur={blurHandler} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => textHandler(event)} />
           <LensIcon className={styles['search-bar__icon']} />
         </label>
         {mode === 'trending' && (
