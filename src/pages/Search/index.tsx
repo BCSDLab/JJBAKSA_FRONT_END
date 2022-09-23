@@ -8,10 +8,6 @@ import hash_tag from './static/trend';
 import RECOMMEND_TEXT from './static/recommend';
 import useSearch from './useSearch';
 
-// interface ICurrentMode {
-//   currentMode : 'trending' | 'search'
-// }
-
 function Search(): JSX.Element {
   const [searchParams] = useSearchParams();
   const curMode : string | null = searchParams.get('mode');
@@ -26,11 +22,11 @@ function Search(): JSX.Element {
       <div aria-label="상단 바" className={styles['search-nav']}>
         <button
           aria-label="메인 페이지로 돌아가는 버튼"
-          className={styles['search-nav__button--previous-button']}
+          className={styles['search-nav__button--previous']}
           type="button"
           onClick={() => navigate('/')}
         >
-          <PreviousIcon className={styles['search-nav__icon--previous-icon']} />
+          <PreviousIcon className={styles['search-nav__icon--previous']} />
         </button>
         <h1 className={styles['search-nav__text']}>검색</h1>
       </div>
