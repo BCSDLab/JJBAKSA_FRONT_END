@@ -50,9 +50,9 @@ function LoginPage(): JSX.Element {
           <div className={styles.social}>
             <div className={styles.social__title}>SNS계정으로 로그인하기</div>
             <div className={styles.social__link}>
-              <Link className={styles.social__google} to="/"><GoogleIcon /></Link>
-              <Link className={styles.social__kakao} to="/"><KakaoIcon /></Link>
-              <Link className={styles.social__naver} to="/"><NaverIcon /></Link>
+              <Link className={styles.social__google} to="/"><GoogleIcon title="구글 계정 연동" /></Link>
+              <Link className={styles.social__kakao} to="/"><KakaoIcon title="카카오 계정 연동" /></Link>
+              <Link className={styles.social__naver} to="/"><NaverIcon title="네이버 계정 연동" /></Link>
             </div>
           </div>
         </div>
