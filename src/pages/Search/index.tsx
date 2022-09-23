@@ -19,9 +19,8 @@ function Search(): JSX.Element {
   const navigate = useNavigate();
   return (
     <div className={styles.search}>
-      <div aria-label="상단 바" className={styles['search-nav']}>
+      <nav className={styles['search-nav']}>
         <button
-          aria-label="메인 페이지로 돌아가는 버튼"
           className={styles['search-nav__button--previous']}
           type="button"
           onClick={() => navigate('/')}
@@ -29,7 +28,7 @@ function Search(): JSX.Element {
           <PreviousIcon className={styles['search-nav__icon--previous']} />
         </button>
         <h1 className={styles['search-nav__text']}>검색</h1>
-      </div>
+      </nav>
       <div role="main">
         {mode === 'trending' && (
         <h1 className={styles.search__recommend}>
@@ -42,7 +41,7 @@ function Search(): JSX.Element {
         </label>
         {mode === 'trending' && (
         <div aria-label="맛집 트렌드 해시태그 리스트" className={styles['search-banner']}>
-          <strong aria-label="맛집 트렌드">TRENDING</strong>
+          <strong>TRENDING</strong>
           <ul className={styles['search-banner__tag-list']}>
             <span className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</span>
             <span aria-label="" className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</span>
@@ -50,11 +49,11 @@ function Search(): JSX.Element {
           </ul>
         </div>
         )}
-        <menu aria-label="검색 결과" className={styles['search-query-list']}>
+        <menu className={styles['search-query-list']}>
           {/* 이 부분은 검색창 리스트 필터링 확인을 위해서 임의로 목업 데이터 사용 */}
           {list?.filter((item) => item.title.includes(text)).length === 0
           && (
-          <div role="presentation" className={styles['search-query-list__text--not-found']}>
+          <div className={styles['search-query-list__text--not-found']}>
             해당
             {` ${text} `}
             관련 음식점/게시물을 찾을 수 없습니다.
