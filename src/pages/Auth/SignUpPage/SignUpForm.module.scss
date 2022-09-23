@@ -30,10 +30,26 @@ $input-background: #EEEEEE;
     position: relative;
   }
 
+  &__blind-icon {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+  }
+
   &__label {
     font-weight: 700;
     font-size: 14px;
     padding: 5px;
+    width: 408px;
+  }
+
+  &__error-icon {
+    display: none;
+
+    &--active {
+      display: inline-block;
+      padding: 0 10px;
+    }
   }
 
   &__input {
@@ -65,6 +81,12 @@ $input-background: #EEEEEE;
     &--email {
       width: 157px;
     }
+  }
+
+  &__error-text {
+    font-size: 11px;
+    color: $active;
+    display: inline-block;
   }
 
   &__button {
