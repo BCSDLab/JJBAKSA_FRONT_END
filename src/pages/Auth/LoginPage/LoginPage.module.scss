@@ -185,15 +185,30 @@
     justify-content: center;
   }
 
-  &__google {
+  &__icon {
     margin-right: 12px;
     margin-left: 12px;
-    background: #ffffff;
-    border: 0.5px solid #eeeeee;
     box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
     border-radius: 50%;
     width: 57px;
     height: 57px;
+
+    @include media.media-breakpoint-down(mobile) {
+      margin-right: 6px;
+      margin-left: 6px;
+      width: 40px;
+      height: 40px;
+    }
+
+    &:hover,
+    :focus {
+      border: 1px solid #ff7f23;
+    }
+  }
+
+  &__google {
+    background: #ffffff;
+    border: 0.5px solid #eeeeee;
 
     svg {
       padding-top: 18.5px;
@@ -201,14 +216,8 @@
   }
 
   &__kakao {
-    margin-right: 12px;
-    margin-left: 12px;
-    border-radius: 50%;
-    width: 57px;
-    height: 57px;
     background: #fee500;
     border: 0.5px solid #efd54f;
-    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 
     svg {
       padding-top: 20.5px;
@@ -216,14 +225,8 @@
   }
 
   &__naver {
-    margin-right: 12px;
-    margin-left: 12px;
-    border-radius: 50%;
-    width: 57px;
-    height: 57px;
     background: #03c75a;
     border: 0.5px solid #2aab15;
-    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
 
     svg {
       padding-top: 22.5px;
@@ -231,13 +234,9 @@
   }
 
   @include media.media-breakpoint-down(mobile) {
-    margin-bottom: 0px;
-    &__google {
-      margin-right: 6px;
-      margin-left: 6px;
-      width: 40px;
-      height: 40px;
+    margin-bottom: 0;
 
+    &__google {
       svg {
         width: 12px;
         height: 12px;
@@ -246,11 +245,6 @@
     }
 
     &__kakao {
-      margin-right: 6px;
-      margin-left: 6px;
-      width: 40px;
-      height: 40px;
-
       svg {
         width: 12px;
         height: 11px;
@@ -259,15 +253,10 @@
     }
 
     &__naver {
-      margin-right: 6px;
-      margin-left: 6px;
-      width: 40px;
-      height: 40px;
-
       svg {
-        padding-top: 16px;
         width: 8px;
         height: 8px;
+        padding-top: 16px;
       }
     }
   }
