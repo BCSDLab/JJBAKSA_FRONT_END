@@ -69,8 +69,8 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
             </div>
             <div className={styles.item__span}>
               <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonBold}`}>B</button>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.button}`}>12</button>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonUnderline}`}>U</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonHeading}`}>H</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonItalic}`}>I</button>
               <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonThrough}`}>T</button>
             </div>
           </span>
@@ -82,6 +82,7 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
             [styles.active]: checkRating,
           })}
           onClick={saveActiveHandler}
+          disabled={!checkRating}
         >
           저장
         </button>
