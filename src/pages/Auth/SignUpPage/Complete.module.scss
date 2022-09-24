@@ -1,4 +1,19 @@
 @use "./TermsOfService.module.scss" as terms-of-service;
+@forward "src/styles/fonts.scss";
+@use "src/utils/styles/mediaQuery" as media;
+
+* {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 1148px;
+
+  @include media.media-breakpoint-down(mobile) {
+    min-width: 320px;
+  }
+}
 
 .templete {
   @include terms-of-service.template;
@@ -12,8 +27,16 @@
   flex-direction: column;
   align-items: center;
 
+  @include media.media-breakpoint-down(mobile) {
+    height: 565px;
+  }
+
   &__icon {
     margin: 218px 0 24px;
+
+    @include media.media-breakpoint-down(mobile) {
+      margin-top: 150px;
+    }
   }
 
   &__text {

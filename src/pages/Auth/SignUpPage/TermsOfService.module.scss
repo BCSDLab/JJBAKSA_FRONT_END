@@ -1,3 +1,6 @@
+@forward "src/styles/fonts.scss";
+@use "src/utils/styles/mediaQuery" as media;
+
 $default: #222222;
 $active: #FF7F23;
 $passive: #C4C4C4;
@@ -6,6 +9,11 @@ $passive: #C4C4C4;
   font-size: 16px;
   font-weight: 400;
   margin-bottom: $margin-bottom;
+
+  @include media.media-breakpoint-down(mobile) {
+    font-weight: 500;
+    font-size: 14px;
+  }
 }
 
 @mixin font-medium {
@@ -15,11 +23,21 @@ $passive: #C4C4C4;
 }
 
 @mixin template {
+  width: 100vw;
   min-height: 100vh;
   height: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include media.media-breakpoint-up(mobile) {
+    max-width: 767px;
+    margin: 0 auto;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    height: 500px;
+  }
 }
 
 @mixin button {
@@ -43,6 +61,24 @@ $passive: #C4C4C4;
   &--active {
     background-color: $active;
   }
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 300px;
+  }
+}
+
+* {
+  margin: 0;
+  font-family: 'SUIT',
+}
+
+body {
+  min-height: 100vh;
+  min-width: 1148px;
+
+  @include media.media-breakpoint-down(mobile) {
+    min-width: 320px;
+  }
 }
 
 .template {
@@ -56,6 +92,12 @@ $passive: #C4C4C4;
   &__button {
     @include button;
   }
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 300px;
+    height: 500px;
+    margin: auto;
+  }
 }
 
 .terms-of-service {
@@ -63,9 +105,15 @@ $passive: #C4C4C4;
   color: $default;
   margin-top: 95px;
 
+  @include media.media-breakpoint-down(mobile) {
+    margin-top: 48px;
+    width: 300px;
+  }
+
   &__title {
     @include font-title(38px);
   }
+
 }
 
 details[open] > summary:first-of-type {
@@ -79,12 +127,20 @@ details[open] > summary:first-of-type {
   margin-bottom: 25px;
   align-items: center;
 
+  @include media.media-breakpoint-down(mobile) {
+    width: 300px;
+  }
+
   &__entire {
     @include font-medium;
   }
 
   &__summary {
     @include font-medium;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 300px;
+    }
 
     display: flex;
     position: relative;
@@ -134,6 +190,10 @@ details[open] > summary:first-of-type {
     line-height: 15px;
     padding: 16px 26px 26px 16px;
     white-space: pre;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 282px;
+    }
 
     &::-webkit-scrollbar {
       width: 2px;
