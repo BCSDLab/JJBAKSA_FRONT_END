@@ -24,7 +24,7 @@ function Search(): JSX.Element {
       <nav className={styles['search-nav']}>
         <div className={styles['search-nav__button']}>
           <Link to="/" className={styles['search-nav__button--previous']}>
-            <PreviousIcon title="이전 페이지로 이동" className={styles['search-nav__icon--previous']} />
+            <PreviousIcon title="이전 페이지로 이동" />
           </Link>
         </div>
         <h1 className={styles['search-nav__text']}>검색</h1>

@@ -16,7 +16,7 @@
     padding-left: 30px;
     padding-top: 72px;
     align-items: center;
-
+    
     &__text {
       font-size: 18px;
       font-weight: 500;
@@ -26,18 +26,11 @@
 
     &__button {
       &--previous {
+        display: flex;
+        flex-direction: column;
         cursor: pointer;
         background: none;
         border: none;
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    &__icon {
-      &--previous {
-        width: 7px;
-        height: 14px;
       }
     }
   }
@@ -79,15 +72,12 @@
       font-size: 14px;
       line-height: 15px;
       padding-left: 11px;
+      outline: none;
 
       &::placeholder {
         color: #c4c4c4;
         font-size: 12px;
       }
-    }
-
-    &__input:focus {
-      outline: none;
     }
 
     &__icon {
