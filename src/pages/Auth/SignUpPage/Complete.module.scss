@@ -28,7 +28,7 @@ body {
   align-items: center;
 
   @include media.media-breakpoint-down(mobile) {
-    height: 565px;
+    height: 500px;
   }
 
   &__icon {
