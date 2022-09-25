@@ -1,6 +1,6 @@
 import { ReactComponent as PreviousIcon } from 'assets/svg/previous.svg';
 import { ReactComponent as LensIcon } from 'assets/svg/lens.svg';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useRef } from 'react';
 import list from './static/data';
 import styles from './Search.module.scss';
@@ -8,25 +8,25 @@ import hash_tag from './static/trend';
 import recommend_text from './static/recommend';
 import useSearch from './useSearch';
 
+type ICurrentMode = string | null;
+
 function Search(): JSX.Element {
   const [searchParams] = useSearchParams();
-  const curMode : string | null = searchParams.get('mode');
+  const currentMode : ICurrentMode = searchParams.get('mode');
   const {
     text, mode, textHandler, focusHandler, blurHandler,
-  } = useSearch(curMode ? curMode as 'trending' | 'search' : 'trending');
+  } = useSearch(currentMode || 'trending');
 
   const recommendIdx = useRef(new Date().getSeconds() % 2);
-  const navigate = useNavigate();
+
   return (
     <div className={styles.search}>
       <nav className={styles['search-nav']}>
-        <button
-          className={styles['search-nav__button--previous']}
-          type="button"
-          onClick={() => navigate('/')}
-        >
-          <PreviousIcon className={styles['search-nav__icon--previous']} />
-        </button>
+        <div className={styles['search-nav__button']}>
+          <Link to="/" className={styles['search-nav__button--previous']}>
+            <PreviousIcon className={styles['search-nav__icon--previous']} />
+          </Link>
+        </div>
         <h1 className={styles['search-nav__text']}>검색</h1>
       </nav>
       <div role="main">

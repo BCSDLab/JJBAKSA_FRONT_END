@@ -1,6 +1,8 @@
 import { ChangeEvent, useState } from 'react';
 
-export default function useSearch(state : 'search' | 'trending' | null) {
+type ICurrentMode = string | null;
+
+export default function useSearch(state : ICurrentMode) {
   const [text, setText] = useState('');
   const [mode, setMode] = useState(state);
 
