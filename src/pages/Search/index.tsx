@@ -14,7 +14,7 @@ function Search(): JSX.Element {
   const [searchParams] = useSearchParams();
   const currentMode : ICurrentMode = searchParams.get('mode');
   const {
-    text, mode, textHandler, focusHandler, blurHandler,
+    text, mode, changeSearchBarText, changeSearchMode, changeTrendingMode,
   } = useSearch(currentMode || 'trending');
 
   const recommendIdx = useRef(new Date().getSeconds() % 2);
@@ -36,7 +36,7 @@ function Search(): JSX.Element {
         </h1>
         )}
         <label aria-label="검색창" className={styles['search-bar']} htmlFor="searchBarInput">
-          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={focusHandler} onBlur={blurHandler} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => textHandler(event)} />
+          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={changeSearchMode} onBlur={changeTrendingMode} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => changeSearchBarText(event)} />
           <LensIcon className={styles['search-bar__icon']} />
         </label>
         {mode === 'trending' && (
