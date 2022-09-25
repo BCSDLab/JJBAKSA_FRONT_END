@@ -4,6 +4,13 @@ interface IDomain {
   address: string;
 }
 
+interface IErrorMessage {
+  id: string;
+  email: string
+  password: string;
+  ['password-check']: string;
+}
+
 const domain: IDomain[] = [
   {
     key: 1,
@@ -42,4 +49,11 @@ const domain: IDomain[] = [
   },
 ];
 
-export default domain;
+const ERROR_MESSAGE : IErrorMessage = {
+  id: '아이디 중복확인을 해주세요.',
+  email: '존재하지 않는 도메인입니다.',
+  password: '비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야합니다.',
+  'password-check': '비밀번호가 일치하지 않습니다.',
+};
+
+export { domain, ERROR_MESSAGE };

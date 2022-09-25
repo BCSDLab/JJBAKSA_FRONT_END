@@ -6,10 +6,13 @@ import { ReactComponent as ArrowIcon } from 'assets/svg/arrow.svg';
 import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
 import { ReactComponent as ShowIcon } from 'assets/svg/pw-show.svg';
 import { ReactComponent as BlindIcon } from 'assets/svg/pw-blind.svg';
-import domain from './static/domain';
-import styles from './SignUpForm.module.scss';
+import { domain, ERROR_MESSAGE } from './static/signUp';
+import styles from './SignUp.module.scss';
+import useRouteCheck from './hooks/useRouteCheck';
 
 export default function SignUpForm() {
+  useRouteCheck('termsCheck', '/termsofservice');
+
   const {
     register,
     handleSubmit,
@@ -72,7 +75,7 @@ export default function SignUpForm() {
               })}
         // TODO: 아이디 중복확인 기능
         // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register('id', { required: '아이디 중복확인을 해주세요.' })}
+              {...register('id', { required: ERROR_MESSAGE.id })}
             />
             <button
               type="button"
@@ -110,7 +113,7 @@ export default function SignUpForm() {
                 [styles['form__input--error']]: errors?.email?.ref?.value === '',
               })}
         // eslint-disable-next-line react/jsx-props-no-spreading
-              {...register('email', { required: '존재하지 않는 도메인입니다.' })}
+              {...register('email', { required: ERROR_MESSAGE.email })}
             />
             <div className={styles['form__email-sign']}>@</div>
             <select
@@ -152,26 +155,26 @@ export default function SignUpForm() {
             <input
               placeholder="비밀번호를 입력하세요"
               type={isPwBlind ? 'text' : 'password'}
-              // autocomplete= 'new password',
+              autoComplete="new-password"
               className={cn({
                 [styles.form__input]: true,
                 [styles['form__input--error']]: errors?.password?.type !== undefined,
               })}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('password', {
-                required: '비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야합니다.',
+                required: ERROR_MESSAGE.password,
                 minLength: {
                   value: 2,
-                  message: '비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야합니다.',
+                  message: ERROR_MESSAGE.password,
                 },
                 maxLength: {
                   value: 16,
-                  message: '비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야합니다.',
+                  message: ERROR_MESSAGE.password,
                 },
                 pattern: {
                   // eslint-disable-next-line prefer-regex-literals, no-useless-escape
                   value: Reg,
-                  message: '비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야합니다.',
+                  message: ERROR_MESSAGE.password,
                 },
               })}
             />
@@ -203,9 +206,9 @@ export default function SignUpForm() {
               })}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('passwordCheck', {
-                required: '비밀번호가 일치하지 않습니다.',
+                required: ERROR_MESSAGE['password-check'],
                 validate: {
-                  checkPw: (v) => v === watch('password') || '비밀번호가 일치하지 않습니다.',
+                  checkPw: (v) => v === watch('password') || ERROR_MESSAGE['password-check'],
                 },
               })}
             />
@@ -218,7 +221,7 @@ export default function SignUpForm() {
               styles.form__button
             }
             disabled={!isDirty || !isValid}
-            onClick={() => (isDirty && isValid ? navigate('/SignUp/Complete') : navigate(''))}
+            onClick={() => (isDirty && isValid ? navigate('/signup/complete', { state: { signUpCheck: true } }) : navigate(''))}
           >
             완료
           </button>
