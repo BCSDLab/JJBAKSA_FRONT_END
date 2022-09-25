@@ -42,10 +42,8 @@ export default function SignUpForm() {
 
         <form
           className={styles.form}
-          onSubmit={handleSubmit((data) => {
-            // form 제출 api 호출
-            console.log(data);
-          })}
+          // form 제출 api 호출
+          onSubmit={handleSubmit((res) => res)}
         >
           <div className={styles.form__title}>
             회원가입

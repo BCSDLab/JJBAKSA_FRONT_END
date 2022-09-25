@@ -42,8 +42,6 @@ body {
 
   &__text {
     white-space: pre;
-    font-family: "SUIT";
-    font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 22px;
@@ -68,7 +66,6 @@ body {
     &::placeholder {
       color: #c4c4c4;
       font-size: 12px;
-      font-family: "SUIT";
     }
   }
 

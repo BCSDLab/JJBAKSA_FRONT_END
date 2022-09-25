@@ -60,6 +60,7 @@ $passive: #c4c4c4;
 
   &[disabled] {
     background-color: $passive;
+    cursor: default;
   }
 
   @include media.media-breakpoint-down(mobile) {
@@ -69,7 +70,6 @@ $passive: #c4c4c4;
 
 * {
   margin: 0;
-  font-family: "SUIT";
 }
 
 body {
@@ -112,10 +112,18 @@ body {
 
   &__title {
     @include font-title(38px);
+
     @include media.media-breakpoint-down(mobile) {
       min-width: 100%;
     }
   }
+}
+
+.checkbox__icon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 0;
 }
 
 details[open] > summary:first-of-type {
@@ -178,13 +186,6 @@ details[open] > summary:first-of-type {
     &:checked {
       background: $active;
     }
-  }
-
-  &__icon {
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    right: 0;
   }
 
   &__info {

@@ -8,7 +8,6 @@ $input-background: #eeeeee;
 
 * {
   margin: 0;
-  font-family: "SUIT";
 }
 
 body {
@@ -50,6 +49,7 @@ body {
 
   &__title {
     @include terms-of-service.font-title(40px);
+
     @include media.media-breakpoint-down(mobile) {
       display: none;
     }
@@ -127,7 +127,6 @@ body {
 
     // chrome 자동완성 background 제거
     &:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0 1000px $input-background inset;
       box-shadow: 0 0 0 1000px $input-background inset;
     }
 
@@ -236,6 +235,7 @@ body {
     position: absolute;
     right: 10px;
     bottom: 5px;
+
     @include media.media-breakpoint-down(mobile) {
       display: none;
     }

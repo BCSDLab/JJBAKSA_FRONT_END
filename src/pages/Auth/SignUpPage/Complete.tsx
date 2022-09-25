@@ -10,7 +10,7 @@ export default function CompleteForm() {
 
   const { register, handleSubmit, watch } = useForm();
   // nickname api 연결
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => data;
   const navigate = useNavigate();
   const nicknameValue = watch('nickname');
 
