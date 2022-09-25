@@ -1,0 +1,125 @@
+.layout {
+  display: grid;
+  grid-template-rows: 150px 1fr;
+  width: 100vw;
+  height: 100vh;
+}
+
+.back_icon {
+  position: absolute;
+  top: 10%;
+  left: 8%;
+
+  @media screen and (min-width: 574px) {
+    display: none;
+  }
+}
+
+.warning {
+  margin-right: 5px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  grid-row-start: 2;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 500;
+  width: 240px;
+  line-height: 22px;
+}
+
+.make_space {
+  height: 100px;
+}
+
+.error_message {
+  display: flex;
+  align-items: center;
+  color: #ff7f23;
+  height: 100px;
+  font-size: 12px;
+}
+
+.animation {
+  animation: vibration 0.1s;
+}
+
+@keyframes vibration {
+  from {
+    transform: rotate(3deg);
+  }
+
+  to {
+    transform: rotate(-3deg);
+  }
+}
+
+.input_style {
+  border: 1px solid #eeeeee;
+  border-radius: 100px;
+  width: 220px;
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #eeeeee;
+}
+
+.input_style_radius {
+  border: 1px solid #ff7f23;
+  border-radius: 100px;
+  width: 220px;
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #eeeeee;
+}
+
+.input_label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.email {
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.inactive {
+  border: none;
+  border-radius: 100px;
+  width: 250px;
+  height: 40px;
+  color: white;
+  background-color: #c4c4c4;
+  position: absolute;
+  bottom: 200px;
+
+  @media screen and (max-height: 700px) {
+    bottom: 50px;
+  }
+}
+
+.active {
+  border: none;
+  border-radius: 100px;
+  width: 250px;
+  height: 40px;
+  color: white;
+  background-color: #ff7f23;
+  position: absolute;
+  bottom: 200px;
+
+  @media screen and (max-height: 700px) {
+    bottom: 50px;
+  }
+
+  cursor: pointer;
+}
