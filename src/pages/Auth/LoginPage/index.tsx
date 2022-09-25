@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-props-no-spreading */
 import { ReactComponent as GoogleIcon } from 'assets/svg/google.svg';
 import { ReactComponent as NaverIcon } from 'assets/svg/naver.svg';
@@ -72,9 +73,33 @@ function LoginPage(): JSX.Element {
           <div className={styles.social}>
             <div className={styles.social__title}>SNS계정으로 로그인하기</div>
             <div className={styles.social__link}>
-              <Link className={`${styles.social__icon} ${styles.social__google}`} to="/"><GoogleIcon title="구글 계정 연동" /></Link>
-              <Link className={`${styles.social__icon} ${styles.social__kakao}`} to="/"><KakaoIcon title="카카오 계정 연동" /></Link>
-              <Link className={`${styles.social__icon} ${styles.social__naver}`} to="/"><NaverIcon title="네이버 계정 연동" /></Link>
+              <Link
+                className={cn({
+                  [styles.social__icon]: true,
+                  [styles['social__icon--google']]: true,
+                })}
+                to="/"
+              >
+                <GoogleIcon title="구글 계정 연동" />
+              </Link>
+              <Link
+                className={cn({
+                  [styles.social__icon]: true,
+                  [styles['social__icon--kakao']]: true,
+                })}
+                to="/"
+              >
+                <KakaoIcon title="카카오 계정 연동" />
+              </Link>
+              <Link
+                className={cn({
+                  [styles.social__icon]: true,
+                  [styles['social__icon--naver']]: true,
+                })}
+                to="/"
+              >
+                <NaverIcon title="네이버 계정 연동" />
+              </Link>
             </div>
           </div>
         </div>

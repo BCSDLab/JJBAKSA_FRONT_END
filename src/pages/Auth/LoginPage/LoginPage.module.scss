@@ -197,60 +197,62 @@
     :focus {
       border: 1px solid #ff7f23;
     }
-  }
 
-  &__google {
-    background: #ffffff;
-    border: 0.5px solid #eeeeee;
+    &--google {
+      background: #ffffff;
+      border: 0.5px solid #eeeeee;
 
-    svg {
-      padding-top: 18.5px;
-      z-index: 1;
+      svg {
+        padding-top: 18.5px;
+        z-index: 1;
+      }
     }
-  }
 
-  &__kakao {
-    background: #fee500;
-    border: 0.5px solid #efd54f;
+    &--kakao {
+      background: #fee500;
+      border: 0.5px solid #efd54f;
 
-    svg {
-      padding-top: 20.5px;
+      svg {
+        padding-top: 20.5px;
+      }
     }
-  }
 
-  &__naver {
-    background: #03c75a;
-    border: 0.5px solid #2aab15;
+    &--naver {
+      background: #03c75a;
+      border: 0.5px solid #2aab15;
 
-    svg {
-      padding-top: 22.5px;
+      svg {
+        padding-top: 22.5px;
+      }
     }
   }
 
   @include media.media-breakpoint-down(mobile) {
     margin-bottom: 0;
 
-    &__google {
-      svg {
-        width: 12px;
-        height: 12px;
-        padding-top: 14px;
+    &__icon {
+      &--google {
+        svg {
+          width: 12px;
+          height: 12px;
+          padding-top: 14px;
+        }
       }
-    }
 
-    &__kakao {
-      svg {
-        width: 12px;
-        height: 11px;
-        padding-top: 15px;
+      &--kakao {
+        svg {
+          width: 12px;
+          height: 11px;
+          padding-top: 15px;
+        }
       }
-    }
 
-    &__naver {
-      svg {
-        width: 8px;
-        height: 8px;
-        padding-top: 16px;
+      &--naver {
+        svg {
+          width: 8px;
+          height: 8px;
+          padding-top: 16px;
+        }
       }
     }
   }
