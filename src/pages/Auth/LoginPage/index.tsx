@@ -1,11 +1,10 @@
-/* eslint-disable max-len */
 /* eslint-disable react/jsx-props-no-spreading */
 import { ReactComponent as GoogleIcon } from 'assets/svg/google.svg';
 import { ReactComponent as NaverIcon } from 'assets/svg/naver.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/kakao.svg';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
+// import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Switch } from '@headlessui/react';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
@@ -20,7 +19,6 @@ interface IFormInput {
 function LoginPage(): JSX.Element {
   const {
     register,
-    control,
     handleSubmit,
     formState: { isValid },
   } = useForm<IFormInput>({ mode: 'onChange' });
@@ -37,30 +35,12 @@ function LoginPage(): JSX.Element {
             <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('pw', { required: true })} />
             <div className={styles.autologin}>
               <span className={styles.autologin__text}>자동 로그인</span>
-              <Controller
-                render={({ field: { value, onChange } }) => (
-                  <>
-                    <Switch
-                      checked={value}
-                      onChange={onChange}
-                      className={cn({
-                        [styles.dot]: true,
-                        [styles['dot--checked']]: value,
-                      })}
-                    />
-                    <div
-                      arria-hidden="true"
-                      className={cn({
-                        [styles.checkbox]: true,
-                        [styles['checkbox--checked']]: value,
-                      })}
-                    />
-                  </>
-                )}
-                name="checkbox"
-                control={control}
-              />
+              <label htmlFor="checkbox">
+                <input type="checkbox" id="checkbox" aria-required="true" {...register('checkbox')} className={styles.checkbox} />
+                <span className={styles.dot} aria-hidden="true" />
+              </label>
             </div>
+
             <button type="submit" disabled={!isValid} className={styles.loginform__button}>
               로그인
             </button>

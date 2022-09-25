@@ -102,32 +102,38 @@
   }
 }
 
-.checkbox {
+.dot {
+  margin-left: 8px;
+  transition: all 150ms;
   display: block;
-  border-radius: 24px;
-  border-color: transparent;
-  height: 13px;
   width: 24px;
+  height: 12px;
+  border-radius: 24px;
   background-color: #c4c4c4;
+  border: 1px solid #c4c4c4;
+  position: relative;
 
-  &--checked {
-    background-color: #ff7f23;
+  &::after {
+    transition: all 150ms;
+    content: "";
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
   }
 }
 
-.dot {
-  transform: translate(11px, 0);
-  border: none;
-  transition: all 150ms;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  margin-bottom: 1px;
-  cursor: pointer;
+.checkbox {
+  display:none;
 
-  &--checked {
-    transform: translate(22px, 0);
+  &:checked + .dot {
+    background-color: #ff7f23;
+    border: 1px solid #ff7f23;
+
+    &::after {
+      left: 12px;
+    }
   }
 }
 
