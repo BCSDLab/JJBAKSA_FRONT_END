@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
+import { ReactComponent as Arrow } from 'assets/svg/arrow.svg';
 import styles from './TermsOfService.module.scss';
 import privacy from './static/privacy';
-import { ReactComponent as Arrow } from '../../../assets/svg/arrow.svg';
 
 const useCheckbox = () => {
   const [checkedList, setCheckedList] = useState<boolean[]>(() => privacy.map(() => false));
@@ -68,10 +68,9 @@ export default function TermsOfService() {
         </div>
         <button
           type="button"
-          className={cn({
-            [styles.container__button]: true,
-            [styles['container__button--active']]: allCheck,
-          })}
+          className={
+              styles['sign-up-form__button']
+            }
           disabled={!allCheck}
           onClick={() => navigate('/SignUp')}
         >

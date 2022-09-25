@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import cn from 'utils/ts/classNames';
 import { useNavigate } from 'react-router-dom';
-import styles from './SignUpForm.module.scss';
+import { ReactComponent as ArrowIcon } from 'assets/svg/arrow.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
+import { ReactComponent as ShowIcon } from 'assets/svg/pw-show.svg';
+import { ReactComponent as BlindIcon } from 'assets/svg/pw-blind.svg';
 import domain from './static/domain';
-import { ReactComponent as ArrowIcon } from '../../../assets/svg/arrow.svg';
-import { ReactComponent as ErrorIcon } from '../../../assets/svg/error.svg';
-import { ReactComponent as ShowIcon } from '../../../assets/svg/pw-show.svg';
-import { ReactComponent as BlindIcon } from '../../../assets/svg/pw-blind.svg';
+import styles from './SignUpForm.module.scss';
 
 interface ISignUpValue {
   id: string | number;
@@ -21,8 +21,9 @@ export default function SignUpForm() {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { isDirty, isValid, errors },
   } = useForm<ISignUpValue>({
+    mode: 'onChange',
     defaultValues: {
       id: '',
       email: '',
@@ -35,8 +36,7 @@ export default function SignUpForm() {
   const [isPwBlind, setIsPwBlind] = useState(false);
   const [isPwchBlind, setIsPwchBlind] = useState(false);
 
-  // eslint-disable-next-line prefer-regex-literals, no-useless-escape
-  const Reg = new RegExp('^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=]).{2,16}$');
+  const Reg = /^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=]).{2,16}$/;
 
   return (
     <div className={styles.template}>
@@ -152,6 +152,7 @@ export default function SignUpForm() {
             <input
               placeholder="비밀번호를 입력하세요"
               type={isPwBlind ? 'text' : 'password'}
+              // autocomplete= 'new password',
               className={cn({
                 [styles['sign-up-form__input']]: true,
                 [styles['sign-up-form__input--error']]: errors?.password?.type !== undefined,
@@ -213,11 +214,11 @@ export default function SignUpForm() {
           </div>
           <button
             type="submit"
-            className={cn({
-              [styles['sign-up-form__button']]: true,
-              [styles['sign-up-form__button--active']]: watch('id') !== '' || errors?.id === undefined || errors?.email === undefined || errors?.password === undefined || errors?.passwordCheck === undefined,
-            })}
-            onClick={() => (errors?.id === undefined || errors?.email === undefined || errors?.password === undefined || errors?.passwordCheck === undefined ? navigate('/SignUp/Complete') : navigate(''))}
+            className={
+              styles['sign-up-form__button']
+            }
+            disabled={!isDirty || !isValid}
+            onClick={() => (isDirty && isValid ? navigate('/SignUp/Complete') : navigate(''))}
           >
             완료
           </button>

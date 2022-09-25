@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
+import { ReactComponent as CelebrateIcon } from 'assets/svg/celebrate.svg';
 import styles from './Complete.module.scss';
-import { ReactComponent as CelebrateIcon } from '../../../assets/svg/celebrate.svg';
 
 export default function CompleteForm() {
   const { register, handleSubmit, watch } = useForm();
@@ -30,10 +30,9 @@ export default function CompleteForm() {
         />
         <button
           type="submit"
-          className={cn({
-            [styles['complete-form__button']]: true,
-            [styles['complete-form__button--active']]: nicknameValue !== undefined && nicknameValue !== '',
-          })}
+          className={
+              styles['sign-up-form__button']
+            }
           onClick={() => navigate('/')}
           disabled={nicknameValue === undefined || nicknameValue === ''}
         >
