@@ -24,7 +24,7 @@ function Search(): JSX.Element {
       <nav className={styles['search-nav']}>
         <div className={styles['search-nav__button']}>
           <Link to="/" className={styles['search-nav__button--previous']}>
-            <PreviousIcon title="previousIcon" className={styles['search-nav__icon--previous']} />
+            <PreviousIcon title="이전 페이지로 이동" className={styles['search-nav__icon--previous']} />
           </Link>
         </div>
         <h1 className={styles['search-nav__text']}>검색</h1>
@@ -35,9 +35,9 @@ function Search(): JSX.Element {
           {recommend_text[recommendIdx.current]}
         </h1>
         )}
-        <label className={styles['search-bar']} htmlFor="searchBarInput">
-          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={changeSearchMode} onBlur={changeTrendingMode} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => changeSearchBarText(event)} />
-          <LensIcon title="lensIcon" className={styles['search-bar__icon']} />
+        <label title="검색어 입력" className={styles['search-bar']} htmlFor="searchBarInput">
+          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={changeSearchMode} onBlur={changeTrendingMode} placeholder="검색어를 입력해주세요" value={text} onChange={changeSearchBarText} />
+          <LensIcon title="검색" className={styles['search-bar__icon']} />
         </label>
         {mode === 'trending' && (
         <div className={styles['search-banner']}>
