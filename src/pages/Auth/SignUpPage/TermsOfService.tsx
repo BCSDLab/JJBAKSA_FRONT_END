@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import cn from 'utils/ts/classNames';
 import { ReactComponent as Arrow } from 'assets/svg/arrow.svg';
 import styles from './TermsOfService.module.scss';
 import privacy from './static/privacy';
@@ -65,17 +64,17 @@ export default function TermsOfService() {
               </div>
             ))}
           </div>
-        </div>
-        <button
-          type="button"
-          className={
-              styles['sign-up-form__button']
+          <button
+            type="button"
+            className={
+              styles['terms-of-service__submit']
             }
-          disabled={!allCheck}
-          onClick={() => navigate('/SignUp')}
-        >
-          다음
-        </button>
+            disabled={!allCheck}
+            onClick={() => navigate('/SignUp')}
+          >
+            다음
+          </button>
+        </div>
       </div>
     </div>
   );

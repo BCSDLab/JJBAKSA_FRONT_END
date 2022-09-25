@@ -2,8 +2,8 @@
 @use "src/utils/styles/mediaQuery" as media;
 
 $default: #222222;
-$active: #FF7F23;
-$passive: #C4C4C4;
+$active: #ff7f23;
+$passive: #c4c4c4;
 
 @mixin font-title($margin-bottom) {
   font-size: 16px;
@@ -48,7 +48,7 @@ $passive: #C4C4C4;
   justify-content: center;
   width: 368px;
   height: 40px;
-  background: $passive;
+  background: $active;
   border: none;
   appearance: none;
   border-radius: 20px;
@@ -58,8 +58,8 @@ $passive: #C4C4C4;
   color: white;
   cursor: pointer;
 
-  &--active {
-    background-color: $active;
+  &[disabled] {
+    background-color: $passive;
   }
 
   @include media.media-breakpoint-down(mobile) {
@@ -69,7 +69,7 @@ $passive: #C4C4C4;
 
 * {
   margin: 0;
-  font-family: 'SUIT',
+  font-family: "SUIT";
 }
 
 body {
@@ -89,10 +89,6 @@ body {
   height: 590px;
   position: relative;
 
-  &__button {
-    @include button;
-  }
-
   @include media.media-breakpoint-down(mobile) {
     width: 300px;
     height: 500px;
@@ -107,13 +103,16 @@ body {
 
   @include media.media-breakpoint-down(mobile) {
     margin-top: 48px;
-    width: 300px;
+    width: 226px;
+  }
+
+  &__submit {
+    @include button;
   }
 
   &__title {
     @include font-title(38px);
   }
-
 }
 
 details[open] > summary:first-of-type {
@@ -128,7 +127,7 @@ details[open] > summary:first-of-type {
   align-items: center;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 300px;
+    width: 226px;
   }
 
   &__entire {
@@ -139,7 +138,7 @@ details[open] > summary:first-of-type {
     @include font-medium;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 300px;
+      width: 100%;
     }
 
     display: flex;
@@ -160,7 +159,7 @@ details[open] > summary:first-of-type {
     height: 16px;
     box-sizing: border-box;
     border-radius: 100%;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #c4c4c4;
     margin-right: 8px;
 
     &:checked {
@@ -180,7 +179,7 @@ details[open] > summary:first-of-type {
     width: 320px;
     height: 43px;
     margin-top: 16px;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #c4c4c4;
     border-radius: 16px;
     display: flex;
     flex-wrap: wrap;
@@ -192,7 +191,7 @@ details[open] > summary:first-of-type {
     white-space: pre;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 282px;
+      width: 270px;
     }
 
     &::-webkit-scrollbar {
@@ -208,7 +207,7 @@ details[open] > summary:first-of-type {
     &::-webkit-scrollbar-thumb {
       width: 2px;
       border-radius: 3px;
-      border: 2px solid #C4C4C4;
+      border: 2px solid #c4c4c4;
     }
 
     &::-webkit-scrollbar-button {

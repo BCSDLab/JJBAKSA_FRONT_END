@@ -9,20 +9,13 @@ import { ReactComponent as BlindIcon } from 'assets/svg/pw-blind.svg';
 import domain from './static/domain';
 import styles from './SignUpForm.module.scss';
 
-interface ISignUpValue {
-  id: string | number;
-  email: string | number;
-  password: string | number;
-  ['passwordCheck']: string | number;
-}
-
 export default function SignUpForm() {
   const {
     register,
     handleSubmit,
     watch,
     formState: { isDirty, isValid, errors },
-  } = useForm<ISignUpValue>({
+  } = useForm({
     mode: 'onChange',
     defaultValues: {
       id: '',
@@ -45,25 +38,25 @@ export default function SignUpForm() {
         <div>쩝쩝박사</div>
 
         <form
-          className={styles['sign-up-form']}
+          className={styles.form}
           onSubmit={handleSubmit((data) => {
             // api 호출
             console.log(data);
           })}
         >
-          <div className={styles['sign-up-form__title']}>
+          <div className={styles.form__title}>
             회원가입
           </div>
 
           {/* ID */}
-          <div className={styles['sign-up-form__form']}>
-            <div className={styles['sign-up-form__label']}>
+          <div className={styles.form__form}>
+            <div className={styles.form__label}>
               아이디
-              <div className={styles['sign-up-form__error-text']}>
+              <div className={styles['form__error-text']}>
                 <ErrorIcon
                   className={cn({
-                    [styles['sign-up-form__error-icon']]: true,
-                    [styles['sign-up-form__error-icon--active']]: errors?.id?.ref?.value !== undefined,
+                    [styles['form__error-icon']]: true,
+                    [styles['form__error-icon--active']]: errors?.id?.ref?.value !== undefined,
                   })}
                   aria-hidden
                 />
@@ -73,9 +66,9 @@ export default function SignUpForm() {
             <input
               placeholder="아이디를 입력하세요"
               className={cn({
-                [styles['sign-up-form__input']]: true,
-                [styles['sign-up-form__input--id']]: true,
-                [styles['sign-up-form__input--error']]: errors?.id?.ref?.value !== undefined,
+                [styles.form__input]: true,
+                [styles['form__input--id']]: true,
+                [styles['form__input--error']]: errors?.id?.ref?.value !== undefined,
               })}
         // TODO: 아이디 중복확인 기능
         // eslint-disable-next-line react/jsx-props-no-spreading
@@ -84,9 +77,9 @@ export default function SignUpForm() {
             <button
               type="button"
               className={cn({
-                [styles['sign-up-form__id-check-button']]: true,
-                [styles['sign-up-form__id-check-button--active']]: watch('id') !== '',
-                [styles['sign-up-form__id-check-button--error']]: errors?.id?.ref?.value !== undefined,
+                [styles['form__id-check-button']]: true,
+                [styles['form__id-check-button--active']]: watch('id') !== '',
+                [styles['form__id-check-button--error']]: errors?.id?.ref?.value !== undefined,
               })}
               disabled={errors?.id?.ref?.value !== undefined}
             >
@@ -95,14 +88,14 @@ export default function SignUpForm() {
           </div>
 
           {/* EMAIL */}
-          <div className={styles['sign-up-form__form']}>
-            <div className={styles['sign-up-form__label']}>
+          <div className={styles.form__form}>
+            <div className={styles.form__label}>
               이메일
-              <div className={styles['sign-up-form__error-text']}>
+              <div className={styles['form__error-text']}>
                 <ErrorIcon
                   className={cn({
-                    [styles['sign-up-form__error-icon']]: true,
-                    [styles['sign-up-form__error-icon--active']]: errors?.email?.ref?.value === '',
+                    [styles['form__error-icon']]: true,
+                    [styles['form__error-icon--active']]: errors?.email?.ref?.value === '',
                   })}
                   aria-hidden
                 />
@@ -112,37 +105,44 @@ export default function SignUpForm() {
             <input
               placeholder="이메일을 입력하세요"
               className={cn({
-                [styles['sign-up-form__input']]: true,
-                [styles['sign-up-form__input--email']]: true,
-                [styles['sign-up-form__input--error']]: errors?.email?.ref?.value === '',
+                [styles.form__input]: true,
+                [styles['form__input--email']]: true,
+                [styles['form__input--error']]: errors?.email?.ref?.value === '',
               })}
         // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('email', { required: '존재하지 않는 도메인입니다.' })}
             />
-            <div className={styles['sign-up-form__email-sign']}>@</div>
+            <div className={styles['form__email-sign']}>@</div>
             <select
               className={cn({
-                [styles['sign-up-form__select']]: true,
-                [styles['sign-up-form__select--error']]: errors?.email?.ref?.value === '',
+                [styles.form__select]: true,
+                [styles['form__select--error']]: errors?.email?.ref?.value === '',
               })}
               placeholder="직접 입력"
             >
               {domain.map((res) => (
-                <option key={res.key} className={styles['sign-up-form__option']} value={res.name}>{res.address}</option>
+                <option
+                  key={res.key}
+                  className={styles.form__option}
+                  value={res.name}
+                >
+                  {res.address}
+
+                </option>
               ))}
             </select>
-            <ArrowIcon className={styles['sign-up-form__arrow-icon']} aria-hidden />
+            <ArrowIcon className={styles['form__arrow-icon']} aria-hidden />
           </div>
 
           {/* PASSWORD */}
-          <div className={styles['sign-up-form__form']}>
-            <div className={styles['sign-up-form__label']}>
+          <div className={styles.form__form}>
+            <div className={styles.form__label}>
               비밀번호
-              <div className={styles['sign-up-form__error-text']}>
+              <div className={styles['form__error-text']}>
                 <ErrorIcon
                   className={cn({
-                    [styles['sign-up-form__error-icon']]: true,
-                    [styles['sign-up-form__error-icon--active']]: errors?.password?.type !== undefined,
+                    [styles['form__error-icon']]: true,
+                    [styles['form__error-icon--active']]: errors?.password?.type !== undefined,
                   })}
                   aria-hidden
                 />
@@ -154,8 +154,8 @@ export default function SignUpForm() {
               type={isPwBlind ? 'text' : 'password'}
               // autocomplete= 'new password',
               className={cn({
-                [styles['sign-up-form__input']]: true,
-                [styles['sign-up-form__input--error']]: errors?.password?.type !== undefined,
+                [styles.form__input]: true,
+                [styles['form__input--error']]: errors?.password?.type !== undefined,
               })}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('password', {
@@ -175,19 +175,19 @@ export default function SignUpForm() {
                 },
               })}
             />
-            {isPwBlind ? <ShowIcon className={styles['sign-up-form__blind-icon']} onClick={() => setIsPwBlind(false)} aria-hidden />
-              : <BlindIcon className={styles['sign-up-form__blind-icon']} onClick={() => setIsPwBlind(true)} aria-hidden /> }
+            {isPwBlind ? <ShowIcon className={styles['form__blind-icon']} onClick={() => setIsPwBlind(false)} aria-hidden />
+              : <BlindIcon className={styles['form__blind-icon']} onClick={() => setIsPwBlind(true)} aria-hidden /> }
           </div>
 
           {/* PASSWORD-CHECK */}
-          <div className={styles['sign-up-form__form']}>
-            <div className={styles['sign-up-form__label']}>
+          <div className={styles.form__form}>
+            <div className={styles.form__label}>
               비밀번호 확인
-              <div className={styles['sign-up-form__error-text']}>
+              <div className={styles['form__error-text']}>
                 <ErrorIcon
                   className={cn({
-                    [styles['sign-up-form__error-icon']]: true,
-                    [styles['sign-up-form__error-icon--active']]: errors?.passwordCheck !== undefined,
+                    [styles['form__error-icon']]: true,
+                    [styles['form__error-icon--active']]: errors?.passwordCheck !== undefined,
                   })}
                   aria-hidden
                 />
@@ -198,8 +198,8 @@ export default function SignUpForm() {
               placeholder="비밀번호를 다시 입력하세요"
               type={isPwchBlind ? 'text' : 'password'}
               className={cn({
-                [styles['sign-up-form__input']]: true,
-                [styles['sign-up-form__input--error']]: errors?.passwordCheck !== undefined,
+                [styles.form__input]: true,
+                [styles['form__input--error']]: errors?.passwordCheck !== undefined,
               })}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('passwordCheck', {
@@ -209,13 +209,13 @@ export default function SignUpForm() {
                 },
               })}
             />
-            {isPwchBlind ? <ShowIcon className={styles['sign-up-form__blind-icon']} onClick={() => setIsPwchBlind(false)} aria-hidden />
-              : <BlindIcon className={styles['sign-up-form__blind-icon']} onClick={() => setIsPwchBlind(true)} aria-hidden /> }
+            {isPwchBlind ? <ShowIcon className={styles['form__blind-icon']} onClick={() => setIsPwchBlind(false)} aria-hidden />
+              : <BlindIcon className={styles['form__blind-icon']} onClick={() => setIsPwchBlind(true)} aria-hidden /> }
           </div>
           <button
             type="submit"
             className={
-              styles['sign-up-form__button']
+              styles.form__button
             }
             disabled={!isDirty || !isValid}
             onClick={() => (isDirty && isValid ? navigate('/SignUp/Complete') : navigate(''))}

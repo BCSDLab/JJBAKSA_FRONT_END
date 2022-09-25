@@ -19,7 +19,7 @@ body {
   @include terms-of-service.template;
 }
 
-.complete-form {
+.form {
   width: 368px;
   height: 648px;
   position: relative;
@@ -41,7 +41,7 @@ body {
 
   &__text {
     white-space: pre;
-    font-family: 'SUIT';
+    font-family: "SUIT";
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -53,16 +53,16 @@ body {
     margin-top: 32px;
     width: 216px;
     height: 30px;
-    background: #EEEEEE;
+    background: #eeeeee;
     border-radius: 20px;
     border: none;
     text-align: center;
     outline: none;
 
     &::placeholder {
-      color: #C4C4C4;
+      color: #c4c4c4;
       font-size: 12px;
-      font-family: 'SUIT';
+      font-family: "SUIT";
     }
   }
 
