@@ -63,7 +63,7 @@ $passive: #c4c4c4;
   }
 
   @include media.media-breakpoint-down(mobile) {
-    width: 300px;
+    width: 100%;
   }
 }
 
@@ -90,7 +90,7 @@ body {
   position: relative;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 300px;
+    width: 227px;
     height: 500px;
     margin: auto;
   }
@@ -103,7 +103,7 @@ body {
 
   @include media.media-breakpoint-down(mobile) {
     margin-top: 48px;
-    width: 226px;
+    width: 100%;
   }
 
   &__submit {
@@ -112,6 +112,9 @@ body {
 
   &__title {
     @include font-title(38px);
+    @include media.media-breakpoint-down(mobile) {
+      min-width: 100%;
+    }
   }
 }
 
@@ -127,11 +130,17 @@ details[open] > summary:first-of-type {
   align-items: center;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 226px;
+    width: 100%;
   }
 
   &__entire {
     @include font-medium;
+  }
+
+  &__detail {
+    @include media.media-breakpoint-down(mobile) {
+      width: 227px;
+    }
   }
 
   &__summary {
@@ -152,6 +161,10 @@ details[open] > summary:first-of-type {
     }
   }
 
+  &__summary-text {
+    width: 100%;
+  }
+
   &__input {
     cursor: pointer;
     appearance: none;
@@ -170,7 +183,6 @@ details[open] > summary:first-of-type {
   &__icon {
     width: 20px;
     height: 20px;
-    justify-content: end;
     position: absolute;
     right: 0;
   }
@@ -188,10 +200,11 @@ details[open] > summary:first-of-type {
     font-size: 12px;
     line-height: 15px;
     padding: 16px 26px 26px 16px;
-    white-space: pre;
+    white-space: pre-line;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 270px;
+      width: 226px;
+      padding: 16px 8px;
     }
 
     &::-webkit-scrollbar {

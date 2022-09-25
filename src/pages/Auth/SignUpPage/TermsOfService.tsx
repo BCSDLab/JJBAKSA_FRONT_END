@@ -56,7 +56,7 @@ export default function TermsOfService() {
                 <details className={styles.checkbox__details}>
                   <summary className={styles.checkbox__summary}>
                     <input className={styles.checkbox__input} type="checkbox" onChange={() => changeCheck(index)} checked={checkedList[index]} />
-                    <div>{res.summary}</div>
+                    <div className={styles['checkbox__summary-text']}>{res.summary}</div>
                     <Arrow className={styles.checkbox__icon} />
                   </summary>
                   <p className={styles.checkbox__info}>{res.content}</p>

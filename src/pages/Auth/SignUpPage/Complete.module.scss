@@ -28,6 +28,7 @@ body {
   align-items: center;
 
   @include media.media-breakpoint-down(mobile) {
+    width: 227px;
     height: 500px;
   }
 
@@ -47,6 +48,11 @@ body {
     font-size: 18px;
     line-height: 22px;
     text-align: center;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 
   &__input {

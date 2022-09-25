@@ -43,7 +43,7 @@ export default function SignUpForm() {
         <form
           className={styles.form}
           onSubmit={handleSubmit((data) => {
-            // api 호출
+            // form 제출 api 호출
             console.log(data);
           })}
         >

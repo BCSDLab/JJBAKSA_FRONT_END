@@ -13,7 +13,6 @@ export default function CompleteForm() {
   const onSubmit = (data: any) => console.log(data);
   const navigate = useNavigate();
   const nicknameValue = watch('nickname');
-  console.log(watch('nickname'));
 
   return (
     <div className={styles.template}>
