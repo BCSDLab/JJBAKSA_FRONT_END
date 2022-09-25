@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as CelebrateIcon } from 'assets/svg/celebrate.svg';
 import styles from './Complete.module.scss';
+import useRouteCheck from './hooks/useRouteCheck';
 
 export default function CompleteForm() {
+  useRouteCheck('signUpCheck', '/signup');
+
   const { register, handleSubmit, watch } = useForm();
   // nickname api 연결
   const onSubmit = (data: any) => console.log(data);

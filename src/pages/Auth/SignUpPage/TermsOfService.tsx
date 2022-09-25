@@ -70,7 +70,7 @@ export default function TermsOfService() {
               styles['terms-of-service__submit']
             }
             disabled={!allCheck}
-            onClick={() => navigate('/SignUp')}
+            onClick={() => navigate('/signup', { state: { termsCheck: true } })}
           >
             다음
           </button>
