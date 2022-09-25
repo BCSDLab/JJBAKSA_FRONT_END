@@ -40,3 +40,9 @@
 .ProseMirror {
   padding: 0 !important;
 }
+
+.buttonEx {
+  position: absolute;
+  left: 0;
+  top: 50%;
+}

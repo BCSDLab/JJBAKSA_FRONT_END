@@ -17,6 +17,12 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
   const [saveActive, setSaveActive] = useState(false);
   const [checkAddShop, setCheckAddShop] = useState(false);
   const [checkRating, setCheckRating] = useState(false);
+  const [textToolsValue, setTextToolsValue] = useState({
+    Bold: false,
+    Heading: false,
+    Paragraph: false,
+    Through: false,
+  });
   const navigate = useNavigate();
   useEffect(() => {
     setCheckAddShop(isShopname);
@@ -51,7 +57,7 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
         { !checkAddShop && <Plus type="button" className={styles['header__button--add']} onClick={checkAddShopHandler} /> }
       </div>
       <div className={styles.editor}>
-        <Wysiwyg />
+        <Wysiwyg textToolsValue={textToolsValue} />
       </div>
       <span className={styles.item}>
         <span className={styles.item__span}>
@@ -67,12 +73,12 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
             <div>
               <button type="button" className={`${styles.item__button} ${styles.buttonT}`} onClick={textToolHandler}>T</button>
             </div>
-            <div className={styles.item__span}>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonBold}`}>B</button>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonHeading}`}>H</button>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonItalic}`}>I</button>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonThrough}`}>T</button>
-            </div>
+            <span className={styles.item__span}>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonBold}`} onClick={() => setTextToolsValue((prev) => ({ ...prev, Bold: !prev.Bold }))}>B</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonHeading}`} onClick={() => setTextToolsValue((prev) => ({ ...prev, Heading: !prev.Heading }))}>H</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonParagraph}`} onClick={() => setTextToolsValue((prev) => ({ ...prev, Paragraph: !prev.Paragraph }))}>H</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonThrough}`} onClick={() => setTextToolsValue((prev) => ({ ...prev, Bold: !prev.Through }))}>T</button>
+            </span>
           </span>
         </span>
         <button
