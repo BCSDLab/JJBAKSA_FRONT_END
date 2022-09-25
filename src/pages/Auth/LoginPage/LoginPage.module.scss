@@ -36,6 +36,30 @@
     font-size: 14px;
   }
 
+  &__input {
+    width: 352px;
+    height: 38px;
+    background-color: #eeeeee;
+    border-radius: 20px;
+    border: none;
+    margin: 8px 0;
+    padding-left: 16px;
+
+    &::placeholder {
+      font-size: 14px;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 205px;
+      margin: 5px 0;
+      padding-left: 11px;
+
+      &::placeholder {
+        font-size: 12px;
+      }
+    }
+  }
+
   &__button {
     height: 40px;
     font-size: 16px;
@@ -63,30 +87,6 @@
     &__button {
       margin-top: 40px;
       margin-bottom: 16px;
-    }
-  }
-}
-
-.login-input {
-  width: 352px;
-  height: 38px;
-  background-color: #eeeeee;
-  border-radius: 20px;
-  border: none;
-  margin: 8px 0;
-  padding-left: 16px;
-
-  &::placeholder {
-    font-size: 14px;
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    width: 205px;
-    margin: 5px 0;
-    padding-left: 11px;
-
-    &::placeholder {
-      font-size: 12px;
     }
   }
 }

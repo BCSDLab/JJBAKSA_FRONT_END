@@ -32,8 +32,8 @@ function LoginPage(): JSX.Element {
         <div className={styles.form}>
           <form className={styles.loginform} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.loginform__login}>로그인</div>
-            <input className={styles['login-input']} type="text" id="id" placeholder="아이디" {...register('id', { required: true })} />
-            <input className={styles['login-input']} type="password" id="pw" placeholder="비밀번호" {...register('pw', { required: true })} />
+            <input className={styles.loginform__input} type="text" id="id" placeholder="아이디" {...register('id', { required: true })} />
+            <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('pw', { required: true })} />
             <div className={styles.autologin}>
               <span className={styles.autologin__text}>자동 로그인</span>
               <Controller
