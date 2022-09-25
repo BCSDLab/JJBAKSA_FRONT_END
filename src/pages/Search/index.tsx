@@ -24,7 +24,7 @@ function Search(): JSX.Element {
       <nav className={styles['search-nav']}>
         <div className={styles['search-nav__button']}>
           <Link to="/" className={styles['search-nav__button--previous']}>
-            <PreviousIcon className={styles['search-nav__icon--previous']} />
+            <PreviousIcon title="previousIcon" className={styles['search-nav__icon--previous']} />
           </Link>
         </div>
         <h1 className={styles['search-nav__text']}>검색</h1>
@@ -35,21 +35,21 @@ function Search(): JSX.Element {
           {recommend_text[recommendIdx.current]}
         </h1>
         )}
-        <label aria-label="검색창" className={styles['search-bar']} htmlFor="searchBarInput">
+        <label className={styles['search-bar']} htmlFor="searchBarInput">
           <input className={styles['search-bar__input']} id="searchBarInput" onFocus={changeSearchMode} onBlur={changeTrendingMode} placeholder="검색어를 입력해주세요" value={text} onChange={(event) => changeSearchBarText(event)} />
-          <LensIcon className={styles['search-bar__icon']} />
+          <LensIcon title="lensIcon" className={styles['search-bar__icon']} />
         </label>
         {mode === 'trending' && (
-        <div aria-label="맛집 트렌드 해시태그 리스트" className={styles['search-banner']}>
+        <div className={styles['search-banner']}>
           <strong>TRENDING</strong>
           <ul className={styles['search-banner__tag-list']}>
-            <span className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</span>
-            <span aria-label="" className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</span>
-            <span aria-label="" className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</span>
+            <li className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</li>
+            <li className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</li>
+            <li className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</li>
           </ul>
         </div>
         )}
-        <menu className={styles['search-query-list']}>
+        <ul className={styles['search-query-list']}>
           {/* 이 부분은 검색창 리스트 필터링 확인을 위해서 임의로 목업 데이터 사용 */}
           {list?.filter((item) => item.title.includes(text)).length === 0
           && (
@@ -60,7 +60,7 @@ function Search(): JSX.Element {
           </div>
           )}
           {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item) => <li key={item.title} className={styles['search-query-list__item']}>{item.title}</li>)}
-        </menu>
+        </ul>
       </div>
     </div>
   );
