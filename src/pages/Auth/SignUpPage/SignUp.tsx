@@ -13,6 +13,7 @@ import useBlindCheck from './hooks/useBlindCheck';
 
 export default function SignUpForm() {
   useRouteCheck('termsCheck', '/termsofservice');
+  const navigate = useNavigate();
 
   const {
     register,
@@ -29,11 +30,17 @@ export default function SignUpForm() {
     },
   });
 
+  const clickSubmit = () => {
+    if (isDirty && isValid) {
+      navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
+    } else {
+      navigate('');
+    }
+  };
+
   const {
     isPwBlind, isPwchBlind, setIsPwBlind, setIsPwchBlind,
   } = useBlindCheck();
-
-  const navigate = useNavigate();
 
   const Reg = /^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=]).{2,16}$/;
 
@@ -233,7 +240,7 @@ export default function SignUpForm() {
               styles.form__button
             }
             disabled={!isDirty || !isValid}
-            onClick={() => (isDirty && isValid ? navigate('/signup/complete', { state: { signUpCheck: true }, replace: true }) : navigate(''))}
+            onClick={clickSubmit}
           >
             완료
           </button>
