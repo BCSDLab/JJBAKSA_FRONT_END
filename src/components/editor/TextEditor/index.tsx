@@ -9,16 +9,16 @@ import styles from './TextEditor.module.scss';
 
 interface Props {
   shop: string | null;
+  getShopname: () => string | null;
 }
 
-function TextEditor({ shop }: Props) {
+function TextEditor({ shop, getShopname }: Props) {
   const {
     showTextTools,
     isRate,
     navigate,
     wysiwygRef,
     textToolHandler,
-    getShop,
     rating,
   } = useEditor();
 
@@ -34,7 +34,10 @@ function TextEditor({ shop }: Props) {
           <Plus
             type="button"
             className={styles['header__button--add']}
-            onClick={getShop}
+            // 추후 검색 링크로 이동하는 이벤트로 변경
+            // 해당 검색 링크에서 특정 상점 선택 시 getShopname함수 호출
+            // 값이 null에서 string으로 변하면서 제목과 별점 생성
+            onClick={getShopname}
           />
         )
           : (
