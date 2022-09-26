@@ -46,8 +46,8 @@ const Wysiwyg = forwardRef((_props, ref) => {
   return (
     <div className="container">
       <Editor
-        initialValue="내용을 입력해 주세요."
-        previewStyle="vertical"
+        initialValue=" "
+        placeholder="내용을 입력해 주세요."
         initialEditType="wysiwyg"
         height="100%"
         useCommandShortcut
