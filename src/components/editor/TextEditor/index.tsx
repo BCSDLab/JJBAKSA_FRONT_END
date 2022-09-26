@@ -2,7 +2,7 @@ import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.s
 import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
 import StarContainer from 'components/rating/StarContainer';
-import Wysiwyg, { WysiwygRef } from 'components/Wysiwyg';
+import Wysiwyg, { WysiwygRef } from 'components/editor/Wysiwyg';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useRef, useState } from 'react';
 import cn from 'utils/ts/classNames';

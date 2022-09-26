@@ -1,4 +1,4 @@
-import TextEditor from 'components/TextEditor';
+import TextEditor from 'components/editor/TextEditor';
 import styles from './Post.module.scss';
 
 function Post() {
