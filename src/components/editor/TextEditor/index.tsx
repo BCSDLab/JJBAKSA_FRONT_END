@@ -2,43 +2,22 @@ import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.s
 import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
 import StarRating from 'components/StarRating';
-import Wysiwyg, { WysiwygRef } from 'components/editor/Wysiwyg';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import Wysiwyg from 'components/editor/Wysiwyg';
 import cn from 'utils/ts/classNames';
+import useEditor, { TextEditorProps } from './hooks/useEditor';
 import styles from './TextEditor.module.scss';
 
-interface TextEditorProps {
-  shop: string | undefined;
-}
-
 function TextEditor({ shop }: TextEditorProps) {
-  const [showTextTools, setShowTextTools] = useState(false);
-  const [isShopExist, setIsShopExist] = useState(false);
-  const [isRate, setIsRate] = useState(false);
-  const navigate = useNavigate();
-  const wysiwygRef = useRef<WysiwygRef>(null);
-
-  useEffect(() => {
-    if (shop === undefined) {
-      setIsShopExist(false);
-    } else {
-      setIsShopExist(true);
-    }
-  }, [shop]);
-
-  const textToolHandler = () => {
-    setShowTextTools(!showTextTools);
-  };
-  const getShop = () => {
-    // 여기서 Shop 정보를 가져온다.
-    // Shop 정보가 가져와졌다는 가정하에 true를 전달.
-    // 추가적으로 shop이름을 받아오는 로직 작성 필요.
-    setIsShopExist(true);
-  };
-  const rating = () => {
-    setIsRate(true);
-  };
+  const {
+    showTextTools,
+    isShopExist,
+    isRate,
+    navigate,
+    wysiwygRef,
+    textToolHandler,
+    getShop,
+    rating,
+  } = useEditor({ shop });
 
   return (
     <div className={cn({

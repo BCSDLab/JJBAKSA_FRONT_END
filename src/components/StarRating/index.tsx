@@ -1,18 +1,15 @@
 import { ReactComponent as Star } from 'assets/svg/star.svg';
-import { useState } from 'react';
 import styles from './StarRating.module.scss';
-
-interface StarRatingProps {
-  rating: () => void;
-}
+import useRate, { StarRatingProps } from './hooks/useRate';
 
 function StarContainer({ rating }: StarRatingProps) {
-  const [hover, setHover] = useState(0);
-  const [click, setClick] = useState(0);
-  const clickHandler = (n: number) => {
-    setClick(n);
-    rating();
-  };
+  const {
+    hover,
+    click,
+    fixStarCount,
+    countStarHover,
+    starHoverLeave,
+  } = useRate({ rating });
 
   return (
     <div className={styles.container}>
@@ -21,9 +18,9 @@ function StarContainer({ rating }: StarRatingProps) {
           fill={(hover >= num) || (click >= num) ? '#ff7f23' : '#eeeeee'}
           key={num}
           className={styles.container__star}
-          onMouseEnter={() => setHover(num)}
-          onMouseLeave={() => setHover(0)}
-          onClick={() => clickHandler(num)}
+          onMouseEnter={() => countStarHover(num)}
+          onMouseLeave={() => starHoverLeave(num)}
+          onClick={() => fixStarCount(num)}
         />
       ))}
     </div>
