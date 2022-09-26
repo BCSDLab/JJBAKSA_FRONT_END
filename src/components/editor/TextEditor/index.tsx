@@ -1,10 +1,10 @@
 import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.svg';
 import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
-import StarContainer from 'components/rating/StarContainer';
+import StarRating from 'components/StarRating';
 import Wysiwyg, { WysiwygRef } from 'components/editor/Wysiwyg';
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import styles from './TextEditor.module.scss';
 
@@ -50,7 +50,7 @@ function TextEditor({ shop }: TextEditorProps) {
         <LeftAngleBraketIcon type="button" className={styles['header__button--prev']} onClick={() => navigate(-1)} />
         { !isShopExist && <Plus type="button" className={styles['header__button--add']} onClick={getShop} /> }
         { isShopExist && <div className={styles.header__shopname}>{ shop }</div> }
-        { isShopExist && <StarContainer rating={rating} /> }
+        { isShopExist && <StarRating rating={rating} /> }
       </div>
       <div className={styles.editor}>
         <Wysiwyg ref={wysiwygRef} />
@@ -125,8 +125,8 @@ function TextEditor({ shop }: TextEditorProps) {
         <button
           type="button"
           className={cn({
-            [styles.save__button]: true,
-            [styles['save__button--active']]: isRate,
+            [styles['save-button']]: true,
+            [styles['save-button--active']]: isRate,
           })}
           disabled={!isRate && !isShopExist}
         >

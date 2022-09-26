@@ -1,12 +1,12 @@
 import { ReactComponent as Star } from 'assets/svg/star.svg';
 import { useState } from 'react';
-import styles from './StarContainer.module.scss';
+import styles from './StarRating.module.scss';
 
-interface StarContainerProps {
+interface StarRatingProps {
   rating: () => void;
 }
 
-function StarContainer({ rating }: StarContainerProps) {
+function StarContainer({ rating }: StarRatingProps) {
   const [hover, setHover] = useState(0);
   const [click, setClick] = useState(0);
   const clickHandler = (n: number) => {
