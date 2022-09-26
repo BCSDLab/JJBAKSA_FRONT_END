@@ -4,7 +4,7 @@ import styles from './Post.module.scss';
 function Post() {
   return (
     <div className={styles.post}>
-      <TextEditor shop={undefined} />
+      <TextEditor shop={null} />
     </div>
   );
 }

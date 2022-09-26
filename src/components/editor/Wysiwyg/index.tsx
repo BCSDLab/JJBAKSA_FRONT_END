@@ -17,24 +17,16 @@ const Wysiwyg = forwardRef((_props, ref) => {
   const editorRef = useRef<Editor>(null);
   useImperativeHandle(ref, () => ({
     addImg() {
-      if (editorRef.current) {
-        editorRef.current.getInstance().exec('addImage', { imageUrl: 'https://picsum.photos/200/300' });
-      }
+      editorRef.current?.getInstance().exec('addImage', { imageUrl: 'https://picsum.photos/200/300' });
     },
     bold() {
-      if (editorRef.current) {
-        editorRef.current.getInstance().exec('bold');
-      }
+      editorRef.current?.getInstance().exec('bold');
     },
     heading() {
-      if (editorRef.current) {
-        editorRef.current.getInstance().exec('fontSize', { fontSize: '16px' });
-      }
+      editorRef.current?.getInstance().exec('fontSize', { fontSize: '16px' });
     },
     paragraph() {
-      if (editorRef.current) {
-        editorRef.current.getInstance().exec('fontSize', { fontSize: '12px' });
-      }
+      editorRef.current?.getInstance().exec('fontSize', { fontSize: '12px' });
     },
     through() {
       if (editorRef.current) {

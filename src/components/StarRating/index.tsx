@@ -1,15 +1,15 @@
 import { ReactComponent as Star } from 'assets/svg/star.svg';
 import styles from './StarRating.module.scss';
-import useRate, { StarRatingProps } from './hooks/useRate';
+import useRate, { Props } from './hooks/useRate';
 
-function StarContainer({ rating }: StarRatingProps) {
+function StarContainer({ onClick }: Props) {
   const {
     hover,
     click,
     fixStarCount,
     countStarHover,
     starHoverLeave,
-  } = useRate({ rating });
+  } = useRate({ onClick });
 
   return (
     <div className={styles.container}>

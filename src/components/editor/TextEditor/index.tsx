@@ -4,32 +4,45 @@ import { ReactComponent as Plus } from 'assets/svg/plus.svg';
 import StarRating from 'components/StarRating';
 import Wysiwyg from 'components/editor/Wysiwyg';
 import cn from 'utils/ts/classNames';
-import useEditor, { TextEditorProps } from './hooks/useEditor';
+import useEditor from './hooks/useEditor';
 import styles from './TextEditor.module.scss';
 
-function TextEditor({ shop }: TextEditorProps) {
+interface Props {
+  shop: string | null;
+}
+
+function TextEditor({ shop }: Props) {
   const {
     showTextTools,
-    isShopExist,
     isRate,
     navigate,
     wysiwygRef,
     textToolHandler,
     getShop,
     rating,
-  } = useEditor({ shop });
+  } = useEditor();
 
   return (
     <div className={cn({
       [styles.template]: true,
-      [styles['template--active']]: isShopExist,
+      [styles['template--active']]: shop != null,
     })}
     >
       <div className={styles.header}>
         <LeftAngleBraketIcon type="button" className={styles['header__button--prev']} onClick={() => navigate(-1)} />
-        { !isShopExist && <Plus type="button" className={styles['header__button--add']} onClick={getShop} /> }
-        { isShopExist && <div className={styles.header__shopname}>{ shop }</div> }
-        { isShopExist && <StarRating rating={rating} /> }
+        { shop == null ? (
+          <Plus
+            type="button"
+            className={styles['header__button--add']}
+            onClick={getShop}
+          />
+        )
+          : (
+            <>
+              <div className={styles.header__shopname}>{ shop }</div>
+              <StarRating onClick={rating} />
+            </>
+          )}
       </div>
       <div className={styles.editor}>
         <Wysiwyg ref={wysiwygRef} />
@@ -107,7 +120,7 @@ function TextEditor({ shop }: TextEditorProps) {
             [styles['save-button']]: true,
             [styles['save-button--active']]: isRate,
           })}
-          disabled={!isRate && !isShopExist}
+          disabled={!isRate && shop != null}
         >
           저장
         </button>
