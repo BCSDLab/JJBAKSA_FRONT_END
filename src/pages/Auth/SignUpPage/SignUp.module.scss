@@ -6,14 +6,7 @@ $active: #ff7f23;
 $passive: #c4c4c4;
 $input-background: #eeeeee;
 
-* {
-  margin: 0;
-}
-
 body {
-  min-height: 100vh;
-  min-width: 1148px;
-
   @include media.media-breakpoint-down(mobile) {
     min-width: 320px;
   }

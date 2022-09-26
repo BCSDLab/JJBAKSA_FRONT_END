@@ -2,14 +2,7 @@
 @forward "src/styles/fonts.scss";
 @use "src/utils/styles/mediaQuery" as media;
 
-* {
-  margin: 0;
-}
-
 body {
-  min-height: 100vh;
-  min-width: 1148px;
-
   @include media.media-breakpoint-down(mobile) {
     min-width: 320px;
   }
@@ -33,10 +26,10 @@ body {
   }
 
   &__icon {
-    margin: 218px 0 24px;
+    margin: 213px 0 24px;
 
     @include media.media-breakpoint-down(mobile) {
-      margin-top: 150px;
+      margin: 101px 0 11px;
     }
   }
 
