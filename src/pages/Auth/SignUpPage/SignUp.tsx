@@ -66,6 +66,9 @@ export default function SignUpForm() {
             </div>
             <input
               placeholder="아이디를 입력하세요"
+              // eslint-disable-next-line jsx-a11y/aria-props
+              aria-invaild="true"
+              aria-errormessage={ERROR_MESSAGE.id}
               className={cn({
                 [styles.form__input]: true,
                 [styles['form__input--id']]: true,
@@ -105,12 +108,15 @@ export default function SignUpForm() {
             </div>
             <input
               placeholder="이메일을 입력하세요"
+              // eslint-disable-next-line jsx-a11y/aria-props
+              aria-invaild="true"
+              aria-errormessage={ERROR_MESSAGE.email}
               className={cn({
                 [styles.form__input]: true,
                 [styles['form__input--email']]: true,
                 [styles['form__input--error']]: errors?.email?.ref?.value === '',
               })}
-        // eslint-disable-next-line react/jsx-props-no-spreading
+            // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('email', { required: ERROR_MESSAGE.email })}
             />
             <div className={styles['form__email-sign']}>@</div>
@@ -154,6 +160,9 @@ export default function SignUpForm() {
               placeholder="비밀번호를 입력하세요"
               type={isPwBlind ? 'text' : 'password'}
               autoComplete="new-password"
+              // eslint-disable-next-line jsx-a11y/aria-props
+              aria-invaild="true"
+              aria-errormessage={ERROR_MESSAGE.password}
               className={cn({
                 [styles.form__input]: true,
                 [styles['form__input--error']]: errors?.password?.type !== undefined,
@@ -170,7 +179,6 @@ export default function SignUpForm() {
                   message: ERROR_MESSAGE.password,
                 },
                 pattern: {
-                  // eslint-disable-next-line prefer-regex-literals, no-useless-escape
                   value: Reg,
                   message: ERROR_MESSAGE.password,
                 },
@@ -198,6 +206,9 @@ export default function SignUpForm() {
             <input
               placeholder="비밀번호를 다시 입력하세요"
               type={isPwchBlind ? 'text' : 'password'}
+              // eslint-disable-next-line jsx-a11y/aria-props
+              aria-invaild="true"
+              aria-errormessage={ERROR_MESSAGE.passwordCheck}
               className={cn({
                 [styles.form__input]: true,
                 [styles['form__input--error']]: errors?.passwordCheck !== undefined,
