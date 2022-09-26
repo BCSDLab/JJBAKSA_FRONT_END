@@ -1,6 +1,5 @@
-@use "./TermsOfService.module.scss" as terms-of-service;
-@forward "src/styles/fonts.scss";
 @use "src/utils/styles/mediaQuery" as media;
+@use "./Mixin.module.scss" as mixin;
 
 body {
   @include media.media-breakpoint-down(mobile) {
@@ -8,8 +7,8 @@ body {
   }
 }
 
-.templete {
-  @include terms-of-service.template;
+.template {
+  @include mixin.template;
 }
 
 .form {
@@ -23,6 +22,7 @@ body {
   @include media.media-breakpoint-down(mobile) {
     width: 227px;
     height: 500px;
+    padding-top: 144px;
   }
 
   &__icon {
@@ -63,6 +63,6 @@ body {
   }
 
   &__button {
-    @include terms-of-service.button;
+    @include mixin.button;
   }
 }

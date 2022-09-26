@@ -1,0 +1,59 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+$default: #222222;
+$active: #ff7f23;
+$passive: #c4c4c4;
+
+@mixin font-title($margin-bottom) {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: $margin-bottom;
+
+  @include media.media-breakpoint-down(mobile) {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+@mixin font-medium {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+@mixin template {
+  width: 100vw;
+  min-height: 100vh;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 368px;
+  height: 40px;
+  background: $active;
+  border: none;
+  appearance: none;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+
+  &[disabled] {
+    background-color: $passive;
+    cursor: default;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
+}

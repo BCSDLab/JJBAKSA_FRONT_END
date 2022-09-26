@@ -1,72 +1,9 @@
-@forward "src/styles/fonts.scss";
 @use "src/utils/styles/mediaQuery" as media;
+@use "./Mixin.module.scss" as mixin;
 
 $default: #222222;
 $active: #ff7f23;
 $passive: #c4c4c4;
-
-@mixin font-title($margin-bottom) {
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: $margin-bottom;
-
-  @include media.media-breakpoint-down(mobile) {
-    font-weight: 500;
-    font-size: 14px;
-  }
-}
-
-@mixin font-medium {
-  font-size: 14px;
-  line-height: 18px;
-  font-weight: 500;
-}
-
-@mixin template {
-  width: 100vw;
-  min-height: 100vh;
-  height: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @include media.media-breakpoint-up(mobile) {
-    max-width: 767px;
-    margin: 0 auto;
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    height: 500px;
-  }
-}
-
-@mixin button {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 368px;
-  height: 40px;
-  background: $active;
-  border: none;
-  appearance: none;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 16px;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-
-  &[disabled] {
-    background-color: $passive;
-    cursor: default;
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    width: 100%;
-  }
-}
 
 body {
   @include media.media-breakpoint-down(mobile) {
@@ -75,10 +12,11 @@ body {
 }
 
 .template {
-  @include template;
+  @include mixin.template;
 }
 
 .container {
+  width: 368px;
   height: 590px;
   position: relative;
 
@@ -90,7 +28,6 @@ body {
 }
 
 .terms-of-service {
-  width: 368px;
   color: $default;
   margin-top: 95px;
 
@@ -100,11 +37,11 @@ body {
   }
 
   &__submit {
-    @include button;
+    @include mixin.button;
   }
 
   &__title {
-    @include font-title(38px);
+    @include mixin.font-title(38px);
 
     @include media.media-breakpoint-down(mobile) {
       min-width: 100%;
@@ -135,7 +72,7 @@ details[open] > summary:first-of-type {
   }
 
   &__entire {
-    @include font-medium;
+    @include mixin.font-medium;
   }
 
   &__detail {
@@ -145,7 +82,7 @@ details[open] > summary:first-of-type {
   }
 
   &__summary {
-    @include font-medium;
+    @include mixin.font-medium;
 
     @include media.media-breakpoint-down(mobile) {
       width: 100%;

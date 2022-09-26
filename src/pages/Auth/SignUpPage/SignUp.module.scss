@@ -1,6 +1,5 @@
-@use "./TermsOfService.module.scss" as terms-of-service;
-@forward "src/styles/fonts.scss";
 @use "src/utils/styles/mediaQuery" as media;
+@use "./Mixin.module.scss" as mixin;
 
 $active: #ff7f23;
 $passive: #c4c4c4;
@@ -17,7 +16,7 @@ body {
 }
 
 .template {
-  @include terms-of-service.template;
+  @include mixin.template;
 }
 
 .container {
@@ -41,7 +40,7 @@ body {
   }
 
   &__title {
-    @include terms-of-service.font-title(40px);
+    @include mixin.font-title(40px);
 
     @include media.media-breakpoint-down(mobile) {
       display: none;
@@ -246,6 +245,6 @@ body {
   }
 
   &__button {
-    @include terms-of-service.button;
+    @include mixin.button;
   }
 }
