@@ -230,7 +230,7 @@ export default function SignUpForm() {
               styles.form__button
             }
             disabled={!isDirty || !isValid}
-            onClick={() => (isDirty && isValid ? navigate('/signup/complete', { state: { signUpCheck: true } }) : navigate(''))}
+            onClick={() => (isDirty && isValid ? navigate('/signup/complete', { state: { signUpCheck: true }, replace: true }) : navigate(''))}
           >
             완료
           </button>
