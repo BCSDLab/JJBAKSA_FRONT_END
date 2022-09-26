@@ -4,7 +4,7 @@ import { ReactComponent as Plus } from 'assets/svg/plus.svg';
 import StarContainer from 'components/rating/StarContainer';
 import Wysiwyg from 'components/Wysiwyg';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import styles from './TextEditor.module.scss';
 
@@ -17,13 +17,8 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
   const [saveActive, setSaveActive] = useState(false);
   const [checkAddShop, setCheckAddShop] = useState(false);
   const [checkRating, setCheckRating] = useState(false);
-  const [textToolsValue, setTextToolsValue] = useState({
-    Bold: false,
-    Heading: false,
-    Paragraph: false,
-    Through: false,
-  });
   const navigate = useNavigate();
+  const wysiwygRef = useRef<any>();
   useEffect(() => {
     setCheckAddShop(isShopname);
   }, [isShopname]);
@@ -57,11 +52,11 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
         { !checkAddShop && <Plus type="button" className={styles['header__button--add']} onClick={checkAddShopHandler} /> }
       </div>
       <div className={styles.editor}>
-        <Wysiwyg textToolsValue={textToolsValue} />
+        <Wysiwyg ref={wysiwygRef} />
       </div>
       <span className={styles.item}>
         <span className={styles.item__span}>
-          <button type="button" className={styles.item__button}>
+          <button type="button" className={styles.item__button} onClick={() => wysiwygRef.current && wysiwygRef.current.addImg()}>
             <Picture />
           </button>
           <span
@@ -74,10 +69,10 @@ function TextEditor({ isShopname }: TextEditorProps): JSX.Element {
               <button type="button" className={`${styles.item__button} ${styles.buttonT}`} onClick={textToolHandler}>T</button>
             </div>
             <span className={styles.item__span}>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonBold}`} onClick={() => setTextToolsValue((prev) => ({ ...prev, Bold: !prev.Bold }))}>B</button>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonHeading}`} onClick={() => setTextToolsValue((prev) => ({ ...prev, Heading: !prev.Heading }))}>H</button>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonParagraph}`} onClick={() => setTextToolsValue((prev) => ({ ...prev, Paragraph: !prev.Paragraph }))}>H</button>
-              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonThrough}`} onClick={() => setTextToolsValue((prev) => ({ ...prev, Bold: !prev.Through }))}>T</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonBold}`} onClick={() => wysiwygRef.current && wysiwygRef.current?.bold()}>B</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonHeading}`} onClick={() => wysiwygRef.current && wysiwygRef.current?.heading()}>H</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonParagraph}`} onClick={() => wysiwygRef.current && wysiwygRef.current?.paragraph()}>H</button>
+              <button type="button" className={`${styles['item__button--onclick']} ${styles.buttonThrough}`} onClick={() => wysiwygRef.current && wysiwygRef.current?.through()}>T</button>
             </span>
           </span>
         </span>
