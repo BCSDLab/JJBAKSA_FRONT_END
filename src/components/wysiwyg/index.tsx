@@ -5,6 +5,14 @@ import './Wysiwyg.css';
 import fontSize from 'tui-editor-plugin-font-size';
 import 'tui-editor-plugin-font-size/dist/tui-editor-plugin-font-size.css';
 
+export interface WysiwygRef {
+  addImg: () => void,
+  bold: () => void,
+  heading: () => void,
+  paragraph: () => void,
+  through: () => void,
+}
+
 const Wysiwyg = forwardRef((_props, ref) => {
   const editorRef = useRef<Editor>(null);
   useImperativeHandle(ref, () => ({

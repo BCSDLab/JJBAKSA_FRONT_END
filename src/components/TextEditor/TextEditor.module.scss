@@ -1,5 +1,3 @@
-@use "src/utils/styles/mediaQuery";
-
 @keyframes show-out {
   from {
     opacity: 0;
@@ -64,20 +62,6 @@
     line-height: 20px;
     color: #222222;
   }
-
-  &__star-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 160px;
-    height: 32px;
-    margin-bottom: 24px;
-
-    &__star {
-      height: 100%;
-      width: 32px;
-    }
-  }
 }
 
 .editor {
@@ -101,12 +85,11 @@
     font-weight: 400;
   }
 
-  &__span {
+  &__tools {
     display: flex;
   }
 
   &__button {
-    display: inline-block;
     font-size: 24px;
     line-height: 30px;
     width: 40px;
@@ -116,31 +99,10 @@
     background-color: #eeeeee;
     border-radius: 50px;
 
-    &.buttonT {
-      display: inline-block;
+    &--tool {
       font-weight: 200;
       width: 40px;
       height: 40px;
-    }
-
-    &--onclick {
-      background-color: #d9d9d9d9;
-      font-size: 16px;
-      margin: 0 8px;
-      height: 20px;
-      line-height: 20px;
-
-      &.buttonBold {
-        font-weight: 700;
-      }
-
-      &.buttonParagraph {
-        font-size: 12px;
-      }
-
-      &.buttonThrough {
-        text-decoration-line: line-through;
-      }
     }
   }
 
@@ -152,17 +114,14 @@
     border-radius: 20px;
     box-sizing: border-box;
     background-color: #d9d9d9d9;
+    transition: all 0.4s ease-out;
 
-    .item__span {
-      visibility: hidden;
-    }
-
-    &.show {
+    &--show {
       width: 160px;
 
-      .item__span {
+      .slide-tool-box {
         :nth-child(n) {
-          animation: show-out 0.4s ease-out normal forwards;
+          animation: show-out 0.2s ease-out normal forwards;
         }
 
         :nth-child(1) {
@@ -183,7 +142,30 @@
       }
     }
 
-    transition: all 0.4s ease-out;
+    .slide-tool-box {
+      visibility: hidden;
+      display: flex;
+
+      &__button {
+        background-color: #d9d9d9d9;
+        font-size: 16px;
+        padding: 0 8px;
+        height: 20px;
+        line-height: 20px;
+
+        &--bold {
+          font-weight: 700;
+        }
+
+        &--paragraph {
+          font-size: 12px;
+        }
+
+        &--through {
+          text-decoration-line: line-through;
+        }
+      }
+    }
   }
 
   .save__button {
@@ -197,7 +179,7 @@
     color: white;
     background-color: #c4c4c4;
 
-    &.active {
+    &--active {
       background-color: #ff7f23;
     }
   }
