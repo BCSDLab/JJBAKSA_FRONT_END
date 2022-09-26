@@ -4,7 +4,7 @@ interface Privacy {
   content: string;
 }
 
-const privacy: Privacy[] = [
+const PRIVACY: Privacy[] = [
   {
     key: 1,
     summary: '개인정보 이용약관(필수)',
@@ -18,4 +18,4 @@ const privacy: Privacy[] = [
   },
 ];
 
-export default privacy;
+export default PRIVACY;

@@ -2,10 +2,10 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Arrow } from 'assets/svg/arrow.svg';
 import styles from './TermsOfService.module.scss';
-import privacy from './static/privacy';
+import PRIVACY from './static/privacy';
 
 const useCheckbox = () => {
-  const [checkedList, setCheckedList] = useState<boolean[]>(() => privacy.map(() => false));
+  const [checkedList, setCheckedList] = useState<boolean[]>(() => PRIVACY.map(() => false));
   const allCheck = useMemo(() => !checkedList.some((checked) => !checked), [checkedList]);
 
   const changeCheck = (idx: number) => {
@@ -16,9 +16,9 @@ const useCheckbox = () => {
 
   const changeAllCheck = () => {
     if (allCheck) {
-      setCheckedList(privacy.map(() => false));
+      setCheckedList(PRIVACY.map(() => false));
     } else {
-      setCheckedList(privacy.map(() => true));
+      setCheckedList(PRIVACY.map(() => true));
     }
   };
 
@@ -51,7 +51,7 @@ export default function TermsOfService() {
                 전체동의
               </div>
             </div>
-            {privacy.map((res, index) => (
+            {PRIVACY.map((res, index) => (
               <div key={res.key} className={styles.checkbox}>
                 <details className={styles.checkbox__details}>
                   <summary className={styles.checkbox__summary}>

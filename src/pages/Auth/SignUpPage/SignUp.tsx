@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import cn from 'utils/ts/classNames';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import { ReactComponent as BlindIcon } from 'assets/svg/pw-blind.svg';
 import { domain, ERROR_MESSAGE } from './static/signUp';
 import styles from './SignUp.module.scss';
 import useRouteCheck from './hooks/useRouteCheck';
+import useBlindCheck from './hooks/useBlindCheck';
 
 export default function SignUpForm() {
   useRouteCheck('termsCheck', '/termsofservice');
@@ -28,9 +29,11 @@ export default function SignUpForm() {
     },
   });
 
+  const {
+    isPwBlind, isPwchBlind, setIsPwBlind, setIsPwchBlind,
+  } = useBlindCheck();
+
   const navigate = useNavigate();
-  const [isPwBlind, setIsPwBlind] = useState(false);
-  const [isPwchBlind, setIsPwchBlind] = useState(false);
 
   const Reg = /^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=]).{2,16}$/;
 
