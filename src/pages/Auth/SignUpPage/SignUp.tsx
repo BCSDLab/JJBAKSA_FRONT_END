@@ -204,9 +204,9 @@ export default function SignUpForm() {
               })}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('passwordCheck', {
-                required: ERROR_MESSAGE['password-check'],
+                required: ERROR_MESSAGE.passwordCheck,
                 validate: {
-                  checkPw: (v) => v === watch('password') || ERROR_MESSAGE['password-check'],
+                  checkPw: (v) => v === watch('password') || ERROR_MESSAGE.passwordCheck,
                 },
               })}
             />
