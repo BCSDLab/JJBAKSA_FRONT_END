@@ -57,7 +57,7 @@ export default function SignUpForm() {
                 <ErrorIcon
                   className={cn({
                     [styles['form__error-icon']]: true,
-                    [styles['form__error-icon--active']]: errors?.id?.ref?.value !== undefined,
+                    [styles['form__error-icon--active']]: errors?.id !== undefined,
                   })}
                   aria-hidden
                 />
@@ -67,12 +67,12 @@ export default function SignUpForm() {
             <input
               placeholder="아이디를 입력하세요"
               // eslint-disable-next-line jsx-a11y/aria-props
-              aria-invaild="true"
+              aria-invaild={errors?.id !== undefined}
               aria-errormessage={ERROR_MESSAGE.id}
               className={cn({
                 [styles.form__input]: true,
                 [styles['form__input--id']]: true,
-                [styles['form__input--error']]: errors?.id?.ref?.value !== undefined,
+                [styles['form__input--error']]: errors?.id !== undefined,
               })}
         // TODO: 아이디 중복확인 기능
         // eslint-disable-next-line react/jsx-props-no-spreading
@@ -83,9 +83,9 @@ export default function SignUpForm() {
               className={cn({
                 [styles['form__id-check-button']]: true,
                 [styles['form__id-check-button--active']]: watch('id') !== '',
-                [styles['form__id-check-button--error']]: errors?.id?.ref?.value !== undefined,
+                [styles['form__id-check-button--error']]: errors?.id !== undefined,
               })}
-              disabled={errors?.id?.ref?.value !== undefined}
+              disabled={errors?.id !== undefined}
             >
               중복 확인
             </button>
@@ -99,7 +99,7 @@ export default function SignUpForm() {
                 <ErrorIcon
                   className={cn({
                     [styles['form__error-icon']]: true,
-                    [styles['form__error-icon--active']]: errors?.email?.ref?.value === '',
+                    [styles['form__error-icon--active']]: errors?.email !== undefined,
                   })}
                   aria-hidden
                 />
@@ -109,12 +109,12 @@ export default function SignUpForm() {
             <input
               placeholder="이메일을 입력하세요"
               // eslint-disable-next-line jsx-a11y/aria-props
-              aria-invaild="true"
+              aria-invaild={errors?.email !== undefined}
               aria-errormessage={ERROR_MESSAGE.email}
               className={cn({
                 [styles.form__input]: true,
                 [styles['form__input--email']]: true,
-                [styles['form__input--error']]: errors?.email?.ref?.value === '',
+                [styles['form__input--error']]: errors?.email !== undefined,
               })}
             // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('email', { required: ERROR_MESSAGE.email })}
@@ -123,7 +123,7 @@ export default function SignUpForm() {
             <select
               className={cn({
                 [styles.form__select]: true,
-                [styles['form__select--error']]: errors?.email?.ref?.value === '',
+                [styles['form__select--error']]: errors?.email !== undefined,
               })}
               placeholder="직접 입력"
             >
@@ -149,7 +149,7 @@ export default function SignUpForm() {
                 <ErrorIcon
                   className={cn({
                     [styles['form__error-icon']]: true,
-                    [styles['form__error-icon--active']]: errors?.password?.type !== undefined,
+                    [styles['form__error-icon--active']]: errors?.password !== undefined,
                   })}
                   aria-hidden
                 />
@@ -161,11 +161,11 @@ export default function SignUpForm() {
               type={isPwBlind ? 'text' : 'password'}
               autoComplete="new-password"
               // eslint-disable-next-line jsx-a11y/aria-props
-              aria-invaild="true"
+              aria-invaild={errors?.password !== undefined}
               aria-errormessage={ERROR_MESSAGE.password}
               className={cn({
                 [styles.form__input]: true,
-                [styles['form__input--error']]: errors?.password?.type !== undefined,
+                [styles['form__input--error']]: errors?.password !== undefined,
               })}
               // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('password', {
@@ -207,7 +207,7 @@ export default function SignUpForm() {
               placeholder="비밀번호를 다시 입력하세요"
               type={isPwchBlind ? 'text' : 'password'}
               // eslint-disable-next-line jsx-a11y/aria-props
-              aria-invaild="true"
+              aria-invaild={errors?.passwordCheck !== undefined}
               aria-errormessage={ERROR_MESSAGE.passwordCheck}
               className={cn({
                 [styles.form__input]: true,
