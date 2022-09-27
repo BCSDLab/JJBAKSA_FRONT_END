@@ -5,7 +5,7 @@ import './Wysiwyg.scss';
 import fontSize from 'tui-editor-plugin-font-size';
 import 'tui-editor-plugin-font-size/dist/tui-editor-plugin-font-size.css';
 
-export interface WysiwygRef {
+export interface WysiwygType {
   addImg: () => void,
   bold: () => void,
   heading: () => void,
