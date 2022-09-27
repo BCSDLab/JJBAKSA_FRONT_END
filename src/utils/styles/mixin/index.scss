@@ -31,5 +31,6 @@
     src: string.unquote($font-source);
     font-style: $style;
     font-weight: $weight;
+    font-display: swap;
   }
 }
