@@ -36,7 +36,7 @@ const Wysiwyg = forwardRef((_props, ref) => {
   }));
 
   return (
-    <div className="container">
+    <div className="wysiwygContainer">
       <Editor
         initialValue=" "
         placeholder="내용을 입력해 주세요."
