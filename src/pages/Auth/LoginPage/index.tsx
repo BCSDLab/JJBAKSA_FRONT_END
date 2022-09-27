@@ -36,11 +36,10 @@ function LoginPage(): JSX.Element {
             <div className={styles.autologin}>
               <span className={styles.autologin__text}>자동 로그인</span>
               <label htmlFor="checkbox">
-                <input type="checkbox" id="checkbox" aria-required="true" {...register('checkbox')} className={styles.checkbox} />
+                <input type="checkbox" id="checkbox" {...register('checkbox')} className={styles.checkbox} />
                 <span className={styles.dot} aria-hidden="true" />
               </label>
             </div>
-
             <button type="submit" disabled={!isValid} className={styles.loginform__button}>
               로그인
             </button>
