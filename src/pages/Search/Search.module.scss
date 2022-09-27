@@ -35,6 +35,13 @@
     }
   }
 
+  // 상단 바 + 검색창 영역 래퍼
+  .search-wrapper {
+    &--search {
+      padding-bottom: 24px;
+    }
+  }
+
   // 검색 추천 문구
   &__recommend {
     word-break: keep-all;
@@ -122,9 +129,12 @@
     }
   }
 
+
+
   // 검색창 결과 리스트
   .search-query-list {
-    margin-top: 24px;
+    height: calc(100vh - 180px);
+    overflow: scroll;
 
     &__item {
       display: flex;
@@ -148,6 +158,10 @@
       text-align: center;
       margin: 0 auto;
       margin-top: 164px;
+    }
+
+    &--hidden {
+      display: none;
     }
   }
 }

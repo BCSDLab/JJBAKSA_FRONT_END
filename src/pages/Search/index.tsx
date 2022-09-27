@@ -7,6 +7,7 @@ import styles from './Search.module.scss';
 import hash_tag from './static/trend';
 import recommend_text from './static/recommend';
 import useSearch from './useSearch';
+import cn from '../../utils/ts/classNames';
 
 type ICurrentMode = string | null;
 
@@ -21,15 +22,19 @@ function Search(): JSX.Element {
 
   return (
     <div className={styles.search}>
-      <nav className={styles['search-nav']}>
-        <div className={styles['search-nav__button']}>
-          <Link to="/" className={styles['search-nav__button--previous']}>
-            <PreviousIcon title="이전 페이지로 이동" />
-          </Link>
-        </div>
-        <h1 className={styles['search-nav__text']}>검색</h1>
-      </nav>
-      <div role="main">
+      <section className={cn({
+        [styles['search-wrapper']]: true,
+        [styles['search-wrapper--search']]: mode === 'search',
+      })}
+      >
+        <nav className={styles['search-nav']}>
+          <div className={styles['search-nav__button']}>
+            <Link to="/" className={styles['search-nav__button--previous']}>
+              <PreviousIcon title="이전 페이지로 이동" />
+            </Link>
+          </div>
+          <h1 className={styles['search-nav__text']}>검색</h1>
+        </nav>
         {mode === 'trending' && (
         <h1 className={styles.search__recommend}>
           {recommend_text[recommendIdx.current]}
@@ -49,19 +54,23 @@ function Search(): JSX.Element {
           </ul>
         </div>
         )}
-        <ul className={styles['search-query-list']}>
-          {/* 이 부분은 검색창 리스트 필터링 확인을 위해서 임의로 목업 데이터 사용 */}
-          {list?.filter((item) => item.title.includes(text)).length === 0
-          && (
-          <div className={styles['search-query-list__text--not-found']}>
-            해당
-            {` ${text} `}
-            관련 음식점/게시물을 찾을 수 없습니다.
-          </div>
-          )}
-          {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item) => <li key={item.title} className={styles['search-query-list__item']}>{item.title}</li>)}
-        </ul>
-      </div>
+      </section>
+      <ul className={cn({
+        [styles['search-query-list']]: true,
+        [styles['search-query-list--hidden']]: mode === 'trending',
+      })}
+      >
+        {/* 이 부분은 검색창 리스트 필터링 확인을 위해서 임의로 목업 데이터 사용 */}
+        {list?.filter((item) => item.title.includes(text)).length === 0
+        && (
+        <div className={styles['search-query-list__text--not-found']}>
+          해당
+          {` ${text} `}
+          관련 음식점/게시물을 찾을 수 없습니다.
+        </div>
+        )}
+        {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item) => <li key={item.title} className={styles['search-query-list__item']}>{item.title}</li>)}
+      </ul>
     </div>
   );
 }

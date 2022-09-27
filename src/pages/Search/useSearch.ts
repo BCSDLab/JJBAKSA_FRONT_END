@@ -16,6 +16,7 @@ export default function useSearch(state : ICurrentMode) {
 
   const changeTrendingMode = () => {
     setMode('trending');
+    setText('');
   };
 
   return {
