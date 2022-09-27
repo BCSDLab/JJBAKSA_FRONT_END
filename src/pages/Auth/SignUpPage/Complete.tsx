@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as CelebrateIcon } from 'assets/svg/celebrate.svg';
 import styles from './Complete.module.scss';
 import useRouteCheck from './hooks/useRouteCheck';
 
@@ -19,14 +18,13 @@ export default function CompleteForm() {
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         {/* 헤더 */}
         <div>쩝쩝박사</div>
-        <CelebrateIcon className={styles.form__icon} />
+        <div className={styles.form__icon}>🎉</div>
         <div className={styles.form__text}>
           {'회원가입을 축하합니다!\n당신을 어떻게 부르면 좋을까요?'}
         </div>
         <input
           className={styles.form__input}
           placeholder="닉네임을 입력해주세요"
-          // eslint-disable-next-line react/jsx-props-no-spreading
           {...register('nickname', { required: true })}
         />
         <button

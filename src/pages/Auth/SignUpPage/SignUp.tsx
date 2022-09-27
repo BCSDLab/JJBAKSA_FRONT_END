@@ -85,7 +85,6 @@ export default function SignUpForm() {
                 [styles['form__input--error']]: errors?.id !== undefined,
               })}
         // TODO: 아이디 중복확인 기능
-        // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('id', { required: ERROR_MESSAGE.id })}
             />
             <button
@@ -126,7 +125,6 @@ export default function SignUpForm() {
                 [styles['form__input--email']]: true,
                 [styles['form__input--error']]: errors?.email !== undefined,
               })}
-            // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('email', { required: ERROR_MESSAGE.email })}
             />
             <div className={styles['form__email-sign']}>@</div>
@@ -177,7 +175,6 @@ export default function SignUpForm() {
                 [styles.form__input]: true,
                 [styles['form__input--error']]: errors?.password !== undefined,
               })}
-              // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('password', {
                 required: ERROR_MESSAGE.password,
                 minLength: {
@@ -223,7 +220,6 @@ export default function SignUpForm() {
                 [styles.form__input]: true,
                 [styles['form__input--error']]: errors?.passwordCheck !== undefined,
               })}
-              // eslint-disable-next-line react/jsx-props-no-spreading
               {...register('passwordCheck', {
                 required: ERROR_MESSAGE.passwordCheck,
                 validate: {
