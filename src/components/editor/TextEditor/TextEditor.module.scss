@@ -123,7 +123,7 @@
         :nth-child(n) {
           animation: show-out 0.2s ease-out normal forwards;
         }
-        
+
         @for $i from 1 through 4 {
           :nth-child(#{$i}) {
             animation-delay: calc(0.1s * #{$i});
