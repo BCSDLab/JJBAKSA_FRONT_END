@@ -21,7 +21,14 @@ function LoginPage(): JSX.Element {
     register,
     handleSubmit,
     formState: { isValid },
-  } = useForm<IFormInput>({ mode: 'onChange' });
+  } = useForm<IFormInput>({
+    mode: 'onChange',
+    defaultValues: {
+      id: '',
+      pw: '',
+      checkbox: false,
+    },
+  });
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
   return (
