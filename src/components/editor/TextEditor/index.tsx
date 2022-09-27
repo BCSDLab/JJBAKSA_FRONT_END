@@ -1,11 +1,14 @@
 import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.svg';
 import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
+import { useNavigate } from 'react-router-dom';
+import { useRef } from 'react';
 import StarRating from 'components/StarRating';
-import Wysiwyg from 'components/editor/Wysiwyg';
+import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
 import cn from 'utils/ts/classNames';
-import useEditor from './hooks/useEditor';
 import styles from './TextEditor.module.scss';
+import useTextTools from './hooks/useTextTool';
+import useCheckRate from './hooks/useChckRate';
 
 interface Props {
   shop: string | null;
@@ -13,14 +16,10 @@ interface Props {
 }
 
 function TextEditor({ shop, getShopname }: Props) {
-  const {
-    showTextTools,
-    isRate,
-    navigate,
-    wysiwygRef,
-    textToolHandler,
-    rating,
-  } = useEditor();
+  const wysiwygRef = useRef<WysiwygType | null>(null);
+  const navigate = useNavigate();
+  const { isActive, setActive } = useCheckRate();
+  const { isShow, changeView } = useTextTools();
 
   return (
     <div className={cn({
@@ -43,7 +42,7 @@ function TextEditor({ shop, getShopname }: Props) {
           : (
             <>
               <div className={styles.header__shopname}>{ shop }</div>
-              <StarRating onClick={rating} />
+              <StarRating setActive={setActive} />
             </>
           )}
       </div>
@@ -58,7 +57,7 @@ function TextEditor({ shop, getShopname }: Props) {
           <span
             className={cn({
               [styles['item__text-tools']]: true,
-              [styles['item__text-tools--show']]: showTextTools,
+              [styles['item__text-tools--show']]: isShow,
             })}
           >
             <div>
@@ -68,7 +67,7 @@ function TextEditor({ shop, getShopname }: Props) {
                   [styles.item__button]: true,
                   [styles['item__button--tool']]: true,
                 })}
-                onClick={textToolHandler}
+                onClick={changeView}
               >
                 T
               </button>
@@ -121,9 +120,9 @@ function TextEditor({ shop, getShopname }: Props) {
           type="button"
           className={cn({
             [styles['save-button']]: true,
-            [styles['save-button--active']]: isRate,
+            [styles['save-button--active']]: isActive,
           })}
-          disabled={!isRate && shop != null}
+          disabled={!isActive && shop != null}
         >
           저장
         </button>
