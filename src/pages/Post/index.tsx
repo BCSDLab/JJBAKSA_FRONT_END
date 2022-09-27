@@ -11,7 +11,7 @@ function Post() {
   };
   return (
     <div className={styles.post}>
-      <TextEditor shop={getShopname()} getShopname={getShopname} />
+      <TextEditor shop="asda" getShopname={getShopname} />
     </div>
   );
 }

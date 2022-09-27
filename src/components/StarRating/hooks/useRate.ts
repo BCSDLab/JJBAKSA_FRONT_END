@@ -6,22 +6,37 @@ export interface Props {
 
 export default function useRate({ onClick }: Props) {
   const [hover, setHover] = useState(0);
-  const [click, setClick] = useState(0);
+  const [rateValue, setRateValue] = useState(0);
+  const fillStar = (num: number, event?: string): string => {
+    if (event === 'enter') {
+      if (hover >= num) {
+        return '#ff7f23';
+      }
+    }
+    if (event === 'leave') {
+      if (rateValue >= num) {
+        return '#ff7f23';
+      }
+    }
+    return '#eeeeee';
+  };
   const fixStarCount = (num: number) => {
-    setClick(num);
+    setRateValue(num);
     onClick?.();
   };
   const countStarHover = (num: number) => {
     setHover(num);
+    fillStar(num, 'enter');
   };
   const starHoverLeave = (num: number) => {
-    setHover(num);
+    setHover(0);
+    fillStar(num, 'leave');
   };
   return {
-    hover,
-    click,
     fixStarCount,
     countStarHover,
     starHoverLeave,
+    fillStar,
+    hover,
   };
 }
