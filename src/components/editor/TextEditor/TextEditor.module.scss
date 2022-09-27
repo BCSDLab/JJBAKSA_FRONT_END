@@ -123,21 +123,11 @@
         :nth-child(n) {
           animation: show-out 0.2s ease-out normal forwards;
         }
-
-        :nth-child(1) {
-          animation-delay: 0.1s;
-        }
-
-        :nth-child(2) {
-          animation-delay: 0.2s;
-        }
-
-        :nth-child(3) {
-          animation-delay: 0.3s;
-        }
-
-        :nth-child(4) {
-          animation-delay: 0.4s;
+        
+        @for $i from 1 through 4 {
+          :nth-child(#{$i}) {
+            animation-delay: calc(0.1s * #{$i});
+          }
         }
       }
     }
@@ -147,11 +137,12 @@
       display: flex;
 
       &__button {
-        background-color: #d9d9d9d9;
+        background: none;
         font-size: 16px;
         padding: 0 8px;
         height: 20px;
         line-height: 20px;
+        cursor: pointer;
 
         &--bold {
           font-weight: 700;
@@ -177,6 +168,7 @@
     font-size: 12px;
     line-height: 15px;
     color: white;
+    cursor: pointer;
     background-color: #c4c4c4;
 
     &--active {
