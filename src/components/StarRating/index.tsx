@@ -1,15 +1,20 @@
 import { ReactComponent as Star } from 'assets/svg/star.svg';
 import styles from './StarRating.module.scss';
-import useRate, { Props } from './hooks/useRate';
+import useStarIndex from './hooks/useStarIndex';
+import useFillStar from './hooks/useFillStar';
+
+interface Props {
+  onClick: () => void;
+}
 
 function StarContainer({ onClick }: Props) {
   const {
-    fixStarCount,
-    countStarHover,
-    starHoverLeave,
-    fillStar,
-    hover,
-  } = useRate({ onClick });
+    hoveredStarIndex,
+    setHoveredStarIndex,
+    clickedStarIndex,
+    setClickedStarIndex,
+  } = useStarIndex();
+  const { fillStarOfIndex } = useFillStar({ hoveredStarIndex, clickedStarIndex });
 
   return (
     <div className={styles.starRateContainer}>
@@ -18,14 +23,17 @@ function StarContainer({ onClick }: Props) {
           key={num}
           type="button"
           className={styles.wrapper}
-          onMouseEnter={() => countStarHover(num)}
-          onMouseLeave={() => starHoverLeave(num)}
-          onClick={() => fixStarCount(num)}
+          onMouseEnter={() => setHoveredStarIndex(num)}
+          onMouseLeave={() => setHoveredStarIndex(0)}
+          onClick={() => {
+            setClickedStarIndex(num);
+            onClick?.();
+          }}
         >
           <Star
-            fill={fillStar(num, hover === 0 ? 'leave' : 'enter')}
             key={num}
             className={styles.wrapper__star}
+            fill={fillStarOfIndex(num, hoveredStarIndex === 0 ? 'leave' : 'enter')}
           />
         </button>
       ))}
