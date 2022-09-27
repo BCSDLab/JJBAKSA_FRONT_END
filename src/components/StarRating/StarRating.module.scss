@@ -15,13 +15,13 @@
   background: none;
   border: none;
 
+  &__star {
+    transition: all 0.2s ease-out;
+  }
+
   &:hover {
     .wrapper__star {
       transform: scale(1.2);
     }
-  }
-  
-  &__star {
-    transition: all 0.2s ease-out;
   }
 }
