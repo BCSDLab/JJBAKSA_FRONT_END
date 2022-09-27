@@ -12,7 +12,7 @@ interface Props {
 export const StarRatingContext = createContext<ContextType | null>(null);
 
 // StarContainer밖에 커서가 있을 때
-function LeavedStarContainer({ rating }: { rating: number }) {
+function FixStarRatingContainer({ rating }: { rating: number }) {
   const { handleEnter } = useStarRatingContext({ StarRatingContext });
   return (
     <div
@@ -37,7 +37,7 @@ function LeavedStarContainer({ rating }: { rating: number }) {
 }
 
 // StarContainer안으로 커서가 들어왔을 때
-function EnteredStarContainer({ rating }: { rating: number }) {
+function UnFixStarRatingContainer({ rating }: { rating: number }) {
   const { handleLeave, handleClick, onClick } = useStarRatingContext({ StarRatingContext });
   const [star, setStar] = useState(rating);
 
@@ -88,9 +88,9 @@ export default function StarRating({ onClick }: Props) {
   return (
     <StarRatingContext.Provider value={value}>
       {fixed === true ? (
-        <LeavedStarContainer rating={rating} />
+        <FixStarRatingContainer rating={rating} />
       ) : (
-        <EnteredStarContainer rating={rating} />
+        <UnFixStarRatingContainer rating={rating} />
       )}
     </StarRatingContext.Provider>
   );
