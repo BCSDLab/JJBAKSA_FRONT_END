@@ -46,6 +46,10 @@ p {
   height: 100px;
   font-size: 12px;
 }
+.caution {
+  display: flex;
+  align-items: center;
+}
 
 .animation {
   animation: vibration 0.1s;
