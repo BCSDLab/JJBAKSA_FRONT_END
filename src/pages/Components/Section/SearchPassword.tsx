@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
-import style from './SearchId.module.scss';
+import style from './SearchPage.module.scss';
 
-export default function SearchPW() {
+export default function SearchPassword(): JSX.Element {
   const [inputValue, setInputValue] = useState<string>('');
   const [isCorrect, setIsCorrect] = useState(true);
   const [isInput, setIsInput] = useState(false);

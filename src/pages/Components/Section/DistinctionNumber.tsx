@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
-import warning from 'assets/svg/warning.svg';
+import warningImage from 'assets/svg/warning.svg';
 import InputNumber, { Distinct } from './InputNumber';
-import style from './SearchId.module.scss';
-import ModalForID from './ModalForID';
+import style from './SearchPage.module.scss';
+import Modal from './Modal';
 
 const CORRECT = {
   first: '9',
@@ -11,11 +11,11 @@ const CORRECT = {
   third: '9',
   fourth: '9',
 };
-export default function DistinctionNumber() {
-  const [isEmpty, setIsEmpty] = useState<boolean>(true);
-  const [isCorrect, setIsCorrect] = useState<boolean>(true);
-  const [isRepeat, setIsRepeat] = useState(false);
-  const [success, setSuccess] = useState(false);
+export default function DistinctionNumber():JSX.Element {
+  const [isEmpty, setIsEmpty] = useState<boolean>();
+  const [isCorrect, setIsCorrect] = useState<boolean>();
+  const [isRepeat, setIsRepeat] = useState<boolean>();
+  const [success, setSuccess] = useState<boolean>();
   const [numbers, setNumbers] = useState<Distinct['distinct']>({
     first: '',
     second: '',
@@ -61,14 +61,14 @@ export default function DistinctionNumber() {
         </div>
         {isCorrect ? <div className={style.make_space}>{' '}</div> : (
           <div className={isRepeat ? style.error_message : [style.error_message, style.animation].join(' ')} onAnimationEnd={removeAnimation}>
-            <img src={warning} alt="warning" className={style.warning} />
+            <img src={warningImage} alt="warning" className={style.warning} />
             인증번호가 올바르지 않습니다.
           </div>
         )}
         <InputNumber distinct={numbers} setInput={setInput} setIsEmpty={setIsEmpty} />
         <button type="button" className={isEmpty ? style.inactive : style.active} onClick={checkIsCorrect}>완료</button>
       </div>
-      {success && isCorrect && <ModalForID />}
+      {success && isCorrect && <Modal modal="idModal" />}
     </div>
   );
 }

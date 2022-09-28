@@ -11,11 +11,12 @@ export interface Distinct {
   setIsEmpty: (arg0: boolean) => void
 }
 
-export default function InputNumber({ distinct, setInput, setIsEmpty }: Distinct) {
+export default function InputNumber({ distinct, setInput, setIsEmpty }: Distinct): JSX.Element {
   const {
     first, second, third, fourth,
   } = distinct;
   const inputRef = useRef<HTMLInputElement[] | null[]>([]);
+
   const autoFocus = (index: number) => {
     inputRef.current[index]?.focus();
     if (inputRef.current[index]?.value !== '') {
@@ -25,6 +26,7 @@ export default function InputNumber({ distinct, setInput, setIsEmpty }: Distinct
       inputRef.current[index]?.blur();
     }
   };
+
   const checkInput = () => {
     if (first !== '' && second !== '' && third !== '' && fourth !== '') {
       setIsEmpty(false);
