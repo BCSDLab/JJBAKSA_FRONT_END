@@ -5,25 +5,24 @@ import {
 import useContext from '../../utils/hooks/useContext';
 import styles from './StarRating.module.scss';
 
-interface StarRatingContextType {
-  handleEnter: () => void;
-  handleClick: (num: number) => void;
-  handleLeave: () => void;
+interface StarRateContextType {
+  enter: () => void;
+  leave: () => void;
+  click: (num: number) => void;
   setActive?: () => void;
 }
 interface Props {
   setActive: () => void;
 }
 
-export const StarRatingContext = createContext<StarRatingContextType | null>(null);
+export const StarRateContext = createContext<StarRateContextType | null>(null);
 
-// 고정된 별점을 보여주는 컴포넌트
-function FixStarRatingContainer({ rating }: { rating: number }) {
-  const { handleEnter } = useContext(StarRatingContext);
+function LeaveStarRateContainer({ rating }: { rating: number }) {
+  const { enter } = useContext(StarRateContext);
   return (
     <div
       className={styles.starRateContainer}
-      onMouseEnter={handleEnter}
+      onMouseEnter={enter}
     >
       { [1, 2, 3, 4, 5].map((num) => (
         <button
@@ -32,7 +31,7 @@ function FixStarRatingContainer({ rating }: { rating: number }) {
           className={styles.wrapper}
         >
           <Star
-            key={num + 1}
+            key={num}
             className={styles.wrapper__star}
             fill={rating >= num ? '#ff7f23' : '#eee'}
           />
@@ -42,19 +41,18 @@ function FixStarRatingContainer({ rating }: { rating: number }) {
   );
 }
 
-// 유동적으로 별점을 보여주는 컴포넌트
-function UnFixStarRatingContainer({ rating }: { rating: number }) {
+function EnterStarRateContainer({ rating }: { rating: number }) {
   const {
-    handleLeave, handleClick, setActive,
-  } = useContext(StarRatingContext);
-  const [starIndex, setStarIndex] = useState(rating);
+    leave, click, setActive,
+  } = useContext(StarRateContext);
+  const [starNum, setStarNum] = useState(rating);
 
   return (
     <div
       className={styles.starRateContainer}
       onMouseLeave={() => {
-        handleLeave();
-        setStarIndex(0);
+        leave();
+        setStarNum(0);
       }}
     >
       {[1, 2, 3, 4, 5].map((num) => (
@@ -62,16 +60,16 @@ function UnFixStarRatingContainer({ rating }: { rating: number }) {
           key={num}
           type="button"
           className={styles.wrapper}
-          onMouseEnter={() => setStarIndex(num)}
+          onMouseEnter={() => setStarNum(num)}
           onClick={() => {
-            handleClick(num);
+            click(num);
             setActive?.();
           }}
         >
           <Star
             key={num}
             className={styles.wrapper__star}
-            fill={starIndex >= num ? '#ff7f23' : '#eee'}
+            fill={starNum >= num ? '#ff7f23' : '#eee'}
           />
         </button>
       ))}
@@ -81,25 +79,22 @@ function UnFixStarRatingContainer({ rating }: { rating: number }) {
 
 export default function StarRating({ setActive }: Props) {
   const [rating, setRating] = useState(0);
-  const [fixed, setFixed] = useState<boolean>(false);
+  const [mouseEnter, setMouseEnter] = useState(false);
 
   const value = useMemo(() => ({
-    handleEnter: () => setFixed(false),
-    handleLeave: () => setFixed(true),
-    handleClick: (num: number) => {
-      setRating(num);
-      setFixed(true);
-    },
+    enter: () => setMouseEnter(true),
+    leave: () => setMouseEnter(false),
+    click: (num: number) => setRating(num),
     setActive: () => setActive?.(),
   }), [setActive]);
 
   return (
-    <StarRatingContext.Provider value={value}>
-      {fixed === true ? (
-        <FixStarRatingContainer rating={rating} />
+    <StarRateContext.Provider value={value}>
+      {mouseEnter === true ? (
+        <EnterStarRateContainer rating={rating} />
       ) : (
-        <UnFixStarRatingContainer rating={rating} />
+        <LeaveStarRateContainer rating={rating} />
       )}
-    </StarRatingContext.Provider>
+    </StarRateContext.Provider>
   );
 }
