@@ -39,10 +39,10 @@ function LoginPage(): JSX.Element {
             <input className={styles.loginform__input} type="text" id="id" placeholder="아이디" {...register('id', { required: true })} />
             <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('pw', { required: true })} />
             <div className={styles.autologin}>
+              <span className={styles.autologin__text}>자동 로그인</span>
               <label htmlFor="checkbox">
                 <input type="checkbox" id="checkbox" {...register('checkbox')} className={styles.checkbox} />
               </label>
-              <span className={styles.autologin__text}>자동 로그인</span>
             </div>
             <button type="submit" disabled={!isValid} className={styles.loginform__button}>
               로그인

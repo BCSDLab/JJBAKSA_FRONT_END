@@ -93,7 +93,7 @@
 
 .autologin {
   display: flex;
-  flex-direction: row-reverse;
+  justify-content: end;
   align-items: center;
 
   &__text {
@@ -103,7 +103,7 @@
   }
 
   @include media.media-breakpoint-down(mobile) {
-    flex-direction: row;
+    justify-content: start;
 
     &__text {
       margin-left: 8px;
