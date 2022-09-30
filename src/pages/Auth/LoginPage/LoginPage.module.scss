@@ -101,8 +101,10 @@
     font-weight: 400;
     margin-right: 9px;
   }
+
   @include media.media-breakpoint-down(mobile) {
     flex-direction: row;
+
     &__text {
       margin-left: 8px;
     }

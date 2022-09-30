@@ -1,9 +1,7 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { ReactComponent as GoogleIcon } from 'assets/svg/google.svg';
 import { ReactComponent as NaverIcon } from 'assets/svg/naver.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/kakao.svg';
 import { useForm, SubmitHandler } from 'react-hook-form';
-// import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
