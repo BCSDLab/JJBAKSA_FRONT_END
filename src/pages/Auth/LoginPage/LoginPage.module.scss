@@ -115,6 +115,7 @@
   appearance: none;
   width: 24px;
   height: 12px;
+  box-sizing: border-box;
   border-radius: 24px;
   background-color: #c4c4c4;
   border: 1px solid #c4c4c4;
@@ -185,21 +186,32 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 24px;
+
+    @include media.media-breakpoint-down(mobile) {
+      gap: 12px;
+    }
   }
 
   &__icon {
-    margin-right: 12px;
-    margin-left: 12px;
     box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
     border-radius: 50%;
     width: 57px;
     height: 57px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 
     @include media.media-breakpoint-down(mobile) {
-      margin-right: 6px;
-      margin-left: 6px;
       width: 40px;
       height: 40px;
+      margin-bottom: 0;
+
+      svg {
+        width: 12px;
+        height: 12px;
+      }
     }
 
     &:hover,
@@ -209,60 +221,17 @@
 
     &--google {
       background: #ffffff;
-      border: 0.5px solid #eeeeee;
-
-      svg {
-        padding-top: 18.5px;
-        z-index: 1;
-      }
+      border: 1px solid #eeeeee;
     }
 
     &--kakao {
       background: #fee500;
-      border: 0.5px solid #efd54f;
-
-      svg {
-        padding-top: 20.5px;
-      }
+      border: 1px solid #efd54f;
     }
 
     &--naver {
       background: #03c75a;
-      border: 0.5px solid #2aab15;
-
-      svg {
-        padding-top: 22.5px;
-      }
-    }
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    margin-bottom: 0;
-
-    &__icon {
-      &--google {
-        svg {
-          width: 12px;
-          height: 12px;
-          padding-top: 14px;
-        }
-      }
-
-      &--kakao {
-        svg {
-          width: 12px;
-          height: 11px;
-          padding-top: 15px;
-        }
-      }
-
-      &--naver {
-        svg {
-          width: 8px;
-          height: 8px;
-          padding-top: 16px;
-        }
-      }
+      border: 1px solid #2aab15;
     }
   }
 }
