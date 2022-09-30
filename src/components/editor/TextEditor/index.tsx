@@ -42,7 +42,7 @@ function TextEditor({ shop, getShopname }: Props) {
           : (
             <>
               <div className={styles.header__shopname}>{ shop }</div>
-              <StarRating setActive={setActive} />
+              <StarRating onClick={setActive} />
             </>
           )}
       </div>

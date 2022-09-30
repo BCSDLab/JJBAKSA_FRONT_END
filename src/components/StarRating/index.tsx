@@ -6,23 +6,22 @@ import useContext from '../../utils/hooks/useContext';
 import styles from './StarRating.module.scss';
 
 interface StarRateContextType {
-  enter: () => void;
-  leave: () => void;
-  click: (num: number) => void;
-  setActive?: () => void;
+  handleMouseEnter: () => void;
+  handleMouseLeave: () => void;
+  handleClick: (num: number) => void;
 }
 interface Props {
-  setActive: () => void;
+  onClick: () => void;
 }
 
 export const StarRateContext = createContext<StarRateContextType | null>(null);
 
 function LeaveStarRateContainer({ rating }: { rating: number }) {
-  const { enter } = useContext(StarRateContext);
+  const { handleMouseEnter } = useContext(StarRateContext);
   return (
     <div
       className={styles.starRateContainer}
-      onMouseEnter={enter}
+      onMouseEnter={handleMouseEnter}
     >
       { [1, 2, 3, 4, 5].map((num) => (
         <button
@@ -43,7 +42,7 @@ function LeaveStarRateContainer({ rating }: { rating: number }) {
 
 function EnterStarRateContainer({ rating }: { rating: number }) {
   const {
-    leave, click, setActive,
+    handleMouseLeave, handleClick,
   } = useContext(StarRateContext);
   const [starNum, setStarNum] = useState(rating);
 
@@ -51,7 +50,7 @@ function EnterStarRateContainer({ rating }: { rating: number }) {
     <div
       className={styles.starRateContainer}
       onMouseLeave={() => {
-        leave();
+        handleMouseLeave();
         setStarNum(0);
       }}
     >
@@ -62,8 +61,7 @@ function EnterStarRateContainer({ rating }: { rating: number }) {
           className={styles.wrapper}
           onMouseEnter={() => setStarNum(num)}
           onClick={() => {
-            click(num);
-            setActive?.();
+            handleClick(num);
           }}
         >
           <Star
@@ -77,20 +75,22 @@ function EnterStarRateContainer({ rating }: { rating: number }) {
   );
 }
 
-export default function StarRating({ setActive }: Props) {
+export default function StarRating({ onClick }: Props) {
   const [rating, setRating] = useState(0);
-  const [mouseEnter, setMouseEnter] = useState(false);
+  const [isMouseEnter, setIsMouseEnter] = useState(false);
 
   const value = useMemo(() => ({
-    enter: () => setMouseEnter(true),
-    leave: () => setMouseEnter(false),
-    click: (num: number) => setRating(num),
-    setActive: () => setActive?.(),
-  }), [setActive]);
+    handleMouseEnter: () => setIsMouseEnter(true),
+    handleMouseLeave: () => setIsMouseEnter(false),
+    handleClick: (num: number) => {
+      setRating(num);
+      onClick?.();
+    },
+  }), [onClick]);
 
   return (
     <StarRateContext.Provider value={value}>
-      {mouseEnter === true ? (
+      {isMouseEnter ? (
         <EnterStarRateContainer rating={rating} />
       ) : (
         <LeaveStarRateContainer rating={rating} />
