@@ -93,32 +93,38 @@
 
 .autologin {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
-  margin-top: 8px;
 
   &__text {
     font-size: 12px;
     font-weight: 400;
+    margin-right: 9px;
+  }
+  @include media.media-breakpoint-down(mobile) {
+    flex-direction: row;
+    &__text {
+      margin-left: 8px;
+    }
   }
 }
 
 .checkbox {
   appearance: none;
   width: 24px;
-  height: 13px;
+  height: 12px;
   border-radius: 24px;
   background-color: #c4c4c4;
   border: 1px solid #c4c4c4;
-  position: absolute;
 
-   &::after {
+  &::after {
     transition: all 150ms;
     content: "";
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background-color: #ffffff;
     border-radius: 50%;
-    position: absolute; 
+    position: absolute;
   }
 
   &:checked {
@@ -126,11 +132,10 @@
     border: 1px solid #ff7f23;
 
     &::after {
-      transform: translate(11px,0);
+      transform: translate(11px, 0);
     }
   }
 }
-  
 
 .help {
   font-size: 12px;
