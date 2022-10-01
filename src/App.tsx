@@ -1,5 +1,4 @@
 import DefaultLayout from 'layout/DefaultLayout';
-import LoginPage from 'pages/Auth/LoginPage';
 import Home from 'pages/Home';
 import Search from 'pages/Search';
 import { Routes, Route } from 'react-router-dom';
