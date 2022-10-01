@@ -7,13 +7,17 @@ const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-z
 interface Isearch {
   search: string
 }
+interface FormData {
+  email: string
+}
+
 export default function Search({ search }: Isearch): JSX.Element {
   const {
     register,
     getValues,
     handleSubmit,
     formState: { isSubmitting, errors },
-  } = useForm({
+  } = useForm<FormData>({
     mode: 'onChange',
   });
   return (
@@ -42,11 +46,11 @@ export default function Search({ search }: Isearch): JSX.Element {
           {errors.email && (
           <span className={style.caution}>
             <Caution />
-            올바르지 않은 이메일 형식입니다.
+            {errors.email?.message}
           </span>
           )}
         </div>
-        <form onSubmit={handleSubmit((data) => (data))}>
+        <form onSubmit={handleSubmit((data) => data)}>
           <div className={style.input_label}>
             <div className={style.email}>이메일</div>
             <input
@@ -55,7 +59,7 @@ export default function Search({ search }: Isearch): JSX.Element {
               className={style.input_style_radius}
               id="email"
               {...register('email', {
-                required: true,
+                required: 'email을 입력해주세요',
                 pattern: {
                   value: emailPattern,
                   message: '올바른 email 형식이 아닙니다.',
