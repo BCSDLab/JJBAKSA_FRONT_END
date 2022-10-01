@@ -67,7 +67,7 @@
     margin-right: 16px;
     margin-left: 16px;
     background: #eeeeee;
-
+    padding-left: 15px;
     &__input {
       width: 100%;
       height: 15px;
@@ -75,7 +75,6 @@
       background: none;
       font-size: 14px;
       line-height: 15px;
-      padding-left: 11px;
 
       &::placeholder {
         color: #c4c4c4;
@@ -86,7 +85,9 @@
     &__icon {
       width: 18px;
       height: 18px;
+      padding-left: 15px;
       padding-right: 14px;
+
       cursor: pointer;
     }
   }
@@ -133,7 +134,7 @@
   .search-query-list {
     height: calc(100vh - 180px);
     overflow: scroll;
-
+    
     &__item {
       display: flex;
       font-size: 14px;
