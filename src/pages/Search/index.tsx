@@ -1,15 +1,36 @@
 import { ReactComponent as PreviousIcon } from 'assets/svg/previous.svg';
 import { ReactComponent as LensIcon } from 'assets/svg/lens.svg';
 import { Link, useSearchParams } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import list from './static/data';
 import styles from './Search.module.scss';
 import hash_tag from './static/trend';
 import recommend_text from './static/recommend';
-import useSearch from './useSearch';
 import cn from '../../utils/ts/classNames';
 
 type ICurrentMode = string | null;
+
+function useSearch(state : ICurrentMode) {
+  const [text, setText] = useState('');
+  const [mode, setMode] = useState(state);
+
+  const changeSearchBarText = (e : React.ChangeEvent<HTMLInputElement>) => {
+    setText((e.target.value));
+  };
+
+  const changeSearchMode = () => {
+    setMode('search');
+  };
+
+  const changeTrendingMode = () => {
+    setMode('trending');
+    setText('');
+  };
+
+  return {
+    text, mode, changeSearchBarText, changeSearchMode, changeTrendingMode,
+  };
+}
 
 function Search(): JSX.Element {
   const [searchParams] = useSearchParams();
