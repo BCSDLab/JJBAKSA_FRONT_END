@@ -8,13 +8,13 @@ import recommend_text from './static/recommend';
 import cn from '../../utils/ts/classNames';
 import RollingBanner from './components/RollingBanner';
 
-type ICurrentMode = string | null;
+type CurrentMode = string | null;
 
-function useSearch(state : ICurrentMode) {
+function useSearchForm(state : CurrentMode) {
   const [text, setText] = useState('');
   const [mode, setMode] = useState(state);
 
-  const changeSearchBarText = (e : React.ChangeEvent<HTMLInputElement>) => {
+  const handleText = (e : React.ChangeEvent<HTMLInputElement>) => {
     setText((e.target.value));
   };
 
@@ -28,16 +28,16 @@ function useSearch(state : ICurrentMode) {
   };
 
   return {
-    text, mode, changeSearchBarText, changeSearchMode, changeTrendingMode,
+    text, mode, handleText, changeSearchMode, changeTrendingMode,
   };
 }
 
 function Search(): JSX.Element {
   const [searchParams] = useSearchParams();
-  const currentMode : ICurrentMode = searchParams.get('mode');
+  const currentMode : CurrentMode = searchParams.get('mode');
   const {
-    text, mode, changeSearchBarText, changeSearchMode, changeTrendingMode,
-  } = useSearch(currentMode || 'trending');
+    text, mode, handleText, changeSearchMode, changeTrendingMode,
+  } = useSearchForm(currentMode || 'trending');
 
   const recommendIdx = useRef(new Date().getSeconds() % 2);
 
@@ -62,7 +62,7 @@ function Search(): JSX.Element {
         </h1>
         )}
         <label title="검색어 입력" className={styles['search-bar']} htmlFor="searchBarInput">
-          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={changeSearchMode} onBlur={changeTrendingMode} placeholder="검색어를 입력해주세요" value={text} onChange={changeSearchBarText} />
+          <input className={styles['search-bar__input']} id="searchBarInput" onFocus={changeSearchMode} onBlur={changeTrendingMode} placeholder="검색어를 입력해주세요" value={text} onChange={handleText} />
           <LensIcon title="검색" className={styles['search-bar__icon']} />
         </label>
         {mode === 'trending' && (
