@@ -3,12 +3,11 @@ import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
+import useBoolean from 'utils/hooks/useBoolean';
 import StarRating from 'components/StarRating';
 import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
 import cn from 'utils/ts/classNames';
 import styles from './TextEditor.module.scss';
-import useTextTools from './hooks/useTextTool';
-import useCheckRate from './hooks/useChckRate';
 
 interface Props {
   shop: string | null;
@@ -18,8 +17,8 @@ interface Props {
 function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
   const navigate = useNavigate();
-  const { isActive, setActive } = useCheckRate();
-  const { isShow, changeView } = useTextTools();
+  const isActive = useBoolean(false);
+  const isShow = useBoolean(false);
 
   return (
     <div className={cn({
@@ -42,7 +41,7 @@ function TextEditor({ shop, getShopname }: Props) {
           : (
             <>
               <div className={styles.header__shopname}>{ shop }</div>
-              <StarRating onClick={setActive} />
+              <StarRating onClick={isActive.setTrue} />
             </>
           )}
       </div>
@@ -57,7 +56,7 @@ function TextEditor({ shop, getShopname }: Props) {
           <span
             className={cn({
               [styles['item__text-tools']]: true,
-              [styles['item__text-tools--show']]: isShow,
+              [styles['item__text-tools--show']]: isShow.value,
             })}
           >
             <div>
@@ -67,7 +66,7 @@ function TextEditor({ shop, getShopname }: Props) {
                   [styles.item__button]: true,
                   [styles['item__button--tool']]: true,
                 })}
-                onClick={changeView}
+                onClick={isShow.toggle}
               >
                 T
               </button>
@@ -120,9 +119,9 @@ function TextEditor({ shop, getShopname }: Props) {
           type="button"
           className={cn({
             [styles['save-button']]: true,
-            [styles['save-button--active']]: isActive,
+            [styles['save-button--active']]: isActive.value,
           })}
-          disabled={!isActive && shop != null}
+          disabled={!isActive.value && shop != null}
         >
           저장
         </button>
