@@ -27,6 +27,9 @@ body {
 
   &__icon {
     margin: 213px 0 24px;
+    width: 74px;
+    height: 75px;
+    font-size: 60px;
 
     @include media.media-breakpoint-down(mobile) {
       margin: 101px 0 11px;
