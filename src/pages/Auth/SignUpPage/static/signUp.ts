@@ -1,17 +1,17 @@
-interface IDomain {
+interface Domain {
   key: number;
   name: string;
   address: string;
 }
 
-interface IErrorMessage {
+export interface ErrorMessage {
   id: string;
   email: string
   password: string;
   passwordCheck: string;
 }
 
-const domain: IDomain[] = [
+const domain: Domain[] = [
   {
     key: 1,
     name: 'gmail',
@@ -49,7 +49,7 @@ const domain: IDomain[] = [
   },
 ];
 
-const ERROR_MESSAGE : IErrorMessage = {
+const ERROR_MESSAGE : ErrorMessage = {
   id: '아이디 중복확인을 해주세요.',
   email: '존재하지 않는 도메인입니다.',
   password: '비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야합니다.',

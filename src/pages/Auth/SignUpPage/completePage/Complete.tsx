@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import styles from './Complete.module.scss';
-import useRouteCheck from './hooks/useRouteCheck';
+import useRouteCheck from '../hooks/useRouteCheck';
 
 export default function CompleteForm() {
   useRouteCheck('signUpCheck', '/signup');

@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Arrow } from 'assets/svg/arrow.svg';
 import styles from './TermsOfService.module.scss';
-import PRIVACY from './static/privacy';
+import PRIVACY from '../static/privacy';
 
 const useCheckbox = () => {
   const [checkedList, setCheckedList] = useState<boolean[]>(() => PRIVACY.map(() => false));

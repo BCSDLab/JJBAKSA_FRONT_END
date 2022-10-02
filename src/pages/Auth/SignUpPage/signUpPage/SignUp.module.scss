@@ -1,5 +1,5 @@
 @use "src/utils/styles/mediaQuery" as media;
-@use "./Mixin.module.scss" as mixin;
+@use "../Mixin.module.scss" as mixin;
 
 $active: #ff7f23;
 $passive: #c4c4c4;
@@ -36,7 +36,10 @@ body {
 
   @include media.media-breakpoint-down(mobile) {
     width: 100%;
-    margin-top: 104px;
+    margin-top: 64px;
+    padding-top: 32px;
+    position: relative;
+    height: 415px;
   }
 
   &__title {
@@ -49,7 +52,6 @@ body {
 
   &__form {
     margin-bottom: 24px;
-    position: relative;
 
     @include media.media-breakpoint-down(mobile) {
       width: 100%;
@@ -92,8 +94,8 @@ body {
       padding: 0 10px;
 
       @include media.media-breakpoint-down(mobile) {
-        width: 11px;
-        height: 11px;
+        width: 16px;
+        height: 16px;
         padding: 0 8px;
       }
     }
@@ -148,13 +150,16 @@ body {
     }
   }
 
-  &__error-text {
+  &__error {
     font-size: 11px;
     color: $active;
     display: inline-block;
 
     @include media.media-breakpoint-down(mobile) {
-      font-size: 9px;
+      font-size: 11px;
+      position: absolute;
+      top: 0;
+      display: flex;
     }
   }
 
