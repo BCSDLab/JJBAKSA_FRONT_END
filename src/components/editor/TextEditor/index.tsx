@@ -1,12 +1,13 @@
 import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.svg';
-import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
-import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useBoolean from 'utils/hooks/useBoolean';
-import StarRating from 'components/StarRating';
-import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
 import cn from 'utils/ts/classNames';
+import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
+import StarRating from 'components/StarRating';
+import AddImage from './AddImage';
+import SlideToolBox from './SlideToolBox';
 import styles from './TextEditor.module.scss';
 
 interface Props {
@@ -18,7 +19,6 @@ function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
   const navigate = useNavigate();
   const isActive = useBoolean(false);
-  const isShow = useBoolean(false);
 
   return (
     <div className={cn({
@@ -50,70 +50,13 @@ function TextEditor({ shop, getShopname }: Props) {
       </div>
       <span className={styles.item}>
         <span className={styles.item__tools}>
-          <button type="button" className={styles.item__button} onClick={() => wysiwygRef.current?.addImg()}>
-            <Picture />
-          </button>
-          <span
-            className={cn({
-              [styles['item__text-tools']]: true,
-              [styles['item__text-tools--show']]: isShow.value,
-            })}
-          >
-            <div>
-              <button
-                type="button"
-                className={cn({
-                  [styles.item__button]: true,
-                  [styles['item__button--tool']]: true,
-                })}
-                onClick={isShow.toggle}
-              >
-                T
-              </button>
-            </div>
-            <span className={styles['slide-tool-box']}>
-              <button
-                type="button"
-                className={cn({
-                  [styles['slide-tool-box__button']]: true,
-                  [styles['slide-tool-box__button--bold']]: true,
-                })}
-                onClick={() => wysiwygRef.current?.bold()}
-              >
-                B
-              </button>
-              <button
-                type="button"
-                className={cn({
-                  [styles['slide-tool-box__button']]: true,
-                  [styles['slide-tool-box__button--heading']]: true,
-                })}
-                onClick={() => wysiwygRef.current?.heading()}
-              >
-                H
-              </button>
-              <button
-                type="button"
-                className={cn({
-                  [styles['slide-tool-box__button']]: true,
-                  [styles['slide-tool-box__button--paragraph']]: true,
-                })}
-                onClick={() => wysiwygRef.current?.paragraph()}
-              >
-                H
-              </button>
-              <button
-                type="button"
-                className={cn({
-                  [styles['slide-tool-box__button']]: true,
-                  [styles['slide-tool-box__button--through']]: true,
-                })}
-                onClick={() => wysiwygRef.current?.through()}
-              >
-                T
-              </button>
-            </span>
-          </span>
+          <AddImage />
+          <SlideToolBox
+            bold={() => wysiwygRef.current?.bold()}
+            heading={() => wysiwygRef.current?.heading()}
+            paragraph={() => wysiwygRef.current?.paragraph()}
+            through={() => wysiwygRef.current?.through()}
+          />
         </span>
         <button
           type="button"

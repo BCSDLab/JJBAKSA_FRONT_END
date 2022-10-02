@@ -40,6 +40,7 @@
       top: 19px;
       width: 7px;
       height: 14px;
+      cursor: pointer;
     }
 
     &--add {
@@ -51,6 +52,7 @@
       padding: 9px;
       background-color: #eeeeee;
       border-radius: 25px;
+      cursor: pointer;
     }
   }
 
@@ -82,6 +84,7 @@
     border: none;
     font-family: inherit;
     font-weight: 400;
+    cursor: pointer;
   }
 
   &__tools {
