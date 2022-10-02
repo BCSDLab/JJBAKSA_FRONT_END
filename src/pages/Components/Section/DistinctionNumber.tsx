@@ -6,7 +6,7 @@ import InputNumber, { FormData } from './InputNumber';
 
 export default function DistinctionNumber():JSX.Element {
   const {
-    register, handleSubmit, formState: { errors }, getValues,
+    register, handleSubmit, formState: { errors },
   } = useForm<FormData>({
     mode: 'onChange',
   });
@@ -32,7 +32,7 @@ export default function DistinctionNumber():JSX.Element {
           </span>
           )}
         </div>
-        <InputNumber register={register} handleSubmit={handleSubmit} getValues={getValues} />
+        <InputNumber register={register} handleSubmit={handleSubmit} />
       </div>
     </div>
   );
