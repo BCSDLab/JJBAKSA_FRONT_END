@@ -41,15 +41,16 @@ export default function TermsOfService() {
           <div className={styles['terms-of-service__title']}>약관동의</div>
           <div>
             <div className={styles.checkbox}>
-              <div className={styles.checkbox_entire}>
+              <label htmlFor="allCheck" className={styles.checkbox__entire}>
                 <input
+                  id="allCheck"
                   className={styles.checkbox__input}
                   type="checkbox"
                   onChange={changeAllCheck}
                   checked={allCheck}
                 />
                 전체동의
-              </div>
+              </label>
             </div>
             {PRIVACY.map((res, index) => (
               <div key={res.key} className={styles.checkbox}>

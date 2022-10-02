@@ -85,7 +85,7 @@ details[open] > summary:first-of-type {
     @include mixin.font-medium;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 100%;
+      width: 227px;
     }
 
     display: flex;
