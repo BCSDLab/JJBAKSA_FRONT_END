@@ -15,7 +15,7 @@ export default function PasswordInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();
 
   const {
-    isPwBlind, setIsPwBlind,
+    isBlind, changeBlind,
   } = useBlindCheck();
 
   return (
@@ -35,7 +35,7 @@ export default function PasswordInput() {
       </div>
       <input
         placeholder="비밀번호를 입력하세요"
-        type={isPwBlind ? 'text' : 'password'}
+        type={isBlind ? 'text' : 'password'}
         autoComplete="new-password"
        // eslint-disable-next-line jsx-a11y/aria-props
         aria-invaild={errors?.password !== undefined}
@@ -60,8 +60,8 @@ export default function PasswordInput() {
           },
         })}
       />
-      {isPwBlind ? <ShowIcon className={styles['form__blind-icon']} onClick={() => setIsPwBlind(false)} aria-hidden />
-        : <BlindIcon className={styles['form__blind-icon']} onClick={() => setIsPwBlind(true)} aria-hidden /> }
+      {isBlind ? <ShowIcon className={styles['form__blind-icon']} onClick={changeBlind} aria-hidden />
+        : <BlindIcon className={styles['form__blind-icon']} onClick={changeBlind} aria-hidden /> }
     </div>
   );
 }

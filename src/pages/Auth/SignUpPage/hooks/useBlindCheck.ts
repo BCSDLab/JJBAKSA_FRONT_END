@@ -1,10 +1,13 @@
 import { useState } from 'react';
 
 export default function useBlindCheck() {
-  const [isPwBlind, setIsPwBlind] = useState(false);
-  const [isPwchBlind, setIsPwchBlind] = useState(false);
+  const [isBlind, setIsBlind] = useState(false);
+
+  const changeBlind = () => {
+    setIsBlind((state: boolean) => !state);
+  };
 
   return {
-    isPwBlind, isPwchBlind, setIsPwBlind, setIsPwchBlind,
+    isBlind, changeBlind,
   };
 }

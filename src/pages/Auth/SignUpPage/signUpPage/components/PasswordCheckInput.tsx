@@ -13,7 +13,7 @@ export default function PasswordCheckInput() {
   const { register, watch, formState: { errors } } = useFormContext<SignUpFormData>();
 
   const {
-    isPwchBlind, setIsPwchBlind,
+    isBlind, changeBlind,
   } = useBlindCheck();
 
   return (
@@ -33,7 +33,7 @@ export default function PasswordCheckInput() {
       </div>
       <input
         placeholder="비밀번호를 다시 입력하세요"
-        type={isPwchBlind ? 'text' : 'password'}
+        type={isBlind ? 'text' : 'password'}
               // eslint-disable-next-line jsx-a11y/aria-props
         aria-invaild={errors?.passwordCheck !== undefined}
         aria-errormessage={ERROR_MESSAGE.passwordCheck}
@@ -48,8 +48,8 @@ export default function PasswordCheckInput() {
           },
         })}
       />
-      {isPwchBlind ? <ShowIcon className={styles['form__blind-icon']} onClick={() => setIsPwchBlind(false)} aria-hidden />
-        : <BlindIcon className={styles['form__blind-icon']} onClick={() => setIsPwchBlind(true)} aria-hidden /> }
+      {isBlind ? <ShowIcon className={styles['form__blind-icon']} onClick={changeBlind} aria-hidden />
+        : <BlindIcon className={styles['form__blind-icon']} onClick={changeBlind} aria-hidden /> }
     </div>
   );
 }
