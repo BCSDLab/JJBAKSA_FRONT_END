@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
-import { ReactComponent as Caution } from 'assets/svg/warning.svg';
+import { ReactComponent as Caution } from 'assets/svg/login-error.svg';
 import style from './SearchPage.module.scss';
 
 const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴

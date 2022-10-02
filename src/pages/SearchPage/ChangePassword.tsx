@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
-import warning from 'assets/svg/warning.svg';
+import error from 'assets/svg/login-error.svg';
 import style from './SearchPage.module.scss';
 import Modal from './Modal';
 
@@ -45,7 +45,7 @@ export default function ChangePassword(): JSX.Element {
         <div className={style.error_message}>
           {(errors.password || errors.passwordCheck) && (
             <div style={{ display: 'flex' }}>
-              <img src={warning} alt="warning" className={style.warning} />
+              <img src={error} alt="warning" className={style.warning} />
               <span>
                 {errors.password?.message || errors.passwordCheck?.message}
               </span>

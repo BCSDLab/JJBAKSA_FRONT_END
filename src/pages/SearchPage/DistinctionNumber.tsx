@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
-import warningImage from 'assets/svg/warning.svg';
+import error from 'assets/svg/login-error.svg';
 import style from './SearchPage.module.scss';
 import InputNumber, { FormData } from './InputNumber';
 
@@ -27,7 +27,7 @@ export default function DistinctionNumber():JSX.Element {
         <div className={style.error_message}>
           {(errors.first || errors.second || errors.third || errors.fourth) && (
           <span>
-            <img src={warningImage} alt="warning" className={style.warning} />
+            <img src={error} alt="warning" className={style.warning} />
             인증번호가 올바르지 않습니다.
           </span>
           )}
