@@ -5,12 +5,6 @@ $active: #ff7f23;
 $passive: #c4c4c4;
 $input-background: #eeeeee;
 
-body {
-  @include media.media-breakpoint-down(mobile) {
-    min-width: 320px;
-  }
-}
-
 @mixin error-outline() {
   border: 1px solid $active;
 }

@@ -5,12 +5,6 @@ $default: #222222;
 $active: #ff7f23;
 $passive: #c4c4c4;
 
-body {
-  @include media.media-breakpoint-down(mobile) {
-    min-width: 320px;
-  }
-}
-
 .template {
   @include mixin.template;
 }

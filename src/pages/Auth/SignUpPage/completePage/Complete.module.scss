@@ -1,12 +1,6 @@
 @use "src/utils/styles/mediaQuery" as media;
 @use "../Mixin.module.scss" as mixin;
 
-body {
-  @include media.media-breakpoint-down(mobile) {
-    min-width: 320px;
-  }
-}
-
 .template {
   @include mixin.template;
 }
