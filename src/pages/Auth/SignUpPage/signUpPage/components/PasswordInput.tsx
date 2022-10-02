@@ -4,10 +4,10 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
 import { ReactComponent as ShowIcon } from 'assets/svg/pw-show.svg';
 import { ReactComponent as BlindIcon } from 'assets/svg/pw-blind.svg';
 import { useFormContext } from 'react-hook-form';
-import { ERROR_MESSAGE } from '../static/signUp';
-import styles from './SignUp.module.scss';
-import useBlindCheck from '../hooks/useBlindCheck';
-import { SignUpFormData } from './entity';
+import { ERROR_MESSAGE } from '../../static/signUp';
+import styles from '../SignUp.module.scss';
+import useBlindCheck from '../../hooks/useBlindCheck';
+import { SignUpFormData } from '../entity';
 
 const Reg = /^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=()]).{2,16}$/;
 
@@ -30,14 +30,14 @@ export default function PasswordInput() {
             })}
             aria-hidden
           />
-          {/* {error?.password} */}
+          {errors.password?.message}
         </div>
       </div>
       <input
         placeholder="비밀번호를 입력하세요"
         type={isPwBlind ? 'text' : 'password'}
         autoComplete="new-password"
-              // eslint-disable-next-line jsx-a11y/aria-props
+       // eslint-disable-next-line jsx-a11y/aria-props
         aria-invaild={errors?.password !== undefined}
         aria-errormessage={ERROR_MESSAGE.password}
         className={cn({

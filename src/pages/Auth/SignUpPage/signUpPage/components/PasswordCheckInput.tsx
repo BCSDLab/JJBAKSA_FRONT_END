@@ -4,10 +4,10 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
 import { ReactComponent as ShowIcon } from 'assets/svg/pw-show.svg';
 import { ReactComponent as BlindIcon } from 'assets/svg/pw-blind.svg';
 import { useFormContext } from 'react-hook-form';
-import { ERROR_MESSAGE } from '../static/signUp';
-import styles from './SignUp.module.scss';
-import useBlindCheck from '../hooks/useBlindCheck';
-import { SignUpFormData } from './entity';
+import { ERROR_MESSAGE } from '../../static/signUp';
+import styles from '../SignUp.module.scss';
+import useBlindCheck from '../../hooks/useBlindCheck';
+import { SignUpFormData } from '../entity';
 
 export default function PasswordCheckInput() {
   const { register, watch, formState: { errors } } = useFormContext<SignUpFormData>();
@@ -28,7 +28,7 @@ export default function PasswordCheckInput() {
             })}
             aria-hidden
           />
-          {/* {error?.passwordCheck} */}
+          {errors.passwordCheck?.message}
         </div>
       </div>
       <input

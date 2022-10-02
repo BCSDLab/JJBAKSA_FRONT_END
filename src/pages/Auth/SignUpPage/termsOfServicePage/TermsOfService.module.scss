@@ -1,5 +1,5 @@
 @use "src/utils/styles/mediaQuery" as media;
-@use "./Mixin.module.scss" as mixin;
+@use "../Mixin.module.scss" as mixin;
 
 $default: #222222;
 $active: #ff7f23;

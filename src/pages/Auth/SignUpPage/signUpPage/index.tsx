@@ -1,14 +1,15 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './SignUp.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
-import IdInput from './IdInput';
-import EmailInput from './EmailInput';
-import PasswordInput from './PasswordInput';
-import PasswordCheckInput from './PasswordCheckInput';
+import IdInput from './components/IdInput';
+import EmailInput from './components/EmailInput';
+import PasswordInput from './components/PasswordInput';
+import PasswordCheckInput from './components/PasswordCheckInput';
 import { SignUpFormData } from './entity';
-// import useErrorMessage from './hooks/useErrorMessage';
+import TopErrorMessage from './components/TopErrorMessage';
 
 export default function SignUpForm() {
   useRouteCheck('termsCheck', '/termsofservice');
@@ -26,7 +27,7 @@ export default function SignUpForm() {
 
   const {
     handleSubmit,
-    formState: { isDirty, isValid, errors },
+    formState: { isDirty, isValid },
   } = methods;
 
   const clickSubmit = () => {
@@ -37,12 +38,7 @@ export default function SignUpForm() {
     }
   };
 
-  // const { errorArr } = useErrorMessage(errors);
-  if (errors !== undefined || null) {
-    // const errorArray = Object.entries(errors);
-    // console.log(errorArr);
-    // console.log(errorArray);
-  }
+  const { isMobile } = useMediaQuery();
 
   return (
     <div className={styles.template}>
@@ -58,6 +54,8 @@ export default function SignUpForm() {
             <div className={styles.form__title}>
               회원가입
             </div>
+
+            {isMobile && <TopErrorMessage />}
 
             <IdInput />
             <EmailInput />

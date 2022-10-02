@@ -3,12 +3,16 @@ import cn from 'utils/ts/classNames';
 import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
 import { ReactComponent as ArrowIcon } from 'assets/svg/arrow.svg';
 import { useFormContext } from 'react-hook-form';
-import { domain, ERROR_MESSAGE } from '../static/signUp';
-import styles from './SignUp.module.scss';
-import { SignUpFormData } from './entity';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
+import { domain, ERROR_MESSAGE } from '../../static/signUp';
+import styles from '../SignUp.module.scss';
+import { SignUpFormData } from '../entity';
 
 export default function EmailInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();
+
+  const { isMobile } = useMediaQuery();
+  const Reg = isMobile ? /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i : /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])/i;
 
   return (
     <div className={styles.form__form}>
@@ -22,12 +26,12 @@ export default function EmailInput() {
             })}
             aria-hidden
           />
-          {/* {error?.email} */}
+          {errors.email?.message}
         </div>
       </div>
       <input
         placeholder="이메일을 입력하세요"
-              // eslint-disable-next-line jsx-a11y/aria-props
+      // eslint-disable-next-line jsx-a11y/aria-props
         aria-invaild={errors?.email !== undefined}
         aria-errormessage={ERROR_MESSAGE.email}
         className={cn({
@@ -35,7 +39,13 @@ export default function EmailInput() {
           [styles['form__input--email']]: true,
           [styles['form__input--error']]: errors?.email !== undefined,
         })}
-        {...register('email', { required: ERROR_MESSAGE.email })}
+        {...register('email', {
+          required: ERROR_MESSAGE.email,
+          pattern: {
+            value: Reg,
+            message: ERROR_MESSAGE.email,
+          },
+        })}
       />
       <div className={styles['form__email-sign']}>@</div>
       <select
@@ -52,7 +62,6 @@ export default function EmailInput() {
             value={res.name}
           >
             {res.address}
-
           </option>
         ))}
       </select>

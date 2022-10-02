@@ -2,9 +2,9 @@ import React from 'react';
 import cn from 'utils/ts/classNames';
 import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
 import { useFormContext } from 'react-hook-form';
-import { ERROR_MESSAGE } from '../static/signUp';
-import styles from './SignUp.module.scss';
-import { SignUpFormData } from './entity';
+import { ERROR_MESSAGE } from '../../static/signUp';
+import styles from '../SignUp.module.scss';
+import { SignUpFormData } from '../entity';
 
 export default function IdInput() {
   const { register, watch, formState: { errors } } = useFormContext<SignUpFormData>();
@@ -21,7 +21,7 @@ export default function IdInput() {
             })}
             aria-hidden
           />
-          {/* {error?.id} */}
+          {errors.id?.message}
         </div>
       </div>
       <input
