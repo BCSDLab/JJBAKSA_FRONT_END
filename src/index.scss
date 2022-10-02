@@ -1,5 +1,5 @@
 @forward "src/styles/fonts.scss";
-@use "src/utils/styles/mediaQuery.scss" as media;
+@use "src/utils/styles/mediaQuery" as media;
 
 * {
   margin: 0;
