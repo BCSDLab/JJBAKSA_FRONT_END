@@ -1,3 +1,3 @@
-export interface ISearchQueryParams {
+export interface SearchQueryParams {
   searchQuery : string;
 }
