@@ -34,8 +34,7 @@ export default function PasswordCheckInput() {
       <input
         placeholder="비밀번호를 다시 입력하세요"
         type={isBlind ? 'text' : 'password'}
-              // eslint-disable-next-line jsx-a11y/aria-props
-        aria-invaild={errors?.passwordCheck !== undefined}
+        aria-invalid={errors?.passwordCheck !== undefined}
         aria-errormessage={ERROR_MESSAGE.passwordCheck}
         className={cn({
           [styles.form__input]: true,

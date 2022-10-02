@@ -4,7 +4,7 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
 import { ReactComponent as ArrowIcon } from 'assets/svg/arrow.svg';
 import { useFormContext } from 'react-hook-form';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import { domain, ERROR_MESSAGE } from '../../static/signUp';
+import { DOMAIN, ERROR_MESSAGE } from '../../static/signUp';
 import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
 
@@ -55,7 +55,7 @@ export default function EmailInput() {
         })}
         placeholder="직접 입력"
       >
-        {domain.map((res) => (
+        {DOMAIN.map((res) => (
           <option
             key={res.key}
             className={styles.form__option}

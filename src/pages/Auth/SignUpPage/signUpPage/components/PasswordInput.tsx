@@ -37,8 +37,7 @@ export default function PasswordInput() {
         placeholder="비밀번호를 입력하세요"
         type={isBlind ? 'text' : 'password'}
         autoComplete="new-password"
-       // eslint-disable-next-line jsx-a11y/aria-props
-        aria-invaild={errors?.password !== undefined}
+        aria-invalid={errors?.password !== undefined}
         aria-errormessage={ERROR_MESSAGE.password}
         className={cn({
           [styles.form__input]: true,

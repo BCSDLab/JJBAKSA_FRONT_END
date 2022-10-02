@@ -11,7 +11,7 @@ export interface ErrorMessage {
   passwordCheck: string;
 }
 
-const domain: Domain[] = [
+const DOMAIN: Domain[] = [
   {
     key: 1,
     name: 'gmail',
@@ -56,4 +56,4 @@ const ERROR_MESSAGE : ErrorMessage = {
   passwordCheck: '비밀번호가 일치하지 않습니다.',
 };
 
-export { domain, ERROR_MESSAGE };
+export { DOMAIN, ERROR_MESSAGE };
