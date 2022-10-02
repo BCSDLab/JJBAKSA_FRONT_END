@@ -4,9 +4,9 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import list from './static/data';
 import styles from './Search.module.scss';
-import hash_tag from './static/trend';
 import recommend_text from './static/recommend';
 import cn from '../../utils/ts/classNames';
+import RollingBanner from './components/RollingBanner';
 
 type ICurrentMode = string | null;
 
@@ -66,14 +66,7 @@ function Search(): JSX.Element {
           <LensIcon title="검색" className={styles['search-bar__icon']} />
         </label>
         {mode === 'trending' && (
-        <div className={styles['search-banner']}>
-          <strong>TRENDING</strong>
-          <ul className={styles['search-banner__tag-list']}>
-            <li className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</li>
-            <li className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</li>
-            <li className={styles['search-banner__tag']}>{hash_tag.map((tag) => tag.text).join(' ')}</li>
-          </ul>
-        </div>
+        <RollingBanner />
         )}
       </section>
       <ul className={cn({
