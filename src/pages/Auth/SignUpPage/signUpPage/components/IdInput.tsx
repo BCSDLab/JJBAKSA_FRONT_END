@@ -13,7 +13,7 @@ export default function IdInput() {
     <div className={styles.form__form}>
       <div className={styles.form__label}>
         아이디
-        <div className={styles.form__error}>
+        <div className={styles.form__error} id="id-error-msg" role="alert">
           <ErrorIcon
             className={cn({
               [styles['form__error-icon']]: true,
@@ -28,7 +28,7 @@ export default function IdInput() {
         placeholder="아이디를 입력하세요"
               // eslint-disable-next-line jsx-a11y/aria-props
         aria-invaild={errors?.id !== undefined}
-        aria-errormessage={ERROR_MESSAGE.id}
+        aria-errormessage="id-error-msg"
         className={cn({
           [styles.form__input]: true,
           [styles['form__input--id']]: true,

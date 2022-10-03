@@ -18,7 +18,7 @@ export default function EmailInput() {
     <div className={styles.form__form}>
       <div className={styles.form__label}>
         이메일
-        <div className={styles.form__error}>
+        <div className={styles.form__error} id="email-error-msg" role="alert">
           <ErrorIcon
             className={cn({
               [styles['form__error-icon']]: true,
@@ -33,7 +33,7 @@ export default function EmailInput() {
         placeholder="이메일을 입력하세요"
       // eslint-disable-next-line jsx-a11y/aria-props
         aria-invaild={errors?.email !== undefined}
-        aria-errormessage={ERROR_MESSAGE.email}
+        aria-errormessage="email-error-msg"
         className={cn({
           [styles.form__input]: true,
           [styles['form__input--email']]: true,

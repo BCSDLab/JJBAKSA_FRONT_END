@@ -20,7 +20,7 @@ export default function PasswordCheckInput() {
     <div className={styles.form__form}>
       <div className={styles.form__label}>
         비밀번호 확인
-        <div className={styles.form__error}>
+        <div className={styles.form__error} id="password-check-error-msg" role="alert">
           <ErrorIcon
             className={cn({
               [styles['form__error-icon']]: true,
@@ -35,7 +35,7 @@ export default function PasswordCheckInput() {
         placeholder="비밀번호를 다시 입력하세요"
         type={isBlind ? 'text' : 'password'}
         aria-invalid={errors?.passwordCheck !== undefined}
-        aria-errormessage={ERROR_MESSAGE.passwordCheck}
+        aria-errormessage="password-check-error-msg"
         className={cn({
           [styles.form__input]: true,
           [styles['form__input--error']]: errors?.passwordCheck !== undefined,

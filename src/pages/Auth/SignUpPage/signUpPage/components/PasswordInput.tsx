@@ -22,7 +22,7 @@ export default function PasswordInput() {
     <div className={styles.form__form}>
       <div className={styles.form__label}>
         비밀번호
-        <div className={styles.form__error}>
+        <div className={styles.form__error} id="password-error-msg" role="alert">
           <ErrorIcon
             className={cn({
               [styles['form__error-icon']]: true,
@@ -38,7 +38,7 @@ export default function PasswordInput() {
         type={isBlind ? 'text' : 'password'}
         autoComplete="new-password"
         aria-invalid={errors?.password !== undefined}
-        aria-errormessage={ERROR_MESSAGE.password}
+        aria-errormessage="password-error-msg"
         className={cn({
           [styles.form__input]: true,
           [styles['form__input--error']]: errors?.password !== undefined,
