@@ -17,13 +17,13 @@ export interface FormData {
 export default function InputNumber({ register, handleSubmit }: Itype): JSX.Element {
   const inputRef = useRef<HTMLInputElement[] | null[]>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [done, setDone] = useState<boolean>();
+  const [isDone, setIsDone] = useState<boolean>();
 
-  const checkDone = () => {
+  const checkInput = () => {
     const values = inputRef.current.map((item) => item?.value);
     if (values.filter((item) => item === '').length === 0 && inputRef.current) {
-      setDone(true);
-    } else setDone(false);
+      setIsDone(true);
+    } else setIsDone(false);
   };
 
   const preventOverLength = (e: React.ChangeEvent<HTMLInputElement>, next: number) => {
@@ -35,7 +35,7 @@ export default function InputNumber({ register, handleSubmit }: Itype): JSX.Elem
         buttonRef.current?.focus();
       }
     }
-    checkDone();
+    checkInput();
   };
 
   useEffect(() => inputRef.current[0]?.focus(), []);
@@ -88,7 +88,7 @@ export default function InputNumber({ register, handleSubmit }: Itype): JSX.Elem
           ref={(e) => { register('fourth').ref(e); inputRef.current[3] = e; }}
           onChange={(e) => preventOverLength(e, 4)}
         />
-        <button type="submit" ref={buttonRef} className={done ? style.active : style.inactive}>완료</button>
+        <button type="submit" ref={buttonRef} className={isDone ? style.active : style.inactive}>완료</button>
       </form>
       <span className={style.resend}>인증번호 재발송</span>
     </div>

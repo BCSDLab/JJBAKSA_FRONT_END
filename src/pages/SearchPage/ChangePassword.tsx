@@ -12,12 +12,12 @@ interface FormData {
   passwordCheck: string,
 }
 export default function ChangePassword(): JSX.Element {
-  const [done, setDone] = useState<boolean>();
+  const [isComplete, setIsComplete] = useState<boolean>();
 
   const {
-    register, handleSubmit, formState: { errors }, setError,
+    register, handleSubmit, formState: { errors, isValid }, setError,
   } = useForm<FormData>({
-    mode: 'onSubmit',
+    mode: 'onChange',
   });
 
   const passwordConfirm = (data: FormData) => {
@@ -27,7 +27,7 @@ export default function ChangePassword(): JSX.Element {
       }, { shouldFocus: true });
     } else {
       console.log(data);
-      setDone(true);
+      setIsComplete(true);
     }
   };
 
@@ -77,10 +77,10 @@ export default function ChangePassword(): JSX.Element {
               })}
             />
           </div>
-          <button type="submit" className={style.active}>완료</button>
+          <button type="submit" className={isValid ? style.active : style.inactive}>완료</button>
         </form>
       </div>
-      {done && <Modal modal="passwordModal" />}
+      {isComplete && <Modal modal="passwordModal" />}
     </div>
   );
 }
