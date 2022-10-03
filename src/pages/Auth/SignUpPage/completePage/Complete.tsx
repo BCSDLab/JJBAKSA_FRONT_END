@@ -32,7 +32,7 @@ export default function CompleteForm() {
           className={
               styles.form__button
             }
-          onClick={() => navigate('/')}
+          onClick={() => navigate('/login', { replace: true })}
           disabled={nicknameValue === undefined || nicknameValue === ''}
         >
           완료
