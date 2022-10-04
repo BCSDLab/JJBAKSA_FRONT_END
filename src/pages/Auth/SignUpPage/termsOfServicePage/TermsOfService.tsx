@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Arrow } from 'assets/svg/arrow.svg';
 import styles from './TermsOfService.module.scss';
@@ -6,7 +6,7 @@ import PRIVACY from '../static/privacy';
 
 const useCheckbox = () => {
   const [checkedList, setCheckedList] = useState<boolean[]>(() => PRIVACY.map(() => false));
-  const allCheck = useMemo(() => !checkedList.some((checked) => !checked), [checkedList]);
+  const allCheck = !checkedList.some((checked) => !checked);
 
   const changeCheck = (idx: number) => {
     const changeList = checkedList.slice();
