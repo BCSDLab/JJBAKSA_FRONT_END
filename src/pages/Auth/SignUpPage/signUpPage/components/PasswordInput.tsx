@@ -22,7 +22,7 @@ export default function PasswordInput() {
     <div className={styles.form__form}>
       <div className={styles.form__label}>
         비밀번호
-        <div className={styles.form__error} id="password-error-msg" role="alert">
+        <div className={styles.form__error} role="alert">
           <ErrorIcon
             className={cn({
               [styles['form__error-icon']]: true,
@@ -37,8 +37,6 @@ export default function PasswordInput() {
         placeholder="비밀번호를 입력하세요"
         type={isBlind ? 'text' : 'password'}
         autoComplete="new-password"
-        aria-invalid={errors?.password !== undefined}
-        aria-errormessage="password-error-msg"
         className={cn({
           [styles.form__input]: true,
           [styles['form__input--error']]: errors?.password !== undefined,
