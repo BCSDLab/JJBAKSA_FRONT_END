@@ -7,9 +7,7 @@ import useBooleanStateList from './hooks/useBooleanStateList';
 
 function AddImage({ active, inActive }: { active: () => void, inActive: () => void }) {
   const { imageList, addImage, removeImage } = useImageList();
-  const {
-    booleanStateList, onlyOneTruthHandler, pushBooleanState, removeBooleanState,
-  } = useBooleanStateList();
+  const isShowButtons = useBooleanStateList();
 
   useEffect(() => {
     if (imageList === null || imageList.length === 0) inActive();
@@ -23,7 +21,7 @@ function AddImage({ active, inActive }: { active: () => void, inActive: () => vo
         className={styles.item__button}
         onClick={() => {
           addImage();
-          pushBooleanState(false);
+          isShowButtons.pushState(false);
         }}
       >
         <Picture />
@@ -31,14 +29,14 @@ function AddImage({ active, inActive }: { active: () => void, inActive: () => vo
       <span className={styles.imageContainer}>
         { imageList?.map((value, index) => (
           <div key={value} className={styles.imageContainer_item}>
-            { booleanStateList && booleanStateList[index] && (
+            { isShowButtons?.getState(index) && (
             <button
               type="button"
               aria-label="trash"
               className={styles.imageContainer_button}
               onClick={() => {
                 removeImage(value);
-                removeBooleanState(true);
+                isShowButtons.removeState(true);
               }}
             >
               <Trash />
@@ -49,7 +47,7 @@ function AddImage({ active, inActive }: { active: () => void, inActive: () => vo
               className={styles.imageContainer_image}
               src={value}
               alt="이미지"
-              onClick={() => onlyOneTruthHandler(index)}
+              onClick={() => isShowButtons.onlyOneTruthHandler(index)}
             />
           </div>
         ))}

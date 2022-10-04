@@ -1,34 +1,36 @@
 import { useState } from 'react';
 
 export default function useBooleanStateList() {
-  const [booleanStateList, setBooleanStateList] = useState<boolean[] | null>(null);
+  const [stateList, setStateList] = useState<boolean[] | null>(null);
   const onlyOneTruthHandler = (index: number) => {
-    setBooleanStateList((prev) => (
+    setStateList((prev) => (
       prev && prev.map((bool, prevIndex) => (index === prevIndex || bool ? !bool : bool))));
   };
   const onlyOneFalseHandler = (index: number) => {
-    setBooleanStateList((prev) => (
+    setStateList((prev) => (
       prev && prev.map((bool, prevIndex) => (index === prevIndex || !bool ? !bool : bool))));
   };
-  const pushBooleanState = (state: boolean) => {
-    if (booleanStateList === null) setBooleanStateList([state]);
-    if (booleanStateList !== null) setBooleanStateList((prev) => prev && [...prev, state]);
+  const getState = (index: number) => stateList && stateList[index];
+  const pushState = (state: boolean) => {
+    if (stateList === null) setStateList([state]);
+    if (stateList !== null) setStateList((prev) => prev && [...prev, state]);
   };
-  const popBooleanState = () => {
+  const popState = () => {
     // 미구현
   };
-  const removeBooleanState = (state: boolean) => {
-    setBooleanStateList((prev) => (
+  const removeState = (state: boolean) => {
+    setStateList((prev) => (
       prev && prev.filter((bool) => !state === bool)
     ));
   };
   return {
-    booleanStateList,
-    setBooleanStateList,
+    stateList,
+    getState,
+    setStateList,
     onlyOneTruthHandler,
     onlyOneFalseHandler,
-    pushBooleanState,
-    popBooleanState,
-    removeBooleanState,
+    pushState,
+    popState,
+    removeState,
   };
 }
