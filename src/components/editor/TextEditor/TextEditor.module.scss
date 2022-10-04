@@ -202,6 +202,7 @@
     margin: 8px;
     border-radius: 50%;
     background: none;
+    animation: show-out 0.2s ease-out normal forwards;
   }
 
   &_image {
