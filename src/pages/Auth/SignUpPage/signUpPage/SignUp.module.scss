@@ -197,16 +197,20 @@ $input-background: #eeeeee;
   }
 
   &__select {
-    width: 169px;
-    height: 30px;
+    width: 123px;
+    height: 15px;
     background: $input-background;
     border-radius: 20px;
     border: none;
     outline: none;
-    padding: 7px 0 8px 12px;
-    font-size: 12px;
+    padding: 7px 34px 8px 12px;
     appearance: none;
-    position: relative;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    z-index: 12;
+    font-size: 12px;
+    color: rgb(34 34 34);
 
     @include media.media-breakpoint-down(mobile) {
       display: none;
@@ -217,11 +221,30 @@ $input-background: #eeeeee;
     }
   }
 
+  &__option-wrap {
+    display: none;
+
+    &--open {
+      display: block;
+      padding-top: 36px;
+      width: 167px;
+      position: absolute;
+      top: 27px;
+      right: 0;
+      border: 1px solid $input-background;
+      border-radius: 15px;
+      z-index: 10;
+      background: #ffffff;
+    }
+  }
+
   &__option {
-    background: #ffffff;
-    border: 1px solid $input-background;
-    border-radius: 15px;
     padding: 4px 12px;
+    list-style: none;
+    font-size: 11px;
+    background-color: none;
+    z-index: 10;
+    cursor: pointer;
 
     &:hover {
       background: $input-background;
@@ -233,6 +256,12 @@ $input-background: #eeeeee;
     position: absolute;
     right: 10px;
     bottom: 5px;
+    z-index: 15;
+    cursor: pointer;
+
+    &--open {
+      transform: rotate(180deg);
+    }
 
     @include media.media-breakpoint-down(mobile) {
       display: none;

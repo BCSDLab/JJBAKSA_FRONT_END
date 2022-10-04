@@ -1,12 +1,12 @@
 import React from 'react';
 import cn from 'utils/ts/classNames';
 import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
-import { ReactComponent as ArrowIcon } from 'assets/svg/arrow.svg';
 import { useFormContext } from 'react-hook-form';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import { DOMAIN, ERROR_MESSAGE } from '../../static/signUp';
+import { ERROR_MESSAGE } from '../../static/signUp';
 import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
+import DomainDropdown from './DomainDropdown';
 
 export default function EmailInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();
@@ -45,24 +45,7 @@ export default function EmailInput() {
         })}
       />
       <div className={styles['form__email-sign']}>@</div>
-      <select
-        className={cn({
-          [styles.form__select]: true,
-          [styles['form__select--error']]: errors?.email !== undefined,
-        })}
-        placeholder="직접 입력"
-      >
-        {DOMAIN.map((res) => (
-          <option
-            key={res.key}
-            className={styles.form__option}
-            value={res.name}
-          >
-            {res.address}
-          </option>
-        ))}
-      </select>
-      <ArrowIcon className={styles['form__arrow-icon']} aria-hidden />
+      <DomainDropdown />
     </div>
   );
 }
