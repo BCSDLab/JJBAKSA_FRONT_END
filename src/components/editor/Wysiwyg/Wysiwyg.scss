@@ -1,6 +1,7 @@
 .wysiwygContainer {
-  height: 100%;
+  height: calc(100% - 196px);
   width: 100%;
+  z-index: -1;
 }
 
 .auto-height {

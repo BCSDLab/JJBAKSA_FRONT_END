@@ -18,7 +18,7 @@ interface Props {
 function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
   const navigate = useNavigate();
-  const isActive = useBoolean(false);
+  const isSaveActive = useBoolean(false);
 
   return (
     <div className={cn({
@@ -41,7 +41,7 @@ function TextEditor({ shop, getShopname }: Props) {
           : (
             <>
               <div className={styles.header__shopname}>{ shop }</div>
-              <StarRating onClick={isActive.setTrue} />
+              <StarRating onClick={isSaveActive.setTrue} />
             </>
           )}
       </div>
@@ -62,9 +62,9 @@ function TextEditor({ shop, getShopname }: Props) {
           type="button"
           className={cn({
             [styles['save-button']]: true,
-            [styles['save-button--active']]: isActive.value,
+            [styles['save-button--active']]: isSaveActive.value,
           })}
-          disabled={!isActive.value && shop != null}
+          disabled={!isSaveActive.value && shop != null}
         >
           저장
         </button>

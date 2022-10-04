@@ -110,6 +110,7 @@
 
   &__text-tools {
     display: flex;
+    position: relative;
     align-items: center;
     width: 40px;
     height: 40px;
@@ -176,5 +177,40 @@
     &--active {
       background-color: #ff7f23;
     }
+  }
+}
+
+.imageContainer {
+  position: absolute;
+  bottom: 96px;
+  width: calc(100% - 16px);
+  display: flex;
+  align-items: flex-end;
+  overflow: scroll;
+
+  &_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 9px;
+  }
+
+  &_button {
+    box-shadow: 0 4px 4px #00000040;
+    width: 31px;
+    height: 31px;
+    margin: 8px;
+    border-radius: 50%;
+    background: none;
+  }
+
+  &_image {
+    width: 167px;
+    height: 167px;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    background: none;
   }
 }
