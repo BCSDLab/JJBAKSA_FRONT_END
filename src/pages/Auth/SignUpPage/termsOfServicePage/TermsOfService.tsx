@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Arrow } from 'assets/svg/arrow.svg';
+import AuthTitle from 'components/Auth/AuthTitle';
+import Copyright from 'components/Auth/Copyright';
 import styles from './TermsOfService.module.scss';
 import PRIVACY from '../static/privacy';
 
@@ -35,8 +37,7 @@ export default function TermsOfService() {
   return (
     <div className={styles.template}>
       <div className={styles.container}>
-        {/* 헤더 */}
-        <div>쩝쩝박사</div>
+        <AuthTitle />
         <div className={styles['terms-of-service']}>
           <div className={styles['terms-of-service__title']}>약관동의</div>
           <div>
@@ -76,6 +77,7 @@ export default function TermsOfService() {
             다음
           </button>
         </div>
+        <Copyright />
       </div>
     </div>
   );

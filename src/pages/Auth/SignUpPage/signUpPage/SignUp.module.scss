@@ -15,8 +15,8 @@ $input-background: #eeeeee;
 
 .container {
   width: 368px;
-  height: 648px;
-  position: relative;
+  height: 800px;
+  margin-top: 208px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 227px;
@@ -27,12 +27,16 @@ $input-background: #eeeeee;
 
 .form {
   margin-top: 128px;
+  height: 500px;
+  margin-bottom: 128px;
+  position: relative;
 
   @include media.media-breakpoint-down(mobile) {
     width: 100%;
-    margin-top: 64px;
+    margin-top: 65px;
     position: relative;
-    height: 425px;
+    margin-bottom: 0;
+    height: 415px;
   }
 
   &__title {
@@ -281,6 +285,11 @@ $input-background: #eeeeee;
 
   &__button {
     @include mixin.button;
+
+    @include media.media-breakpoint-down(mobile) {
+      position: relative;
+      margin-top: 73px;
+    }
   }
 }
 

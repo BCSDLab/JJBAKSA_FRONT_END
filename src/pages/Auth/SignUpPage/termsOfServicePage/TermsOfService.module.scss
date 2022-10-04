@@ -11,12 +11,13 @@ $passive: #c4c4c4;
 
 .container {
   width: 368px;
-  height: 590px;
-  position: relative;
+  height: 100%;
+  margin-top: 265px;
+  display: flex;
+  flex-direction: column;
 
   @include media.media-breakpoint-down(mobile) {
     width: 227px;
-    height: 500px;
     margin: auto;
   }
 }
@@ -24,10 +25,15 @@ $passive: #c4c4c4;
 .terms-of-service {
   color: $default;
   margin-top: 95px;
+  height: 485px;
+  position: relative;
+  margin-bottom: 128px;
 
   @include media.media-breakpoint-down(mobile) {
     margin-top: 48px;
     width: 100%;
+    height: 440px;
+    margin-bottom: 0;
   }
 
   &__submit {

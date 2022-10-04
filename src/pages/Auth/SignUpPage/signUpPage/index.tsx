@@ -2,6 +2,8 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+import AuthTitle from 'components/Auth/AuthTitle';
+import Copyright from 'components/Auth/Copyright';
 import styles from './SignUp.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import IdInput from './components/IdInput';
@@ -43,8 +45,7 @@ export default function SignUpForm() {
   return (
     <div className={styles.template}>
       <div className={styles.container}>
-        {/* header */}
-        <div>쩝쩝박사</div>
+        <AuthTitle />
         <FormProvider {...methods}>
           <form
             className={styles.form}
@@ -74,8 +75,7 @@ export default function SignUpForm() {
             </button>
           </form>
         </FormProvider>
-
-        {/* footer */}
+        <Copyright />
       </div>
     </div>
   );

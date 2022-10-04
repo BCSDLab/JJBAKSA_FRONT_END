@@ -4,6 +4,16 @@ $default: #222222;
 $active: #ff7f23;
 $passive: #c4c4c4;
 
+@mixin template {
+  width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 @mixin font-title($margin-bottom) {
   font-size: 16px;
   font-weight: 400;
@@ -19,15 +29,6 @@ $passive: #c4c4c4;
   font-size: 14px;
   line-height: 18px;
   font-weight: 500;
-}
-
-@mixin template {
-  width: 100vw;
-  min-height: 100vh;
-  height: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @mixin button {

@@ -5,7 +5,6 @@ import styles from '../SignUp.module.scss';
 
 export default function TopErrorMessage() {
   const FirstErrorMessage = useFirstErrorMessage();
-  console.log(FirstErrorMessage);
 
   return (
     <div className={styles['top-error']}>
