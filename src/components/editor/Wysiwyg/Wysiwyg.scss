@@ -1,7 +1,6 @@
 .wysiwygContainer {
-  height: calc(100% - 196px);
+  height: 100%;
   width: 100%;
-  z-index: -1;
 }
 
 .auto-height {
@@ -27,6 +26,7 @@
     "Segoe UI Emoji",
     "Segoe UI Symbol";
   font-size: 12px;
+  z-index: 0;
 }
 
 .toastui-editor-contents::-webkit-scrollbar {

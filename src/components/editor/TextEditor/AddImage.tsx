@@ -1,14 +1,20 @@
 import { ReactComponent as Picture } from 'assets/svg/picture.svg';
 import { ReactComponent as Trash } from 'assets/svg/trash.svg';
+import { useEffect } from 'react';
 import styles from './TextEditor.module.scss';
 import useImageList from './hooks/useImageList';
 import useBooleanStateList from './hooks/useBooleanStateList';
 
-function AddImage() {
+function AddImage({ active, inActive }: { active: () => void, inActive: () => void }) {
   const { imageList, addImage, removeImage } = useImageList();
   const {
     booleanStateList, onlyOneTruthHandler, pushBooleanState, removeBooleanState,
   } = useBooleanStateList();
+
+  useEffect(() => {
+    if (imageList === null || imageList.length === 0) inActive();
+    else active();
+  }, [imageList, active, inActive]);
 
   return (
     <>

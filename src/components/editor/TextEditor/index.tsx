@@ -19,6 +19,7 @@ function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
   const navigate = useNavigate();
   const isSaveActive = useBoolean(false);
+  const isAddImageActive = useBoolean(false);
 
   return (
     <div className={cn({
@@ -45,12 +46,16 @@ function TextEditor({ shop, getShopname }: Props) {
             </>
           )}
       </div>
-      <div className={styles.editor}>
+      <div className={cn({
+        [styles.editor]: true,
+        [styles['editor--withImage']]: isAddImageActive.value,
+      })}
+      >
         <Wysiwyg ref={wysiwygRef} />
       </div>
       <span className={styles.item}>
         <span className={styles.item__tools}>
-          <AddImage />
+          <AddImage active={isAddImageActive.setTrue} inActive={isAddImageActive.setFalse} />
           <SlideToolBox
             bold={() => wysiwygRef.current?.bold()}
             heading={() => wysiwygRef.current?.heading()}

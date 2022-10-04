@@ -71,6 +71,9 @@
   font-size: 12px;
   color: #222222;
   padding: 0 24px;
+  &--withImage {
+    height: calc(100% - 196px);
+  }
 }
 
 .item {
@@ -79,6 +82,7 @@
   padding: 16px 16px 40px;
   box-sizing: border-box;
   justify-content: space-between;
+  z-index: 2;
 
   button {
     border: none;
@@ -201,7 +205,7 @@
     height: 31px;
     margin: 8px;
     border-radius: 50%;
-    background: none;
+    background: white;
     animation: show-out 0.2s ease-out normal forwards;
   }
 
