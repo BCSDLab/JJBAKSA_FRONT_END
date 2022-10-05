@@ -6,5 +6,5 @@ export default function useFirstErrorMessage() {
 
   const errorList = Object.values(errors);
 
-  return errorList[0]?.message;
+  return errorList.length ? errorList[0].message : undefined;
 }
