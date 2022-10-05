@@ -1,0 +1,16 @@
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__logo {
+    margin-right: 14px;
+  }
+
+  &__text {
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
