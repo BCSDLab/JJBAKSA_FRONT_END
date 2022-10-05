@@ -10,7 +10,7 @@ function App(): JSX.Element {
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout><Home /></DefaultLayout>} />
-      <Route path="/termsofservice" element={<TermsOfService />} />
+      <Route path="/terms-of-service" element={<TermsOfService />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signup/complete" element={<Complete />} />
       <Route path="/login" element={<Login />} />
