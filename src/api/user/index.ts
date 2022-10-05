@@ -1,12 +1,12 @@
 import userApi from './userApiClient';
 import {
-  ILoginParams, ILoginResponse, IModifyParams, IRegisterParams, IUser,
+  LoginParams, LoginResponse, ModifyParams, RegisterParams, User,
 } from './entity';
 
-export const register = (param: IRegisterParams) => userApi.post<IUser>('/', param);
+export const register = (param: RegisterParams) => userApi.post<User>('/', param);
 
-export const login = (param: ILoginParams) => userApi.post<ILoginResponse>('/login', param);
+export const login = (param: LoginParams) => userApi.post<LoginResponse>('/login', param);
 
-export const getMe = () => userApi.get<IUser>('/me');
+export const getMe = () => userApi.get<User>('/me');
 
-export const modify = (param: IModifyParams) => userApi.patch<IUser>('/modify', param);
+export const modify = (param: ModifyParams) => userApi.patch<User>('/modify', param);
