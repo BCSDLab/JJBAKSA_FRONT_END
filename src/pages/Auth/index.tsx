@@ -1,25 +1,51 @@
 import { ReactComponent as GoogleIcon } from 'assets/svg/google.svg';
 import { ReactComponent as NaverIcon } from 'assets/svg/naver.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/kakao.svg';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
+import { login } from 'api/user';
+import sha256 from 'sha256';
+import makeToast from 'utils/ts/makeToast';
 import styles from './LoginPage.module.scss';
 
-interface IFormInput {
+interface LoginFormInput {
   id: string;
   pw: string;
   checkbox: boolean;
 }
+
+const useLoginRequest = () => {
+  const navigate = useNavigate();
+  const submitLogin = async ({ id, pw, checkbox }: LoginFormInput) => {
+    try {
+      const { data } = await login({
+        account: id,
+        password: sha256(pw),
+      });
+
+      if (data) {
+        sessionStorage.setItem('accessToken', data.accessToken);
+        if (checkbox) localStorage.setItem('refreshToken', data.refreshToken);
+        navigate('/');
+      }
+    } catch (e) {
+      // TODO - 401 에러를 제외한 나머지 핸들링 (500 서버에러 등)
+      makeToast('error', '올바르지 않은 계정 정보입니다!');
+    }
+  };
+
+  return submitLogin;
+};
 
 function LoginPage(): JSX.Element {
   const {
     register,
     handleSubmit,
     formState: { isValid },
-  } = useForm<IFormInput>({
+  } = useForm<LoginFormInput>({
     mode: 'onChange',
     defaultValues: {
       id: '',
@@ -27,14 +53,14 @@ function LoginPage(): JSX.Element {
       checkbox: false,
     },
   });
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const submitLogin = useLoginRequest();
 
   return (
     <div className={styles.template}>
       <div className={styles.content}>
         <AuthTitle />
         <div className={styles.form}>
-          <form className={styles.loginform} onSubmit={handleSubmit(onSubmit)}>
+          <form className={styles.loginform} onSubmit={handleSubmit(submitLogin)}>
             <div className={styles.loginform__login}>로그인</div>
             <input className={styles.loginform__input} type="text" id="id" placeholder="아이디" {...register('id', { required: true })} autoComplete="username" />
             <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('pw', { required: true })} autoComplete="current-password" />
