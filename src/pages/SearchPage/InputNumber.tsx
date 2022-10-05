@@ -1,5 +1,5 @@
 import { UseFormRegister, UseFormHandleSubmit } from 'react-hook-form';
-import { useRef, useEffect, useState } from 'react';
+import useInputCheck from './hook/useInputCheck';
 import style from './InputNumber.module.scss';
 
 interface Itype {
@@ -15,30 +15,9 @@ export interface FormData {
 }
 
 export default function InputNumber({ register, handleSubmit }: Itype): JSX.Element {
-  const inputRef = useRef<HTMLInputElement[] | null[]>([]);
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isDone, setIsDone] = useState<boolean>();
-
-  const checkInput = () => {
-    const values = inputRef.current.map((item) => item?.value);
-    if (values.filter((item) => item === '').length === 0 && inputRef.current) {
-      setIsDone(true);
-    } else setIsDone(false);
-  };
-
-  const preventOverLength = (e: React.ChangeEvent<HTMLInputElement>, next: number) => {
-    if (e.target.value.length > e.target.maxLength) {
-      e.target.value = e.target.value.charAt(0);
-      if (next <= 3) {
-        inputRef.current[next]?.focus();
-      } else {
-        buttonRef.current?.focus();
-      }
-    }
-    checkInput();
-  };
-
-  useEffect(() => inputRef.current[0]?.focus(), []);
+  const {
+    isDone, inputRef, buttonRef, preventOverLength,
+  } = useInputCheck();
 
   return (
     <div className={style.container}>

@@ -42,16 +42,16 @@ export default function Search({ search }: Isearch): JSX.Element {
           </p>
           )}
         </div>
-        <div className={style.error_message}>
+        <div className={style.error}>
           {errors.email && (
-          <span className={style.caution}>
+          <span className={style.error__caution}>
             <Caution />
             {errors.email?.message}
           </span>
           )}
         </div>
         <form onSubmit={handleSubmit((data) => data)}>
-          <div className={style.input_label}>
+          <div className={style.input__label}>
             <div className={style.email}>이메일</div>
             <input
               type="email"

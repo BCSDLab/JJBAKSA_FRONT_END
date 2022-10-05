@@ -35,11 +35,7 @@ p {
   line-height: 22px;
 }
 
-.make_space {
-  height: 100px;
-}
-
-.error_message {
+.error {
   display: flex;
   align-items: center;
   color: #ff7f23;
@@ -47,7 +43,7 @@ p {
   font-size: 12px;
 }
 
-.caution {
+.error__caution {
   display: flex;
   align-items: center;
 }
