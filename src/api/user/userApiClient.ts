@@ -8,12 +8,16 @@ const userApi = axios.create({
   timeout: 2000,
 });
 
-// TODO: refreshToken을 담는 로직이 필요. 아직 API에 body인지 header인지 미정인 상태.
 // 사이클 방지 및 refresh를 사용할 곳이 여기뿐이라 이곳에서 정의.
-const refreshAccessToken = () => userApi.post<RefreshResponse>('/refresh')
-  .then((res) => {
-    sessionStorage.setItem('accessToken', res.data.accessToken);
-    localStorage.setItem('refreshToken', res.data.refreshToken);
+const refreshAccessToken = () => userApi.post<RefreshResponse>('/refresh', null, {
+  headers: {
+    accessToken: `Bearer ${sessionStorage.getItem('accessToken')}`,
+    refreshToken: `Bearer ${localStorage.getItem('refreshToken')}`,
+  },
+})
+  .then(({ data }) => {
+    sessionStorage.setItem('accessToken', data.accessToken);
+    localStorage.setItem('refreshToken', data.refreshToken);
   })
   .catch(() => {
     sessionStorage.removeItem('accessToken');
