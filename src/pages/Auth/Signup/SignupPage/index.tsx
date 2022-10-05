@@ -6,14 +6,14 @@ import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import styles from './SignUp.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
+import { SignUpFormData } from './entity';
+import TopErrorMessage from './components/TopErrorMessage';
 import IdInput from './components/IdInput';
 import EmailInput from './components/EmailInput';
 import PasswordInput from './components/PasswordInput';
 import PasswordCheckInput from './components/PasswordCheckInput';
-import { SignUpFormData } from './entity';
-import TopErrorMessage from './components/TopErrorMessage';
 
-export default function SignUpForm() {
+export default function SignupForm() {
   useRouteCheck('termsCheck', '/termsofservice');
   const navigate = useNavigate();
 
