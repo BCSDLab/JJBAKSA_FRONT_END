@@ -24,7 +24,8 @@ export default function PasswordCheckInput() {
           <ErrorIcon
             className={cn({
               [styles['form__error-icon']]: true,
-              [styles['form__error-icon--active']]: errors?.passwordCheck !== undefined,
+              [styles['form__error-icon--active']]:
+                errors?.passwordCheck !== undefined,
             })}
             aria-hidden
           />
@@ -45,8 +46,17 @@ export default function PasswordCheckInput() {
           },
         })}
       />
-      {isBlind ? <ShowIcon className={styles['form__blind-icon']} onClick={changeBlind} aria-hidden />
-        : <BlindIcon className={styles['form__blind-icon']} onClick={changeBlind} aria-hidden /> }
+      <button
+        type="button"
+        className={styles['form__blind-icon']}
+        onClick={changeBlind}
+      >
+        {isBlind ? (
+          <ShowIcon aria-hidden />
+        ) : (
+          <BlindIcon aria-hidden />
+        )}
+      </button>
     </div>
   );
 }
