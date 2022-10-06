@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
-import styles from './LoginPage.module.scss';
+import styles from './Login.module.scss';
 
 interface IFormInput {
   id: string;
