@@ -9,20 +9,23 @@ const userApi = axios.create({
 });
 
 // 사이클 방지 및 refresh를 사용할 곳이 여기뿐이라 이곳에서 정의.
-const refreshAccessToken = () => userApi.post<RefreshResponse>('/refresh', null, {
-  headers: {
-    accessToken: `Bearer ${sessionStorage.getItem('accessToken')}`,
-    refreshToken: `Bearer ${localStorage.getItem('refreshToken')}`,
-  },
-})
-  .then(({ data }) => {
+const refreshAccessToken = async () => {
+  const refreshToken = localStorage.getItem('refreshToken');
+  if (!refreshToken) {
+    return Promise.reject();
+  }
+  return userApi.post<RefreshResponse>('/refresh', null, {
+    headers: {
+      refreshToken: `Bearer ${refreshToken}`,
+    },
+  }).then(({ data }) => {
     sessionStorage.setItem('accessToken', data.accessToken);
     localStorage.setItem('refreshToken', data.refreshToken);
-  })
-  .catch(() => {
+  }).catch(() => {
     sessionStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
   });
+};
 
 userApi.interceptors.request.use(
   (config) => {
@@ -40,10 +43,9 @@ userApi.interceptors.response.use(
     const originalRequest = error.config;
     const errorCode = error.response.data.code;
     // TODO: 백엔드단에서 정확한 토큰 인증 오류 시 코드/메시지를 정해주면 수정 필요.
-    if (errorCode > 400 && !originalRequest.retry) {
+    if (errorCode >= 400 && !originalRequest.retry) {
       originalRequest.retry = true;
-      await refreshAccessToken();
-      return userApi(originalRequest);
+      refreshAccessToken().then(() => userApi(originalRequest));
     }
     return Promise.reject(error);
   },
