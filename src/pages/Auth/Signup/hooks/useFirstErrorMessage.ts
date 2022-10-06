@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form';
-import { SignUpFormData } from '../signUpPage/entity';
+import { SignUpFormData } from '../SignupPage/entity';
 
 export default function useFirstErrorMessage() {
   const { formState: { errors } } = useFormContext<SignUpFormData>();
