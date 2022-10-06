@@ -58,7 +58,7 @@ export default function DomainDropdown() {
             className={styles.form__option}
             value={res.address}
             role="presentation"
-            onClick={dropdown.selectDomain}
+            onClick={dropdown.selectValue}
           >
             {res.address}
           </li>

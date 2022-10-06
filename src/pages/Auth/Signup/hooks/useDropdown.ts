@@ -6,7 +6,7 @@ export default function useDropdown(resetValue: string) {
 
   const changeDropdownOpen = () => setIsDropdownOpen(!isDropdownOpen);
 
-  const selectDomain = (e: React.MouseEvent<HTMLLIElement>) => {
+  const selectValue = (e: React.MouseEvent<HTMLLIElement>) => {
     if (e.currentTarget.innerText === resetValue) {
       setSelectedValue('');
     } else {
@@ -20,6 +20,6 @@ export default function useDropdown(resetValue: string) {
   };
 
   return {
-    isDropdownOpen, selectedValue, changeDropdownOpen, selectDomain, changeValue,
+    isDropdownOpen, selectedValue, changeDropdownOpen, selectValue, changeValue,
   };
 }
