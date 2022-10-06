@@ -1,6 +1,6 @@
 import DefaultLayout from 'layout/DefaultLayout';
 import Complete from 'pages/Auth/Signup/CompletePage/Complete';
-import SignUp from 'pages/Auth/Signup/SignupPage';
+import SignUp from 'pages/Auth/Signup/SignupPage/index';
 import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage/TermsOfService';
 import Login from 'pages/Auth/Login';
 import Home from 'pages/Home';
