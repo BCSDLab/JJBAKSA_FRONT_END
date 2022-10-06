@@ -7,12 +7,13 @@ import { ERROR_MESSAGE } from '../../static/signUp';
 import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
 import DomainDropdown from './DomainDropdown';
+import { EMAIL_MOBILE_REGEXP, EMAIL_REGEXP } from '../../static/Regexp';
 
 export default function EmailInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();
 
   const { isMobile } = useMediaQuery();
-  const Reg = isMobile ? /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i : /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])/i;
+  const emailReg = isMobile ? EMAIL_MOBILE_REGEXP : EMAIL_REGEXP;
 
   return (
     <div className={styles.form__form}>
@@ -22,7 +23,9 @@ export default function EmailInput() {
           <ErrorIcon
             className={cn({
               [styles['form__error-icon']]: true,
-              [styles['form__error-icon--active']]: errors?.email !== undefined,
+              [styles['form__error-icon--active']]:
+                errors?.emailDomain !== undefined
+                || errors?.email !== undefined,
             })}
             aria-hidden
           />
@@ -34,12 +37,13 @@ export default function EmailInput() {
         className={cn({
           [styles.form__input]: true,
           [styles['form__input--email']]: true,
-          [styles['form__input--error']]: errors?.email !== undefined,
+          [styles['form__input--error']]:
+            errors?.emailDomain !== undefined || errors?.email !== undefined,
         })}
         {...register('email', {
           required: ERROR_MESSAGE.email,
           pattern: {
-            value: Reg,
+            value: emailReg,
             message: ERROR_MESSAGE.email,
           },
         })}
