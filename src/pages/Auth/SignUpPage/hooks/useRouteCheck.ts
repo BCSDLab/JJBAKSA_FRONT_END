@@ -12,7 +12,7 @@ const useRouteCheck = (checkValue: string, route: string) => {
   useEffect(() => {
     const state = location.state as RouteCheckValue;
     if (!state || !(checkValue in state)) {
-      navigate(route);
+      navigate(route, { replace: true });
     }
   }, [location.state, navigate, route, checkValue]);
 };

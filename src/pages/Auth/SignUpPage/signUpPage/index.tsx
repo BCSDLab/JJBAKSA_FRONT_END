@@ -14,7 +14,7 @@ import { SignUpFormData } from './entity';
 import TopErrorMessage from './components/TopErrorMessage';
 
 export default function SignUpForm() {
-  useRouteCheck('termsCheck', '/termsofservice');
+  useRouteCheck('termsCheck', '/terms-of-service');
   const navigate = useNavigate();
 
   const methods = useForm<SignUpFormData>({
