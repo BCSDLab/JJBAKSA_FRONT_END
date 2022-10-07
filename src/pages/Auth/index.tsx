@@ -8,33 +8,30 @@ import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
 import { login } from 'api/user';
 import sha256 from 'sha256';
-import makeToast from 'utils/ts/makeToast';
 import styles from './LoginPage.module.scss';
 
 interface LoginFormInput {
   id: string;
-  pw: string;
-  checkbox: boolean;
+  password: string;
+  isAutoLoginChecked: boolean;
 }
 
 const useLoginRequest = () => {
   const navigate = useNavigate();
-  const submitLogin = async ({ id, pw, checkbox }: LoginFormInput) => {
-    try {
-      const { data } = await login({
-        account: id,
-        password: sha256(pw),
-      });
+  const submitLogin = async ({ id, password, isAutoLoginChecked }: LoginFormInput) => {
+    const { data } = await login({
+      account: id,
+      password: sha256(password),
+    });
 
-      if (data) {
-        sessionStorage.setItem('accessToken', data.accessToken);
-        if (checkbox) localStorage.setItem('refreshToken', data.refreshToken);
-        navigate('/');
-      }
-    } catch (e) {
-      // TODO - 401 에러를 제외한 나머지 핸들링 (500 서버에러 등)
-      makeToast('error', '올바르지 않은 계정 정보입니다!');
+    sessionStorage.setItem('accessToken', data.accessToken);
+
+    // 자동로그인
+    if (isAutoLoginChecked) {
+      localStorage.setItem('refreshToken', data.refreshToken);
     }
+
+    navigate('/');
   };
 
   return submitLogin;
@@ -49,8 +46,8 @@ function LoginPage(): JSX.Element {
     mode: 'onChange',
     defaultValues: {
       id: '',
-      pw: '',
-      checkbox: false,
+      password: '',
+      isAutoLoginChecked: false,
     },
   });
   const submitLogin = useLoginRequest();
@@ -63,11 +60,11 @@ function LoginPage(): JSX.Element {
           <form className={styles.loginform} onSubmit={handleSubmit(submitLogin)}>
             <div className={styles.loginform__login}>로그인</div>
             <input className={styles.loginform__input} type="text" id="id" placeholder="아이디" {...register('id', { required: true })} autoComplete="username" />
-            <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('pw', { required: true })} autoComplete="current-password" />
+            <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('password', { required: true })} autoComplete="current-password" />
             <div className={styles.autologin}>
               <label htmlFor="checkbox">
                 <span className={styles.autologin__text}>자동 로그인</span>
-                <input type="checkbox" id="checkbox" {...register('checkbox')} className={styles.checkbox} />
+                <input type="checkbox" id="checkbox" {...register('isAutoLoginChecked')} className={styles.checkbox} />
               </label>
             </div>
             <button type="submit" disabled={!isValid} className={styles.loginform__button}>
