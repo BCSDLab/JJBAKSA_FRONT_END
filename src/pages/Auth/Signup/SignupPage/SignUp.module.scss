@@ -184,6 +184,7 @@ $input-background: #eeeeee;
     font-size: 12px;
     cursor: pointer;
     outline: none;
+    line-height: 12px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 61px;

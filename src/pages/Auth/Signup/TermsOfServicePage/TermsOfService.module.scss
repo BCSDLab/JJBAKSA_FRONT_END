@@ -54,6 +54,7 @@ $passive: #c4c4c4;
   height: 20px;
   position: absolute;
   right: 0;
+  cursor: pointer;
 }
 
 details[open] > summary:first-of-type {
@@ -73,6 +74,8 @@ details[open] > summary:first-of-type {
 
   &__entire {
     @include mixin.font-medium;
+
+    cursor: pointer;
   }
 
   &__detail {
@@ -101,6 +104,7 @@ details[open] > summary:first-of-type {
 
   &__summary-text {
     width: 100%;
+    cursor: pointer;
   }
 
   &__input {
