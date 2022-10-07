@@ -7,6 +7,7 @@
 
 .container {
   margin-top: 208px;
+  margin-bottom: 56px;
 
   @include media.media-breakpoint-down(mobile) {
     margin-top: 0;

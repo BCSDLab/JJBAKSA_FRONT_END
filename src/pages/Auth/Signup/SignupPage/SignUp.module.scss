@@ -17,6 +17,7 @@ $input-background: #eeeeee;
   width: 368px;
   height: 800px;
   margin-top: 208px;
+  margin-bottom: 56px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 227px;
