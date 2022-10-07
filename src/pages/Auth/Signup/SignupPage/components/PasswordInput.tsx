@@ -8,8 +8,7 @@ import { ERROR_MESSAGE } from '../../static/signUp';
 import styles from '../SignUp.module.scss';
 import useBlindCheck from '../../hooks/useBlindCheck';
 import { SignUpFormData } from '../entity';
-
-const Reg = /^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=()]).{2,16}$/;
+import { PASSWORD_REGEXP } from '../../static/Regexp';
 
 export default function PasswordInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();
@@ -53,7 +52,7 @@ export default function PasswordInput() {
             message: ERROR_MESSAGE.password,
           },
           pattern: {
-            value: Reg,
+            value: PASSWORD_REGEXP,
             message: ERROR_MESSAGE.password,
           },
         })}

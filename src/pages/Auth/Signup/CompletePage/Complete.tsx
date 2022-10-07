@@ -5,6 +5,8 @@ import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import styles from './Complete.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
+import { NICKNAME_REGEXP } from '../static/Regexp';
+import { ERROR_MESSAGE } from '../static/signUp';
 
 export default function CompleteForm() {
   useRouteCheck('signUpCheck', '/signup');
@@ -27,7 +29,13 @@ export default function CompleteForm() {
           <input
             className={styles.form__input}
             placeholder="닉네임을 입력해주세요"
-            {...register('nickname', { required: true })}
+            {...register('nickname', {
+              required: true,
+              pattern: {
+                value: NICKNAME_REGEXP,
+                message: ERROR_MESSAGE.nickname,
+              },
+            })}
           />
           <button
             type="submit"
