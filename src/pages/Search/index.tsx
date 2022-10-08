@@ -1,5 +1,7 @@
 import { ReactComponent as LensIcon } from 'assets/svg/lens.svg';
-import { useSearchParams } from 'react-router-dom';
+import {
+  useNavigate, useParams, useSearchParams,
+} from 'react-router-dom';
 import { useRef, useState } from 'react';
 import list from './static/data';
 import styles from './Search.module.scss';
@@ -7,6 +9,7 @@ import recommend_text from './static/recommend';
 import cn from '../../utils/ts/classNames';
 import RollingBanner from './components/RollingBanner';
 import PreviousButton from './components/PreviousButton';
+import SearchNavigationBar from './components/SearchNavigationBar';
 
 type CurrentMode = string | null;
 
@@ -23,8 +26,8 @@ function useSearchForm(state : CurrentMode) {
   };
 
   const changeTrendingMode = () => {
-    setMode('trending');
-    setText('');
+    // setMode('trending');
+    // setText('');
   };
 
   return {
@@ -34,13 +37,24 @@ function useSearchForm(state : CurrentMode) {
 
 function Search(): JSX.Element {
   const [searchParams] = useSearchParams();
+  const { searchQuery } = useParams();
+  console.log('SQ', searchQuery);
   const currentMode : CurrentMode = searchParams.get('mode');
   const {
     text, mode, handleText, changeSearchMode, changeTrendingMode,
   } = useSearchForm(currentMode || 'trending');
 
   const recommendIdx = useRef(new Date().getSeconds() % 2);
+  const navigate = useNavigate();
 
+  function clickSearchQueryResult(
+    searchQueryResult : any,
+  ) {
+    console.log('click');
+    console.log(searchQueryResult);
+
+    navigate(`/search/${searchQueryResult}`);
+  }
   return (
     <div className={styles.search}>
       <section className={cn({
@@ -48,12 +62,10 @@ function Search(): JSX.Element {
         [styles['search-wrapper--search']]: mode === 'search',
       })}
       >
-        <nav className={styles['search-nav']}>
-          <div className={styles['search-nav__button']}>
-            <PreviousButton />
-          </div>
+        <SearchNavigationBar>
+          <PreviousButton />
           <h1 className={styles['search-nav__text']}>검색</h1>
-        </nav>
+        </SearchNavigationBar>
         {mode === 'trending' && (
         <h1 className={styles.search__recommend}>
           {recommend_text[recommendIdx.current]}
@@ -81,7 +93,7 @@ function Search(): JSX.Element {
           관련 음식점/게시물을 찾을 수 없습니다.
         </div>
         )}
-        {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item) => <li key={item.title} className={styles['search-query-list__item']}>{item.title}</li>)}
+        {text === '' ? null : list?.filter((item) => item.title.includes(text)).map((item) => <li key={item.title} className={styles['search-query-list__item']} role="presentation" onClick={() => clickSearchQueryResult(item.title)}>{item.title}</li>)}
       </ul>
     </div>
   );
