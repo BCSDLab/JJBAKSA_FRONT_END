@@ -15,6 +15,8 @@ export default function EmailInput() {
   const { isMobile } = useMediaQuery();
   const emailReg = isMobile ? EMAIL_MOBILE_REGEXP : EMAIL_REGEXP;
 
+  console.log(errors);
+
   return (
     <div className={styles.form__form}>
       <div className={styles.form__label}>

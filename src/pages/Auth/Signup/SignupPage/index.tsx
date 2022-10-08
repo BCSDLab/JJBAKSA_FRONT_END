@@ -22,6 +22,7 @@ export default function SignUpForm() {
     defaultValues: {
       id: '',
       email: '',
+      emailDomain: '',
       password: '',
       passwordCheck: '',
     },
@@ -31,6 +32,9 @@ export default function SignUpForm() {
     handleSubmit,
     formState: { isDirty, isValid },
   } = methods;
+
+  console.log(isDirty);
+  console.log(isValid);
 
   const clickSubmit = () => {
     if (isDirty && isValid) {
