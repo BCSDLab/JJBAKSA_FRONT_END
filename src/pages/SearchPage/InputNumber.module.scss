@@ -9,12 +9,12 @@ input[type="number"]::-webkit-inner-spin-button {
   align-items: center;
 }
 
-.input__layout {
+.form {
   display: flex;
   justify-content: center;
 }
 
-.input_style {
+.form__input {
   width: 50px;
   height: 50px;
   background-color: #eeeeee;

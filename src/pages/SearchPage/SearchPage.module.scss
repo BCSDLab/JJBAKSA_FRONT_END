@@ -5,7 +5,7 @@
   height: 100vh;
 }
 
-.back_icon {
+.page__back {
   position: absolute;
   top: 10%;
   left: 8%;
@@ -15,11 +15,11 @@
   }
 }
 
-.warning {
+.page__caution {
   margin-right: 5px;
 }
 
-.container {
+.page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,14 +28,14 @@
   grid-row-start: 2;
 }
 
-p {
+.page__quote {
   font-size: 18px;
   font-weight: 500;
   width: 240px;
   line-height: 22px;
 }
 
-.error {
+.page__error {
   display: flex;
   align-items: center;
   color: #ff7f23;
@@ -43,12 +43,7 @@ p {
   font-size: 12px;
 }
 
-.error__caution {
-  display: flex;
-  align-items: center;
-}
-
-.input_style {
+.form__input {
   border: 1px solid #eeeeee;
   border-radius: 100px;
   width: 220px;
@@ -68,13 +63,13 @@ p {
   background-color: #eeeeee;
 }
 
-.input_label {
+.form__center {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.email {
+.form__label {
   padding-left: 10px;
   padding-bottom: 5px;
 }

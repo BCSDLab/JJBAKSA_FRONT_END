@@ -33,16 +33,16 @@ export default function ChangePassword(): JSX.Element {
 
   return (
     <div className={style.layout}>
-      <div className={style.container}>
+      <div className={style.page}>
         <div>
-          <div className={style.back_icon}>
+          <div className={style.page__back}>
             <Prev />
           </div>
-          <p>
+          <p className={style.page__quote}>
             새 비밀번호를 설정해 주세요.
           </p>
         </div>
-        <div className={style.error_message}>
+        <div className={style.page__error}>
           {(errors.password || errors.passwordCheck) && (
             <div style={{ display: 'flex' }}>
               <img src={error} alt="warning" className={style.warning} />
@@ -52,13 +52,13 @@ export default function ChangePassword(): JSX.Element {
             </div>
           )}
         </div>
-        <form onSubmit={handleSubmit((data) => passwordConfirm(data))}>
-          <div className={style.input_label}>
-            <div className={style.email}>새 비밀번호</div>
+        <form className={style.form} onSubmit={handleSubmit((data) => passwordConfirm(data))}>
+          <div className={style.form__center}>
+            <div className={style.form__label}>새 비밀번호</div>
             <input
               type="password"
               placeholder="비밀번호를 입력하세요"
-              className={style.input_style}
+              className={style.form__input}
               {...register('password', {
                 required: '비밀번호를 입력하세요',
                 pattern: {
@@ -67,11 +67,11 @@ export default function ChangePassword(): JSX.Element {
                 },
               })}
             />
-            <div className={style.email}>비밀번호 확인</div>
+            <div className={style.form__label}>비밀번호 확인</div>
             <input
               type="password"
               placeholder="비밀번호를 입력하세요"
-              className={style.input_style}
+              className={style.form__input}
               {...register('passwordCheck', {
                 required: '비밀번호 확인을 입력하세요',
               })}

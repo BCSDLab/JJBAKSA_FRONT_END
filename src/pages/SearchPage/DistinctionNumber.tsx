@@ -13,21 +13,21 @@ export default function DistinctionNumber():JSX.Element {
   console.log(errors);
   return (
     <div className={style.layout}>
-      <div className={style.container}>
+      <div className={style.page}>
         <div>
-          <div className={style.back_icon}>
+          <div className={style.page__back}>
             <Prev />
           </div>
-          <p>
+          <p className={style.page__quote}>
             이메일로 발송된
             <br />
             인증번호를 입력해 주세요
           </p>
         </div>
-        <div className={style.error_message}>
+        <div className={style.page__error}>
           {(errors.first || errors.second || errors.third || errors.fourth) && (
           <span>
-            <img src={error} alt="warning" className={style.warning} />
+            <img src={error} alt="warning" className={style.page__caution} />
             인증번호가 올바르지 않습니다.
           </span>
           )}

@@ -2,7 +2,7 @@ import { UseFormRegister, UseFormHandleSubmit } from 'react-hook-form';
 import useInputCheck from './hook/useInputCheck';
 import style from './InputNumber.module.scss';
 
-interface Itype {
+interface IType {
   register: UseFormRegister<FormData>,
   handleSubmit: UseFormHandleSubmit<FormData>,
 }
@@ -14,7 +14,7 @@ export interface FormData {
   fourth: string
 }
 
-export default function InputNumber({ register, handleSubmit }: Itype): JSX.Element {
+export default function InputNumber({ register, handleSubmit }: IType): JSX.Element {
   const {
     isDone, inputRef, buttonRef, preventOverLength,
   } = useInputCheck();
@@ -25,11 +25,11 @@ export default function InputNumber({ register, handleSubmit }: Itype): JSX.Elem
         onSubmit={
         handleSubmit((data: FormData) => console.log('data: ', data))
       }
-        className={style.input__layout}
+        className={style.form}
       >
         <input
           type="number"
-          className={style.input_style}
+          className={style.form__input}
           {...register('first', {
             required: true,
             maxLength: 1,
@@ -39,7 +39,7 @@ export default function InputNumber({ register, handleSubmit }: Itype): JSX.Elem
         />
         <input
           type="number"
-          className={style.input_style}
+          className={style.form__input}
           {...register('second', {
             required: true,
             maxLength: 1,
@@ -49,7 +49,7 @@ export default function InputNumber({ register, handleSubmit }: Itype): JSX.Elem
         />
         <input
           type="number"
-          className={style.input_style}
+          className={style.form__input}
           {...register('third', {
             required: true,
             maxLength: 1,
@@ -59,7 +59,7 @@ export default function InputNumber({ register, handleSubmit }: Itype): JSX.Elem
         />
         <input
           type="number"
-          className={style.input_style}
+          className={style.form__input}
           {...register('fourth', {
             required: true,
             maxLength: 1,

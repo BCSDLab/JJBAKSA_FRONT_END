@@ -4,59 +4,58 @@ import { ReactComponent as Caution } from 'assets/svg/login-error.svg';
 import style from './SearchPage.module.scss';
 
 const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
-interface Isearch {
+interface ISearch {
   search: string
 }
 interface FormData {
   email: string
 }
 
-export default function Search({ search }: Isearch): JSX.Element {
+export default function Search({ search }: ISearch): JSX.Element {
   const {
     register,
-    getValues,
     handleSubmit,
-    formState: { isSubmitting, errors },
+    formState: { isSubmitting, errors, isValid },
   } = useForm<FormData>({
     mode: 'onChange',
   });
   return (
     <div className={style.layout}>
-      <div className={style.container}>
+      <div className={style.page}>
         <div>
-          <div className={style.back_icon}>
+          <div className={style.page__back}>
             <Prev />
           </div>
           {search === 'id' && (
-          <p>
+          <p className={style.page__quote}>
             아이디 찾을 때
             <br />
             사용할 이메일을 입력해주세요.
           </p>
           )}
           {search === 'password' && (
-          <p>
+          <p className={style.page__quote}>
             비밀번호를 찾을 때
             <br />
             사용할 이메일을 입력해주세요.
           </p>
           )}
         </div>
-        <div className={style.error}>
+        <div className={style.page__error}>
           {errors.email && (
-          <span className={style.error__caution}>
+          <span className={style.page__caution}>
             <Caution />
             {errors.email?.message}
           </span>
           )}
         </div>
-        <form onSubmit={handleSubmit((data) => data)}>
-          <div className={style.input__label}>
-            <div className={style.email}>이메일</div>
+        <form className={style.form} onSubmit={handleSubmit((data) => data)}>
+          <div className={style.form__center}>
+            <div className={style.form__label}>이메일</div>
             <input
               type="email"
               placeholder="이메일을 입력하세요"
-              className={style.input_style_radius}
+              className={style.form__input}
               id="email"
               {...register('email', {
                 required: 'email을 입력해주세요',
@@ -67,7 +66,7 @@ export default function Search({ search }: Isearch): JSX.Element {
               })}
             />
           </div>
-          <button type="submit" disabled={isSubmitting} className={getValues('email') !== undefined && errors.email?.message === undefined ? style.active : style.inactive}>인증번호 보내기</button>
+          <button type="submit" disabled={isSubmitting} className={isValid ? style.active : style.inactive}>인증번호 보내기</button>
         </form>
       </div>
     </div>
