@@ -81,6 +81,7 @@ $input-background: #eeeeee;
     font-size: 14px;
     padding: 5px;
     width: 408px;
+    display: block;
 
     @include media.media-breakpoint-down(mobile) {
       width: 100%;

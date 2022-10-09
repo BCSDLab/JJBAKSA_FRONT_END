@@ -15,11 +15,9 @@ export default function EmailInput() {
   const { isMobile } = useMediaQuery();
   const emailReg = isMobile ? EMAIL_MOBILE_REGEXP : EMAIL_REGEXP;
 
-  console.log(errors);
-
   return (
     <div className={styles.form__form}>
-      <div className={styles.form__label}>
+      <label className={styles.form__label} htmlFor="email-input">
         이메일
         <div className={styles.form__error} role="alert">
           <ErrorIcon
@@ -33,9 +31,10 @@ export default function EmailInput() {
           />
           {errors.email?.message}
         </div>
-      </div>
+      </label>
       <input
         placeholder="이메일을 입력하세요"
+        id="email-input"
         className={cn({
           [styles.form__input]: true,
           [styles['form__input--email']]: true,

@@ -19,7 +19,7 @@ export default function PasswordInput() {
 
   return (
     <div className={styles.form__form}>
-      <div className={styles.form__label}>
+      <label className={styles.form__label} htmlFor="password-input">
         비밀번호
         <div className={styles.form__error} role="alert">
           <ErrorIcon
@@ -32,9 +32,10 @@ export default function PasswordInput() {
           />
           {errors.password?.message}
         </div>
-      </div>
+      </label>
       <input
         placeholder="비밀번호를 입력하세요"
+        id="password-input"
         type={isBlind ? 'text' : 'password'}
         autoComplete="new-password"
         className={cn({

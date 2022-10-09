@@ -11,7 +11,7 @@ export default function IdInput() {
 
   return (
     <div className={styles.form__form}>
-      <div className={styles.form__label}>
+      <label className={styles.form__label} htmlFor="id-input">
         아이디
         <div className={styles.form__error} role="alert">
           <ErrorIcon
@@ -23,9 +23,10 @@ export default function IdInput() {
           />
           {errors.id?.message}
         </div>
-      </div>
+      </label>
       <input
         placeholder="아이디를 입력하세요"
+        id="id-input"
         className={cn({
           [styles.form__input]: true,
           [styles['form__input--id']]: true,

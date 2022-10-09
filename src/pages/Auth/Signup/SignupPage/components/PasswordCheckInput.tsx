@@ -18,7 +18,7 @@ export default function PasswordCheckInput() {
 
   return (
     <div className={styles.form__form}>
-      <div className={styles.form__label}>
+      <label className={styles.form__label} htmlFor="password-check-input">
         비밀번호 확인
         <div className={styles.form__error} role="alert">
           <ErrorIcon
@@ -31,9 +31,10 @@ export default function PasswordCheckInput() {
           />
           {errors.passwordCheck?.message}
         </div>
-      </div>
+      </label>
       <input
         placeholder="비밀번호를 다시 입력하세요"
+        id="password-check-input"
         type={isBlind ? 'text' : 'password'}
         className={cn({
           [styles.form__input]: true,
