@@ -133,6 +133,7 @@ $input-background: #eeeeee;
     }
 
     &::placeholder {
+      font-family: 'SUIT';
       font-size: 12px;
       color: #c4c4c4;
     }
@@ -182,7 +183,8 @@ $input-background: #eeeeee;
     position: absolute;
     right: 0;
     color: #ffffff;
-    font-weight: 700;
+    font-family: 'SUIT';
+    font-weight: 500;
     font-size: 12px;
     cursor: pointer;
     outline: none;
@@ -221,6 +223,13 @@ $input-background: #eeeeee;
     z-index: 12;
     font-size: 12px;
     color: rgb(34 34 34);
+
+    &::placeholder {
+      font-family: 'SUIT';
+      font-weight: 400;
+      font-size: 12px;
+      color: #c4c4c4;
+    }
 
     @include media.media-breakpoint-down(mobile) {
       display: none;
