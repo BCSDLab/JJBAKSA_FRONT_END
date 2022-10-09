@@ -1,7 +1,7 @@
 import DefaultLayout from 'layout/DefaultLayout';
-import Complete from 'pages/Auth/Signup/CompletePage/Complete';
+import Complete from 'pages/Auth/Signup/CompletePage';
 import SignUp from 'pages/Auth/Signup/SignupPage/index';
-import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage/TermsOfService';
+import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage';
 import Login from 'pages/Auth/Login';
 import Home from 'pages/Home';
 import { Routes, Route } from 'react-router-dom';
