@@ -132,7 +132,6 @@ $input-background: #eeeeee;
     }
 
     &::placeholder {
-      font-family: 'SUIT';
       font-size: 12px;
       color: #c4c4c4;
     }
@@ -180,7 +179,6 @@ $input-background: #eeeeee;
     position: absolute;
     right: 0;
     color: #ffffff;
-    font-family: 'SUIT';
     font-weight: 500;
     font-size: 12px;
     cursor: pointer;
@@ -222,7 +220,6 @@ $input-background: #eeeeee;
     color: rgb(34 34 34);
 
     &::placeholder {
-      font-family: 'SUIT';
       font-weight: 400;
       font-size: 12px;
       color: #c4c4c4;
