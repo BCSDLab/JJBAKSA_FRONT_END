@@ -1,26 +1,26 @@
-export interface ILoginResponse {
+export interface LoginResponse {
   accessToken: string;
   refreshToken: string;
 }
 
-export interface IRefreshResponse extends ILoginResponse {}
+export interface RefreshResponse extends LoginResponse {}
 
-export interface ILoginParams {
+export interface LoginParams {
   account: string;
   password: string;
 }
 
-export interface IRegisterParams extends ILoginParams {
+export interface RegisterParams extends LoginParams {
   email: string;
 }
 
-export interface IModifyParams {
+export interface ModifyParams {
   nickname?: string;
   password?: string;
   email?: string;
 }
 
-export interface IUser {
+export interface User {
   account: string;
   nickname: string;
   email: string;
