@@ -11,10 +11,7 @@ function SearchQueryItemList() {
   return (
     <div className={styles.search}>
       <SearchNavigationBar>
-        {/* <Link to="/search" className={styles['search-nav__button--previous']}>
-          <PreviousIcon title="이전 페이지로 이동" />
-        </Link> */}
-        <PreviousButton to="/search" />
+        <PreviousButton />
         <h1 className={styles['search-nav__text']}>{searchQuery}</h1>
       </SearchNavigationBar>
     </div>
