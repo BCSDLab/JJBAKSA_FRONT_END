@@ -1,13 +1,11 @@
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import styles from './SignUp.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import { SignUpFormData } from './entity';
-import TopErrorMessage from './components/TopErrorMessage';
 import IdInput from './components/IdInput';
 import EmailInput from './components/EmailInput';
 import PasswordInput from './components/PasswordInput';
@@ -33,9 +31,6 @@ export default function SignUpForm() {
     formState: { isDirty, isValid },
   } = methods;
 
-  console.log(isDirty);
-  console.log(isValid);
-
   const clickSubmit = () => {
     if (isDirty && isValid) {
       navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
@@ -44,8 +39,6 @@ export default function SignUpForm() {
     }
   };
 
-  const { isMobile } = useMediaQuery();
-
   return (
     <div className={styles.template}>
       <div className={styles.container}>
@@ -53,14 +46,10 @@ export default function SignUpForm() {
         <FormProvider {...methods}>
           <form
             className={styles.form}
-          // form 제출 api 호출
+            // form 제출 api 호출
             onSubmit={handleSubmit((res) => res)}
           >
-            <div className={styles.form__title}>
-              회원가입
-            </div>
-
-            {isMobile && <TopErrorMessage />}
+            <div className={styles.form__title}>회원가입</div>
 
             <IdInput />
             <EmailInput />
@@ -69,9 +58,7 @@ export default function SignUpForm() {
 
             <button
               type="submit"
-              className={
-              styles.form__button
-            }
+              className={styles.form__button}
               disabled={!isDirty || !isValid}
               onClick={clickSubmit}
             >

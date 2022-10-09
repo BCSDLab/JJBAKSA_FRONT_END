@@ -44,7 +44,7 @@ $input-background: #eeeeee;
     @include mixin.font-title(40px);
 
     @include media.media-breakpoint-down(mobile) {
-      display: none;
+      margin-bottom: 27px;
     }
   }
 
@@ -69,7 +69,7 @@ $input-background: #eeeeee;
 
     @include media.media-breakpoint-down(mobile) {
       position: absolute;
-      bottom: 6px;
+      bottom: 1px;
       right: 12px;
       width: 16px;
       height: 16px;
@@ -81,31 +81,30 @@ $input-background: #eeeeee;
     font-size: 14px;
     padding: 5px;
     width: 408px;
-    display: block;
+    display: flex;
 
     @include media.media-breakpoint-down(mobile) {
       width: 100%;
+      height: 24px;
+      align-items: center;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 
   &__error-icon {
     display: none;
+    width: 11px;
+    height: 11px;
 
     &--active {
       display: inline-block;
       padding: 0 10px;
 
       @include media.media-breakpoint-down(mobile) {
-        display: none;
+        width: 26px;
+        padding: 0;
       }
-    }
-
-    &--mobile {
-      width: 12px;
-      height: 11px;
-      margin-right: 12px;
     }
   }
 
@@ -162,15 +161,13 @@ $input-background: #eeeeee;
   &__error {
     font-size: 11px;
     color: $active;
-    display: inline-block;
 
     @include media.media-breakpoint-down(mobile) {
-      display: none;
-    }
-
-    &--top {
-      color: $active;
-      font-size: 11px;
+      display: grid;
+      font-size: 9px;
+      width: 159px;
+      grid-template-columns: 1fr 9fr;
+      align-items: center;
     }
   }
 
@@ -193,7 +190,7 @@ $input-background: #eeeeee;
     @include media.media-breakpoint-down(mobile) {
       width: 61px;
       height: 30px;
-      bottom: 0;
+      bottom: -7px;
     }
 
     &--active {
@@ -306,12 +303,4 @@ $input-background: #eeeeee;
       margin-top: 73px;
     }
   }
-}
-
-.top-error {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 28px;
-  margin-bottom: 29px;
 }
