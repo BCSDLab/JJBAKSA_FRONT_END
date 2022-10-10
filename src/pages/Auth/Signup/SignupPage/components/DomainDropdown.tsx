@@ -16,8 +16,6 @@ export default function DomainDropdown() {
 
   const dropdown = useDropDown('직접 입력');
 
-  console.log(errors);
-
   return (
     <>
       <input

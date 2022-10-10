@@ -165,8 +165,9 @@ $input-background: #eeeeee;
       display: grid;
       font-size: 9px;
       width: 159px;
-      grid-template-columns: 1fr 9fr;
+      grid-template-columns: 26px 1fr;
       align-items: center;
+      letter-spacing: -0.7px;
     }
   }
 
