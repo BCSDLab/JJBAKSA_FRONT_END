@@ -11,7 +11,7 @@ interface FormData {
   email: string
 }
 
-export default function Search({ search }: ISearch): JSX.Element {
+export default function SearchPage({ search }: ISearch): JSX.Element {
   const {
     register,
     handleSubmit,

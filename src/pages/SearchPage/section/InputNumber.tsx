@@ -1,5 +1,5 @@
 import { UseFormRegister, UseFormHandleSubmit } from 'react-hook-form';
-import useInputCheck from './hook/useInputCheck';
+import useInputCheck from '../hook/useInputCheck';
 import style from './InputNumber.module.scss';
 
 interface IType {

@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
 import error from 'assets/svg/login-error.svg';
-import style from './SearchPage.module.scss';
+import style from 'pages/SearchPage/index.module.scss';
 import Modal from './Modal';
 
 const pattern = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
