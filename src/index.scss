@@ -32,13 +32,13 @@ body {
 }
 
 button {
-  font-family: SUIT;
+  font-family: SUIT, system-ui;
 }
 
 input {
-  font-family: SUIT;
+  font-family: SUIT, system-ui;
 
   &::placeholder {
-    font-family: SUIT;
+    font-family: SUIT, system-ui;
   }
 }
