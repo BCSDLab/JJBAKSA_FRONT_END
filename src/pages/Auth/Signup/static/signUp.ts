@@ -41,7 +41,7 @@ const DOMAIN: Domain[] = [
   {
     key: 6,
     name: 'koreatech',
-    address: 'koreatech.co.kr',
+    address: 'koreatech.ac.kr',
   },
   {
     key: 7,

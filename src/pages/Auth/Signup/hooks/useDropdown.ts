@@ -18,14 +18,13 @@ export default function useDropdown(resetValue: string) {
     } else {
       setSelectedValue(e.currentTarget.innerText);
     }
-    setValue('emailDomain', selectedValue, { shouldDirty: true, shouldValidate: true });
+    setValue('emailDomain', e.currentTarget.innerText, { shouldDirty: true, shouldValidate: true });
     changeDropdownOpen();
   };
 
   const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(e.currentTarget.value);
-    setValue('emailDomain', selectedValue, { shouldDirty: true, shouldValidate: true });
-    console.log('변경됨');
+    setValue('emailDomain', e.currentTarget.value, { shouldDirty: true, shouldValidate: true });
   };
 
   return {

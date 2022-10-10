@@ -76,6 +76,8 @@ details[open] > summary:first-of-type {
   &__entire {
     @include mixin.font-medium;
 
+    display: flex;
+    align-items: center;
     cursor: pointer;
   }
 
@@ -106,6 +108,8 @@ details[open] > summary:first-of-type {
   &__summary-text {
     width: 100%;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   &__input {
@@ -125,7 +129,7 @@ details[open] > summary:first-of-type {
 
   &__info {
     width: 320px;
-    height: 43px;
+    height: 38px;
     margin-top: 16px;
     border: 1px solid #c4c4c4;
     border-radius: 16px;

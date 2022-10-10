@@ -57,8 +57,16 @@ export default function TermsOfService() {
               <div key={res.key} className={styles.checkbox}>
                 <details className={styles.checkbox__details}>
                   <summary className={styles.checkbox__summary}>
-                    <input className={styles.checkbox__input} type="checkbox" onChange={() => changeCheck(index)} checked={checkedList[index]} />
-                    <div className={styles['checkbox__summary-text']}>{res.summary}</div>
+                    <label className={styles['checkbox__summary-text']} htmlFor={res.summary}>
+                      <input
+                        className={styles.checkbox__input}
+                        id={res.summary}
+                        type="checkbox"
+                        onChange={() => changeCheck(index)}
+                        checked={checkedList[index]}
+                      />
+                      {res.summary}
+                    </label>
                     <Arrow className={styles.checkbox__icon} />
                   </summary>
                   <p className={styles.checkbox__info}>{res.content}</p>
@@ -68,9 +76,7 @@ export default function TermsOfService() {
           </div>
           <button
             type="button"
-            className={
-              styles['terms-of-service__submit']
-            }
+            className={styles['terms-of-service__submit']}
             disabled={!allCheck}
             onClick={() => navigate('/signup', { state: { termsCheck: true } })}
           >
