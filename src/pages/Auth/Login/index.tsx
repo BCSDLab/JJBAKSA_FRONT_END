@@ -14,7 +14,7 @@ interface IFormInput {
   checkbox: boolean;
 }
 
-function LoginPage(): JSX.Element {
+function Login(): JSX.Element {
   const {
     register,
     handleSubmit,
@@ -92,4 +92,4 @@ function LoginPage(): JSX.Element {
   );
 }
 
-export default LoginPage;
+export default Login;

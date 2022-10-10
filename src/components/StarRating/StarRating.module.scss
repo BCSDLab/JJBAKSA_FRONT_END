@@ -1,0 +1,27 @@
+.starRateContainer {
+  display: flex;
+  align-items: center;
+  width: 160px;
+  height: 32px;
+  margin-bottom: 24px;
+}
+
+.wrapper {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+
+  &__star {
+    transition: all 0.2s ease-out;
+  }
+
+  &:hover {
+    .wrapper__star {
+      transform: scale(1.2);
+    }
+  }
+}
