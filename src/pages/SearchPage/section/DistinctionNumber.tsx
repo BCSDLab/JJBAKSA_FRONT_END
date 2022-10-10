@@ -10,7 +10,7 @@ export default function DistinctionNumber():JSX.Element {
   } = useForm<FormData>({
     mode: 'onChange',
   });
-  console.log(errors);
+
   return (
     <div className={style.layout}>
       <div className={style.page}>
