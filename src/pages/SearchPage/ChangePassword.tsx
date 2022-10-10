@@ -15,21 +15,10 @@ export default function ChangePassword(): JSX.Element {
   const [isComplete, setIsComplete] = useState<boolean>();
 
   const {
-    register, handleSubmit, formState: { errors, isValid }, setError,
+    register, handleSubmit, formState: { errors, isValid }, getValues,
   } = useForm<FormData>({
     mode: 'onChange',
   });
-
-  const passwordConfirm = (data: FormData) => {
-    if (data.password !== data.passwordCheck) {
-      setError('password', {
-        message: '비밀번호가 일치하지 않습니다.',
-      }, { shouldFocus: true });
-    } else {
-      console.log(data);
-      setIsComplete(true);
-    }
-  };
 
   return (
     <div className={style.layout}>
@@ -52,7 +41,7 @@ export default function ChangePassword(): JSX.Element {
             </div>
           )}
         </div>
-        <form className={style.form} onSubmit={handleSubmit((data) => passwordConfirm(data))}>
+        <form className={style.form} onSubmit={handleSubmit(() => setIsComplete(true))}>
           <div className={style.form__center}>
             <div className={style.form__label}>새 비밀번호</div>
             <input
@@ -74,6 +63,7 @@ export default function ChangePassword(): JSX.Element {
               className={style.form__input}
               {...register('passwordCheck', {
                 required: '비밀번호 확인을 입력하세요',
+                validate: (value) => value === getValues('password') || '비밀번호가 일치하지 않습니다.',
               })}
             />
           </div>
