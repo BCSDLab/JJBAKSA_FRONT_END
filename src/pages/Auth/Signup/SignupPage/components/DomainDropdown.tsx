@@ -11,13 +11,12 @@ import { EMAILDOMAIN_REGEXP } from '../../static/Regexp';
 export default function DomainDropdown() {
   const {
     register,
-    setValue,
     formState: { errors },
   } = useFormContext<SignUpFormData>();
 
   const dropdown = useDropDown('직접 입력');
 
-  setValue('emailDomain', dropdown.selectedValue, { shouldDirty: true });
+  console.log(errors);
 
   return (
     <>

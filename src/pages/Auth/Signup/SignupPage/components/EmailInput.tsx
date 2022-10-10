@@ -29,7 +29,7 @@ export default function EmailInput() {
             })}
             aria-hidden
           />
-          {errors.email?.message}
+          {errors.email ? errors.email?.message : errors.emailDomain?.message}
         </div>
       </label>
       <input
