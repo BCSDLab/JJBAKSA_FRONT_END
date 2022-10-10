@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "@toast-ui/editor": "^3.2.0",
+    "@toast-ui/react-editor": "^3.2.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
@@ -17,7 +19,10 @@
     "react-query": "^3.39.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.0.8",
     "sass": "^1.54.4",
+    "sha256": "^0.2.0",
+    "tui-editor-plugin-font-size": "^1.0.4",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -49,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@types/sha256": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
     "eslint": "^8.18.0",
