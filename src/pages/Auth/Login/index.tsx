@@ -6,9 +6,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
-import styles from './Login.module.scss';
 import { login } from 'api/user';
 import sha256 from 'sha256';
+import styles from './Login.module.scss';
 
 interface LoginFormInput {
   id: string;
