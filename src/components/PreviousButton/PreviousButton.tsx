@@ -4,19 +4,23 @@ import classNames from 'utils/ts/classNames';
 import styles from './PreviousButton.module.scss';
 
 interface ButtonPostion {
+  route?: string,
   position?: string
 }
 
-export default function PreviousButton(position : ButtonPostion) {
+export default function PreviousButton({ route, position } : ButtonPostion) {
   const navigate = useNavigate();
 
   function routingHandler() {
-    if (window.history.state && window.history.state.idx > 0) {
+    if (route) {
+      navigate(route);
+    } else if (window.history.state && window.history.state.idx > 0) {
       navigate(-1);
     } else {
       navigate('/');
     }
   }
+
   return (
     <button
       type="button"
