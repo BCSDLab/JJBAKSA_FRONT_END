@@ -1,36 +1,33 @@
 import { ReactComponent as ChevronRight } from 'assets/svg/previous.svg';
 import { useNavigate } from 'react-router-dom';
-import classNames from 'utils/ts/classNames';
+import cn from 'utils/ts/classNames';
 import styles from './PreviousButton.module.scss';
 
-interface ButtonPostion {
-  route?: string,
-  position?: string
+interface Props {
+  fallback?: string,
+  position?: string,
 }
 
-export default function PreviousButton({ route, position } : ButtonPostion) {
+export default function PreviousButton({ fallback = '/', position } : Props) {
   const navigate = useNavigate();
-
-  function routingHandler() {
-    if (route) {
-      navigate(route);
-    } else if (window.history.state && window.history.state.idx > 0) {
-      navigate(-1);
-    } else {
-      navigate('/');
-    }
-  }
+  const isPreviousPath = window.history.state?.idx > 0;
 
   return (
     <button
       type="button"
-      onClick={routingHandler}
       className={
-      classNames({
-        [styles['previous-button']]: true,
-        [styles['previous-button--fixed-left']]: position === 'left',
-      })
-    }
+        cn({
+          [styles['previous-button']]: true,
+          [styles['previous-button--fixed-left']]: position === 'left',
+        })
+      }
+      onClick={() => {
+        if (isPreviousPath) {
+          navigate(-1);
+          return;
+        }
+        navigate(fallback);
+      }}
     >
       <ChevronRight title="이전 페이지로 이동" />
     </button>
