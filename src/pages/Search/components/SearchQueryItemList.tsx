@@ -1,9 +1,7 @@
-import React from 'react';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
 import { useParams } from 'react-router-dom';
-// import { ReactComponent as PreviousIcon } from 'assets/svg/previous.svg';
 import styles from '../Search.module.scss';
 import SearchNavigationBar from './SearchNavigationBar';
-import PreviousButton from './PreviousButton';
 
 function SearchQueryItemList() {
   const { searchQuery } = useParams();

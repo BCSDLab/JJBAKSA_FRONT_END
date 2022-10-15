@@ -6,7 +6,7 @@ import styles from './Search.module.scss';
 import recommend_text from './static/recommend';
 import cn from '../../utils/ts/classNames';
 import RollingBanner from './components/RollingBanner';
-import PreviousButton from './components/PreviousButton';
+import PreviousButton from '../../components/PreviousButton/PreviousButton';
 
 type CurrentMode = string | null;
 
@@ -50,7 +50,7 @@ function Search(): JSX.Element {
       >
         <nav className={styles['search-nav']}>
           <div className={styles['search-nav__button']}>
-            <PreviousButton to="/" />
+            <PreviousButton />
           </div>
           <h1 className={styles['search-nav__text']}>검색</h1>
         </nav>
