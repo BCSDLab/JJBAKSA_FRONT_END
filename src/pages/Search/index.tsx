@@ -1,12 +1,12 @@
 import { ReactComponent as LensIcon } from 'assets/svg/lens.svg';
 import { useSearchParams } from 'react-router-dom';
 import { useRef, useState } from 'react';
+import cn from 'utils/ts/classNames';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
+import RollingBanner from './components/RollingBanner';
 import list from './static/data';
 import styles from './Search.module.scss';
 import recommend_text from './static/recommend';
-import cn from '../../utils/ts/classNames';
-import RollingBanner from './components/RollingBanner';
-import PreviousButton from '../../components/PreviousButton/PreviousButton';
 
 type CurrentMode = string | null;
 
