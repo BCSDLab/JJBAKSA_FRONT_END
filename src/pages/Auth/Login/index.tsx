@@ -8,7 +8,7 @@ import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
 import { login } from 'api/user';
 import sha256 from 'sha256';
-import styles from './LoginPage.module.scss';
+import styles from './Login.module.scss';
 
 interface LoginFormInput {
   id: string;
@@ -37,7 +37,7 @@ const useLoginRequest = () => {
   return submitLogin;
 };
 
-function LoginPage(): JSX.Element {
+function Login(): JSX.Element {
   const {
     register,
     handleSubmit,
@@ -74,7 +74,7 @@ function LoginPage(): JSX.Element {
           <div className={styles.help}>
             <Link className={styles.help__link} to="/">아이디 찾기</Link>
             <Link className={styles.help__link} to="/">비밀번호 찾기</Link>
-            <Link className={styles.help__link} to="/signup">회원가입</Link>
+            <Link className={styles.help__link} to="/terms-of-service">회원가입</Link>
           </div>
           <div className={styles.social}>
             <div className={styles.social__title}>SNS계정으로 로그인하기</div>
@@ -115,4 +115,4 @@ function LoginPage(): JSX.Element {
   );
 }
 
-export default LoginPage;
+export default Login;
