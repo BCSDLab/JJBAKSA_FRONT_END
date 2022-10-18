@@ -1,47 +1,70 @@
 import { ReactComponent as GoogleIcon } from 'assets/svg/google.svg';
 import { ReactComponent as NaverIcon } from 'assets/svg/naver.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/kakao.svg';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
-import styles from './LoginPage.module.scss';
+import { login } from 'api/user';
+import sha256 from 'sha256';
+import styles from './Login.module.scss';
 
-interface IFormInput {
+interface LoginFormInput {
   id: string;
-  pw: string;
-  checkbox: boolean;
+  password: string;
+  isAutoLoginChecked: boolean;
 }
 
-function LoginPage(): JSX.Element {
+const useLoginRequest = () => {
+  const navigate = useNavigate();
+  const submitLogin = async ({ id, password, isAutoLoginChecked }: LoginFormInput) => {
+    const { data } = await login({
+      account: id,
+      password: sha256(password),
+    });
+
+    sessionStorage.setItem('accessToken', data.accessToken);
+
+    // 자동로그인
+    if (isAutoLoginChecked) {
+      localStorage.setItem('refreshToken', data.refreshToken);
+    }
+
+    navigate('/');
+  };
+
+  return submitLogin;
+};
+
+function Login(): JSX.Element {
   const {
     register,
     handleSubmit,
     formState: { isValid },
-  } = useForm<IFormInput>({
+  } = useForm<LoginFormInput>({
     mode: 'onChange',
     defaultValues: {
       id: '',
-      pw: '',
-      checkbox: false,
+      password: '',
+      isAutoLoginChecked: false,
     },
   });
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const submitLogin = useLoginRequest();
 
   return (
     <div className={styles.template}>
       <div className={styles.content}>
         <AuthTitle />
         <div className={styles.form}>
-          <form className={styles.loginform} onSubmit={handleSubmit(onSubmit)}>
+          <form className={styles.loginform} onSubmit={handleSubmit(submitLogin)}>
             <div className={styles.loginform__login}>로그인</div>
             <input className={styles.loginform__input} type="text" id="id" placeholder="아이디" {...register('id', { required: true })} autoComplete="username" />
-            <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('pw', { required: true })} autoComplete="current-password" />
+            <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('password', { required: true })} autoComplete="current-password" />
             <div className={styles.autologin}>
               <label htmlFor="checkbox">
                 <span className={styles.autologin__text}>자동 로그인</span>
-                <input type="checkbox" id="checkbox" {...register('checkbox')} className={styles.checkbox} />
+                <input type="checkbox" id="checkbox" {...register('isAutoLoginChecked')} className={styles.checkbox} />
               </label>
             </div>
             <button type="submit" disabled={!isValid} className={styles.loginform__button}>
@@ -51,7 +74,7 @@ function LoginPage(): JSX.Element {
           <div className={styles.help}>
             <Link className={styles.help__link} to="/">아이디 찾기</Link>
             <Link className={styles.help__link} to="/">비밀번호 찾기</Link>
-            <Link className={styles.help__link} to="/signup">회원가입</Link>
+            <Link className={styles.help__link} to="/terms-of-service">회원가입</Link>
           </div>
           <div className={styles.social}>
             <div className={styles.social__title}>SNS계정으로 로그인하기</div>
@@ -92,4 +115,4 @@ function LoginPage(): JSX.Element {
   );
 }
 
-export default LoginPage;
+export default Login;
