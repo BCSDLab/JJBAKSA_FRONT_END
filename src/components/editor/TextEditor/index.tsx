@@ -1,10 +1,9 @@
-import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.svg';
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useBoolean from 'utils/hooks/useBoolean';
 import cn from 'utils/ts/classNames';
 import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
 import StarRating from 'components/StarRating';
 import AddImage from './AddImage';
 import SlideToolBox from './SlideToolBox';
@@ -17,7 +16,6 @@ interface Props {
 
 function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
-  const navigate = useNavigate();
   const isSaveActive = useBoolean(false);
   const isAddImageActive = useBoolean(false);
 
@@ -28,16 +26,20 @@ function TextEditor({ shop, getShopname }: Props) {
     })}
     >
       <div className={styles.header}>
-        <LeftAngleBraketIcon type="button" className={styles['header__button--prev']} onClick={() => navigate(-1)} />
+        <div className={styles['header__button--prev']}>
+          <PreviousButton />
+        </div>
         { shop == null ? (
-          <Plus
+          <button
             type="button"
             className={styles['header__button--add']}
             // 추후 검색 링크로 이동하는 이벤트로 변경
             // 해당 검색 링크에서 특정 상점 선택 시 getShopname함수 호출
             // 값이 null에서 string으로 변하면서 제목과 별점 생성
             onClick={getShopname}
-          />
+          >
+            <Plus />
+          </button>
         )
           : (
             <>
