@@ -14,7 +14,7 @@ export default function useImageList(): ReturnType {
   const addImage = () => {
     refetch();
     if (imageList === null) setImageList([data?.data.message]);
-    if (imageList !== null) setImageList((prev) => prev && [...prev, data?.data.message]);
+    else setImageList((prev) => prev && [...prev, data?.data.message]);
   };
   const removeImage = (value: string) => {
     setImageList((prev) => prev && prev.filter((item) => item !== value));
