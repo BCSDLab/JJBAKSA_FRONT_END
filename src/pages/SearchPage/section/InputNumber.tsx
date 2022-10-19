@@ -1,4 +1,5 @@
 import { UseFormRegister, UseFormHandleSubmit } from 'react-hook-form';
+import cn from 'utils/ts/classNames';
 import useInputCheck from '../hook/useInputCheck';
 import style from './InputNumber.module.scss';
 
@@ -23,7 +24,7 @@ export default function InputNumber({ register, handleSubmit }: IType): JSX.Elem
     <div className={style.container}>
       <form
         onSubmit={
-        handleSubmit((data: FormData) => console.log('data: ', data))
+        handleSubmit((data: FormData) => data)
       }
         className={style.form}
       >
@@ -68,6 +69,16 @@ export default function InputNumber({ register, handleSubmit }: IType): JSX.Elem
           onChange={(e) => preventOverLength(e, 4)}
         />
         <button type="submit" ref={buttonRef} className={isDone ? style.active : style.inactive}>완료</button>
+        <button
+          type="submit"
+          ref={buttonRef}
+          className={cn({
+            [style.active]: isDone,
+            [style.inactive]: true,
+          })}
+        >
+          완료
+        </button>
       </form>
       <span className={style.resend}>인증번호 재발송</span>
     </div>

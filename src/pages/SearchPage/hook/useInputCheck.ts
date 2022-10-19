@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 export default function useInputCheck() {
   const inputRef = useRef<HTMLInputElement[] | null[]>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isDone, setIsDone] = useState<boolean>();
+  const [isDone, setIsDone] = useState<boolean>(false);
 
   const checkInput = () => {
     const values = inputRef.current.map((item) => item?.value);

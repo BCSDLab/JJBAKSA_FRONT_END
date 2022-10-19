@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
 import { ReactComponent as Caution } from 'assets/svg/login-error.svg';
+import cn from 'utils/ts/classNames';
 import style from './index.module.scss';
 
 const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
@@ -66,7 +67,16 @@ export default function SearchPage({ search }: ISearch): JSX.Element {
               })}
             />
           </div>
-          <button type="submit" disabled={isSubmitting} className={isValid ? style.active : style.inactive}>인증번호 보내기</button>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={cn({
+              [style.active]: isValid,
+              [style.inactive]: true,
+            })}
+          >
+            인증번호 보내기
+          </button>
         </form>
       </div>
     </div>

@@ -1,3 +1,5 @@
+@use "src/utils/styles/mediaQuery" as media;
+
 .layout {
   display: grid;
   grid-template-rows: 150px 1fr;
@@ -10,7 +12,7 @@
   top: 10%;
   left: 8%;
 
-  @media screen and (min-width: 574px) {
+  @include media.media-breakpoint-down(mobile) {
     display: none;
   }
 }

@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
+import cn from 'utils/ts/classNames';
 import error from 'assets/svg/login-error.svg';
 import style from 'pages/SearchPage/index.module.scss';
 import Modal from './Modal';
@@ -67,7 +68,15 @@ export default function ChangePassword(): JSX.Element {
               })}
             />
           </div>
-          <button type="submit" className={isValid ? style.active : style.inactive}>완료</button>
+          <button
+            type="submit"
+            className={cn({
+              [style.active]: isValid,
+              [style.inactive]: true,
+            })}
+          >
+            인증번호 보내기
+          </button>
         </form>
       </div>
       {isComplete && <Modal modal="passwordModal" />}
