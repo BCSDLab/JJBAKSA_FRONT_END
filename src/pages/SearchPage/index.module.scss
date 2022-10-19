@@ -3,18 +3,9 @@
 .layout {
   display: grid;
   grid-template-rows: 150px 1fr;
+  place-items: center;
   width: 100vw;
   height: 100vh;
-}
-
-.page__back {
-  position: absolute;
-  top: 10%;
-  left: 8%;
-
-  @include media.media-breakpoint-down(mobile) {
-    display: none;
-  }
 }
 
 .page__caution {
@@ -25,9 +16,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
   height: 100%;
   grid-row-start: 2;
+}
+
+.page__back {
+  padding-bottom: 10px;
+  @include media.media-breakpoint-down(mobile) {
+    display: none;
+  }
 }
 
 .page__quote {

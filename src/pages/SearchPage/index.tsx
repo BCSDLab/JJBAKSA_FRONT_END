@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
 import { ReactComponent as Caution } from 'assets/svg/login-error.svg';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import style from './index.module.scss';
 
@@ -25,7 +25,7 @@ export default function SearchPage({ search }: ISearch): JSX.Element {
       <div className={style.page}>
         <div>
           <div className={style.page__back}>
-            <Prev />
+            <PreviousButton />
           </div>
           {search === 'id' && (
           <p className={style.page__quote}>

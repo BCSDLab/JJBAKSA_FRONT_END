@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/login-error.svg';
 import style from 'pages/SearchPage/index.module.scss';
 import InputNumber, { FormData } from './InputNumber';
@@ -16,7 +16,7 @@ export default function DistinctionNumber():JSX.Element {
       <div className={style.page}>
         <div>
           <div className={style.page__back}>
-            <Prev />
+            <PreviousButton />
           </div>
           <p className={style.page__quote}>
             이메일로 발송된

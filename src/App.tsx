@@ -11,6 +11,7 @@ import SearchPage from 'pages/SearchPage';
 import DistinctionNumber from 'pages/SearchPage/section/DistinctionNumber';
 import SearchQueryItemList from 'pages/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
+import ChangePassword from 'pages/SearchPage/section/ChangePassword';
 
 function App(): JSX.Element {
   return (
@@ -26,6 +27,7 @@ function App(): JSX.Element {
         <Route path="/search-id" element={<SearchPage search="id" />} />
         <Route path="/search-pw" element={<SearchPage search="password" />} />
         <Route path="/search-id/number" element={<DistinctionNumber />} />
+        <Route path="/search-pw/change" element={<ChangePassword />} />
         <Route path="/search/:searchQuery" element={<SearchQueryItemList />} />
       </Routes>
       <Toast />

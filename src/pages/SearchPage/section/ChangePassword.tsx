@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { ReactComponent as Prev } from 'assets/svg/prev-icon.svg';
 import cn from 'utils/ts/classNames';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/login-error.svg';
 import style from 'pages/SearchPage/index.module.scss';
 import Modal from './Modal';
@@ -26,7 +26,7 @@ export default function ChangePassword(): JSX.Element {
       <div className={style.page}>
         <div>
           <div className={style.page__back}>
-            <Prev />
+            <PreviousButton />
           </div>
           <p className={style.page__quote}>
             새 비밀번호를 설정해 주세요.
