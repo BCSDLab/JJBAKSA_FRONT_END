@@ -6,7 +6,7 @@ import error from 'assets/svg/login-error.svg';
 import style from 'pages/SearchPage/index.module.scss';
 import Modal from './Modal';
 
-const pattern = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
+const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 
 interface FormData {
   password: string,
@@ -52,7 +52,7 @@ export default function ChangePassword(): JSX.Element {
               {...register('password', {
                 required: '비밀번호를 입력하세요',
                 pattern: {
-                  value: pattern,
+                  value: PATTERN,
                   message: '비밀번호는 문자, 숫자, 특수문자를 포함한\n2~16자리로 이루어져야 합니다.',
                 },
               })}
