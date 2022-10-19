@@ -7,11 +7,11 @@ import Login from 'pages/Auth/Login';
 import Home from 'pages/Home';
 import Post from 'pages/Post';
 import Search from 'pages/Search';
-import SearchPage from 'pages/SearchPage';
-import DistinctionNumber from 'pages/SearchPage/section/DistinctionNumber';
+import SearchPage from 'pages/Auth/SearchIDPassword';
+import DistinctionNumber from 'pages/Auth/SearchIDPassword/page/DistinctionNumber';
 import SearchQueryItemList from 'pages/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
-import ChangePassword from 'pages/SearchPage/section/ChangePassword';
+import ChangePassword from 'pages/Auth/SearchIDPassword/page/ChangePassword';
 
 function App(): JSX.Element {
   return (

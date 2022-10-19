@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/login-error.svg';
-import style from 'pages/SearchPage/index.module.scss';
+import style from 'pages/Auth/SearchIDPassword/index.module.scss';
 import InputNumber, { FormData } from './InputNumber';
 
 export default function DistinctionNumber():JSX.Element {

@@ -3,8 +3,8 @@ import { useState } from 'react';
 import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/login-error.svg';
-import style from 'pages/SearchPage/index.module.scss';
-import Modal from './Modal';
+import style from 'pages/Auth/SearchIDPassword/index.module.scss';
+import Modal from '../component/Modal';
 
 const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 
