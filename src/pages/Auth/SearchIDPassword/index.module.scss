@@ -22,6 +22,7 @@
 
 .page__back {
   padding-bottom: 10px;
+
   @include media.media-breakpoint-down(mobile) {
     display: none;
   }
