@@ -1,12 +1,12 @@
-import { ReactComponent as PreviousIcon } from 'assets/svg/previous.svg';
 import { ReactComponent as LensIcon } from 'assets/svg/lens.svg';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useRef, useState } from 'react';
+import cn from 'utils/ts/classNames';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
+import RollingBanner from './components/RollingBanner';
 import list from './static/data';
 import styles from './Search.module.scss';
 import recommend_text from './static/recommend';
-import cn from '../../utils/ts/classNames';
-import RollingBanner from './components/RollingBanner';
 
 type CurrentMode = string | null;
 
@@ -50,9 +50,7 @@ function Search(): JSX.Element {
       >
         <nav className={styles['search-nav']}>
           <div className={styles['search-nav__button']}>
-            <Link to="/" className={styles['search-nav__button--previous']}>
-              <PreviousIcon title="이전 페이지로 이동" />
-            </Link>
+            <PreviousButton />
           </div>
           <h1 className={styles['search-nav__text']}>검색</h1>
         </nav>

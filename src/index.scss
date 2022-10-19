@@ -30,3 +30,15 @@ body {
     min-width: 320px;
   }
 }
+
+button {
+  font-family: SUIT, system-ui;
+}
+
+input {
+  font-family: SUIT, system-ui;
+
+  &::placeholder {
+    font-family: SUIT, system-ui;
+  }
+}
