@@ -5,13 +5,10 @@ $active: #ff7f23;
 $passive: #c4c4c4;
 
 @mixin template {
-  width: 100vw;
   min-height: 100vh;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 @mixin font-title($margin-bottom) {
@@ -33,7 +30,7 @@ $passive: #c4c4c4;
 
 @mixin button {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
