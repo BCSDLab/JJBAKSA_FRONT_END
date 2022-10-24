@@ -1,9 +1,9 @@
 import style from './Modal.module.scss';
 
-interface IModal {
+interface ModalProp {
   modal: string
 }
-export default function Modal({ modal }: IModal): JSX.Element {
+export default function Modal({ modal }: ModalProp): JSX.Element {
   return (
     <div className={style.container}>
       <div className={style.overay} />

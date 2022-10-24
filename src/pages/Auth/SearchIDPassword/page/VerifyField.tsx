@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/login-error.svg';
 import style from 'pages/Auth/SearchIDPassword/index.module.scss';
-import InputNumber, { FormData } from './InputNumber';
+import VerifyCode, { FormData } from './VerifyCode';
 
-export default function DistinctionNumber():JSX.Element {
+export default function VerifyField():JSX.Element {
   const {
     register, handleSubmit, formState: { errors },
   } = useForm<FormData>({
@@ -32,7 +32,7 @@ export default function DistinctionNumber():JSX.Element {
           </span>
           )}
         </div>
-        <InputNumber register={register} handleSubmit={handleSubmit} />
+        <VerifyCode register={register} handleSubmit={handleSubmit} />
       </div>
     </div>
   );

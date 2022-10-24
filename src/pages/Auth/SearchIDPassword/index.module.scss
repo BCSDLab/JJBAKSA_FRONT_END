@@ -63,6 +63,12 @@
   background-color: #eeeeee;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+}
+
 .form__center {
   display: flex;
   flex-direction: column;
@@ -81,12 +87,6 @@
   height: 40px;
   color: white;
   background-color: #c4c4c4;
-  position: absolute;
-  bottom: 200px;
-
-  @media screen and (max-height: 700px) {
-    bottom: 50px;
-  }
 }
 
 .active {
@@ -96,12 +96,6 @@
   height: 40px;
   color: white;
   background-color: #ff7f23;
-  position: absolute;
-  bottom: 200px;
-
-  @media screen and (max-height: 700px) {
-    bottom: 50px;
-  }
 
   cursor: pointer;
 }

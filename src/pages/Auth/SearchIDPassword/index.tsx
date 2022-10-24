@@ -4,15 +4,15 @@ import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import style from './index.module.scss';
 
-const emailPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
-interface ISearch {
-  search: string
+const EMAILPATTERN = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
+interface FindProp {
+  find: string
 }
 interface FormData {
   email: string
 }
 
-export default function SearchPage({ search }: ISearch): JSX.Element {
+export default function FindIdPassword({ find }: FindProp): JSX.Element {
   const {
     register,
     handleSubmit,
@@ -27,14 +27,14 @@ export default function SearchPage({ search }: ISearch): JSX.Element {
           <div className={style.page__back}>
             <PreviousButton />
           </div>
-          {search === 'id' && (
+          {find === 'id' && (
           <p className={style.page__quote}>
             아이디 찾을 때
             <br />
             사용할 이메일을 입력해주세요.
           </p>
           )}
-          {search === 'password' && (
+          {find === 'password' && (
           <p className={style.page__quote}>
             비밀번호를 찾을 때
             <br />
@@ -61,7 +61,7 @@ export default function SearchPage({ search }: ISearch): JSX.Element {
               {...register('email', {
                 required: 'email을 입력해주세요',
                 pattern: {
-                  value: emailPattern,
+                  value: EMAILPATTERN,
                   message: '올바른 email 형식이 아닙니다.',
                 },
               })}
