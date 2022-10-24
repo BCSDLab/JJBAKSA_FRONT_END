@@ -1,6 +1,6 @@
 import { ReactComponent as Plus } from 'assets/svg/plus.svg';
 import { useRef } from 'react';
-import useBoolean from 'utils/hooks/useBoolean';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
@@ -16,8 +16,8 @@ interface Props {
 
 function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
-  const isSaveActive = useBoolean(false);
-  const isAddImageActive = useBoolean(false);
+  const [actived, active] = useBooleanState(false);
+  const [opened, open, close] = useBooleanState(false);
 
   return (
     <div className={cn({
@@ -44,20 +44,20 @@ function TextEditor({ shop, getShopname }: Props) {
           : (
             <>
               <div className={styles.header__shopname}>{ shop }</div>
-              <StarRating onClick={isSaveActive.setTrue} />
+              <StarRating onClick={active} />
             </>
           )}
       </div>
       <div className={cn({
         [styles.editor]: true,
-        [styles['editor--withImage']]: isAddImageActive.value,
+        [styles['editor--withImage']]: opened,
       })}
       >
         <Wysiwyg ref={wysiwygRef} />
       </div>
       <span className={styles.item}>
         <span className={styles.item__tools}>
-          <AddImage active={isAddImageActive.setTrue} inActive={isAddImageActive.setFalse} />
+          <AddImage active={open} inActive={close} />
           <SlideToolBox
             bold={() => wysiwygRef.current?.bold()}
             heading={() => wysiwygRef.current?.heading()}
@@ -69,9 +69,9 @@ function TextEditor({ shop, getShopname }: Props) {
           type="button"
           className={cn({
             [styles['save-button']]: true,
-            [styles['save-button--active']]: isSaveActive.value,
+            [styles['save-button--active']]: actived,
           })}
-          disabled={!isSaveActive.value && shop != null}
+          disabled={!actived && shop != null}
         >
           저장
         </button>

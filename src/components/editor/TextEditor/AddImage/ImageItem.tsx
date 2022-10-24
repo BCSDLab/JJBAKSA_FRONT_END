@@ -1,26 +1,27 @@
 import { ReactComponent as Trash } from 'assets/svg/trash.svg';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import useOnClickOutside from 'utils/hooks/useOnClickOutside';
 import styles from '../TextEditor.module.scss';
 
 interface Props {
   value: string,
-  removeImage: (value: string) => void,
+  onDelete: (value: string) => void,
 }
 
-export default function ImageItem({ value, removeImage }: Props) {
-  const [buttonOpened, setButtonOpened] = useState(false);
+export default function ImageItem({ value, onDelete }: Props) {
+  const [opened, open, close] = useBooleanState(false);
   const imageRef = useRef<HTMLInputElement>(null);
-  useOnClickOutside(imageRef, () => setButtonOpened(false));
+  useOnClickOutside(imageRef, close);
 
   return (
     <>
-      { buttonOpened && (
+      { opened && (
         <button
           type="button"
           aria-label="trash"
           className={styles.imageContainer__button}
-          onClick={() => removeImage(value)}
+          onClick={() => onDelete(value)}
         >
           <Trash />
         </button>
@@ -31,7 +32,7 @@ export default function ImageItem({ value, removeImage }: Props) {
         src={value}
         alt="이미지"
         ref={imageRef}
-        onClick={() => setButtonOpened(true)}
+        onClick={open}
       />
     </>
   );
