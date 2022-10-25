@@ -8,12 +8,41 @@ interface PropData {
   handleSubmit: UseFormHandleSubmit<FormData>,
 }
 
+interface InputInfo {
+  register: UseFormRegister<FormData>,
+  name: 'first' | 'second' | 'third' | 'fourth',
+  inputRef: React.MutableRefObject<HTMLInputElement[] | null[]>,
+  preventOverLength: (e: React.ChangeEvent<HTMLInputElement>, next: number) => void,
+  n: number,
+  index: number,
+}
+
 export interface FormData {
   first: string,
   second: string,
   third: string,
   fourth: string
 }
+
+function Input({
+  register, name, inputRef, preventOverLength, n, index,
+}: InputInfo) {
+  const inputRefCopy = inputRef;
+  return (
+    <input
+      type="number"
+      className={cn({ [style['form__input--block']]: true })}
+      {...register(name, {
+        required: true,
+        maxLength: 1,
+      })}
+      ref={(e) => { register(name).ref(e); inputRefCopy.current[index] = e; }}
+      onChange={(e) => preventOverLength(e, n)}
+    />
+  );
+}
+
+const NAME: ['first', 'second', 'third', 'fourth'] = ['first', 'second', 'third', 'fourth'];
 
 export default function VerifyCode({ register, handleSubmit }: PropData): JSX.Element {
   const {
@@ -29,46 +58,16 @@ export default function VerifyCode({ register, handleSubmit }: PropData): JSX.El
         className={style.form}
       >
         <div className={style.form__input}>
-          <input
-            type="number"
-            className={cn({ [style['form__input--block']]: true })}
-            {...register('first', {
-              required: true,
-              maxLength: 1,
-            })}
-            ref={(e) => { register('first').ref(e); inputRef.current[0] = e; }}
-            onChange={(e) => preventOverLength(e, 1)}
-          />
-          <input
-            type="number"
-            className={cn({ [style['form__input--block']]: true })}
-            {...register('second', {
-              required: true,
-              maxLength: 1,
-            })}
-            ref={(e) => { register('second').ref(e); inputRef.current[1] = e; }}
-            onChange={(e) => preventOverLength(e, 2)}
-          />
-          <input
-            type="number"
-            className={cn({ [style['form__input--block']]: true })}
-            {...register('third', {
-              required: true,
-              maxLength: 1,
-            })}
-            ref={(e) => { register('third').ref(e); inputRef.current[2] = e; }}
-            onChange={(e) => preventOverLength(e, 3)}
-          />
-          <input
-            type="number"
-            className={cn({ [style['form__input--block']]: true })}
-            {...register('fourth', {
-              required: true,
-              maxLength: 1,
-            })}
-            ref={(e) => { register('fourth').ref(e); inputRef.current[3] = e; }}
-            onChange={(e) => preventOverLength(e, 4)}
-          />
+          {NAME.map((data, idx) => (
+            <Input
+              register={register}
+              inputRef={inputRef}
+              preventOverLength={preventOverLength}
+              name={data}
+              n={idx + 1}
+              index={idx}
+            />
+          ))}
         </div>
         <span className={style.resend}>인증번호 재발송</span>
         <button
