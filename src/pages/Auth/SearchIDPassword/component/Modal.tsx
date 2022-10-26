@@ -15,6 +15,6 @@ export default function Modal({ children }: ModalProp): JSX.Element {
         <button type="button" className={style.modal__button}>로그인</button>
       </div>
     </div>,
-    document.getElementById('portal')!,
+    document.getElementById('portal') as Element,
   );
 }
