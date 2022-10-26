@@ -26,6 +26,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <App />
+        <div id="portal" />
       </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>,
