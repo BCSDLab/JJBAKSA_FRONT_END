@@ -11,7 +11,7 @@ function SearchInput({
         id="searchBarInput"
         onFocus={onFocus}
         onBlur={onBlur}
-        placeholder="검색어를 입력해주세요"
+        placeholder="검색어를 입력해주세요."
         value={text}
         onChange={onChange}
       />
