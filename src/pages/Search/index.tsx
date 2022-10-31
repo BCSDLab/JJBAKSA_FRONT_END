@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import RollingBanner from './components/RollingBanner';
 import list from './static/data';
@@ -28,6 +28,19 @@ function useSearchForm(state : CurrentMode) {
     setText('');
   };
 
+  const click = (event :any) => {
+    if (event.target.id === 'root' && mode === 'search') {
+      setMode('trending');
+    } else setMode('search');
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', click);
+
+    return () => {
+      document.removeEventListener('click', click);
+    };
+  });
   return {
     text, mode, handleText, changeSearchMode, changeTrendingMode,
   };
