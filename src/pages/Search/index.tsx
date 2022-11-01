@@ -1,57 +1,53 @@
 import { useSearchParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
-import RollingBanner from './components/RollingBanner';
 import list from './static/data';
 import styles from './Search.module.scss';
 import Suggestion from './components/Suggestion';
 import Navigation from './components/Navigation';
 import Recommend from './components/Recommend';
 import SearchInput from './components/SearchInput';
+import RollingBanner from './components/RollingBanner';
+import { useTrendingQuery } from './api/index';
 
 type CurrentMode = string | null;
 
-function useSearchForm(state : CurrentMode) {
+function useSearchForm() {
   const [text, setText] = useState('');
-  const [mode, setMode] = useState(state);
-
   const handleText = (e : React.ChangeEvent<HTMLInputElement>) => {
     setText((e.target.value));
   };
 
-  const changeSearchMode = () => {
-    setMode('search');
+  return {
+    text, handleText,
   };
+}
 
-  const changeTrendingMode = () => {
-    setMode('trending');
-    setText('');
-  };
-
-  const click = (event :any) => {
-    if (event.target.id === 'root' && mode === 'search') {
+function useMode() {
+  const [searchParams] = useSearchParams();
+  const currentMode : CurrentMode = searchParams.get('mode') || 'trending';
+  const [mode, setMode] = useState(currentMode);
+  const changeMode = (event: MouseEvent) => {
+    if ((event.target as Element).id === 'root' && mode === 'search') {
       setMode('trending');
     } else setMode('search');
   };
 
   useEffect(() => {
-    document.addEventListener('click', click);
+    document.addEventListener('click', changeMode);
 
     return () => {
-      document.removeEventListener('click', click);
+      document.removeEventListener('click', changeMode);
     };
   });
-  return {
-    text, mode, handleText, changeSearchMode, changeTrendingMode,
-  };
+
+  return mode;
 }
 
 function Search(): JSX.Element {
-  const [searchParams] = useSearchParams();
-  const currentMode : CurrentMode = searchParams.get('mode');
-  const {
-    text, mode, handleText, changeSearchMode, changeTrendingMode,
-  } = useSearchForm(currentMode || 'trending');
+  const { text, handleText } = useSearchForm();
+  const { isLoading, trendings } = useTrendingQuery();
+  const mode = useMode();
 
   return (
     <div className={styles.search}>
@@ -63,12 +59,10 @@ function Search(): JSX.Element {
         <Navigation />
         {mode === 'trending' && <Recommend />}
         <SearchInput
-          onFocus={changeSearchMode}
-          onBlur={changeTrendingMode}
           onChange={handleText}
           text={text}
         />
-        {mode === 'trending' && (<RollingBanner />)}
+        {!isLoading && mode === 'trending' && <RollingBanner trendings={trendings} />}
       </section>
       <Suggestion mode={mode} list={list} text={text} />
     </div>
