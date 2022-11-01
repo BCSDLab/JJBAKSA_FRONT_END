@@ -1,5 +1,6 @@
 import cn from 'utils/ts/classNames';
 import styles from '../Search.module.scss';
+import SuggestionItem from './SuggestionItem';
 
 function Suggestion({ mode, list, text } : any) {
   return (
@@ -18,7 +19,9 @@ function Suggestion({ mode, list, text } : any) {
           관련 음식점/게시물을 찾을 수 없습니다.
         </div>
         )}
-        {text === '' ? null : list?.filter((item : any) => item.title.includes(text)).map((item : any) => <li key={item.title} className={styles['search-query-list__item']}>{item.title}</li>)}
+        {text === '' ? null : list?.filter((item : any) => item.title.includes(text)).map((item : any) => (
+          <SuggestionItem key={item.title} item={item} />
+        ))}
       </ul>
     </div>
   );
