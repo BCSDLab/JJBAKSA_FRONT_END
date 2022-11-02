@@ -26,7 +26,7 @@ function App(): JSX.Element {
         <Route path="/search" element={<Search />} />
         <Route path="/find-id" element={<FindIdPassword find="id" />} />
         <Route path="/find-password" element={<FindIdPassword find="password" />} />
-        <Route path="/find/verify" element={<VerifyField />} />
+        <Route path="/find/verify/:id" element={<VerifyField />} />
         <Route path="/find-password/change" element={<ChangePassword />} />
         <Route path="/search/:searchQuery" element={<SearchQueryItemList />} />
       </Routes>

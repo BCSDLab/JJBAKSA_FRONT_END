@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { ReactComponent as Caution } from 'assets/svg/login-error.svg';
+import { useNavigate } from 'react-router-dom';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import style from './index.module.scss';
@@ -13,6 +14,8 @@ interface FormData {
 }
 
 export default function FindIdPassword({ find }: FindProp): JSX.Element {
+  const navigate = useNavigate();
+  const NextPage = () => { navigate(`/find/verify/${find}`); };
   const {
     register,
     handleSubmit,
@@ -74,6 +77,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
               [style.active]: isValid,
               [style.inactive]: true,
             })}
+            onClick={NextPage}
           >
             인증번호 보내기
           </button>

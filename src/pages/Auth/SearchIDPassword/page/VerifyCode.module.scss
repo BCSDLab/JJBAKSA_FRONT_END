@@ -12,7 +12,15 @@ input[type="number"]::-webkit-inner-spin-button {
 .form {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
+  gap: 150px;
+}
+
+.form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form__input {
@@ -32,7 +40,7 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 20px;
 }
 
-.resend {
+.form__resend {
   margin-top: 10px;
   color: #ff7f23;
   cursor: pointer;
@@ -45,12 +53,6 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 40px;
   color: white;
   background-color: #c4c4c4;
-  position: absolute;
-  bottom: 200px;
-
-  @media screen and (max-height: 700px) {
-    bottom: 50px;
-  }
 }
 
 .active {
@@ -60,12 +62,6 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 40px;
   color: white;
   background-color: #ff7f23;
-  position: absolute;
-  bottom: 200px;
-
-  @media screen and (max-height: 700px) {
-    bottom: 50px;
-  }
 
   cursor: pointer;
 }

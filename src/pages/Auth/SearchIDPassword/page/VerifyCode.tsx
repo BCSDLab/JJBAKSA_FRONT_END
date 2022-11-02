@@ -1,5 +1,8 @@
 import { UseFormRegister, UseFormHandleSubmit } from 'react-hook-form';
+import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
+import Modal from '../component/Modal';
 import useInputCheck from '../hook/useInputCheck';
 import style from './VerifyCode.module.scss';
 
@@ -48,7 +51,13 @@ export default function VerifyCode({ register, handleSubmit }: PropData): JSX.El
   const {
     isDone, inputRef, buttonRef, preventOverLength,
   } = useInputCheck();
-
+  const [openModal, setOpenModal] = useState<boolean>();
+  const param = useParams();
+  const navigate = useNavigate();
+  const NextStep = () => {
+    if (param.id === 'id') setOpenModal(true);
+    else if (param.id === 'password') navigate('/find-password/change');
+  };
   return (
     <div className={style.container}>
       <form
@@ -57,22 +66,26 @@ export default function VerifyCode({ register, handleSubmit }: PropData): JSX.El
       }
         className={style.form}
       >
-        <div className={style.form__input}>
-          {NAME.map((data, idx) => (
-            <Input
-              register={register}
-              inputRef={inputRef}
-              preventOverLength={preventOverLength}
-              name={data}
-              n={idx + 1}
-              index={idx}
-            />
-          ))}
+        <div className={style.form__container}>
+          <div className={style.form__input}>
+            {NAME.map((data, idx) => (
+              <Input
+                register={register}
+                inputRef={inputRef}
+                preventOverLength={preventOverLength}
+                name={data}
+                n={idx + 1}
+                index={idx}
+                key={data}
+              />
+            ))}
+          </div>
+          <span className={style.form__resend}>인증번호 재발송</span>
         </div>
-        <span className={style.resend}>인증번호 재발송</span>
         <button
           type="submit"
           ref={buttonRef}
+          onClick={NextStep}
           className={cn({
             [style.active]: isDone,
             [style.inactive]: true,
@@ -81,6 +94,7 @@ export default function VerifyCode({ register, handleSubmit }: PropData): JSX.El
           완료
         </button>
       </form>
+      {openModal && <Modal>새로운 아이디로 로그인 해주세요</Modal>}
     </div>
   );
 }
