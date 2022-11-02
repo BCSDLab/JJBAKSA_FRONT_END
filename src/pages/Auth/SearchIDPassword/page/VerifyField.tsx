@@ -13,11 +13,11 @@ export default function VerifyField():JSX.Element {
 
   return (
     <div className={style.layout}>
+      <div className={style.page__back}>
+        <PreviousButton />
+      </div>
       <div className={style.page}>
         <div>
-          <div className={style.page__back}>
-            <PreviousButton />
-          </div>
           <p className={style.page__quote}>
             이메일로 발송된
             <br />

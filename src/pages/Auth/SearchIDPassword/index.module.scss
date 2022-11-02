@@ -2,8 +2,9 @@
 
 .layout {
   display: grid;
-  grid-template-rows: 150px 1fr;
-  place-items: center;
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 1fr 270px 1fr;
+  align-items: center;
   width: 100vw;
   height: 100vh;
 }
@@ -18,14 +19,12 @@
   align-items: center;
   height: 100%;
   grid-row-start: 2;
+  grid-column-start: 2;
 }
 
 .page__back {
   padding-bottom: 10px;
-
-  @include media.media-breakpoint-down(mobile) {
-    display: none;
-  }
+  grid-column-start: 2;
 }
 
 .page__quote {
@@ -66,7 +65,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 150px;
+  gap: 230px;
 }
 
 .form__center {

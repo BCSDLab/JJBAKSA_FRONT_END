@@ -25,11 +25,11 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
   });
   return (
     <div className={style.layout}>
+      <div className={style.page__back}>
+        <PreviousButton />
+      </div>
       <div className={style.page}>
         <div>
-          <div className={style.page__back}>
-            <PreviousButton />
-          </div>
           {find === 'id' && (
           <p className={style.page__quote}>
             아이디 찾을 때

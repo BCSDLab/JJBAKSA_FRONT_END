@@ -23,11 +23,11 @@ export default function ChangePassword(): JSX.Element {
 
   return (
     <div className={style.layout}>
+      <div className={style.page__back}>
+        <PreviousButton />
+      </div>
       <div className={style.page}>
         <div>
-          <div className={style.page__back}>
-            <PreviousButton />
-          </div>
           <p className={style.page__quote}>
             새 비밀번호를 설정해 주세요.
           </p>
