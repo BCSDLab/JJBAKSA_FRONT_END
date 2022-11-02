@@ -6,8 +6,8 @@ import list from './static/data';
 import styles from './Search.module.scss';
 import Suggestion from './components/Suggestion';
 import Navigation from './components/Navigation';
-import Recommend from './components/Recommend';
 import SearchInput from './components/SearchInput';
+import Recommendation from './components/Recommendation';
 
 type CurrentMode = string | null;
 
@@ -48,7 +48,7 @@ function Search(): JSX.Element {
       })}
       >
         <Navigation />
-        {mode === 'trending' && <Recommend />}
+        {mode === 'trending' && <Recommendation />}
         <SearchInput
           onFocus={changeSearchMode}
           onBlur={changeTrendingMode}
