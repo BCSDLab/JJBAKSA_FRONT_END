@@ -13,6 +13,7 @@ $passive: #c4c4c4;
   width: 368px;
   display: flex;
   margin-top: 50px;
+  margin-bottom: 20px;
   flex-direction: column;
 
   @include media.media-breakpoint-down(mobile) {

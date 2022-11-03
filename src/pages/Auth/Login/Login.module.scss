@@ -10,6 +10,7 @@
 .content {
   width: 368px;
   margin-top: 80px;
+  margin-bottom: 20px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 216px;
