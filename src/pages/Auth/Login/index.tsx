@@ -77,7 +77,7 @@ function Login(): JSX.Element {
             <Link className={styles.help__link} to="/terms-of-service">회원가입</Link>
           </div>
           <div className={styles.social}>
-            <div className={styles.social__title}>SNS계정으로 로그인하기</div>
+            <div className={styles.social__title}>SNS 계정으로 로그인하기</div>
             <div className={styles.social__link}>
               <Link
                 className={cn({

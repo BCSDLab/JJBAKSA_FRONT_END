@@ -11,10 +11,9 @@ $passive: #c4c4c4;
 
 .container {
   width: 368px;
-  height: 100%;
-  margin-top: 265px;
-  margin-bottom: 56px;
   display: flex;
+  margin-top: 50px;
+  margin-bottom: 20px;
   flex-direction: column;
 
   @include media.media-breakpoint-down(mobile) {
@@ -25,10 +24,10 @@ $passive: #c4c4c4;
 
 .terms-of-service {
   color: $default;
-  margin-top: 95px;
-  height: 485px;
+  margin-top: 70px;
+  min-height: 445px;
   position: relative;
-  margin-bottom: 128px;
+  margin-bottom: 70px;
 
   @include media.media-breakpoint-down(mobile) {
     margin-top: 48px;
