@@ -35,12 +35,18 @@ export default function ChangePassword(): JSX.Element {
         <div className={style.page__error}>
           {(errors.password || errors.passwordCheck) && (
           <span className={style.page__caution}>
-            <img src={error} alt="warning" style={{ paddingRight: '5px' }} />
+            <img src={error} alt="warning" className={style.page__image} />
             {errors.password?.message || errors.passwordCheck?.message}
           </span>
           )}
         </div>
-        <form className={style.form} style={{ gap: '190px' }} onSubmit={handleSubmit(() => setIsComplete(true))}>
+        <form
+          className={cn({
+            [style.form]: true,
+            [style.form__space]: true,
+          })}
+          onSubmit={handleSubmit(() => setIsComplete(true))}
+        >
           <div className={style.form__center}>
             <div className={style.form__label}>새 비밀번호</div>
             <input
@@ -55,7 +61,7 @@ export default function ChangePassword(): JSX.Element {
                 },
               })}
             />
-            <div className={style.form__label} style={{ paddingTop: '5px' }}>비밀번호 확인</div>
+            <div className={cn({ [style['form__label--paddingTop']]: true })}>비밀번호 확인</div>
             <input
               type="password"
               placeholder="비밀번호를 입력하세요"

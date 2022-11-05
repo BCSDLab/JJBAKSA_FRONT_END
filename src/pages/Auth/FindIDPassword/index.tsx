@@ -22,7 +22,6 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
   } = useForm<FormData>({
     mode: 'onChange',
   });
-  const NextPage = () => { if (isValid) navigate(`/find/verify/${find}`); };
   return (
     <div className={style.layout}>
       <div className={style.page__back}>
@@ -48,7 +47,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
         <div className={style.page__error}>
           {errors.email && (
           <span className={style.page__caution}>
-            <img src={error} alt="warning" style={{ paddingRight: '5px' }} />
+            <img src={error} alt="warning" className={style.page__image} />
             {errors.email?.message}
           </span>
           )}
@@ -77,7 +76,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
               [style.active]: isValid,
               [style.inactive]: true,
             })}
-            onClick={NextPage}
+            onClick={() => isValid && navigate(`/find/verify/${find}`)}
           >
             인증번호 보내기
           </button>

@@ -33,6 +33,10 @@
   line-height: 22px;
 }
 
+.page__image {
+  padding-right: 5px;
+}
+
 .page__error {
   display: flex;
   align-items: center;
@@ -67,6 +71,10 @@
   gap: 230px;
 }
 
+.form__space {
+  gap: 190px !important;
+}
+
 .form__center {
   display: flex;
   flex-direction: column;
@@ -77,6 +85,12 @@
 .form__label {
   padding-left: 10px;
   padding-bottom: 5px;
+}
+
+.form__label--paddingTop {
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 .inactive {

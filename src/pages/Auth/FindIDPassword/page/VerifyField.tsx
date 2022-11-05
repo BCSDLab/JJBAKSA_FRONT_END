@@ -27,8 +27,8 @@ export default function VerifyField():JSX.Element {
         <div className={style.page__error}>
           {(errors.first || errors.second || errors.third || errors.fourth) && (
           <span className={style.page__caution}>
-            <img src={error} alt="warning" style={{ paddingRight: '5px' }} />
-            인증번호가 올바르지 않습니다.
+            <img src={error} alt="warning" className={style.page__image} />
+            <span>인증번호가 올바르지 않습니다.</span>
           </span>
           )}
         </div>
