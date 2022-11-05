@@ -72,8 +72,8 @@ function Login(): JSX.Element {
             </button>
           </form>
           <div className={styles.help}>
-            <Link className={styles.help__link} to="/">아이디 찾기</Link>
-            <Link className={styles.help__link} to="/">비밀번호 찾기</Link>
+            <Link className={styles.help__link} to="/find-id">아이디 찾기</Link>
+            <Link className={styles.help__link} to="/find-password">비밀번호 찾기</Link>
             <Link className={styles.help__link} to="/terms-of-service">회원가입</Link>
           </div>
           <div className={styles.social}>

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/login-error.svg';
-import style from 'pages/Auth/SearchIDPassword/index.module.scss';
+import style from 'pages/Auth/FindIDPassword/index.module.scss';
 import VerifyCode, { FormData } from './VerifyCode';
 
 export default function VerifyField():JSX.Element {
@@ -26,8 +26,8 @@ export default function VerifyField():JSX.Element {
         </div>
         <div className={style.page__error}>
           {(errors.first || errors.second || errors.third || errors.fourth) && (
-          <span>
-            <img src={error} alt="warning" className={style.page__caution} />
+          <span className={style.page__caution}>
+            <img src={error} alt="warning" style={{ paddingRight: '5px' }} />
             인증번호가 올바르지 않습니다.
           </span>
           )}

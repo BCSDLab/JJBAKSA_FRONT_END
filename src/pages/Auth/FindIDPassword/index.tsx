@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { ReactComponent as Caution } from 'assets/svg/login-error.svg';
+import error from 'assets/svg/login-error.svg';
 import { useNavigate } from 'react-router-dom';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
@@ -15,7 +15,6 @@ interface FormData {
 
 export default function FindIdPassword({ find }: FindProp): JSX.Element {
   const navigate = useNavigate();
-  const NextPage = () => { navigate(`/find/verify/${find}`); };
   const {
     register,
     handleSubmit,
@@ -23,6 +22,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
   } = useForm<FormData>({
     mode: 'onChange',
   });
+  const NextPage = () => { if (isValid) navigate(`/find/verify/${find}`); };
   return (
     <div className={style.layout}>
       <div className={style.page__back}>
@@ -48,7 +48,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
         <div className={style.page__error}>
           {errors.email && (
           <span className={style.page__caution}>
-            <Caution />
+            <img src={error} alt="warning" style={{ paddingRight: '5px' }} />
             {errors.email?.message}
           </span>
           )}

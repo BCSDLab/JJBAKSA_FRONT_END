@@ -55,8 +55,10 @@ export default function VerifyCode({ register, handleSubmit }: PropData): JSX.El
   const param = useParams();
   const navigate = useNavigate();
   const NextStep = () => {
-    if (param.id === 'id') setOpenModal(true);
-    else if (param.id === 'password') navigate('/find-password/change');
+    if (isDone) {
+      if (param.id === 'id') setOpenModal(true);
+      else if (param.id === 'password') navigate('/find-password/change');
+    }
   };
   return (
     <div className={style.container}>

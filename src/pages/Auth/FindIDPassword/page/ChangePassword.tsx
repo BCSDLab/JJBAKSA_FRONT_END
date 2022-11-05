@@ -3,7 +3,7 @@ import { useState } from 'react';
 import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/login-error.svg';
-import style from 'pages/Auth/SearchIDPassword/index.module.scss';
+import style from 'pages/Auth/FindIDPassword/index.module.scss';
 import Modal from '../component/Modal';
 
 const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
@@ -34,15 +34,13 @@ export default function ChangePassword(): JSX.Element {
         </div>
         <div className={style.page__error}>
           {(errors.password || errors.passwordCheck) && (
-            <div style={{ display: 'flex' }}>
-              <img src={error} alt="warning" className={style.warning} />
-              <span>
-                {errors.password?.message || errors.passwordCheck?.message}
-              </span>
-            </div>
+          <span className={style.page__caution}>
+            <img src={error} alt="warning" style={{ paddingRight: '5px' }} />
+            {errors.password?.message || errors.passwordCheck?.message}
+          </span>
           )}
         </div>
-        <form className={style.form} onSubmit={handleSubmit(() => setIsComplete(true))}>
+        <form className={style.form} style={{ gap: '190px' }} onSubmit={handleSubmit(() => setIsComplete(true))}>
           <div className={style.form__center}>
             <div className={style.form__label}>새 비밀번호</div>
             <input
@@ -57,7 +55,7 @@ export default function ChangePassword(): JSX.Element {
                 },
               })}
             />
-            <div className={style.form__label}>비밀번호 확인</div>
+            <div className={style.form__label} style={{ paddingTop: '5px' }}>비밀번호 확인</div>
             <input
               type="password"
               placeholder="비밀번호를 입력하세요"
