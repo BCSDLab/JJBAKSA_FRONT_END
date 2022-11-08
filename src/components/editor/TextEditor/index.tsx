@@ -5,7 +5,7 @@ import cn from 'utils/ts/classNames';
 import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import StarRating from 'components/StarRating';
-import AddImage from './AddImage/index';
+import AddImage from './AddImage';
 import SlideToolBox from './SlideToolBox';
 import styles from './TextEditor.module.scss';
 

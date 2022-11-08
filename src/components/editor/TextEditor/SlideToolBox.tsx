@@ -12,7 +12,7 @@ interface Props {
 function SlideToolBox({
   bold, heading, paragraph, through,
 }: Props) {
-  const [showed, , ,toggle] = useBooleanState(false);
+  const [showed, show, hide] = useBooleanState(false);
   return (
     <span
       className={cn({
@@ -27,7 +27,7 @@ function SlideToolBox({
             [styles.item__button]: true,
             [styles['item__button--tool']]: true,
           })}
-          onClick={toggle}
+          onClick={showed ? hide : show}
         >
           T
         </button>
