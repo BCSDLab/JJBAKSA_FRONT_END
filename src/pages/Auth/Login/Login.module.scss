@@ -9,7 +9,8 @@
 
 .content {
   width: 368px;
-  margin: 200px auto 56px;
+  margin-top: 80px;
+  margin-bottom: 20px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 216px;
@@ -18,7 +19,8 @@
 }
 
 .form {
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 70px;
 
   @include media.media-breakpoint-down(mobile) {
     margin: 0 auto;
@@ -65,7 +67,7 @@
     font-size: 16px;
     font-weight: 700;
     color: white;
-    margin: 40px 0;
+    margin: 30px 0;
     background-color: #ff7f23;
     border: none;
     border-radius: 20px;
@@ -143,7 +145,7 @@
 
 .help {
   font-size: 12px;
-  margin-bottom: 56px;
+  margin-bottom: 50px;
   text-align: center;
   font-weight: 400;
 
@@ -170,7 +172,6 @@
 
 .social {
   text-align: center;
-  margin-bottom: 155px;
 
   &__title {
     font-size: 16px;
@@ -196,8 +197,8 @@
   &__icon {
     box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
     border-radius: 50%;
-    width: 57px;
-    height: 57px;
+    width: 55px;
+    height: 55px;
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
