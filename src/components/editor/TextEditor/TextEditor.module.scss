@@ -79,6 +79,7 @@
 
 .item {
   display: flex;
+  position: relative;
   height: 100%;
   padding: 16px 16px 40px;
   box-sizing: border-box;
@@ -191,7 +192,7 @@
   width: calc(100% - 16px);
   display: flex;
   align-items: flex-end;
-  overflow: scroll;
+  overflow-x: auto;
 
   &__item {
     display: flex;
@@ -217,6 +218,8 @@
   }
 
   &::-webkit-scrollbar {
-    background: none;
+    // background: none;
+    display: none;
+    scrollbar-width: none
   }
 }

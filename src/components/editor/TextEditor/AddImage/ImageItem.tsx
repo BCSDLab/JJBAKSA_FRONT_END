@@ -28,9 +28,9 @@ export default function ImageItem({ value, onDelete }: Props) {
       )}
       <input
         type="image"
+        alt=""
         className={styles.imageContainer__image}
         src={value}
-        alt="이미지"
         ref={imageRef}
         onClick={open}
       />
