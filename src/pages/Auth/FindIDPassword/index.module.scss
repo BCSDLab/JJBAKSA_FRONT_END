@@ -9,88 +9,78 @@
   height: 100vh;
 }
 
-.page__caution {
-  display: flex;
-  align-items: center;
+.back {
+  grid-column-start: 2;
+  width: 270px;
+  padding-bottom: 30px;
 }
 
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
 
-.page__back {
-  grid-column-start: 2;
-  width: 270px;
-  padding-bottom: 30px;
-}
+  &__quote {
+    font-size: 18px;
+    font-weight: 500;
+    width: 240px;
+    line-height: 22px;
+  }
 
-.page__quote {
-  font-size: 18px;
-  font-weight: 500;
-  width: 240px;
-  line-height: 22px;
-}
+  &__image {
+    padding-right: 5px;
+  }
 
-.page__image {
-  padding-right: 5px;
-}
+  &__error {
+    display: flex;
+    align-items: center;
+    color: #ff7f23;
+    height: 100px;
+    font-size: 12px;
+  }
 
-.page__error {
-  display: flex;
-  align-items: center;
-  color: #ff7f23;
-  height: 100px;
-  font-size: 12px;
-}
-
-.form__input {
-  border: 1px solid #eeeeee;
-  border-radius: 100px;
-  width: 220px;
-  height: 30px;
-  padding-left: 15px;
-  padding-right: 15px;
-  background-color: #eeeeee;
-}
-
-.input_style_radius {
-  border: 1px solid #ff7f23;
-  border-radius: 100px;
-  width: 220px;
-  height: 30px;
-  padding-left: 15px;
-  padding-right: 15px;
-  background-color: #eeeeee;
+  &__caution {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 230px;
-}
 
-.form__space {
-  gap: 190px !important;
-}
+  &__space {
+    gap: 190px !important;
+  }
 
-.form__center {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 23px;
-}
+  &__center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 23px;
+  }
 
-.form__label {
-  padding-left: 10px;
-  padding-bottom: 5px;
-}
+  &__label {
+    padding-left: 10px;
+    padding-bottom: 5px;
 
-.form__label--paddingTop {
-  padding-left: 10px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+    &--paddingTop {
+      padding-left: 10px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+  }
+
+  &__input {
+    border: 1px solid #eeeeee;
+    border-radius: 100px;
+    width: 220px;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #eeeeee;
+  }
 }
 
 .inactive {

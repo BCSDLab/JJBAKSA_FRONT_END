@@ -13,7 +13,7 @@ export default function VerifyField():JSX.Element {
 
   return (
     <div className={style.layout}>
-      <div className={style.page__back}>
+      <div className={style.back}>
         <PreviousButton />
       </div>
       <div className={style.page}>

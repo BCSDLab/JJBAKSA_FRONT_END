@@ -31,15 +31,15 @@
   border-radius: 20px;
   padding: 15px;
   gap: 30px;
-}
 
-.modal__button {
-  border: none;
-  border-radius: 20px;
-  background-color: #ff7f23;
-  text-align: center;
-  width: 259px;
-  height: 40px;
-  color: white;
-  cursor: pointer;
+  &__button {
+    border: none;
+    border-radius: 20px;
+    background-color: #ff7f23;
+    text-align: center;
+    width: 259px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+  }
 }
