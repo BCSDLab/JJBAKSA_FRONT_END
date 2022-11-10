@@ -7,8 +7,11 @@ import Login from 'pages/Auth/Login';
 import Home from 'pages/Home';
 import Post from 'pages/Post';
 import Search from 'pages/Search';
+import FindIdPassword from 'pages/Auth/FindIDPassword';
+import VerifyField from 'pages/Auth/FindIDPassword/page/VerifyField';
 import SearchQueryItemList from 'pages/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
+import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
 
 function App(): JSX.Element {
   return (
@@ -21,8 +24,11 @@ function App(): JSX.Element {
         <Route path="/post" element={<Post />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/find-id" element={<FindIdPassword find="id" />} />
+        <Route path="/find-password" element={<FindIdPassword find="password" />} />
+        <Route path="/find/verify/:id" element={<VerifyField />} />
+        <Route path="/find-password/change" element={<ChangePassword />} />
         <Route path="/search/:searchQuery" element={<SearchQueryItemList />} />
-
       </Routes>
       <Toast />
     </>
