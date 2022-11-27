@@ -1,5 +1,5 @@
-import { ReactComponent as Picture } from 'assets/svg/picture.svg';
-import { ReactComponent as Trash } from 'assets/svg/trash.svg';
+import { ReactComponent as Picture } from 'assets/svg/post/picture.svg';
+import { ReactComponent as Trash } from 'assets/svg/post/trash.svg';
 import { useEffect } from 'react';
 import styles from './TextEditor.module.scss';
 import useImageList from './hooks/useImageList';

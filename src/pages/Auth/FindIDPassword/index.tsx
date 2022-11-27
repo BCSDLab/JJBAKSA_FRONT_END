@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import error from 'assets/svg/login-error.svg';
+import error from 'assets/svg/auth/login-error.svg';
 import { useNavigate } from 'react-router-dom';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';

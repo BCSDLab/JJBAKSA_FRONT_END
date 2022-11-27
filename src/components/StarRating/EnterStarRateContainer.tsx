@@ -1,5 +1,5 @@
 import useContext from 'utils/hooks/useWrappingContext';
-import { ReactComponent as Star } from 'assets/svg/star.svg';
+import { ReactComponent as Star } from 'assets/svg/post/star.svg';
 import { useState } from 'react';
 import StarRateContext from './StarRateContext';
 import styles from './StarRating.module.scss';

@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'utils/ts/classNames';
-import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useFormContext } from 'react-hook-form';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { ERROR_MESSAGE } from '../../static/signUp';
