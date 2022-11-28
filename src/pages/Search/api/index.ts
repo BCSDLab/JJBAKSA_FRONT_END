@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query';
 import searchApi from './search/searchApiClient';
-// import searchApi from './search/searchApiClient';
 
 export function useTrendingQuery() {
   const {

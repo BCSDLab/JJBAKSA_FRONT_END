@@ -1,7 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
-import list from './static/data';
 import styles from './Search.module.scss';
 import Suggestion from './components/Suggestion';
 import Navigation from './components/Navigation';
@@ -9,6 +8,7 @@ import SearchInput from './components/SearchInput';
 import RollingBanner from './components/RollingBanner';
 import { useTrendingQuery } from './api/index';
 import Recommendation from './components/Recommendation';
+import MODE from './static/mode';
 
 type CurrentMode = string | null;
 
@@ -25,12 +25,12 @@ function useSearchForm() {
 
 function useMode() {
   const [searchParams] = useSearchParams();
-  const currentMode : CurrentMode = searchParams.get('mode') || 'trending';
+  const currentMode : CurrentMode = searchParams.get('mode') || MODE.trending;
   const [mode, setMode] = useState(currentMode);
   const changeMode = (event: MouseEvent) => {
-    if ((event.target as Element).id === 'root' && mode === 'search') {
-      setMode('trending');
-    } else setMode('search');
+    if ((event.target as Element).id === 'root' && mode === MODE.search) {
+      setMode(MODE.trending);
+    } else setMode(MODE.search);
   };
 
   useEffect(() => {
@@ -53,18 +53,18 @@ function Search(): JSX.Element {
     <div className={styles.search}>
       <section className={cn({
         [styles['search-wrapper']]: true,
-        [styles['search-wrapper--search']]: mode === 'search',
+        [styles['search-wrapper--search']]: mode === MODE.search,
       })}
       >
         <Navigation />
-        {mode === 'trending' && <Recommendation />}
+        {mode === MODE.trending && <Recommendation />}
         <SearchInput
           onChange={handleText}
           text={text}
         />
-        {!isLoading && mode === 'trending' && <RollingBanner trendings={trendings} />}
+        {!isLoading && mode === MODE.trending && <RollingBanner trendings={trendings} />}
       </section>
-      <Suggestion mode={mode} list={list} text={text} />
+      <Suggestion mode={mode} text={text} />
     </div>
   );
 }
