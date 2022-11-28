@@ -8,7 +8,7 @@ import Navigation from './components/Navigation';
 import SearchInput from './components/SearchInput';
 import RollingBanner from './components/RollingBanner';
 import { useTrendingQuery } from './api/index';
-import Recommendation from './components/Recommend';
+import Recommendation from './components/Recommendation';
 
 type CurrentMode = string | null;
 

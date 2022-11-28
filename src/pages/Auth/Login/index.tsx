@@ -72,12 +72,12 @@ function Login(): JSX.Element {
             </button>
           </form>
           <div className={styles.help}>
-            <Link className={styles.help__link} to="/">아이디 찾기</Link>
-            <Link className={styles.help__link} to="/">비밀번호 찾기</Link>
+            <Link className={styles.help__link} to="/find-id">아이디 찾기</Link>
+            <Link className={styles.help__link} to="/find-password">비밀번호 찾기</Link>
             <Link className={styles.help__link} to="/terms-of-service">회원가입</Link>
           </div>
           <div className={styles.social}>
-            <div className={styles.social__title}>SNS계정으로 로그인하기</div>
+            <div className={styles.social__title}>SNS 계정으로 로그인하기</div>
             <div className={styles.social__link}>
               <Link
                 className={cn({
