@@ -1,7 +1,6 @@
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import useGeolocation from 'utils/hooks/useGeolocation';
+import { useParams } from 'react-router-dom';
 import { useFetchShops } from '../api';
 import styles from '../Search.module.scss';
 import SearchNavigationBar from './SearchNavigationBar';
@@ -13,26 +12,13 @@ interface Props {
   shopId: number,
 }
 
-// interface Coords {
-//   latitude: number,
-//   longitude: number
-// }
-
-// interface Position {
-//   coords: Coords
-// }
-
 function SearchQueryItemList() {
   const { searchQuery } = useParams();
-  const { location } = useGeolocation();
-  // const location = { coords: { latitude: 36.766537, longitude: 127.281372 } };
-  const { isLoading, data, refetch } = useFetchShops(searchQuery as string, location?.coords);
+  const { isLoading, data, refetch } = useFetchShops(searchQuery as string);
 
   useEffect(() => {
-    if (location) {
-      refetch();
-    }
-  }, [location, refetch]);
+    refetch();
+  }, [isLoading, refetch]);
   return (
     <div>
       <div className={styles.search}>
