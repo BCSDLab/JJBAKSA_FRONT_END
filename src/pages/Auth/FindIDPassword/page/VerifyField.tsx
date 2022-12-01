@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import error from 'assets/svg/auth/login-error.svg';
+import error from 'assets/svg/auth/error.svg';
 import style from 'pages/Auth/FindIDPassword/index.module.scss';
 import VerifyCode, { FormData } from './VerifyCode';
 
