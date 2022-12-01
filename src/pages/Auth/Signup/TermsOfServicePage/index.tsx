@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as Arrow } from 'assets/svg/arrow.svg';
+import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import styles from './TermsOfService.module.scss';

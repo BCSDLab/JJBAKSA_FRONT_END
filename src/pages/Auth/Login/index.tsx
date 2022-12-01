@@ -1,6 +1,6 @@
-import { ReactComponent as GoogleIcon } from 'assets/svg/google.svg';
-import { ReactComponent as NaverIcon } from 'assets/svg/naver.svg';
-import { ReactComponent as KakaoIcon } from 'assets/svg/kakao.svg';
+import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
+import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
+import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';

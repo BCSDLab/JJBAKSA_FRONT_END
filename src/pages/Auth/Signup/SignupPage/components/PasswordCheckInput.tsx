@@ -1,8 +1,8 @@
 import React from 'react';
 import cn from 'utils/ts/classNames';
-import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
-import { ReactComponent as ShowIcon } from 'assets/svg/pw-show.svg';
-import { ReactComponent as BlindIcon } from 'assets/svg/pw-blind.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
+import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
 import { useFormContext } from 'react-hook-form';
 import { ERROR_MESSAGE } from '../../static/signUp';
 import styles from '../SignUp.module.scss';

@@ -1,4 +1,4 @@
-import { ReactComponent as ChevronRight } from 'assets/svg/previous.svg';
+import { ReactComponent as ChevronRight } from 'assets/svg/common/previous.svg';
 import { useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import styles from './PreviousButton.module.scss';
