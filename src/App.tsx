@@ -12,10 +12,11 @@ import VerifyField from 'pages/Auth/FindIDPassword/page/VerifyField';
 import SearchQueryItemList from 'pages/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
+import AuthProvider from 'components/Auth/AuthProvider';
 
 function App(): JSX.Element {
   return (
-    <>
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<DefaultLayout><Home /></DefaultLayout>} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
@@ -31,7 +32,7 @@ function App(): JSX.Element {
         <Route path="/search/:searchQuery" element={<SearchQueryItemList />} />
       </Routes>
       <Toast />
-    </>
+    </AuthProvider>
   );
 }
 
