@@ -10,6 +10,10 @@
   font-size: 20px;
 
   &__logo {
+    display: flex;
+  }
+
+  &__logo-link {
     margin-left: 72px;
     display: flex;
     align-items: center;
@@ -43,6 +47,7 @@
     justify-content: flex-end;
     gap: 56px;
     margin-right: 72px;
+    list-style: none;
   }
 
   &__link {

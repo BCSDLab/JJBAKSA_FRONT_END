@@ -6,19 +6,23 @@ import styles from './TopNavigation.module.scss';
 function TopNavigation(): JSX.Element {
   return (
     <nav className={styles['top-navigation']}>
-      <Link to="/" className={styles['top-navigation__logo']}>
-        <LogoIcon />
-        <span>쩝쩝박사</span>
-      </Link>
+      <div className={styles['top-navigation__logo']}>
+        <Link to="/" className={styles['top-navigation__logo-link']}>
+          <LogoIcon />
+          <span>쩝쩝박사</span>
+        </Link>
+      </div>
+
       <div className={styles['top-navigation__address']}>
         <span>충청북도 천안시 병천면 충절로 1600</span>
         <ArrowIcon aria-hidden />
       </div>
-      <div className={styles['top-navigation__links']}>
-        <Link to="/search" className={styles['top-navigation__link']}>검색</Link>
-        <Link to="/setting" className={styles['top-navigation__link']}>설정</Link>
-        <Link to="/profile" className={styles['top-navigation__link']}>마이페이지</Link>
-      </div>
+
+      <ul className={styles['top-navigation__links']}>
+        <li><Link to="/search" className={styles['top-navigation__link']}>검색</Link></li>
+        <li><Link to="/setting" className={styles['top-navigation__link']}>설정</Link></li>
+        <li><Link to="/profile" className={styles['top-navigation__link']}>마이페이지</Link></li>
+      </ul>
     </nav>
   );
 }
