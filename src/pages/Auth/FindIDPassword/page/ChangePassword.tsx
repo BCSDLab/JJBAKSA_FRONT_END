@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import error from 'assets/svg/login-error.svg';
+import error from 'assets/svg/auth/error.svg';
 import style from 'pages/Auth/FindIDPassword/index.module.scss';
 import Modal from '../component/Modal';
 

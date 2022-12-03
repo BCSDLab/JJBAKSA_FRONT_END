@@ -1,4 +1,4 @@
-import { ReactComponent as Star } from 'assets/svg/star.svg';
+import { ReactComponent as Star } from 'assets/svg/post/star.svg';
 import useContext from 'utils/hooks/useWrappingContext';
 import StarRateContext from './StarRateContext';
 import styles from './StarRating.module.scss';

@@ -1,4 +1,4 @@
-import { ReactComponent as LogoIcon } from 'assets/svg/logo.svg';
+import { ReactComponent as LogoIcon } from 'assets/svg/common/logo.svg';
 import { Link } from 'react-router-dom';
 import styles from './AuthTitle.module.scss';
 

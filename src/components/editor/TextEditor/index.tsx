@@ -1,5 +1,5 @@
-import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/angle-braket.svg';
-import { ReactComponent as Plus } from 'assets/svg/plus.svg';
+import { ReactComponent as LeftAngleBraketIcon } from 'assets/svg/common/angle-braket.svg';
+import { ReactComponent as Plus } from 'assets/svg/post/plus.svg';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useBoolean from 'utils/hooks/useBoolean';

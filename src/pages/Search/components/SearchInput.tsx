@@ -1,4 +1,4 @@
-import { ReactComponent as LensIcon } from 'assets/svg/lens.svg';
+import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
 import styles from '../Search.module.scss';
 
 function SearchInput({
