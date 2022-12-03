@@ -2,6 +2,7 @@ import cn from 'utils/ts/classNames';
 import styles from 'pages/Search/Search.module.scss';
 import MODE from '../static/mode';
 import SuggestionItem from './SuggestionItem';
+import suggestion from '../static/suggestion';
 
 function Suggestion({ mode, list, text } : any) {
   return (
@@ -20,7 +21,7 @@ function Suggestion({ mode, list, text } : any) {
           관련 음식점/게시물을 찾을 수 없습니다.
         </div>
         )}
-        {text === '' ? null : list?.filter((item : any) => item.title.includes(text)).map((item : any) => (
+        {text === '' ? null : suggestion.map((item : any) => (
           <SuggestionItem item={item} />
         ))}
       </ul>

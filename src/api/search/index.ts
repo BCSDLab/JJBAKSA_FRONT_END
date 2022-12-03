@@ -29,6 +29,7 @@ export function useFetchShops(searchQuery: string) {
   const {
     isLoading, isError, data, refetch,
   } = useQuery('shop', () => searchApi.post(`/shops?keyword=${searchQuery}&x=${location?.coords.latitude}&y=${location?.coords.longitude}`));
+
   return {
     isLoading, isError, data, refetch,
   };

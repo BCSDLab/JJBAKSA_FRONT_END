@@ -7,9 +7,14 @@ import SearchNavigationBar from './SearchNavigationBar';
 import SearchQueryItem from './SearchQueryItem';
 
 interface Props {
-  placeName: string,
   address: string,
+  dist: number,
+  placeId: string,
+  placeName: string,
+  score: number,
   shopId: number,
+  x: string,
+  y: string,
 }
 
 function SearchQueryItemList() {

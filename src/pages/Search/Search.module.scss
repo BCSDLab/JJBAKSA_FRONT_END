@@ -187,19 +187,51 @@
     }
 
     &__info {
-
+      &--title {
+        font-size: 16px;
+        line-height: 20px;
+      }
+  
+      &--address {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+      }
     }
 
-    &__title {
-      font-size: 16px;
-      line-height: 20px;
+    &__content {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
     }
 
-    &__address {
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 15px;
+    &__status {
+      &--business {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+      }
+      &--in-business {
+        color: #FF7F23;
+
+      }
+      &--distance {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 15px;
+      }
+      &--map {
+        align-self: center;
+      }
     }
+
+    &__status-wrapper {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    
 
     @include media.media-breakpoint-up(mobile) {
       width: 700px;
