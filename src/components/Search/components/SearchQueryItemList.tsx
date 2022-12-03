@@ -1,8 +1,8 @@
+import { useFetchShops } from 'api/search';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useFetchShops } from '../api';
-import styles from '../Search.module.scss';
+import styles from 'pages/Search/Search.module.scss';
 import SearchNavigationBar from './SearchNavigationBar';
 import SearchQueryItem from './SearchQueryItem';
 

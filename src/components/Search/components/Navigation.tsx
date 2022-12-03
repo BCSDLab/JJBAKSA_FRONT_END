@@ -1,5 +1,5 @@
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import styles from '../Search.module.scss';
+import styles from 'pages/Search/Search.module.scss';
 
 function Navigation() {
   return (

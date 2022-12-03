@@ -1,14 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
+import { useTrendingQuery } from 'api/search';
 import styles from './Search.module.scss';
-import Suggestion from './components/Suggestion';
-import Navigation from './components/Navigation';
-import SearchInput from './components/SearchInput';
-import RollingBanner from './components/RollingBanner';
-import { useTrendingQuery } from './api/index';
-import Recommendation from './components/Recommendation';
-import MODE from './static/mode';
+import Suggestion from '../../components/Search/components/Suggestion';
+import Navigation from '../../components/Search/components/Navigation';
+import SearchInput from '../../components/Search/components/SearchInput';
+import RollingBanner from '../../components/Search/components/RollingBanner';
+import Recommendation from '../../components/Search/components/Recommendation';
+import MODE from '../../components/Search/static/mode';
 
 type CurrentMode = string | null;
 

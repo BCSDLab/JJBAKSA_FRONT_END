@@ -9,7 +9,7 @@ import Post from 'pages/Post';
 import Search from 'pages/Search';
 import FindIdPassword from 'pages/Auth/FindIDPassword';
 import VerifyField from 'pages/Auth/FindIDPassword/page/VerifyField';
-import SearchQueryItemList from 'pages/Search/components/SearchQueryItemList';
+import SearchQueryItemList from 'components/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
 

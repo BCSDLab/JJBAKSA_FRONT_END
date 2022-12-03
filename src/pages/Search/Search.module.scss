@@ -1,4 +1,4 @@
-@use "src/utils/styles/mediaQuery" as media;
+@use "src/utils/styles/mediaQuery.scss" as media;
 
 .search {
   width: 100%;
@@ -161,6 +161,48 @@
 
     &--hidden {
       display: none;
+    }
+  }
+
+  // 검색 상세 페이지
+  .search-detail {
+    display: flex;
+    flex-direction: column;
+    padding-left: 24px;
+    padding-right: 24px;
+  
+  }
+
+  // 검색 아이템
+  .search-item {
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid #C4C4C4;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    &__image {
+      width: 117px;
+      height: 117px;
+    }
+
+    &__info {
+
+    }
+
+    &__title {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &__address {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    @include media.media-breakpoint-up(mobile) {
+      width: 700px;
     }
   }
 }

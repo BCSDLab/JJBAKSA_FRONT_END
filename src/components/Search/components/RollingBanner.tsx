@@ -1,4 +1,4 @@
-import styles from '../Search.module.scss';
+import styles from 'pages/Search/Search.module.scss';
 
 interface Props {
   trendings: string[]

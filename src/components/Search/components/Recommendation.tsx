@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import styles from '../Search.module.scss';
+import styles from 'pages/Search/Search.module.scss';
 import recommend_text from '../static/recommend';
 
 function Recommendation() {
