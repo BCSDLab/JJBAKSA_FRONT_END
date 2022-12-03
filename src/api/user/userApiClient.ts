@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import makeToast from 'utils/ts/makeToast';
 import { RefreshResponse } from './entity';
 
@@ -43,13 +43,12 @@ userApi.interceptors.response.use(
   (response) => response,
 
   // 실패시
-  (error) => {
+  (error: AxiosError) => {
     try {
       const originalRequest = error.config;
+
       // TODO: 백엔드단에서 정확한 토큰 인증 오류 시 코드/메시지를 정해주면 수정 필요.
-      // 현재 로그인 실패시 data가 undefined.
-      if (!originalRequest.retry) {
-        originalRequest.retry = true;
+      if (originalRequest.url !== '/refresh') {
         return refreshAccessToken().then(() => userApi(originalRequest));
       }
       return Promise.reject();
