@@ -12,27 +12,32 @@ import VerifyField from 'pages/Auth/FindIDPassword/page/VerifyField';
 import SearchQueryItemList from 'pages/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
-import AuthProvider from 'components/Auth/AuthProvider';
+import { useAuthInit } from 'store/auth';
+import ProtectedRoute from 'components/common/ProtectedRoute';
 
 function App(): JSX.Element {
+  const auth = useAuthInit();
+
   return (
-    <AuthProvider>
+    <>
       <Routes>
         <Route path="/" element={<DefaultLayout><Home /></DefaultLayout>} />
-        <Route path="/terms-of-service" element={<TermsOfService />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signup/complete" element={<Complete />} />
+        <Route element={<ProtectedRoute auth={auth} />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup/complete" element={<Complete />} />
+          <Route path="/find-id" element={<FindIdPassword find="id" />} />
+          <Route path="/find-password" element={<FindIdPassword find="password" />} />
+          <Route path="/find/verify/:id" element={<VerifyField />} />
+          <Route path="/find-password/change" element={<ChangePassword />} />
+        </Route>
         <Route path="/post" element={<Post />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/find-id" element={<FindIdPassword find="id" />} />
-        <Route path="/find-password" element={<FindIdPassword find="password" />} />
-        <Route path="/find/verify/:id" element={<VerifyField />} />
-        <Route path="/find-password/change" element={<ChangePassword />} />
         <Route path="/search/:searchQuery" element={<SearchQueryItemList />} />
       </Routes>
       <Toast />
-    </AuthProvider>
+    </>
   );
 }
 
