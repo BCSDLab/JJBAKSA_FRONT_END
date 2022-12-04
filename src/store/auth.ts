@@ -1,12 +1,9 @@
 import { getMe } from 'api/user';
-import { User } from 'api/user/entity';
 import { refreshAccessToken } from 'api/user/userApiClient';
-import { atom, useAtom } from 'jotai';
-import { useEffect } from 'react';
+import { atom, useAtomValue, useSetAtom } from 'jotai';
+import { atomWithDefault } from 'jotai/utils';
 
-const authAtom = atom<User | null>(null);
-
-const initAuthAtom = atom(null, async (get, set) => {
+const getAuth = async () => {
   const token = {
     access: sessionStorage.getItem('accessToken'),
     refresh: localStorage.getItem('refreshToken'),
@@ -14,7 +11,7 @@ const initAuthAtom = atom(null, async (get, set) => {
 
   if (token.access) {
     const authResponse = await getMe();
-    if (authResponse.data) return set(authAtom, authResponse.data);
+    if (authResponse.data) return authResponse.data;
   }
 
   if (token.refresh) {
@@ -23,26 +20,19 @@ const initAuthAtom = atom(null, async (get, set) => {
       sessionStorage.setItem('accessToken', refreshResponse.accessToken);
 
       const authResponse = await getMe();
-      if (authResponse.data) return set(authAtom, authResponse.data);
+      if (authResponse.data) return authResponse.data;
     }
   }
 
-  return set(authAtom, null);
+  return null;
+};
+
+const authAtom = atomWithDefault(getAuth);
+
+const updateAuthAtom = atom(null, async (get, set) => {
+  set(authAtom, await getAuth());
 });
 
-export const useAuthAtom = () => {
-  const [auth] = useAtom(authAtom);
-  const [, initAuth] = useAtom(initAuthAtom);
+export const useUpdateAuth = () => useSetAtom(updateAuthAtom);
 
-  return { auth, initAuth };
-};
-
-export const useAuthInit = () => {
-  const { auth, initAuth } = useAuthAtom();
-
-  useEffect(() => {
-    initAuth();
-  }, [initAuth]);
-
-  return auth;
-};
+export const useAuth = () => useAtomValue(authAtom);

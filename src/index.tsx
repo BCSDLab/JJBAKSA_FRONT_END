@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Provider } from 'jotai';
+import { Provider as JotaiProvider } from 'jotai';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -24,11 +24,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <QueryClientProvider client={queryClient}>
-    <Provider>
+    <JotaiProvider>
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </Provider>
+    </JotaiProvider>
   </QueryClientProvider>,
 );
 

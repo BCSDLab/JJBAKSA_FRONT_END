@@ -1,15 +1,13 @@
-import { User } from 'api/user/entity';
 import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from 'store/auth';
 
 interface Props {
-  auth: User | null;
   redirectPath?: string;
 }
 
-export default function ProtectedRoute({
-  auth,
-  redirectPath = '/',
-}: Props) {
+export default function ProtectedRoute({ redirectPath = '/' }: Props) {
+  const auth = useAuth();
+
   if (auth) {
     return <Navigate to={redirectPath} replace />;
   }

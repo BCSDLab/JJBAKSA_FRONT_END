@@ -12,17 +12,15 @@ import VerifyField from 'pages/Auth/FindIDPassword/page/VerifyField';
 import SearchQueryItemList from 'pages/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
-import { useAuthInit } from 'store/auth';
 import ProtectedRoute from 'components/common/ProtectedRoute';
+import { Suspense } from 'react';
 
 function App(): JSX.Element {
-  const auth = useAuthInit();
-
   return (
-    <>
+    <Suspense fallback={<div />}>
       <Routes>
         <Route path="/" element={<DefaultLayout><Home /></DefaultLayout>} />
-        <Route element={<ProtectedRoute auth={auth} />}>
+        <Route element={<ProtectedRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/signup" element={<SignUp />} />
@@ -37,7 +35,7 @@ function App(): JSX.Element {
         <Route path="/search/:searchQuery" element={<SearchQueryItemList />} />
       </Routes>
       <Toast />
-    </>
+    </Suspense>
   );
 }
 

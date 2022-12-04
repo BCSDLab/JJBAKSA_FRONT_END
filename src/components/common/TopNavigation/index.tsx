@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as LogoIcon } from 'assets/svg/common/logo.svg';
 import { ReactComponent as ArrowIcon } from 'assets/svg/common/arrow.svg';
-import { useAuthAtom } from 'store/auth';
+import { useAuth } from 'store/auth';
 import styles from './TopNavigation.module.scss';
 
 function TopNavigation(): JSX.Element {
-  const { auth } = useAuthAtom();
+  const auth = useAuth();
 
   return (
     <nav className={styles['top-navigation']}>

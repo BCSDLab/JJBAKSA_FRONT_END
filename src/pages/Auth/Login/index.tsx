@@ -8,7 +8,7 @@ import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
 import { login } from 'api/user';
 import sha256 from 'sha256';
-import { useAuthAtom } from 'store/auth';
+import { useUpdateAuth } from 'store/auth';
 import styles from './Login.module.scss';
 
 interface LoginFormInput {
@@ -19,7 +19,7 @@ interface LoginFormInput {
 
 const useLoginRequest = () => {
   const navigate = useNavigate();
-  const { initAuth } = useAuthAtom();
+  const updateAuth = useUpdateAuth();
 
   const submitLogin = async ({ id, password, isAutoLoginChecked }: LoginFormInput) => {
     const { data } = await login({
@@ -28,7 +28,7 @@ const useLoginRequest = () => {
     });
 
     sessionStorage.setItem('accessToken', data.accessToken);
-    await initAuth();
+    await updateAuth();
 
     // 자동로그인
     if (isAutoLoginChecked) {
