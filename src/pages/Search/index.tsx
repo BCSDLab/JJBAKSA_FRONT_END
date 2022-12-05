@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import { useTrendingQuery } from 'api/search';
 import styles from './Search.module.scss';
@@ -27,11 +27,13 @@ function useMode() {
   const [searchParams] = useSearchParams();
   const currentMode : CurrentMode = searchParams.get('mode') || MODE.trending;
   const [mode, setMode] = useState(currentMode);
-  const changeMode = (event: MouseEvent) => {
-    if ((event.target as Element).id === 'root' && mode === MODE.search) {
+  const changeMode = useCallback((event: MouseEvent) => {
+    if ((event.target as Element).id === 'searchBarInput') {
+      setMode(MODE.search);
+    } else if ((event.target as Element).id === 'root') {
       setMode(MODE.trending);
-    } else setMode(MODE.search);
-  };
+    }
+  }, []);
 
   useEffect(() => {
     document.addEventListener('click', changeMode);
@@ -39,7 +41,7 @@ function useMode() {
     return () => {
       document.removeEventListener('click', changeMode);
     };
-  });
+  }, [changeMode, mode]);
 
   return mode;
 }
