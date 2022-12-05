@@ -1,6 +1,5 @@
 import { useFetchShops } from 'api/search';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from 'pages/Search/Search.module.scss';
 import SearchNavigationBar from './SearchNavigationBar';
@@ -20,11 +19,8 @@ interface Props {
 
 function SearchQueryItemList() {
   const { searchQuery } = useParams();
-  const { isLoading, data, refetch } = useFetchShops(searchQuery as string);
+  const { isFetching, data } = useFetchShops(searchQuery as string);
 
-  useEffect(() => {
-    refetch();
-  }, [isLoading, refetch]);
   return (
     <div>
       <div className={styles.search}>
@@ -34,7 +30,7 @@ function SearchQueryItemList() {
         </SearchNavigationBar>
         {
           <div className={styles['search-detail']}>
-            {isLoading ? <LoadingView />
+            {isFetching ? <LoadingView />
               // eslint-disable-next-line max-len
               : data?.data.content.map((shop: Props) => <SearchQueryItem key={shop.shopId} data={shop} />)}
           </div>

@@ -28,9 +28,9 @@ export function useFetchShops(searchQuery: string) {
   const { location } = useGeolocation(options);
   const {
     isLoading, isError, data, refetch,
-  } = useQuery('shop', () => searchApi.post(`/shops?keyword=${searchQuery}&x=${location?.coords.latitude}&y=${location?.coords.longitude}`));
-
+  } = useQuery('shop', () => searchApi.post(`/shops?keyword=${searchQuery}&x=${location?.coords.latitude}&y=${location?.coords.longitude}`), { enabled: !!location });
+  const isFetching = !isLoading && !(location);
   return {
-    isLoading, isError, data, refetch,
+    isFetching, isError, data, refetch,
   };
 }
