@@ -170,7 +170,6 @@
     flex-direction: column;
     padding-left: 24px;
     padding-right: 24px;
-  
   }
 
   // 검색 결과 로딩 화면
@@ -186,7 +185,7 @@
   .search-item {
     display: flex;
     gap: 16px;
-    border-bottom: 1px solid #C4C4C4;
+    border-bottom: 1px solid #c4c4c4;
     padding-top: 16px;
     padding-bottom: 16px;
 
@@ -202,7 +201,7 @@
         font-size: 16px;
         line-height: 20px;
       }
-  
+
       &--address {
         cursor: pointer;
         font-weight: 400;
@@ -211,7 +210,7 @@
       }
     }
 
-    
+
 
     &__content {
       width: 100%;
@@ -226,15 +225,17 @@
         font-size: 12px;
         line-height: 15px;
       }
-      &--in-business {
-        color: #FF7F23;
 
+      &--in-business {
+        color: #ff7f23;
       }
+
       &--distance {
         font-weight: 400;
         font-size: 12px;
         line-height: 15px;
       }
+
       &--map {
         cursor: pointer;
         align-self: center;
@@ -246,7 +247,7 @@
       justify-content: space-between;
     }
 
-    
+
 
     @include media.media-breakpoint-up(mobile) {
       width: 700px;
