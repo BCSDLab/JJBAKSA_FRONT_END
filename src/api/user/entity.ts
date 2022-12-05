@@ -30,4 +30,9 @@ export interface User {
   // userType = 'ADMIN' | 'NORMAL'...
   oauthType: string;
   userType: string;
+  userCountResponse: {
+    id: number;
+    reviewCount: number;
+    friendCount: number;
+  }
 }
