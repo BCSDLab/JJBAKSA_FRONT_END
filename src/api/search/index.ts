@@ -23,7 +23,7 @@ export function useShopQuery(place_id: string) {
 
 export function useFetchShops(searchQuery: string) {
   const options = {
-    maximumAge: 10000,
+    maximumAge: 1000,
   };
   const { location } = useGeolocation(options);
   const {
