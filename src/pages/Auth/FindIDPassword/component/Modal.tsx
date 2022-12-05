@@ -7,7 +7,7 @@ interface ModalProp {
 }
 
 export default function Modal({ children }: ModalProp): JSX.Element {
-  const root = document.getElementById('portal') as Element;
+  const root = document.body;
   return createPortal(
     <div className={style.container}>
       <div className={style.overay} />

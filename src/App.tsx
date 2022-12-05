@@ -12,26 +12,30 @@ import VerifyField from 'pages/Auth/FindIDPassword/page/VerifyField';
 import SearchQueryItemList from 'components/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
+import ProtectedRoute from 'components/common/ProtectedRoute';
+import { Suspense } from 'react';
 
 function App(): JSX.Element {
   return (
-    <>
+    <Suspense fallback={<div />}>
       <Routes>
         <Route path="/" element={<DefaultLayout><Home /></DefaultLayout>} />
-        <Route path="/terms-of-service" element={<TermsOfService />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signup/complete" element={<Complete />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup/complete" element={<Complete />} />
+          <Route path="/find-id" element={<FindIdPassword find="id" />} />
+          <Route path="/find-password" element={<FindIdPassword find="password" />} />
+          <Route path="/find/verify/:id" element={<VerifyField />} />
+          <Route path="/find-password/change" element={<ChangePassword />} />
+        </Route>
         <Route path="/post" element={<Post />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/find-id" element={<FindIdPassword find="id" />} />
-        <Route path="/find-password" element={<FindIdPassword find="password" />} />
-        <Route path="/find/verify/:id" element={<VerifyField />} />
-        <Route path="/find-password/change" element={<ChangePassword />} />
         <Route path="/search/:searchQuery" element={<SearchQueryItemList />} />
       </Routes>
       <Toast />
-    </>
+    </Suspense>
   );
 }
 
