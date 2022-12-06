@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import useGeolocation from 'utils/hooks/useGeolocation';
 import searchApi from './searchApiClient';
 
-export function useTrendingQuery() {
+export function useTrendingList() {
   const {
     isLoading, isError, data,
   } = useQuery('trending', () => searchApi.get('/trending'));
