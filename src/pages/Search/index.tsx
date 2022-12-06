@@ -1,14 +1,14 @@
 import { useSearchParams } from 'react-router-dom';
 import React, { useCallback, useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
-import { useTrendingQuery } from 'api/search';
+import { useTrendingList } from 'api/search';
+import Suggestion from 'components/Search/Suggestion';
+import Navigation from 'components/Search/Navigation';
+import SearchInput from 'components/Search/SearchInput';
+import RollingBanner from 'components/Search/RollingBanner';
+import Recommendation from 'components/Search/Recommendation';
+import MODE from 'components/Search/static/mode';
 import styles from './Search.module.scss';
-import Suggestion from '../../components/Search/components/Suggestion';
-import Navigation from '../../components/Search/components/Navigation';
-import SearchInput from '../../components/Search/components/SearchInput';
-import RollingBanner from '../../components/Search/components/RollingBanner';
-import Recommendation from '../../components/Search/components/Recommendation';
-import MODE from '../../components/Search/static/mode';
 
 type CurrentMode = string | null;
 
@@ -48,7 +48,7 @@ function useMode() {
 
 function Search(): JSX.Element {
   const { text, handleText } = useSearchForm();
-  const { isLoading, trendings } = useTrendingQuery();
+  const { isLoading, trendings } = useTrendingList();
   const mode = useMode();
 
   return (

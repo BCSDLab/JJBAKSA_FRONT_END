@@ -1,8 +1,8 @@
 import cn from 'utils/ts/classNames';
 import styles from 'pages/Search/Search.module.scss';
-import MODE from '../static/mode';
+import MODE from 'components/Search/static/mode';
+import suggestion from 'components/Search/static/suggestion';
 import SuggestionItem from './SuggestionItem';
-import suggestion from '../static/suggestion';
 
 interface Props {
   mode: string,
