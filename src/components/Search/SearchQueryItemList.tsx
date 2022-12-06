@@ -8,13 +8,8 @@ import LoadingView from './LoadingView';
 
 interface Props {
   address: string,
-  dist: number,
-  placeId: string,
   placeName: string,
-  score: number,
   shopId: number,
-  x: string,
-  y: string,
 }
 
 function SearchQueryItemList() {
@@ -32,7 +27,7 @@ function SearchQueryItemList() {
           {isFetching
             ? <LoadingView />
             : data?.data.content.map((shop: Props) => (
-              <SearchQueryItem key={shop.shopId} data={shop} />
+              <SearchQueryItem key={shop.shopId} shop={shop} />
             ))}
         </div>
       </div>

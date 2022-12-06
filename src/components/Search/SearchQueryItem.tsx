@@ -3,24 +3,15 @@ import { ReactComponent as MapIcon } from 'assets/svg/search/map.svg';
 import { ReactComponent as DefaultImage } from 'assets/svg/search/default-image.svg';
 
 interface Props {
-  address: string,
-  dist: number,
-  placeId: string,
-  placeName: string,
-  score: number,
-  shopId: number,
-  x: string,
-  y: string,
+  shop: {
+    address: string,
+    placeName: string,
+    shopId: number
+  }
 }
 
-interface Shop {
-  data: Props
-}
-
-function SearchQueryItem(shop : Shop) {
-  const { data } = shop;
-  const { placeName, address } = data;
-
+function SearchQueryItem({ shop }: Props) {
+  const { placeName, address } = shop;
   return (
     <div className={styles['search-item']}>
 
