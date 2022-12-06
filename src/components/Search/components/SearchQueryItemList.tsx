@@ -28,15 +28,14 @@ function SearchQueryItemList() {
           <PreviousButton />
           <h1 className={styles['search-nav__text']}>{searchQuery}</h1>
         </SearchNavigationBar>
-        {
-          <div className={styles['search-detail']}>
-            {isFetching ? <LoadingView />
-              // eslint-disable-next-line max-len
-              : data?.data.content.map((shop: Props) => <SearchQueryItem key={shop.shopId} data={shop} />)}
-          </div>
-        }
+        <div className={styles['search-detail']}>
+          {isFetching
+            ? <LoadingView />
+            : data?.data.content.map((shop: Props) => (
+              <SearchQueryItem key={shop.shopId} data={shop} />
+            ))}
+        </div>
       </div>
-
     </div>
   );
 }
