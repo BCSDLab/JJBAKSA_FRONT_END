@@ -4,7 +4,7 @@ const API_PATH = process.env.REACT_APP_API_PATH!;
 const AUTH_TOKEN = sessionStorage.getItem('accessToken') || '';
 
 const searchApi = axios.create({
-  baseURL: `${API_PATH}:443`,
+  baseURL: `${API_PATH}`,
   headers: {
     Authorization: `Bearer ${AUTH_TOKEN}`,
   },
