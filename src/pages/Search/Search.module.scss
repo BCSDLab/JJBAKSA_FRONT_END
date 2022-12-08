@@ -136,8 +136,8 @@
     overflow: scroll;
 
     .link {
-      color: 'black';
-      text-decoration: 'none';
+      color: "black";
+      text-decoration: "none";
     }
 
     &__title {
@@ -147,6 +147,7 @@
       padding-left: 52px;
       align-items: center;
       cursor: pointer;
+
       &:hover {
         background: #eeeeee;
       }
