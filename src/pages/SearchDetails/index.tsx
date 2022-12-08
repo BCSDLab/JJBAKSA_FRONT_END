@@ -1,7 +1,7 @@
 import { useFetchShops } from 'api/search';
 import { useParams } from 'react-router-dom';
 import styles from 'pages/Search/Search.module.scss';
-import NavigationBar from 'pages/Search/NavBar/NavigationBar';
+import NavigationBar from 'pages/Search/components/NavBar/NavigationBar';
 import LoadingView from './LoadingView/LoadingView';
 import SearchItem from './SearchItems';
 

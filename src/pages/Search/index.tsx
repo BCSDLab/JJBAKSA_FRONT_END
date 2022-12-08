@@ -4,11 +4,11 @@ import cn from 'utils/ts/classNames';
 import { useTrendingList } from 'api/search';
 import MODE from 'pages/Search/static/mode';
 import styles from 'pages/Search/Search.module.scss';
-import NavigationBar from './NavBar/NavigationBar';
-import SearchInput from './SearchBar/SearchInput';
-import Recommendation from './SearchBar/Recommendation';
-import RollingBanner from './SearchBar/RollingBanner';
-import RelatedSearches from './RelatedSearches/RelatedSearches';
+import NavigationBar from './components/NavBar/NavigationBar';
+import Recommendation from './components/SearchBar/Recommendation';
+import SearchInput from './components/SearchBar/SearchInput';
+import RollingBanner from './components/SearchBar/RollingBanner';
+import RelatedSearches from './components/RelatedSearches/RelatedSearches';
 
 type CurrentMode = string | null;
 
