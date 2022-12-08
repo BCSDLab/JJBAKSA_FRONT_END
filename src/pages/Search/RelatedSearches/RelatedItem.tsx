@@ -9,12 +9,12 @@ interface Item {
   title: string
 }
 
-function SuggestionItem({ item }: Props) {
+function RelatedItem({ item }: Props) {
   return (
     <Link to={`/search/${item.title}`} style={{ color: 'black', textDecoration: 'none' }}>
-      <li className={styles['search-query-list__item']}>{item.title}</li>
+      <li className={styles['search-query-list__title']}>{item.title}</li>
     </Link>
   );
 }
 
-export default SuggestionItem;
+export default RelatedItem;

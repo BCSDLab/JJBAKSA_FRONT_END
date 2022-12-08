@@ -2,13 +2,13 @@ import { useSearchParams } from 'react-router-dom';
 import React, { useCallback, useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import { useTrendingList } from 'api/search';
-import Suggestion from 'components/Search/Suggestion';
-import Navigation from 'components/Search/Navigation';
-import SearchInput from 'components/Search/SearchInput';
-import RollingBanner from 'components/Search/RollingBanner';
-import Recommendation from 'components/Search/Recommendation';
-import MODE from 'components/Search/static/mode';
-import styles from './Search.module.scss';
+import MODE from 'pages/Search/static/mode';
+import styles from 'pages/Search/Search.module.scss';
+import NavigationBar from './NavBar/NavigationBar';
+import SearchInput from './SearchBar/SearchInput';
+import Recommendation from './SearchBar/Recommendation';
+import RollingBanner from './SearchBar/RollingBanner';
+import RelatedSearches from './RelatedSearches/RelatedSearches';
 
 type CurrentMode = string | null;
 
@@ -48,7 +48,7 @@ function useMode() {
 
 function Search(): JSX.Element {
   const { text, handleText } = useSearchForm();
-  const { isLoading, trendings } = useTrendingList();
+  const { isLoading, data } = useTrendingList();
   const mode = useMode();
 
   return (
@@ -58,15 +58,15 @@ function Search(): JSX.Element {
         [styles['search-wrapper--search']]: mode === MODE.search,
       })}
       >
-        <Navigation />
+        <NavigationBar />
         {mode === MODE.trending && <Recommendation />}
         <SearchInput
           onChange={handleText}
           text={text}
         />
-        {!isLoading && mode === MODE.trending && <RollingBanner trendings={trendings} />}
+        {!isLoading && mode === MODE.trending && <RollingBanner trendings={data} />}
       </section>
-      <Suggestion mode={mode} text={text} />
+      <RelatedSearches mode={mode} text={text} />
     </div>
   );
 }

@@ -10,7 +10,7 @@ interface Props {
   }
 }
 
-function SearchQueryItem({ shop }: Props) {
+function SearchItem({ shop }: Props) {
   const { placeName, address } = shop;
   return (
     <div className={styles['search-item']}>
@@ -40,4 +40,4 @@ function SearchQueryItem({ shop }: Props) {
   );
 }
 
-export default SearchQueryItem;
+export default SearchItem;

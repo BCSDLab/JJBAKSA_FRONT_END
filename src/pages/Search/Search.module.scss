@@ -135,14 +135,18 @@
     height: calc(100vh - 180px);
     overflow: scroll;
 
-    &__item {
+    .link {
+      color: 'black';
+      text-decoration: 'none';
+    }
+
+    &__title {
       display: flex;
       font-size: 14px;
       height: 34px;
       padding-left: 52px;
       align-items: center;
       cursor: pointer;
-
       &:hover {
         background: #eeeeee;
       }

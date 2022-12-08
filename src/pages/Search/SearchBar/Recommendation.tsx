@@ -1,8 +1,8 @@
 import { useRef } from 'react';
+import recommend_text from 'pages/Search/static/recommend';
 import styles from 'pages/Search/Search.module.scss';
-import recommend_text from 'components/Search/static/recommend';
 
-function Recommendation() {
+export default function Recommendation() {
   const recommendIdx = useRef(new Date().getSeconds() % 2);
   return (
     <h1 className={styles.search__recommend}>
@@ -10,5 +10,3 @@ function Recommendation() {
     </h1>
   );
 }
-
-export default Recommendation;

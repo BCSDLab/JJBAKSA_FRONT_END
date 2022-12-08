@@ -1,15 +1,15 @@
 import cn from 'utils/ts/classNames';
 import styles from 'pages/Search/Search.module.scss';
-import MODE from 'components/Search/static/mode';
-import suggestion from 'components/Search/static/suggestion';
-import SuggestionItem from './SuggestionItem';
+import MODE from 'pages/Search/static/mode';
+import suggestion from 'pages/Search/static/suggestion';
+import RelatedItem from './RelatedItem';
 
 interface Props {
   mode: string,
   text: string,
 }
 
-function Suggestion({ mode, text }: Props) {
+function RelatedSearches({ mode, text }: Props) {
   return (
     <div className={styles.search}>
       <ul className={cn({
@@ -18,11 +18,11 @@ function Suggestion({ mode, text }: Props) {
       })}
       >
         {text === '' ? null : suggestion.map((item) => (
-          <SuggestionItem key={item.id} item={item} />
+          <RelatedItem key={item.id} item={item} />
         ))}
       </ul>
     </div>
   );
 }
 
-export default Suggestion;
+export default RelatedSearches;

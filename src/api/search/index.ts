@@ -8,7 +8,7 @@ export function useTrendingList() {
   } = useQuery('trending', () => searchApi.get('/trending'));
   const trendings = data?.data.trendings;
   return {
-    isLoading, isError, trendings,
+    isLoading, isError, data: trendings,
   };
 }
 
