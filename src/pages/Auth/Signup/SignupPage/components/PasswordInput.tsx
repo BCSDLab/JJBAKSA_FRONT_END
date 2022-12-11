@@ -45,7 +45,7 @@ export default function PasswordInput() {
         {...register('password', {
           required: ERROR_MESSAGE.password,
           minLength: {
-            value: 2,
+            value: 8,
             message: ERROR_MESSAGE.password,
           },
           maxLength: {

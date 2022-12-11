@@ -47,7 +47,7 @@ export default function SignUpForm() {
 
   const clickSubmit = () => {
     if (isDirty && isValid) {
-      // navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
+      navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
     } else {
       navigate('');
     }
