@@ -17,9 +17,8 @@ function RelatedSearches({ mode, text }: Props) {
         [styles['search-query-list--hidden']]: mode === MODE.trending,
       })}
       >
-        {text === '' ? null : suggestion.map((item) => (
-          <RelatedItem key={item.id} item={item} />
-        ))}
+        {text === '' ? null : suggestion.filter((item) => item.title.includes(text))
+          .map((item) => <RelatedItem key={item.id} item={item} />)}
       </ul>
     </div>
   );
