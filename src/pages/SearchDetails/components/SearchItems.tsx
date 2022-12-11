@@ -1,6 +1,6 @@
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { ReactComponent as MapIcon } from 'assets/svg/search/map.svg';
-import { ReactComponent as DefaultImage } from 'assets/svg/search/default-image.svg';
+import DefaultImage from 'assets/images/search/default-image.png';
 
 interface Props {
   shop: {
@@ -15,7 +15,7 @@ function SearchItem({ shop }: Props) {
   return (
     <div className={styles['search-item']}>
 
-      <DefaultImage title="가게 이미지 없음" />
+      <img alt="가게 이미지 없음" src={DefaultImage} />
       <div className={styles['search-item__content']}>
         <section className={styles['search-item__info']}>
           <h1 className={styles['search-item__info--title']}>{placeName}</h1>
