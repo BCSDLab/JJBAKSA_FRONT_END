@@ -1,5 +1,5 @@
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import styles from 'pages/Search/Search.module.scss';
+import styles from 'pages/Search/components/NavigationBar/NavigationBar.module.scss';
 
 interface Props {
   searchQuery?: String

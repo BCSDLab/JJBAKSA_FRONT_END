@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import recommend_text from 'pages/Search/static/recommend';
-import styles from 'pages/Search/Search.module.scss';
+import styles from 'pages/Search/components/SearchBar/SearchBar.module.scss';
 
 export default function Recommendation() {
   const recommendIdx = useRef(new Date().getSeconds() % 2);

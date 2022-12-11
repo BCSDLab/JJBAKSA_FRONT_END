@@ -1,4 +1,4 @@
-import styles from 'pages/Search/Search.module.scss';
+import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { ReactComponent as MapIcon } from 'assets/svg/search/map.svg';
 import { ReactComponent as DefaultImage } from 'assets/svg/search/default-image.svg';
 

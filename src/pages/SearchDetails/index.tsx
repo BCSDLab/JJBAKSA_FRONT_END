@@ -1,9 +1,9 @@
 import { useFetchShops } from 'api/search';
 import { useParams } from 'react-router-dom';
-import styles from 'pages/Search/Search.module.scss';
-import NavigationBar from 'pages/Search/components/NavBar/NavigationBar';
-import LoadingView from './LoadingView/LoadingView';
-import SearchItem from './SearchItems';
+import styles from 'pages/SearchDetails/SearchDetails.module.scss';
+import NavigationBar from 'pages/Search/components/NavigationBar';
+import LoadingView from './components/LoadingView';
+import SearchItem from './components/SearchItems';
 
 interface Props {
   address: string,
@@ -11,7 +11,7 @@ interface Props {
   shopId: number,
 }
 
-function SearchDetailList() {
+function SearchDetails() {
   const { searchQuery } = useParams();
   const { isFetching, data } = useFetchShops(searchQuery as string);
 
@@ -19,7 +19,7 @@ function SearchDetailList() {
     <div>
       <div className={styles.search}>
         <NavigationBar searchQuery={searchQuery} />
-        <div className={styles['search-detail']}>
+        <div className={styles['search-details']}>
           {isFetching
             ? <LoadingView />
             : data?.data.content.map((shop: Props) => (
@@ -31,4 +31,4 @@ function SearchDetailList() {
   );
 }
 
-export default SearchDetailList;
+export default SearchDetails;

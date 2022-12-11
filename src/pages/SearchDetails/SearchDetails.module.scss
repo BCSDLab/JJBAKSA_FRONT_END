@@ -1,0 +1,98 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.search {
+  width: 100%;
+  height: 100vh;
+  font-size: 32px;
+
+  @include media.media-breakpoint-up(mobile) {
+    max-width: 767px;
+    margin: 0 auto;
+  }
+  
+  // 검색 결과 로딩 화면
+  &__loading-view {
+    text-align: center;
+    width: 100%;
+    line-height: 70vh;
+    margin: 0 auto;
+    font-size: 20px;
+  }
+}
+
+// 검색 상세 페이지
+.search-details {
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+// 검색 아이템
+.search-item {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid #c4c4c4;
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  &__image {
+    cursor: pointer;
+    width: 117px;
+    height: 117px;
+  }
+
+  &__info {
+    &--title {
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    &--address {
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  &__status {
+    &--business {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &--in-business {
+      color: #ff7f23;
+    }
+
+    &--distance {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 15px;
+    }
+
+    &--map {
+      cursor: pointer;
+      align-self: center;
+    }
+  }
+
+  &__status-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @include media.media-breakpoint-up(mobile) {
+    width: 700px;
+  }
+}

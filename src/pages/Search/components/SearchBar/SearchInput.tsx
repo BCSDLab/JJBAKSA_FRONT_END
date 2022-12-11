@@ -1,5 +1,5 @@
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
-import styles from 'pages/Search/Search.module.scss';
+import styles from 'pages/Search/components/SearchBar/SearchBar.module.scss';
 
 interface Props {
   text: string,

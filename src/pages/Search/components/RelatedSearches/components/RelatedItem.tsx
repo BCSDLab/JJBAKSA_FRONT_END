@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from 'pages/Search/Search.module.scss';
+import styles from 'pages/Search/components/RelatedSearches/RelatedSearches.module.scss';
 
 interface Props {
   item: Item
@@ -12,7 +12,7 @@ interface Item {
 function RelatedItem({ item }: Props) {
   return (
     <Link to={`/search/${item.title}`} style={{ color: 'black', textDecoration: 'none' }}>
-      <li className={styles['search-query-list__title']}>{item.title}</li>
+      <li className={styles['search-related-item__title']}>{item.title}</li>
     </Link>
   );
 }
