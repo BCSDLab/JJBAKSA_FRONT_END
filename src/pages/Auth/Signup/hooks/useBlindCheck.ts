@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function useBlindCheck() {
+const useBlindCheck = () => {
   const [isBlind, setIsBlind] = useState(false);
 
   const changeBlind = () => { setIsBlind(!isBlind); };
@@ -8,4 +8,6 @@ export default function useBlindCheck() {
   return {
     isBlind, changeBlind,
   };
-}
+};
+
+export default useBlindCheck;

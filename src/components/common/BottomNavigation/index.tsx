@@ -23,7 +23,7 @@ const NAV_TABS = [
   },
 ];
 
-function BottomNavigation(): JSX.Element {
+export default function BottomNavigation(): JSX.Element {
   const { pathname } = useLocation();
 
   return (
@@ -47,5 +47,3 @@ function BottomNavigation(): JSX.Element {
     </nav>
   );
 }
-
-export default BottomNavigation;

@@ -41,7 +41,7 @@ const useLoginRequest = () => {
   return submitLogin;
 };
 
-function Login(): JSX.Element {
+export default function Login(): JSX.Element {
   const {
     register,
     handleSubmit,
@@ -118,5 +118,3 @@ function Login(): JSX.Element {
     </div>
   );
 }
-
-export default Login;

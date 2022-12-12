@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 
-export default function useInputCheck() {
+const useInputCheck = () => {
   const inputRef = useRef<HTMLInputElement[] | null[]>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isDone, setIsDone] = useState<boolean>(false);
@@ -29,4 +29,6 @@ export default function useInputCheck() {
   return {
     isDone, inputRef, buttonRef, preventOverLength,
   };
-}
+};
+
+export default useInputCheck;

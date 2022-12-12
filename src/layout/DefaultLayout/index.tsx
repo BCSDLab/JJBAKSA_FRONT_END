@@ -7,7 +7,7 @@ interface DefaultLayoutProps {
   children: ReactNode
 }
 
-function DefaultLayout({ children }: DefaultLayoutProps): JSX.Element {
+export default function DefaultLayout({ children }: DefaultLayoutProps): JSX.Element {
   const { isMobile } = useMediaQuery();
   return (
     <>
@@ -17,5 +17,3 @@ function DefaultLayout({ children }: DefaultLayoutProps): JSX.Element {
     </>
   );
 }
-
-export default DefaultLayout;

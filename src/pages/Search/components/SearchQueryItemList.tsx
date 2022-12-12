@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import styles from '../Search.module.scss';
 import SearchNavigationBar from './SearchNavigationBar';
 
-function SearchQueryItemList() {
+export default function SearchQueryItemList() {
   const { searchQuery } = useParams();
 
   return (
@@ -15,5 +15,3 @@ function SearchQueryItemList() {
     </div>
   );
 }
-
-export default SearchQueryItemList;
