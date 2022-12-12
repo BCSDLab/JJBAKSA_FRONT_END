@@ -10,7 +10,7 @@ interface ReturnType {
   toggle: () => void
 }
 
-export default function useBoolean(defaultValue?: boolean): ReturnType {
+const useBoolean = (defaultValue?: boolean): ReturnType => {
   const [value, setValue] = useState(!!defaultValue);
 
   const setTrue = useCallback(() => setValue(true), []);
@@ -20,4 +20,6 @@ export default function useBoolean(defaultValue?: boolean): ReturnType {
   return {
     value, setValue, setTrue, setFalse, toggle,
   };
-}
+};
+
+export default useBoolean;

@@ -11,7 +11,7 @@ import Recommendation from './components/Recommendation';
 
 type CurrentMode = string | null;
 
-function useSearchForm(state : CurrentMode) {
+const useSearchForm = (state : CurrentMode) => {
   const [text, setText] = useState('');
   const [mode, setMode] = useState(state);
 
@@ -31,9 +31,9 @@ function useSearchForm(state : CurrentMode) {
   return {
     text, mode, handleText, changeSearchMode, changeTrendingMode,
   };
-}
+};
 
-function Search(): JSX.Element {
+export default function Search(): JSX.Element {
   const [searchParams] = useSearchParams();
   const currentMode : CurrentMode = searchParams.get('mode');
   const {
@@ -61,5 +61,3 @@ function Search(): JSX.Element {
     </div>
   );
 }
-
-export default Search;

@@ -15,7 +15,7 @@ import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
 import ProtectedRoute from 'components/common/ProtectedRoute';
 import { Suspense } from 'react';
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
   return (
     <Suspense fallback={<div />}>
       <Routes>
@@ -38,5 +38,3 @@ function App(): JSX.Element {
     </Suspense>
   );
 }
-
-export default App;

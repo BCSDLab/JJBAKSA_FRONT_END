@@ -1,7 +1,7 @@
 import cn from 'utils/ts/classNames';
 import styles from '../Search.module.scss';
 
-function Suggestion({ mode, list, text } : any) {
+export default function Suggestion({ mode, list, text } : any) {
   return (
     <div className={styles.search}>
       <ul className={cn({
@@ -23,5 +23,3 @@ function Suggestion({ mode, list, text } : any) {
     </div>
   );
 }
-
-export default Suggestion;

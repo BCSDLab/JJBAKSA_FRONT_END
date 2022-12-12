@@ -5,7 +5,9 @@ import styles from './TextEditor.module.scss';
 import useImageList from './hooks/useImageList';
 import useBooleanStateList from './hooks/useBooleanStateList';
 
-function AddImage({ active, inActive }: { active: () => void, inActive: () => void }) {
+export default function AddImage({ active, inActive }: {
+  active: () => void,
+  inActive: () => void }) {
   const { imageList, addImage, removeImage } = useImageList();
   const isShowButtons = useBooleanStateList();
 
@@ -55,5 +57,3 @@ function AddImage({ active, inActive }: { active: () => void, inActive: () => vo
     </>
   );
 }
-
-export default AddImage;
