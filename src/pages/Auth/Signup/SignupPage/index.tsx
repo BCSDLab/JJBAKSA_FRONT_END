@@ -60,7 +60,6 @@ export default function SignUpForm() {
         <FormProvider {...methods}>
           <form
             className={styles.form}
-            // form 제출 api 호출
             onSubmit={handleSubmit(signup)}
           >
             <div className={styles.form__title}>회원가입</div>
