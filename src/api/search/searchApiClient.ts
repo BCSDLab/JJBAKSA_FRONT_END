@@ -1,14 +1,19 @@
 import axios from 'axios';
 
 const API_PATH = process.env.REACT_APP_API_PATH!;
-const AUTH_TOKEN = sessionStorage.getItem('accessToken') || '';
 
 const searchApi = axios.create({
   baseURL: `${API_PATH}`,
-  headers: {
-    Authorization: `Bearer ${AUTH_TOKEN}`,
-  },
+  timeout: 2000,
 });
-searchApi.defaults.headers.common.Authorization = `Bearer ${AUTH_TOKEN}`;
+
+searchApi.interceptors.request.use(
+  (config) => {
+    const accessToken = sessionStorage.getItem('accessToken');
+    // eslint-disable-next-line no-param-reassign
+    if (config.headers && accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
+    return config;
+  },
+);
 
 export default searchApi;
