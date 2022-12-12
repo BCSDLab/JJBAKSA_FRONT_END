@@ -66,8 +66,8 @@ export default function IdInput() {
         {...register('id', {
           required: ERROR_MESSAGE.id,
           validate: {
+            checkValid: (val) => ((val === currentCheckedId) || '아이디 중복확인을 해주세요.'),
             checkError: () => ((status !== 'error') || '이미 사용중인 아이디입니다.'),
-            checkValid: (val) => ((status === 'success' && val === currentCheckedId) || '아이디 중복확인을 해주세요.'),
           },
         })}
       />
