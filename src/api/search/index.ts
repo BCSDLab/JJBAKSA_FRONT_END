@@ -12,14 +12,7 @@ export function useTrendingList() {
   };
 }
 
-export function useShopQuery(place_id: string) {
-  const {
-    isLoading, isError, data,
-  } = useQuery('shop', () => searchApi.get(`/shop?place_id=${place_id}`));
-  return {
-    isLoading, isError, data,
-  };
-}
+export const useShopQuery = (place_id: string) => useQuery(['shop', place_id], () => searchApi.get(`/shop?place_id=${place_id}`));
 
 export function useFetchShops(searchQuery: string) {
   const options = {
