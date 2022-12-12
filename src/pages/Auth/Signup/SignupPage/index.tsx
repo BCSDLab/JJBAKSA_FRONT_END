@@ -13,12 +13,13 @@ import PasswordInput from './components/PasswordInput';
 import PasswordCheckInput from './components/PasswordCheckInput';
 
 const useSignUp = () => {
+  const navigate = useNavigate();
   const signup = (form: SignUpFormData) => {
     register({
       account: form.id,
       email: `${form.email}@${form.emailDomain}`,
       password: form.password,
-    });
+    }).then(() => navigate('/signup/complete', { state: { signUpCheck: true }, replace: true }));
   };
 
   return signup;
@@ -26,7 +27,6 @@ const useSignUp = () => {
 
 export default function SignUpForm() {
   useRouteCheck('termsCheck', '/terms-of-service');
-  const navigate = useNavigate();
   const signup = useSignUp();
 
   const methods = useForm<SignUpFormData>({
@@ -44,14 +44,6 @@ export default function SignUpForm() {
     handleSubmit,
     formState: { isDirty, isValid },
   } = methods;
-
-  const clickSubmit = () => {
-    if (isDirty && isValid) {
-      navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
-    } else {
-      navigate('');
-    }
-  };
 
   return (
     <div className={styles.template}>
@@ -73,7 +65,6 @@ export default function SignUpForm() {
               type="submit"
               className={styles.form__button}
               disabled={!isDirty || !isValid}
-              onClick={clickSubmit}
             >
               완료
             </button>
