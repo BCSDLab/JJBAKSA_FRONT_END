@@ -1,6 +1,7 @@
 import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
 import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
@@ -22,30 +23,40 @@ const useLoginRequest = () => {
   const updateAuth = useUpdateAuth();
 
   const submitLogin = async ({ id, password, isAutoLoginChecked }: LoginFormInput) => {
-    const { data } = await login({
-      account: id,
-      password: sha256(password),
-    });
+    try {
+      const { data } = await login({
+        account: id,
+        password: sha256(password),
+      });
 
-    sessionStorage.setItem('accessToken', data.accessToken);
-    await updateAuth();
+      sessionStorage.setItem('accessToken', data.accessToken);
+      await updateAuth();
 
-    // 자동로그인
-    if (isAutoLoginChecked) {
-      localStorage.setItem('refreshToken', data.refreshToken);
+      // 자동로그인
+      if (isAutoLoginChecked) {
+        localStorage.setItem('refreshToken', data.refreshToken);
+      }
+      console.log('성공');
+
+      navigate('/');
+    } catch (e) {
+      console.log(e);
+      console.log('로그인 성공 -> 실패');
     }
-
-    navigate('/');
   };
 
   return submitLogin;
 };
 
+// const useSubmit = async (loginInput: LoginFormInput) => {
+//   const res = await Mutation()
+// }
+
 export default function Login(): JSX.Element {
   const {
     register,
     handleSubmit,
-    formState: { isValid },
+    formState: { isValid, errors },
   } = useForm<LoginFormInput>({
     mode: 'onChange',
     defaultValues: {
@@ -62,9 +73,28 @@ export default function Login(): JSX.Element {
         <AuthTitle />
         <div className={styles.form}>
           <form className={styles.loginform} onSubmit={handleSubmit(submitLogin)}>
+            <div className={styles.error}>
+              <ErrorIcon
+                className={cn({
+                  [styles['form__error-icon']]: true,
+                  [styles['form__error-icon--active']]: errors.password !== undefined,
+                })}
+                aria-hidden
+              />
+              {errors.password?.message}
+            </div>
             <div className={styles.loginform__login}>로그인</div>
             <input className={styles.loginform__input} type="text" id="id" placeholder="아이디" {...register('id', { required: true })} autoComplete="username" />
-            <input className={styles.loginform__input} type="password" id="pw" placeholder="비밀번호" {...register('password', { required: true })} autoComplete="current-password" />
+            <input
+              className={styles.loginform__input}
+              type="password"
+              id="pw"
+              placeholder="비밀번호"
+              autoComplete="current-password"
+              {...register('password', {
+                required: true,
+              })}
+            />
             <div className={styles.autologin}>
               <label htmlFor="checkbox">
                 <span className={styles.autologin__text}>자동 로그인</span>

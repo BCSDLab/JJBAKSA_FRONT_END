@@ -93,6 +93,17 @@
   }
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+
+  svg {
+    padding-right: 10px;
+  }
+}
+
 .autologin {
   display: flex;
   justify-content: flex-end;

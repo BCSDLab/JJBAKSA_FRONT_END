@@ -1,4 +1,4 @@
-import makeToast from 'utils/ts/makeToast';
+// import makeToast from 'utils/ts/makeToast';
 import userApi from './userApiClient';
 import {
   LoginParams, LoginResponse, ModifyParams, RegisterParams, User,
@@ -7,13 +7,15 @@ import {
 export const register = (param: RegisterParams) => userApi.post<User>('/', param);
 
 export const login = async (param: LoginParams) => {
-  try {
-    const { data } = await userApi.post<LoginResponse>('/login', param);
-    return { data };
-  } catch {
-    makeToast('warning', '아이디와 비밀번호를 확인해주세요.');
-    return Promise.reject();
-  }
+  const { data } = await userApi.post<LoginResponse>('/login', param);
+  return { data };
+  // try {
+  //   const { data } = await userApi.post<LoginResponse>('/login', param);
+  //   return { data };
+  // } catch {
+  //   makeToast('warning', '아이디와 비밀번호를 확인해주세요.');
+  //   return Promise.reject();
+  // }
 };
 
 export const getMe = () => userApi.get<User>('/me');
