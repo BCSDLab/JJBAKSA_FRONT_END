@@ -11,7 +11,7 @@ interface Props {
   shopId: number,
 }
 
-function SearchDetails() {
+export default function SearchDetails() {
   const { searchQuery } = useParams();
   const { isFetching, data } = useFetchShops(searchQuery as string);
 
@@ -30,5 +30,3 @@ function SearchDetails() {
     </div>
   );
 }
-
-export default SearchDetails;

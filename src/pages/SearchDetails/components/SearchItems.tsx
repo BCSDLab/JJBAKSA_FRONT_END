@@ -10,7 +10,7 @@ interface Props {
   }
 }
 
-function SearchItem({ shop }: Props) {
+export default function SearchItem({ shop }: Props) {
   const { placeName, address } = shop;
   return (
     <div className={styles['search-item']}>
@@ -39,5 +39,3 @@ function SearchItem({ shop }: Props) {
     </div>
   );
 }
-
-export default SearchItem;

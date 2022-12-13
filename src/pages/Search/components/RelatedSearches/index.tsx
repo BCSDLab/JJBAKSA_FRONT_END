@@ -9,7 +9,7 @@ interface Props {
   text: string,
 }
 
-function RelatedSearches({ mode, text }: Props) {
+export default function RelatedSearches({ mode, text }: Props) {
   return (
     <div className={styles.search}>
       <ul className={cn({
@@ -23,5 +23,3 @@ function RelatedSearches({ mode, text }: Props) {
     </div>
   );
 }
-
-export default RelatedSearches;

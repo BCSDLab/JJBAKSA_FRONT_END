@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 import useGeolocation from 'utils/hooks/useGeolocation';
 import searchApi from './searchApiClient';
 
-export function useTrendingList() {
+export const useTrendingList = () => {
   const {
     isLoading, isError, data,
   } = useQuery('trending', () => searchApi.get('/trending'));
@@ -10,11 +10,11 @@ export function useTrendingList() {
   return {
     isLoading, isError, data: trendings,
   };
-}
+};
 
 export const useShopQuery = (place_id: string) => useQuery(['shop', place_id], () => searchApi.get(`/shop?place_id=${place_id}`));
 
-export function useFetchShops(searchQuery: string) {
+export const useFetchShops = (searchQuery: string) => {
   const options = {
     maximumAge: 1000,
   };
@@ -26,4 +26,4 @@ export function useFetchShops(searchQuery: string) {
   return {
     isFetching, isError, data, refetch,
   };
-}
+};
