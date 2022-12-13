@@ -1,16 +1,17 @@
-import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
-import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
-import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
-import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
-import AuthTitle from 'components/Auth/AuthTitle';
-import Copyright from 'components/Auth/Copyright';
-import cn from 'utils/ts/classNames';
-import { login } from 'api/user';
-import sha256 from 'sha256';
-import { useUpdateAuth } from 'store/auth';
-import styles from './Login.module.scss';
+import { ReactComponent as GoogleIcon } from "assets/svg/auth/google.svg";
+import { ReactComponent as NaverIcon } from "assets/svg/auth/naver.svg";
+import { ReactComponent as KakaoIcon } from "assets/svg/auth/kakao.svg";
+import { ReactComponent as ErrorIcon } from "assets/svg/auth/error.svg";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import AuthTitle from "components/Auth/AuthTitle";
+import Copyright from "components/Auth/Copyright";
+import cn from "utils/ts/classNames";
+import { login } from "api/user";
+import sha256 from "sha256";
+import { useUpdateAuth } from "store/auth";
+import styles from "./Login.module.scss";
+import { useState } from "react";
 
 interface LoginFormInput {
   id: string;
@@ -18,30 +19,39 @@ interface LoginFormInput {
   isAutoLoginChecked: boolean;
 }
 
-const useLoginRequest = () => {
+const useLoginRequest = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess?: (message: string) => void;
+  onError?: (message: string) => void;
+}) => {
   const navigate = useNavigate();
   const updateAuth = useUpdateAuth();
 
-  const submitLogin = async ({ id, password, isAutoLoginChecked }: LoginFormInput) => {
+  const submitLogin = async ({
+    id,
+    password,
+    isAutoLoginChecked,
+  }: LoginFormInput) => {
     try {
       const { data } = await login({
         account: id,
         password: sha256(password),
       });
 
-      sessionStorage.setItem('accessToken', data.accessToken);
+      sessionStorage.setItem("accessToken", data.accessToken);
       await updateAuth();
 
       // 자동로그인
       if (isAutoLoginChecked) {
-        localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
       }
-      console.log('성공');
 
-      navigate('/');
-    } catch (e) {
-      console.log(e);
-      console.log('로그인 성공 -> 실패');
+      navigate("/");
+      onSuccess?.("성공");
+    } catch (_error) {
+      onError?.("로그인 성공 -> 실패");
     }
   };
 
@@ -58,57 +68,85 @@ export default function Login(): JSX.Element {
     handleSubmit,
     formState: { isValid, errors },
   } = useForm<LoginFormInput>({
-    mode: 'onChange',
+    mode: "onChange",
     defaultValues: {
-      id: '',
-      password: '',
+      id: "",
+      password: "",
       isAutoLoginChecked: false,
     },
   });
-  const submitLogin = useLoginRequest();
+
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const submitLogin = useLoginRequest({ onError: setErrorMessage });
 
   return (
     <div className={styles.template}>
       <div className={styles.content}>
         <AuthTitle />
         <div className={styles.form}>
-          <form className={styles.loginform} onSubmit={handleSubmit(submitLogin)}>
+          <form
+            className={styles.loginform}
+            onSubmit={handleSubmit(submitLogin)}
+          >
             <div className={styles.error}>
               <ErrorIcon
                 className={cn({
-                  [styles['form__error-icon']]: true,
-                  [styles['form__error-icon--active']]: errors.password !== undefined,
+                  [styles["form__error-icon"]]: true,
+                  [styles["form__error-icon--active"]]:
+                    errors.password !== undefined,
                 })}
                 aria-hidden
               />
-              {errors.password?.message}
+              {errorMessage}
             </div>
             <div className={styles.loginform__login}>로그인</div>
-            <input className={styles.loginform__input} type="text" id="id" placeholder="아이디" {...register('id', { required: true })} autoComplete="username" />
+            <input
+              className={styles.loginform__input}
+              type="text"
+              id="id"
+              placeholder="아이디"
+              {...register("id", { required: true })}
+              autoComplete="username"
+            />
             <input
               className={styles.loginform__input}
               type="password"
               id="pw"
               placeholder="비밀번호"
               autoComplete="current-password"
-              {...register('password', {
+              {...register("password", {
                 required: true,
               })}
             />
             <div className={styles.autologin}>
               <label htmlFor="checkbox">
                 <span className={styles.autologin__text}>자동 로그인</span>
-                <input type="checkbox" id="checkbox" {...register('isAutoLoginChecked')} className={styles.checkbox} />
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  {...register("isAutoLoginChecked")}
+                  className={styles.checkbox}
+                />
               </label>
             </div>
-            <button type="submit" disabled={!isValid} className={styles.loginform__button}>
+            <button
+              type="submit"
+              disabled={!isValid}
+              className={styles.loginform__button}
+            >
               로그인
             </button>
           </form>
           <div className={styles.help}>
-            <Link className={styles.help__link} to="/find-id">아이디 찾기</Link>
-            <Link className={styles.help__link} to="/find-password">비밀번호 찾기</Link>
-            <Link className={styles.help__link} to="/terms-of-service">회원가입</Link>
+            <Link className={styles.help__link} to="/find-id">
+              아이디 찾기
+            </Link>
+            <Link className={styles.help__link} to="/find-password">
+              비밀번호 찾기
+            </Link>
+            <Link className={styles.help__link} to="/terms-of-service">
+              회원가입
+            </Link>
           </div>
           <div className={styles.social}>
             <div className={styles.social__title}>SNS 계정으로 로그인하기</div>
@@ -116,7 +154,7 @@ export default function Login(): JSX.Element {
               <Link
                 className={cn({
                   [styles.social__icon]: true,
-                  [styles['social__icon--google']]: true,
+                  [styles["social__icon--google"]]: true,
                 })}
                 to="/"
               >
@@ -125,7 +163,7 @@ export default function Login(): JSX.Element {
               <Link
                 className={cn({
                   [styles.social__icon]: true,
-                  [styles['social__icon--kakao']]: true,
+                  [styles["social__icon--kakao"]]: true,
                 })}
                 to="/"
               >
@@ -134,7 +172,7 @@ export default function Login(): JSX.Element {
               <Link
                 className={cn({
                   [styles.social__icon]: true,
-                  [styles['social__icon--naver']]: true,
+                  [styles["social__icon--naver"]]: true,
                 })}
                 to="/"
               >
