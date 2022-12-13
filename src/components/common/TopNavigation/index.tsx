@@ -4,7 +4,7 @@ import { ReactComponent as ArrowIcon } from 'assets/svg/common/arrow.svg';
 import { useAuth } from 'store/auth';
 import styles from './TopNavigation.module.scss';
 
-function TopNavigation(): JSX.Element {
+export default function TopNavigation(): JSX.Element {
   const auth = useAuth();
 
   return (
@@ -31,5 +31,3 @@ function TopNavigation(): JSX.Element {
     </nav>
   );
 }
-
-export default TopNavigation;

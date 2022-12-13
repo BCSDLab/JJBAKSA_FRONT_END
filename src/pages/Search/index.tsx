@@ -12,7 +12,7 @@ import RelatedSearches from './components/RelatedSearches';
 
 type CurrentMode = string | null;
 
-function useSearchForm() {
+const useSearchForm = (state : CurrentMode) => {
   const [text, setText] = useState('');
   const handleText = (e : React.ChangeEvent<HTMLInputElement>) => {
     setText((e.target.value));
@@ -21,9 +21,9 @@ function useSearchForm() {
   return {
     text, handleText,
   };
-}
+};
 
-function useMode() {
+export default function Search(): JSX.Element {
   const [searchParams] = useSearchParams();
   const currentMode : CurrentMode = searchParams.get('mode') || MODE.trending;
   const [mode, setMode] = useState(currentMode);
@@ -70,5 +70,3 @@ function Search(): JSX.Element {
     </div>
   );
 }
-
-export default Search;

@@ -2,7 +2,7 @@ import TextEditor from 'components/editor/TextEditor';
 import { useSearchParams } from 'react-router-dom';
 import styles from './Post.module.scss';
 
-function Post() {
+export default function Post() {
   const [searchParams] = useSearchParams();
   // 쿼리가 shop인 값을 가져오는 함수
   const getShopname = () => {
@@ -15,5 +15,3 @@ function Post() {
     </div>
   );
 }
-
-export default Post;

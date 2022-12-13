@@ -6,7 +6,7 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function SearchInput({
+export default function SearchInput({
   text, onChange,
 }: Props) {
   return (
@@ -23,5 +23,3 @@ function SearchInput({
     </label>
   );
 }
-
-export default SearchInput;

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 const MOBILE_MEDIA_QUERY = '(max-width: 576px)';
 
-export default function useMediaQuery() {
+const useMediaQuery = () => {
   const [matches, setMatches] = useState(() => window.matchMedia(MOBILE_MEDIA_QUERY).matches);
   const matchMediaRef = useRef<MediaQueryList | null>(null);
 
@@ -20,4 +20,6 @@ export default function useMediaQuery() {
   }, []);
 
   return { isMobile: matches };
-}
+};
+
+export default useMediaQuery;
