@@ -10,10 +10,14 @@ interface Position {
 }
 
 export default function useGeolocation(options = {}) {
-  const [location, setLocation] = useState<Position>();
+  const [location, setLocation] = useState<Coords>();
+  const onGeoSuccess = (geolocation: Position) => {
+    setLocation(geolocation.coords);
+  };
   const onGeoError = () => {};
+
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(setLocation, onGeoError, options);
+    navigator.geolocation.getCurrentPosition(onGeoSuccess, onGeoError, options);
   }, [options]);
 
   return { location };

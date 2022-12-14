@@ -21,9 +21,11 @@ export const useFetchShops = (searchQuery: string) => {
   const { location } = useGeolocation(options);
   const {
     isLoading, isError, data, refetch,
-  } = useQuery('shop', () => searchApi.post(`/shops?keyword=${searchQuery}&x=${location?.coords.latitude}&y=${location?.coords.longitude}`), { enabled: !!location });
+  } = useQuery('shop', () => searchApi.post(`/shops?keyword=${searchQuery}&x=${location?.latitude}&y=${location?.longitude}`), { enabled: !!location });
+
   const isFetching = isLoading || !(location);
   const shops = data?.data.content;
+
   return {
     isFetching, isError, data: shops, refetch,
   };
