@@ -13,7 +13,7 @@ interface Props {
 
 export default function SearchDetails() {
   const { searchQuery } = useParams();
-  const { isFetching, data } = useFetchShops(searchQuery as string);
+  const { isFetching, data: shops } = useFetchShops(searchQuery as string);
 
   return (
     <div>
@@ -22,7 +22,7 @@ export default function SearchDetails() {
         <div className={styles['search-details']}>
           {isFetching
             ? <LoadingView />
-            : data?.data.content.map((shop: Props) => (
+            : shops.map((shop: Props) => (
               <SearchItem key={shop.shopId} shop={shop} />
             ))}
         </div>
