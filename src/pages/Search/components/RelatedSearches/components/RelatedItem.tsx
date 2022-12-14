@@ -11,8 +11,8 @@ interface Item {
 
 export default function RelatedItem({ item }: Props) {
   return (
-    <Link to={`/search/${item.title}`} style={{ color: 'black', textDecoration: 'none' }}>
-      <li className={styles['search-related-item__title']}>{item.title}</li>
+    <Link to={`/search/${item.title}`} className={styles['search-related-list__item']}>
+      <li className={styles['search-related-list__title']}>{item.title}</li>
     </Link>
   );
 }

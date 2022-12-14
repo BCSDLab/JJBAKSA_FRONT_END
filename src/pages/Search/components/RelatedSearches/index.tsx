@@ -13,8 +13,8 @@ export default function RelatedSearches({ mode, text }: Props) {
   return (
     <div className={styles.search}>
       <ul className={cn({
-        [styles['search-related-item']]: true,
-        [styles['search-related-item--hidden']]: mode === MODE.trending,
+        [styles['search-related-list']]: true,
+        [styles['search-related-list--hidden']]: mode === MODE.trending,
       })}
       >
         {text === '' ? null : suggestion.filter((item) => item.title.includes(text))

@@ -27,6 +27,7 @@ const useMode = () => {
   const [searchParams] = useSearchParams();
   const currentMode : CurrentMode = searchParams.get('mode') || MODE.trending;
   const [mode, setMode] = useState(currentMode);
+
   const changeMode = useCallback((event: MouseEvent) => {
     if ((event.target as Element).id === 'searchBarInput') {
       setMode(MODE.search);

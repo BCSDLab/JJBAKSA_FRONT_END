@@ -12,13 +12,13 @@
 }
 
 // 검색창 결과 리스트
-.search-related-item {
+.search-related-list {
   height: calc(100vh - 180px);
   overflow: scroll;
 
-  .link {
-    color: "black";
-    text-decoration: "none";
+  &__item {
+    text-decoration-line: none;
+    color: black;
   }
 
   &__title {
