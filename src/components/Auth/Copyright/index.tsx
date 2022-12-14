@@ -1,6 +1,6 @@
 import styles from './Copyright.module.scss';
 
-function Copyright(): JSX.Element {
+export default function Copyright(): JSX.Element {
   return (
     <div className={styles.copyright}>
       COPYRIGHT ⓒ
@@ -11,4 +11,3 @@ function Copyright(): JSX.Element {
     </div>
   );
 }
-export default Copyright;

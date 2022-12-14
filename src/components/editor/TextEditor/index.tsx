@@ -15,7 +15,7 @@ interface Props {
   getShopname: () => string | null;
 }
 
-function TextEditor({ shop, getShopname }: Props) {
+export default function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
   const navigate = useNavigate();
   const isSaveActive = useBoolean(false);
@@ -77,5 +77,3 @@ function TextEditor({ shop, getShopname }: Props) {
     </div>
   );
 }
-
-export default TextEditor;

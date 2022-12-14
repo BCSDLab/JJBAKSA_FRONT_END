@@ -1,7 +1,7 @@
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import styles from '../Search.module.scss';
 
-function Navigation() {
+export default function Navigation() {
   return (
     <nav className={styles['search-nav']}>
       <div className={styles['search-nav__button']}>
@@ -11,5 +11,3 @@ function Navigation() {
     </nav>
   );
 }
-
-export default Navigation;

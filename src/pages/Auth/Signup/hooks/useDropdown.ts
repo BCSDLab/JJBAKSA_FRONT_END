@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { SignUpFormData } from '../SignupPage/entity';
 
-export default function useDropdown(resetValue: string) {
+const useDropdown = (resetValue: string) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
 
@@ -30,4 +30,6 @@ export default function useDropdown(resetValue: string) {
   return {
     isDropdownOpen, selectedValue, changeDropdownOpen, selectValue, changeValue,
   };
-}
+};
+
+export default useDropdown;

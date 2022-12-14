@@ -1,7 +1,7 @@
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
 import styles from '../Search.module.scss';
 
-function SearchInput({
+export default function SearchInput({
   onFocus, onBlur, text, onChange,
 }: any) {
   return (
@@ -19,5 +19,3 @@ function SearchInput({
     </label>
   );
 }
-
-export default SearchInput;
