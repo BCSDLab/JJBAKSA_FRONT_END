@@ -14,7 +14,6 @@ interface Props {
 export default function SearchDetails() {
   const { searchQuery } = useParams();
   const { isFetching, data: shops } = useFetchShops(searchQuery as string);
-
   return (
     <div>
       <div className={styles.search}>

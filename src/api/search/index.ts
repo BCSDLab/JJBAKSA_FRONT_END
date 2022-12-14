@@ -22,7 +22,7 @@ export const useFetchShops = (searchQuery: string) => {
   const {
     isLoading, isError, data, refetch,
   } = useQuery('shop', () => searchApi.post(`/shops?keyword=${searchQuery}&x=${location?.coords.latitude}&y=${location?.coords.longitude}`), { enabled: !!location });
-  const isFetching = !isLoading && !(location);
+  const isFetching = isLoading || !(location);
   const shops = data?.data.content;
   return {
     isFetching, isError, data: shops, refetch,
