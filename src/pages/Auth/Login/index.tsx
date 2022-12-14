@@ -1,17 +1,17 @@
-import { ReactComponent as GoogleIcon } from "assets/svg/auth/google.svg";
-import { ReactComponent as NaverIcon } from "assets/svg/auth/naver.svg";
-import { ReactComponent as KakaoIcon } from "assets/svg/auth/kakao.svg";
-import { ReactComponent as ErrorIcon } from "assets/svg/auth/error.svg";
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import AuthTitle from "components/Auth/AuthTitle";
-import Copyright from "components/Auth/Copyright";
-import cn from "utils/ts/classNames";
-import { login } from "api/user";
-import sha256 from "sha256";
-import { useUpdateAuth } from "store/auth";
-import styles from "./Login.module.scss";
-import { useState } from "react";
+import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
+import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
+import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthTitle from 'components/Auth/AuthTitle';
+import Copyright from 'components/Auth/Copyright';
+import cn from 'utils/ts/classNames';
+import { login } from 'api/user';
+import sha256 from 'sha256';
+import { useUpdateAuth } from 'store/auth';
+import { useState } from 'react';
+import styles from './Login.module.scss';
 
 interface LoginFormInput {
   id: string;
@@ -24,7 +24,7 @@ const useLoginRequest = ({
   onError,
 }: {
   onSuccess?: (message: string) => void;
-  onError?: (message: string) => void;
+  onError?: (error: boolean) => void;
 }) => {
   const navigate = useNavigate();
   const updateAuth = useUpdateAuth();
@@ -40,44 +40,40 @@ const useLoginRequest = ({
         password: sha256(password),
       });
 
-      sessionStorage.setItem("accessToken", data.accessToken);
+      sessionStorage.setItem('accessToken', data.accessToken);
       await updateAuth();
 
       // 자동로그인
       if (isAutoLoginChecked) {
-        localStorage.setItem("refreshToken", data.refreshToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
       }
 
-      navigate("/");
-      onSuccess?.("성공");
-    } catch (_error) {
-      onError?.("로그인 성공 -> 실패");
+      navigate('/');
+      onSuccess?.('성공');
+    } catch (error) {
+      onError?.(true);
     }
   };
 
   return submitLogin;
 };
 
-// const useSubmit = async (loginInput: LoginFormInput) => {
-//   const res = await Mutation()
-// }
-
 export default function Login(): JSX.Element {
   const {
     register,
     handleSubmit,
-    formState: { isValid, errors },
+    formState: { isValid },
   } = useForm<LoginFormInput>({
-    mode: "onChange",
+    mode: 'onChange',
     defaultValues: {
-      id: "",
-      password: "",
+      id: '',
+      password: '',
       isAutoLoginChecked: false,
     },
   });
 
-  const [errorMessage, setErrorMessage] = useState<string>("");
-  const submitLogin = useLoginRequest({ onError: setErrorMessage });
+  const [error, setError] = useState<boolean>(false);
+  const submitLogin = useLoginRequest({ onError: setError });
 
   return (
     <div className={styles.template}>
@@ -89,15 +85,14 @@ export default function Login(): JSX.Element {
             onSubmit={handleSubmit(submitLogin)}
           >
             <div className={styles.error}>
-              <ErrorIcon
-                className={cn({
-                  [styles["form__error-icon"]]: true,
-                  [styles["form__error-icon--active"]]:
-                    errors.password !== undefined,
-                })}
-                aria-hidden
-              />
-              {errorMessage}
+              { error && (
+                <>
+                  <ErrorIcon
+                    aria-hidden
+                  />
+                  회원이 아니시거나, 아이디 또는 비밀번호를 잘못 입력했습니다.
+                </>
+              )}
             </div>
             <div className={styles.loginform__login}>로그인</div>
             <input
@@ -105,7 +100,7 @@ export default function Login(): JSX.Element {
               type="text"
               id="id"
               placeholder="아이디"
-              {...register("id", { required: true })}
+              {...register('id', { required: true })}
               autoComplete="username"
             />
             <input
@@ -114,7 +109,7 @@ export default function Login(): JSX.Element {
               id="pw"
               placeholder="비밀번호"
               autoComplete="current-password"
-              {...register("password", {
+              {...register('password', {
                 required: true,
               })}
             />
@@ -124,7 +119,7 @@ export default function Login(): JSX.Element {
                 <input
                   type="checkbox"
                   id="checkbox"
-                  {...register("isAutoLoginChecked")}
+                  {...register('isAutoLoginChecked')}
                   className={styles.checkbox}
                 />
               </label>
@@ -154,7 +149,7 @@ export default function Login(): JSX.Element {
               <Link
                 className={cn({
                   [styles.social__icon]: true,
-                  [styles["social__icon--google"]]: true,
+                  [styles['social__icon--google']]: true,
                 })}
                 to="/"
               >
@@ -163,7 +158,7 @@ export default function Login(): JSX.Element {
               <Link
                 className={cn({
                   [styles.social__icon]: true,
-                  [styles["social__icon--kakao"]]: true,
+                  [styles['social__icon--kakao']]: true,
                 })}
                 to="/"
               >
@@ -172,7 +167,7 @@ export default function Login(): JSX.Element {
               <Link
                 className={cn({
                   [styles.social__icon]: true,
-                  [styles["social__icon--naver"]]: true,
+                  [styles['social__icon--naver']]: true,
                 })}
                 to="/"
               >
