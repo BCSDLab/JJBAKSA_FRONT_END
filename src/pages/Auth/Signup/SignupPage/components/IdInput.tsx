@@ -9,7 +9,7 @@ import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
 
 const useIdCheckServer = (id: string) => {
-  const { status } = useQuery(['idDuplicate', id], () => checkIdDuplicate({ account: id }), {
+  const { status } = useQuery(['idDuplicate', id], ({ queryKey: [, account] }) => checkIdDuplicate({ account }), {
     enabled: id !== '',
   });
 
