@@ -18,9 +18,8 @@ const useIdCheckServer = (id: string) => {
 
 const useIdDuplicateCheck = () => {
   const [currentCheckedId, setCurrentCheckedId] = useState('');
-  const { getValues } = useFormContext<SignUpFormData>();
+  const { getValues, trigger } = useFormContext<SignUpFormData>();
   const id = getValues('id');
-  const { trigger } = useFormContext<SignUpFormData>();
 
   const handleCheckIdDuplicate = () => {
     setCurrentCheckedId(id);
