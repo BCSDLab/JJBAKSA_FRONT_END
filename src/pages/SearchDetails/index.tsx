@@ -1,9 +1,9 @@
-import { useFetchShops } from 'api/search';
 import { useParams } from 'react-router-dom';
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import NavigationBar from 'pages/Search/components/NavigationBar';
 import LoadingView from './components/LoadingView';
 import SearchItem from './components/SearchItems';
+import useFetchShops from './hooks/useFetchShops';
 
 interface Props {
   address: string,
@@ -14,7 +14,6 @@ interface Props {
 export default function SearchDetails() {
   const { searchQuery } = useParams();
   const { isFetching, data: shops } = useFetchShops(searchQuery!);
-
   return (
     <div>
       <div className={styles.search}>

@@ -1,7 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import React, { useCallback, useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
-import { useTrendingList } from 'api/search';
 import MODE from 'pages/Search/static/mode';
 import styles from 'pages/Search/Search.module.scss';
 import Recommendation from './components/SearchBar/Recommendation';
@@ -9,6 +8,7 @@ import SearchInput from './components/SearchBar/SearchInput';
 import RollingBanner from './components/SearchBar/RollingBanner';
 import NavigationBar from './components/NavigationBar';
 import RelatedSearches from './components/RelatedSearches';
+import useTrendingList from './hooks/useTrendings';
 
 type CurrentMode = string | null;
 

@@ -1,9 +1,5 @@
+import { Coords } from 'api/search/entity';
 import { useEffect, useState } from 'react';
-
-interface Coords {
-  latitude: number,
-  longitude: number
-}
 
 interface Position {
   coords: Coords
