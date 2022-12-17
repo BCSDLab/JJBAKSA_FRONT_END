@@ -1,5 +1,6 @@
 import { useQuery } from 'react-query';
 import useGeolocation from 'utils/hooks/useGeolocation';
+import { ShopParams } from './entity';
 import searchApi from './searchApiClient';
 
 export const useTrendingList = () => {
@@ -12,7 +13,7 @@ export const useTrendingList = () => {
   };
 };
 
-export const useShopQuery = (place_id: string) => useQuery(['shop', place_id], () => searchApi.get(`/shop?place_id=${place_id}`));
+export const getShop = (param: ShopParams) => searchApi.get(`/shop?place_id=${param}`);
 
 export const useFetchShops = (searchQuery: string) => {
   const options = {
