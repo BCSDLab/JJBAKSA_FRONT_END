@@ -6,14 +6,18 @@ import SearchItem from './components/SearchItems';
 import useFetchShops from './hooks/useFetchShops';
 
 interface Props {
-  address: string,
-  placeName: string,
-  shopId: number,
+  isFetching: boolean;
+  data: Shops[];
+}
+interface Shops {
+  address: string;
+  placeName: string;
+  shopId: number;
 }
 
 export default function SearchDetails() {
   const { searchQuery } = useParams();
-  const { isFetching, data: shops } = useFetchShops(searchQuery!);
+  const { isFetching, data: shops }: Props = useFetchShops(searchQuery!);
   return (
     <div>
       <div className={styles.search}>
@@ -21,7 +25,7 @@ export default function SearchDetails() {
         <div className={styles['search-details']}>
           {isFetching
             ? <LoadingView />
-            : shops.map((shop: Props) => (
+            : shops.map((shop) => (
               <SearchItem key={shop.shopId} shop={shop} />
             ))}
         </div>
