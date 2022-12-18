@@ -14,7 +14,6 @@ export default function SearchItem({ shop }: Props) {
   const { placeName, address } = shop;
   return (
     <div className={styles['search-item']}>
-
       <img alt="가게 이미지 없음" src={DefaultImage} />
       <div className={styles['search-item__content']}>
         <section className={styles['search-item__info']}>
