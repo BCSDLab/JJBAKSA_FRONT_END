@@ -14,6 +14,10 @@ export interface RegisterParams extends LoginParams {
   email: string;
 }
 
+export interface CheckIdDuplicateParams {
+  account: string;
+}
+
 export interface ModifyParams {
   nickname?: string;
   password?: string;
