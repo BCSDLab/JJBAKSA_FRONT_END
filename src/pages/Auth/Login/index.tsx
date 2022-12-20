@@ -104,7 +104,7 @@ export default function Login(): JSX.Element {
             <input
               className={styles.loginform__input}
               type="password"
-              id="pw"
+              id="password"
               placeholder="비밀번호"
               autoComplete="current-password"
               {...register('password', {
@@ -118,7 +118,7 @@ export default function Login(): JSX.Element {
                   type="checkbox"
                   id="checkbox"
                   {...register('isAutoLoginChecked')}
-                  className={styles.checkbox}
+                  className={styles.autologin_checkbox}
                 />
               </label>
             </div>
