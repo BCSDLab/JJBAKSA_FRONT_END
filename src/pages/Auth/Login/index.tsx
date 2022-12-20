@@ -7,11 +7,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
+import { useState } from 'react';
 import { login } from 'api/user';
 import sha256 from 'sha256';
 import { useUpdateAuth } from 'store/auth';
-import useBoolean from 'utils/hooks/useBoolean';
 import styles from './Login.module.scss';
+
+const PATTERN = /^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=()]).{2,16}$/;
 
 interface LoginFormInput {
   id: string;
@@ -23,8 +25,8 @@ const useLoginRequest = ({
   onSuccess,
   onError,
 }: {
-  onSuccess?: (message: string) => void;
-  onError?: (error: boolean) => void;
+  onSuccess?: (success: string) => void;
+  onError?: (error: string) => void;
 }) => {
   const navigate = useNavigate();
   const updateAuth = useUpdateAuth();
@@ -51,7 +53,11 @@ const useLoginRequest = ({
       navigate('/');
       onSuccess?.('성공');
     } catch (error) {
-      onError?.(true);
+      if (!PATTERN.test(password)) {
+        onError?.('비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야 합니다.');
+      } else {
+        onError?.('회원이 아니시거나, 아이디 또는 비밀번호를 잘못 입력했습니다.');
+      }
     }
   };
 
@@ -72,8 +78,8 @@ export default function Login(): JSX.Element {
     },
   });
 
-  const { value: error, setTrue: catchError } = useBoolean(false);
-  const submitLogin = useLoginRequest({ onError: catchError });
+  const [errorMsg, setErroMsg] = useState<string>('');
+  const submitLogin = useLoginRequest({ onError: setErroMsg });
 
   return (
     <div className={styles.template}>
@@ -85,12 +91,8 @@ export default function Login(): JSX.Element {
             onSubmit={handleSubmit(submitLogin)}
           >
             <div className={styles.error}>
-              { error && (
-                <>
-                  <ErrorIcon aria-hidden />
-                  회원이 아니시거나, 아이디 또는 비밀번호를 잘못 입력했습니다.
-                </>
-              )}
+              {errorMsg && <ErrorIcon aria-hidden />}
+              {errorMsg}
             </div>
             <div className={styles.loginform__login}>로그인</div>
             <input
