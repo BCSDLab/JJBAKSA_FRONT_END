@@ -11,9 +11,8 @@ import { useState } from 'react';
 import { login } from 'api/user';
 import sha256 from 'sha256';
 import { useUpdateAuth } from 'store/auth';
+import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
 import styles from './Login.module.scss';
-
-const PATTERN = /^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=()]).{2,16}$/;
 
 interface LoginFormInput {
   id: string;
@@ -36,8 +35,8 @@ const useLoginRequest = ({
     password,
     isAutoLoginChecked,
   }: LoginFormInput) => {
-    if (!PATTERN.test(password)) {
-      onError?.('비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야 합니다.');
+    if (!PASSWORD_REGEXP.test(password)) {
+      onError?.('비밀번호는 문자, 숫자, 특수문자를 포함한 8~16자리로 이루어져야 합니다.');
     } else {
       try {
         const { data } = await login({
