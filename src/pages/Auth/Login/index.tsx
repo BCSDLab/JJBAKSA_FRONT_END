@@ -10,7 +10,7 @@ import cn from 'utils/ts/classNames';
 import { login } from 'api/user';
 import sha256 from 'sha256';
 import { useUpdateAuth } from 'store/auth';
-import { useState } from 'react';
+import useBoolean from 'utils/hooks/useBoolean';
 import styles from './Login.module.scss';
 
 interface LoginFormInput {
@@ -72,8 +72,8 @@ export default function Login(): JSX.Element {
     },
   });
 
-  const [error, setError] = useState<boolean>(false);
-  const submitLogin = useLoginRequest({ onError: setError });
+  const { value: error, setTrue: catchError } = useBoolean(false);
+  const submitLogin = useLoginRequest({ onError: catchError });
 
   return (
     <div className={styles.template}>
@@ -87,9 +87,7 @@ export default function Login(): JSX.Element {
             <div className={styles.error}>
               { error && (
                 <>
-                  <ErrorIcon
-                    aria-hidden
-                  />
+                  <ErrorIcon aria-hidden />
                   회원이 아니시거나, 아이디 또는 비밀번호를 잘못 입력했습니다.
                 </>
               )}
