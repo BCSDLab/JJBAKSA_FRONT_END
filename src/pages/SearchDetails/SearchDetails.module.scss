@@ -28,9 +28,6 @@
   font-size: 20px;
 }
 
-
-
-
 // 검색 아이템
 .item {
   display: flex;
@@ -85,7 +82,6 @@
     line-height: 15px;
   }
 
-
   &__distance {
     font-weight: 400;
     font-size: 12px;
@@ -97,7 +93,6 @@
     align-self: center;
     margin-top: 34px;
   }
-
 
   @include media.media-breakpoint-up(mobile) {
     width: 700px;
