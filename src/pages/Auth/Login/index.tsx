@@ -36,26 +36,26 @@ const useLoginRequest = ({
     password,
     isAutoLoginChecked,
   }: LoginFormInput) => {
-    try {
-      const { data } = await login({
-        account: id,
-        password: sha256(password),
-      });
+    if (!PATTERN.test(password)) {
+      onError?.('비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야 합니다.');
+    } else {
+      try {
+        const { data } = await login({
+          account: id,
+          password: sha256(password),
+        });
 
-      sessionStorage.setItem('accessToken', data.accessToken);
-      await updateAuth();
+        sessionStorage.setItem('accessToken', data.accessToken);
+        await updateAuth();
 
-      // 자동로그인
-      if (isAutoLoginChecked) {
-        localStorage.setItem('refreshToken', data.refreshToken);
-      }
+        // 자동로그인
+        if (isAutoLoginChecked) {
+          localStorage.setItem('refreshToken', data.refreshToken);
+        }
 
-      navigate('/');
-      onSuccess?.('성공');
-    } catch (error) {
-      if (!PATTERN.test(password)) {
-        onError?.('비밀번호는 문자, 숫자, 특수문자를 포함한 2~16자리로 이루어져야 합니다.');
-      } else {
+        navigate('/');
+        onSuccess?.('성공');
+      } catch (error) {
         onError?.('회원이 아니시거나, 아이디 또는 비밀번호를 잘못 입력했습니다.');
       }
     }
