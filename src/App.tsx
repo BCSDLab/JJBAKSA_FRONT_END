@@ -32,7 +32,7 @@ export default function App(): JSX.Element {
         </Route>
         <Route path="/post" element={<Post />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/search/:searchQuery" element={<SearchDetails />} />
+        <Route path="/search/:keyword" element={<SearchDetails />} />
       </Routes>
       <Toast />
     </Suspense>

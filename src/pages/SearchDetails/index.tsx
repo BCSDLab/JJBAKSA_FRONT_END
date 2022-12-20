@@ -2,8 +2,9 @@ import { useParams } from 'react-router-dom';
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import NavigationBar from 'pages/Search/components/NavigationBar';
 import LoadingView from './components/LoadingView';
-import SearchItem from './components/SearchItems';
+import SearchItem from './components/SearchItem';
 import useFetchShops from './hooks/useFetchShops';
+import ControllBar from './components/ControllBar';
 
 interface Props {
   isFetching: boolean;
@@ -16,12 +17,13 @@ interface Shops {
 }
 
 export default function SearchDetails() {
-  const { text } = useParams();
-  const { isFetching, data: shops }: Props = useFetchShops(text!);
+  const { keyword } = useParams();
+  const { isFetching, data: shops }: Props = useFetchShops(keyword!);
   return (
     <div>
       <div className={styles.search}>
-        <NavigationBar keyword={text} />
+        <NavigationBar keyword={keyword} />
+        <ControllBar />
         <div className={styles['search-details']}>
           {isFetching
             ? <LoadingView />
