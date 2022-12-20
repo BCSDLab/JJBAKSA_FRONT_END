@@ -16,12 +16,12 @@ interface Shops {
 }
 
 export default function SearchDetails() {
-  const { searchQuery } = useParams();
-  const { isFetching, data: shops }: Props = useFetchShops(searchQuery!);
+  const { text } = useParams();
+  const { isFetching, data: shops }: Props = useFetchShops(text!);
   return (
     <div>
       <div className={styles.search}>
-        <NavigationBar searchQuery={searchQuery} />
+        <NavigationBar keyword={text} />
         <div className={styles['search-details']}>
           {isFetching
             ? <LoadingView />
