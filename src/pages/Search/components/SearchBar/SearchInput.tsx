@@ -19,7 +19,6 @@ export default function SearchInput({
         onChange={onChange}
       />
       <LensIcon title="검색" className={styles['search-bar__icon']} />
-
     </label>
   );
 }

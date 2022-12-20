@@ -15,17 +15,20 @@
 .search-related-list {
   height: calc(100vh - 180px);
   overflow: scroll;
+  padding-top: 24px;
 
-  &__item {
+  &__wrapper {
     text-decoration-line: none;
     color: black;
   }
 
-  &__title {
+  &__item {
     display: flex;
+    justify-content: space-between;
     font-size: 14px;
     height: 34px;
     padding-left: 52px;
+    padding-right: 57.14px;
     align-items: center;
     cursor: pointer;
 
