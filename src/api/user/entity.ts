@@ -1,5 +1,4 @@
 export interface LoginResponse {
-  user: User;
   accessToken: string;
   refreshToken: string;
 }
@@ -26,7 +25,6 @@ export interface User {
   nickname: string;
   email: string;
   id: number;
-  password: string;
   // 아래 두 파라미터도 확실한 도메인이 정해지면 수정 필요.
   // oauthType = 'KAKAO' | 'NAVER' | 'GOOGLE'...
   // userType = 'ADMIN' | 'NORMAL'...
