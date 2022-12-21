@@ -40,13 +40,8 @@ const useLoginRequest = ({
       try {
         const { data } = await login({
           account: id,
-          password: sha256(password),
+          password,
         });
-  const submitLogin = async ({ id, password, isAutoLoginChecked }: LoginFormInput) => {
-    const { data } = await login({
-      account: id,
-      password,
-    });
 
         sessionStorage.setItem('accessToken', data.accessToken);
         await updateAuth();
