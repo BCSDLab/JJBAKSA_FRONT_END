@@ -9,7 +9,6 @@ import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
 import { useState } from 'react';
 import { login } from 'api/user';
-import sha256 from 'sha256';
 import { useUpdateAuth } from 'store/auth';
 import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
 import styles from './Login.module.scss';
@@ -43,6 +42,11 @@ const useLoginRequest = ({
           account: id,
           password: sha256(password),
         });
+  const submitLogin = async ({ id, password, isAutoLoginChecked }: LoginFormInput) => {
+    const { data } = await login({
+      account: id,
+      password,
+    });
 
         sessionStorage.setItem('accessToken', data.accessToken);
         await updateAuth();
