@@ -7,6 +7,10 @@ export interface ShopsParams {
   location: Coords;
 }
 
+export interface FetchTrendingsResponse {
+  trendings: string[]
+}
+
 export interface FetchShopsResponse {
   content: Shop[];
 }

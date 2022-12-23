@@ -1,7 +1,7 @@
-import { FetchShopsResponse, ShopsParams } from './entity';
+import { FetchShopsResponse, FetchTrendingsResponse, ShopsParams } from './entity';
 import searchApi from './searchApiClient';
 
-export const fetchTrendings = () => searchApi.get('/trending');
+export const fetchTrendings = () => searchApi.get<FetchTrendingsResponse>('/trending');
 
 export const fetchShop = (shopId: string) => searchApi.get(`/shop?place_id=${shopId}`);
 
