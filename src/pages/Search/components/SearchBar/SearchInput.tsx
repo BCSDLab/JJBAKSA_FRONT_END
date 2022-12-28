@@ -1,16 +1,19 @@
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
-import styles from '../Search.module.scss';
+import styles from 'pages/Search/components/SearchBar/SearchBar.module.scss';
+
+interface Props {
+  text: string,
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
 
 export default function SearchInput({
-  onFocus, onBlur, text, onChange,
-}: any) {
+  text, onChange,
+}: Props) {
   return (
     <label title="검색어 입력" className={styles['search-bar']} htmlFor="searchBarInput">
       <input
         className={styles['search-bar__input']}
         id="searchBarInput"
-        onFocus={onFocus}
-        onBlur={onBlur}
         placeholder="검색어를 입력해주세요."
         value={text}
         onChange={onChange}
