@@ -2,11 +2,11 @@ import React from 'react';
 import cn from 'utils/ts/classNames';
 import { useFormContext } from 'react-hook-form';
 import { ReactComponent as ArrowIcon } from 'assets/svg/common/arrow.svg';
+import { EMAILDOMAIN_REGEXP } from 'components/Auth/static/Regexp';
 import styles from '../SignUp.module.scss';
 import { DOMAIN, ERROR_MESSAGE } from '../../static/signUp';
 import { SignUpFormData } from '../entity';
 import useDropDown from '../../hooks/useDropdown';
-import { EMAILDOMAIN_REGEXP } from '../../static/Regexp';
 
 export default function DomainDropdown() {
   const {
