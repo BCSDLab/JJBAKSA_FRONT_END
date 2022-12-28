@@ -22,7 +22,6 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^9.0.8",
     "sass": "^1.54.4",
-    "sha256": "^0.2.0",
     "tui-editor-plugin-font-size": "^1.0.4",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"

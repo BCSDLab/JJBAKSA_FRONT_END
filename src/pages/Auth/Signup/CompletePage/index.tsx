@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
+import { NICKNAME_REGEXP } from 'components/Auth/static/Regexp';
 import styles from './Complete.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
-import { NICKNAME_REGEXP } from '../static/Regexp';
 import { ERROR_MESSAGE } from '../static/signUp';
 
 export default function CompleteForm() {

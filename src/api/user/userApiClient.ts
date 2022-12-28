@@ -49,12 +49,12 @@ userApi.interceptors.response.use(
 
       // TODO: 백엔드단에서 정확한 토큰 인증 오류 시 코드/메시지를 정해주면 수정 필요.
       if (originalRequest.url !== '/refresh') {
-        return refreshAccessToken().then(() => userApi(originalRequest));
+        refreshAccessToken().then(() => userApi(originalRequest));
       }
-      return Promise.reject();
+      return Promise.reject(error);
     } catch {
       makeToast('error', '네트워크 오류가 발생했습니다.');
-      return Promise.reject();
+      return Promise.reject(error);
     }
   },
 );
