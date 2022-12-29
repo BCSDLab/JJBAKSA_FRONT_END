@@ -4,12 +4,12 @@
   display: flex;
   position: relative;
   padding-left: 32px;
-  padding-top:44px;
+  padding-top: 44px;
   align-items: center;
 }
 
 .icon__head {
-  display: flex;  
+  display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -17,12 +17,13 @@
   border-radius: 50%;
   width: 24px;
   height: 24px;
-  box-shadow: 0px 0px 3px 0.5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3px 0.5px rgb(0 0 0 / 25%);
   background-color: white;
 }
+
 .icon__middle {
   right: 12px;
-  display: flex;  
+  display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -30,13 +31,13 @@
   border-radius: 50%;
   width: 24px;
   height: 24px;
-  box-shadow: 0px 0px 3px 0.5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3px 0.5px rgb(0 0 0 / 25%);
   background-color: white;
-  
 }
+
 .icon__tail {
   right: 24px;
-  display: flex;  
+  display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -44,14 +45,15 @@
   border-radius: 50%;
   width: 24px;
   height: 24px;
-  box-shadow: 0px 0px 3px 0.5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 3px 0.5px rgb(0 0 0 / 25%);
   background-color: white;
 }
 
 .checkbox {
-  position:relative;
+  position: relative;
+
   // right: 16px;
-  accent-color: #FFD25D;
+  accent-color: #ffd25d;
 }
 
 .label {
@@ -170,41 +172,41 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  gap:8px;
+  gap: 8px;
   justify-content: center;
   width: calc(100% - 32px);
   background-color: white;
 }
 
 .map__naver {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    background: #03C75A;
-    border-radius: 30px;
-    font-size: 16px;
-    color: #FFFFFF; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  background: #03c75a;
+  border-radius: 30px;
+  font-size: 16px;
+  color: #ffffff;
 }
 
 .map__kakao {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    background: #FEE500;
-    border-radius: 30px;
-    font-size: 16px;
-    color: #222222;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  background: #fee500;
+  border-radius: 30px;
+  font-size: 16px;
+  color: #222222;
 }
 
 .close {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    background:#EEEEEE;
-    border-radius: 30px;
-    font-size: 16px;
-    color: #222222;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  background: #eeeeee;
+  border-radius: 30px;
+  font-size: 16px;
+  color: #222222;
 }
