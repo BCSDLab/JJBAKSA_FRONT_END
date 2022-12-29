@@ -6,8 +6,8 @@ interface Props {
   shop: {
     address: string,
     placeName: string,
-    shopId: number
-  }
+    shopId: number,
+  },
 }
 
 export default function SearchItem({ shop }: Props) {

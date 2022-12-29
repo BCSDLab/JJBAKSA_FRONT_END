@@ -1,14 +1,14 @@
+export interface FetchTrendingsResponse {
+  trendings: string[]
+}
+
 export interface SearchQueryParams {
-  searchQuery : string;
+  searchText : string;
 }
 
 export interface ShopsParams {
-  searchQuery: string;
+  keyword: string;
   location: Coords;
-}
-
-export interface FetchTrendingsResponse {
-  trendings: string[]
 }
 
 export interface FetchShopsResponse {

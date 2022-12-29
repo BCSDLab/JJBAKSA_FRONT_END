@@ -3,12 +3,12 @@ import { useQuery } from 'react-query';
 import { fetchShops } from 'api/search';
 import { ShopsParams } from 'api/search/entity';
 
-const useFetchShops = (searchQuery: string) => {
+const useFetchShops = (keyword: string) => {
   const options = {
     maximumAge: 1000,
   };
   const { location } = useGeolocation(options);
-  const params = { searchQuery, location };
+  const params = { keyword, location };
   const {
     isLoading, isError, data, refetch,
   } = useQuery('shop', () => fetchShops(params as ShopsParams), { enabled: !!location });
