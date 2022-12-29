@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from 'pages/Search/Search.module.scss';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import Recommendation from './components/SearchBar/Recommendation';
 import SearchInput from './components/SearchBar/SearchInput';
 import RollingBanner from './components/SearchBar/RollingBanner';
@@ -21,17 +22,18 @@ const useSearchForm = () => {
 export default function Search(): JSX.Element {
   const { text, handleChange } = useSearchForm();
   const isSearching = useSearchingMode();
+  const { isMobile } = useMediaQuery();
 
   return (
     <div className={styles.search}>
       <section>
         <NavigationBar />
-        {!isSearching && <Recommendation />}
+        {isMobile ? !isSearching && <Recommendation /> : <Recommendation />}
         <SearchInput
           onChange={handleChange}
           text={text}
         />
-        {!isSearching && <RollingBanner />}
+        {isMobile ? !isSearching && <RollingBanner /> : <RollingBanner />}
       </section>
       <RelatedSearches text={text} />
     </div>

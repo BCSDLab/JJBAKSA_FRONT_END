@@ -6,11 +6,12 @@ interface Props {
   shop: {
     address: string,
     placeName: string,
-    shopId: number
-  }
+    shopId: number,
+  },
+  onClick: (e:any) => void;
 }
 
-export default function SearchItem({ shop }: Props) {
+export default function SearchItem({ shop, onClick }: Props) {
   const { placeName, address } = shop;
   return (
     <div className={styles.item}>
@@ -28,7 +29,7 @@ export default function SearchItem({ shop }: Props) {
             </div>
             <div className={styles.item__distance}>내 위치로부터 23m</div>
           </div>
-          <MapIcon className={styles.item__map} />
+          <MapIcon className={styles.item__map} onClick={onClick} />
         </section>
       </div>
 

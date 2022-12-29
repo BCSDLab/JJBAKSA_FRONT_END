@@ -98,3 +98,50 @@
     width: 700px;
   }
 }
+
+.slider {
+  position: fixed;
+  margin-left: 16px;
+  margin-right: 16px;
+  padding-top: 8px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap:8px;
+  justify-content: center;
+  width: calc(100% - 32px);
+  background-color: white;
+}
+
+.map__naver {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    background: #03C75A;
+    border-radius: 30px;
+    font-size: 16px;
+    color: #FFFFFF; 
+}
+
+.map__kakao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    background: #FEE500;
+    border-radius: 30px;
+    font-size: 16px;
+    color: #222222;  
+}
+
+.close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    background:#EEEEEE;
+    border-radius: 30px;
+    font-size: 16px;
+    color: #222222;  
+}
