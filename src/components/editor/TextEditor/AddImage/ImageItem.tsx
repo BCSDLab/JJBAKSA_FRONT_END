@@ -1,4 +1,4 @@
-import { ReactComponent as Trash } from 'assets/svg/trash.svg';
+import { ReactComponent as Trash } from 'assets/svg/post/trash.svg';
 import { useRef } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import useOnClickOutside from 'utils/hooks/useOnClickOutside';

@@ -1,4 +1,4 @@
-import { ReactComponent as Picture } from 'assets/svg/picture.svg';
+import { ReactComponent as Picture } from 'assets/svg/post/picture.svg';
 import { useEffect } from 'react';
 import styles from '../TextEditor.module.scss';
 import useImageList from '../hooks/useImageList';
