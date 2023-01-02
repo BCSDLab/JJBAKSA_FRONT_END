@@ -14,18 +14,12 @@
 
   @include media.media-breakpoint-down(mobile) {
     width: 216px;
-    margin: 100px auto 80px;
   }
 }
 
 .form {
   margin-top: 50px;
   margin-bottom: 70px;
-
-  @include media.media-breakpoint-down(mobile) {
-    margin: 0 auto;
-    margin-top: 80px;
-  }
 }
 
 .loginform {
@@ -93,6 +87,32 @@
   }
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #ff7f23;
+  font-weight: 400;
+  letter-spacing: -1px;
+  min-height: 30px;
+  margin-bottom: 26px;
+
+  svg {
+    padding-right: 10px;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    font-size: 11px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    svg {
+      padding-right: 10px;
+    }
+  }
+}
+
 .autologin {
   display: flex;
   justify-content: flex-end;
@@ -113,7 +133,7 @@
   }
 }
 
-.checkbox {
+.autologin_checkbox {
   appearance: none;
   width: 24px;
   height: 12px;

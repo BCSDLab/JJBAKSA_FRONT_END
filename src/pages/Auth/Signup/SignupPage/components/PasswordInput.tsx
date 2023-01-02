@@ -1,14 +1,14 @@
 import React from 'react';
 import cn from 'utils/ts/classNames';
-import { ReactComponent as ErrorIcon } from 'assets/svg/error.svg';
-import { ReactComponent as ShowIcon } from 'assets/svg/pw-show.svg';
-import { ReactComponent as BlindIcon } from 'assets/svg/pw-blind.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
+import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
 import { useFormContext } from 'react-hook-form';
+import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
 import { ERROR_MESSAGE } from '../../static/signUp';
 import styles from '../SignUp.module.scss';
 import useBlindCheck from '../../hooks/useBlindCheck';
 import { SignUpFormData } from '../entity';
-import { PASSWORD_REGEXP } from '../../static/Regexp';
 
 export default function PasswordInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();
@@ -45,7 +45,7 @@ export default function PasswordInput() {
         {...register('password', {
           required: ERROR_MESSAGE.password,
           minLength: {
-            value: 2,
+            value: 8,
             message: ERROR_MESSAGE.password,
           },
           maxLength: {

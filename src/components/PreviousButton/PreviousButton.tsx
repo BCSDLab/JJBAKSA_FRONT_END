@@ -1,4 +1,4 @@
-import { ReactComponent as ChevronRight } from 'assets/svg/previous.svg';
+import { ReactComponent as ChevronRight } from 'assets/svg/common/previous.svg';
 import { useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import styles from './PreviousButton.module.scss';
@@ -22,11 +22,13 @@ export default function PreviousButton({ fallback = '/', position } : Props) {
         })
       }
       onClick={() => {
-        if (isPreviousPath) {
-          navigate(-1);
+        if (fallback) {
+          navigate(fallback);
           return;
         }
-        navigate(fallback);
+        if (isPreviousPath) {
+          navigate(-1);
+        }
       }}
     >
       <ChevronRight title="이전 페이지로 이동" />

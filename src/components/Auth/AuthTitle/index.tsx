@@ -1,8 +1,8 @@
-import { ReactComponent as LogoIcon } from 'assets/svg/logo.svg';
+import { ReactComponent as LogoIcon } from 'assets/svg/common/logo.svg';
 import { Link } from 'react-router-dom';
 import styles from './AuthTitle.module.scss';
 
-function AuthTitle() {
+export default function AuthTitle() {
   return (
     <div className={styles.title}>
       <Link className={styles.title__logo} to="/"><LogoIcon /></Link>
@@ -10,4 +10,3 @@ function AuthTitle() {
     </div>
   );
 }
-export default AuthTitle;

@@ -9,7 +9,7 @@ interface Props {
   through: () => void,
 }
 
-function SlideToolBox({
+export default function SlideToolBox({
   bold, heading, paragraph, through,
 }: Props) {
   const [visible, show, hide] = useBooleanState(false);
@@ -77,5 +77,3 @@ function SlideToolBox({
     </span>
   );
 }
-
-export default SlideToolBox;

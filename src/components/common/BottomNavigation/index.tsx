@@ -1,6 +1,6 @@
-import { ReactComponent as HomeIcon } from 'assets/svg/home.svg';
-import { ReactComponent as WriteIcon } from 'assets/svg/write.svg';
-import { ReactComponent as MyPageIcon } from 'assets/svg/my-page.svg';
+import { ReactComponent as HomeIcon } from 'assets/svg/common/home.svg';
+import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
+import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import styles from './BottomNavigation.module.scss';
@@ -23,7 +23,7 @@ const NAV_TABS = [
   },
 ];
 
-function BottomNavigation(): JSX.Element {
+export default function BottomNavigation(): JSX.Element {
   const { pathname } = useLocation();
 
   return (
@@ -47,5 +47,3 @@ function BottomNavigation(): JSX.Element {
     </nav>
   );
 }
-
-export default BottomNavigation;

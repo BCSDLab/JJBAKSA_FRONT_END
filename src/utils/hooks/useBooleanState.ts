@@ -1,8 +1,4 @@
-import {
-  Dispatch, SetStateAction, useCallback, useState,
-} from 'react';
-
-type ReturnType = [boolean, () => void, () => void, () => void, Dispatch<SetStateAction<boolean>>];
+import { useCallback, useState } from 'react';
 
 export default function useBooleanState(defaultValue?: boolean): ReturnType {
   const [value, setValue] = useState(!!defaultValue);

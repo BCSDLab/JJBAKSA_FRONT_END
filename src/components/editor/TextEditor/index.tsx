@@ -1,4 +1,4 @@
-import { ReactComponent as Plus } from 'assets/svg/plus.svg';
+import { ReactComponent as Plus } from 'assets/svg/post/plus.svg';
 import { useRef } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
@@ -14,7 +14,7 @@ interface Props {
   getShopname: () => string | null;
 }
 
-function TextEditor({ shop, getShopname }: Props) {
+export default function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
   const [actived, active] = useBooleanState(false);
   const [opened, open, close] = useBooleanState(false);
@@ -79,5 +79,3 @@ function TextEditor({ shop, getShopname }: Props) {
     </div>
   );
 }
-
-export default TextEditor;

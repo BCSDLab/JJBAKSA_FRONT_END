@@ -14,6 +14,10 @@ export interface RegisterParams extends LoginParams {
   email: string;
 }
 
+export interface CheckIdDuplicateParams {
+  account: string;
+}
+
 export interface ModifyParams {
   nickname?: string;
   password?: string;
@@ -30,4 +34,9 @@ export interface User {
   // userType = 'ADMIN' | 'NORMAL'...
   oauthType: string;
   userType: string;
+  userCountResponse: {
+    id: number;
+    reviewCount: number;
+    friendCount: number;
+  }
 }
