@@ -25,9 +25,9 @@ function AddImage({ active, inActive }: Props) {
       >
         <Picture />
       </button>
-      <div className={styles.imageContainer}>
+      <div className={styles['image-container']}>
         { imageList?.map((value) => (
-          <div key={value} className={styles.imageContainer__item}>
+          <div key={value} className={styles['image-container__item']}>
             <ImageItem value={value} onDelete={removeImage} />
           </div>
         ))}

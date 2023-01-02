@@ -20,7 +20,7 @@ export default function ImageItem({ value, onDelete }: Props) {
         <button
           type="button"
           aria-label="trash"
-          className={styles.imageContainer__button}
+          className={styles['image-container__button']}
           onClick={() => onDelete(value)}
         >
           <Trash />
@@ -29,7 +29,7 @@ export default function ImageItem({ value, onDelete }: Props) {
       <input
         type="image"
         alt=""
-        className={styles.imageContainer__image}
+        className={styles['image-container__image']}
         src={value}
         ref={imageRef}
         onClick={open}
