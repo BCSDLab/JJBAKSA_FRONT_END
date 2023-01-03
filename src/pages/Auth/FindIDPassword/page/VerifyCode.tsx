@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import userApi from 'api/user/userApiClient';
 import cn from 'utils/ts/classNames';
-import { sendEmail } from '..';
+import { sendEmail, getAccount } from '../api';
 import Modal from '../component/Modal';
 import useInputCheck from '../hook/useInputCheck';
 import style from './VerifyCode.module.scss';
@@ -10,8 +9,6 @@ import { RegisterProp, CodeInfo } from '../entity';
 import Input from '../component/Input';
 
 const NAME: ['first', 'second', 'third', 'fourth'] = ['first', 'second', 'third', 'fourth'];
-
-const getAccount = (param: { email: string, code: string }) => userApi.get(`/account?email=${param.email}&code=${param.code}`);
 
 export default function VerifyCode({
   register, handleSubmit, setError, email,
