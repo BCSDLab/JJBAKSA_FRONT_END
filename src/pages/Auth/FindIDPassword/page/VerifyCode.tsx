@@ -6,25 +6,8 @@ import { sendCode } from '..';
 import Modal from '../component/Modal';
 import useInputCheck from '../hook/useInputCheck';
 import style from './VerifyCode.module.scss';
-import { InputInfo, RegisterProp, CodeInfo } from '../entity';
-
-function Input({
-  register, name, inputRef, preventOverLength, n, index,
-}: InputInfo) {
-  const inputRefCopy = inputRef;
-  return (
-    <input
-      type="number"
-      className={cn({ [style['form__input--block']]: true })}
-      {...register(name, {
-        required: true,
-        maxLength: 1,
-      })}
-      ref={(e) => { register(name).ref(e); inputRefCopy.current[index] = e; }}
-      onChange={(e) => preventOverLength(e, n)}
-    />
-  );
-}
+import { RegisterProp, CodeInfo } from '../entity';
+import Input from '../component/Input';
 
 const NAME: ['first', 'second', 'third', 'fourth'] = ['first', 'second', 'third', 'fourth'];
 
