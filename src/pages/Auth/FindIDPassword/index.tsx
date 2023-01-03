@@ -9,7 +9,7 @@ import style from './index.module.scss';
 
 const EMAILPATTERN = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
 
-export const sendCode = (param: EmailInfo) => userApi.post(`/email?email=${param.email}`);
+export const sendEmail = (param: EmailInfo) => userApi.post(`/email?email=${param.email}`);
 
 export default function FindIdPassword({ find }: FindProp): JSX.Element {
   const {
@@ -23,7 +23,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
   const navigate = useNavigate();
   const nextPage = async (param: EmailInfo) => {
     try {
-      const res = await sendCode(param);
+      const res = await sendEmail(param);
       if (res.status === 200) {
         navigate(`/find/verify/${find}`, {
           state: {

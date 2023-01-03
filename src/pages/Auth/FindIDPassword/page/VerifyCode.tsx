@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import userApi from 'api/user/userApiClient';
 import cn from 'utils/ts/classNames';
-import { sendCode } from '..';
+import { sendEmail } from '..';
 import Modal from '../component/Modal';
 import useInputCheck from '../hook/useInputCheck';
 import style from './VerifyCode.module.scss';
@@ -68,7 +68,7 @@ export default function VerifyCode({
           <button
             type="button"
             className={style.form__resend}
-            onClick={() => sendCode({ email })}
+            onClick={() => sendEmail({ email })}
           >
             인증번호 재발송
           </button>
