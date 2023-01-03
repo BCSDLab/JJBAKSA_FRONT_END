@@ -3,12 +3,13 @@ import { useLocation } from 'react-router-dom';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
 import style from 'pages/Auth/FindIDPassword/index.module.scss';
-import VerifyCode, { FormData } from './VerifyCode';
+import { CodeInfo } from '../entity';
+import VerifyCode from './VerifyCode';
 
 export default function VerifyField(): JSX.Element {
   const {
     register, handleSubmit, formState: { errors }, setError,
-  } = useForm<FormData>({
+  } = useForm<CodeInfo>({
     mode: 'onChange',
   });
   const location = useLocation();

@@ -4,19 +4,12 @@ import userApi from 'api/user/userApiClient';
 import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
+import { FindProp, EmailInfo } from './entity';
 import style from './index.module.scss';
 
 const EMAILPATTERN = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
 
-interface FindProp {
-  find: string
-}
-
-interface FormData {
-  email: string
-}
-
-export const sendCode = (param: FormData) => userApi.post(`/email?email=${param.email}`);
+export const sendCode = (param: EmailInfo) => userApi.post(`/email?email=${param.email}`);
 
 export default function FindIdPassword({ find }: FindProp): JSX.Element {
   const {
@@ -24,11 +17,11 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
     handleSubmit,
     formState: { isSubmitting, errors, isValid },
     setError,
-  } = useForm<FormData>({
+  } = useForm<EmailInfo>({
     mode: 'onChange',
   });
   const navigate = useNavigate();
-  const nextPage = async (param: FormData) => {
+  const nextPage = async (param: EmailInfo) => {
     try {
       const res = await sendCode(param);
       if (res.status === 200) {

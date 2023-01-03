@@ -1,6 +1,3 @@
-import {
-  UseFormRegister, UseFormHandleSubmit, UseFormSetError,
-} from 'react-hook-form';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import userApi from 'api/user/userApiClient';
@@ -9,29 +6,7 @@ import { sendCode } from '..';
 import Modal from '../component/Modal';
 import useInputCheck from '../hook/useInputCheck';
 import style from './VerifyCode.module.scss';
-
-interface PropData {
-  register: UseFormRegister<FormData>,
-  handleSubmit: UseFormHandleSubmit<FormData>,
-  setError: UseFormSetError<FormData>,
-  email: string,
-}
-
-interface InputInfo {
-  register: UseFormRegister<FormData>,
-  name: 'first' | 'second' | 'third' | 'fourth',
-  inputRef: React.MutableRefObject<HTMLInputElement[] | null[]>,
-  preventOverLength: (e: React.ChangeEvent<HTMLInputElement>, next: number) => void,
-  n: number,
-  index: number,
-}
-
-export interface FormData {
-  first: string,
-  second: string,
-  third: string,
-  fourth: string
-}
+import { InputInfo, RegisterProp, CodeInfo } from '../entity';
 
 function Input({
   register, name, inputRef, preventOverLength, n, index,
@@ -57,7 +32,7 @@ const getAccount = (param: { email: string, code: string }) => userApi.get(`/acc
 
 export default function VerifyCode({
   register, handleSubmit, setError, email,
-}: PropData): JSX.Element {
+}: RegisterProp): JSX.Element {
   const {
     isDone, inputRef, buttonRef, preventOverLength, user, setUser,
   } = useInputCheck();
@@ -70,7 +45,7 @@ export default function VerifyCode({
       else if (param.id === 'password') navigate('/find-password/change');
     }
   };
-  const accountChnage = async (parameter: FormData) => {
+  const accountChnage = async (parameter: CodeInfo) => {
     const code = parameter.first + parameter.second + parameter.third + parameter.fourth;
     try {
       const result = await getAccount({ email, code });
