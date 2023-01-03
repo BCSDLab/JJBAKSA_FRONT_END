@@ -1,7 +1,11 @@
-import { UseFormRegister, UseFormHandleSubmit } from 'react-hook-form';
+import {
+  UseFormRegister, UseFormHandleSubmit, UseFormSetError,
+} from 'react-hook-form';
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import userApi from 'api/user/userApiClient';
 import cn from 'utils/ts/classNames';
+import { sendCode } from '..';
 import Modal from '../component/Modal';
 import useInputCheck from '../hook/useInputCheck';
 import style from './VerifyCode.module.scss';
@@ -9,6 +13,8 @@ import style from './VerifyCode.module.scss';
 interface PropData {
   register: UseFormRegister<FormData>,
   handleSubmit: UseFormHandleSubmit<FormData>,
+  setError: UseFormSetError<FormData>,
+  email: string,
 }
 
 interface InputInfo {
@@ -47,9 +53,13 @@ function Input({
 
 const NAME: ['first', 'second', 'third', 'fourth'] = ['first', 'second', 'third', 'fourth'];
 
-export default function VerifyCode({ register, handleSubmit }: PropData): JSX.Element {
+const getAccount = (param: { email: string, code: string }) => userApi.get(`/account?email=${param.email}&code=${param.code}`);
+
+export default function VerifyCode({
+  register, handleSubmit, setError, email,
+}: PropData): JSX.Element {
   const {
-    isDone, inputRef, buttonRef, preventOverLength,
+    isDone, inputRef, buttonRef, preventOverLength, user, setUser,
   } = useInputCheck();
   const [openModal, setOpenModal] = useState<boolean>();
   const param = useParams();
@@ -60,12 +70,27 @@ export default function VerifyCode({ register, handleSubmit }: PropData): JSX.El
       else if (param.id === 'password') navigate('/find-password/change');
     }
   };
+  const accountChnage = async (parameter: FormData) => {
+    const code = parameter.first + parameter.second + parameter.third + parameter.fourth;
+    try {
+      const result = await getAccount({ email, code });
+      if (result.status === 200) {
+        setUser({
+          email,
+          id: result.data.account,
+        });
+        NextStep();
+      }
+    } catch {
+      setError('first', { type: 'value' });
+    }
+  };
   return (
     <div className={style.container}>
       <form
         onSubmit={
-        handleSubmit((data: FormData) => data)
-      }
+          handleSubmit(accountChnage)
+        }
         className={style.form}
       >
         <div className={style.form__container}>
@@ -82,12 +107,17 @@ export default function VerifyCode({ register, handleSubmit }: PropData): JSX.El
               />
             ))}
           </div>
-          <span className={style.form__resend}>인증번호 재발송</span>
+          <button
+            type="button"
+            className={style.form__resend}
+            onClick={() => sendCode({ email })}
+          >
+            인증번호 재발송
+          </button>
         </div>
         <button
           type="submit"
           ref={buttonRef}
-          onClick={NextStep}
           className={cn({
             [style.active]: isDone,
             [style.inactive]: true,
@@ -96,7 +126,15 @@ export default function VerifyCode({ register, handleSubmit }: PropData): JSX.El
           완료
         </button>
       </form>
-      {openModal && <Modal>새로운 아이디로 로그인 해주세요</Modal>}
+      {openModal && (
+        <Modal>
+          {user.email}
+          으로 가입된 아이디는
+          {' '}
+          {user.id}
+          입니다
+        </Modal>
+      )}
     </div>
   );
 }

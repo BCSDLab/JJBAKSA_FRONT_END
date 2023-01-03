@@ -4,6 +4,10 @@ const useInputCheck = () => {
   const inputRef = useRef<HTMLInputElement[] | null[]>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isDone, setIsDone] = useState<boolean>(false);
+  const [user, setUser] = useState({
+    email: '',
+    id: '',
+  });
 
   const checkInput = () => {
     const values = inputRef.current.map((item) => item?.value);
@@ -27,7 +31,7 @@ const useInputCheck = () => {
   useEffect(() => inputRef.current[0]?.focus(), []);
 
   return {
-    isDone, inputRef, buttonRef, preventOverLength,
+    isDone, inputRef, buttonRef, preventOverLength, user, setUser,
   };
 };
 

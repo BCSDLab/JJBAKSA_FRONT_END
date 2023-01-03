@@ -1,20 +1,24 @@
 import { useForm } from 'react-hook-form';
-import error from 'assets/svg/auth/error.svg';
 import { useNavigate } from 'react-router-dom';
+import userApi from 'api/user/userApiClient';
+import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import style from './index.module.scss';
 
 const EMAILPATTERN = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
+
 interface FindProp {
   find: string
 }
+
 interface FormData {
   email: string
 }
 
+export const sendCode = (param: FormData) => userApi.post(`/email?email=${param.email}`);
+
 export default function FindIdPassword({ find }: FindProp): JSX.Element {
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -22,6 +26,19 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
   } = useForm<FormData>({
     mode: 'onChange',
   });
+  const navigate = useNavigate();
+  const nextPage = async (param: FormData) => {
+    const res = await sendCode(param);
+    if (res.status === 200) {
+      navigate(`/find/verify/${find}`, {
+        state: {
+          email: param.email,
+        },
+      });
+    } else {
+      console.log(res);
+    }
+  };
   return (
     <div className={style.layout}>
       <div className={style.back}>
@@ -30,29 +47,29 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
       <div className={style.page}>
         <div>
           {find === 'id' && (
-          <p className={style.page__quote}>
-            아이디 찾을 때
-            <br />
-            사용할 이메일을 입력해주세요.
-          </p>
+            <p className={style.page__quote}>
+              아이디 찾을 때
+              <br />
+              사용할 이메일을 입력해주세요.
+            </p>
           )}
           {find === 'password' && (
-          <p className={style.page__quote}>
-            비밀번호를 찾을 때
-            <br />
-            사용할 이메일을 입력해주세요.
-          </p>
+            <p className={style.page__quote}>
+              비밀번호를 찾을 때
+              <br />
+              사용할 이메일을 입력해주세요.
+            </p>
           )}
         </div>
         <div className={style.page__error}>
           {errors.email && (
-          <span className={style.page__caution}>
-            <img src={error} alt="warning" className={style.page__image} />
-            {errors.email?.message}
-          </span>
+            <span className={style.page__caution}>
+              <img src={error} alt="warning" className={style.page__image} />
+              {errors.email?.message}
+            </span>
           )}
         </div>
-        <form className={style.form} onSubmit={handleSubmit((data) => data)}>
+        <form className={style.form} onSubmit={handleSubmit(nextPage)}>
           <div className={style.form__center}>
             <div className={style.form__label}>이메일</div>
             <input
@@ -76,7 +93,6 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
               [style.active]: isValid,
               [style.inactive]: true,
             })}
-            onClick={() => isValid && navigate(`/find/verify/${find}`)}
           >
             인증번호 보내기
           </button>
