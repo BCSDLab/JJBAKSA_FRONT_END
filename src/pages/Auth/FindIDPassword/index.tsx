@@ -23,20 +23,23 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
     register,
     handleSubmit,
     formState: { isSubmitting, errors, isValid },
+    setError,
   } = useForm<FormData>({
     mode: 'onChange',
   });
   const navigate = useNavigate();
   const nextPage = async (param: FormData) => {
-    const res = await sendCode(param);
-    if (res.status === 200) {
-      navigate(`/find/verify/${find}`, {
-        state: {
-          email: param.email,
-        },
-      });
-    } else {
-      console.log(res);
+    try {
+      const res = await sendCode(param);
+      if (res.status === 200) {
+        navigate(`/find/verify/${find}`, {
+          state: {
+            email: param.email,
+          },
+        });
+      }
+    } catch {
+      setError('email', { message: '존재하지 않는 이메일입니다.' });
     }
   };
   return (
