@@ -46,13 +46,13 @@
     &--add {
       position: absolute;
       left: 39px;
-      top: 10px;
-      width: 8px;
-      height: 8px;
-      padding: 9px;
+      top: 15px;
+      width: 26px;
+      height: 26px;
       background-color: #eeeeee;
       border-radius: 25px;
       cursor: pointer;
+      border: none;
     }
   }
 
@@ -79,6 +79,7 @@
 
 .item {
   display: flex;
+  position: relative;
   height: 100%;
   padding: 16px 16px 40px;
   box-sizing: border-box;
@@ -185,22 +186,22 @@
   }
 }
 
-.imageContainer {
+.image-container {
   position: absolute;
   bottom: 96px;
   width: calc(100% - 16px);
   display: flex;
   align-items: flex-end;
-  overflow: scroll;
+  overflow-x: auto;
 
-  &_item {
+  &__item {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-right: 9px;
   }
 
-  &_button {
+  &__button {
     box-shadow: 0 4px 4px #00000040;
     width: 31px;
     height: 31px;
@@ -210,13 +211,14 @@
     animation: show-out 0.2s ease-out normal forwards;
   }
 
-  &_image {
+  &__image {
     width: 167px;
     height: 167px;
     cursor: pointer;
   }
 
   &::-webkit-scrollbar {
-    background: none;
+    display: none;
+    scrollbar-width: none;
   }
 }

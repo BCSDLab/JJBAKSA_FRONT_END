@@ -1,4 +1,4 @@
-import useBoolean from 'utils/hooks/useBoolean';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import styles from './TextEditor.module.scss';
 
@@ -12,12 +12,12 @@ interface Props {
 export default function SlideToolBox({
   bold, heading, paragraph, through,
 }: Props) {
-  const isShow = useBoolean(false);
+  const [visible,,, toggle] = useBooleanState(false);
   return (
     <span
       className={cn({
         [styles['item__text-tools']]: true,
-        [styles['item__text-tools--show']]: isShow.value,
+        [styles['item__text-tools--show']]: visible,
       })}
     >
       <div>
@@ -27,7 +27,7 @@ export default function SlideToolBox({
             [styles.item__button]: true,
             [styles['item__button--tool']]: true,
           })}
-          onClick={isShow.toggle}
+          onClick={toggle}
         >
           T
         </button>
