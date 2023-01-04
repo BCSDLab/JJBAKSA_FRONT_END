@@ -9,11 +9,11 @@ import Post from 'pages/Post';
 import Search from 'pages/Search';
 import FindIdPassword from 'pages/Auth/FindIDPassword';
 import VerifyField from 'pages/Auth/FindIDPassword/page/VerifyField';
-import SearchQueryItemList from 'pages/Search/components/SearchQueryItemList';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
 import ProtectedRoute from 'components/common/ProtectedRoute';
 import { Suspense } from 'react';
+import SearchDetails from 'pages/SearchDetails';
 
 export default function App(): JSX.Element {
   return (
@@ -32,7 +32,7 @@ export default function App(): JSX.Element {
         </Route>
         <Route path="/post" element={<Post />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/search/:searchQuery" element={<SearchQueryItemList />} />
+        <Route path="/search/:keyword" element={<SearchDetails />} />
       </Routes>
       <Toast />
     </Suspense>
