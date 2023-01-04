@@ -25,7 +25,7 @@ export default function VerifyCode({
       else if (param.id === 'password') navigate('/find-password/change');
     }
   };
-  const accountChnage = async (parameter: CodeInfo) => {
+  const userAccount = async (parameter: CodeInfo) => {
     const code = parameter.first + parameter.second + parameter.third + parameter.fourth;
     try {
       const result = await getAccount({ email, code });
@@ -44,7 +44,7 @@ export default function VerifyCode({
     <div className={style.container}>
       <form
         onSubmit={
-          handleSubmit(accountChnage)
+          handleSubmit(userAccount)
         }
         className={style.form}
       >
