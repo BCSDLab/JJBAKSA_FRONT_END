@@ -82,7 +82,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
           </div>
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !isValid}
             className={cn({
               [style.active]: isValid,
               [style.inactive]: true,
