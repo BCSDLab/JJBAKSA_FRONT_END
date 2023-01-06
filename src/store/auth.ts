@@ -16,7 +16,7 @@ const getAuth = async () => {
 
   if (token.refresh) {
     const refreshResponse = await refreshAccessToken();
-    if (refreshResponse.accessToken) {
+    if (refreshResponse?.accessToken) {
       sessionStorage.setItem('accessToken', refreshResponse.accessToken);
 
       const authResponse = await getMe();
