@@ -8,7 +8,7 @@ import style from './VerifyCode.module.scss';
 import { RegisterProp, CodeInfo } from './entity';
 import Input from './component/Input';
 
-const NAME: ['first', 'second', 'third', 'fourth'] = ['first', 'second', 'third', 'fourth'];
+const CODE = ['first', 'second', 'third', 'fourth'] as const;
 
 export default function VerifyCode({
   register, handleSubmit, setError, email,
@@ -50,7 +50,7 @@ export default function VerifyCode({
       >
         <div className={style.form__container}>
           <div className={style.form__input}>
-            {NAME.map((data, idx) => (
+            {CODE.map((data, idx) => (
               <Input
                 register={register}
                 inputRef={inputRef}
