@@ -3,11 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
+import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
 import { sendEmail } from './api';
 import { FindProp, EmailInfo } from './entity';
 import style from './index.module.scss';
-
-const EMAILPATTERN = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
 
 export default function FindIdPassword({ find }: FindProp): JSX.Element {
   const {
@@ -74,7 +73,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
               {...register('email', {
                 required: 'email을 입력해주세요',
                 pattern: {
-                  value: EMAILPATTERN,
+                  value: EMAIL_REGEXP,
                   message: '올바른 email 형식이 아닙니다.',
                 },
               })}
