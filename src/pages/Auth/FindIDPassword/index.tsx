@@ -18,7 +18,7 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
     mode: 'onChange',
   });
   const navigate = useNavigate();
-  const nextPage = async (param: EmailInfo) => {
+  const checkEmail = async (param: EmailInfo) => {
     try {
       const res = await sendEmail(param);
       if (res.status === 200) {
@@ -62,7 +62,7 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
             </span>
           )}
         </div>
-        <form className={style.form} onSubmit={handleSubmit(nextPage)}>
+        <form className={style.form} onSubmit={handleSubmit(checkEmail)}>
           <div className={style.form__center}>
             <div className={style.form__label}>이메일</div>
             <input
