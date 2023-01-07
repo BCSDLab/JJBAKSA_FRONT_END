@@ -3,7 +3,7 @@ import style from 'pages/Auth/FindIDPassword/VerifyCode.module.scss';
 import { InputInfo } from '../entity';
 
 export default function Input({
-  register, name, inputRef, preventOverLength, n, index,
+  register, name, inputRef, preventOverLength, number, index,
 }: InputInfo) {
   const inputRefCopy = inputRef;
   return (
@@ -15,7 +15,7 @@ export default function Input({
         maxLength: 1,
       })}
       ref={(e) => { register(name).ref(e); inputRefCopy.current[index] = e; }}
-      onChange={(e) => preventOverLength(e, n)}
+      onChange={(e) => preventOverLength(e, number)}
     />
   );
 }

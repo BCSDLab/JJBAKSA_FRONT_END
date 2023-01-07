@@ -19,7 +19,7 @@ export default function VerifyCode({
   const [openModal, setOpenModal] = useState<boolean>();
   const param = useParams();
   const navigate = useNavigate();
-  const NextStep = () => {
+  const nextStep = () => {
     if (isDone) {
       if (param.id === 'id') setOpenModal(true);
       else if (param.id === 'password') navigate('/find-password/change');
@@ -34,7 +34,7 @@ export default function VerifyCode({
           email,
           id: result.data.account,
         });
-        NextStep();
+        nextStep();
       }
     } catch {
       setError('first', { type: 'value' });
@@ -56,7 +56,7 @@ export default function VerifyCode({
                 inputRef={inputRef}
                 preventOverLength={preventOverLength}
                 name={data}
-                n={idx + 1}
+                number={idx + 1}
                 index={idx}
                 key={data}
               />

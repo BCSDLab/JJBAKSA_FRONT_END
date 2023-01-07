@@ -19,11 +19,11 @@ const useInputCheck = () => {
   const preventOverLength = (e: React.ChangeEvent<HTMLInputElement>, next: number) => {
     if (e.target.value.length > e.target.maxLength) {
       e.target.value = e.target.value.charAt(0);
-      if (next <= 3) {
-        inputRef.current[next]?.focus();
-      } else {
-        buttonRef.current?.focus();
-      }
+    }
+    if (inputRef.current[next - 1]?.value === '') {
+      inputRef.current[next - 1]?.focus();
+    } else {
+      inputRef.current[next]?.focus();
     }
     checkInput();
   };

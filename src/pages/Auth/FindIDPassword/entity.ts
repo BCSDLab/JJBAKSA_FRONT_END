@@ -27,7 +27,7 @@ export interface InputInfo {
   name: 'first' | 'second' | 'third' | 'fourth',
   inputRef: React.MutableRefObject<HTMLInputElement[] | null[]>,
   preventOverLength: (e: React.ChangeEvent<HTMLInputElement>, next: number) => void,
-  n: number,
+  number: number,
   index: number,
 }
 
@@ -35,7 +35,7 @@ export interface CodeInfo {
   first: string,
   second: string,
   third: string,
-  fourth: string
+  fourth: string,
 }
 
 export interface PasswordInfo {
