@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
-import { sendEmail, getAccount } from '../api';
+import { sendEmail, getAccount } from 'api/user';
 import Modal from '../component/Modal';
 import useInputCheck from '../hook/useInputCheck';
 import style from './VerifyCode.module.scss';

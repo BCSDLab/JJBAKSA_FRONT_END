@@ -4,7 +4,7 @@ import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
-import { sendEmail } from './api';
+import { sendEmail } from 'api/user';
 import { FindProp, EmailInfo } from './entity';
 import style from './index.module.scss';
 
