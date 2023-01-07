@@ -8,7 +8,7 @@ import { sendEmail } from './api';
 import { FindProp, EmailInfo } from './entity';
 import style from './index.module.scss';
 
-export default function FindIdPassword({ find }: FindProp): JSX.Element {
+export default function FindIdPassword({ type }: FindProp): JSX.Element {
   const {
     register,
     handleSubmit,
@@ -22,7 +22,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
     try {
       const res = await sendEmail(param);
       if (res.status === 200) {
-        navigate(`/find/verify/${find}`, {
+        navigate(`/find/verify/${type}`, {
           state: {
             email: param.email,
           },
@@ -39,14 +39,14 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
       </div>
       <div className={style.page}>
         <div>
-          {find === 'id' && (
+          {type === 'id' && (
             <p className={style.page__quote}>
-              아이디 찾을 때
+              아이디를 찾을 때
               <br />
               사용할 이메일을 입력해주세요.
             </p>
           )}
-          {find === 'password' && (
+          {type === 'password' && (
             <p className={style.page__quote}>
               비밀번호를 찾을 때
               <br />

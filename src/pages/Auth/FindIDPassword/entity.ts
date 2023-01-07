@@ -3,7 +3,7 @@ import {
 } from 'react-hook-form';
 
 export interface FindProp {
-  find: string
+  type: string
 }
 
 export interface EmailInfo {
