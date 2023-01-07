@@ -32,6 +32,10 @@
   padding: 15px;
   gap: 30px;
 
+  &__content {
+    text-align: center;
+  }
+
   &__button {
     border: none;
     border-radius: 20px;
