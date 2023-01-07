@@ -10,6 +10,11 @@ export interface EmailInfo {
   email: string
 }
 
+export interface AccountInfo {
+  email: string,
+  code: string
+}
+
 export interface RegisterProp {
   register: UseFormRegister<CodeInfo>,
   handleSubmit: UseFormHandleSubmit<CodeInfo>,
