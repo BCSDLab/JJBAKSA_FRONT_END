@@ -57,7 +57,7 @@ const useLoginRequest = ({
       } catch (error) {
         if (axios.isAxiosError(error)) {
           const serverError = error as AxiosError<{ errorMessage: string; }>;
-          onError?.(serverError.response?.data.errorMessage ?? '서버가 응답하지 않습니다.');
+          onError?.(serverError.response?.data.errorMessage ?? '서버 통신 중 오류가 발생했습니다.');
         }
       }
     }
