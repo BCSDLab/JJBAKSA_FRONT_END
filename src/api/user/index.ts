@@ -19,6 +19,6 @@ export const getMe = () => userApi.get<User>('/me');
 
 export const modify = (param: ModifyParams) => userApi.patch<User>('/modify', param);
 
-export const sendEmail = (param: EmailInfo) => userApi.post(`/email?email=${param.email}`);
+export const sendFindEmail = (param: EmailInfo) => userApi.post(`/email?email=${param.email}`);
 
 export const getAccount = (param: AccountInfo) => userApi.get(`/account?email=${param.email}&code=${param.code}`);

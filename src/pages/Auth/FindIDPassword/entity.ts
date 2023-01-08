@@ -6,11 +6,11 @@ export interface FindProp {
   type: string
 }
 
-export interface EmailInfo {
+export interface EmailInParams {
   email: string
 }
 
-export interface AccountInfo {
+export interface AccountParams {
   email: string,
   code: string
 }

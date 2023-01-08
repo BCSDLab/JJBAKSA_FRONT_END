@@ -4,8 +4,8 @@ import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
-import { sendEmail } from 'api/user';
-import { FindProp, EmailInfo } from './entity';
+import { sendFindEmail } from 'api/user';
+import { FindProp, EmailInParams } from './entity';
 import style from './index.module.scss';
 
 export default function FindIdPassword({ type }: FindProp): JSX.Element {
@@ -14,13 +14,13 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
     handleSubmit,
     formState: { isSubmitting, errors, isValid },
     setError,
-  } = useForm<EmailInfo>({
+  } = useForm<EmailInParams>({
     mode: 'onChange',
   });
   const navigate = useNavigate();
-  const checkEmail = async (param: EmailInfo) => {
+  const checkEmail = async (param: EmailInParams) => {
     try {
-      const res = await sendEmail(param);
+      const res = await sendFindEmail(param);
       if (res.status === 200) {
         navigate(`/find/verify/${type}`, {
           state: {
