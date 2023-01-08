@@ -40,3 +40,7 @@ export interface User {
     friendCount: number;
   }
 }
+
+export interface SendRegisterEmailParams {
+  email: string;
+}

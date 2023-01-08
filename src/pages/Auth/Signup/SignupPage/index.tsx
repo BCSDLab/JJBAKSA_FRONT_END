@@ -3,7 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
-import { register } from 'api/user';
+import { register, sendRegisterEmail } from 'api/user';
 import styles from './SignUp.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import { SignUpFormData } from './entity';
@@ -19,7 +19,10 @@ const useSignUp = () => {
       account: form.id,
       email: `${form.email}@${form.emailDomain}`,
       password: form.password,
-    }).then(() => navigate('/signup/complete', { state: { signUpCheck: true }, replace: true }));
+    }).then(() => {
+      sendRegisterEmail({ email: `${form.email}@${form.emailDomain}` });
+      navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
+    });
   };
 
   return signup;
