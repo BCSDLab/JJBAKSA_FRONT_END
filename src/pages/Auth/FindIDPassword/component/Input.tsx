@@ -5,7 +5,6 @@ import { InputInfo } from '../entity';
 export default function Input({
   register, name, inputRef, preventOverLength, number, index,
 }: InputInfo) {
-  const inputRefCopy = inputRef;
   return (
     <input
       type="number"
@@ -14,7 +13,8 @@ export default function Input({
         required: true,
         maxLength: 1,
       })}
-      ref={(e) => { register(name).ref(e); inputRefCopy.current[index] = e; }}
+      // eslint-disable-next-line
+      ref={(e) => { register(name).ref(e); inputRef.current[index] = e; }}
       onChange={(e) => preventOverLength(e, number)}
     />
   );
