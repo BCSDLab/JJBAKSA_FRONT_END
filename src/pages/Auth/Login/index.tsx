@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { login } from 'api/user';
 import { useUpdateAuth } from 'store/auth';
 import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
-import axios, { AxiosError } from 'axios';
+import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
 import styles from './Login.module.scss';
 
 interface LoginFormInput {
@@ -55,9 +55,8 @@ const useLoginRequest = ({
         navigate('/');
         onSuccess?.('성공');
       } catch (error) {
-        if (axios.isAxiosError(error)) {
-          const serverError = error as AxiosError<{ errorMessage: string; }>;
-          onError?.(serverError.response?.data.errorMessage ?? '서버 통신 중 오류가 발생했습니다.');
+        if (checkAxiosErrorMessage(error)) {
+          onError?.(error.response?.data.errorMessage ?? '서버 통신 중 오류가 발생했습니다.');
         }
       }
     }
