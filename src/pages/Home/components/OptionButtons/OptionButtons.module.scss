@@ -1,0 +1,123 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+@keyframes show-out {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.button {
+  z-index: 10;
+  position: absolute;
+  bottom: 72px;
+  right: 0;
+  padding-right: 72px;
+  list-style: none;
+
+  &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 40px;
+    border-radius: 22px;
+    margin-top: 16px;
+    background-color: #222222;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+
+    span {
+      padding-left: 15px;
+    }
+  }
+}
+
+.filter {
+  z-index: 10;
+  position: absolute;
+  list-style: none;
+
+  &__button {
+    width: 24px;
+    height: 24px;
+    background-color: #f6bf54;
+    border-radius: 50%;
+    border: 1px solid #f6bf54;
+    margin-top: 8px;
+
+    svg {
+      display: flex;
+      margin: 0 auto;
+    }
+  }
+
+  &__menu-list {
+    position: absolute;
+    bottom: 110px;
+    right: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+
+    &--show {
+      width: 160px;
+
+      .slide-filter-list {
+        :nth-child(n) {
+          animation: show-out 0.2s ease-out normal forwards;
+        }
+      }
+    }
+
+    .slide-filter-list {
+      visibility: hidden;
+      justify-content: center;
+      display: flex;
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        display: flex;
+        margin-top: 8px;
+
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: #f6bf54;
+          border: 1px solid #f6bf54;
+        }
+      }
+
+      &__button {
+        width: 107px;
+        height: 24px;
+        border-radius: 20px;
+        box-sizing: border-box;
+        border: 1px solid #f6bf54;
+        background-color: #ffffff;
+        font-size: 11px;
+        font-weight: 400;
+        margin-right: 7px;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
