@@ -15,31 +15,32 @@ const options = {
 };
 export default function Map(): JSX.Element {
   const { location } = useGeolocation(options);
-  const mapRef = useRef<HTMLElement | null | any>(null);
-  const markerRef = useRef<any | null>(null);
-  const selectedMarker = useRef<any | null>(null);
+  const mapRef = useRef<naver.maps.Map | null>(null);
+  const markerRef = useRef<naver.maps.Marker | null>(null);
+  const selectedMarker = useRef<naver.maps.Marker | null>(null);
 
   const markerHighlightEvent = (markerCur:any, item:Props) => {
     naver.maps.Event.addListener(markerCur, 'click', () => {
       if (selectedMarker.current) {
-        selectedMarker.current.setOptions({
-          icon: {
-            content: markerHtml(defaultImage, selectedMarker.current.title),
-            size: new naver.maps.Size(50, 52),
-            anchor: new naver.maps.Point(25, 26),
-          },
-        });
-      }
-      markerCur.setOptions({
-        icon: {
-          content: clickedMarkerHtml(defaultImage, item.placeName),
+        selectedMarker.current.setIcon({
+          content: markerHtml(defaultImage, selectedMarker.current.getTitle()),
           size: new naver.maps.Size(50, 52),
           anchor: new naver.maps.Point(25, 26),
-        },
+        });
+      }
+
+      markerCur.setIcon({
+        content: clickedMarkerHtml(defaultImage, item.placeName),
+        size: new naver.maps.Size(50, 52),
+        anchor: new naver.maps.Point(25, 26),
       });
+
       selectedMarker.current = markerCur;
-      const mapLatLng = new naver.maps.LatLng(item.latitude, item.longitude);
-      mapRef.current.panTo(mapLatLng, 'easeInOutCubic');
+
+      if (mapRef.current) {
+        const mapLatLng = new naver.maps.LatLng(item.latitude, item.longitude);
+        mapRef.current.panTo(mapLatLng);
+      }
     });
   };
 
