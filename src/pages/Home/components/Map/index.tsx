@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
 import useGeolocation from 'utils/hooks/useGeolocation';
 import marker from 'pages/Home/static/marker';
+import defaultImage from 'assets/images/search/default-image.png';
 import styles from './Map.module.scss';
+import { markerHtml, clickedMarkerHtml } from './components/markerHtml';
 
 interface Props {
   latitude: number;
@@ -36,18 +38,7 @@ export default function Map(): JSX.Element {
         if (selectedMarker.current) {
           selectedMarker.current.setOptions({
             icon: {
-              content: [
-                '<div style="display:flex;justify-content:center;text-align:center;border:1px solid #FF7F23;background-color:white;border-radius:32.5px;min-width:205px;height:65px;">',
-                '<div style="display:flex;flex-direction:row;align-items:center;">',
-                '<img src="" style="width:68px;height:68px;border-radius:89.5px;"slt="음식점 사진"/>',
-                '<span style="padding-left:10px;font-size:20px;font-weigth:500;text-overflow:ellipsis">', `${selectedMarker.current.title}`, '</span>',
-                '</div>',
-                '<div style="position:relative;left:-125px;top:65px;">',
-                '<div style="border-color:#FF7F23 transparent transparent;border-style:solid;border-width:12px 15px 0;">', '</div>',
-                '<div style="border-color:white transparent transparent;border-style:solid;border-width:12px 15px;position:absolute;top:-1px;">', '</div>',
-                '</div>',
-                '</div>',
-              ].join(''),
+              content: markerHtml(defaultImage, selectedMarker.current.title),
               size: new naver.maps.Size(50, 52),
               anchor: new naver.maps.Point(25, 26),
             },
@@ -55,18 +46,7 @@ export default function Map(): JSX.Element {
         }
         markerCur.setOptions({
           icon: {
-            content: [
-              '<div style="display:flex;justify-content:center;text-align:center;border:1px solid #FF7F23;background-color:#FF7F23;border-radius:32.5px;min-width:205px;height:65px;">',
-              '<div style="display:flex;flex-direction:row;align-items:center;">',
-              '<img src="" style="width:68px;height:68px;border-radius:89.5px;"slt="음식점 사진"/>',
-              '<span style="padding-left:10px;font-size:20px;font-weigth:500;text-overflow:ellipsis">', `${item.placeName}`, '</span>',
-              '</div>',
-              '<div style="position:relative;left:-125px;top:65px;">',
-              '<div style="border-color:#FF7F23 transparent transparent;border-style:solid;border-width:12px 15px 0;">', '</div>',
-              '<div style="border-color:#FF7F23 transparent transparent;border-style:solid;border-width:12px 15px;position:absolute;top:-1px;">', '</div>',
-              '</div>',
-              '</div>',
-            ].join(''),
+            content: clickedMarkerHtml(defaultImage, item.placeName),
             size: new naver.maps.Size(50, 52),
             anchor: new naver.maps.Point(25, 26),
           },
@@ -82,18 +62,7 @@ export default function Map(): JSX.Element {
         title: marker[i].placeName,
         map: mapRef.current,
         icon: {
-          content: [
-            '<div style="display:flex;justify-content:center;text-align:center;border:1px solid #FF7F23;background-color:white;border-radius:32.5px;min-width:205px;height:65px;">',
-            '<div style="display:flex;flex-direction:row;align-items:center;">',
-            '<img src={FoodIcon} style="width:68px;height:68px;border-radius:89.5px;"slt="음식점 사진"/>',
-            '<span style="padding-left:10px;font-size:20px;font-weigth:500;text-overflow:ellipsis">', `${marker[i].placeName}`, '</span>',
-            '</div>',
-            '<div style="position:relative;left:-125px;top:65px;">',
-            '<div style="border-color:#FF7F23 transparent transparent;border-style:solid;border-width:12px 15px 0;">', '</div>',
-            '<div style="border-color:white transparent transparent;border-style:solid;border-width:12px 15px;position:absolute;top:-1px;">', '</div>',
-            '</div>',
-            '</div>',
-          ].join(''),
+          content: markerHtml(defaultImage, marker[i].placeName),
           size: new naver.maps.Size(50, 52),
           anchor: new naver.maps.Point(25, 26),
         },

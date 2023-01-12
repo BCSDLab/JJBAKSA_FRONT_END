@@ -8,3 +8,87 @@
     height: calc(100vh - 80px);
   }
 }
+
+.bubble {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  border: 2px solid #ff7f23;
+  background-color: white;
+  border-radius: 32.5px;
+  min-width: 205px;
+  height: 65px;
+
+  &__text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  img {
+    width: 58px;
+    height: 58px;
+    border-radius: 89.5px;
+  }
+
+  span {
+    padding-left: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+  }
+
+  &--clicked {
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px solid #ff7f23;
+    background-color: #ff7f23;
+    border-radius: 32.5px;
+    min-width: 205px;
+    height: 65px;
+
+    &__text {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    img {
+      width: 58px;
+      height: 58px;
+      border-radius: 89.5px;
+    }
+
+    span {
+      padding-left: 15px;
+      font-size: 20px;
+      font-weight: 500;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.triangle {
+  position: relative;
+  left: -125px;
+  top: 65px;
+
+  &__background {
+    border-color: #ff7f23 transparent transparent;
+    border-style: solid;
+    border-width: 15px 20px 0;
+  }
+
+  &__color {
+    border-color: white transparent transparent;
+    border-style: solid;
+    border-width: 15px 20px;
+    position: absolute;
+    top: -2px;
+    left: 0;
+
+    &--clicked {
+      border-color: #ff7f23 transparent transparent;
+    }
+  }
+}
