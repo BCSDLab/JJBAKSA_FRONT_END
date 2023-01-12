@@ -2,17 +2,17 @@ import { ReactComponent as MenuIcon } from 'assets/svg/home/mobile-menu.svg';
 import { ReactComponent as MapIcon } from 'assets/svg/home/mobile-map.svg';
 import { ReactComponent as FriendIcon } from 'assets/svg/home/mobile-friends.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/mobile-bookmark.svg';
-import useBoolean from 'utils/hooks/useBoolean';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import styles from './OptionButtons.module.scss';
 
 export default function FilterMenu(): JSX.Element {
-  const isShow = useBoolean(false);
+  const [visible,,, toggle] = useBooleanState(false);
   return (
     <div
       className={cn({
         [styles['filter__menu-list']]: true,
-        [styles['filter__menu-list--show']]: isShow.value,
+        [styles['filter__menu-list--show']]: visible,
       })}
     >
       <div>
@@ -22,7 +22,7 @@ export default function FilterMenu(): JSX.Element {
             [styles.filter__button]: true,
             [styles['filter__button--list']]: true,
           })}
-          onClick={isShow.toggle}
+          onClick={toggle}
         >
           <MenuIcon />
         </button>
