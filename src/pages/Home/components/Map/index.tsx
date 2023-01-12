@@ -55,6 +55,12 @@ export default function Map(): JSX.Element {
         mapDataControl: false,
       });
     }
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.destroy();
+      }
+    };
   }, [location]);
 
   useEffect(() => {
