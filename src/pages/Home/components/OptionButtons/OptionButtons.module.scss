@@ -13,61 +13,65 @@
 
 .button {
   z-index: 10;
-  position: absolute;
-  bottom: 72px;
-  right: 0;
-  padding-right: 72px;
-  list-style: none;
-
-  &__text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 130px;
-    height: 40px;
-    border-radius: 22px;
-    margin-top: 16px;
-    background-color: #222222;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 400;
-
-    span {
-      padding-left: 15px;
-    }
-  }
+  position: relative;
 }
 
 .filter {
-  z-index: 10;
   position: absolute;
+  right: 0;
+  bottom: -120px;
   list-style: none;
 
   &__button {
-    width: 24px;
-    height: 24px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 142px;
+    height: 44px;
     background-color: #f6bf54;
-    border-radius: 50%;
-    border: 1px solid #f6bf54;
-    margin-top: 8px;
+    border-radius: 22px;
+    border: none;
+    margin-top: 15px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+  }
 
-    svg {
-      display: flex;
-      margin: 0 auto;
+  @include media.media-breakpoint-down(mobile) {
+    bottom: -35px;
+
+    &__button {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+
+      span {
+        display: none;
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+      }
     }
   }
 
   &__menu-list {
     position: absolute;
-    bottom: 110px;
-    right: 20px;
+    bottom: 200px;
+    right: 50px;
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;
 
+    @include media.media-breakpoint-down(mobile) {
+      bottom: 100px;
+      right: 20px;
+    }
+
     &--show {
-      width: 160px;
+      width: 340px;
 
       .slide-filter-list {
         :nth-child(n) {
@@ -88,34 +92,43 @@
       li {
         display: flex;
         margin-top: 8px;
-
-        span {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          box-sizing: border-box;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background-color: #f6bf54;
-          border: 1px solid #f6bf54;
-        }
       }
 
       &__button {
-        width: 107px;
-        height: 24px;
+        width: 142px;
+        height: 40px;
         border-radius: 20px;
         box-sizing: border-box;
         border: 1px solid #f6bf54;
         background-color: #ffffff;
-        font-size: 11px;
-        font-weight: 400;
-        margin-right: 7px;
         cursor: pointer;
 
         &:hover {
           text-decoration: underline;
+        }
+
+        @include media.media-breakpoint-down(mobile) {
+          width: 109px;
+          height: 26px;
+          font-size: 11px;
+          font-weight: 400;
+          margin-right: 7px;
+        }
+      }
+
+      &__icon {
+        display: none;
+
+        @include media.media-breakpoint-down(mobile) {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          width: 26px;
+          height: 26px;
+          border-radius: 50%;
+          background-color: #f6bf54;
+          border: 1px solid #f6bf54;
         }
       }
     }
