@@ -1,4 +1,4 @@
-const marker = [
+const MARKER = [
   {
     placeName: '장소1',
     latitude: 36.862341,
@@ -41,4 +41,4 @@ const marker = [
   },
 ];
 
-export default marker;
+export default MARKER;

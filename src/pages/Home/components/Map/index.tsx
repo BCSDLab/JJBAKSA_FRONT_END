@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import useGeolocation from 'utils/hooks/useGeolocation';
-import marker from 'pages/Home/static/marker';
+import MARKER from 'pages/Home/static/marker';
 import defaultImage from 'assets/images/search/default-image.png';
 import styles from './Map.module.scss';
 import { markerHtml, clickedMarkerHtml } from './components/markerHtml';
@@ -45,7 +45,7 @@ export default function Map(): JSX.Element {
   };
 
   useEffect(() => {
-    if (typeof location !== 'undefined') {
+    if (!mapRef.current && typeof location !== 'undefined') {
       mapRef.current = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(location.latitude, location.longitude),
         zoomControl: true,
@@ -64,7 +64,7 @@ export default function Map(): JSX.Element {
   }, [location]);
 
   useEffect(() => {
-    marker.forEach((item:Props) => {
+    MARKER.forEach((item:Props) => {
       if (mapRef.current) {
         markerRef.current = new naver.maps.Marker({
           position: new naver.maps.LatLng(item.latitude, item.longitude),
