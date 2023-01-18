@@ -3,7 +3,7 @@ import useGeolocation from 'utils/hooks/useGeolocation';
 import MARKER from 'pages/Home/static/marker';
 import defaultImage from 'assets/images/search/default-image.png';
 import styles from './Map.module.scss';
-import { markerHtml, clickedMarkerHtml } from './components/markerHtml';
+import { MarkerHtml, ClickedMarkerHtml } from './components/MarkerHtml';
 
 interface Props {
   latitude: number;
@@ -23,14 +23,14 @@ export default function Map(): JSX.Element {
     naver.maps.Event.addListener(markerCur, 'click', () => {
       if (selectedMarker.current) {
         selectedMarker.current.setIcon({
-          content: markerHtml(defaultImage, selectedMarker.current.getTitle()),
+          content: MarkerHtml(defaultImage, selectedMarker.current.getTitle()),
           size: new naver.maps.Size(50, 52),
           anchor: new naver.maps.Point(25, 26),
         });
       }
 
       markerCur.setIcon({
-        content: clickedMarkerHtml(defaultImage, item.placeName),
+        content: ClickedMarkerHtml(defaultImage, item.placeName),
         size: new naver.maps.Size(50, 52),
         anchor: new naver.maps.Point(25, 26),
       });
@@ -71,7 +71,7 @@ export default function Map(): JSX.Element {
           title: item.placeName,
           map: mapRef.current,
           icon: {
-            content: markerHtml(defaultImage, item.placeName),
+            content: MarkerHtml(defaultImage, item.placeName),
             size: new naver.maps.Size(50, 52),
             anchor: new naver.maps.Point(25, 26),
           },

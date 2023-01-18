@@ -1,6 +1,6 @@
 import styles from '../Map.module.scss';
 
-export function markerHtml(defaultImg:string, name:string) {
+export function MarkerHtml(defaultImg:string, name:string) {
   return `
     <div class=${styles.bubble}>
       <div class=${styles.bubble__text}>
@@ -17,7 +17,7 @@ export function markerHtml(defaultImg:string, name:string) {
   `;
 }
 
-export function clickedMarkerHtml(defaultImg:string, name:string) {
+export function ClickedMarkerHtml(defaultImg:string, name:string) {
   return `
     <div class=${styles['bubble--clicked']}>
       <div class=${styles.bubble__text}>
