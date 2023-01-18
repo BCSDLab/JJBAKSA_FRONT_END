@@ -4,9 +4,9 @@ import MARKER from 'pages/Home/static/marker';
 import defaultImage from 'assets/images/search/default-image.png';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './Map.module.scss';
-import { MarkerHtml, ClickedMarkerHtml } from './components/MarkerHtml';
 import OptionButtons from './components/OptionButtons';
 import MobileOptions from './components/MobileOptions';
+import { ClickedMarkerHtml, MarkerHtml } from './components/MarkerHtml';
 
 interface Props {
   latitude: number;
