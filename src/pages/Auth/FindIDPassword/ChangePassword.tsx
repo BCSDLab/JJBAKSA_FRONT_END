@@ -4,20 +4,17 @@ import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
 import style from 'pages/Auth/FindIDPassword/index.module.scss';
-import Modal from '../component/Modal';
+import { PasswordInfo } from './entity';
+import Modal from './component/Modal';
 
 const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 
-interface FormData {
-  password: string,
-  passwordCheck: string,
-}
 export default function ChangePassword(): JSX.Element {
   const [isComplete, setIsComplete] = useState<boolean>();
 
   const {
     register, handleSubmit, formState: { errors, isValid }, getValues,
-  } = useForm<FormData>({
+  } = useForm<PasswordInfo>({
     mode: 'onChange',
   });
 
@@ -34,10 +31,10 @@ export default function ChangePassword(): JSX.Element {
         </div>
         <div className={style.page__error}>
           {(errors.password || errors.passwordCheck) && (
-          <span className={style.page__caution}>
-            <img src={error} alt="warning" className={style.page__image} />
-            {errors.password?.message || errors.passwordCheck?.message}
-          </span>
+            <span className={style.page__caution}>
+              <img src={error} alt="warning" className={style.page__image} />
+              {errors.password?.message || errors.passwordCheck?.message}
+            </span>
           )}
         </div>
         <form
@@ -84,7 +81,7 @@ export default function ChangePassword(): JSX.Element {
         </form>
       </div>
       {isComplete
-      && <Modal>재설정된 비밀번호로 로그인해주세요</Modal>}
+        && <Modal>재설정된 비밀번호로 로그인해주세요</Modal>}
     </div>
   );
 }

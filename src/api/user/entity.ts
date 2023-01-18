@@ -40,3 +40,12 @@ export interface User {
     friendCount: number;
   }
 }
+
+export interface EmailInfo {
+  email: string
+}
+
+export interface AccountInfo {
+  email: string,
+  code: string
+}

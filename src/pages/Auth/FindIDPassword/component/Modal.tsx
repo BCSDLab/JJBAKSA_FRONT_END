@@ -13,7 +13,7 @@ export default function Modal({ children }: ModalProp): JSX.Element {
       <div className={style.overay} />
       <div className={style.modal}>
         <div>재로그인</div>
-        {children}
+        <div className={style.modal__content}>{children}</div>
         <Link to="/login"><button type="button" className={style.modal__button}>로그인</button></Link>
       </div>
     </div>,
