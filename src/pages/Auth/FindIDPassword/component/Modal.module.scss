@@ -30,7 +30,12 @@
   height: 151px;
   border-radius: 20px;
   padding: 15px;
-  gap: 30px;
+  padding-bottom: 0.5px;
+  gap: 16px;
+
+  &__content {
+    text-align: center;
+  }
 
   &__button {
     border: none;

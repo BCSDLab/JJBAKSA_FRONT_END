@@ -4,6 +4,10 @@ const useInputCheck = () => {
   const inputRef = useRef<HTMLInputElement[] | null[]>([]);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isDone, setIsDone] = useState<boolean>(false);
+  const [user, setUser] = useState({
+    email: '',
+    id: '',
+  });
 
   const checkInput = () => {
     const values = inputRef.current.map((item) => item?.value);
@@ -15,11 +19,11 @@ const useInputCheck = () => {
   const preventOverLength = (e: React.ChangeEvent<HTMLInputElement>, next: number) => {
     if (e.target.value.length > e.target.maxLength) {
       e.target.value = e.target.value.charAt(0);
-      if (next <= 3) {
-        inputRef.current[next]?.focus();
-      } else {
-        buttonRef.current?.focus();
-      }
+    }
+    if (inputRef.current[next - 1]?.value === '') {
+      inputRef.current[next - 1]?.focus();
+    } else {
+      inputRef.current[next]?.focus();
     }
     checkInput();
   };
@@ -27,7 +31,7 @@ const useInputCheck = () => {
   useEffect(() => inputRef.current[0]?.focus(), []);
 
   return {
-    isDone, inputRef, buttonRef, preventOverLength,
+    isDone, inputRef, buttonRef, preventOverLength, user, setUser,
   };
 };
 

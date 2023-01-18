@@ -1,27 +1,37 @@
 import { useForm } from 'react-hook-form';
-import error from 'assets/svg/auth/error.svg';
 import { useNavigate } from 'react-router-dom';
+import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
+import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
+import { sendFindEmail } from 'api/user';
+import { FindProp, EmailInParams } from './entity';
 import style from './index.module.scss';
 
-const EMAILPATTERN = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 형식 유효성 검사 패턴
-interface FindProp {
-  find: string
-}
-interface FormData {
-  email: string
-}
-
-export default function FindIdPassword({ find }: FindProp): JSX.Element {
-  const navigate = useNavigate();
+export default function FindIdPassword({ type }: FindProp): JSX.Element {
   const {
     register,
     handleSubmit,
     formState: { isSubmitting, errors, isValid },
-  } = useForm<FormData>({
+    setError,
+  } = useForm<EmailInParams>({
     mode: 'onChange',
   });
+  const navigate = useNavigate();
+  const checkEmail = async (param: EmailInParams) => {
+    try {
+      const res = await sendFindEmail(param);
+      if (res.status === 200) {
+        navigate(`/find/verify/${type}`, {
+          state: {
+            email: param.email,
+          },
+        });
+      }
+    } catch {
+      setError('email', { message: '존재하지 않는 이메일입니다.' });
+    }
+  };
   return (
     <div className={style.layout}>
       <div className={style.back}>
@@ -29,30 +39,30 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
       </div>
       <div className={style.page}>
         <div>
-          {find === 'id' && (
-          <p className={style.page__quote}>
-            아이디 찾을 때
-            <br />
-            사용할 이메일을 입력해주세요.
-          </p>
+          {type === 'id' && (
+            <p className={style.page__quote}>
+              아이디를 찾을 때
+              <br />
+              사용할 이메일을 입력해주세요.
+            </p>
           )}
-          {find === 'password' && (
-          <p className={style.page__quote}>
-            비밀번호를 찾을 때
-            <br />
-            사용할 이메일을 입력해주세요.
-          </p>
+          {type === 'password' && (
+            <p className={style.page__quote}>
+              비밀번호를 찾을 때
+              <br />
+              사용할 이메일을 입력해주세요.
+            </p>
           )}
         </div>
         <div className={style.page__error}>
           {errors.email && (
-          <span className={style.page__caution}>
-            <img src={error} alt="warning" className={style.page__image} />
-            {errors.email?.message}
-          </span>
+            <span className={style.page__caution}>
+              <img src={error} alt="warning" className={style.page__image} />
+              {errors.email?.message}
+            </span>
           )}
         </div>
-        <form className={style.form} onSubmit={handleSubmit((data) => data)}>
+        <form className={style.form} onSubmit={handleSubmit(checkEmail)}>
           <div className={style.form__center}>
             <div className={style.form__label}>이메일</div>
             <input
@@ -63,7 +73,7 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
               {...register('email', {
                 required: 'email을 입력해주세요',
                 pattern: {
-                  value: EMAILPATTERN,
+                  value: EMAIL_REGEXP,
                   message: '올바른 email 형식이 아닙니다.',
                 },
               })}
@@ -71,12 +81,11 @@ export default function FindIdPassword({ find }: FindProp): JSX.Element {
           </div>
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={isSubmitting || !isValid}
             className={cn({
               [style.active]: isValid,
               [style.inactive]: true,
             })}
-            onClick={() => isValid && navigate(`/find/verify/${find}`)}
           >
             인증번호 보내기
           </button>

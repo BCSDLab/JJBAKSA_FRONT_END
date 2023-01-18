@@ -8,9 +8,9 @@ import Home from 'pages/Home';
 import Post from 'pages/Post';
 import Search from 'pages/Search';
 import FindIdPassword from 'pages/Auth/FindIDPassword';
-import VerifyField from 'pages/Auth/FindIDPassword/page/VerifyField';
+import VerifyField from 'pages/Auth/FindIDPassword/VerifyField';
 import { Routes, Route } from 'react-router-dom';
-import ChangePassword from 'pages/Auth/FindIDPassword/page/ChangePassword';
+import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import ProtectedRoute from 'components/common/ProtectedRoute';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
@@ -25,8 +25,8 @@ export default function App(): JSX.Element {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signup/complete" element={<Complete />} />
-          <Route path="/find-id" element={<FindIdPassword find="id" />} />
-          <Route path="/find-password" element={<FindIdPassword find="password" />} />
+          <Route path="/find-id" element={<FindIdPassword type="id" />} />
+          <Route path="/find-password" element={<FindIdPassword type="password" />} />
           <Route path="/find/verify/:id" element={<VerifyField />} />
           <Route path="/find-password/change" element={<ChangePassword />} />
         </Route>

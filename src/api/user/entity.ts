@@ -38,9 +38,16 @@ export interface User {
     id: number;
     reviewCount: number;
     friendCount: number;
-  }
+  };
 }
 
 export interface SendRegisterEmailParams {
   email: string;
+}
+
+export type SendFindEmailParams = SendRegisterEmailParams;
+
+export interface GetAccountParams {
+  email: string;
+  code: string;
 }
