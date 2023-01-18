@@ -5,6 +5,7 @@ import defaultImage from 'assets/images/search/default-image.png';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './Map.module.scss';
 import { MarkerHtml, ClickedMarkerHtml } from './components/MarkerHtml';
+import OptionButtons from './components/OptionButtons';
 import MobileOptions from './components/MobileOptions';
 
 interface Props {
@@ -87,6 +88,7 @@ export default function Map(): JSX.Element {
     <div>
       {isMobile && <MobileOptions />}
       <div id="map" className={styles.map} />
+      {!isMobile && <OptionButtons />}
     </div>
   );
 }

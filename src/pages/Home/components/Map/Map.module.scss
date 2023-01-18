@@ -190,3 +190,34 @@
     border-radius: 24px;
   }
 }
+
+.button {
+  z-index: 10;
+  position: relative;
+  bottom: 50px;
+}
+
+.list {
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  list-style: none;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 142px;
+    height: 44px;
+    border-radius: 22px;
+    color: #ffffff;
+    background: #222222;
+    margin-top: 16px;
+    text-decoration: none;
+
+    svg {
+      padding-right: 26px;
+    }
+  }
+}
