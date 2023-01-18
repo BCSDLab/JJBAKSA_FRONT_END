@@ -2,8 +2,10 @@ import { useEffect, useRef } from 'react';
 import useGeolocation from 'utils/hooks/useGeolocation';
 import MARKER from 'pages/Home/static/marker';
 import defaultImage from 'assets/images/search/default-image.png';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './Map.module.scss';
 import { MarkerHtml, ClickedMarkerHtml } from './components/MarkerHtml';
+import MobileOptions from './components/MobileOptions';
 
 interface Props {
   latitude: number;
@@ -14,6 +16,7 @@ const options = {
   maximumAge: 1000,
 };
 export default function Map(): JSX.Element {
+  const { isMobile } = useMediaQuery();
   const { location } = useGeolocation(options);
   const mapRef = useRef<naver.maps.Map | null>(null);
   const markerRef = useRef<naver.maps.Marker | null>(null);
@@ -82,6 +85,7 @@ export default function Map(): JSX.Element {
   }, [location]);
   return (
     <div>
+      {isMobile && <MobileOptions />}
       <div id="map" className={styles.map} />
     </div>
   );
