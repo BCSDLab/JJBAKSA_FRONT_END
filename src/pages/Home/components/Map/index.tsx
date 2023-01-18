@@ -20,7 +20,6 @@ export default function Map(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useGeolocation(options);
   const mapRef = useRef<naver.maps.Map | null>(null);
-  const markerRef = useRef<naver.maps.Marker | null>(null);
   const selectedMarker = useRef<naver.maps.Marker | null>(null);
 
   const markerHighlightEvent = (markerCur:any, item:Props) => {
@@ -70,7 +69,7 @@ export default function Map(): JSX.Element {
   useEffect(() => {
     MARKER.forEach((item:Props) => {
       if (mapRef.current) {
-        markerRef.current = new naver.maps.Marker({
+        const markers = new naver.maps.Marker({
           position: new naver.maps.LatLng(item.latitude, item.longitude),
           title: item.placeName,
           map: mapRef.current,
@@ -80,7 +79,7 @@ export default function Map(): JSX.Element {
             anchor: new naver.maps.Point(25, 26),
           },
         });
-        markerHighlightEvent(markerRef.current, item);
+        markerHighlightEvent(markers, item);
       }
     });
   }, [location]);
