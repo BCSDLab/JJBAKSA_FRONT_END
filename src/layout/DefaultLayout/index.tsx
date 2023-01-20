@@ -1,18 +1,14 @@
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 import BottomNavigation from 'components/common/BottomNavigation';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import TopNavigation from 'components/common/TopNavigation';
 
-interface DefaultLayoutProps {
-  children: ReactNode
-}
-
-export default function DefaultLayout({ children }: DefaultLayoutProps): JSX.Element {
+export default function DefaultLayout(): JSX.Element {
   const { isMobile } = useMediaQuery();
   return (
     <>
       {!isMobile && <TopNavigation />}
-      {children}
+      <Outlet />
       {isMobile && <BottomNavigation />}
     </>
   );

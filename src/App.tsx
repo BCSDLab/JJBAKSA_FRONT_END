@@ -19,7 +19,12 @@ export default function App(): JSX.Element {
   return (
     <Suspense fallback={<div />}>
       <Routes>
-        <Route path="/" element={<DefaultLayout><Home /></DefaultLayout>} />
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/post" element={<Post />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/search/:keyword" element={<SearchDetails />} />
+        </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
@@ -30,9 +35,6 @@ export default function App(): JSX.Element {
           <Route path="/find/verify/:id" element={<VerifyField />} />
           <Route path="/find-password/change" element={<ChangePassword />} />
         </Route>
-        <Route path="/post" element={<Post />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/search/:keyword" element={<SearchDetails />} />
       </Routes>
       <Toast />
     </Suspense>
