@@ -38,14 +38,16 @@ export interface User {
     id: number;
     reviewCount: number;
     friendCount: number;
-  }
+  };
 }
 
-export interface EmailInfo {
-  email: string
+export interface SendRegisterEmailParams {
+  email: string;
 }
 
-export interface AccountInfo {
-  email: string,
-  code: string
+export type SendFindEmailParams = SendRegisterEmailParams;
+
+export interface GetAccountParams {
+  email: string;
+  code: string;
 }

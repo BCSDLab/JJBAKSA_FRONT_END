@@ -2,8 +2,14 @@
 import userApi from './userApiClient';
 import {
   CheckIdDuplicateParams,
-  LoginParams, LoginResponse, ModifyParams, RegisterParams, User,
-  EmailInfo, AccountInfo,
+  LoginParams,
+  LoginResponse,
+  ModifyParams,
+  RegisterParams,
+  User,
+  SendRegisterEmailParams,
+  SendFindEmailParams,
+  GetAccountParams,
 } from './entity';
 
 export const register = (param: RegisterParams) => userApi.post<User>('/', param);
@@ -19,6 +25,8 @@ export const getMe = () => userApi.get<User>('/me');
 
 export const modify = (param: ModifyParams) => userApi.patch<User>('/modify', param);
 
-export const sendFindEmail = (param: EmailInfo) => userApi.post(`/email?email=${param.email}`);
+export const sendRegisterEmail = (param: SendRegisterEmailParams) => userApi.post(`/authenticate?email=${param.email}`);
 
-export const getAccount = (param: AccountInfo) => userApi.get(`/account?email=${param.email}&code=${param.code}`);
+export const sendFindEmail = (param: SendFindEmailParams) => userApi.post(`/email?email=${param.email}`);
+
+export const getAccount = (param: GetAccountParams) => userApi.get(`/account?email=${param.email}&code=${param.code}`);
