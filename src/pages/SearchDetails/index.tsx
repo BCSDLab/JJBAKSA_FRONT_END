@@ -4,9 +4,9 @@ import NavigationBar from 'pages/Search/components/NavigationBar';
 import TopNavigation from 'components/common/TopNavigation';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import LoadingView from './components/LoadingView';
-import SearchItem from './components/SearchItem';
 import useFetchShops from './hooks/useFetchShops';
 import ControllBar from './components/ControllBar';
+import SearchItemPC from './components/SearchItemPC';
 
 export default function SearchDetails() {
   const { keyword } = useParams();
@@ -23,7 +23,7 @@ export default function SearchDetails() {
           {isFetching
             ? <LoadingView />
             : shops && shops.map((shop) => (
-              <SearchItem key={shop.shopId} shop={shop} />
+              <SearchItemPC key={shop.shopId} shop={shop} />
             ))}
         </div>
       </div>

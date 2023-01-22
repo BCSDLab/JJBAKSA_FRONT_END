@@ -18,10 +18,15 @@
   align-items: center;
 
   &__text {
-    font-size: 18px;
-    font-weight: 500;
-    height: 22px;
-    padding-left: 16px;
+    font-size: 32px; 
+    line-height: 40px;
+    font-weight: 700;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 18px;
+      font-weight: 500;
+      padding-left: 16px;
+    }
   }
 
   &__button {
