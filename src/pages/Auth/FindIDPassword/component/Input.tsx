@@ -14,7 +14,7 @@ export default function Input({
         maxLength: 1,
       })}
       // eslint-disable-next-line
-      ref={(e) => { inputRef.current[index] = e; }}
+      ref={(e) => { register(name).ref(e); inputRef.current[index] = e; }}
       onChange={(e) => preventOverLength(e, number)}
     />
   );
