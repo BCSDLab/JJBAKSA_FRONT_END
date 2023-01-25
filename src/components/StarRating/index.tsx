@@ -4,7 +4,11 @@ import StarRateContext from './StarRateContext';
 import EnterStarRateContainer from './EnterStarRateContainer';
 import LeaveStarRateContainer from './LeaveStarRateContainer';
 
-export default function StarRating({ onClick }: { onClick: () => void }) {
+export interface StarRatingType {
+  getRate: (rating: number) => void,
+}
+
+export default function StarRating({ getRate }: StarRatingType) {
   const [rating, setRating] = useState(0);
   const [entered, enter, leave] = useBooleanState(false);
 
@@ -13,9 +17,9 @@ export default function StarRating({ onClick }: { onClick: () => void }) {
     handleMouseLeave: leave,
     handleClick: (num: number) => {
       setRating(num);
-      onClick?.();
+      getRate(num);
     },
-  }), [onClick, enter, leave]);
+  }), [getRate, enter, leave]);
 
   return (
     <StarRateContext.Provider value={value}>

@@ -1,4 +1,8 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import {
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+} from 'react';
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import './Wysiwyg.scss';
@@ -11,10 +15,12 @@ export interface WysiwygType {
   heading: () => void,
   paragraph: () => void,
   through: () => void,
+  getMarkdown: () => string,
 }
 
 const Wysiwyg = forwardRef((_props, ref) => {
   const editorRef = useRef<Editor>(null);
+
   useImperativeHandle(ref, () => ({
     addImg() {
       editorRef.current?.getInstance().exec('addImage', { imageUrl: 'https://picsum.photos/200/300' });
@@ -32,6 +38,9 @@ const Wysiwyg = forwardRef((_props, ref) => {
       if (editorRef.current) {
         editorRef.current.getInstance().exec('strike');
       }
+    },
+    getMarkdown() {
+      return editorRef.current?.getInstance().getMarkdown();
     },
   }));
 

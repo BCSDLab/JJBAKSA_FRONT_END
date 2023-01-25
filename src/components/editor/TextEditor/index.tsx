@@ -1,9 +1,10 @@
 import { ReactComponent as Plus } from 'assets/svg/post/plus.svg';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
+import { postReview } from 'api/review';
 import StarRating from 'components/StarRating';
 import AddImage from './AddImage';
 import SlideToolBox from './SlideToolBox';
@@ -18,6 +19,28 @@ export default function TextEditor({ shop, getShopname }: Props) {
   const wysiwygRef = useRef<WysiwygType | null>(null);
   const [actived, active] = useBooleanState(false);
   const [opened, open, close] = useBooleanState(false);
+  const [rate, setRate] = useState(0);
+
+  const getRate = (rating: number) => {
+    active();
+    setRate(rating);
+  };
+
+  const saveReview = () => {
+    const reviewInfo = {
+      content: wysiwygRef.current?.getMarkdown() as string,
+      shopId: 27,
+      rate,
+      reviewImages: [{
+        imageId: 0,
+        imageUrl: 'string',
+        originalName: 'string',
+        path: 'string',
+      }],
+    };
+
+    postReview(reviewInfo);
+  };
 
   return (
     <div className={cn({
@@ -44,7 +67,7 @@ export default function TextEditor({ shop, getShopname }: Props) {
           : (
             <>
               <div className={styles.header__shopname}>{ shop }</div>
-              <StarRating onClick={active} />
+              <StarRating getRate={getRate} />
             </>
           )}
       </div>
@@ -71,6 +94,7 @@ export default function TextEditor({ shop, getShopname }: Props) {
             [styles['save-button']]: true,
             [styles['save-button--active']]: actived,
           })}
+          onClick={saveReview}
           disabled={!actived && shop != null}
         >
           저장
