@@ -8,7 +8,7 @@ import OptionButtons from './components/OptionButtons';
 import MobileOptions from './components/MobileOptions';
 import { ClickedMarkerHtml, MarkerHtml } from './components/MarkerHtml';
 
-interface Props {
+interface MarkerType {
   latitude: number;
   longitude: number;
   placeName: string;
@@ -22,7 +22,7 @@ export default function Map(): JSX.Element {
   const mapRef = useRef<naver.maps.Map | null>(null);
   const selectedMarker = useRef<naver.maps.Marker | null>(null);
 
-  const markerHighlightEvent = (markerCur:any, item:Props) => {
+  const markerHighlightEvent = (markerCur:naver.maps.Marker, item:MarkerType) => {
     naver.maps.Event.addListener(markerCur, 'click', () => {
       if (selectedMarker.current) {
         selectedMarker.current.setIcon({
@@ -67,7 +67,7 @@ export default function Map(): JSX.Element {
   }, [location]);
 
   useEffect(() => {
-    MARKER.forEach((item:Props) => {
+    MARKER.forEach((item:MarkerType) => {
       if (mapRef.current) {
         const markers = new naver.maps.Marker({
           position: new naver.maps.LatLng(item.latitude, item.longitude),
