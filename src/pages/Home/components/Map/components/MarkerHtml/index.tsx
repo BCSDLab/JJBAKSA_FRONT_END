@@ -1,4 +1,4 @@
-import styles from '../Map.module.scss';
+import styles from './MarkerHtml.module.scss';
 
 export function MarkerHtml(defaultImg:string, name:string) {
   return `

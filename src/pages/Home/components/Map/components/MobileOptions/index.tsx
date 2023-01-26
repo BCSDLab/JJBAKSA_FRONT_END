@@ -5,7 +5,7 @@ import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { Link } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import { useState } from 'react';
-import styles from '../Map.module.scss';
+import styles from './MobileOptions.module.scss';
 
 export default function MobileOptions(): JSX.Element {
   const [selected, setSelected] = useState('');

@@ -3,7 +3,7 @@ import { ReactComponent as PencilIcon } from 'assets/svg/home/pencil.svg';
 import { Link } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
-import styles from '../Map.module.scss';
+import styles from './OptionButtons.module.scss';
 
 export default function OptionButtons() {
   const [visible,,, toggle] = useBooleanState(false);
