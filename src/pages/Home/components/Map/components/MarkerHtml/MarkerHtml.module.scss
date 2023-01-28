@@ -65,8 +65,21 @@
     padding-right: 10px;
 
     @include media.media-breakpoint-down(mobile) {
+      margin: 0;
       padding: 0;
-      display: none;
+      position: absolute;
+      top: 85px;
+      right: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 15px;
+      color: #222222;
+      // stylelint-disable-next-line
+      text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
+        1px 1px 0 white;
     }
   }
 
