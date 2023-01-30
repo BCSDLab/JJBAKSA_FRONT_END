@@ -51,3 +51,18 @@ export interface GetAccountParams {
   email: string;
   code: string;
 }
+
+export interface FindPasswordParams {
+  account: string,
+  code: string,
+  email: string,
+}
+
+export interface ChangePasswordParams {
+  password: string
+}
+
+export interface EmailParams {
+  email: string,
+  account?: string
+}
