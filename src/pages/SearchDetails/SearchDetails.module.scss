@@ -55,7 +55,7 @@
 }
 
 .checkbox {
-  position: relative;  
+  position: relative;
   right: 16px;
   accent-color: #ffd25d;
   width: 24px;
@@ -75,7 +75,8 @@
 
   // 검색 상세 페이지
   &__list {
-    display: flex-wrap;
+    display: flex;
+    flex-wrap: wrap;
     padding-top: 8px;
     padding-left: 24px;
     padding-right: 24px;
@@ -93,13 +94,12 @@
 
 // 검색 아이템
 
-
 .item {
   display: flex;
-  gap: 16px;
+  gap: 24px;
   border-bottom: 1px solid #c4c4c4;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   width: 527px;
 
   .image {
@@ -110,7 +110,7 @@
       width: 230px;
       height: 230px;
     }
-  
+
     &__other {
       display: flex;
       flex-direction: column;
@@ -120,18 +120,17 @@
         width: 77px;
         height: 77px;
       }
-      
+
       &--third {
         width: 77px;
         height: 76px;
       }
-    
+
       &--fourth {
         width: 77px;
         height: 77px;
       }
     }
-    
   }
 
   &__title {
