@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { changePassword } from 'api/user';
 import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
@@ -13,10 +14,22 @@ export default function ChangePassword(): JSX.Element {
   const [isComplete, setIsComplete] = useState<boolean>();
 
   const {
-    register, handleSubmit, formState: { errors, isValid }, getValues,
+    register, handleSubmit, formState: { errors, isValid }, getValues, setError,
   } = useForm<PasswordInfo>({
     mode: 'onChange',
   });
+
+  const change = async (param: PasswordInfo) => {
+    try {
+      const result = await changePassword(param);
+      if (result.status === 200) {
+        sessionStorage.removeItem('accessToken');
+        setIsComplete(true);
+      }
+    } catch (e) {
+      setError('password', { type: 'value' });
+    }
+  };
 
   return (
     <div className={style.layout}>
@@ -42,7 +55,7 @@ export default function ChangePassword(): JSX.Element {
             [style.form]: true,
             [style.form__space]: true,
           })}
-          onSubmit={handleSubmit(() => setIsComplete(true))}
+          onSubmit={handleSubmit(change)}
         >
           <div className={style.form__center}>
             <div className={style.form__label}>새 비밀번호</div>

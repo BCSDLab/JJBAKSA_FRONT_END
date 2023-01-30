@@ -14,6 +14,7 @@ export default function VerifyField(): JSX.Element {
   });
   const location = useLocation();
   const { email } = location.state as { email: string };
+  const { account } = location.state as { account: string };
   return (
     <div className={style.layout}>
       <div className={style.back}>
@@ -40,6 +41,7 @@ export default function VerifyField(): JSX.Element {
           handleSubmit={handleSubmit}
           setError={setError}
           email={email}
+          account={account}
         />
       </div>
     </div>
