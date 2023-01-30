@@ -13,11 +13,7 @@ export default function DefaultLayout(): JSX.Element {
     <>
       {!isMobile && <TopNavigation />}
       <Outlet />
-      <div className={cn({
-        [styles.home]: false,
-        [styles.home]: location.pathname !== '/',
-      })}
-      >
+      <div className={cn({ [styles.home]: location.pathname !== '/' })}>
         <Home />
       </div>
       {isMobile && <BottomNavigation />}
