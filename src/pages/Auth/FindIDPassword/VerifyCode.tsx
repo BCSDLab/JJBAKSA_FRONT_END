@@ -89,7 +89,7 @@ export default function VerifyCode({
         </button>
       </form>
       {openModal && (
-        <Modal>
+        <Modal type="아이디">
           {user.email}
           으로 가입된 아이디는
           {' '}

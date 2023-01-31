@@ -22,6 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   background-color: white;
   top: 50%;
   left: 50%;
@@ -31,10 +32,16 @@
   border-radius: 20px;
   padding: 15px;
   padding-bottom: 0.5px;
-  gap: 16px;
+  height: 180px;
+
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+  }
 
   &__content {
     text-align: center;
+    font-size: 12px;
   }
 
   &__button {

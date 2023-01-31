@@ -94,7 +94,7 @@ export default function ChangePassword(): JSX.Element {
         </form>
       </div>
       {isComplete
-        && <Modal>재설정된 비밀번호로 로그인해주세요</Modal>}
+        && <Modal type="비밀번호">재설정된 비밀번호로 다시 로그인해 주세요</Modal>}
     </div>
   );
 }
