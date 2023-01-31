@@ -95,14 +95,17 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
               })}
             />
             {type === 'password' && (
-              <input
-                placeholder="아이디를 입력하세요"
-                className={style.form__input}
-                id="account"
-                {...register('account', {
-                  required: 'id를 입력해주세요',
-                })}
-              />
+              <>
+                <div className={style.form__label}>아이디</div>
+                <input
+                  placeholder="아이디를 입력하세요"
+                  className={style.form__input}
+                  id="account"
+                  {...register('account', {
+                    required: 'id를 입력해주세요',
+                  })}
+                />
+              </>
             )}
           </div>
           <button
