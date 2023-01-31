@@ -19,7 +19,7 @@ export default function ChangePassword(): JSX.Element {
     mode: 'onChange',
   });
 
-  const change = async (param: PasswordInfo) => {
+  const changeUserPassword = async (param: PasswordInfo) => {
     try {
       const result = await changePassword(param);
       if (result.status === 200) {
@@ -55,7 +55,7 @@ export default function ChangePassword(): JSX.Element {
             [style.form]: true,
             [style.form__space]: true,
           })}
-          onSubmit={handleSubmit(change)}
+          onSubmit={handleSubmit(changeUserPassword)}
         >
           <div className={style.form__center}>
             <div className={style.form__label}>새 비밀번호</div>

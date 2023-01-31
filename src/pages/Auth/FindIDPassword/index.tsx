@@ -43,7 +43,7 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
       checkEmail(param);
     }
   };
-  const check = (param: EmailParams) => {
+  const checkUserInfo = (param: EmailParams) => {
     if (type === 'password') {
       checkId(param);
     } else checkEmail(param);
@@ -78,7 +78,7 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
             </span>
           )}
         </div>
-        <form className={style.form} onSubmit={handleSubmit(check)}>
+        <form className={style.form} onSubmit={handleSubmit(checkUserInfo)}>
           <div className={style.form__center}>
             <div className={style.form__label}>이메일</div>
             <input
