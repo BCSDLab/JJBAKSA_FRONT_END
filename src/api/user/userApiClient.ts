@@ -24,7 +24,7 @@ export const refreshAccessToken = async () => {
   } catch {
     sessionStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    return Promise.reject();
+    return null;
   }
 };
 
