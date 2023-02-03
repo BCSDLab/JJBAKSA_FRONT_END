@@ -35,7 +35,7 @@ export default function SearchItemPC({ shop }: Props) {
             <div className={styles.item__distance}>내 위치로부터 23m</div>
             <div className={styles.item__phone}>
               전화하기
-              {'   '}
+              {'    '}
               010-0000-0000
             </div>
           </div>

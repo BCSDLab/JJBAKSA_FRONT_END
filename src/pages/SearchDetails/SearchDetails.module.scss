@@ -68,10 +68,10 @@
 }
 
 .details {
-  width: 100%;
   height: 100vh;
-  max-width: 1136px;
   margin: 0 auto;
+  padding-left: 100px;
+  padding-right: 100px;
 
   // 검색 상세 페이지
   &__list {
@@ -93,14 +93,16 @@
 }
 
 // 검색 아이템
-
 .item {
   display: flex;
   gap: 24px;
   border-bottom: 1px solid #c4c4c4;
   padding-top: 24px;
   padding-bottom: 24px;
-  width: 527px;
+  padding-right: 31px;
+  padding-left: 17px;
+  font-size: 16px;
+
 
   .image {
     display: flex;
@@ -135,14 +137,15 @@
 
   &__title {
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 20px;
   }
 
   &__address {
     cursor: pointer;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
+    padding-top: 8px;
     line-height: 15px;
   }
 
@@ -151,6 +154,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    font-size: 16px;
   }
 
   &__info {
@@ -162,7 +166,7 @@
     padding-top: 93px;
     &--open {
       font-weight: 400;
-      font-size: 12px;
+      font-size: 16px;
       line-height: 15px;
       color: #ff7f23;
     }
@@ -170,20 +174,20 @@
 
   &__closing {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 15px;
   }
 
   &__distance {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 15px;
     padding-top: 4px;
   }
 
   &__phone {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 15px;
     white-space: pre-wrap;
     padding-top: 20px;
