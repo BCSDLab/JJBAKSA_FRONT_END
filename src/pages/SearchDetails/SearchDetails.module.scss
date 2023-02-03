@@ -3,9 +3,8 @@
 .controller {
   display: flex;
   position: relative;
-  padding-left: 32px;
+  padding-left: 17px;
   padding-top: 24px;
-  border: 1px solid red;
   align-items: center;
 
   @include media.media-breakpoint-down(mobile) {
@@ -54,32 +53,72 @@
   background-color: white;
 }
 
-.checkbox {
+// 체크 박스
+.container {
+  display: block;
   position: relative;
-  right: 16px;
-  accent-color: #ffd25d;
-  width: 24px;
-  height: 24px;
+  margin-bottom:24px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.label {
-  display: flex;
+.container .checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  box-sizing: border-box;
+  border: 1px solid #999999;
   border-radius: 3px;
 }
+
+ .container:hover .checkbox ~ .checkmark {
+  background-color: #ccc;
+}
+ 
+.container .checkbox:checked ~ .checkmark {
+  background-color: #FFD25D;
+}
+ 
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+ 
+.container .checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+} 
 
 .details {
   height: 100vh;
   margin: 0 auto;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 144px;
+  padding-right: 144px;
 
   // 검색 상세 페이지
   &__list {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 8px;
-    padding-left: 24px;
-    padding-right: 24px;
   }
 }
 

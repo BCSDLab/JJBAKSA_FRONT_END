@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import Cap from 'assets/images/search/image-100.png';
 
@@ -13,8 +14,9 @@ export default function ControllBar() {
       <div className={styles.icon__tail}>
         <img alt="가게 이미지 없음" src={Cap} />
       </div>
-      <label htmlFor="friend" className={styles.label}>
-        <input type="checkbox" id="friend" name="friend" className={styles.checkbox} />
+      <label className={styles.container}>
+        <input type="checkbox" className={styles.checkbox} />
+        <span className={styles.checkmark} />
       </label>
     </div>
   );
