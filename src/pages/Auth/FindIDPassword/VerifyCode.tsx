@@ -19,16 +19,16 @@ export default function VerifyCode({
   const [openModal, setOpenModal] = useState<boolean>();
   const param = useParams();
   const navigate = useNavigate();
-  const nextStep = () => {
+  const loginOrChangePassword = () => {
     if (isDone) {
-      if (param.id === 'id') setOpenModal(true);
-      else if (param.id === 'password') navigate('/find-password/change');
+      if (param.type === 'id') setOpenModal(true);
+      else if (param.type === 'password') navigate('/find-password/change');
     }
   };
   const findUserInfo = async (parameter: CodeInfo) => {
     const code = parameter.first + parameter.second + parameter.third + parameter.fourth;
     try {
-      if (param.id === 'id') {
+      if (param.type === 'id') {
         const result = await getAccount({ email, code });
         if (result.status === 200) {
           setUser({
@@ -36,13 +36,13 @@ export default function VerifyCode({
             id: result.data.account,
           });
         }
-      } else if (param.id === 'password' && account) {
+      } else if (param.type === 'password' && account) {
         const result = await findPassowrd({ account, email, code });
         if (result.status === 200) {
           sessionStorage.setItem('accessToken', result.data);
         }
       }
-      nextStep();
+      loginOrChangePassword();
     } catch {
       setError('first', { type: 'value' });
     }

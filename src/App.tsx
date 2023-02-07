@@ -27,7 +27,7 @@ export default function App(): JSX.Element {
           <Route path="/signup/complete" element={<Complete />} />
           <Route path="/find-id" element={<FindIdPassword type="id" />} />
           <Route path="/find-password" element={<FindIdPassword type="password" />} />
-          <Route path="/find/verify/:id" element={<VerifyField />} />
+          <Route path="/find/verify/:type" element={<VerifyField />} />
           <Route path="/find-password/change" element={<ChangePassword />} />
         </Route>
         <Route path="/post" element={<Post />} />
