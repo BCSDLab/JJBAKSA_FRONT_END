@@ -4,7 +4,7 @@ import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
 import style from 'pages/Auth/FindIDPassword/index.module.scss';
 import { CodeInfo } from './entity';
-import VerifyCode from './VerifyCode';
+import VerifyCode from './component/VerifyCode';
 
 export default function VerifyField(): JSX.Element {
   const {
