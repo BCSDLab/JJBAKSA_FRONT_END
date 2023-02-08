@@ -12,7 +12,6 @@ import {
   GetAccountParams,
   FindPasswordParams,
   ChangePasswordParams,
-  EmailParams,
 } from './entity';
 
 export const register = (param: RegisterParams) => userApi.post<User>('/', param);
@@ -41,5 +40,3 @@ export const findPassowrd = (param: FindPasswordParams) => userApi.post('/passwo
 });
 
 export const changePassword = (param: ChangePasswordParams) => userApi.patch(`/password?password=${param.password}`);
-
-export const checkIdExist = (param: EmailParams) => userApi.get(`/exists?account=${param.account}`);

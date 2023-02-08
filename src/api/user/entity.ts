@@ -62,8 +62,3 @@ export interface FindPasswordParams {
 export interface ChangePasswordParams {
   password: string
 }
-
-export interface EmailParams {
-  email: string,
-  account?: string
-}
