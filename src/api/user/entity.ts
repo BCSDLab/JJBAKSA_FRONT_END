@@ -15,7 +15,8 @@ export interface RegisterParams extends LoginParams {
 }
 
 export interface CheckIdDuplicateParams {
-  account: string;
+  account?: string;
+  email?: string;
 }
 
 export interface ModifyParams {

@@ -4,7 +4,7 @@ import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
-import { sendFindEmail, checkIdExist } from 'api/user';
+import { sendFindEmail, checkIdDuplicate } from 'api/user';
 import { FindProp, EmailParams } from './entity';
 import style from './index.module.scss';
 
@@ -35,7 +35,7 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
   };
   const checkId = async (param: EmailParams) => {
     try {
-      const result = await checkIdExist(param);
+      const result = await checkIdDuplicate(param);
       if (result.status === 200) {
         setError('email', { message: '존재하지 않는 아이디입니다.' });
       }
