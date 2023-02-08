@@ -91,7 +91,9 @@ export default function VerifyCode({
       {openModal && (
         <Modal type="아이디">
           {user.email}
-          으로 가입된 아이디는
+          으로
+          <br />
+          가입된 아이디는
           {' '}
           {user.id}
           입니다
