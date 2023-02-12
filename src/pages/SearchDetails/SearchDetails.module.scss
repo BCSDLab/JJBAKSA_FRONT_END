@@ -83,18 +83,10 @@
   background-color: #ccc;
 }
 
-.container .checkbox:checked ~ .checkmark {
-  background-color: #ffd25d;
-}
-
 .checkmark::after {
   content: "";
   position: absolute;
   display: none;
-}
-
-.container .checkbox:checked ~ .checkmark::after {
-  display: block;
 }
 
 .container .checkmark::after {
@@ -105,8 +97,14 @@
   border: solid white;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
-  transform: rotate(45deg);
-  transform: rotate(45deg);
+}
+
+.container .checkbox:checked ~ .checkmark {
+  background-color: #ffd25d;
+}
+
+.container .checkbox:checked ~ .checkmark::after {
+  display: block;
 }
 
 .details {
@@ -114,7 +112,6 @@
   margin: 0 auto;
   max-width: 1152px;
 
-  // 검색 상세 페이지
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -135,10 +132,7 @@
   display: flex;
   gap: 24px;
   border-bottom: 1px solid #c4c4c4;
-  padding-top: 24px;
-  padding-bottom: 24px;
-  padding-right: 31px;
-  padding-left: 17px;
+  padding: 24px 31px 24px 17px;
   font-size: 16px;
 
   .image {
