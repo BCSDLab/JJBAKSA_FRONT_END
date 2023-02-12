@@ -57,7 +57,7 @@
 .container {
   display: block;
   position: relative;
-  margin-bottom:24px;
+  margin-bottom: 24px;
   cursor: pointer;
   font-size: 18px;
 }
@@ -79,35 +79,35 @@
   border-radius: 3px;
 }
 
- .container:hover .checkbox ~ .checkmark {
+.container:hover .checkbox ~ .checkmark {
   background-color: #ccc;
 }
- 
+
 .container .checkbox:checked ~ .checkmark {
-  background-color: #FFD25D;
+  background-color: #ffd25d;
 }
- 
-.checkmark:after {
+
+.checkmark::after {
   content: "";
   position: absolute;
   display: none;
 }
- 
-.container .checkbox:checked ~ .checkmark:after {
+
+.container .checkbox:checked ~ .checkmark::after {
   display: block;
 }
 
-.container .checkmark:after {
+.container .checkmark::after {
   left: 7px;
   top: 3px;
   width: 5px;
   height: 10px;
   border: solid white;
   border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
-} 
+  transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 
 .details {
   height: 100vh;
@@ -140,7 +140,6 @@
   padding-right: 31px;
   padding-left: 17px;
   font-size: 16px;
-
 
   .image {
     display: flex;
@@ -202,6 +201,7 @@
 
   &__status {
     padding-top: 93px;
+
     &--open {
       font-weight: 400;
       font-size: 16px;
