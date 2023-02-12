@@ -204,8 +204,15 @@
     &--open {
       font-weight: 400;
       font-size: 16px;
-      line-height: 15px;
+      line-height: 20px;
       color: #ff7f23;
+    }
+
+    &--closed {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: #C4C4C4
     }
   }
 
