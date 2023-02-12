@@ -112,8 +112,7 @@
 .details {
   height: 100vh;
   margin: 0 auto;
-  padding-left: 144px;
-  padding-right: 144px;
+  max-width: 1152px;
 
   // 검색 상세 페이지
   &__list {
