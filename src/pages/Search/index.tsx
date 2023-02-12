@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styles from 'pages/Search/Search.module.scss';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import TopNavigation from 'components/common/TopNavigation';
 import Recommendation from './components/SearchBar/Recommendation';
 import SearchInput from './components/SearchBar/SearchInput';
 import RollingBanner from './components/SearchBar/RollingBanner';
@@ -27,7 +26,6 @@ export default function Search(): JSX.Element {
 
   return (
     <div>
-      {!isMobile && <TopNavigation />}
       <div className={styles.search}>
         <section>
           {isMobile && <NavigationBar />}

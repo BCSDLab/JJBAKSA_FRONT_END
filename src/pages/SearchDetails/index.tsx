@@ -1,8 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import NavigationBar from 'pages/Search/components/NavigationBar';
-import TopNavigation from 'components/common/TopNavigation';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
 import LoadingView from './components/LoadingView';
 import useFetchShops from './hooks/useFetchShops';
 import ControllBar from './components/ControllBar';
@@ -11,11 +9,9 @@ import SearchItemPC from './components/SearchItemPC';
 export default function SearchDetails() {
   const { keyword } = useParams();
   const { isFetching, data: shops } = useFetchShops(keyword ?? '');
-  const { isMobile } = useMediaQuery();
 
   return (
     <div>
-      {!isMobile && <TopNavigation />}
       <div className={styles.details}>
         <NavigationBar keyword={keyword} />
         <ControllBar />
