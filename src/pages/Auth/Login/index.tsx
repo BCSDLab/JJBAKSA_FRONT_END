@@ -12,6 +12,7 @@ import { login } from 'api/user';
 import { useUpdateAuth } from 'store/auth';
 import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
 import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
+import { KAKAO_REDIRECT_URL } from 'config/constants';
 import styles from './Login.module.scss';
 
 interface LoginFormInput {
@@ -156,15 +157,15 @@ export default function Login(): JSX.Element {
               >
                 <GoogleIcon title="구글 계정 연동" />
               </Link>
-              <Link
+              <a
                 className={cn({
                   [styles.social__icon]: true,
                   [styles['social__icon--kakao']]: true,
                 })}
-                to="/"
+                href={KAKAO_REDIRECT_URL}
               >
                 <KakaoIcon title="카카오 계정 연동" />
-              </Link>
+              </a>
               <Link
                 className={cn({
                   [styles.social__icon]: true,

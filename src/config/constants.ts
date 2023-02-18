@@ -20,4 +20,6 @@ export const KAKAO_INTEGRITY = checkEnvVar('REACT_APP_KAKAO_INTEGRITY');
 export const KAKAO_CLIENT_ID = checkEnvVar('REACT_APP_KAKAO_CLIENT_ID');
 export const KAKAO_CLIENT_SECRET = checkEnvVar('REACT_APP_KAKAO_CLIENT_SECRET');
 
+export const KAKAO_REDIRECT_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=$https://api.stage.jjbaksa.com/login/oauth2/code/kakao&response_type=code&prompt=login`;
+
 // 네이버 OAuth
