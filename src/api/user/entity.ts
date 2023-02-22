@@ -15,7 +15,8 @@ export interface RegisterParams extends LoginParams {
 }
 
 export interface CheckIdDuplicateParams {
-  account: string;
+  account?: string;
+  email?: string;
 }
 
 export interface ModifyParams {
@@ -50,4 +51,14 @@ export type SendFindEmailParams = SendRegisterEmailParams;
 export interface GetAccountParams {
   email: string;
   code: string;
+}
+
+export interface FindPasswordParams {
+  account: string,
+  code: string,
+  email: string,
+}
+
+export interface ChangePasswordParams {
+  password: string
 }

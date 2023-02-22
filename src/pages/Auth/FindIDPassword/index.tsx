@@ -4,8 +4,8 @@ import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
-import { sendFindEmail } from 'api/user';
-import { FindProp, EmailInParams } from './entity';
+import { sendFindEmail, checkIdDuplicate } from 'api/user';
+import { FindProp, EmailParams } from './entity';
 import style from './index.module.scss';
 
 export default function FindIdPassword({ type }: FindProp): JSX.Element {
@@ -14,23 +14,39 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
     handleSubmit,
     formState: { isSubmitting, errors, isValid },
     setError,
-  } = useForm<EmailInParams>({
+  } = useForm<EmailParams>({
     mode: 'onChange',
   });
   const navigate = useNavigate();
-  const checkEmail = async (param: EmailInParams) => {
+  const checkEmail = async (param: EmailParams) => {
     try {
       const res = await sendFindEmail(param);
       if (res.status === 200) {
         navigate(`/find/verify/${type}`, {
           state: {
             email: param.email,
+            account: param.account,
           },
         });
       }
     } catch {
       setError('email', { message: '존재하지 않는 이메일입니다.' });
     }
+  };
+  const checkId = async (param: EmailParams) => {
+    try {
+      const result = await checkIdDuplicate(param);
+      if (result.status === 200) {
+        setError('email', { message: '존재하지 않는 아이디입니다.' });
+      }
+    } catch {
+      checkEmail(param);
+    }
+  };
+  const checkUserInfo = (param: EmailParams) => {
+    if (type === 'password') {
+      checkId(param);
+    } else checkEmail(param);
   };
   return (
     <div className={style.layout}>
@@ -50,7 +66,7 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
             <p className={style.page__quote}>
               비밀번호를 찾을 때
               <br />
-              사용할 이메일을 입력해주세요.
+              사용할 이메일과 아이디를 입력해주세요.
             </p>
           )}
         </div>
@@ -62,7 +78,7 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
             </span>
           )}
         </div>
-        <form className={style.form} onSubmit={handleSubmit(checkEmail)}>
+        <form className={style.form} onSubmit={handleSubmit(checkUserInfo)}>
           <div className={style.form__center}>
             <div className={style.form__label}>이메일</div>
             <input
@@ -78,6 +94,19 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
                 },
               })}
             />
+            {type === 'password' && (
+              <>
+                <div className={style.form__label}>아이디</div>
+                <input
+                  placeholder="아이디를 입력하세요"
+                  className={style.form__input}
+                  id="account"
+                  {...register('account', {
+                    required: 'id를 입력해주세요',
+                  })}
+                />
+              </>
+            )}
           </div>
           <button
             type="submit"
