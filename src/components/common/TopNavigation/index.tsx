@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ReactComponent as LogoIcon } from 'assets/svg/common/logo.svg';
+import { ReactComponent as LogoIcon } from 'assets/svg/common/favicon.svg';
 import { ReactComponent as ArrowIcon } from 'assets/svg/common/arrow.svg';
 import { useAuth } from 'store/auth';
 import styles from './TopNavigation.module.scss';

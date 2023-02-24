@@ -4,7 +4,7 @@ import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
 import style from 'pages/Auth/FindIDPassword/index.module.scss';
 import { CodeInfo } from './entity';
-import VerifyCode from './VerifyCode';
+import VerifyCode from './component/VerifyCode';
 
 export default function VerifyField(): JSX.Element {
   const {
@@ -14,6 +14,7 @@ export default function VerifyField(): JSX.Element {
   });
   const location = useLocation();
   const { email } = location.state as { email: string };
+  const { account } = location.state as { account: string };
   return (
     <div className={style.layout}>
       <div className={style.back}>
@@ -40,6 +41,7 @@ export default function VerifyField(): JSX.Element {
           handleSubmit={handleSubmit}
           setError={setError}
           email={email}
+          account={account}
         />
       </div>
     </div>
