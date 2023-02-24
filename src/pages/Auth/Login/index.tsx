@@ -12,7 +12,7 @@ import { login } from 'api/user';
 import { useUpdateAuth } from 'store/auth';
 import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
 import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
-import { KAKAO_REDIRECT_URL, NAVER_REDIRECT_URL } from 'config/constants';
+import { GOOGLE_REDIRECT_URL, KAKAO_REDIRECT_URL, NAVER_REDIRECT_URL } from 'config/constants';
 import styles from './Login.module.scss';
 
 interface LoginFormInput {
@@ -148,15 +148,15 @@ export default function Login(): JSX.Element {
           <div className={styles.social}>
             <div className={styles.social__title}>SNS 계정으로 로그인하기</div>
             <div className={styles.social__link}>
-              <Link
+              <a
                 className={cn({
                   [styles.social__icon]: true,
                   [styles['social__icon--google']]: true,
                 })}
-                to="/"
+                href={GOOGLE_REDIRECT_URL}
               >
                 <GoogleIcon title="구글 계정 연동" />
-              </Link>
+              </a>
               <a
                 className={cn({
                   [styles.social__icon]: true,
