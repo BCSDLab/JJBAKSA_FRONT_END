@@ -1,5 +1,5 @@
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
-import defaultImage from 'assets/images/search/default-image.png';
+import { getMockItem, SHOPS } from '../static/mockup';
 
 interface Props {
   shop: {
@@ -11,14 +11,17 @@ interface Props {
 
 export default function SearchItemPC({ shop }: Props) {
   const { placeName, address } = shop;
+  const {
+    imageAlt, defaultImage, phoneNumber, image,
+  } = getMockItem();
   return (
     <div className={styles.item}>
       <div className={styles.image}>
-        <img className={styles.image__main} alt="가게 이미지 없음" src={defaultImage} />
+        <img className={styles.image__main} alt={imageAlt} src={defaultImage} />
         <div className={styles.image__other}>
-          <img className={styles['image__other--second']} alt="가게 이미지 없음" src={defaultImage} />
-          <img className={styles['image__other--third']} alt="가게 이미지 없음" src={defaultImage} />
-          <img className={styles['image__other--fourth']} alt="가게 이미지 없음" src={defaultImage} />
+          <img className={styles['image__other--second']} alt={imageAlt} src={image ?? defaultImage} />
+          <img className={styles['image__other--third']} alt={imageAlt} src={image ?? defaultImage} />
+          <img className={styles['image__other--fourth']} alt={imageAlt} src={image ?? defaultImage} />
         </div>
       </div>
       <div className={styles.item__content}>
@@ -29,15 +32,15 @@ export default function SearchItemPC({ shop }: Props) {
         <section className={styles.item__info}>
           <div>
             <div className={styles.item__status}>
-              <span className={styles['item__status--open']}>영업 중 </span>
-              <span className={styles.item__closing}>- 21:00에 영업 종료</span>
+              <span className={styles['item__status--open']}>
+                {SHOPS.status}
+              </span>
+              <span className={styles.item__closing}>{SHOPS.closing}</span>
             </div>
-            <div className={styles.item__distance}>내 위치로부터 23m</div>
-            <div className={styles.item__phone}>
-              전화하기
-              {'    '}
-              010-0000-0000
-            </div>
+            <div className={styles.item__distance}>{SHOPS.distance}</div>
+            <a href="tel:010-0000-0000" className={styles.item__phone}>
+              {`전화하기    ${phoneNumber}`}
+            </a>
           </div>
         </section>
       </div>
