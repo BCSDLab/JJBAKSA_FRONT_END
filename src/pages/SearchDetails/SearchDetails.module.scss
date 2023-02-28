@@ -131,9 +131,13 @@
 .item {
   display: flex;
   gap: 24px;
+  border: none;
   border-bottom: 1px solid #c4c4c4;
+  background-color: white;
   padding: 24px 31px 24px 17px;
   font-size: 16px;
+  text-decoration: none;
+  color: black;
 
   &:hover {
     background-color: #eeeeee;

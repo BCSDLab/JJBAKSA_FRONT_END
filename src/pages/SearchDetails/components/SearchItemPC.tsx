@@ -1,4 +1,5 @@
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
+import { Link } from 'react-router-dom';
 import { getMockItem, SHOPS } from '../static/mockup';
 
 interface Props {
@@ -15,7 +16,7 @@ export default function SearchItemPC({ shop }: Props) {
     imageAlt, defaultImage, phoneNumber, image,
   } = getMockItem();
   return (
-    <div className={styles.item}>
+    <Link to="/" className={styles.item}>
       <div className={styles.image}>
         <img className={styles.image__main} alt={imageAlt} src={defaultImage} />
         <div className={styles.image__other}>
@@ -44,7 +45,6 @@ export default function SearchItemPC({ shop }: Props) {
           </div>
         </section>
       </div>
-
-    </div>
+    </Link>
   );
 }
