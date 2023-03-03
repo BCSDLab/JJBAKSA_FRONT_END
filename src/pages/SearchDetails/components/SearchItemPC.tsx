@@ -15,6 +15,7 @@ export default function SearchItemPC({ shop }: Props) {
   const {
     imageAlt, defaultImage, phoneNumber, image,
   } = getMockItem();
+
   return (
     <Link to="/" className={styles.item}>
       <div className={styles.image}>
@@ -39,7 +40,13 @@ export default function SearchItemPC({ shop }: Props) {
               <span className={styles.item__closing}>{SHOPS.closing}</span>
             </div>
             <div className={styles.item__distance}>{SHOPS.distance}</div>
-            <a href="tel:010-0000-0000" className={styles.item__phone}>
+            <a
+              onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+                event.stopPropagation();
+              }}
+              href={`tel:${phoneNumber}`}
+              className={styles.item__phone}
+            >
               {`전화하기    ${phoneNumber}`}
             </a>
           </div>
