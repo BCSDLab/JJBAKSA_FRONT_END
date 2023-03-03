@@ -19,7 +19,7 @@ export default function SearchItemPC({ shop }: Props) {
   return (
     <Link to="/" className={styles.item}>
       <div className={styles.image}>
-        <img className={styles.image__main} alt={imageAlt} src={defaultImage} />
+        <img className={styles.image__main} alt={imageAlt} src={image ?? defaultImage} />
         <div className={styles.image__other}>
           <img className={styles['image__other--second']} alt={imageAlt} src={image ?? defaultImage} />
           <img className={styles['image__other--third']} alt={imageAlt} src={image ?? defaultImage} />
