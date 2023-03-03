@@ -6,8 +6,9 @@ export interface FindProp {
   type: string
 }
 
-export interface EmailInParams {
+export interface EmailParams {
   email: string
+  account? : string
 }
 
 export interface AccountParams {
@@ -20,6 +21,7 @@ export interface RegisterProp {
   handleSubmit: UseFormHandleSubmit<CodeInfo>,
   setError: UseFormSetError<CodeInfo>,
   email: string,
+  account?: string
 }
 
 export interface InputInfo {

@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { changePassword } from 'api/user';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
@@ -10,13 +11,24 @@ import Modal from './component/Modal';
 const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 
 export default function ChangePassword(): JSX.Element {
-  const [isComplete, setIsComplete] = useState<boolean>();
-
+  const [value, toggle] = useBooleanState(false);
   const {
-    register, handleSubmit, formState: { errors, isValid }, getValues,
+    register, handleSubmit, formState: { errors, isValid }, getValues, setError,
   } = useForm<PasswordInfo>({
     mode: 'onChange',
   });
+
+  const changeUserPassword = async (param: PasswordInfo) => {
+    try {
+      const result = await changePassword(param);
+      if (result.status === 200) {
+        sessionStorage.removeItem('accessToken');
+        toggle();
+      }
+    } catch (e) {
+      setError('password', { type: 'value' });
+    }
+  };
 
   return (
     <div className={style.layout}>
@@ -42,7 +54,7 @@ export default function ChangePassword(): JSX.Element {
             [style.form]: true,
             [style.form__space]: true,
           })}
-          onSubmit={handleSubmit(() => setIsComplete(true))}
+          onSubmit={handleSubmit(changeUserPassword)}
         >
           <div className={style.form__center}>
             <div className={style.form__label}>새 비밀번호</div>
@@ -65,7 +77,7 @@ export default function ChangePassword(): JSX.Element {
               className={style.form__input}
               {...register('passwordCheck', {
                 required: '비밀번호 확인을 입력하세요',
-                validate: (value) => value === getValues('password') || '비밀번호가 일치하지 않습니다.',
+                validate: (values) => values === getValues('password') || '비밀번호가 일치하지 않습니다.',
               })}
             />
           </div>
@@ -80,8 +92,8 @@ export default function ChangePassword(): JSX.Element {
           </button>
         </form>
       </div>
-      {isComplete
-        && <Modal>재설정된 비밀번호로 로그인해주세요</Modal>}
+      {value
+        && <Modal type="비밀번호">재설정된 비밀번호로 다시 로그인해 주세요</Modal>}
     </div>
   );
 }
