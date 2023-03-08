@@ -3,9 +3,13 @@
 .controller {
   display: flex;
   position: relative;
-  padding-left: 32px;
-  padding-top: 44px;
+  padding-left: 17px;
+  padding-top: 24px;
   align-items: center;
+
+  @include media.media-breakpoint-down(mobile) {
+    padding-top: 44px;
+  }
 }
 
 .icon__head {
@@ -49,38 +53,69 @@
   background-color: white;
 }
 
-.checkbox {
+// 체크 박스
+.container {
+  display: block;
   position: relative;
-
-  // right: 16px;
-  accent-color: #ffd25d;
+  margin-bottom: 24px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.label {
-  position: relative;
-  right: 16px;
-  display: flex;
+.container .checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  box-sizing: border-box;
+  border: 1px solid #999999;
   border-radius: 3px;
-  height: 12px;
-  width: 12px;
+}
+
+.container:hover .checkbox ~ .checkmark {
+  background-color: #ccc;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container .checkmark::after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.container .checkbox:checked ~ .checkmark {
+  background-color: #ffd25d;
+}
+
+.container .checkbox:checked ~ .checkmark::after {
+  display: block;
 }
 
 .details {
-  width: 100%;
   height: 100vh;
-  font-size: 32px;
+  margin: 0 auto;
+  max-width: 1152px;
 
-  @include media.media-breakpoint-up(mobile) {
-    max-width: 767px;
-    margin: 0 auto;
-  }
-
-  // 검색 상세 페이지
   &__list {
     display: flex;
-    flex-direction: column;
-    padding-left: 24px;
-    padding-right: 24px;
+    flex-wrap: wrap;
+    margin-top: 24px;
   }
 }
 
@@ -96,35 +131,69 @@
 // 검색 아이템
 .item {
   display: flex;
-  gap: 16px;
+  gap: 24px;
+  border: none;
   border-bottom: 1px solid #c4c4c4;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  background-color: white;
+  padding: 24px 31px 24px 17px;
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
 
-  &__image {
+  &:hover {
+    background-color: #eeeeee;
+  }
+
+  .image {
+    display: flex;
     cursor: pointer;
-    width: 117px;
-    height: 117px;
+
+    &__main {
+      width: 230px;
+      height: 230px;
+    }
+
+    &__other {
+      display: flex;
+      flex-direction: column;
+      padding-left: 4px;
+
+      &--second {
+        width: 77px;
+        height: 77px;
+      }
+
+      &--third {
+        width: 77px;
+        height: 76px;
+      }
+
+      &--fourth {
+        width: 77px;
+        height: 77px;
+      }
+    }
   }
 
   &__title {
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 20px;
   }
 
   &__address {
     cursor: pointer;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
+    padding-top: 8px;
     line-height: 15px;
   }
 
   &__content {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
+    font-size: 16px;
   }
 
   &__info {
@@ -133,24 +202,45 @@
   }
 
   &__status {
+    padding-top: 93px;
+
     &--open {
       font-weight: 400;
-      font-size: 12px;
-      line-height: 15px;
+      font-size: 16px;
+      line-height: 20px;
       color: #ff7f23;
+    }
+
+    &--closed {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: #c4c4c4;
     }
   }
 
   &__closing {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 15px;
   }
 
   &__distance {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 15px;
+    padding-top: 4px;
+  }
+
+  &__phone {
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 15px;
+    white-space: pre-wrap;
+    padding-top: 20px;
+    text-decoration: none;
+    color: black;
   }
 
   &__map {
@@ -159,7 +249,7 @@
     margin-top: 34px;
   }
 
-  @include media.media-breakpoint-up(mobile) {
+  @include media.media-breakpoint-down(mobile) {
     width: 700px;
   }
 }
