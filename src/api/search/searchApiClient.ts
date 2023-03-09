@@ -1,6 +1,5 @@
 import axios from 'axios';
-
-const API_PATH = process.env.REACT_APP_API_PATH!;
+import { API_PATH } from 'config/constants';
 
 const searchApi = axios.create({
   baseURL: `${API_PATH}`,
