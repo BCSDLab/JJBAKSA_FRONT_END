@@ -1,0 +1,224 @@
+
+.title__navigation--back {
+    position: absolute;
+    left: 8.33%;
+    right: 89.72%;
+    top: 9.22%;
+    bottom: 88.59%;
+    //border: 1px solid #C4C4C4;
+    text-decoration: none;
+}
+.title__Setting {
+    position: absolute;
+    width: 28px;
+    height: 20px;
+    left: 53px;
+    top: 56px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #222222;
+}
+
+.account-setting {
+    position: absolute;
+    width: 53px;
+    height: 14px;
+    left: 17px;
+    top: 121px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FF7F23;
+}
+.account-Setting__id--change {
+    position: absolute;
+    width: 74px;
+    height: 20px;
+    left: 16px;
+    top: 151.5px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    text-decoration:none;
+
+}
+
+.id-id {
+    width: 69px;
+    height: 18px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #FF7F23;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.account-Setting__id-change--Right-angle-braket {
+    height: 14px;
+    width: 7px;
+    left: 9px;
+    top: 5px;
+    border-radius: 0px;
+    }
+
+.id-go {
+    position: absolute;
+    left: 37.5%;
+    right: 33.33%;
+    top: 20.83%;
+    bottom: 20.83%;
+    border: 1.5px solid #666666;
+    text-decoration:none;
+}
+
+.password-whole{
+    flex-direction: row;
+    justify-content: space-between ;
+}
+
+.account-Setting__password--change {
+    position: absolute;
+    width: 88px;
+    height: 20px;
+    left: 16px;
+    top: 185.5px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.account-Setting__password-change--Right-angle-braket {
+    height: 14px;
+    width: 7px;
+    left: 9px;
+    top: 5px;
+    border-radius: 0px;
+
+}
+
+.account-Setting__personal-information--manual {
+    position: absolute;
+    width: 116px;
+    height: 20px;
+    left: 17px;
+    top: 218px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.service-block {
+    position: absolute;
+    width: 37px;
+    height: 14px;
+    left: 15px;
+    top: 274px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FF7F23;
+
+}
+.service-block__announcement {
+    position: absolute;
+    width: 56px;
+    height: 20px;
+    left: 16px;
+    top: 303px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.service-block__inquiry {
+    position: absolute;
+    width: 56px;
+    height: 20px;
+    left: 16px;
+    top: 333px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+.service-block__app-version {
+    position: absolute;
+    width: 46px;
+    height: 20px;
+    left: 16px;
+    top: 363px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.bottom__log-out{
+    position: absolute;
+    width: 56px;
+    height: 20px;
+    left: 16px;
+    top: 551px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #222222;
+}
+
+.bottom__delete-account {
+    position: absolute;
+    width: 49px;
+    height: 17px;
+    left: 16px;
+    top: 581px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-decoration-line: underline;
+    color: #666666;
+}
