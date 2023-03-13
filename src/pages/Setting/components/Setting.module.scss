@@ -1,224 +1,170 @@
-
+.container {
+    display: flex;
+    flex-direction: column;
+}
+//===================
+.head {
+    display: flex;
+    flex-direction: row;
+    margin: 59px 279px 48px 30px;
+    white-space:nowrap;
+}
 .title__navigation--back {
-    position: absolute;
-    left: 8.33%;
-    right: 89.72%;
-    top: 9.22%;
-    bottom: 88.59%;
-    //border: 1px solid #C4C4C4;
-    text-decoration: none;
+    display: flex;
+    margin-right: 16px;
 }
 .title__Setting {
-    position: absolute;
-    width: 28px;
-    height: 20px;
-    left: 53px;
-    top: 56px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 500;
+    display: flex;
     font-size: 16px;
-    line-height: 20px;
-    color: #222222;
+    font-weight: bold;
 }
-
+//===================
+.account {
+    display: flex;
+    white-space:nowrap;
+    flex-direction: column;
+}
+//--------------------
 .account-setting {
-    position: absolute;
-    width: 53px;
-    height: 14px;
-    left: 17px;
-    top: 121px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 500;
+    display: flex;
     font-size: 14px;
-    line-height: 17px;
+    margin: 0px 290px 16.5px 17px;
     color: #FF7F23;
 }
-.account-Setting__id--change {
-    position: absolute;
-    width: 74px;
-    height: 20px;
-    left: 16px;
-    top: 151.5px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+//---------------------
+.account-setting__id {
     display: flex;
-    align-items: center;
-    color: #000000;
-    text-decoration:none;
+    flex-direction: row;
+    margin: 0px auto 14px 16px;
+}
 
+.account-setting__id--change {
+    font-size: 16px;
 }
 
 .id-id {
-    width: 69px;
-    height: 18px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
     display: flex;
-    align-items: center;
-    text-align: right;
+    font-size: 14px;
     color: #FF7F23;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+    margin-right: 13px;
+    margin-left: 157px;
 }
 
-.account-Setting__id-change--Right-angle-braket {
-    height: 14px;
-    width: 7px;
-    left: 9px;
-    top: 5px;
-    border-radius: 0px;
-    }
-
-.id-go {
-    position: absolute;
-    left: 37.5%;
-    right: 33.33%;
-    top: 20.83%;
-    bottom: 20.83%;
-    border: 1.5px solid #666666;
-    text-decoration:none;
+.account-setting__id--move {
+    display: flex;
+    margin-right: 24px;
 }
-
-.password-whole{
+//--------------------
+.account-setting__password {
+    display: flex;
     flex-direction: row;
-    justify-content: space-between ;
+    margin: 0px auto 12.5px 16px;
 }
 
 .account-Setting__password--change {
-    position: absolute;
-    width: 88px;
-    height: 20px;
-    left: 16px;
-    top: 185.5px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 400;
     font-size: 16px;
-    line-height: 20px;
+}
+
+.account-setting__password--move {
     display: flex;
-    align-items: center;
-    color: #000000;
+    margin-left: 225px;
+    margin-right: 24px;
 }
-
-.account-Setting__password-change--Right-angle-braket {
-    height: 14px;
-    width: 7px;
-    left: 9px;
-    top: 5px;
-    border-radius: 0px;
-
+//----------------
+.account-setting__password__personal-information{
+    display: flex;
+    margin: 0px auto 36px 16px;
 }
-
 .account-Setting__personal-information--manual {
-    position: absolute;
-    width: 116px;
-    height: 20px;
-    left: 17px;
-    top: 218px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 400;
     font-size: 16px;
-    line-height: 20px;
     display: flex;
-    align-items: center;
-    color: #000000;
+}
+.account-setting__password__personal-information--move{
+    display: flex;
+    margin-left: 195.33px;
+    margin-right: 18.33;
 }
 
-.service-block {
-    position: absolute;
-    width: 37px;
-    height: 14px;
-    left: 15px;
-    top: 274px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 500;
+//=======================
+.service-block{
+    display: flex;
+    flex-direction: column;
+    margin: 0px auto 168px 16px;
+    
+}
+.service-title {
     font-size: 14px;
-    line-height: 17px;
+    color: #FF7F23;
+    display: flex;
+    margin-bottom: 15px;
+}
+//-----------------------
+.service-block__announcement {
+    font-size: 16px;
+    display: flex;
+    margin-bottom: 10px;
+}
+.service-block__announcement--title {
+    font-size: 16px;
+    display: flex;
+}
+.service-block__announcement--title--move{
+    display: flex;
+    margin-left: 255.33px;
+}
+//------------------
+.service-block__inquiry {
+    font-size: 16px;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.service-block__inquiry--title {
+    display: flex;
+    font-size: 16px;
+}
+.service-block__inquiry--move {
+    display: flex;
+    font-size: 16px;
+    margin-left: 255.33px;
+}
+//--------------------
+.service-block__app-version {
+    font-size: 16px;
+    display: flex;
+    margin-bottom: 10px;
+    flex-direction: row;
+}
+.service-block__app-version--title {
+    display: flex;
+    font-size: 16px;
+}
+
+.service-block__app-version--imformation {
+    display: flex;
+    font-size: 14px;
+    margin-left: 159px;
     color: #FF7F23;
 
 }
-.service-block__announcement {
-    position: absolute;
-    width: 56px;
-    height: 20px;
-    left: 16px;
-    top: 303px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+//=================
+.bottom{
     display: flex;
-    align-items: center;
-    color: #000000;
-}
-
-.service-block__inquiry {
-    position: absolute;
-    width: 56px;
-    height: 20px;
-    left: 16px;
-    top: 333px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 400;
     font-size: 16px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    color: #000000;
-}
-
-.service-block__app-version {
-    position: absolute;
-    width: 46px;
-    height: 20px;
-    left: 16px;
-    top: 363px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    color: #000000;
+    flex-direction: column;
+    margin: 0px auto 42px 16px;
 }
 
 .bottom__log-out{
-    position: absolute;
-    width: 56px;
-    height: 20px;
-    left: 16px;
-    top: 551px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 500;
+    display: flex;
     font-size: 16px;
-    line-height: 20px;
-    color: #222222;
+    margin-bottom: 10px;
+    font-weight: bold;
+
 }
 
 .bottom__delete-account {
-    position: absolute;
-    width: 49px;
-    height: 17px;
-    left: 16px;
-    top: 581px;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 500;
     font-size: 14px;
-    line-height: 17px;
     text-decoration-line: underline;
-    color: #666666;
+
 }

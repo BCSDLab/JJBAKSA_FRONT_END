@@ -13,6 +13,7 @@ import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import ProtectedRoute from 'components/common/ProtectedRoute';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
+import Setting from 'pages/Setting/components';
 
 export default function App(): JSX.Element {
   return (
@@ -32,6 +33,7 @@ export default function App(): JSX.Element {
           <Route path="/find-password" element={<FindIdPassword type="password" />} />
           <Route path="/find/verify/:type" element={<VerifyField />} />
           <Route path="/find-password/change" element={<ChangePassword />} />
+          <Route path="/setting" element={<Setting />} />
         </Route>
       </Routes>
       <Toast />
