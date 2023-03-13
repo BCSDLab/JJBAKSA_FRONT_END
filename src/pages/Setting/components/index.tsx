@@ -61,7 +61,7 @@ export default function Setting(): JSX.Element {
       </div>
       <div className={styles.bottom}>
         <div className={styles['bottom__log-out']}>로그아웃</div>
-        <div className={styles['bottom__delete-account']}>탈퇴하기</div>
+        <div className={styles['bottom__delete-account']}>탈퇴하기기</div>
       </div>
     </div>
   );
