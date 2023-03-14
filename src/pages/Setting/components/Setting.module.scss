@@ -2,47 +2,50 @@
     display: flex;
     flex-direction: column;
 }
-//===================
+
 .head {
     display: flex;
     flex-direction: row;
     margin: 59px 279px 48px 30px;
     white-space:nowrap;
 }
-.title__navigation--back {
+.head__left-arrow {
     display: flex;
     margin-right: 16px;
 }
-.title__Setting {
+.title {
     display: flex;
     font-size: 16px;
     font-weight: bold;
 }
-//===================
+
 .account {
     display: flex;
     white-space:nowrap;
     flex-direction: column;
 }
-//--------------------
-.account-setting {
+
+.sub-title{
     display: flex;
     font-size: 14px;
     margin: 0px 290px 16.5px 17px;
     color: #FF7F23;
 }
-//---------------------
-.account-setting__id {
+
+.block {
     display: flex;
     flex-direction: row;
     margin: 0px auto 14px 16px;
+    justify-content: space-between;
+    width: 328px;
+	height: 20px;
 }
 
-.account-setting__id--change {
+.account-text {
     font-size: 16px;
 }
 
-.id-id {
+.current-text {
     display: flex;
     font-size: 14px;
     color: #FF7F23;
@@ -50,121 +53,51 @@
     margin-left: 157px;
 }
 
-.account-setting__id--move {
+.id__right-arrow {
     display: flex;
-    margin-right: 24px;
-}
-//--------------------
-.account-setting__password {
-    display: flex;
-    flex-direction: row;
-    margin: 0px auto 12.5px 16px;
 }
 
-.account-Setting__password--change {
-    font-size: 16px;
+.password__right-arrow {
+    display: flex;
 }
 
-.account-setting__password--move {
+.policy__announcement{
     display: flex;
-    margin-left: 225px;
-    margin-right: 24px;
-}
-//----------------
-.account-setting__password__personal-information{
-    display: flex;
-    margin: 0px auto 36px 16px;
-}
-.account-Setting__personal-information--manual {
-    font-size: 16px;
-    display: flex;
-}
-.account-setting__password__personal-information--move{
-    display: flex;
-    margin-left: 195.33px;
-    margin-right: 18.33;
 }
 
-//=======================
-.service-block{
+.service{
     display: flex;
+    white-space:nowrap;
     flex-direction: column;
-    margin: 0px auto 168px 16px;
-    
-}
-.service-title {
-    font-size: 14px;
-    color: #FF7F23;
-    display: flex;
-    margin-bottom: 15px;
-}
-//-----------------------
-.service-block__announcement {
-    font-size: 16px;
-    display: flex;
-    margin-bottom: 10px;
-}
-.service-block__announcement--title {
-    font-size: 16px;
-    display: flex;
-}
-.service-block__announcement--title--move{
-    display: flex;
-    margin-left: 255.33px;
-}
-//------------------
-.service-block__inquiry {
-    font-size: 16px;
-    display: flex;
-    margin-bottom: 10px;
 }
 
-.service-block__inquiry--title {
+.service__announcement{
     display: flex;
-    font-size: 16px;
-}
-.service-block__inquiry--move {
-    display: flex;
-    font-size: 16px;
-    margin-left: 255.33px;
-}
-//--------------------
-.service-block__app-version {
-    font-size: 16px;
-    display: flex;
-    margin-bottom: 10px;
-    flex-direction: row;
-}
-.service-block__app-version--title {
-    display: flex;
-    font-size: 16px;
 }
 
-.service-block__app-version--imformation {
+.app-version--imformation {
     display: flex;
     font-size: 14px;
     margin-left: 159px;
     color: #FF7F23;
-
 }
-//=================
+
 .bottom{
     display: flex;
-    font-size: 16px;
+    white-space:nowrap;
     flex-direction: column;
-    margin: 0px auto 42px 16px;
+    margin-top: 168px;
 }
 
 .bottom__log-out{
     display: flex;
     font-size: 16px;
-    margin-bottom: 10px;
     font-weight: bold;
-
+    margin: 0px auto 10px 16px;
 }
 
 .bottom__delete-account {
     font-size: 14px;
     text-decoration-line: underline;
-
+    margin: 0px auto 42px 16px;
 }
