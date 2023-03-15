@@ -5,12 +5,12 @@ import { useRef } from 'react';
 export default function Recommendation() {
   const recommendIdx = useRef(Math.floor(Math.random() * RECOMMEND_TEXT.length));
 
-  const recommendationSentence = RECOMMEND_TEXT[recommendIdx.current];
+  const recommendationSentence = RECOMMEND_TEXT[recommendIdx.current][0];
 
   return (
     <h1
       className={styles.search__recommend}
-      dangerouslySetInnerHTML={{ __html: recommendationSentence[0] }}
+      dangerouslySetInnerHTML={{ __html: recommendationSentence }}
     />
   );
 }
