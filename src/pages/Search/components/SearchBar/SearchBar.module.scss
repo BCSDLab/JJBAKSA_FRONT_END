@@ -4,7 +4,7 @@
   width: 100%;
   height: 100vh;
   font-size: 32px;
-
+  
   &__recommend {
     word-break: keep-all;
     height: 80px;
@@ -12,10 +12,13 @@
     padding-right: 60px;
     padding-left: 30px;
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 300;
     line-height: 40px;
     white-space: pre-wrap;
     color: #000000;
+    strong{
+      color: #FF7F23;
+    }
 
     @include media.media-breakpoint-down(mobile) {
       max-width: 767px;
@@ -23,6 +26,11 @@
       margin: 0 auto;
     }
   }
+
+  }
+
+.point-recommend-font-color{
+  color: #FF7F23;
 }
 
 .search-bar {
@@ -34,20 +42,24 @@
   margin-top: 32px;
   margin-right: 16px;
   margin-left: 16px;
-  background: #eeeeee;
+  background: #FFFFFF;
+  box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 0.1);
   padding-left: 15px;
 
   &__input {
     width: 100%;
     height: 15px;
     border: none;
-    background: none;
+    //background: #FFFFFF;
     font-size: 14px;
     line-height: 15px;
 
     &::placeholder {
-      color: #c4c4c4;
+      color: #666666;
       font-size: 12px;
+    }
+    &:focus{
+      outline: none;
     }
   }
 
@@ -66,7 +78,7 @@
   margin-top: 8px;
   margin-right: 27px;
   margin-left: 27px;
-  height: 15px;
+  height: 25px;
   font-size: 12px;
 
   strong {
@@ -92,7 +104,22 @@
   }
 
   &__tag {
+    display: flex;
     animation: text-loop 10s linear infinite;
-    padding-right: 10px;
+    text-align: center;
+    align-items: center;
+    
+  }
+  &__tag-style {
+    margin-right: 10px;
+    border: 1px solid #C4C4C4;
+    color: #C4C4C4;
+    border-radius: 15px;
+    padding: 3px 7px 3px 7px;
+    &:hover{
+      border: 1px solid #FF7F23;
+      color: #FF7F23;
+      background-color: rgba(246, 191, 84, 0.2);
+    }
   }
 }

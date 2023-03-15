@@ -71,6 +71,9 @@
     &:disabled {
       background-color: #c4c4c4;
     }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   @include media.media-breakpoint-down(mobile) {
