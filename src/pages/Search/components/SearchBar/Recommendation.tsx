@@ -5,7 +5,7 @@ import { useRef } from 'react';
 export default function Recommendation() {
   const recommendIdx = useRef(Math.floor(Math.random() * RECOMMEND_TEXT.length));
 
-  const recommendationSentence = RECOMMEND_TEXT[recommendIdx.current][0];
+  const recommendationSentence = RECOMMEND_TEXT[recommendIdx.current];
 
   return (
     <h1
