@@ -24,6 +24,7 @@ export default function App(): JSX.Element {
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
         </Route>
+        <Route path="/setting" element={<Setting />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
@@ -33,7 +34,6 @@ export default function App(): JSX.Element {
           <Route path="/find-password" element={<FindIdPassword type="password" />} />
           <Route path="/find/verify/:type" element={<VerifyField />} />
           <Route path="/find-password/change" element={<ChangePassword />} />
-          <Route path="/setting" element={<Setting />} />
         </Route>
       </Routes>
       <Toast />
