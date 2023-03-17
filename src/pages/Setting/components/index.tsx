@@ -7,14 +7,12 @@ import styles from './Setting.module.scss';
 export default function Setting(): JSX.Element {
   return (
     <div className={styles.container}>
-
       <div className={styles.head}>
         <div className={styles['head__left-arrow']}>
           <Link to="/"><ArrowLeft /></Link>
         </div>
         <div className={styles.title}>설정</div>
       </div>
-
       <div className={styles.account}>
         <div className={styles['sub-title']}>계정 관리</div>
         <div className={styles.block}>
@@ -37,7 +35,6 @@ export default function Setting(): JSX.Element {
           </div>
         </div>
       </div>
-
       <div className={styles.service}>
         <div className={styles['sub-title']}>서비스</div>
         <div className={styles.block}>
@@ -46,7 +43,6 @@ export default function Setting(): JSX.Element {
             <Link to="/"><Move /></Link>
           </div>
         </div>
-
         <div className={styles.block}>
           <div className={styles['service-text']}>문의하기</div>
           <div className={styles.service__announcement}>
