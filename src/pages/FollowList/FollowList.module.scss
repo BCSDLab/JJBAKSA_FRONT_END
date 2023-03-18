@@ -1,0 +1,33 @@
+.follower {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 112px;
+  width: 1150px;
+  margin-top: 39px;
+  margin-bottom: 39px;
+
+  &__image {
+    width: 112px;
+    height: 112px;
+  }
+
+  &__content {
+    width: 720px;
+    padding-left: 60px;
+
+    &--font {
+      font-size: 30px;
+    }
+  }
+
+  &__button {
+    width: 175px;
+    height: 49px;
+    color: #C4C4C4;
+    border: 1px solid #C4C4C4;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+  }
+}
