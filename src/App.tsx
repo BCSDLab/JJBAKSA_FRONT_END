@@ -13,6 +13,7 @@ import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import ProtectedRoute from 'components/common/ProtectedRoute';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
+import FollowList from 'pages/FollowList';
 
 export default function App(): JSX.Element {
   return (
@@ -22,6 +23,7 @@ export default function App(): JSX.Element {
           <Route path="/post" element={<Post />} />
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
+          <Route path="/freind-list" element={<FollowList />} />
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/login" element={<Login />} />
