@@ -62,3 +62,7 @@ export interface FindPasswordParams {
 export interface ChangePasswordParams {
   password: string
 }
+
+export interface SearchUsersParams {
+  keyword: string;
+}
