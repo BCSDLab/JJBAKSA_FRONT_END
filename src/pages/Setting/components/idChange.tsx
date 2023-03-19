@@ -1,6 +1,6 @@
 import styles from './Setting.module.scss';
 
-export default function idChage(): JSX.Element {
+export default function IdChage(): JSX.Element {
   return (
     <div>
       <div className={styles['meue-back']}>&lt;</div>

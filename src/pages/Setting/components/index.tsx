@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ReactComponent as ArrowLeft } from 'assets/svg/setting/arrow-left.svg';
+// import { ReactComponent as ArrowLeft } from 'assets/svg/setting/arrow-left.svg';
 import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg';
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
 import { useAuth } from 'store/auth';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
 import styles from './Setting.module.scss';
 
 export default function Setting(): JSX.Element {
@@ -10,8 +11,9 @@ export default function Setting(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.head}>
+
         <div className={styles['head__left-arrow']}>
-          <Link to="/"><ArrowLeft /></Link>
+          <PreviousButton />
         </div>
         <div className={styles.title}>설정</div>
       </div>
