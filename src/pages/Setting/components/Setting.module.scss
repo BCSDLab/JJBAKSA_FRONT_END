@@ -5,78 +5,84 @@
   align-items: center;
 }
 
-.head {
+.header {
   display: flex;
   flex-direction: row;
   margin: 59px 279px 48px 30px;
   white-space: nowrap;
-}
 
-.head__left-arrow {
-  display: flex;
-  margin-right: 16px;
-}
+  &__left-arrow {
+    display: flex;
+    margin-right: 16px;
+  }
 
-.title {
-  display: flex;
-  font-size: 16px;
-  font-weight: bold;
+  
+  &__title {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+  }
 }
 
 .account {
   display: flex;
   white-space: nowrap;
   flex-direction: column;
-}
 
-.sub-title {
-  display: flex;
-  font-size: 14px;
-  margin: 0 290px 16.5px 17px;
-  color: #ff7f23;
-}
+  &__sub-title {
+    display: flex;
+    font-size: 14px;
+    margin: 0 290px 16.5px 17px;
+    color: #ff7f23;
+  }
 
-.block {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto 14px 16px;
-  justify-content: space-between;
-  width: 328px;
-	height: 20px;
-}
+  &__contents {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto 14px 16px;
+    justify-content: space-between;
+    width: 328px;
+    height: 20px;
+  }
 
-.account-text {
-  font-size: 16px;
-}
+  &__text {
+    font-size: 16px;
+  }
 
-.current-text {
-  display: flex;
-  font-size: 14px;
-  color: #ff7f23;
-  margin-right: 13px;
-  margin-left: 157px;
-}
-
-.id__right-arrow {
-  display: flex;
-}
-
-.password__right-arrow {
-  display: flex;
-}
-
-.policy__announcement {
-  display: flex;
+  &__right-arrow {
+    display: flex;
+  }
 }
 
 .service {
   display: flex;
   white-space: nowrap;
   flex-direction: column;
+
+  &__sub-title {
+    display: flex;
+    font-size: 14px;
+    margin: 0 290px 16.5px 17px;
+    color: #ff7f23;
+  }
+
+  &__contents {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto 14px 16px;
+    justify-content: space-between;
+    width: 328px;
+    height: 20px;
+  }
+
+  &__announcement {
+    display: flex;
+  }
 }
 
-.service__announcement {
-  display: flex;
+.link {
+  color: inherit;
+  text-decoration: none;
 }
 
 .app-version--imformation {
@@ -91,17 +97,21 @@
   white-space: nowrap;
   flex-direction: column;
   margin-top: 168px;
+
+  &__log-out {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 auto 10px 16px;
+  }
+
+  &__delete-account {
+    font-size: 14px;
+    text-decoration-line: underline;
+    margin: 0 auto 42px 16px;
+  }
+  
 }
 
-.bottom__log-out {
-  display: flex;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0 auto 10px 16px;
-}
 
-.bottom__delete-account {
-  font-size: 14px;
-  text-decoration-line: underline;
-  margin: 0 auto 42px 16px;
-}
+
