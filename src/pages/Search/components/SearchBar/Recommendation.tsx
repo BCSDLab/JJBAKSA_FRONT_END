@@ -8,11 +8,8 @@ export default function Recommendation() {
   const recommendationSentence = RECOMMEND_TEXT[recommendIdx.current];
 
   return (
-    <h1
-      className={styles.search__recommend}
-      dangerouslySetInnerHTML={{ __html: recommendationSentence }}
-    />
+    <h1 className={styles.search__recommend}>
+      {recommendationSentence}
+    </h1>
   );
 }
-
-// className={styles.point-recommend-font-color}
