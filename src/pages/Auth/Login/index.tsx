@@ -84,110 +84,108 @@ export default function Login(): JSX.Element {
   const submitLogin = useLoginRequest({ onError: setErroMsg });
 
   return (
-    <div>
-      <div className={styles.template}>
-        <AuthTopNavigation />
-        <div className={styles.content}>
-          <div className={styles.form}>
-            <form
-              className={styles.loginform}
-              onSubmit={handleSubmit(submitLogin)}
+    <div className={styles.template}>
+      <AuthTopNavigation />
+      <div className={styles.content}>
+        <div className={styles.form}>
+          <form
+            className={styles.loginform}
+            onSubmit={handleSubmit(submitLogin)}
+          >
+            <div className={styles.loginform__login}>로그인하기</div>
+            <div className={styles.loginform__detail}>{'쩝쩝박사의 서비스를 이용하려면\n로그인하세요.'}</div>
+            <div className={styles.error}>
+              {errorMsg && <ErrorIcon aria-hidden />}
+              {errorMsg}
+            </div>
+            <input
+              className={styles.loginform__input}
+              type="text"
+              id="id"
+              placeholder="아이디"
+              {...register('id', { required: true })}
+              autoComplete="username"
+            />
+            <input
+              className={styles.loginform__input}
+              type="password"
+              id="password"
+              placeholder="비밀번호"
+              autoComplete="current-password"
+              {...register('password', {
+                required: true,
+              })}
+            />
+            <div className={styles.signup}>
+              계정이 없으신가요?
+              <Link className={styles.signup__link} to="/terms-of-service">
+                회원가입
+              </Link>
+            </div>
+            <div className={styles.autologin}>
+              <label htmlFor="checkbox">
+                <span className={styles.autologin__text}>자동 로그인</span>
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  {...register('isAutoLoginChecked')}
+                  className={styles.autologin_checkbox}
+                />
+              </label>
+            </div>
+            <button
+              type="submit"
+              disabled={!isValid}
+              className={styles.loginform__button}
             >
-              <div className={styles.loginform__login}>로그인하기</div>
-              <div className={styles.loginform__detail}>{'쩝쩝박사의 서비스를 이용하려면\n로그인하세요.'}</div>
-              <div className={styles.error}>
-                {errorMsg && <ErrorIcon aria-hidden />}
-                {errorMsg}
-              </div>
-              <input
-                className={styles.loginform__input}
-                type="text"
-                id="id"
-                placeholder="아이디"
-                {...register('id', { required: true })}
-                autoComplete="username"
-              />
-              <input
-                className={styles.loginform__input}
-                type="password"
-                id="password"
-                placeholder="비밀번호"
-                autoComplete="current-password"
-                {...register('password', {
-                  required: true,
+              로그인
+            </button>
+          </form>
+          <div className={styles.help}>
+            <Link className={styles.help__link} to="/find-id">
+              아이디 찾기
+            </Link>
+            <Link className={styles.help__link} to="/find-password">
+              비밀번호 찾기
+            </Link>
+          </div>
+          <div className={styles.divide}>
+            또는
+          </div>
+          <div className={styles.social}>
+            <div className={styles.social__title}>SNS 계정으로 로그인하기</div>
+            <div className={styles.social__link}>
+              <a
+                className={cn({
+                  [styles.social__icon]: true,
+                  [styles['social__icon--google']]: true,
                 })}
-              />
-              <div className={styles.signup}>
-                계정이 없으신가요?
-                <Link className={styles.signup__link} to="/terms-of-service">
-                  회원가입
-                </Link>
-              </div>
-              <div className={styles.autologin}>
-                <label htmlFor="checkbox">
-                  <span className={styles.autologin__text}>자동 로그인</span>
-                  <input
-                    type="checkbox"
-                    id="checkbox"
-                    {...register('isAutoLoginChecked')}
-                    className={styles.autologin_checkbox}
-                  />
-                </label>
-              </div>
-              <button
-                type="submit"
-                disabled={!isValid}
-                className={styles.loginform__button}
+                href={GOOGLE_REDIRECT_URL}
               >
-                로그인
-              </button>
-            </form>
-            <div className={styles.help}>
-              <Link className={styles.help__link} to="/find-id">
-                아이디 찾기
-              </Link>
-              <Link className={styles.help__link} to="/find-password">
-                비밀번호 찾기
-              </Link>
-            </div>
-            <div className={styles.divide}>
-              또는
-            </div>
-            <div className={styles.social}>
-              <div className={styles.social__title}>SNS 계정으로 로그인하기</div>
-              <div className={styles.social__link}>
-                <a
-                  className={cn({
-                    [styles.social__icon]: true,
-                    [styles['social__icon--google']]: true,
-                  })}
-                  href={GOOGLE_REDIRECT_URL}
-                >
-                  <GoogleIcon title="구글 계정 연동" />
-                </a>
-                <a
-                  className={cn({
-                    [styles.social__icon]: true,
-                    [styles['social__icon--kakao']]: true,
-                  })}
-                  href={KAKAO_REDIRECT_URL}
-                >
-                  <KakaoIcon title="카카오 계정 연동" />
-                </a>
-                <a
-                  className={cn({
-                    [styles.social__icon]: true,
-                    [styles['social__icon--naver']]: true,
-                  })}
-                  href={NAVER_REDIRECT_URL}
-                >
-                  <NaverIcon title="네이버 계정 연동" />
-                </a>
-              </div>
+                <GoogleIcon title="구글 계정 연동" />
+              </a>
+              <a
+                className={cn({
+                  [styles.social__icon]: true,
+                  [styles['social__icon--kakao']]: true,
+                })}
+                href={KAKAO_REDIRECT_URL}
+              >
+                <KakaoIcon title="카카오 계정 연동" />
+              </a>
+              <a
+                className={cn({
+                  [styles.social__icon]: true,
+                  [styles['social__icon--naver']]: true,
+                })}
+                href={NAVER_REDIRECT_URL}
+              >
+                <NaverIcon title="네이버 계정 연동" />
+              </a>
             </div>
           </div>
-          <Copyright />
         </div>
+        <Copyright />
       </div>
     </div>
   );
