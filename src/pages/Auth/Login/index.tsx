@@ -116,22 +116,24 @@ export default function Login(): JSX.Element {
                 required: true,
               })}
             />
-            <div className={styles.signup}>
-              계정이 없으신가요?
-              <Link className={styles.signup__link} to="/terms-of-service">
-                회원가입
-              </Link>
-            </div>
-            <div className={styles.autologin}>
-              <label htmlFor="checkbox">
-                <span className={styles.autologin__text}>자동 로그인</span>
-                <input
-                  type="checkbox"
-                  id="checkbox"
-                  {...register('isAutoLoginChecked')}
-                  className={styles.autologin_checkbox}
-                />
-              </label>
+            <div className={styles.middle}>
+              <span className={styles.signup}>
+                계정이 없으신가요?&nbsp;
+                <Link className={styles.signup__link} to="/terms-of-service">
+                  회원가입
+                </Link>
+              </span>
+              <div className={styles.autologin}>
+                <label htmlFor="checkbox">
+                  <span className={styles.autologin__text}>자동 로그인</span>
+                  <input
+                    type="checkbox"
+                    id="checkbox"
+                    {...register('isAutoLoginChecked')}
+                    className={styles.autologin_checkbox}
+                  />
+                </label>
+              </div>
             </div>
             <button
               type="submit"
