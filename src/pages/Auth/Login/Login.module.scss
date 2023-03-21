@@ -27,9 +27,19 @@
   flex-direction: column;
 
   &__login {
-    margin-bottom: 7px;
-    padding-left: 16px;
-    font-size: 14px;
+    font-weight: 700;
+    line-height: 40px;
+    font-size: 32px;
+    text-align: center;
+    color: #ff7f23;
+  }
+
+  &__detail {
+    white-space: pre;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
   }
 
   &__input {
@@ -163,7 +173,46 @@
   }
 }
 
+.signup {
+  display: flex;
+
+  &__link {
+    color: #ff7f23;
+  }
+}
+
+.divide {
+  width: 163px;
+  color: #c4c4c4;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 50px;
+
+  &::before {
+    content: "";
+    flex-grow: 1;
+    background: #c4c4c4;
+    height: 1px;
+    margin: 14px;
+  }
+
+  &::after {
+    content: "";
+    flex-grow: 1;
+    background: #c4c4c4;
+    height: 1px;
+    margin: 14px;
+  }
+}
+
 .help {
+  display: flex;
+  justify-content: center;
   font-size: 12px;
   margin-bottom: 50px;
   text-align: center;
@@ -194,7 +243,7 @@
   text-align: center;
 
   &__title {
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 48px;
 
     @include media.media-breakpoint-down(mobile) {

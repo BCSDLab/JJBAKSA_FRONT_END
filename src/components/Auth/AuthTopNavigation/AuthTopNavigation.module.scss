@@ -1,0 +1,41 @@
+.navbar {
+  position: absolute;
+  height: 80px;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 2px solid #eeeeee;
+
+  &__link {
+    margin-left: 16px;
+  }
+
+  &__login {
+    border: none;
+    color: #666666;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: transparent;
+
+    &:hover {
+      color: #000000;
+    }
+  }
+
+  &__signup {
+    font-weight: 500;
+    font-size: 16px;
+    background-color: transparent;
+    color: #ff7f23;
+    border: 1px solid #ff7f23;
+    padding: 10px;
+    border-radius: 30px;
+
+    &:hover {
+      color: #ffffff;
+      background-color: #ff7f23;
+    }
+  }
+}
