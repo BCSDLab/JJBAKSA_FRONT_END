@@ -12,7 +12,6 @@ export default function TopNavigation(): JSX.Element {
       <div className={styles['top-navigation__logo']}>
         <Link to="/" className={styles['top-navigation__logo-link']}>
           <LogoIcon />
-          <span>쩝쩝박사</span>
         </Link>
       </div>
 
