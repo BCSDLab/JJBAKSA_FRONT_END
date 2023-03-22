@@ -93,7 +93,7 @@
     }
 
     &__button {
-      margin-top: 40px;
+      margin-top: 30px;
       margin-bottom: 16px;
     }
   }
@@ -179,6 +179,12 @@
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
+
+  @include media.media-breakpoint-down(mobile) {
+    padding-top: 10px;
+    flex-direction: column-reverse;
+    align-items: end;
+  }
 }
 
 .signup {
@@ -190,6 +196,10 @@
 
   &__link {
     color: #ff7f23;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    padding-top: 20px;
   }
 }
 
@@ -253,7 +263,10 @@
   text-align: center;
 
   &__title {
+    font-weight: 500;
     font-size: 18px;
+    line-height: 22px;
+    color: #666666;
     margin-bottom: 48px;
 
     @include media.media-breakpoint-down(mobile) {
