@@ -4,7 +4,7 @@ import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import AuthTitle from 'components/Auth/AuthTitle';
+import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
 import { useState } from 'react';
@@ -85,18 +85,19 @@ export default function Login(): JSX.Element {
 
   return (
     <div className={styles.template}>
+      <AuthTopNavigation />
       <div className={styles.content}>
-        <AuthTitle />
         <div className={styles.form}>
           <form
             className={styles.loginform}
             onSubmit={handleSubmit(submitLogin)}
           >
+            <div className={styles.loginform__login}>로그인하기</div>
+            <div className={styles.loginform__detail}>{'쩝쩝박사의 서비스를 이용하려면\n로그인하세요.'}</div>
             <div className={styles.error}>
               {errorMsg && <ErrorIcon aria-hidden />}
               {errorMsg}
             </div>
-            <div className={styles.loginform__login}>로그인</div>
             <input
               className={styles.loginform__input}
               type="text"
@@ -115,16 +116,24 @@ export default function Login(): JSX.Element {
                 required: true,
               })}
             />
-            <div className={styles.autologin}>
-              <label htmlFor="checkbox">
-                <span className={styles.autologin__text}>자동 로그인</span>
-                <input
-                  type="checkbox"
-                  id="checkbox"
-                  {...register('isAutoLoginChecked')}
-                  className={styles.autologin_checkbox}
-                />
-              </label>
+            <div className={styles.middle}>
+              <span className={styles.signup}>
+                계정이 없으신가요?&nbsp;
+                <Link className={styles.signup__link} to="/terms-of-service">
+                  회원가입
+                </Link>
+              </span>
+              <div className={styles.autologin}>
+                <label htmlFor="checkbox">
+                  <span className={styles.autologin__text}>자동 로그인</span>
+                  <input
+                    type="checkbox"
+                    id="checkbox"
+                    {...register('isAutoLoginChecked')}
+                    className={styles.autologin_checkbox}
+                  />
+                </label>
+              </div>
             </div>
             <button
               type="submit"
@@ -141,9 +150,9 @@ export default function Login(): JSX.Element {
             <Link className={styles.help__link} to="/find-password">
               비밀번호 찾기
             </Link>
-            <Link className={styles.help__link} to="/terms-of-service">
-              회원가입
-            </Link>
+          </div>
+          <div className={styles.divide}>
+            또는
           </div>
           <div className={styles.social}>
             <div className={styles.social__title}>SNS 계정으로 로그인하기</div>
