@@ -1,32 +1,35 @@
-import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg';
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from 'store/auth';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import { useState, useEffect } from 'react';
+import SETTING_TEXT from './setting';
 import styles from './Setting.module.scss';
 
-export default function Setting(): JSX.Element {
-  const [string, setString] = useState('로그인이 되지 않았습니다.');
-  const auth = useAuth();
+export default function Setting() {
+  const [id, setId] = useState(SETTING_TEXT.requiredLogin);
   const navigate = useNavigate();
+  const auth = useAuth();
 
-  const disabledArrow = () => {
-    if (auth?.account) {
-      navigate('id-change');
-    }
+  const clickArrow = () => {
+    if (auth?.account) navigate('id-change');
   };
 
-  useEffect(() => {
-    const isLogin = () => {
+  const isLogin = useCallback(
+    () => {
       if (auth === null) {
-        setString('로그인이 되지 않았습니다.');
+        setId(SETTING_TEXT.requiredLogin);
       } else {
-        setString(auth?.account);
+        setId(auth?.account);
       }
-    };
+    },
+    [auth],
+  );
+
+  useEffect(() => {
     isLogin();
-  }, [auth]);
+  }, [isLogin]);
 
   return (
     <div className={styles.container}>
@@ -41,8 +44,8 @@ export default function Setting(): JSX.Element {
         <div className={styles.account__contents}>
           <div className={styles.account__text}>아이디 변경</div>
           <div className={styles.account__box}>
-            <div className={styles.account__id}>{string}</div>
-            <button type="submit" id="arrow" className={styles['account__right-arrow']} onClick={disabledArrow}>
+            <div className={styles.account__id}>{id}</div>
+            <button type="submit" id="arrow" className={styles['account__right-arrow']} onClick={clickArrow}>
               <ArrowRight />
             </button>
           </div>
