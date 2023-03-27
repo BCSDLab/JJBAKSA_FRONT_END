@@ -1,13 +1,33 @@
-import { Link } from 'react-router-dom';
-// import { ReactComponent as ArrowLeft } from 'assets/svg/setting/arrow-left.svg';
+import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg';
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
 import { useAuth } from 'store/auth';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
+import { useState, useEffect } from 'react';
 import styles from './Setting.module.scss';
 
 export default function Setting(): JSX.Element {
+  const [string, setString] = useState('로그인이 되지 않았습니다.');
   const auth = useAuth();
+  const navigate = useNavigate();
+
+  const disabledArrow = () => {
+    if (auth?.account) {
+      navigate('id-change');
+    }
+  };
+
+  useEffect(() => {
+    const isLogin = () => {
+      if (auth === null) {
+        setString('로그인이 되지 않았습니다.');
+      } else {
+        setString(auth?.account);
+      }
+    };
+    isLogin();
+  }, [auth]);
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -18,15 +38,15 @@ export default function Setting(): JSX.Element {
       </div>
       <div className={styles.account}>
         <div className={styles['account__sub-title']}>계정 관리</div>
-        <Link to="/" className={styles.link}>
-          <div className={styles.account__contents}>
-            <div className={styles.account__text}>아이디 변경</div>
-            <div className={styles.account__text}>{auth?.account}</div>
-            <div className={styles['account__right-arrow']}>
+        <div className={styles.account__contents}>
+          <div className={styles.account__text}>아이디 변경</div>
+          <div className={styles.account__box}>
+            <div className={styles.account__id}>{string}</div>
+            <button type="submit" id="arrow" className={styles['account__right-arrow']} onClick={disabledArrow}>
               <ArrowRight />
-            </div>
+            </button>
           </div>
-        </Link>
+        </div>
         <Link to="/" className={styles.link}>
           <div className={styles.account__contents}>
             <div className={styles.account__text}>비밀번호 변경 </div>
@@ -64,7 +84,7 @@ export default function Setting(): JSX.Element {
         </Link>
         <div className={styles.service__contents}>
           <div className={styles.service__text}>앱 버전</div>
-          <div className={styles['app-version--imformation']}>
+          <div className={styles['service__app-version']}>
             현재 1.2.0 / 최신 1.2.0
           </div>
         </div>

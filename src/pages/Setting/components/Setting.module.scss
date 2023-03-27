@@ -35,6 +35,12 @@
     color: #ff7f23;
   }
 
+  &__id {
+    display: flex;
+    font-size: 14px;
+    color: #ff7f23;
+  }
+
   &__contents {
     display: flex;
     flex-direction: row;
@@ -44,12 +50,20 @@
     height: 20px;
   }
 
+  &__box {
+    display: flex;
+    flex-direction: row;
+  }
+
   &__text {
     font-size: 16px;
   }
 
   &__right-arrow {
     display: flex;
+    margin-left: 13px;
+    border: none;
+    background-color: white;
   }
 }
 
@@ -57,6 +71,8 @@
   display: flex;
   white-space: nowrap;
   flex-direction: column;
+  margin-top: 20px;
+  margin-right: 15px;
 
   &__sub-title {
     display: flex;
@@ -77,6 +93,12 @@
   &__announcement {
     display: flex;
   }
+
+  &__app-version {
+    display: flex;
+    font-size: 14px;
+    color: #ff7f23;
+  }
 }
 
 .link {
@@ -84,22 +106,15 @@
   text-decoration: none;
 }
 
-.app-version--imformation {
-  display: flex;
-  font-size: 14px;
-  margin-left: 159px;
-  color: #ff7f23;
-}
-
 .bottom {
   display: flex;
-  white-space: nowrap;
   flex-direction: column;
-  margin-top: 168px;
+  margin-top: 140px;
+  margin-right: 290px;
 
   &__log-out {
     display: flex;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     margin: 0 auto 10px 16px;
   }
