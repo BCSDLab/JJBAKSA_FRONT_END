@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function IdChage(): JSX.Element {
+export default function IdChange(): JSX.Element {
   return (
     <div>
       <Link to="/setting">설정으로 돌아가기~~</Link>
