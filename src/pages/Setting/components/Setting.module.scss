@@ -7,9 +7,10 @@
 
 .header {
   display: flex;
-  flex-direction: row;
   margin: 59px 279px 48px 30px;
   white-space: nowrap;
+  justify-content: center;
+  align-items: center;
 
   &__left-arrow {
     display: flex;
@@ -20,6 +21,7 @@
     display: flex;
     font-size: 16px;
     font-weight: bold;
+    font-weight: 500;
   }
 }
 
@@ -27,6 +29,7 @@
   display: flex;
   white-space: nowrap;
   flex-direction: column;
+  font-weight: 500;
 
   &__sub-title {
     display: flex;
@@ -68,6 +71,7 @@
 }
 
 .service {
+  font-weight: 500;
   display: flex;
   white-space: nowrap;
   flex-direction: column;
@@ -84,7 +88,7 @@
   &__contents {
     display: flex;
     flex-direction: row;
-    margin: 0 auto 14px 16px;
+    margin: 0 auto 12.5px 16px;
     justify-content: space-between;
     width: 328px;
     height: 20px;
