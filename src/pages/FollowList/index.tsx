@@ -1,11 +1,12 @@
 import { searchUsers } from 'api/user';
 import search from 'assets/svg/search/lens.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { checkReceivedFollow, checkSendedFollow } from 'api/follow';
+import { AxiosResponse } from 'axios';
 import Follower from './Follower';
 import style from './index.module.scss';
-import { Item } from './entity';
+import { FollowerInfo, ReceiveInfo } from './entity';
 import FailToSearch from './FailToSearch';
 
 const useSearchFriend = () => {
@@ -24,19 +25,25 @@ const useSearchFriend = () => {
 const useCheckReceicedFollow = () => {
   const { data: received } = useQuery({
     queryKey: 'received',
-    queryFn: () => checkReceivedFollow({ page: 10, pageSize: 1 }),
+    queryFn: () => checkReceivedFollow({ page: 0, pageSize: 10 }),
   });
   const { data: sended } = useQuery({
     queryKey: 'sended',
-    queryFn: () => checkSendedFollow({ page: 10, pageSize: 1 }),
+    queryFn: () => checkSendedFollow({ page: 0, pageSize: 10 }),
   });
+
   return { received, sended };
+};
+
+const updateLocalStorage = (sended: AxiosResponse<any, any> | undefined) => {
+  sended?.data.content.map((item: ReceiveInfo) => localStorage.setItem(`${item.id}`, item.follower.account));
 };
 
 export default function FollowList() {
   const { keyword, handleInputChange, user } = useSearchFriend();
-  const { received } = useCheckReceicedFollow();
+  const { received, sended } = useCheckReceicedFollow();
 
+  useEffect(() => { updateLocalStorage(sended); });
   return (
     <div className={style.template}>
       <div className={style.search}>
@@ -58,16 +65,16 @@ export default function FollowList() {
             <div>
               받은 요청
             </div>
-            {received && received.data.content.map((item: Item) => (
+            {received && received.data.content.map((item: ReceiveInfo) => (
               <Follower
-                key={item.id}
-                account={item.account}
-                nickname={item.nickname}
+                key={item.user.id}
+                account={item.user.account}
+                nickname={item.user.nickname}
               />
             ))}
           </div>
         )}
-      {user && (user.data.content.length > 0 ? user.data.content.map((item: Item) => (
+      {user && (user.data.content.length > 0 ? user.data.content.map((item: FollowerInfo) => (
         <Follower
           key={item.id}
           account={item.account}

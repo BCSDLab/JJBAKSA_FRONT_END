@@ -1,38 +1,49 @@
 import defaultImage from 'assets/images/follow/default-image.png';
-import { followRequest } from 'api/follow';
+import { deleteFollower, requestFollow } from 'api/follow';
 import cn from 'utils/ts/classNames';
 import { useState } from 'react';
 import style from './FollowList.module.scss';
-import { Item } from './entity';
+import { FollowerInfo } from './entity';
 
-const follow = async (account: string) => {
+const follow = async (account: string, buttonValue: string, toggle: () => void) => {
   try {
-    const result = await followRequest({
-      userAccount: account,
-    });
-    if (result.status === 200) {
-      console.log(result);
+    if (buttonValue === '팔로우') {
+      const result = await requestFollow({
+        userAccount: account,
+      });
+      if (result.status >= 200 && result.status < 300) {
+        toggle();
+      }
+    } else {
+      const result = await deleteFollower({
+        userAccount: account,
+      });
+      if (result.status >= 200 && result.status < 300) {
+        toggle();
+      }
     }
-  } catch (e) {
-    console.log(e);
+  } catch {
+    // pass
   }
 };
 
 const useButtonValue = () => {
-  const [buttonValue, SetButtonValue] = useState<string>('팔로우');
-  const setFollow = () => {
-    SetButtonValue('팔로우');
+  const [buttonValue, setButtonValue] = useState<string>('팔로우');
+  const toggle = () => {
+    if (buttonValue === '팔로우') {
+      setButtonValue('언팔로우');
+    } else if (buttonValue === '언팔로우') {
+      setButtonValue('팔로우');
+    }
   };
-  const setUnfollow = () => {
-    SetButtonValue('언팔로우');
-  };
-  return { buttonValue, setFollow, setUnfollow };
+
+  return { buttonValue, toggle };
 };
 
 export default function Follower({
   nickname, account,
-}: Item) {
-  const { buttonValue } = useButtonValue();
+}: FollowerInfo) {
+  const { buttonValue, toggle } = useButtonValue();
   return (
     <div className={style.follower}>
       <img className={style.follower__image} src={defaultImage} alt="default" />
@@ -40,7 +51,17 @@ export default function Follower({
         <p className={cn({ [style['follower__content--font']]: true })}>{nickname}</p>
         <p>{account}</p>
       </div>
-      <button className={style.follower__button} type="button" onClick={() => follow(account)}>{buttonValue}</button>
+      <button
+        className={cn({
+          [style.follower__button]: buttonValue === '팔로우',
+          [style['follower__button--unfollow']]: buttonValue === '언팔로우',
+        })}
+        type="button"
+        onClick={() => follow(account, buttonValue, toggle)}
+      >
+        {buttonValue}
+
+      </button>
     </div>
   );
 }
