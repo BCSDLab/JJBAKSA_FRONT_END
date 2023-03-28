@@ -1,6 +1,6 @@
 import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg';
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from 'store/auth';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
@@ -9,13 +9,7 @@ import styles from './Setting.module.scss';
 
 export default function Setting() {
   const [id, setId] = useState(SETTING_TEXT.requiredLogin);
-  const navigate = useNavigate();
   const auth = useAuth();
-
-  const clickArrow = () => {
-    if (auth?.account) navigate('id-change');
-  };
-
   const isLogin = useCallback(
     () => {
       if (auth === null) {
@@ -45,19 +39,21 @@ export default function Setting() {
           <div className={styles.account__text}>아이디 변경</div>
           <div className={styles.account__box}>
             <div className={styles.account__id}>{id}</div>
-            <button type="submit" id="arrow" className={styles['account__right-arrow']} onClick={clickArrow}>
-              <ArrowRight />
-            </button>
+            <Link to={auth?.account ? 'id-Change' : '/login'}>
+              <button type="submit" id="arrow" className={styles['account__right-arrow']}>
+                <ArrowRight />
+              </button>
+            </Link>
           </div>
         </div>
-        <Link to="/" className={styles.link}>
-          <div className={styles.account__contents}>
-            <div className={styles.account__text}>비밀번호 변경 </div>
+        <div className={styles.account__contents}>
+          <div className={styles.account__text}>비밀번호 변경 </div>
+          <Link to={auth?.account ? 'id-Change' : '/login'}>
             <div className={styles['account__right-arrow']}>
               <ArrowRight />
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
         <Link to="/" className={styles.link}>
           <div className={styles.account__contents}>
             <div className={styles.account__text}>개인정보 이용방침</div>
@@ -93,8 +89,13 @@ export default function Setting() {
         </div>
       </div>
       <div className={styles.bottom}>
-        <div className={styles['bottom__log-out']}>로그아웃</div>
-        <div className={styles['bottom__delete-account']}>탈퇴하기</div>
+        <Link to={auth?.account ? '/' : '/login'}>
+          <div className={styles['bottom__log-out']}>로그아웃</div>
+        </Link>
+        <Link to={auth?.account ? '/' : '/login'}>
+          <div className={styles['bottom__delete-account']}>탈퇴하기</div>
+        </Link>
+
       </div>
     </div>
   );
