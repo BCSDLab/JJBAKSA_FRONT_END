@@ -21,6 +21,6 @@ export interface CheckSendedFollowParams {
   pageSize: number;
 }
 
-export interface FollowRequestParams {
+export interface FollowerParams {
   userAccount: string;
 }
