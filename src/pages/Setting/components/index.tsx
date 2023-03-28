@@ -40,7 +40,7 @@ export default function Setting() {
           <div className={styles.account__box}>
             <div className={styles.account__id}>{id}</div>
             <Link to={auth?.account ? 'id-Change' : '/login'}>
-              <button type="submit" id="arrow" className={styles['account__right-arrow']}>
+              <button type="submit" className={styles['account__right-arrow']}>
                 <ArrowRight />
               </button>
             </Link>
@@ -49,9 +49,9 @@ export default function Setting() {
         <div className={styles.account__contents}>
           <div className={styles.account__text}>비밀번호 변경 </div>
           <Link to={auth?.account ? 'id-Change' : '/login'}>
-            <div className={styles['account__right-arrow']}>
+            <button type="submit" className={styles['account__right-arrow']}>
               <ArrowRight />
-            </div>
+            </button>
           </Link>
         </div>
         <Link to="/" className={styles.link}>
@@ -90,7 +90,7 @@ export default function Setting() {
       </div>
       <div className={styles.bottom}>
         <Link to={auth?.account ? '/' : '/login'}>
-          <div className={styles['bottom__log-out']}>로그아웃</div>
+          <button type="submit" className={styles['bottom__log-out']}>로그아웃</button>
         </Link>
         <Link to={auth?.account ? '/' : '/login'}>
           <div className={styles['bottom__delete-account']}>탈퇴하기</div>
