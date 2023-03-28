@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from 'store/auth';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import SETTING_TEXT from './setting';
+import SETTING_TEXT from '../static/setting';
 import styles from './Setting.module.scss';
 
 export default function Setting() {
