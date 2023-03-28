@@ -24,10 +24,23 @@
   &__button {
     width: 175px;
     height: 49px;
-    color: #C4C4C4;
-    border: 1px solid #C4C4C4;
+    color: white;
+    border: 1px solid #f6bf54;
     border-radius: 10px;
-    background-color: white;
+    background-color: #f6bf54;
+    font-size: 20px;
     cursor: pointer;
+
+    &--unfollow {
+      width: 175px;
+      height: 49px;
+      border-radius: 10px;
+      background-color: #c4c4c4;
+      border: 1px solid #c4c4c4;
+      background-color: white;
+      color: #c4c4c4;
+      font-size: 20px;
+      cursor: pointer;
+    }
   }
 }
