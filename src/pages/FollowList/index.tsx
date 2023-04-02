@@ -1,13 +1,11 @@
-import { searchUsers } from 'api/user';
+import { checkReceivedFollow, searchUsers } from 'api/follow';
 import search from 'assets/svg/search/lens.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
-import { checkReceivedFollow, checkSendedFollow } from 'api/follow';
-import { AxiosResponse } from 'axios';
-import Follower from './Follower';
 import style from './index.module.scss';
-import { FollowerInfo, ReceiveInfo } from './entity';
 import FailToSearch from './FailToSearch';
+import SearchPage from './SearchPage';
+import FollowList from './FollowList';
 
 const useSearchFriend = () => {
   const [keyword, setKeyword] = useState<string>('');
@@ -22,28 +20,15 @@ const useSearchFriend = () => {
   return { user, keyword, handleInputChange };
 };
 
-const useCheckReceicedFollow = () => {
-  const { data: received } = useQuery({
-    queryKey: 'received',
-    queryFn: () => checkReceivedFollow({ page: 0, pageSize: 10 }),
-  });
-  const { data: sended } = useQuery({
-    queryKey: 'sended',
-    queryFn: () => checkSendedFollow({ page: 0, pageSize: 10 }),
-  });
+const useRecievedFollow = () => {
+  const { data: receive } = useQuery('received', () => checkReceivedFollow({ page: 0, pageSize: 100 }));
 
-  return { received, sended };
+  return { receive };
 };
-
-const updateLocalStorage = (sended: AxiosResponse<any, any> | undefined) => {
-  sended?.data.content.map((item: ReceiveInfo) => localStorage.setItem(`${item.id}`, item.follower.account));
-};
-
-export default function FollowList() {
+export default function FollowPage() {
   const { keyword, handleInputChange, user } = useSearchFriend();
-  const { received, sended } = useCheckReceicedFollow();
+  const { receive } = useRecievedFollow();
 
-  useEffect(() => { updateLocalStorage(sended); });
   return (
     <div className={style.template}>
       <div className={style.search}>
@@ -62,25 +47,11 @@ export default function FollowList() {
             <div>
               팔로우 목록이 표시될 위치
             </div>
-            <div>
-              받은 요청
-            </div>
-            {received && received.data.content.map((item: ReceiveInfo) => (
-              <Follower
-                key={item.user.id}
-                account={item.user.account}
-                nickname={item.user.nickname}
-              />
-            ))}
+            {receive && <FollowList title="받은 요청" user={receive?.data.content} />}
           </div>
         )}
-      {user && (user.data.content.length > 0 ? user.data.content.map((item: FollowerInfo) => (
-        <Follower
-          key={item.id}
-          account={item.account}
-          nickname={item.nickname}
-        />
-      )) : <FailToSearch />)}
+      {user && (user.data.content.length > 0
+        ? <SearchPage data={user.data.content} /> : <FailToSearch />)}
     </div>
   );
 }

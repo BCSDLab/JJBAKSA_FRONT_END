@@ -1,8 +1,11 @@
+import commonApi from './commonApiClients';
 import {
   FollowListParams,
   CheckReceivedFollowParams,
   CheckSendedFollowParams,
   FollowerParams,
+  SearchUsersParams,
+  AcceptFollowParams,
 } from './entity';
 import followApi from './followApiClient';
 
@@ -21,3 +24,7 @@ export const deleteFollower = (param: FollowerParams) => followApi.delete('/foll
     userAccount: param.userAccount,
   },
 });
+
+export const acceptFollow = (param: AcceptFollowParams) => followApi.post(`/requests/${param.id}/accept`);
+
+export const searchUsers = (param: SearchUsersParams) => commonApi.get(`?keyword=${param.keyword}`);

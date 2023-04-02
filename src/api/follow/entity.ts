@@ -24,3 +24,11 @@ export interface CheckSendedFollowParams {
 export interface FollowerParams {
   userAccount: string;
 }
+
+export interface SearchUsersParams {
+  keyword: string;
+}
+
+export interface AcceptFollowParams {
+  id: number;
+}

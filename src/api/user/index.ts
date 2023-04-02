@@ -1,6 +1,4 @@
 // import makeToast from 'utils/ts/makeToast';
-import axios from 'axios';
-import { API_PATH } from 'config/constants';
 import {
   CheckIdDuplicateParams,
   LoginParams,
@@ -13,7 +11,6 @@ import {
   GetAccountParams,
   FindPasswordParams,
   ChangePasswordParams,
-  SearchUsersParams,
 } from './entity';
 import userApi from './userApiClient';
 
@@ -43,5 +40,3 @@ export const findPassowrd = (param: FindPasswordParams) => userApi.post('/passwo
 });
 
 export const changePassword = (param: ChangePasswordParams) => userApi.patch(`/password?password=${param.password}`);
-
-export const searchUsers = (param: SearchUsersParams) => axios.get(`${API_PATH}/users?keyword=${param.keyword}`);
