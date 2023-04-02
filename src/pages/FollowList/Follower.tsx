@@ -1,49 +1,36 @@
 import defaultImage from 'assets/images/follow/default-image.png';
-import { deleteFollower, requestFollow } from 'api/follow';
 import cn from 'utils/ts/classNames';
-import { useState } from 'react';
-import style from './FollowList.module.scss';
+import { acceptFollow, requestFollow } from 'api/follow';
+import { useMutation, useQueryClient } from 'react-query';
+import style from './Follower.module.scss';
 import { FollowerInfo } from './entity';
 
-const follow = async (account: string, buttonValue: string, toggle: () => void) => {
-  try {
-    if (buttonValue === '팔로우') {
-      const result = await requestFollow({
-        userAccount: account,
-      });
-      if (result.status >= 200 && result.status < 300) {
-        toggle();
-      }
-    } else {
-      const result = await deleteFollower({
-        userAccount: account,
-      });
-      if (result.status >= 200 && result.status < 300) {
-        toggle();
-      }
-    }
-  } catch {
-    // pass
-  }
+const useRequestAndUpdate = () => {
+  const queryClient = useQueryClient();
+  const { mutate: request } = useMutation('request', (account: string) => requestFollow({ userAccount: account }), {
+    onSuccess: () => {
+      queryClient.invalidateQueries('search');
+    },
+  });
+  return { request };
 };
 
-const useButtonValue = () => {
-  const [buttonValue, setButtonValue] = useState<string>('팔로우');
-  const toggle = () => {
-    if (buttonValue === '팔로우') {
-      setButtonValue('언팔로우');
-    } else if (buttonValue === '언팔로우') {
-      setButtonValue('팔로우');
-    }
-  };
-
-  return { buttonValue, toggle };
+const useAcceptFollow = () => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation('accept', (id: number) => acceptFollow({ id }), {
+    onSuccess: () => {
+      queryClient.invalidateQueries('received');
+    },
+  });
+  return { mutate };
 };
 
 export default function Follower({
-  nickname, account,
+  nickname, account, followedType, id,
 }: FollowerInfo) {
-  const { buttonValue, toggle } = useButtonValue();
+  const { request } = useRequestAndUpdate();
+  const { mutate } = useAcceptFollow();
+
   return (
     <div className={style.follower}>
       <img className={style.follower__image} src={defaultImage} alt="default" />
@@ -53,14 +40,16 @@ export default function Follower({
       </div>
       <button
         className={cn({
-          [style.follower__button]: buttonValue === '팔로우',
-          [style['follower__button--unfollow']]: buttonValue === '언팔로우',
+          [style.follower__button]: followedType === 'NONE' || followedType === 'RECEIVED',
+          [style['follower__button--unfollow']]: followedType === 'REQUESTED' || followedType === 'FOLLOWED',
         })}
         type="button"
-        onClick={() => follow(account, buttonValue, toggle)}
+        onClick={() => (followedType === 'NONE' && request(account)) || (followedType === 'RECEIVED' && id && mutate(id))}
       >
-        {buttonValue}
-
+        {followedType === 'NONE' && '팔로우'}
+        {followedType === 'REQUESTED' && '요청중'}
+        {followedType === 'FOLLOWED' && '언팔로우'}
+        {followedType === 'RECEIVED' && '팔로우'}
       </button>
     </div>
   );

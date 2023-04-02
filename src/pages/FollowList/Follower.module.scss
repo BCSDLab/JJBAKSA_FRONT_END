@@ -1,0 +1,46 @@
+.follower {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 112px;
+  width: 1150px;
+  margin-top: 39px;
+  margin-bottom: 39px;
+
+  &__image {
+    width: 112px;
+    height: 112px;
+  }
+
+  &__content {
+    width: 720px;
+    padding-left: 60px;
+
+    &--font {
+      font-size: 30px;
+    }
+  }
+
+  &__button {
+    width: 175px;
+    height: 49px;
+    color: white;
+    border: 1px solid #f6bf54;
+    border-radius: 10px;
+    background-color: #f6bf54;
+    font-size: 20px;
+    cursor: pointer;
+
+    &--unfollow {
+      width: 175px;
+      height: 49px;
+      border-radius: 10px;
+      background-color: #c4c4c4;
+      border: 1px solid #c4c4c4;
+      background-color: white;
+      color: #c4c4c4;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}
