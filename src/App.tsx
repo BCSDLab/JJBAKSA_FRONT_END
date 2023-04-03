@@ -15,6 +15,7 @@ import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
 import Setting from 'pages/Setting/components';
 import IdChange from 'pages/Setting/components/IdChange';
+import SettingRoute from 'components/common/SettingRoute';
 
 export default function App(): JSX.Element {
   return (
@@ -24,10 +25,11 @@ export default function App(): JSX.Element {
           <Route path="/post" element={<Post />} />
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
-
         </Route>
-        <Route path="/setting" element={<Setting />} />
-        <Route path="/setting/id-change" element={<IdChange />} />
+        <Route element={<SettingRoute />}>
+          <Route path="/setting" element={<Setting />} />
+          <Route path="/setting/id-change" element={<IdChange />} />
+        </Route>
         <Route element={<ProtectedRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
