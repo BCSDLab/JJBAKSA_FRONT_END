@@ -25,6 +25,7 @@ const useRecievedFollow = () => {
 
   return { receive };
 };
+
 export default function FollowPage() {
   const { keyword, handleInputChange, user } = useSearchFriend();
   const { receive } = useRecievedFollow();

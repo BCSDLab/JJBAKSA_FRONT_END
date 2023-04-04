@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import style from './Follower.module.scss';
 import { FollowerInfo } from './entity';
 
+// 팔로우 요청 후 유저 목록을 다시 받아와 요청중 상태로 변경
 const useRequestAndUpdate = () => {
   const queryClient = useQueryClient();
   const { mutate: request } = useMutation('request', (account: string) => requestFollow({ userAccount: account }), {
@@ -15,21 +16,22 @@ const useRequestAndUpdate = () => {
   return { request };
 };
 
+// 팔로우 승인 후 받은 요청 목록을 다시 받아와 갱신
 const useAcceptFollow = () => {
   const queryClient = useQueryClient();
-  const { mutate } = useMutation('accept', (id: number) => acceptFollow({ id }), {
+  const { mutate: accept } = useMutation('accept', (id: number) => acceptFollow({ id }), {
     onSuccess: () => {
       queryClient.invalidateQueries('received');
     },
   });
-  return { mutate };
+  return { accept };
 };
 
 export default function Follower({
   nickname, account, followedType, id,
 }: FollowerInfo) {
   const { request } = useRequestAndUpdate();
-  const { mutate } = useAcceptFollow();
+  const { accept } = useAcceptFollow();
 
   return (
     <div className={style.follower}>
@@ -44,7 +46,7 @@ export default function Follower({
           [style['follower__button--unfollow']]: followedType === 'REQUESTED' || followedType === 'FOLLOWED',
         })}
         type="button"
-        onClick={() => (followedType === 'NONE' && request(account)) || (followedType === 'RECEIVED' && id && mutate(id))}
+        onClick={() => (followedType === 'NONE' && request(account)) || (followedType === 'RECEIVED' && id && accept(id))}
       >
         {followedType === 'NONE' && '팔로우'}
         {followedType === 'REQUESTED' && '요청중'}

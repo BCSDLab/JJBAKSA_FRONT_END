@@ -4,7 +4,7 @@ export interface FollowerInfo {
   followedType?: string,
   id?: number,
   email?: string,
-  userType?: string,
+  userType?: string;
 }
 
 export interface RequestUserInfo {
