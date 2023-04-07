@@ -1,29 +1,12 @@
 import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg';
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
 import { Link } from 'react-router-dom';
-import { useState, useEffect, useCallback } from 'react';
 import { useAuth } from 'store/auth';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import SETTING_TEXT from '../static/setting';
 import styles from './Setting.module.scss';
 
 export default function Setting() {
-  const [id, setId] = useState(SETTING_TEXT.requiredLogin);
   const auth = useAuth();
-  const isLogin = useCallback(
-    () => {
-      if (auth === null) {
-        setId(SETTING_TEXT.requiredLogin);
-      } else {
-        setId(auth?.account);
-      }
-    },
-    [auth],
-  );
-
-  useEffect(() => {
-    isLogin();
-  }, [isLogin]);
 
   return (
     <div className={styles.container}>
@@ -38,8 +21,8 @@ export default function Setting() {
         <div className={styles.account__contents}>
           <div className={styles.account__text}>아이디 변경</div>
           <div className={styles.account__box}>
-            <div className={styles.account__id}>{id}</div>
-            <Link to={auth?.account ? 'id-Change' : '/login'}>
+            <div className={styles.account__id}>{auth?.account}</div>
+            <Link to="id-Change">
               <button type="submit" className={styles['account__right-arrow']}>
                 <ArrowRight />
               </button>
@@ -48,7 +31,7 @@ export default function Setting() {
         </div>
         <div className={styles.account__contents}>
           <div className={styles.account__text}>비밀번호 변경 </div>
-          <Link to={auth?.account ? 'id-Change' : '/login'}>
+          <Link to="id-Change">
             <button type="submit" className={styles['account__right-arrow']}>
               <ArrowRight />
             </button>
@@ -89,13 +72,12 @@ export default function Setting() {
         </div>
       </div>
       <div className={styles.bottom}>
-        <Link to={auth?.account ? '/' : '/login'}>
+        <Link to="/">
           <button type="submit" className={styles['bottom__log-out']}>로그아웃</button>
         </Link>
-        <Link to={auth?.account ? '/' : '/login'}>
+        <Link to="/">
           <div className={styles['bottom__delete-account']}>탈퇴하기</div>
         </Link>
-
       </div>
     </div>
   );

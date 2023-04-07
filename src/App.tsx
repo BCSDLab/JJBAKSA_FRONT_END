@@ -10,12 +10,12 @@ import FindIdPassword from 'pages/Auth/FindIDPassword';
 import VerifyField from 'pages/Auth/FindIDPassword/VerifyField';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
-import ProtectedRoute from 'components/common/ProtectedRoute';
+import AuthRoute from 'components/common/AuthRoute';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
 import Setting from 'pages/Setting/components';
 import IdChange from 'pages/Setting/components/IdChange';
-import SettingRoute from 'components/common/SettingRoute';
+import NonAuthRoute from 'components/common/NonAuthRoute';
 
 export default function App(): JSX.Element {
   return (
@@ -26,11 +26,11 @@ export default function App(): JSX.Element {
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
         </Route>
-        <Route element={<SettingRoute />}>
+        <Route element={<NonAuthRoute />}>
           <Route path="/setting" element={<Setting />} />
           <Route path="/setting/id-change" element={<IdChange />} />
         </Route>
-        <Route element={<ProtectedRoute />}>
+        <Route element={<AuthRoute />}>
           <Route path="/login" element={<Login />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/signup" element={<SignUp />} />

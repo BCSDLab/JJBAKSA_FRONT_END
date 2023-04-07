@@ -2,14 +2,14 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from 'store/auth';
 
 interface Props {
-  settingPage?: string;
+  loginPage?: string;
 }
 
-export default function ProtectedRoute({ settingPage = '/setting' }: Props) {
+export default function NonAuthRoute({ loginPage = '/login' }: Props) {
   const auth = useAuth();
 
-  if (auth) {
-    return <Navigate to={settingPage} replace />;
+  if (!auth) {
+    return <Navigate to={loginPage} replace />;
   }
   return <Outlet />;
 }

@@ -5,7 +5,7 @@ interface Props {
   redirectPath?: string;
 }
 
-export default function ProtectedRoute({ redirectPath = '/' }: Props) {
+export default function AuthRoute({ redirectPath = '/' }: Props) {
   const auth = useAuth();
 
   if (auth) {
