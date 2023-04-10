@@ -2,14 +2,15 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from 'store/auth';
 
 interface Props {
-  loginPage?: string;
+  redirectPath?: string;
 }
 
-export default function NonAuthRoute({ loginPage = '/login' }: Props) {
+export default function NonAuthRoute({ redirectPath = '/' }: Props) {
   const auth = useAuth();
 
-  if (!auth) {
-    return <Navigate to={loginPage} replace />;
+  if (auth) {
+    return <Navigate to={redirectPath} replace />;
   }
+
   return <Outlet />;
 }
