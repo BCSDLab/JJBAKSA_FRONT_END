@@ -6,12 +6,12 @@ import Copyright from 'components/Auth/Copyright';
 import { NICKNAME_REGEXP } from 'components/Auth/static/Regexp';
 import AuthDetail from 'components/Auth/AuthDetail';
 import styles from './Complete.module.scss';
-// import useRouteCheck from '../hooks/useRouteCheck';
+import useRouteCheck from '../hooks/useRouteCheck';
 import { ERROR_MESSAGE } from '../static/signUp';
 import { ReactComponent as Complete } from '../../../../assets/svg/auth/complete.svg';
 
 export default function CompleteForm() {
-  // useRouteCheck('signUpCheck', '/signup');
+  useRouteCheck('signUpCheck', '/signup');
   const { register, handleSubmit, watch } = useForm();
   // nickname api 연결
   const onSubmit = (data: any) => data;
