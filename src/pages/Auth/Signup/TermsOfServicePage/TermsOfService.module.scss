@@ -49,6 +49,43 @@ $passive: #c4c4c4;
   }
 }
 
+.progress {
+  display: flex;
+  margin: 20px 0;
+
+  &__active {
+    color: #ffffff;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff7f23;
+  }
+
+  &__disable {
+    color: #ff7f23;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff7f23;
+  }
+
+  &__line {
+    content: "";
+    width: 22px;
+    height: 0;
+    border: 1px solid #ff7f23;
+    margin-top: 10.5px;
+  }
+}
+
 .checkbox__icon {
   width: 20px;
   height: 20px;
@@ -72,12 +109,20 @@ details[open] > summary:first-of-type {
     width: 100%;
   }
 
-  &__entire {
-    @include mixin.font-medium;
-
+  &__necessary {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    cursor: pointer;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    width: 37px;
+    height: 19px;
+    color: #ffffff;
+    background: #019d5c;
+    border-radius: 999px;
+    margin-right: 10px;
   }
 
   &__detail {
@@ -98,6 +143,8 @@ details[open] > summary:first-of-type {
     align-items: center;
     width: 373px;
     list-style: none;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
 
     &::-webkit-details-marker {
       display: none;
@@ -110,27 +157,11 @@ details[open] > summary:first-of-type {
     align-items: center;
   }
 
-  &__input {
-    cursor: pointer;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    box-sizing: border-box;
-    border-radius: 100%;
-    border: 1px solid #c4c4c4;
-    margin-right: 8px;
-
-    &:checked {
-      background: $active;
-    }
-  }
-
   &__info {
-    width: 320px;
-    height: 38px;
+    width: 344px;
+    height: 204px;
     margin-top: 16px;
-    border: 1px solid #c4c4c4;
-    border-radius: 16px;
+    border-bottom: 1px solid #c4c4c4;
     display: flex;
     flex-wrap: wrap;
     overflow-y: auto;

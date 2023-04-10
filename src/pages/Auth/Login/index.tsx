@@ -13,6 +13,7 @@ import { useUpdateAuth } from 'store/auth';
 import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
 import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
 import { GOOGLE_REDIRECT_URL, KAKAO_REDIRECT_URL, NAVER_REDIRECT_URL } from 'config/constants';
+import AuthDetail from 'components/Auth/AuthDetail';
 import styles from './Login.module.scss';
 
 interface LoginFormInput {
@@ -92,12 +93,11 @@ export default function Login(): JSX.Element {
             className={styles.loginform}
             onSubmit={handleSubmit(submitLogin)}
           >
-            <div className={styles.loginform__login}>로그인하기</div>
-            <div className={styles.loginform__detail}>{'쩝쩝박사의 서비스를 이용하려면\n로그인하세요.'}</div>
             <div className={styles.error}>
               {errorMsg && <ErrorIcon aria-hidden />}
               {errorMsg}
             </div>
+            <AuthDetail name="로그인하기" />
             <input
               className={styles.loginform__input}
               type="text"
