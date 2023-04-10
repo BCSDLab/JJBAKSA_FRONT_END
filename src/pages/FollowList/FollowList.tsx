@@ -1,5 +1,8 @@
 import { useQuery } from 'react-query';
 import { getMe } from 'api/user';
+import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
+import cn from 'utils/ts/classNames';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import { FollowListInfo } from './entity';
 import Follower from './Follower';
 import style from './FollowList.module.scss';
@@ -13,22 +16,31 @@ const useGetMe = () => {
 
 export default function FollowList({ title, data, user }: FollowListInfo) {
   const me = useGetMe();
+  const [value, , ,toggle] = useBooleanState(true);
 
   return (
-    <div>
-      <div className={style.title}>{title}</div>
-      {title === '나의 친구'
-      && data && data.filter((e) => e.followedType === 'FOLLOWED').map((item) => (
-        <Follower
-          key={item.id}
-          nickname={item.nickname}
-          account={item.account}
-          followedType={item.followedType}
-          // 팔로우된 친구만 보여줌
+    <div className={style.container}>
+      <button onClick={toggle} type="button" className={style.title}>
+        {title}
+        <Arrow className={cn(
+          {
+            [style['title__arrow--up']]: value,
+            [style['title__arrow--down']]: !value,
+          },
+        )}
         />
+      </button>
+      {title === '나의 친구'
+       && value && data && data.filter((e) => e.followedType === 'FOLLOWED').map((item) => (
+         <Follower
+           key={item.id}
+           nickname={item.nickname}
+           account={item.account}
+           followedType={item.followedType}
+         />
       ))}
       {title === '새 친구'
-      && data && data.filter((e) => e.followedType !== 'FOLLOWED').filter((e) => e.account !== me.data?.data.account).map((item) => (
+      && value && data && data.filter((e) => e.followedType !== 'FOLLOWED').filter((e) => e.account !== me.data?.data.account).map((item) => (
         <Follower
           key={item.id}
           nickname={item.nickname}
@@ -38,7 +50,7 @@ export default function FollowList({ title, data, user }: FollowListInfo) {
         />
       ))}
       {title === '받은 요청'
-      && user && user.map((item) => (
+      && value && user && user.map((item) => (
         <Follower
           key={item.user.id}
           nickname={item.user.nickname}
