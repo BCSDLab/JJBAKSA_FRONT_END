@@ -32,19 +32,19 @@ $passive: #c4c4c4;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 368px;
+  width: 152px;
   height: 44px;
   background: $active;
   border: none;
   appearance: none;
-  border-radius: 20px;
+  border-radius: 999px;
   font-weight: 500;
   font-size: 16px;
   text-decoration: none;
   color: white;
   cursor: pointer;
   box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
-  margin-top: 50px;
+  margin-top: 20px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 100%;

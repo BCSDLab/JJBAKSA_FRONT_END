@@ -37,7 +37,26 @@ $passive: #c4c4c4;
   }
 
   &__submit {
-    @include mixin.button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 368px;
+    height: 44px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    margin-top: 50px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+    }
   }
 
   &__title {
@@ -159,15 +178,14 @@ details[open] > summary:first-of-type {
 
   &__info {
     width: 344px;
-    height: 204px;
+    max-height: 200px;
     margin-top: 16px;
     border-bottom: 1px solid #c4c4c4;
     display: flex;
-    flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 14px;
+    line-height: 17px;
     padding: 16px 26px 26px 16px;
     white-space: pre-line;
 

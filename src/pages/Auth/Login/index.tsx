@@ -97,7 +97,7 @@ export default function Login(): JSX.Element {
               {errorMsg && <ErrorIcon aria-hidden />}
               {errorMsg}
             </div>
-            <AuthDetail name="로그인하기" />
+            <AuthDetail name="로그인하기" first="쩝쩝박사의 서비스를 이용하려면" second="로그인하세요." />
             <input
               className={styles.loginform__input}
               type="text"

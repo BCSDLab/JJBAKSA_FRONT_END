@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FormProvider, UseFormSetError, useForm } from 'react-hook-form';
+import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import { useNavigate } from 'react-router-dom';
-import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import { register, sendRegisterEmail } from 'api/user';
 import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
+import AuthDetail from 'components/Auth/AuthDetail';
 import styles from './SignUp.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import { SignUpFormData } from './entity';
@@ -12,6 +13,7 @@ import IdInput from './components/IdInput';
 import EmailInput from './components/EmailInput';
 import PasswordInput from './components/PasswordInput';
 import PasswordCheckInput from './components/PasswordCheckInput';
+import CompleteModal from './components/CompleteModal';
 
 const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) => {
   const navigate = useNavigate();
@@ -36,7 +38,7 @@ const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) =>
 
 export default function SignUpForm() {
   useRouteCheck('termsCheck', '/terms-of-service');
-
+  const [modalOpen, setModalOpen] = useState(false);
   const methods = useForm<SignUpFormData>({
     mode: 'onChange',
     defaultValues: {
@@ -58,14 +60,23 @@ export default function SignUpForm() {
 
   return (
     <div className={styles.template}>
+      <AuthTopNavigation />
       <div className={styles.container}>
-        <AuthTitle />
+        {modalOpen}
         <FormProvider {...methods}>
           <form
             className={styles.form}
             onSubmit={handleSubmit(signup)}
           >
-            <div className={styles.form__title}>회원가입</div>
+            {modalOpen && <CompleteModal setModalOpen={setModalOpen} />}
+            <AuthDetail name="회원가입하기" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
+            <div className={styles.progress}>
+              <div className={styles.progress__active}>1</div>
+              <div className={styles.progress__line} />
+              <div className={styles.progress__active}>2</div>
+              <div className={styles.progress__line} />
+              <div className={styles.progress__disable}>3</div>
+            </div>
 
             <IdInput />
             <EmailInput />
@@ -73,11 +84,12 @@ export default function SignUpForm() {
             <PasswordCheckInput />
 
             <button
-              type="submit"
+              type="button"
               className={styles.form__button}
               disabled={!isDirty || !isValid}
+              onClick={() => setModalOpen(true)}
             >
-              완료
+              다음
             </button>
           </form>
         </FormProvider>

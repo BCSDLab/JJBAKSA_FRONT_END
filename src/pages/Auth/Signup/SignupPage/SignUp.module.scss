@@ -13,9 +13,77 @@ $input-background: #eeeeee;
   @include mixin.template;
 }
 
+.modal {
+  z-index: 999;
+  width: 100vw;
+  height: 100%;
+  background: rgba(34 34 34 / 25%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__message {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &__close {
+    font-size: 18px;
+    color: $passive;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__popup {
+    width: 560px;
+    height: 348px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    isolation: isolate;
+    background: #ffffff;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    border-radius: 45px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 152px;
+    height: 44px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+    }
+  }
+}
+
 .container {
   width: 368px;
-  height: calc(100% - 264px);
   margin-top: 50px;
   margin-bottom: 20px;
 
@@ -29,8 +97,8 @@ $input-background: #eeeeee;
 .form {
   height: 480px;
   position: relative;
-  margin-top: 35px;
-  margin-bottom: 70px;
+  margin-top: 80px;
+  margin-bottom: 200px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 100%;
@@ -38,14 +106,6 @@ $input-background: #eeeeee;
     position: relative;
     margin-bottom: 0;
     height: 415px;
-  }
-
-  &__title {
-    @include mixin.font-title(38px);
-
-    @include media.media-breakpoint-down(mobile) {
-      margin-bottom: 27px;
-    }
   }
 
   &__form {
@@ -78,7 +138,7 @@ $input-background: #eeeeee;
 
   &__label {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     padding: 5px;
     width: 408px;
     display: flex;
@@ -294,11 +354,68 @@ $input-background: #eeeeee;
   }
 
   &__button {
-    @include mixin.button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 368px;
+    height: 40px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 50px;
+
+    &[disabled] {
+      background-color: $passive;
+      cursor: default;
+    }
 
     @include media.media-breakpoint-down(mobile) {
+      width: 100%;
       position: relative;
       margin-top: 73px;
     }
+  }
+}
+
+.progress {
+  display: flex;
+  margin: 20px 0;
+
+  &__active {
+    color: #ffffff;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff7f23;
+  }
+
+  &__disable {
+    color: #ff7f23;
+    font-size: 12px;
+    border-radius: 50%;
+    width: 21px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff7f23;
+  }
+
+  &__line {
+    content: "";
+    width: 22px;
+    height: 0;
+    border: 1px solid #ff7f23;
+    margin-top: 10.5px;
   }
 }
