@@ -1,4 +1,4 @@
-import { SearchPageInfo } from './entity';
+import { SearchPageInfo } from '../static/entity';
 import FollowList from './FollowList';
 
 export default function SearchPage({ data }: SearchPageInfo) {

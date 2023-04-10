@@ -3,7 +3,7 @@ import { getMe } from 'api/user';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
-import { FollowListInfo } from './entity';
+import { FollowListInfo } from '../static/entity';
 import Follower from './Follower';
 import style from './FollowList.module.scss';
 

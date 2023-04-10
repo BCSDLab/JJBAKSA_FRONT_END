@@ -3,9 +3,9 @@ import search from 'assets/svg/search/lens.svg';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 import style from './index.module.scss';
-import FailToSearch from './FailToSearch';
-import SearchPage from './SearchPage';
-import FollowList from './FollowList';
+import FailToSearch from './components/FailToSearch';
+import SearchPage from './components/SearchPage';
+import FollowList from './components/FollowList';
 
 const useSearchFriend = () => {
   const [keyword, setKeyword] = useState<string>('');

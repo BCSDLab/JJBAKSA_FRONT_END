@@ -3,7 +3,7 @@ import cn from 'utils/ts/classNames';
 import { acceptFollow, requestFollow } from 'api/follow';
 import { useMutation, useQueryClient } from 'react-query';
 import style from './Follower.module.scss';
-import { FollowerInfo } from './entity';
+import { FollowerInfo } from '../static/entity';
 
 // 팔로우 요청 후 유저 목록을 다시 받아와 요청중 상태로 변경
 const useRequestAndUpdate = () => {
