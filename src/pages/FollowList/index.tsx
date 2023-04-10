@@ -44,7 +44,7 @@ export default function FollowPage() {
       </div>
       {keyword.length === 0
         && (
-          <div>
+          <div className={style.container}>
             <div>
               팔로우 목록이 표시될 위치
             </div>
