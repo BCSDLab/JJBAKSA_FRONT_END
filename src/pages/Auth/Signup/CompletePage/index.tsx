@@ -5,6 +5,7 @@ import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
 import { NICKNAME_REGEXP } from 'components/Auth/static/Regexp';
 import AuthDetail from 'components/Auth/AuthDetail';
+import { ReactComponent as Progress } from 'assets/svg/auth/third-progress.svg';
 import styles from './Complete.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import { ERROR_MESSAGE } from '../static/signUp';
@@ -27,11 +28,7 @@ export default function CompleteForm() {
       <div className={styles.container}>
         <AuthDetail name="닉네임 설정" first="쩝쩝박사의 서비스를 이용하려면" second="로그인하세요." />
         <div className={styles.progress}>
-          <div className={styles.progress__active}>1</div>
-          <div className={styles.progress__line} />
-          <div className={styles.progress__active}>2</div>
-          <div className={styles.progress__line} />
-          <div className={styles.progress__active}>3</div>
+          <Progress />
         </div>
         <div className={styles.logo}>
           <Complete className={styles.logo__image} />

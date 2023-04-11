@@ -6,6 +6,7 @@ import Copyright from 'components/Auth/Copyright';
 import { register, sendRegisterEmail } from 'api/user';
 import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
 import AuthDetail from 'components/Auth/AuthDetail';
+import { ReactComponent as Progress } from 'assets/svg/auth/second-progress.svg';
 import styles from './SignUp.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import { SignUpFormData } from './entity';
@@ -67,11 +68,7 @@ export default function SignUpForm() {
           >
             <AuthDetail name="회원가입하기" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
             <div className={styles.progress}>
-              <div className={styles.progress__active}>1</div>
-              <div className={styles.progress__line} />
-              <div className={styles.progress__active}>2</div>
-              <div className={styles.progress__line} />
-              <div className={styles.progress__disable}>3</div>
+              <Progress />
             </div>
 
             <IdInput />

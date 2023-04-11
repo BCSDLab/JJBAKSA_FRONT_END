@@ -69,54 +69,7 @@ $passive: #c4c4c4;
 }
 
 .progress {
-  display: flex;
   margin: 20px 0;
-
-  &__active {
-    color: #ffffff;
-    font-size: 12px;
-    border-radius: 50%;
-    width: 21px;
-    height: 21px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ff7f23;
-  }
-
-  &__disable {
-    color: #ff7f23;
-    font-size: 12px;
-    border-radius: 50%;
-    width: 21px;
-    height: 21px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #ff7f23;
-  }
-
-  &__line {
-    content: "";
-    width: 22px;
-    height: 0;
-    border: 1px solid #ff7f23;
-    margin-top: 10.5px;
-  }
-}
-
-.checkbox__icon {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 0;
-  cursor: pointer;
-}
-
-details[open] > summary:first-of-type {
-  .checkbox__icon {
-    transform: rotate(180deg);
-  }
 }
 
 .checkbox {
