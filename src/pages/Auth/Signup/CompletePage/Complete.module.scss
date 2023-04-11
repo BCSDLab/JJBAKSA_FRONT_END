@@ -138,3 +138,72 @@ $passive: #c4c4c4;
     margin-top: 10.5px;
   }
 }
+
+.modal {
+  z-index: 999;
+  width: 100vw;
+  height: 100%;
+  background: rgba(34 34 34 / 25%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  &__message {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  &__close {
+    font-size: 18px;
+    color: $passive;
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__popup {
+    width: 560px;
+    height: 348px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    isolation: isolate;
+    background: #ffffff;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    border-radius: 45px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 152px;
+    height: 44px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 999px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+    }
+  }
+}

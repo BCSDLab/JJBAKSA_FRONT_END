@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormProvider, UseFormSetError, useForm } from 'react-hook-form';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,6 @@ import IdInput from './components/IdInput';
 import EmailInput from './components/EmailInput';
 import PasswordInput from './components/PasswordInput';
 import PasswordCheckInput from './components/PasswordCheckInput';
-import CompleteModal from './components/CompleteModal';
 
 const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) => {
   const navigate = useNavigate();
@@ -38,7 +37,6 @@ const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) =>
 
 export default function SignUpForm() {
   useRouteCheck('termsCheck', '/terms-of-service');
-  const [modalOpen, setModalOpen] = useState(false);
   const methods = useForm<SignUpFormData>({
     mode: 'onChange',
     defaultValues: {
@@ -62,13 +60,11 @@ export default function SignUpForm() {
     <div className={styles.template}>
       <AuthTopNavigation />
       <div className={styles.container}>
-        {modalOpen}
         <FormProvider {...methods}>
           <form
             className={styles.form}
             onSubmit={handleSubmit(signup)}
           >
-            {modalOpen && <CompleteModal setModalOpen={setModalOpen} />}
             <AuthDetail name="회원가입하기" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
             <div className={styles.progress}>
               <div className={styles.progress__active}>1</div>
@@ -84,10 +80,9 @@ export default function SignUpForm() {
             <PasswordCheckInput />
 
             <button
-              type="button"
+              type="submit"
               className={styles.form__button}
               disabled={!isDirty || !isValid}
-              onClick={() => setModalOpen(true)}
             >
               다음
             </button>

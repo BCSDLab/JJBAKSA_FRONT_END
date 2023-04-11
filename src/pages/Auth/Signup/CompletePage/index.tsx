@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
@@ -9,6 +9,7 @@ import styles from './Complete.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import { ERROR_MESSAGE } from '../static/signUp';
 import { ReactComponent as Complete } from '../../../../assets/svg/auth/complete.svg';
+import CompleteModal from './components/CompleteModal';
 
 export default function CompleteForm() {
   useRouteCheck('signUpCheck', '/signup');
@@ -17,10 +18,12 @@ export default function CompleteForm() {
   const onSubmit = (data: any) => data;
   const navigate = useNavigate();
   const nicknameValue = watch('nickname');
+  const [modalOpen, setModalOpen] = useState(true);
 
   return (
     <div className={styles.template}>
       <AuthTopNavigation />
+      {modalOpen && <CompleteModal setModalOpen={setModalOpen} />}
       <div className={styles.container}>
         <AuthDetail name="닉네임 설정" first="쩝쩝박사의 서비스를 이용하려면" second="로그인하세요." />
         <div className={styles.progress}>
