@@ -4,6 +4,7 @@ import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import Copyright from 'components/Auth/Copyright';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import AuthDetail from 'components/Auth/AuthDetail';
+import { ReactComponent as Progress } from 'assets/svg/auth/first-progress.svg';
 import styles from './TermsOfService.module.scss';
 import PRIVACY from '../static/privacy';
 
@@ -17,11 +18,7 @@ export default function TermsOfService() {
         <div className={styles['terms-of-service']}>
           <AuthDetail name="약관동의" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
           <div className={styles.progress}>
-            <div className={styles.progress__active}>1</div>
-            <div className={styles.progress__line} />
-            <div className={styles.progress__disable}>2</div>
-            <div className={styles.progress__line} />
-            <div className={styles.progress__disable}>3</div>
+            <Progress />
           </div>
           <div>
             {PRIVACY.map((res) => (
