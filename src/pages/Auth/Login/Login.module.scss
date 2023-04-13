@@ -27,9 +27,21 @@
   flex-direction: column;
 
   &__login {
-    margin-bottom: 7px;
-    padding-left: 16px;
-    font-size: 14px;
+    font-weight: 700;
+    line-height: 40px;
+    font-size: 32px;
+    text-align: center;
+    color: #ff7f23;
+    padding: 10px;
+  }
+
+  &__detail {
+    white-space: pre;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: #666666;
   }
 
   &__input {
@@ -42,7 +54,7 @@
     padding-left: 16px;
 
     &::placeholder {
-      font-size: 14px;
+      font-size: 16px;
     }
 
     @include media.media-breakpoint-down(mobile) {
@@ -61,7 +73,7 @@
     font-size: 16px;
     font-weight: 700;
     color: white;
-    margin: 30px 0;
+    margin: 20px;
     background-color: #ff7f23;
     border: none;
     border-radius: 20px;
@@ -70,6 +82,10 @@
 
     &:disabled {
       background-color: #c4c4c4;
+    }
+
+    &:hover {
+      cursor: pointer;
     }
   }
 
@@ -81,7 +97,7 @@
     }
 
     &__button {
-      margin-top: 40px;
+      margin-top: 30px;
       margin-bottom: 16px;
     }
   }
@@ -119,7 +135,7 @@
   align-items: center;
 
   &__text {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     margin-right: 9px;
   }
@@ -163,17 +179,74 @@
   }
 }
 
+.middle {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+
+  @include media.media-breakpoint-down(mobile) {
+    padding-top: 10px;
+    flex-direction: column-reverse;
+    align-items: end;
+  }
+}
+
+.signup {
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #666666;
+
+  &__link {
+    color: #ff7f23;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    padding-top: 20px;
+  }
+}
+
+.divide {
+  width: 163px;
+  color: #c4c4c4;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  margin: 30px auto;
+
+  &::before {
+    content: "";
+    flex-grow: 1;
+    border-bottom: 0.5px solid #c4c4c4;
+    margin: 14px;
+  }
+
+  &::after {
+    content: "";
+    flex-grow: 1;
+    border-bottom: 0.5px solid #c4c4c4;
+    margin: 14px;
+  }
+}
+
 .help {
-  font-size: 12px;
-  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
   text-align: center;
   font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration-line: underline;
 
   &__link {
     text-decoration: none;
     padding-right: 20px;
     padding-left: 20px;
-    color: #222222;
+    color: #666666;
 
     & + & {
       border-left: #989898 1px solid;
@@ -194,7 +267,10 @@
   text-align: center;
 
   &__title {
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #666666;
     margin-bottom: 48px;
 
     @include media.media-breakpoint-down(mobile) {
