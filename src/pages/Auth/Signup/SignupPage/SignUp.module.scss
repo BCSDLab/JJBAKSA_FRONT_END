@@ -58,8 +58,8 @@ $input-background: #eeeeee;
     right: 10px;
     bottom: 5px;
     border: none;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 
     @include media.media-breakpoint-down(mobile) {
       position: absolute;

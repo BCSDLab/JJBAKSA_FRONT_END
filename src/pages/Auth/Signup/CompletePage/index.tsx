@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
@@ -7,24 +7,24 @@ import { NICKNAME_REGEXP } from 'components/Auth/static/Regexp';
 import AuthDetail from 'components/Auth/AuthDetail';
 import { ReactComponent as Progress } from 'assets/svg/auth/third-progress.svg';
 import { ReactComponent as Complete } from 'assets/svg/auth/complete.svg';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import styles from './Complete.module.scss';
-// import useRouteCheck from '../hooks/useRouteCheck';
+import useRouteCheck from '../hooks/useRouteCheck';
 import { ERROR_MESSAGE } from '../static/signUp';
 import CompleteModal from './components/CompleteModal';
 
 export default function CompleteForm() {
-  // useRouteCheck('signUpCheck', '/signup');
+  useRouteCheck('signUpCheck', '/signup');
   const { register, handleSubmit, watch } = useForm();
-  // nickname api 연결
   const onSubmit = (data: any) => data;
   const navigate = useNavigate();
   const nicknameValue = watch('nickname');
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modal,, close] = useBooleanState(true);
 
   return (
     <div className={styles.template}>
       <AuthTopNavigation />
-      {modalOpen && <CompleteModal setModalOpen={setModalOpen} />}
+      {modal && <CompleteModal setFalse={close} />}
       <div className={styles.container}>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <div className={styles.form__nickname}>
