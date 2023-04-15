@@ -17,7 +17,7 @@ export default function TermsOfService() {
       <div className={styles.container}>
         <div className={styles['terms-of-service']}>
           <AuthDetail name="약관동의" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
-          <div className={styles.progress}>
+          <div className={styles['terms-of-service__progress']}>
             <Progress />
           </div>
           <div>
@@ -26,9 +26,9 @@ export default function TermsOfService() {
                 <details className={styles.checkbox__detail}>
                   <summary className={styles.checkbox__summary}>
                     <div className={styles.checkbox__necessary}>필수</div>
-                    <label className={styles['checkbox__summary-text']} htmlFor={res.summary}>
+                    <div className={styles['checkbox__summary-text']}>
                       {res.summary}
-                    </label>
+                    </div>
                     <Arrow className={styles.checkbox__icon} />
                   </summary>
                   <p className={styles.checkbox__info}>{res.content}</p>

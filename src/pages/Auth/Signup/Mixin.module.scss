@@ -27,26 +27,3 @@ $passive: #c4c4c4;
   line-height: 22px;
   font-weight: 500;
 }
-
-@mixin button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 152px;
-  height: 44px;
-  background: $active;
-  border: none;
-  appearance: none;
-  border-radius: 999px;
-  font-weight: 500;
-  font-size: 16px;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
-  margin-top: 20px;
-
-  @include media.media-breakpoint-down(mobile) {
-    width: 100%;
-  }
-}

@@ -67,7 +67,7 @@ export default function SignUpForm() {
             onSubmit={handleSubmit(signup)}
           >
             <AuthDetail name="회원가입하기" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
-            <div className={styles.progress}>
+            <div className={styles.form__progress}>
               <Progress />
             </div>
 

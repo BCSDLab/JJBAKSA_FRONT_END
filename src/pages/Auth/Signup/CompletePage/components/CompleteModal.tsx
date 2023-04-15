@@ -1,6 +1,6 @@
 import AuthTitle from 'components/Auth/AuthTitle';
 import AuthDetail from 'components/Auth/AuthDetail';
-import styles from '../Complete.module.scss';
+import styles from './CompleteModal.module.scss';
 
 interface Props {
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;

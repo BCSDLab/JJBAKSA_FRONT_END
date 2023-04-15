@@ -6,14 +6,14 @@ import Copyright from 'components/Auth/Copyright';
 import { NICKNAME_REGEXP } from 'components/Auth/static/Regexp';
 import AuthDetail from 'components/Auth/AuthDetail';
 import { ReactComponent as Progress } from 'assets/svg/auth/third-progress.svg';
+import { ReactComponent as Complete } from 'assets/svg/auth/complete.svg';
 import styles from './Complete.module.scss';
-import useRouteCheck from '../hooks/useRouteCheck';
+// import useRouteCheck from '../hooks/useRouteCheck';
 import { ERROR_MESSAGE } from '../static/signUp';
-import { ReactComponent as Complete } from '../../../../assets/svg/auth/complete.svg';
 import CompleteModal from './components/CompleteModal';
 
 export default function CompleteForm() {
-  useRouteCheck('signUpCheck', '/signup');
+  // useRouteCheck('signUpCheck', '/signup');
   const { register, handleSubmit, watch } = useForm();
   // nickname api 연결
   const onSubmit = (data: any) => data;
@@ -26,14 +26,12 @@ export default function CompleteForm() {
       <AuthTopNavigation />
       {modalOpen && <CompleteModal setModalOpen={setModalOpen} />}
       <div className={styles.container}>
-        <AuthDetail name="닉네임 설정" first="쩝쩝박사의 서비스를 이용하려면" second="로그인하세요." />
-        <div className={styles.progress}>
-          <Progress />
-        </div>
-        <div className={styles.logo}>
-          <Complete className={styles.logo__image} />
-        </div>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.form__nickname}>
+            <AuthDetail name="닉네임 설정" first="쩝쩝박사의 서비스를 이용하려면" second="로그인하세요." />
+            <Progress className={styles['form__nickname-Progress']} />
+          </div>
+          <Complete className={styles.form__logo} />
           <div className={styles.form__text}>
             {'회원가입을 축하합니다!\n당신을 어떻게 부르면 좋을까요?'}
           </div>
