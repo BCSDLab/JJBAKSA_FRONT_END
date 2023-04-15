@@ -7,7 +7,7 @@ import { EMAIL_MOBILE_REGEXP, EMAIL_REGEXP } from 'components/Auth/static/Regexp
 import { ERROR_MESSAGE } from '../../static/signUp';
 import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
-import DomainDropdown from './DomainDropdown';
+// import DomainDropdown from './DomainDropdown';
 
 export default function EmailInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();
@@ -49,8 +49,6 @@ export default function EmailInput() {
           },
         })}
       />
-      <div className={styles['form__email-sign']}>@</div>
-      <DomainDropdown />
     </div>
   );
 }
