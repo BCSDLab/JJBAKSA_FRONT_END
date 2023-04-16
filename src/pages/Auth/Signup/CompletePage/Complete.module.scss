@@ -20,6 +20,14 @@ $passive: #c4c4c4;
   }
 }
 
+.nickname-progress {
+  margin: 20px 0;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin: auto;
+  }
+}
+
 .form {
   position: relative;
   display: flex;
@@ -32,17 +40,15 @@ $passive: #c4c4c4;
     margin: 0;
   }
 
-  &__nickname-progress {
-    margin: 20px 0;
-  }
-
   &__logo {
     width: 100%;
+
     @include media.media-breakpoint-down(mobile) {
       width: 200px;
       height: auto;
     }
   }
+
   &__text {
     white-space: pre;
     font-weight: 500;
@@ -87,7 +93,7 @@ $passive: #c4c4c4;
     text-decoration: none;
     color: white;
     cursor: pointer;
-    margin: 12px 0 62px 0;
+    margin: 12px 0 62px;
 
     &[disabled] {
       background-color: $passive;

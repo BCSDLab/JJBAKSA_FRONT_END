@@ -1,8 +1,4 @@
-export const EMAIL_REGEXP = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])/i;
-
-export const EMAILDOMAIN_REGEXP = /^(?:\w+\.)+\w+$/g;
-
-export const EMAIL_MOBILE_REGEXP = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@(?:\w+\.)+\w+$/;
+export const EMAIL_REGEXP = /^[-0-9A-Za-z!#$%&'*+/=?^_`{|}~.]+@[-0-9A-Za-z!#$%&'*+/=?^_`{|}~]+[.]{1}[0-9A-Za-z]/;
 
 export const PASSWORD_REGEXP = /^(?=.*[0-9])(?=.*[a-zA-z])(?=.*[!@#$%^&*+=()]).{2,16}$/;
 

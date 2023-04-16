@@ -20,10 +20,10 @@ const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) =>
   const signup = (form: SignUpFormData) => {
     register({
       account: form.id,
-      email: `${form.email}@${form.emailDomain}`,
+      email: `${form.email}`,
       password: form.password,
     }).then(() => {
-      sendRegisterEmail({ email: `${form.email}@${form.emailDomain}` });
+      sendRegisterEmail({ email: `${form.email}` });
       navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
     }).catch((error) => {
       // 아이디, 닉네임, 비밀번호 등은 폼 단에서 에러핸들링이 되어서 회원가입 요청에서 발생하는 에러는 서버 문제거나, 중복 이메일인 경우 뿐입니다.
@@ -43,7 +43,6 @@ export default function SignUpForm() {
     defaultValues: {
       id: '',
       email: '',
-      emailDomain: '',
       password: '',
       passwordCheck: '',
     },
@@ -67,7 +66,7 @@ export default function SignUpForm() {
             onSubmit={handleSubmit(signup)}
           >
             <AuthDetail name="회원가입하기" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
-            <div className={styles.form__progress}>
+            <div className={styles.progress}>
               <Progress />
             </div>
 

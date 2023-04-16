@@ -2,8 +2,7 @@ import React from 'react';
 import cn from 'utils/ts/classNames';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useFormContext } from 'react-hook-form';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
-import { EMAIL_MOBILE_REGEXP, EMAIL_REGEXP } from 'components/Auth/static/Regexp';
+import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
 import { ERROR_MESSAGE } from '../../static/signUp';
 import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
@@ -12,8 +11,7 @@ import { SignUpFormData } from '../entity';
 export default function EmailInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();
 
-  const { isMobile } = useMediaQuery();
-  const emailReg = isMobile ? EMAIL_MOBILE_REGEXP : EMAIL_REGEXP;
+  const emailReg = EMAIL_REGEXP;
 
   return (
     <div className={styles.form__form}>
@@ -24,12 +22,11 @@ export default function EmailInput() {
             className={cn({
               [styles['form__error-icon']]: true,
               [styles['form__error-icon--active']]:
-                errors?.emailDomain !== undefined
-                || errors?.email !== undefined,
+              errors?.email !== undefined,
             })}
             aria-hidden
           />
-          {errors.email ? errors.email?.message : errors.emailDomain?.message}
+          {errors.email && errors.email?.message}
         </div>
       </label>
       <input
@@ -39,7 +36,7 @@ export default function EmailInput() {
           [styles.form__input]: true,
           [styles['form__input--email']]: true,
           [styles['form__input--error']]:
-            errors?.emailDomain !== undefined || errors?.email !== undefined,
+            errors?.email !== undefined,
         })}
         {...register('email', {
           required: ERROR_MESSAGE.email,
