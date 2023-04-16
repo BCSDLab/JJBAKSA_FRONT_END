@@ -9,12 +9,12 @@ import { ReactComponent as Progress } from 'assets/svg/auth/third-progress.svg';
 import { ReactComponent as Complete } from 'assets/svg/auth/complete.svg';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import styles from './Complete.module.scss';
-// import useRouteCheck from '../hooks/useRouteCheck';
+import useRouteCheck from '../hooks/useRouteCheck';
 import { ERROR_MESSAGE } from '../static/signUp';
 import CompleteModal from './components/CompleteModal';
 
 export default function CompleteForm() {
-  // useRouteCheck('signUpCheck', '/signup');
+  useRouteCheck('signUpCheck', '/signup');
   const { register, handleSubmit, watch } = useForm();
   const onSubmit = (data: any) => data;
   const navigate = useNavigate();
