@@ -9,22 +9,28 @@ const getAuth = async () => {
     refresh: localStorage.getItem('refreshToken'),
   };
 
-  if (token.access) {
-    const authResponse = await getMe();
-    if (authResponse.data) return authResponse.data;
-  }
-
-  if (token.refresh) {
-    const refreshResponse = await refreshAccessToken();
-    if (refreshResponse?.accessToken) {
-      sessionStorage.setItem('accessToken', refreshResponse.accessToken);
-
+  try {
+    if (token.access) {
       const authResponse = await getMe();
       if (authResponse.data) return authResponse.data;
     }
-  }
 
-  return null;
+    if (token.refresh) {
+      const refreshResponse = await refreshAccessToken();
+      if (refreshResponse?.accessToken) {
+        sessionStorage.setItem('accessToken', refreshResponse.accessToken);
+
+        const authResponse = await getMe();
+        if (authResponse.data) return authResponse.data;
+      }
+    }
+
+    return null;
+  } catch (e) {
+    sessionStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    return null;
+  }
 };
 
 const authAtom = atomWithDefault(getAuth);
