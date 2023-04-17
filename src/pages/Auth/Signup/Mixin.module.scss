@@ -23,35 +23,7 @@ $passive: #c4c4c4;
 }
 
 @mixin font-medium {
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 18px;
+  line-height: 22px;
   font-weight: 500;
-}
-
-@mixin button {
-  position: absolute;
-  bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 368px;
-  height: 40px;
-  background: $active;
-  border: none;
-  appearance: none;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 16px;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-
-  &[disabled] {
-    background-color: $passive;
-    cursor: default;
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    width: 100%;
-  }
 }

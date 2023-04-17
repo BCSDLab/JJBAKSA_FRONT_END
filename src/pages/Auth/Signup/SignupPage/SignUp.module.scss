@@ -15,7 +15,6 @@ $input-background: #eeeeee;
 
 .container {
   width: 368px;
-  height: calc(100% - 264px);
   margin-top: 50px;
   margin-bottom: 20px;
 
@@ -29,23 +28,18 @@ $input-background: #eeeeee;
 .form {
   height: 480px;
   position: relative;
-  margin-top: 35px;
-  margin-bottom: 70px;
+  margin-top: 80px;
+  margin-bottom: 200px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 100%;
-    margin-top: 60px;
+    margin: 0;
     position: relative;
-    margin-bottom: 0;
     height: 415px;
   }
 
-  &__title {
-    @include mixin.font-title(38px);
-
-    @include media.media-breakpoint-down(mobile) {
-      margin-bottom: 27px;
-    }
+  &__progress {
+    margin: 20px 0;
   }
 
   &__form {
@@ -64,8 +58,8 @@ $input-background: #eeeeee;
     right: 10px;
     bottom: 5px;
     border: none;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 
     @include media.media-breakpoint-down(mobile) {
       position: absolute;
@@ -78,7 +72,7 @@ $input-background: #eeeeee;
 
   &__label {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     padding: 5px;
     width: 408px;
     display: flex;
@@ -110,7 +104,7 @@ $input-background: #eeeeee;
 
   &__input {
     width: 356px;
-    height: 13px;
+    height: 28px;
     padding: 7px 0 8px 12px;
     outline: none;
     background: $input-background;
@@ -145,7 +139,7 @@ $input-background: #eeeeee;
     }
 
     &--email {
-      width: 156px;
+      width: 356px;
 
       @include media.media-breakpoint-down(mobile) {
         width: 215px;
@@ -175,8 +169,8 @@ $input-background: #eeeeee;
     background: $passive;
     border: 1px solid $passive;
     border-radius: 22px;
-    width: 96px;
-    height: 30px;
+    width: 104px;
+    height: 44px;
     position: absolute;
     right: 0;
     color: #ffffff;
@@ -294,9 +288,29 @@ $input-background: #eeeeee;
   }
 
   &__button {
-    @include mixin.button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 368px;
+    height: 40px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 50px;
+
+    &[disabled] {
+      background-color: $passive;
+      cursor: default;
+    }
 
     @include media.media-breakpoint-down(mobile) {
+      width: 100%;
       position: relative;
       margin-top: 73px;
     }

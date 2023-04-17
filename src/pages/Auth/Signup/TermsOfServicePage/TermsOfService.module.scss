@@ -24,20 +24,37 @@ $passive: #c4c4c4;
 
 .terms-of-service {
   color: $default;
-  margin-top: 70px;
   min-height: 445px;
   position: relative;
   margin-bottom: 70px;
 
   @include media.media-breakpoint-down(mobile) {
-    margin-top: 48px;
+    margin: 0;
     width: 100%;
     height: 440px;
-    margin-bottom: 0;
   }
 
   &__submit {
-    @include mixin.button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 368px;
+    height: 44px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    margin-top: 64px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+    }
   }
 
   &__title {
@@ -47,6 +64,10 @@ $passive: #c4c4c4;
       min-width: 100%;
     }
   }
+
+  &__progress {
+    margin: 32px 0;
+  }
 }
 
 .checkbox__icon {
@@ -54,13 +75,6 @@ $passive: #c4c4c4;
   height: 20px;
   position: absolute;
   right: 0;
-  cursor: pointer;
-}
-
-details[open] > summary:first-of-type {
-  .checkbox__icon {
-    transform: rotate(180deg);
-  }
 }
 
 .checkbox {
@@ -72,12 +86,20 @@ details[open] > summary:first-of-type {
     width: 100%;
   }
 
-  &__entire {
-    @include mixin.font-medium;
-
+  &__necessary {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    cursor: pointer;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    width: 37px;
+    height: 19px;
+    color: #ffffff;
+    background: #019d5c;
+    border-radius: 30px;
+    margin-right: 10px;
   }
 
   &__detail {
@@ -98,6 +120,9 @@ details[open] > summary:first-of-type {
     align-items: center;
     width: 373px;
     list-style: none;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+    cursor: pointer;
 
     &::-webkit-details-marker {
       display: none;
@@ -105,38 +130,20 @@ details[open] > summary:first-of-type {
   }
 
   &__summary-text {
-    cursor: pointer;
     display: flex;
     align-items: center;
   }
 
-  &__input {
-    cursor: pointer;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    box-sizing: border-box;
-    border-radius: 100%;
-    border: 1px solid #c4c4c4;
-    margin-right: 8px;
-
-    &:checked {
-      background: $active;
-    }
-  }
-
   &__info {
-    width: 320px;
-    height: 38px;
+    width: 344px;
+    max-height: 200px;
     margin-top: 16px;
-    border: 1px solid #c4c4c4;
-    border-radius: 16px;
+    border-bottom: 1px solid #c4c4c4;
     display: flex;
-    flex-wrap: wrap;
     overflow-y: auto;
     overflow-x: hidden;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 14px;
+    line-height: 17px;
     padding: 16px 26px 26px 16px;
     white-space: pre-line;
 
