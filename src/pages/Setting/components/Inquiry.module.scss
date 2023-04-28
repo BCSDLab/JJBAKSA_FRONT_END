@@ -21,43 +21,38 @@ $normal: #666666;
   }
 }
 
-.line{
+.body {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 1048px;
   margin-left: auto;
   margin-right: auto;
 }
 
+.line {
+  display: flex;
+  width: 1048px;
+}
+
 .line--first {
-  @extend .line;
+  @extend.line;
+
   border-color: $highlight;
 }
 
 .line--second {
-  @extend .line;
+  @extend.line;
+
   border-color: #eeeeee;
 }
 
 .box {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+  display: grid;
+  place-items: center;
   color: $normal;
-  margin: 10px auto;
-
-  &__number {
-    display: flex;
-  }
-
-  &__title {
-    display: flex;
-    margin: auto 336px auto 351px;
-  }
-
-  &__date {
-    display: flex;
-    margin: auto 60px auto 75px;
-  }
+  grid-template-columns: 200px 400px 150px 150px 150px;
+  grid-template-rows: 37px;
 }
 
 .footer {
