@@ -25,7 +25,7 @@ export default function App(): JSX.Element {
           <Route path="/post" element={<Post />} />
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
-          <Route path="/setting/inquiry" element={<Inquiry />} />
+          <Route path="/inquiry" element={<Inquiry />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />

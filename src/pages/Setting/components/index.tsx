@@ -58,7 +58,7 @@ export default function Setting() {
         </Link>
         <div className={styles.service__contents}>
           <div className={styles.service__text}>문의하기</div>
-          <Link to="Inquiry">
+          <Link to="/inquiry">
             <button type="submit" className={styles.service__announcement}>
               <Move />
             </button>
