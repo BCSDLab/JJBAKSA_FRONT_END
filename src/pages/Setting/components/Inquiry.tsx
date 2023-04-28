@@ -17,7 +17,7 @@ export default function Inquiry(): JSX.Element {
       </div>
       <hr className={styles.line} />
       <div className={styles.footer}>
-        <input type="text" value="제목 혹은 작성자를 검색해보세요!" className={styles.search} />
+        <input type="text" value="제목 혹은 작성자를 검색해보세요!" className={styles.footer__search} />
         <button type="submit" className={styles['footer__search-button']}>찾기</button>
       </div>
     </div>

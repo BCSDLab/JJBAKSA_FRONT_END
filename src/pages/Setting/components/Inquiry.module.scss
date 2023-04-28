@@ -1,5 +1,5 @@
 $default: #222222;
-$title: #ff7f23;
+$highlight: #ff7f23;
 $back: white;
 $normal: #666666;
 
@@ -9,82 +9,77 @@ $normal: #666666;
   justify-content: center;
 
   &__title {
-    display: flex;
-    color: $title;
+    color: $highlight;
     font-size: 32px;
-    margin : 126px auto 10px auto;
+    margin: 126px auto 10px;
   }
 
   &__sub-title {
-    display: flex;
     color: $normal;
     font-size: 16px;
-    margin : 0 auto 40px auto;
+    margin: 0 auto 40px;
   }
 }
 
 .mainline {
   display: flex;
   width: 1048px;
-  border-color: $title;
-  margin-left : auto;
-  margin-right : auto;
+  border-color: $highlight;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .line {
   display: flex;
   width: 1048px;
-  border-color: #EEEEEE;
-  margin-left : auto;
-  margin-right : auto;
+  border-color: #eeeeee;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .box {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   flex-direction: row;
   color: $normal;
-  margin: 10px auto 10px auto;
+  margin: 10px auto;
 
   &__number {
     display: flex;
   }
+
   &__title {
     display: flex;
     margin: auto 336px auto 351px;
   }
+
   &__date {
     display: flex;
     margin: auto 60px auto 75px;
   }
 }
+
 .footer {
   display: flex;
   margin: 161px auto 169px 436px;
-  //overflow: scroll;
-
 
   &__search-button {
-    background: $title;
+    background: $highlight;
     border-radius: 3px;
-    border-color: $title;
     border-style: none;
-    color: white;
+    color: $back;
     font-size: 14px;
-    padding: 5px 7px 5px 7px;
+    padding: 5px 7px;
     margin-left: 10px;
   }
-}
-.search {
-  display: flex;
-  width: 223px;
-  height: 27px;
-  left: 436px;
-  top: 914px;
-  border-color: #C4C4C4;
-  border-radius: 3px;
-  color: #C4C4C4;
-  padding-left: 7px;
-  border: solid;
+
+  &__search {
+    width: 223px;
+    height: 27px;
+    border-color: #c4c4c4;
+    border-radius: 3px;
+    color: #c4c4c4;
+    padding-left: 7px;
+    border: solid;
+  }
 }
