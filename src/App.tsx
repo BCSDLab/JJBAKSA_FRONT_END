@@ -15,6 +15,7 @@ import SearchDetails from 'pages/SearchDetails';
 import Setting from 'pages/Setting/components';
 import IdChange from 'pages/Setting/components/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
+import Inquiry from 'pages/Setting/components/Inquiry';
 
 export default function App(): JSX.Element {
   return (
@@ -24,6 +25,7 @@ export default function App(): JSX.Element {
           <Route path="/post" element={<Post />} />
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
+          <Route path="/setting/inquiry" element={<Inquiry />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />

@@ -56,14 +56,14 @@ export default function Setting() {
             </div>
           </div>
         </Link>
-        <Link to="/" className={styles.link}>
-          <div className={styles.service__contents}>
-            <div className={styles.service__text}>문의하기</div>
-            <div className={styles.policy__announcement}>
+        <div className={styles.service__contents}>
+          <div className={styles.service__text}>문의하기</div>
+          <Link to="Inquiry">
+            <button type="submit" className={styles.service__announcement}>
               <Move />
-            </div>
-          </div>
-        </Link>
+            </button>
+          </Link>
+        </div>
         <div className={styles.service__contents}>
           <div className={styles.service__text}>앱 버전</div>
           <div className={styles['service__app-version']}>

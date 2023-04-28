@@ -100,6 +100,8 @@ $back: white;
 
   &__announcement {
     display: flex;
+    background-color: $back;
+    border-style: none;
   }
 
   &__app-version {
