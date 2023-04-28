@@ -21,20 +21,21 @@ $normal: #666666;
   }
 }
 
-.mainline {
+.line{
   display: flex;
   width: 1048px;
-  border-color: $highlight;
   margin-left: auto;
   margin-right: auto;
 }
 
-.line {
-  display: flex;
-  width: 1048px;
+.line--first {
+  @extend .line;
+  border-color: $highlight;
+}
+
+.line--second {
+  @extend .line;
   border-color: #eeeeee;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .box {
