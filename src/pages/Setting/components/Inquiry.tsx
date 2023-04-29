@@ -8,7 +8,6 @@ export default function Inquiry(): JSX.Element {
         <h3 className={styles['header__sub-title']}>쩝쩝박사에게 궁금한 점이 있나요?</h3>
       </header>
       <div className={styles.body}>
-        <hr className={styles['line--first']} />
         <div className={styles.box}>
           <div>NO</div>
           <div>TITLE</div>
@@ -16,11 +15,10 @@ export default function Inquiry(): JSX.Element {
           <div>DATE</div>
           <div>HIT</div>
         </div>
-        <hr className={styles['line--second']} />
       </div>
       <div className={styles.footer}>
         <input placeholder="제목 혹은 작성자를 검색해보세요!" className={styles.footer__search} />
-        <button type="submit" className={styles['footer__search-button']}>찾기</button>
+        <input type="submit" value="찾기" className={styles['footer__search-button']} />
       </div>
     </div>
   );

@@ -30,23 +30,11 @@ $normal: #666666;
   width: 1048px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.line {
-  display: flex;
-  width: 1048px;
-}
-
-.line--first {
-  @extend.line;
-
-  border-color: $highlight;
-}
-
-.line--second {
-  @extend.line;
-
-  border-color: #eeeeee;
+  border: 1px;
+  border-top-color: $highlight;
+  border-bottom-color: #eeeeee;
+  border-top-style: solid;
+  border-bottom-style: solid;
 }
 
 .box {
