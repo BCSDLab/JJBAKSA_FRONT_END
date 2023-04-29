@@ -29,7 +29,7 @@ export default function App(): JSX.Element {
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />
           <Route path="/setting/id-change" element={<IdChange />} />
-          <Route path="/freind-list" element={<FollowList />} />
+          <Route path="/friend-list" element={<FollowList />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />
