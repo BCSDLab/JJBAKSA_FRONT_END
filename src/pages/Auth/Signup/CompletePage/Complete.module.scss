@@ -1,46 +1,51 @@
 @use "src/utils/styles/mediaQuery" as media;
 @use "../Mixin.module.scss" as mixin;
 
+$default: #222222;
+$active: #ff7f23;
+$passive: #c4c4c4;
+
 .template {
   @include mixin.template;
 }
 
 .container {
-  margin-top: 208px;
-  margin-bottom: 56px;
+  width: 368px;
+  margin-top: 50px;
+  margin-bottom: 20px;
 
   @include media.media-breakpoint-down(mobile) {
-    margin-top: 0;
+    width: 227px;
+    margin: auto;
+  }
+}
+
+.nickname-progress {
+  margin: 20px 0;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin: auto;
   }
 }
 
 .form {
-  width: 368px;
-  height: 430px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 190px;
-  margin-bottom: 128px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 227px;
-    height: 301px;
     padding-top: 104px;
     margin: 0;
   }
 
-  &__icon {
-    width: 74px;
-    height: 75px;
-    font-size: 60px;
-    margin-bottom: 24px;
+  &__logo {
+    width: 100%;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 62px;
-      height: 63px;
-      padding-bottom: 11px;
+      width: 200px;
+      height: auto;
     }
   }
 
@@ -59,8 +64,8 @@
 
   &__input {
     margin-top: 32px;
-    width: 216px;
-    height: 30px;
+    width: 258px;
+    height: 44px;
     background: #eeeeee;
     border-radius: 20px;
     border: none;
@@ -74,6 +79,30 @@
   }
 
   &__button {
-    @include mixin.button;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 368px;
+    height: 44px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    margin: 12px 0 62px;
+
+    &[disabled] {
+      background-color: $passive;
+      cursor: default;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 184px;
+      position: relative;
+    }
   }
 }

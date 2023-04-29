@@ -1,72 +1,34 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
-import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
+import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+import AuthDetail from 'components/Auth/AuthDetail';
+import { ReactComponent as Progress } from 'assets/svg/auth/first-progress.svg';
 import styles from './TermsOfService.module.scss';
 import PRIVACY from '../static/privacy';
 
-const useCheckbox = () => {
-  const [checkedList, setCheckedList] = useState<boolean[]>(() => PRIVACY.map(() => false));
-  const allCheck = !checkedList.some((checked) => !checked);
-
-  const changeCheck = (idx: number) => {
-    const changeList = checkedList.slice();
-    changeList[idx] = !changeList[idx];
-    setCheckedList(changeList);
-  };
-
-  const changeAllCheck = () => {
-    if (allCheck) {
-      setCheckedList(PRIVACY.map(() => false));
-    } else {
-      setCheckedList(PRIVACY.map(() => true));
-    }
-  };
-
-  return {
-    checkedList, changeCheck, allCheck, changeAllCheck,
-  };
-};
-
 export default function TermsOfService() {
   const navigate = useNavigate();
-  const {
-    checkedList, changeCheck, allCheck, changeAllCheck,
-  } = useCheckbox();
+
   return (
     <div className={styles.template}>
+      <AuthTopNavigation />
       <div className={styles.container}>
-        <AuthTitle />
         <div className={styles['terms-of-service']}>
-          <div className={styles['terms-of-service__title']}>약관동의</div>
+          <AuthDetail name="약관동의" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
+          <div className={styles['terms-of-service__progress']}>
+            <Progress />
+          </div>
           <div>
-            <div className={styles.checkbox}>
-              <label htmlFor="allCheck" className={styles.checkbox__entire}>
-                <input
-                  id="allCheck"
-                  className={styles.checkbox__input}
-                  type="checkbox"
-                  onChange={changeAllCheck}
-                  checked={allCheck}
-                />
-                전체동의
-              </label>
-            </div>
-            {PRIVACY.map((res, index) => (
+            {PRIVACY.map((res) => (
               <div key={res.key} className={styles.checkbox}>
-                <details className={styles.checkbox__details}>
+                <details className={styles.checkbox__detail}>
                   <summary className={styles.checkbox__summary}>
-                    <label className={styles['checkbox__summary-text']} htmlFor={res.summary}>
-                      <input
-                        className={styles.checkbox__input}
-                        id={res.summary}
-                        type="checkbox"
-                        onChange={() => changeCheck(index)}
-                        checked={checkedList[index]}
-                      />
+                    <div className={styles.checkbox__necessary}>필수</div>
+                    <div className={styles['checkbox__summary-text']}>
                       {res.summary}
-                    </label>
+                    </div>
                     <Arrow className={styles.checkbox__icon} />
                   </summary>
                   <p className={styles.checkbox__info}>{res.content}</p>
@@ -77,10 +39,9 @@ export default function TermsOfService() {
           <button
             type="button"
             className={styles['terms-of-service__submit']}
-            disabled={!allCheck}
             onClick={() => navigate('/signup', { state: { termsCheck: true } })}
           >
-            다음
+            전체 동의하기
           </button>
         </div>
         <Copyright />

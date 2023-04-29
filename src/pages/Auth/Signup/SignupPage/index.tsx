@@ -1,10 +1,12 @@
 import React from 'react';
 import { FormProvider, UseFormSetError, useForm } from 'react-hook-form';
+import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import { useNavigate } from 'react-router-dom';
-import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import { register, sendRegisterEmail } from 'api/user';
 import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
+import AuthDetail from 'components/Auth/AuthDetail';
+import { ReactComponent as Progress } from 'assets/svg/auth/second-progress.svg';
 import styles from './SignUp.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import { SignUpFormData } from './entity';
@@ -18,10 +20,10 @@ const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) =>
   const signup = (form: SignUpFormData) => {
     register({
       account: form.id,
-      email: `${form.email}@${form.emailDomain}`,
+      email: `${form.email}`,
       password: form.password,
     }).then(() => {
-      sendRegisterEmail({ email: `${form.email}@${form.emailDomain}` });
+      sendRegisterEmail({ email: `${form.email}` });
       navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
     }).catch((error) => {
       // 아이디, 닉네임, 비밀번호 등은 폼 단에서 에러핸들링이 되어서 회원가입 요청에서 발생하는 에러는 서버 문제거나, 중복 이메일인 경우 뿐입니다.
@@ -36,13 +38,11 @@ const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) =>
 
 export default function SignUpForm() {
   useRouteCheck('termsCheck', '/terms-of-service');
-
   const methods = useForm<SignUpFormData>({
     mode: 'onChange',
     defaultValues: {
       id: '',
       email: '',
-      emailDomain: '',
       password: '',
       passwordCheck: '',
     },
@@ -58,14 +58,17 @@ export default function SignUpForm() {
 
   return (
     <div className={styles.template}>
+      <AuthTopNavigation />
       <div className={styles.container}>
-        <AuthTitle />
         <FormProvider {...methods}>
           <form
             className={styles.form}
             onSubmit={handleSubmit(signup)}
           >
-            <div className={styles.form__title}>회원가입</div>
+            <AuthDetail name="회원가입하기" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />
+            <div className={styles.progress}>
+              <Progress />
+            </div>
 
             <IdInput />
             <EmailInput />
@@ -77,7 +80,7 @@ export default function SignUpForm() {
               className={styles.form__button}
               disabled={!isDirty || !isValid}
             >
-              완료
+              다음
             </button>
           </form>
         </FormProvider>
