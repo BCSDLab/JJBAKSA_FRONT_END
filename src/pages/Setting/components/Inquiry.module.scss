@@ -12,12 +12,14 @@ $normal: #666666;
     color: $highlight;
     font-size: 32px;
     margin: 126px auto 10px;
+    font-weight: 700;
   }
 
   &__sub-title {
     color: $normal;
     font-size: 16px;
     margin: 0 auto 40px;
+    font-weight: 400;
   }
 }
 

@@ -3,10 +3,10 @@ import styles from './Inquiry.module.scss';
 export default function Inquiry(): JSX.Element {
   return (
     <div>
-      <div className={styles.header}>
-        <div className={styles.header__title}>문의하기</div>
-        <div className={styles['header__sub-title']}>쩝쩝박사에게 궁금한 점이 있나요?</div>
-      </div>
+      <header className={styles.header}>
+        <h1 className={styles.header__title}>문의하기</h1>
+        <h3 className={styles['header__sub-title']}>쩝쩝박사에게 궁금한 점이 있나요?</h3>
+      </header>
       <div className={styles.body}>
         <hr className={styles['line--first']} />
         <div className={styles.box}>
