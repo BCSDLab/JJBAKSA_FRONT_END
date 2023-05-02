@@ -15,6 +15,7 @@ import SearchDetails from 'pages/SearchDetails';
 import Setting from 'pages/Setting/components';
 import IdChange from 'pages/Setting/components/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
+import Withdrawal from 'pages/Setting/Withdrawal';
 
 export default function App(): JSX.Element {
   return (
@@ -28,6 +29,7 @@ export default function App(): JSX.Element {
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />
           <Route path="/setting/id-change" element={<IdChange />} />
+          <Route path="/Setting/Withdrawal" element={<Withdrawal />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />

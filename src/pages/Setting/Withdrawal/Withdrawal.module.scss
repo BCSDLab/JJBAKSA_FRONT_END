@@ -1,0 +1,91 @@
+@use "src/utils/styles/mediaQuery" as media;
+$default: #666666;
+$title: #ff7f23;
+
+
+.template {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 368px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 216px;
+  }
+}
+
+.navbar {
+  position: absolute;
+  height: 80px;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #eeeeee;
+}
+
+.detail {
+  margin: 50px 0;
+
+  &__title {
+    font-weight: 700;
+    line-height: 40px;
+    font-size: 32px;
+    color: #ff7f23;
+    padding-bottom: 10px;
+  }
+
+  &__text {
+    margin: 8px 0;
+    white-space: pre;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: $default;
+  }
+
+  &__nickname {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: column;
+  color: $default;
+
+  &__title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &__input {
+    margin: 8px 0;
+  }
+}
+
+input[type="checkbox"] {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid $default;
+  appearance: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0 5px;
+}
+
+input[type="checkbox"]:checked {
+  background: $title;
+  border: none;
+}
