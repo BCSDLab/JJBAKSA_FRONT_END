@@ -1,11 +1,16 @@
 import { useAuth } from 'store/auth';
+import { deleteMe } from 'api/user';
 import AuthTitle from 'components/Auth/AuthTitle';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import styles from './Withdrawal.module.scss';
+import WithdrawalModal from './components/WithdrawalModal';
 
 export default function Withdrawal() {
   const auth = useAuth();
+  const [modal, open] = useBooleanState(false);
   return (
     <div className={styles.template}>
+      {modal && <WithdrawalModal />}
       <div className={styles.navbar}>
         <AuthTitle />
       </div>
@@ -17,7 +22,7 @@ export default function Withdrawal() {
           님,
           <div className={styles.detail__text}>쩝쩝박사 학위를 포기하시겠어요..?</div>
         </div>
-        <form>
+        <form onSubmit={() => deleteMe()}>
           <div className={styles.checkbox}>
             <div className={styles.checkbox__title}>계정을 삭제하시려는 이유가 궁금해요.</div>
             <label htmlFor="information" className={styles.checkbox__input}>
@@ -40,6 +45,9 @@ export default function Withdrawal() {
               <input type="checkbox" name="other" />
               기타
             </label>
+            <button type="button" onClick={() => open()}>
+              완료
+            </button>
           </div>
         </form>
       </div>

@@ -75,7 +75,7 @@ export default function Setting() {
         <Link to="/">
           <button type="submit" className={styles['bottom__log-out']}>로그아웃</button>
         </Link>
-        <Link to="/">
+        <Link to="/withdrawal">
           <div className={styles['bottom__delete-account']}>탈퇴하기</div>
         </Link>
       </div>

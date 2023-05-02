@@ -1,6 +1,7 @@
 @use "src/utils/styles/mediaQuery" as media;
-$default: #666666;
-$title: #ff7f23;
+$default: #222222;
+$active: #ff7f23;
+$passive: #c4c4c4;
 
 
 .template {
@@ -58,6 +59,36 @@ $title: #ff7f23;
   }
 }
 
+// .form {
+//   &__button {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 368px;
+//     height: 44px;
+//     background: $active;
+//     border: none;
+//     appearance: none;
+//     border-radius: 20px;
+//     font-weight: 700;
+//     font-size: 16px;
+//     text-decoration: none;
+//     color: white;
+//     cursor: pointer;
+//     margin: 12px 0 62px;
+
+//     &[disabled] {
+//       background-color: $passive;
+//       cursor: default;
+//     }
+
+//     @include media.media-breakpoint-down(mobile) {
+//       width: 184px;
+//       position: relative;
+//     }
+//   }
+// }
+
 .checkbox {
   display: flex;
   flex-direction: column;
@@ -86,6 +117,6 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background: $title;
+  background: $active;
   border: none;
 }
