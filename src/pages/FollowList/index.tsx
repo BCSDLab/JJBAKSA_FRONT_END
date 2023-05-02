@@ -1,4 +1,4 @@
-import { checkReceivedFollow, searchUsers } from 'api/follow';
+import { getFollowList, searchUsers } from 'api/follow';
 import search from 'assets/svg/search/lens.svg';
 import { useState } from 'react';
 import { useQuery } from 'react-query';
@@ -21,7 +21,7 @@ const useSearchFriend = () => {
 };
 
 const useRecievedFollow = () => {
-  const { data: receive } = useQuery('received', () => checkReceivedFollow({ page: 0, pageSize: 100 }));
+  const { data: receive } = useQuery('received', () => getFollowList({ page: 0, pageSize: 100 }));
 
   return { receive };
 };

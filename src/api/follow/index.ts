@@ -1,7 +1,7 @@
 import commonApi from './commonApiClients';
 import {
   FollowListParams,
-  CheckReceivedFollowParams,
+  GetFollowListParams,
   CheckSendedFollowParams,
   FollowerParams,
   SearchUsersParams,
@@ -11,7 +11,7 @@ import followApi from './followApiClient';
 
 export const followList = (param: FollowListParams) => followApi.get(`/followers?${param.cursor}&pageSize=${param.pageSize}`);
 
-export const checkReceivedFollow = (param: CheckReceivedFollowParams) => followApi.get(`/requests/receive?page=${param.page}&pageSize=${param.pageSize}`);
+export const getFollowList = (param: GetFollowListParams) => followApi.get(`/requests/receive?page=${param.page}&pageSize=${param.pageSize}`);
 
 export const checkSendedFollow = (param: CheckSendedFollowParams) => followApi.get(`/requests/send?page=${param.page}&pageSize=${param.pageSize}`);
 

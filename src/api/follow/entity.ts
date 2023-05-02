@@ -11,7 +11,7 @@ export interface FollowResponse {
   oauthType: string;
 }
 
-export interface CheckReceivedFollowParams {
+export interface GetFollowListParams {
   page: number,
   pageSize: number;
 }
