@@ -1,21 +1,14 @@
-import { useQuery } from 'react-query';
-import { getMe } from 'api/user';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import { useAuth } from 'store/auth';
 import { FollowListInfo } from '../static/entity';
 import Follower from './Follower';
 import style from './FollowList.module.scss';
 
 // 유저 검색 시 자신의 정보는 안보이도록 자신의 정보를 받아서 비교, 자신과의 followedType은 NONE
-const useGetMe = () => {
-  const { data } = useQuery('me', getMe);
-
-  return { data };
-};
-
 export default function FollowList({ title, data, user }: FollowListInfo) {
-  const me = useGetMe();
+  const auth = useAuth();
   const [value, , ,toggle] = useBooleanState(true);
 
   return (
@@ -40,7 +33,7 @@ export default function FollowList({ title, data, user }: FollowListInfo) {
          />
       ))}
       {title === '새 친구'
-      && value && data && data.filter((e) => e.followedType !== 'FOLLOWED').filter((e) => e.account !== me.data?.data.account).map((item) => (
+      && value && data && auth && data.filter((e) => e.followedType !== 'FOLLOWED').filter((e) => e.account !== auth.account).map((item) => (
         <Follower
           key={item.id}
           nickname={item.nickname}
