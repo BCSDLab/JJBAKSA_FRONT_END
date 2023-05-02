@@ -24,8 +24,8 @@ export default function FollowList({ title, data, user }: FollowListInfo) {
         {title}
         <Arrow className={cn(
           {
+            [style.title__arrow]: true,
             [style['title__arrow--up']]: value,
-            [style['title__arrow--down']]: !value,
           },
         )}
         />
