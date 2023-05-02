@@ -40,6 +40,7 @@ $normal: #666666;
     margin-left: 9px;
   }
 }
+
 .container {
   display: flex;
   flex-direction: column;
@@ -48,6 +49,7 @@ $normal: #666666;
   margin-left: auto;
   margin-right: auto;
 }
+
 .boxBody {
   display: flex;
   border: 1px;
@@ -65,7 +67,6 @@ $normal: #666666;
   grid-template-rows: 37px;
   flex-direction: column;
 }
-
 
 .inquiryListBox {
   display: grid;
@@ -89,7 +90,7 @@ $normal: #666666;
   display: flex;
   justify-content: center;
   margin-top: 65px;
-  
+
   &__svg {
     display: flex;
     margin: 13px;
@@ -105,7 +106,6 @@ $normal: #666666;
   color: $highlight;
   font-size: 16px;
   font-weight: 300;
-  display: flex;
   margin: 13px;
   border-style: none;
   border: #222222;
@@ -118,7 +118,6 @@ $normal: #666666;
   color: $default;
   font-size: 16px;
   font-weight: 300;
-  display: flex;
   margin: 13px;
   border-style: none;
   border: #222222;
@@ -175,11 +174,10 @@ $normal: #666666;
 }
 
 .post-svg {
-    display: flex;
-    //margin-left: 4px;
-    width: 17.02px;
-    color: $highlight;
-    border: 1px solid;
-    border-color: black;
-    background-color: $highlight;
-  }
+  display: flex;
+  width: 17.02px;
+  color: $highlight;
+  border: 1px solid;
+  border-color: black;
+  background-color: $highlight;
+}

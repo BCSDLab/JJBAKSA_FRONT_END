@@ -36,7 +36,6 @@ export default function Inquiry(): JSX.Element {
             <h1 className={styles.header__title}>문의하기</h1>
             <h3 className={styles['header__sub-title']}>쩝쩝박사에게 궁금한 점이 있나요?</h3>
           </div>
-
           <div className={styles['header__my-inquiry']}>
             나의 문의 바로가기
             <div className={styles.header__move}>
