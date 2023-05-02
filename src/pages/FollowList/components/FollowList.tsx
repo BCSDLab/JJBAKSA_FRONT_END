@@ -9,7 +9,7 @@ import style from './FollowList.module.scss';
 // 유저 검색 시 자신의 정보는 안보이도록 자신의 정보를 받아서 비교, 자신과의 followedType은 NONE
 export default function FollowList({ title, data, user }: FollowListInfo) {
   const auth = useAuth();
-  const [value, , ,toggle] = useBooleanState(true);
+  const [isShow, , ,toggle] = useBooleanState(true);
 
   return (
     <div className={style.container}>
@@ -18,13 +18,13 @@ export default function FollowList({ title, data, user }: FollowListInfo) {
         <Arrow className={cn(
           {
             [style.title__arrow]: true,
-            [style['title__arrow--up']]: value,
+            [style['title__arrow--up']]: isShow,
           },
         )}
         />
       </button>
       {title === '나의 친구'
-       && value && data && data.filter((e) => e.followedType === 'FOLLOWED').map((item) => (
+       && isShow && data && data.filter((e) => e.followedType === 'FOLLOWED').map((item) => (
          <Follower
            key={item.id}
            nickname={item.nickname}
@@ -33,7 +33,7 @@ export default function FollowList({ title, data, user }: FollowListInfo) {
          />
       ))}
       {title === '새 친구'
-      && value && data && auth && data.filter((e) => e.followedType !== 'FOLLOWED').filter((e) => e.account !== auth.account).map((item) => (
+      && isShow && data && auth && data.filter((e) => e.followedType !== 'FOLLOWED').filter((e) => e.account !== auth.account).map((item) => (
         <Follower
           key={item.id}
           nickname={item.nickname}
@@ -43,7 +43,7 @@ export default function FollowList({ title, data, user }: FollowListInfo) {
         />
       ))}
       {title === '받은 요청'
-      && value && user && user.map((item) => (
+      && isShow && user && user.map((item) => (
         <Follower
           key={item.user.id}
           nickname={item.user.nickname}
