@@ -1,28 +1,30 @@
 @use "src/utils/styles/mediaQuery" as media;
+
 $default: #222222;
+$common: #666666;
 $active: #ff7f23;
 $passive: #c4c4c4;
 
-
 .template {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
 }
 
 .content {
-  width: 368px;
+  width: 564px;
   margin-top: 80px;
   margin-bottom: 20px;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 216px;
+    width: 314px;
+    margin: 0;
   }
 }
 
 .navbar {
-  position: absolute;
   height: 80px;
   top: 0;
   width: 100%;
@@ -49,7 +51,7 @@ $passive: #c4c4c4;
     font-weight: 400;
     font-size: 18px;
     line-height: 20px;
-    color: $default;
+    color: $common;
   }
 
   &__nickname {
@@ -59,40 +61,41 @@ $passive: #c4c4c4;
   }
 }
 
-// .form {
-//   &__button {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     width: 368px;
-//     height: 44px;
-//     background: $active;
-//     border: none;
-//     appearance: none;
-//     border-radius: 20px;
-//     font-weight: 700;
-//     font-size: 16px;
-//     text-decoration: none;
-//     color: white;
-//     cursor: pointer;
-//     margin: 12px 0 62px;
+.form {
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 176px;
+    height: 44px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    margin: 20px 0;
 
-//     &[disabled] {
-//       background-color: $passive;
-//       cursor: default;
-//     }
+    &[disabled] {
+      background-color: $passive;
+      cursor: default;
+    }
 
-//     @include media.media-breakpoint-down(mobile) {
-//       width: 184px;
-//       position: relative;
-//     }
-//   }
-// }
+    @include media.media-breakpoint-down(mobile) {
+      width: 184px;
+      position: relative;
+    }
+  }
+}
 
 .checkbox {
   display: flex;
   flex-direction: column;
-  color: $default;
+  color: $common;
+  margin: 32px 0;
 
   &__title {
     font-weight: 500;
@@ -100,12 +103,70 @@ $passive: #c4c4c4;
     line-height: 22px;
   }
 
-  &__input {
+  &__label {
     margin: 8px 0;
   }
 }
 
-input[type="checkbox"] {
+.feedback {
+  margin: 32px 0;
+
+  &__title {
+    color: $common;
+    margin: 8px 0;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  &__detail {
+    margin: 16px 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    white-space: pre-line;
+    color: $active;
+  }
+
+  &__input {
+    resize: none;
+    width: 464px;
+    height: 99px;
+    padding: 10px;
+    border: 1px solid $passive;
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 14px;
+
+    &::placeholder {
+      color: $passive;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 312px;
+    }
+  }
+}
+
+.caution {
+  margin: 32px 0;
+  color: $passive;
+
+  &__title {
+    text-decoration: underline;
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  &__list {
+    margin: 0 24px 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+input[type="radio"] {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -116,7 +177,7 @@ input[type="checkbox"] {
   margin: 0 5px;
 }
 
-input[type="checkbox"]:checked {
+input[type="radio"]:checked {
   background: $active;
   border: none;
 }

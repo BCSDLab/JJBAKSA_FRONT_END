@@ -39,6 +39,12 @@ const updateAuthAtom = atom(null, async (get, set) => {
   set(authAtom, await getAuth());
 });
 
+const clearaAuthAtom = atom(null, (get, set) => {
+  set(authAtom, null);
+});
+
 export const useUpdateAuth = () => useSetAtom(updateAuthAtom);
+
+export const useClearAuth = () => useSetAtom(clearaAuthAtom);
 
 export const useAuth = () => useAtomValue(authAtom);

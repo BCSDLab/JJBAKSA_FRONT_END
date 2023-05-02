@@ -25,7 +25,7 @@ export const login = async (param: LoginParams) => {
 
 export const getMe = () => userApi.get<User>('/me');
 
-export const deleteMe = () => userApi.delete<User>('/me');
+export const withdrawUser = () => userApi.delete<User>('/me');
 
 export const modify = (param: ModifyParams) => userApi.patch<User>('/modify', param);
 
