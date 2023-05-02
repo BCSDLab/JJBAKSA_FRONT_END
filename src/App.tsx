@@ -12,10 +12,10 @@ import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
-import Setting from 'pages/Setting/components';
+import Setting from 'pages/Setting';
 import IdChange from 'pages/Setting/components/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
-import Inquiry from 'pages/Setting/components/Inquiry';
+import Inquiry from 'pages/Inquiry';
 
 export default function App(): JSX.Element {
   return (
