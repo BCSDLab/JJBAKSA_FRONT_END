@@ -1,32 +1,13 @@
-import { ReactComponent as ArrowLeft } from 'assets/svg/inquiry/arrow-left.svg';
-import { ReactComponent as ArrowRight } from 'assets/svg/inquiry/arrow-right.svg';
-import { ReactComponent as DoubleArrowLeft } from 'assets/svg/inquiry/double-arrow-left.svg';
-import { ReactComponent as DoubleArrowRight } from 'assets/svg/inquiry/double-arrow-right.svg';
 import { ReactComponent as Write } from 'assets/svg/inquiry/write.svg';
 import { ReactComponent as Move } from 'assets/svg/inquiry/myinquiry.svg';
 import usePostList from 'pages/Post/hooks/usePostList';
 import { useState } from 'react';
 import styles from './Inquiry.module.scss';
+import Pagination from './pagination';
 
 export default function Inquiry(): JSX.Element {
   const [page, setPage] = useState(1);
   const { data: postData } = usePostList(page);
-  console.log(postData);
-
-  const backTenPage = () => {
-    setPage((prev) => (prev > 10 ? prev - 10 : 1));
-  };
-  const backOnePage = () => {
-    setPage((prev) => (prev > 1 ? prev - 1 : 1));
-  };
-
-  const nextOnePage = () => {
-    setPage((prev) => (prev >= postData?.totalPages! ? prev : postData?.totalPages!));
-  };
-
-  const nextTenPage = () => {
-    setPage((prev) => (prev >= postData?.totalPages! ? prev : postData?.totalPages!));
-  };
 
   return (
     <div>
@@ -74,43 +55,26 @@ export default function Inquiry(): JSX.Element {
           ))}
         </div>
       </div>
-      <div className={styles['page-controler']}>
-        <button type="button" className={styles['page-controler__svg']} onClick={backTenPage}>
-          <DoubleArrowLeft />
-        </button>
-        <button type="button" className={styles['page-controler__svg']} onClick={backOnePage}>
-          <ArrowLeft />
-        </button>
-        <div className={styles['sub-page']}>
-          {page - 2}
-        </div>
-        <div className={styles['sub-page']}>
-          {page - 1}
-        </div>
-        <div className={styles.page}>
-          {page}
-        </div>
-        <div className={styles['sub-page']}>
-          {page + 1}
-        </div>
-        <div className={styles['sub-page']}>
-          {page + 2}
-        </div>
-        <button type="button" className={styles['page-controler__svg']} onClick={nextOnePage}>
-          <ArrowRight />
-        </button>
-        <button type="button" className={styles['page-controler__svg']} onClick={nextTenPage}>
-          <DoubleArrowRight />
-        </button>
-      </div>
+      {
+        postData?.totalPages
+        && (
+        <Pagination
+          totalPage={postData.totalPages}
+          setPage={setPage}
+          page={page}
+        />
+        )
+      }
       <div className={styles.footer}>
         <div className={styles['footer__search-block']}>
           <input placeholder="제목 혹은 작성자를 검색해보세요!" className={styles.footer__search} />
           <input type="submit" value="찾기" className={styles['footer__search-button']} />
         </div>
         <div className={styles['footer__post-button']}>
-          글쓰기
-          <div className={styles['post-svg']}>
+          <div className={styles['footer__post-input']}>
+            글쓰기
+          </div>
+          <div className={styles['footer__post-svg']}>
             <Write />
           </div>
         </div>

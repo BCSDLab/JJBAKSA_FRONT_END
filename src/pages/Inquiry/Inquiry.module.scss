@@ -11,7 +11,7 @@ $normal: #666666;
   &__title {
     color: $highlight;
     font-size: 32px;
-    margin: 126px auto 10px;
+    margin: 156px auto 10px;
     font-weight: 700;
   }
 
@@ -33,6 +33,7 @@ $normal: #666666;
     width: 178px;
     height: 36px;
     color: $highlight;
+    margin-top: 190px;
   }
 
   &__move {
@@ -161,23 +162,28 @@ $normal: #666666;
   }
 
   &__post-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 90px;
+    height: 33px;
     background-color: #ff7f23;
     color: #eeeeee;
-    display: flex;
     align-items: baseline;
     border-radius: 5px;
-    width: 90px;
-    padding: 8px 10px;
-    justify-content: space-between;
-    flex-direction: row;
+  }
+
+  &__post-input{
+    display: flex;
+    margin: 8px 0 8px 8.5px;
+  }
+
+  &__post-svg {
+    display: flex;
+    width: 17.02px;
+    color: $highlight;
+    background-color: $highlight;
+    margin: 7.47px 8.5px 7.47px 4px;
   }
 }
 
-.post-svg {
-  display: flex;
-  width: 17.02px;
-  color: $highlight;
-  border: 1px solid;
-  border-color: black;
-  background-color: $highlight;
-}
