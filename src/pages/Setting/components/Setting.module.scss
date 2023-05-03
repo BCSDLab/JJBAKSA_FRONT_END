@@ -121,6 +121,7 @@ $back: white;
   margin-right: 290px;
 
   &__log-out {
+    color: $default;
     display: flex;
     font-size: 15px;
     font-weight: bold;
@@ -128,6 +129,8 @@ $back: white;
     border: none;
     background-color: $back;
     text-decoration-line: none;
+    text-decoration: underline;
+    cursor: pointer;
   }
 
   &__delete-account {
