@@ -12,8 +12,8 @@ import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
-import Setting from 'pages/Setting/components';
-import IdChange from 'pages/Setting/components/IdChange';
+import Setting from 'pages/Setting/UserSetting';
+import IdChange from 'pages/Setting/UserSetting/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
 import Withdrawal from 'pages/Setting/Withdrawal';
 
