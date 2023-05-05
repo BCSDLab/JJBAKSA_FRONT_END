@@ -3,28 +3,35 @@ $highlight: #ff7f23;
 $back: white;
 $normal: #666666;
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1048px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 
   &__title {
     color: $highlight;
     font-size: 32px;
-    margin: 156px auto 10px;
     font-weight: 700;
+    margin: 156px auto 10px;
   }
 
   &__sub-title {
     color: $normal;
     font-size: 16px;
-    margin: 0 auto 40px;
     font-weight: 400;
+    margin: 0 auto 40px;
   }
 
   &__my-inquiry {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     border: 1px solid;
@@ -37,93 +44,68 @@ $normal: #666666;
   }
 
   &__move {
-    display: flex;
     margin-left: 9px;
   }
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 1048px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.boxBody {
-  display: flex;
+.body {
   border: 1px;
   border-top-color: $highlight;
   border-bottom-color: #eeeeee;
   border-top-style: solid;
   border-bottom-style: solid;
+
+  &__list-title {
+    display: grid;
+    place-items: center;
+    color: $normal;
+    grid-template-columns: 200px 400px 150px 150px 150px;
+    grid-template-rows: 37px;
+  }
+
+  &__list {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 200px 400px 150px 150px 150px;
+    width: 1048px;
+    border: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #eeeeee;
+  }
+
+  &__element {
+    display: grid;
+    place-items: center;
+    grid-template-rows: 50px;
+  }
 }
 
-.box {
-  display: grid;
-  place-items: center;
-  color: $normal;
-  grid-template-columns: 200px 400px 150px 150px 150px;
-  grid-template-rows: 37px;
-  flex-direction: column;
-}
-
-.inquiryListBox {
-  display: grid;
-  place-items: center;
-  grid-template-columns: 200px 400px 150px 150px 150px;
-  flex-direction: row;
-  width: 1048px;
-  border: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: #eeeeee;
-}
-
-.nobox {
-  display: grid;
-  place-items: center;
-  flex-direction: column;
-  grid-template-rows: 50px;
-}
-
-.page-controler {
+.pagination {
   display: flex;
   justify-content: center;
   margin-top: 65px;
 
   &__svg {
-    display: flex;
     margin: 13px;
     border-style: none;
     border: #222222;
     border: 1px;
     background-color: $back;
   }
-}
 
-.page {
-  display: flex;
-  color: $highlight;
-  font-size: 16px;
-  font-weight: 300;
-  margin: 13px;
-  border-style: none;
-  border: #222222;
-  border: 1px;
-  background-color: $back;
-}
+  &__page {
+    color: $highlight;
+    font-size: 16px;
+    margin: 13px;
+    background-color: $back;
+  }
 
-.sub-page {
-  display: flex;
-  color: $default;
-  font-size: 16px;
-  font-weight: 300;
-  margin: 13px;
-  border-style: none;
-  border: #222222;
-  border: 1px;
-  background-color: $back;
+  &__sub-page {
+    color: $default;
+    font-size: 16px;
+    margin: 13px;
+    background-color: $back;
+  }
 }
 
 .footer {
@@ -134,12 +116,11 @@ $normal: #666666;
 
   &__search-block {
     display: flex;
-    flex-direction: row;
     height: 33px;
     font-size: 14px;
   }
 
-  &__search-button {
+  &__button {
     background: $highlight;
     border-radius: 5px;
     border-style: none;
@@ -151,19 +132,17 @@ $normal: #666666;
     cursor: pointer;
   }
 
-  &__search {
+  &__input {
     width: 234px;
     border-color: #c4c4c4;
     border-radius: 5px;
     color: #c4c4c4;
     padding: 8px 24px;
     border: solid;
-    display: flex;
   }
 
   &__post-button {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     width: 90px;
     height: 33px;
@@ -173,13 +152,11 @@ $normal: #666666;
     border-radius: 5px;
   }
 
-  &__post-input {
-    display: flex;
+  &__post {
     margin: 8px 0 8px 8.5px;
   }
 
   &__post-svg {
-    display: flex;
     width: 17.02px;
     color: $highlight;
     background-color: $highlight;

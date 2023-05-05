@@ -24,8 +24,8 @@ export default function Inquiry(): JSX.Element {
             </div>
           </div>
         </header>
-        <div className={styles.boxBody}>
-          <div className={styles.box}>
+        <div className={styles.body}>
+          <div className={styles['body__list-title']}>
             <div>NO</div>
             <div>TITLE</div>
             <div>NAME</div>
@@ -35,20 +35,20 @@ export default function Inquiry(): JSX.Element {
         </div>
         <div>
           {postData && postData.content.map((res) => (
-            <div className={styles.inquiryListBox}>
-              <div key={res.content} className={styles.nobox}>
+            <div className={styles.body__list}>
+              <div key={res.content} className={styles.body__element}>
                 {res.content}
               </div>
-              <div key={res.title} className={styles.nobox}>
+              <div key={res.title} className={styles.body__element}>
                 {res.title}
               </div>
-              <div key={res.boardType} className={styles.nobox}>
+              <div key={res.boardType} className={styles.body__element}>
                 {res.boardType}
               </div>
-              <div key={res.createdAt} className={styles.nobox}>
+              <div key={res.createdAt} className={styles.body__element}>
                 {res.createdAt}
               </div>
-              <div key={res.content} className={styles.nobox}>
+              <div key={res.content} className={styles.body__element}>
                 {res.content}
               </div>
             </div>
@@ -67,11 +67,11 @@ export default function Inquiry(): JSX.Element {
       }
       <div className={styles.footer}>
         <div className={styles['footer__search-block']}>
-          <input placeholder="제목 혹은 작성자를 검색해보세요!" className={styles.footer__search} />
-          <input type="submit" value="찾기" className={styles['footer__search-button']} />
+          <input placeholder="제목 혹은 작성자를 검색해보세요!" className={styles.footer__input} />
+          <input type="submit" value="찾기" className={styles.footer__button} />
         </div>
         <div className={styles['footer__post-button']}>
-          <div className={styles['footer__post-input']}>
+          <div className={styles.footer__post}>
             글쓰기
           </div>
           <div className={styles['footer__post-svg']}>
