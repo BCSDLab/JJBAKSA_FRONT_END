@@ -27,37 +27,35 @@ export default function Pagination({ totalPage, setPage, page }: Props): JSX.Ele
   };
 
   return (
-    <div>
-      <div className={styles.pagination}>
-        <button type="button" className={styles.pagination__svg} onClick={backTenPage}>
-          <DoubleArrowLeft />
-        </button>
-        <button type="button" className={styles.pagination__svg} onClick={backOnePage}>
-          <ArrowLeft />
-        </button>
-        {
+    <nav className={styles.pagination}>
+      <button type="button" className={styles.pagination__svg} onClick={backTenPage}>
+        <DoubleArrowLeft />
+      </button>
+      <button type="button" className={styles.pagination__svg} onClick={backOnePage}>
+        <ArrowLeft />
+      </button>
+      {
           page < 3 ? null : <div className={styles['pagination__sub-page']}>{page - 2}</div>
         }
-        {
+      {
           page < 2 ? null : <div className={styles['pagination__sub-page']}>{page - 1}</div>
         }
-        <div className={styles.pagination__page}>
-          {page}
-        </div>
-        {
+      <div className={styles.pagination__page}>
+        {page}
+      </div>
+      {
           page >= totalPage ? null : <div className={styles['pagination__sub-page']}>{page + 1}</div>
         }
-        {
+      {
           page + 1 >= totalPage ? null : <div className={styles['pagination__sub-page']}>{page + 2}</div>
         }
 
-        <button type="button" className={styles.pagination__svg} onClick={nextOnePage}>
-          <ArrowRight />
-        </button>
-        <button type="button" className={styles.pagination__svg} onClick={nextTenPage}>
-          <DoubleArrowRight />
-        </button>
-      </div>
-    </div>
+      <button type="button" className={styles.pagination__svg} onClick={nextOnePage}>
+        <ArrowRight />
+      </button>
+      <button type="button" className={styles.pagination__svg} onClick={nextTenPage}>
+        <DoubleArrowRight />
+      </button>
+    </nav>
   );
 }

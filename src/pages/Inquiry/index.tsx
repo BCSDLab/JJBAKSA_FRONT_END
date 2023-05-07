@@ -65,20 +65,20 @@ export default function Inquiry(): JSX.Element {
         />
         )
       }
-      <div className={styles.footer}>
-        <div className={styles['footer__search-block']}>
-          <input placeholder="제목 혹은 작성자를 검색해보세요!" className={styles.footer__input} />
-          <input type="submit" value="찾기" className={styles.footer__button} />
+      <nav className={styles.nav}>
+        <div className={styles['nav__search-block']}>
+          <input placeholder="제목 혹은 작성자를 검색해보세요!" className={styles.nav__input} />
+          <input type="submit" value="찾기" className={styles.nav__button} />
         </div>
-        <div className={styles['footer__post-button']}>
-          <div className={styles.footer__post}>
+        <div className={styles['nav__post-button']}>
+          <div className={styles.nav__post}>
             글쓰기
           </div>
-          <div className={styles['footer__post-svg']}>
+          <div className={styles['nav__post-svg']}>
             <Write />
           </div>
         </div>
-      </div>
+      </nav>
     </div>
   );
 }
