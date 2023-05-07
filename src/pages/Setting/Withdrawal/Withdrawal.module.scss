@@ -25,6 +25,7 @@ $passive: #c4c4c4;
 }
 
 .navbar {
+  position: absolute;
   height: 80px;
   top: 0;
   width: 100%;
@@ -166,7 +167,7 @@ $passive: #c4c4c4;
   }
 }
 
-input[type="radio"] {
+input[type="checkbox"] {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -177,7 +178,7 @@ input[type="radio"] {
   margin: 0 5px;
 }
 
-input[type="radio"]:checked {
+input[type="checkbox"]:checked {
   background: $active;
   border: none;
 }

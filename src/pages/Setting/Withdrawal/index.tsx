@@ -2,13 +2,20 @@ import { useAuth } from 'store/auth';
 import { withdrawUser } from 'api/user';
 import AuthTitle from 'components/Auth/AuthTitle';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './Withdrawal.module.scss';
 import WithdrawalModal from './components/WithdrawalModal';
 
 export default function Withdrawal() {
   const auth = useAuth();
-  const [isCheck, check] = useBooleanState(false);
+  const [isCheck, setIsCheck] = useState(0);
   const [modal, open] = useBooleanState(false);
+  const checked = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      setIsCheck(isCheck + 1);
+    } else { setIsCheck(isCheck - 1); }
+  };
   const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
     withdrawUser();
     event.preventDefault();
@@ -16,7 +23,7 @@ export default function Withdrawal() {
 
   return (
     <div className={styles.template}>
-      {modal && <WithdrawalModal />}
+      {modal && createPortal(<WithdrawalModal />, document.body)}
       <div className={styles.navbar}>
         <AuthTitle />
       </div>
@@ -31,23 +38,23 @@ export default function Withdrawal() {
           <div className={styles.checkbox}>
             <div className={styles.checkbox__title}>계정을 삭제하시려는 이유가 궁금해요.</div>
             <label htmlFor="information" className={styles.checkbox__label}>
-              <input type="radio" id="information" name="reason" onClick={check} />
+              <input type="checkbox" id="information" name="reason" onChange={checked} />
               가게 정보가 부족해요
             </label>
             <label htmlFor="discomport" className={styles.checkbox__label}>
-              <input type="radio" id="discomport" name="reason" onClick={check} />
+              <input type="checkbox" id="discomport" name="reason" onChange={checked} />
               사용이 불편해요
             </label>
             <label htmlFor="usage" className={styles.checkbox__label}>
-              <input type="radio" id="usage" name="reason" onClick={check} />
+              <input type="checkbox" id="usage" name="reason" onChange={checked} />
               다른 앱을 더 많이 사용해요
             </label>
             <label htmlFor="account" className={styles.checkbox__label}>
-              <input type="radio" id="account" name="reason" onClick={check} />
+              <input type="checkbox" id="account" name="reason" onChange={checked} />
               새 계정을 만들고 싶어요
             </label>
             <label htmlFor="other" className={styles.checkbox__label}>
-              <input type="radio" id="other" name="reason" onClick={check} />
+              <input type="checkbox" id="other" name="reason" onChange={checked} />
               기타
             </label>
           </div>
@@ -66,7 +73,7 @@ export default function Withdrawal() {
               <li>추후 같은 계정으로 재가입해도 작성한 내역은 복구되지 않아요.</li>
             </ul>
           </div>
-          <button type="submit" className={styles.form__button} onClick={open} disabled={!isCheck}>
+          <button type="submit" className={styles.form__button} onClick={open} disabled={isCheck === 0}>
             회원탈퇴
           </button>
         </form>
