@@ -1,13 +1,13 @@
 import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg';
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'store/auth';
+import { useAuth, useClearAuth } from 'store/auth';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import styles from './Setting.module.scss';
 
 export default function Setting() {
   const auth = useAuth();
-
+  const clearAuth = useClearAuth();
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -72,10 +72,10 @@ export default function Setting() {
         </div>
       </div>
       <div className={styles.bottom}>
-        <Link to="/">
-          <button type="submit" className={styles['bottom__log-out']}>로그아웃</button>
+        <Link to="/" onClick={clearAuth}>
+          <div className={styles['bottom__log-out']}>로그아웃</div>
         </Link>
-        <Link to="/">
+        <Link to="/withdrawal">
           <div className={styles['bottom__delete-account']}>탈퇴하기</div>
         </Link>
       </div>

@@ -12,9 +12,10 @@ import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
-import Setting from 'pages/Setting/components';
-import IdChange from 'pages/Setting/components/IdChange';
+import Setting from 'pages/Setting/UserSetting';
+import IdChange from 'pages/Setting/UserSetting/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
+import Withdrawal from 'pages/Setting/Withdrawal';
 
 export default function App(): JSX.Element {
   return (
@@ -28,6 +29,7 @@ export default function App(): JSX.Element {
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />
           <Route path="/setting/id-change" element={<IdChange />} />
+          <Route path="/withdrawal" element={<Withdrawal />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />
