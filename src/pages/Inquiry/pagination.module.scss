@@ -1,0 +1,31 @@
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 65px;
+
+  &__svg {
+    margin: 13px;
+    border-style: none;
+    border: #222222;
+    border: 1px;
+    background-color: $back;
+  }
+
+  &__page {
+    color: $highlight;
+    font-size: 16px;
+    margin: 13px;
+    background-color: $back;
+  }
+
+  &__sub-page {
+    color: $default;
+    font-size: 16px;
+    margin: 13px;
+    background-color: $back;
+  }
+}

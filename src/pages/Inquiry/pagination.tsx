@@ -2,7 +2,7 @@ import { ReactComponent as ArrowLeft } from 'assets/svg/inquiry/arrow-left.svg';
 import { ReactComponent as ArrowRight } from 'assets/svg/inquiry/arrow-right.svg';
 import { ReactComponent as DoubleArrowLeft } from 'assets/svg/inquiry/double-arrow-left.svg';
 import { ReactComponent as DoubleArrowRight } from 'assets/svg/inquiry/double-arrow-right.svg';
-import styles from './Inquiry.module.scss';
+import styles from './pagination.module.scss';
 
 interface Props {
   totalPage: number;
