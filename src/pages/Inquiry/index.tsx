@@ -35,7 +35,7 @@ export default function Inquiry(): JSX.Element {
         </div>
         <div>
           {postData && postData.content.map((res) => (
-            <div key={res.content} className={styles.body__list}>
+            <div key={res.title} className={styles.body__list}>
               <div className={styles.body__element}>
                 {res.content}
               </div>
