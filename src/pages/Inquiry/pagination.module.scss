@@ -6,6 +6,7 @@ $back: white;
   display: flex;
   justify-content: center;
   margin-top: 65px;
+  cursor:pointer;
 
   &__svg {
     margin: 13px;
@@ -20,6 +21,7 @@ $back: white;
     font-size: 16px;
     margin: 13px;
     background-color: $back;
+    cursor:pointer;
   }
 
   &__sub-page {
@@ -27,5 +29,6 @@ $back: white;
     font-size: 16px;
     margin: 13px;
     background-color: $back;
+    cursor:pointer
   }
 }
