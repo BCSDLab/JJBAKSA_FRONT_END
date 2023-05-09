@@ -19,11 +19,11 @@ export default function Pagination({ totalPage, setPage, page }: Props): JSX.Ele
   };
 
   const nextOnePage = () => {
-    setPage((prev) => (page + 1 <= totalPage ? prev + 1 : totalPage));
+    setPage((prev) => (prev + 1 <= totalPage ? prev + 1 : totalPage));
   };
 
   const nextTenPage = () => {
-    setPage((prev) => (page + 10 <= totalPage ? prev + 10 : totalPage));
+    setPage((prev) => (prev + 10 <= totalPage ? prev + 10 : totalPage));
   };
 
   return (
