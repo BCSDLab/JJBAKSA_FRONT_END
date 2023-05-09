@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Inquiry.module.scss';
 import Pagination from './pagination';
+import Datatable from './datatable';
 
 export default function Inquiry(): JSX.Element {
   const [page, setPage] = useState(1);
@@ -27,36 +28,11 @@ export default function Inquiry(): JSX.Element {
             </div>
           </Link>
         </header>
-        <div className={styles.body}>
-          <div className={styles['body__list-title']}>
-            <div>NO</div>
-            <div>TITLE</div>
-            <div>NAME</div>
-            <div>DATE</div>
-            <div>HIT</div>
-          </div>
-        </div>
-        <div>
-          {postData && postData.content.map((res) => (
-            <div key={res.title} className={styles.body__list}>
-              <div className={styles.body__element}>
-                {res.content}
-              </div>
-              <div className={styles.body__element}>
-                {res.title}
-              </div>
-              <div className={styles.body__element}>
-                {res.boardType}
-              </div>
-              <div className={styles.body__element}>
-                {res.createdAt}
-              </div>
-              <div className={styles.body__element}>
-                {res.content}
-              </div>
-            </div>
-          ))}
-        </div>
+        {
+          postData?.content && (
+            <Datatable data={postData.content} />
+          )
+        }
       </div>
       {
         postData?.totalPages
