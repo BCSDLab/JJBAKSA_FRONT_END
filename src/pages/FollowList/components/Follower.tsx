@@ -13,7 +13,7 @@ const useRequestAndUpdate = () => {
       queryClient.invalidateQueries('search');
     },
   });
-  return { request };
+  return request;
 };
 
 // 팔로우 승인 후 받은 요청 목록을 다시 받아와 갱신
@@ -30,7 +30,7 @@ const useAcceptFollow = () => {
 export default function Follower({
   nickname, account, followedType, id,
 }: FollowerInfo) {
-  const { request } = useRequestAndUpdate();
+  const request = useRequestAndUpdate();
   const { accept } = useAcceptFollow();
 
   return (
