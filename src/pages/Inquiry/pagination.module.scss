@@ -6,7 +6,7 @@ $back: white;
   display: flex;
   justify-content: center;
   margin-top: 65px;
-  cursor:pointer;
+  cursor: pointer;
 
   &__svg {
     margin: 13px;
@@ -17,18 +17,16 @@ $back: white;
   }
 
   &__page {
-    color: $highlight;
-    font-size: 16px;
-    margin: 13px;
-    background-color: $back;
-    cursor:pointer;
-  }
-
-  &__sub-page {
     color: $default;
     font-size: 16px;
-    margin: 13px;
+    padding: 13px;
     background-color: $back;
-    cursor:pointer
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &--active {
+      color: $highlight;
+    }
   }
 }

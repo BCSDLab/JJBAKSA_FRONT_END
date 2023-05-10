@@ -2,6 +2,7 @@ import { ReactComponent as ArrowLeft } from 'assets/svg/inquiry/arrow-left.svg';
 import { ReactComponent as ArrowRight } from 'assets/svg/inquiry/arrow-right.svg';
 import { ReactComponent as DoubleArrowLeft } from 'assets/svg/inquiry/double-arrow-left.svg';
 import { ReactComponent as DoubleArrowRight } from 'assets/svg/inquiry/double-arrow-right.svg';
+import cn from 'utils/ts/classNames';
 import styles from './pagination.module.scss';
 
 interface Props {
@@ -18,6 +19,10 @@ export default function Pagination({ totalPage, setPage, page }: Props): JSX.Ele
       return prev + offset;
     });
   };
+  const pageList = [...Array(totalPage)]
+    .map((_, index) => index + 1)
+    .slice(Math.min(Math.max(page - 3, 0), totalPage - 5), totalPage)
+    .slice(0, 5);
 
   return (
     <nav className={styles.pagination}>
@@ -27,22 +32,19 @@ export default function Pagination({ totalPage, setPage, page }: Props): JSX.Ele
       <button type="button" className={styles.pagination__svg} onClick={() => movePage(-1)}>
         <ArrowLeft />
       </button>
-      {
-          page < 3 ? null : <div className={styles['pagination__sub-page']}>{page - 2}</div>
-        }
-      {
-          page < 2 ? null : <div className={styles['pagination__sub-page']}>{page - 1}</div>
-        }
-      <div className={styles.pagination__page}>
-        {page}
-      </div>
-      {
-          page >= totalPage ? null : <div className={styles['pagination__sub-page']}>{page + 1}</div>
-        }
-      {
-          page + 1 >= totalPage ? null : <div className={styles['pagination__sub-page']}>{page + 2}</div>
-        }
-
+      {pageList.map((item) => (
+        <button
+          type="button"
+          key={item}
+          className={cn({
+            [styles.pagination__page]: true,
+            [styles['pagination__page--active']]: item === page,
+          })}
+          onClick={() => setPage(item)}
+        >
+          {item}
+        </button>
+      ))}
       <button type="button" className={styles.pagination__svg} onClick={() => movePage(1)}>
         <ArrowRight />
       </button>

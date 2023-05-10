@@ -1,4 +1,4 @@
-export default function myinquiry(): JSX.Element {
+export default function Myinquiry(): JSX.Element {
   return (
     <div>
       <h1>HI MYINQUIRY</h1>

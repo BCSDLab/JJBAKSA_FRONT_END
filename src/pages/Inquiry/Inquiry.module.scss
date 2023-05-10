@@ -87,10 +87,10 @@ $normal: #666666;
 
 .nav {
   display: flex;
-  margin: 95px auto 169px auto;
+  margin: 95px auto 169px;
   width: 1048px;
   justify-content: space-between;
-  cursor:pointer;
+  cursor: pointer;
 
   &__search-block {
     display: flex;
