@@ -21,9 +21,10 @@ const useSearchFriend = () => {
 };
 
 const useRecievedFollow = () => {
-  const { data: receive } = useQuery('received', () => getFollowList({ page: 0, pageSize: 100 }));
+  const [page, setPage] = useState<number>(0);
+  const { data: receive } = useQuery(['received', page], () => getFollowList({ page, pageSize: 10 }));
 
-  return { receive };
+  return { receive, page, setPage };
 };
 
 export default function FollowPage() {
