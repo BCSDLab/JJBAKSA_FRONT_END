@@ -1,0 +1,144 @@
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+$normal: #666666;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1048px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    color: $highlight;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 156px auto 10px;
+  }
+
+  &__sub-title {
+    color: $normal;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 auto 40px;
+  }
+
+  &__my-inquiry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-color: $highlight;
+    border-radius: 10px;
+    width: 178px;
+    height: 36px;
+    color: $highlight;
+    margin-top: 190px;
+    cursor: pointer;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__move {
+    margin-left: 9px;
+  }
+}
+
+.body {
+  border: 1px;
+  border-top-color: $highlight;
+  border-bottom-color: #eeeeee;
+  border-top-style: solid;
+  border-bottom-style: solid;
+
+  &__list-title {
+    display: grid;
+    place-items: center;
+    color: $normal;
+    grid-template-columns: 200px 400px 150px 150px 150px;
+    grid-template-rows: 37px;
+  }
+
+  &__list {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 200px 400px 150px 150px 150px;
+    width: 1048px;
+    border: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #eeeeee;
+  }
+
+  &__element {
+    display: grid;
+    place-items: center;
+    grid-template-rows: 50px;
+  }
+}
+
+.nav {
+  display: flex;
+  margin: 95px auto 169px;
+  width: 1048px;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &__search-block {
+    display: flex;
+    height: 33px;
+    font-size: 14px;
+  }
+
+  &__button {
+    background: $highlight;
+    border-radius: 5px;
+    border-style: none;
+    color: $back;
+    width: 57px;
+    font-size: 14px;
+    padding: 5px 7px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  &__input {
+    width: 234px;
+    border-color: #c4c4c4;
+    border-radius: 5px;
+    color: #c4c4c4;
+    padding: 8px 24px;
+    border: solid;
+  }
+
+  &__post-button {
+    display: flex;
+    justify-content: center;
+    width: 90px;
+    height: 33px;
+    background-color: #ff7f23;
+    color: #eeeeee;
+    align-items: center;
+    border-radius: 5px;
+  }
+
+  &__post {
+    margin: 8px 0 8px 8.5px;
+  }
+
+  &__post-svg {
+    width: 17.02px;
+    color: $highlight;
+    background-color: $highlight;
+    margin: 7.47px 8.5px 7.47px 4px;
+    cursor: pointer;
+  }
+}
