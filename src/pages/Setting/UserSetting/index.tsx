@@ -48,14 +48,14 @@ export default function Setting() {
       </div>
       <div className={styles.service}>
         <div className={styles['service__sub-title']}>서비스</div>
-        <Link to="/" className={styles.link}>
-          <div className={styles.service__contents}>
-            <div className={styles.service__text}>공지사항</div>
-            <div className={styles.policy__announcements}>
+        <div className={styles.service__contents}>
+          <div className={styles.service__text}>공지사항</div>
+          <Link to="/notice">
+            <button type="submit" className={styles.service__announcement}>
               <Move />
-            </div>
-          </div>
-        </Link>
+            </button>
+          </Link>
+        </div>
         <div className={styles.service__contents}>
           <div className={styles.service__text}>문의하기</div>
           <Link to="/inquiry">
