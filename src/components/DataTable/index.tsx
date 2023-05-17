@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Move } from 'assets/svg/inquiry/myinquiry.svg';
-import styles from './Inquiry.module.scss';
+import styles from './DataTable.module.scss';
 
 interface Props {
   data: {
@@ -13,7 +13,7 @@ interface Props {
   titleMessage: string;
 }
 
-export default function Datatable({ data, title, titleMessage }: Props): JSX.Element {
+export default function DataTable({ data, title, titleMessage }: Props): JSX.Element {
   return (
     <div>
       <header className={styles.header}>
@@ -34,7 +34,6 @@ export default function Datatable({ data, title, titleMessage }: Props): JSX.Ele
           )
             : null
         }
-
       </header>
       <div className={styles.body}>
         <div className={styles['body__list-title']}>

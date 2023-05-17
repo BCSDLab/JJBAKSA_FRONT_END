@@ -3,7 +3,7 @@ import usePostList from 'pages/Post/hooks/usePostList';
 import { useState } from 'react';
 import styles from './Inquiry.module.scss';
 import Pagination from '../../components/Pagination';
-import Datatable from './datatable';
+import Datatable from '../../components/DataTable';
 
 export default function Inquiry(): JSX.Element {
   const [page, setPage] = useState(1);

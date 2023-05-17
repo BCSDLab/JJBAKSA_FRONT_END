@@ -18,7 +18,7 @@ import AuthRoute from 'components/common/AuthRoute';
 import Withdrawal from 'pages/Setting/Withdrawal';
 import Inquiry from 'pages/Inquiry';
 import Myinquiry from 'pages/Inquiry/Myinquiry';
-import Notification from 'pages/Notification';
+import Notice from 'pages/Notice';
 
 export default function App(): JSX.Element {
   return (
@@ -30,7 +30,7 @@ export default function App(): JSX.Element {
           <Route path="/search/:keyword" element={<SearchDetails />} />
           <Route path="/inquiry" element={<Inquiry />} />
           <Route path="/myinquiry" element={<Myinquiry />} />
-          <Route path="/notification" element={<Notification />} />
+          <Route path="/notice" element={<Notice />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />

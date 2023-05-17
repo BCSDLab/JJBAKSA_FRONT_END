@@ -1,10 +1,10 @@
 import usePostList from 'pages/Post/hooks/usePostList';
 import { useState } from 'react';
 import Pagination from 'components/Pagination';
-import Datatable from 'pages/Inquiry/datatable';
-import styles from './Notification.module.scss';
+import Datatable from 'components/DataTable';
+import styles from './Notice.module.scss';
 
-export default function Notification(): JSX.Element {
+export default function Notice(): JSX.Element {
   const [page, setPage] = useState(1);
   const { data: postData } = usePostList(page);
   const title = '공지사항';

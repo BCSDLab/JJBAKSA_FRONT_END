@@ -50,7 +50,7 @@ export default function Setting() {
         <div className={styles['service__sub-title']}>서비스</div>
         <div className={styles.service__contents}>
           <div className={styles.service__text}>공지사항</div>
-          <Link to="/notification">
+          <Link to="/notice">
             <button type="submit" className={styles.policy__announcements}>
               <Move />
             </button>
