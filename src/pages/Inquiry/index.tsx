@@ -1,9 +1,9 @@
 import { ReactComponent as Write } from 'assets/svg/inquiry/write.svg';
 import usePostList from 'pages/Post/hooks/usePostList';
 import { useState } from 'react';
+import Pagination from 'components/Pagination';
+import Datatable from 'components/DataTable';
 import styles from './Inquiry.module.scss';
-import Pagination from '../../components/Pagination';
-import Datatable from '../../components/DataTable';
 
 export default function Inquiry(): JSX.Element {
   const [page, setPage] = useState(1);
