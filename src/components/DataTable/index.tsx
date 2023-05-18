@@ -10,20 +10,20 @@ interface Props {
     createdAt: string;
   }[];
   title: string;
-  titleMessage: string;
+  subTitle: string;
 }
 
-export default function DataTable({ data, title, titleMessage }: Props): JSX.Element {
+export default function DataTable({ data, title, subTitle }: Props): JSX.Element {
   return (
     <div>
       <header className={styles.header}>
         <div>
           <h1 className={styles.header__title}>{title}</h1>
-          <h3 className={styles['header__sub-title']}>{titleMessage}</h3>
+          <h3 className={styles['header__sub-title']}>{subTitle}</h3>
         </div>
         {
           title === '문의하기' ? (
-            <Link to="/Myinquiry" className={styles.header__link}>
+            <Link to="/myinquiry" className={styles.header__link}>
               <div className={styles['header__my-inquiry']}>
                 나의 문의 바로가기
                 <div className={styles.header__move}>

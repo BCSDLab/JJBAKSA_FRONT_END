@@ -8,7 +8,7 @@ export default function Notice(): JSX.Element {
   const [page, setPage] = useState(1);
   const { data: postData } = usePostList(page);
   const title = '공지사항';
-  const titleMessage = '쩝쩝박사가 여러분들께 전달드립니다!';
+  const subTitle = '쩝쩝박사가 여러분들께 전달드립니다!';
 
   return (
     <div>
@@ -19,7 +19,7 @@ export default function Notice(): JSX.Element {
               <Datatable
                 data={postData.content}
                 title={title}
-                titleMessage={titleMessage}
+                titleMessage={subTitle}
               />
               <Pagination
                 totalPage={postData.totalPages}
