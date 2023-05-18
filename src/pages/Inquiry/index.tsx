@@ -9,7 +9,7 @@ export default function Inquiry(): JSX.Element {
   const [page, setPage] = useState(1);
   const { data: postData } = usePostList(page);
   const title = '문의하기';
-  const titleMessage = '쩝쩝박사에게 궁금한 점이 있나요?';
+  const subTitle = '쩝쩝박사에게 궁금한 점이 있나요?';
 
   return (
     <div>
@@ -20,7 +20,7 @@ export default function Inquiry(): JSX.Element {
               <Datatable
                 data={postData.content}
                 title={title}
-                titleMessage={titleMessage}
+                subTitle={subTitle}
               />
               <Pagination
                 totalPage={postData.totalPages}

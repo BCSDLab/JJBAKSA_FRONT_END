@@ -19,7 +19,7 @@ export default function Notice(): JSX.Element {
               <Datatable
                 data={postData.content}
                 title={title}
-                titleMessage={subTitle}
+                subTitle={subTitle}
               />
               <Pagination
                 totalPage={postData.totalPages}
