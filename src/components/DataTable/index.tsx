@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { ReactComponent as Move } from 'assets/svg/inquiry/myinquiry.svg';
+import MyInquiry from 'components/MyInquiry';
 import styles from './DataTable.module.scss';
 
 interface Props {
@@ -22,17 +21,8 @@ export default function DataTable({ data, title, subTitle }: Props): JSX.Element
           <h3 className={styles['header__sub-title']}>{subTitle}</h3>
         </div>
         {
-          title === '문의하기' ? (
-            <Link to="/myinquiry" className={styles.header__link}>
-              <div className={styles['header__my-inquiry']}>
-                나의 문의 바로가기
-                <div className={styles.header__move}>
-                  <Move />
-                </div>
-              </div>
-            </Link>
-          )
-            : null
+          title === '문의하기'
+            ? <MyInquiry /> : null
         }
       </header>
       <div className={styles.body}>
