@@ -3,7 +3,7 @@ import cn from 'utils/ts/classNames';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useFormContext } from 'react-hook-form';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
-import { ERROR_MESSAGE } from '../../static/signUp';
+import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
 import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
 // import DomainDropdown from './DomainDropdown';

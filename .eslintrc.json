@@ -34,7 +34,7 @@
 			{
 				"patterns": [
 					{
-						"group": ["../*"],
+						"group": ["../../*"],
 						"message": "Usage of relative parent imports is not allowed."
 					}
 				]

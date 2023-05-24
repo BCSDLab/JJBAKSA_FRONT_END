@@ -4,7 +4,7 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useFormContext } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { checkIdDuplicate } from 'api/user';
-import { ERROR_MESSAGE } from '../../static/signUp';
+import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
 import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
 

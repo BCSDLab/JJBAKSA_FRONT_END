@@ -4,9 +4,9 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
 import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
 import { useFormContext } from 'react-hook-form';
-import { ERROR_MESSAGE } from '../../static/signUp';
+import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
+import useBlindCheck from 'pages/Auth/Signup/hooks/useBlindCheck';
 import styles from '../SignUp.module.scss';
-import useBlindCheck from '../../hooks/useBlindCheck';
 import { SignUpFormData } from '../entity';
 
 export default function PasswordCheckInput() {
