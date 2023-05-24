@@ -3,6 +3,7 @@ import usePostList from 'pages/Post/hooks/usePostList';
 import { useState } from 'react';
 import Pagination from 'components/Pagination';
 import Datatable from 'components/DataTable';
+import MyInquiry from 'components/MyInquiry';
 import styles from './Inquiry.module.scss';
 
 export default function Inquiry(): JSX.Element {
@@ -21,6 +22,7 @@ export default function Inquiry(): JSX.Element {
                 data={postData.content}
                 title={title}
                 subTitle={subTitle}
+                TableTopButton={MyInquiry}
               />
               <Pagination
                 totalPage={postData.totalPages}
