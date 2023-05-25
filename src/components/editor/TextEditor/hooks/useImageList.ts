@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react';
-import ImageApi from '../api/ImageApi';
+import ImageAPI from 'components/editor/TextEditor/api/ImageApi';
 
 interface ReturnType {
   imageList: string[] | null,
@@ -9,7 +9,7 @@ interface ReturnType {
 }
 
 export default function useImageList(): ReturnType {
-  const { data, refetch } = ImageApi();
+  const { data, refetch } = ImageAPI();
   const [imageList, setImageList] = useState<string[] | null>(null);
   const addImage = () => {
     if (imageList === null) setImageList([data?.data.message]);

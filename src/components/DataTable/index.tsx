@@ -1,4 +1,5 @@
-import styles from './Inquiry.module.scss';
+import React from 'react';
+import styles from './DataTable.module.scss';
 
 interface Props {
   data: {
@@ -7,11 +8,23 @@ interface Props {
     boardType: string;
     createdAt: string;
   }[];
+  title: string;
+  subTitle: string;
+  TableTopButton?: React.ElementType;
 }
 
-export default function Datatable({ data }: Props): JSX.Element {
+export default function DataTable({
+  data, title, subTitle, TableTopButton,
+}: Props): JSX.Element {
   return (
     <div>
+      <header className={styles.header}>
+        <div>
+          <h1 className={styles.header__title}>{title}</h1>
+          <h3 className={styles['header__sub-title']}>{subTitle}</h3>
+        </div>
+        {TableTopButton && <TableTopButton />}
+      </header>
       <div className={styles.body}>
         <div className={styles['body__list-title']}>
           <div>NO</div>
