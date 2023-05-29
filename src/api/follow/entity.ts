@@ -25,6 +25,12 @@ export interface FollowerParams {
   userAccount: string;
 }
 
+export interface DeleteFollowerParams extends FollowerParams {
+}
+
+export interface PostFollowerParams extends FollowerParams {
+}
+
 export interface SearchUsersParams {
   keyword: string;
 }

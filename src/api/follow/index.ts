@@ -3,7 +3,8 @@ import {
   FollowListParams,
   GetFollowListParams,
   CheckSendedFollowParams,
-  FollowerParams,
+  DeleteFollowerParams,
+  PostFollowerParams,
   SearchUsersParams,
   AcceptFollowParams,
 } from './entity';
@@ -15,11 +16,11 @@ export const getFollowList = (param: GetFollowListParams) => followApi.get(`/req
 
 export const checkSendedFollow = (param: CheckSendedFollowParams) => followApi.get(`/requests/send?page=${param.page}&pageSize=${param.pageSize}`);
 
-export const requestFollow = (param: FollowerParams) => followApi.post('/requests', {
+export const requestFollow = (param: PostFollowerParams) => followApi.post('/requests', {
   userAccount: param.userAccount,
 });
 
-export const deleteFollower = (param: FollowerParams) => followApi.delete('/follwers', {
+export const deleteFollower = (param: DeleteFollowerParams) => followApi.delete('/follwers', {
   data: {
     userAccount: param.userAccount,
   },
