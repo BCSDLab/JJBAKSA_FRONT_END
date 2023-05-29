@@ -16,6 +16,10 @@ import FollowList from 'pages/FollowList';
 import Setting from 'pages/Setting/components';
 import IdChange from 'pages/Setting/components/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
+import Withdrawal from 'pages/Setting/Withdrawal';
+import Inquiry from 'pages/Inquiry';
+import Myinquiry from 'pages/Inquiry/Myinquiry';
+import Notice from 'pages/Notice';
 
 export default function App(): JSX.Element {
   return (
@@ -25,11 +29,15 @@ export default function App(): JSX.Element {
           <Route path="/post" element={<Post />} />
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
+          <Route path="/inquiry" element={<Inquiry />} />
+          <Route path="/myinquiry" element={<Myinquiry />} />
+          <Route path="/notice" element={<Notice />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />
           <Route path="/setting/id-change" element={<IdChange />} />
           <Route path="/friend-list" element={<FollowList />} />
+          <Route path="/withdrawal" element={<Withdrawal />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />

@@ -39,6 +39,14 @@ const updateAuthAtom = atom(null, async (get, set) => {
   set(authAtom, await getAuth());
 });
 
+const clearAuthAtom = atom(null, (get, set) => {
+  set(authAtom, null);
+  sessionStorage.removeItem('accessToken');
+  localStorage.removeItem('refreshToken');
+});
+
 export const useUpdateAuth = () => useSetAtom(updateAuthAtom);
+
+export const useClearAuth = () => useSetAtom(clearAuthAtom);
 
 export const useAuth = () => useAtomValue(authAtom);
