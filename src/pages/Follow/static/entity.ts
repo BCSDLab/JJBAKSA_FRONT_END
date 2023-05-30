@@ -1,10 +1,12 @@
-export interface FollowerInfo {
+export type FollowerInfo = Omit<Follower, 'email'>;
+
+export interface Follower {
   account: string,
   nickname: string,
-  followedType?: string,
-  id?: number,
-  email?: string,
-  userType?: string;
+  followedType: 'FOLLOWED' | 'NONE' | 'RECEIVED',
+  id: number,
+  email: string,
+  userType: string;
 }
 
 export interface RequestUserInfo {
@@ -20,10 +22,4 @@ export interface ReceiveInfo {
 }
 export interface SearchPageInfo {
   data: FollowerInfo[],
-}
-
-export interface FollowListInfo {
-  title: string;
-  data?: FollowerInfo[];
-  user?: ReceiveInfo[];
 }

@@ -1,23 +1,27 @@
-export interface FollowListParams {
-  cursor: string,
-  pageSize: number;
-}
+import { User } from 'api/user/entity';
+import { FollowerInfo } from 'pages/Follow/static/entity';
 
-export interface FollowResponse {
-  account: string,
-  email: string,
-  id: number,
-  nickname: string,
-  oauthType: string;
+export interface FollowListParams {
+  cursor: string;
+  pageSize: number;
 }
 
 export interface GetFollowListParams {
-  page: number,
+  page: number;
   pageSize: number;
 }
 
+export interface GetFollowListResponse {
+  content: {
+    id: number;
+    follower: User;
+    user: User;
+    account: string;
+  }[]
+}
+
 export interface CheckSendedFollowParams {
-  page: number,
+  page: number;
   pageSize: number;
 }
 
@@ -33,6 +37,10 @@ export interface PostFollowerParams extends FollowerParams {
 
 export interface SearchUsersParams {
   keyword: string;
+}
+
+export interface SearchUsersResponse {
+  content: FollowerInfo[]
 }
 
 export interface AcceptFollowParams {

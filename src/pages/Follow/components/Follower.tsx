@@ -3,7 +3,6 @@ import cn from 'utils/ts/classNames';
 import { acceptFollow, requestFollow } from 'api/follow';
 import { useMutation, useQueryClient } from 'react-query';
 import style from './Follower.module.scss';
-import { FollowerInfo } from '../static/entity';
 
 // 팔로우 요청 후 유저 목록을 다시 받아와 요청중 상태로 변경
 const useRequestAndUpdate = () => {
@@ -27,9 +26,16 @@ const useAcceptFollow = () => {
   return { accept };
 };
 
+interface Props {
+  account: string,
+  nickname: string,
+  followedType: string,
+  id: number,
+}
+
 export default function Follower({
   nickname, account, followedType, id,
-}: FollowerInfo) {
+}: Props) {
   const request = useRequestAndUpdate();
   const { accept } = useAcceptFollow();
 
@@ -46,7 +52,7 @@ export default function Follower({
           [style['follower__button--unfollow']]: followedType === 'REQUESTED' || followedType === 'FOLLOWED',
         })}
         type="button"
-        onClick={() => (followedType === 'NONE' && request(account)) || (followedType === 'RECEIVED' && id && accept(id))}
+        onClick={() => (followedType === 'NONE' && request(account)) || (followedType === 'RECEIVED' && accept(id))}
       >
         {followedType === 'NONE' && '팔로우'}
         {followedType === 'REQUESTED' && '요청중'}

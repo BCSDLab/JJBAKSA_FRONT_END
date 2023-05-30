@@ -2,7 +2,7 @@ import { API_PATH } from 'config/constants';
 import axios from 'axios';
 
 const followApi = axios.create({
-  baseURL: `${API_PATH}/follow`,
+  baseURL: `${API_PATH}`,
   timeout: 2000,
 });
 
