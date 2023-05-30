@@ -12,6 +12,7 @@ import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
+import FollowPage from 'pages/Follow';
 import Setting from 'pages/Setting/UserSetting';
 import IdChange from 'pages/Setting/UserSetting/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
@@ -35,6 +36,9 @@ export default function App(): JSX.Element {
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />
           <Route path="/setting/id-change" element={<IdChange />} />
+          <Route path="/" element={<DefaultLayout />}>
+            <Route path="/friend-list" element={<FollowPage />} />
+          </Route>
           <Route path="/withdrawal" element={<Withdrawal />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>

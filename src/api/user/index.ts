@@ -1,5 +1,4 @@
 // import makeToast from 'utils/ts/makeToast';
-import userApi from './userApiClient';
 import {
   CheckIdDuplicateParams,
   LoginParams,
@@ -13,6 +12,7 @@ import {
   FindPasswordParams,
   ChangePasswordParams,
 } from './entity';
+import userApi from './userApiClient';
 
 export const register = (param: RegisterParams) => userApi.post<User>('/', param);
 
