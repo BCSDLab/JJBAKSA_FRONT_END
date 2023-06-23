@@ -38,23 +38,23 @@ export default function Withdrawal() {
           <div className={styles.checkbox}>
             <div className={styles.checkbox__title}>계정을 삭제하시려는 이유가 궁금해요.</div>
             <label htmlFor="information" className={styles.checkbox__label}>
-              <input type="checkbox" id="information" name="reason" onChange={checked} />
+              <input className={styles.form__checkbox} type="checkbox" id="information" name="reason" onChange={checked} />
               가게 정보가 부족해요
             </label>
             <label htmlFor="discomport" className={styles.checkbox__label}>
-              <input type="checkbox" id="discomport" name="reason" onChange={checked} />
+              <input className={styles.form__checkbox} type="checkbox" id="discomport" name="reason" onChange={checked} />
               사용이 불편해요
             </label>
             <label htmlFor="usage" className={styles.checkbox__label}>
-              <input type="checkbox" id="usage" name="reason" onChange={checked} />
+              <input className={styles.form__checkbox} type="checkbox" id="usage" name="reason" onChange={checked} />
               다른 앱을 더 많이 사용해요
             </label>
             <label htmlFor="account" className={styles.checkbox__label}>
-              <input type="checkbox" id="account" name="reason" onChange={checked} />
+              <input className={styles.form__checkbox} type="checkbox" id="account" name="reason" onChange={checked} />
               새 계정을 만들고 싶어요
             </label>
             <label htmlFor="other" className={styles.checkbox__label}>
-              <input type="checkbox" id="other" name="reason" onChange={checked} />
+              <input className={styles.form__checkbox} type="checkbox" id="other" name="reason" onChange={checked} />
               기타
             </label>
           </div>
