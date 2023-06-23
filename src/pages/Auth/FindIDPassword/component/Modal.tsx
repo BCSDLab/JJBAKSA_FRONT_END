@@ -14,9 +14,7 @@ export default function Modal({ children, type }: ModalProp): JSX.Element {
       <div className={style.overay} />
       <div className={style.modal}>
         <div className={style.modal__title}>
-          {type}
-          {' '}
-          찾기 완료
+          {`${type} 찾기 완료`}
         </div>
         <div className={style.modal__content}>{children}</div>
         <Link to="/login"><button type="button" className={style.modal__button}>확인</button></Link>

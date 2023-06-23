@@ -59,14 +59,14 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
             <p className={style.page__quote}>
               아이디를 찾을 때
               <br />
-              사용할 이메일을 입력해주세요.
+              사용할 이메일을 입력해 주세요.
             </p>
           )}
           {type === 'password' && (
             <p className={style.page__quote}>
-              비밀번호를 찾을 때
+              비밀번호를 찾을 때 사용할
               <br />
-              사용할 이메일과 아이디를 입력해주세요.
+              이메일과 아이디를 입력해 주세요.
             </p>
           )}
         </div>
@@ -112,8 +112,8 @@ export default function FindIdPassword({ type }: FindProp): JSX.Element {
             type="submit"
             disabled={isSubmitting || !isValid}
             className={cn({
-              [style.active]: isValid,
-              [style.inactive]: true,
+              [style['form__submit--active']]: isValid,
+              [style.form__submit]: true,
             })}
           >
             인증번호 보내기
