@@ -1,14 +1,14 @@
 const MARKER = [
   {
-    placeName: '1',
-    latitude: 36.862341,
-    longitude: 127.209635,
+    placeName: '박순자 아우내순대',
+    latitude: 36.761724,
+    longitude: 127.299092,
     index: 1,
   },
   {
-    placeName: '2',
-    latitude: 36.762341,
-    longitude: 125.254645,
+    placeName: '집',
+    latitude: 36.343087,
+    longitude: 127.448879,
     index: 2,
   },
   {

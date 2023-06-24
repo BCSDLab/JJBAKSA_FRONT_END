@@ -12,6 +12,7 @@ interface MarkerType {
   latitude: number;
   longitude: number;
   placeName: string;
+  index: number;
 }
 const options = {
   maximumAge: 1000,
@@ -24,7 +25,7 @@ export default function Map(): JSX.Element {
 
   const markerHighlightEvent = (markerCur:naver.maps.Marker, item:MarkerType) => {
     naver.maps.Event.addListener(markerCur, 'click', () => {
-      if (selectedMarker.current) {
+      if (selectedMarker.current && !isMobile) {
         selectedMarker.current.setIcon({
           content: MarkerHtml(defaultImage, selectedMarker.current.getTitle()),
           size: new naver.maps.Size(50, 52),
@@ -33,7 +34,7 @@ export default function Map(): JSX.Element {
       }
 
       markerCur.setIcon({
-        content: ClickedMarkerHtml(defaultImage, item.placeName),
+        content: ClickedMarkerHtml(defaultImage, item.placeName, item.index),
         size: new naver.maps.Size(50, 52),
         anchor: new naver.maps.Point(25, 26),
       });
@@ -78,7 +79,7 @@ export default function Map(): JSX.Element {
           title: item.placeName,
           map: mapRef.current,
           icon: {
-            content: MarkerHtml(defaultImage, item.placeName),
+            content: MarkerHtml(defaultImage, item.placeName, item.index),
             size: new naver.maps.Size(50, 52),
             anchor: new naver.maps.Point(25, 26),
           },
