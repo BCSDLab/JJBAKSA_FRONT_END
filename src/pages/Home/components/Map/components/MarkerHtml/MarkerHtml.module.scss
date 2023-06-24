@@ -11,6 +11,15 @@
   height: 68px;
   font-weight: 500;
 
+  @include media.media-breakpoint-down(mobile){
+    background-color: #ff7f23;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 40px;
+    left: 20px;
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -20,6 +29,11 @@
     top: 68px;
     left: 22px;
     z-index: -1;
+
+    @include media.media-breakpoint-down(mobile){
+      top: 26px;
+      left: 2px;
+    }
   }
 
   &--clicked {
@@ -34,6 +48,15 @@
     color: white;
     font-weight: 500;
 
+    @include media.media-breakpoint-down(mobile){
+      background-color: #ff7f23;
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: 40px;
+      left: 22px;
+    }
+
     &::after {
       content: "";
       position: absolute;
@@ -42,6 +65,12 @@
       border-right: 14px solid transparent;
       top: 68px;
       left: 22px;
+      z-index: -1;
+
+      @include media.media-breakpoint-down(mobile){
+        top: 26px;
+        left: 0;
+      }
     }
   }
 }
@@ -57,9 +86,14 @@
     width: 62px;
     height: 62px;
     border-radius: 89.5px;
+
+    @include media.media-breakpoint-down(mobile){
+      width: 30px;
+      height: 30px;
+    }
   }
 
-  &__name {
+&__name {
     margin-left: 10px;
     padding-right: 10px;
 
@@ -67,41 +101,16 @@
       margin: 0;
       padding: 0;
       position: absolute;
-      top: 85px;
-      right: 0;
+      top: 40px;
       width: 100%;
       display: flex;
       justify-content: center;
-      font-size: 15px;
+      font-size: 12px;
       font-weight: 500;
-      line-height: 15px;
       color: #222222;
       // stylelint-disable-next-line
-      text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
-        1px 1px 0 white;
-    }
-  }
-
-  &--clicked {
-    display: flex;
-    align-items: center;
-
-    &__photo img {
-      display: flex;
-      align-items: center;
-      width: 65px;
-      height: 65px;
-      border-radius: 89.5px;
-    }
-
-    &__name {
-      margin-left: 10px;
-      padding-right: 10px;
-
-      @include media.media-breakpoint-down(mobile) {
-        padding: 0;
-        display: none;
-      }
+      // text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white,
+      //   1px 1px 0 white;
     }
   }
 }
@@ -115,5 +124,9 @@
     border-top: 12px solid #ffffff;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
+
+    @include media.media-breakpoint-down(mobile){
+      display: none;
+    }
   }
 }
