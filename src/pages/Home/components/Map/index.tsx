@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import useGeolocation from 'utils/hooks/useGeolocation';
 import MARKER from 'pages/Home/static/marker';
-import defaultImage from 'assets/images/search/default-image.png';
+import defaultImg from 'assets/images/search/default-image.png';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './Map.module.scss';
 import OptionButtons from './components/OptionButtons';
@@ -25,16 +25,20 @@ export default function Map(): JSX.Element {
 
   const markerHighlightEvent = (markerCur:naver.maps.Marker, item:MarkerType) => {
     naver.maps.Event.addListener(markerCur, 'click', () => {
-      if (selectedMarker.current && !isMobile) {
+      if (selectedMarker.current) {
         selectedMarker.current.setIcon({
-          content: MarkerHtml(defaultImage, selectedMarker.current.getTitle()),
+          content: MarkerHtml(
+            defaultImg,
+            selectedMarker.current.getTitle(),
+            selectedMarker.current.getZIndex(),
+          ),
           size: new naver.maps.Size(50, 52),
           anchor: new naver.maps.Point(25, 26),
         });
       }
 
       markerCur.setIcon({
-        content: ClickedMarkerHtml(defaultImage, item.placeName, item.index),
+        content: ClickedMarkerHtml(defaultImg, item.placeName, item.index),
         size: new naver.maps.Size(50, 52),
         anchor: new naver.maps.Point(25, 26),
       });
@@ -78,8 +82,9 @@ export default function Map(): JSX.Element {
           position: new naver.maps.LatLng(item.latitude, item.longitude),
           title: item.placeName,
           map: mapRef.current,
+          zIndex: item.index,
           icon: {
-            content: MarkerHtml(defaultImage, item.placeName, item.index),
+            content: MarkerHtml(defaultImg, item.placeName, item.index),
             size: new naver.maps.Size(50, 52),
             anchor: new naver.maps.Point(25, 26),
           },

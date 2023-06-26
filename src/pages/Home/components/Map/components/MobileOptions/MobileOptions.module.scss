@@ -10,6 +10,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 70%;
     height: 48px;
     background: #ffffff;
     box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
@@ -22,35 +23,60 @@
     margin-bottom: 10px;
   }
 
+  &__filter {
+    width: 48px;
+    height: 48px;
+    background-color: #ffffff;
+    border-radius: 37px;
+    opacity: 0.8;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    border: 1px solid #eeeeee;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--clicked {
+      svg path {
+        stroke: #ff7f23;
+      }
+    }
+  }
+
   &__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 4px;
-    justify-items: center;
+    display: flex;
+    float: right;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 118px;
+    height: 78px;
+    border-radius: 15px;
+    opacity: 0.8;
+    border: 1px solid #eeeeee;
+    background-color: #ffffff;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
   }
 
   &__text {
     display: flex;
-    justify-content: center;
     align-items: center;
-    box-sizing: border-box;
     width: 100%;
     height: 30px;
-    background: rgb(251 251 250 / 90%);
-    border: 1px solid #c4c4c4;
-    box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
-    border-radius: 37px;
+    margin-left: 10px;
     font-weight: 500;
     font-size: 12px;
     color: #595959;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
 
     svg {
       padding-right: 5px;
     }
 
-    &--selected {
-      border: 1px solid #ff7f23;
+    &--clicked {
       color: #ff7f23;
 
       svg path {
