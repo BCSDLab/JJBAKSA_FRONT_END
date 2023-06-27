@@ -1,5 +1,6 @@
 import Default from 'assets/images/search/defaultImg.png';
 import MarkerLogo from 'assets/svg/home/location-marker.svg';
+import Selected from 'assets/svg/home/selected-marker.svg';
 import styles from './MarkerHtml.module.scss';
 
 export function MarkerHtml(defaultImg:string, name:string, index:number) {
@@ -23,15 +24,15 @@ export function MarkerHtml(defaultImg:string, name:string, index:number) {
 
 export function ClickedMarkerHtml(defaultImg:string, name:string, index:number) {
   return `
-    <img src=${MarkerLogo} class=${styles['marker--clicked']}>
+    <img src=${Selected} class=${styles['marker--clicked']}>
       <div class=${styles.bubble}>
-        <div class=${styles.bubble__photo}>
+        <div class=${styles['bubble__photo--clicked']}>
           <img src=${defaultImg} alt="" />
         </div>
         <div class=${styles.bubble__index}>
           ${defaultImg === Default ? index : ''}
         </div>
-        <div class=${styles.bubble__name}>
+        <div class=${styles['bubble__name--clicked']}>
           ${name}
         </div>
       </div>
