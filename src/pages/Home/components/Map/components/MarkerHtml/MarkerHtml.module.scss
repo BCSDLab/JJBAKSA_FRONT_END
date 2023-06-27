@@ -59,7 +59,7 @@
     top: 3px;
     left: 5px;
 
-    @include media.media-breakpoint-down(moblie) {
+    @include media.media-breakpoint-down(mobile) {
       width: 36px;
       height: 36px;
       top: 2px;
