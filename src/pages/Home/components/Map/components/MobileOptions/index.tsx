@@ -28,7 +28,7 @@ export default function MobileOptions(): JSX.Element {
           type="button"
           className={cn({
             [styles['top-options__filter']]: true,
-            [styles['top-options__filter--clicked']]: selected !== '',
+            [styles['top-options__filter--clicked']]: selected !== '' && !filter,
           })}
           onClick={toggle}
         >
