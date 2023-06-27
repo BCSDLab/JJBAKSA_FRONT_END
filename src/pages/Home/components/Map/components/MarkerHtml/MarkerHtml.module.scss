@@ -8,7 +8,6 @@
   width: 69px;
   height: 69px;
 
-
   @include media.media-breakpoint-down(mobile) {
     width: 48px;
     height: 48px;
@@ -87,13 +86,13 @@
       width: 100px;
       height: 40px;
       position: absolute;
-      text-align: center;      
+      text-align: center;
       top: 10px;
       left: 60px;
       font-size: 20px;
       font-weight: 700;
       color: #fe7f23;
-      
+
       @include media.media-breakpoint-down(mobile) {
         width: 70px;
         height: 34px;
