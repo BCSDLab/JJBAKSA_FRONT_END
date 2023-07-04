@@ -18,7 +18,7 @@
     grid-template-rows: 1fr 1fr 4fr;
   }
 }
-//................
+
 .header {
   display: flex;
   flex-direction: row;
@@ -47,10 +47,11 @@
     border-radius: 20px;
     font-size: 12px;
     line-height: 15px;
-    color: #FF7F23;
+    color: #ff7f23;
     cursor: pointer;
     background-color: white;
-    border: 1px solid #FF7F23;
+    border: 1px solid #ff7f23;
+
     :hover {
       background-color: #ff7f23;
       color: white;
@@ -65,8 +66,8 @@
 
 .box {
   display: flex;
-  margin: 24px 24px 0 24px;
-  height: calc(100% - 365px); //32
+  margin: 24px 24px 0;
+  height: calc(100% - 365px);
   flex-direction: column;
 
   &__button {
@@ -101,7 +102,7 @@
   }
 
   &__sub-title {
-    color: #898A8D;
+    color: #898a8d;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -109,19 +110,18 @@
   }
 }
 
-//.............밑꺼 글쓰는 부분
-.editor { 
+.editor {
   line-height: 15px;
   height: 119%;
   font-size: 16px;
-  color: #222222; 
+  color: #222222;
 
   &--withImage {
     height: calc(100% - 196px);
   }
 }
 
-.isEditor { 
+.isEditor {
   line-height: 15px;
   height: 100%;
   font-size: 16px;
@@ -132,7 +132,7 @@
     height: calc(100% - 196px);
   }
 }
-//............동그란 부분
+
 .item {
   display: flex;
   box-sizing: border-box;
@@ -166,7 +166,7 @@
     color: #222222;
     background-color: white;
     border-radius: 50px;
-    box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 3px 12px 1px black(0, 0, 0, 10%);
 
     &--tool {
       font-weight: 200;
@@ -229,5 +229,3 @@
     }
   }
 }
-
-

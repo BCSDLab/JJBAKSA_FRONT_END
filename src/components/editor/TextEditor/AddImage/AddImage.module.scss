@@ -1,6 +1,6 @@
 // label태그
 .signup-profileImg-label {
-  margin: 5px 0 20px 0;
+  margin: 5px 0 20px;
   font-weight: bold;
   font-size: 13px;
   color: #0095f6;
@@ -21,10 +21,9 @@
   background-color: white;
   width: 40px;
   height: 40px;
-  justify-content: center;
   align-items: center;
   border-radius: 50px;
-  box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 10%);
 
   &__image {
   display: flex;
@@ -57,12 +56,10 @@
     height: 18px;
     margin: 8px;
     border: solid 5px;
-    border-color: #FF7F23;
+    border-color: #ff7f23;
     border-radius: 50%;
     background-color: #ffffff;
-    background-color: rgba( 255, 255, 255, 0.5 );
-
-    //animation: show-out 0.2s ease-out normal forwards;
+    background-color: rgba( 255, 255, 255, 50%);
   }
 
   &__image {
