@@ -1,8 +1,8 @@
-import { ReactComponent as Trash } from 'assets/svg/post/trash.svg';
+import { ReactComponent as Trash } from 'assets/svg/post/cancel.svg';
 import { useRef } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import useOnClickOutside from 'utils/hooks/useOnClickOutside';
-import styles from '../TextEditor.module.scss';
+import styles from './AddImage.module.scss';
 
 interface Props {
   value: string,

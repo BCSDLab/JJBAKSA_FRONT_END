@@ -1,0 +1,81 @@
+// label태그
+.signup-profileImg-label {
+  margin: 5px 0 20px 0;
+  font-weight: bold;
+  font-size: 13px;
+  color: #0095f6;
+  display: inline-block;
+  cursor: pointer;
+}
+
+// input태그
+.form-signup input[type="file"] {
+  display: none;
+}
+
+.getImage {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  z-index: 2;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 0.1);
+
+  &__image {
+  display: flex;
+  }
+}
+
+.input {
+  display: none;
+}
+
+.preview {
+  display: flex;
+  border-radius: 10px;
+}
+
+.image-container {
+  width: calc(100% - 40px);
+  display: flex;
+  height: 80px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 9px;
+  }
+
+  &__button {
+    width: 18px;
+    height: 18px;
+    margin: 8px;
+    border: solid 5px;
+    border-color: #FF7F23;
+    border-radius: 50%;
+    background-color: #ffffff;
+    background-color: rgba( 255, 255, 255, 0.5 );
+
+    //animation: show-out 0.2s ease-out normal forwards;
+  }
+
+  &__image {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+}

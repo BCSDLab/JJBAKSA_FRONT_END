@@ -1,6 +1,6 @@
 import { ReactComponent as Picture } from 'assets/svg/post/picture.svg';
 import { useEffect } from 'react';
-import styles from '../TextEditor.module.scss';
+import styles from './AddImage.module.scss';
 import useImageList from '../hooks/useImageList';
 import ImageItem from './ImageItem';
 
@@ -14,17 +14,30 @@ function AddImage({ active, inActive }: Props) {
   useEffect(() => {
     if (imageList === null || imageList.length === 0) inActive();
     else active();
+    console.log('여기서 처음 imageList 값 전달', imageList);
   }, [imageList, active, inActive]);
 
   return (
     <>
-      <button
+      <label htmlFor="image">
+        <div className={styles.getImage}>
+          <Picture className={styles.getImage__Image} />
+        </div>
+        <input
+          type="file"
+          onChange={addImage}
+          id="image"
+          className={styles.input}
+          multiple
+        />
+      </label>
+      {/* <button
         type="button"
         className={styles.item__button}
         onClick={addImage}
       >
         <Picture />
-      </button>
+      </button> */}
       <div className={styles['image-container']}>
         { imageList?.map((value) => (
           <div key={value} className={styles['image-container__item']}>

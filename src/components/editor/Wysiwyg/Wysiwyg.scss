@@ -1,6 +1,11 @@
 .wysiwygContainer {
   height: 100%;
   width: 100%;
+
+  .toastui-editor-contents{
+    padding-top: 22px;
+    box-shadow: inset 0 7px 7px -5px lightgray;
+  }
 }
 
 .auto-height {
@@ -44,10 +49,6 @@
 
 .toastui-editor-mode-switch {
   display: none !important;
-}
-
-.ProseMirror {
-  padding: 0 !important;
 }
 
 .buttonEx {
