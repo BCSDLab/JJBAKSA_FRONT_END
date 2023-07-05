@@ -31,7 +31,6 @@ function AddImage({ active, inActive }: Props) {
           id="image"
           className={styles.input}
           multiple
-          ref="upload"
         />
       </label>
       <div className={styles['image-container']}>
