@@ -24,10 +24,10 @@
   height: 40px;
   align-items: center;
   border-radius: 50px;
-  box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 10%);
+  box-shadow: 2px 3px 12px 1px black(0, 0, 0, 10%);
 
   &__image {
-  display: flex;
+    display: flex;
   }
 }
 
