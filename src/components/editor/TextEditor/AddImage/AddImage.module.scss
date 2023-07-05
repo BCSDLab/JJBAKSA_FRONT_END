@@ -8,35 +8,27 @@
   cursor: pointer;
 }
 
-// input태그
-.form-signup input[type="file"] {
-  display: none;
+.image-box {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
 }
 
-.getImage {
+.imageButton {
   display: flex;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: center;
   z-index: 2;
   background-color: white;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   align-items: center;
   border-radius: 50px;
-  box-shadow: 2px 3px 12px 1px black(0, 0, 0, 10%);
-
-  &__image {
-    display: flex;
-  }
+  box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 10%);
 }
 
 .input {
   display: none;
-}
-
-.preview {
-  display: flex;
-  border-radius: 10px;
 }
 
 .image-container {
@@ -59,7 +51,7 @@
     border-color: #ff7f23;
     border-radius: 50%;
     background-color: #ffffff;
-    background-color: black(255, 255, 255, 50%);
+    background-color: rgba(255, 255, 255, 50%);
   }
 
   &__image {

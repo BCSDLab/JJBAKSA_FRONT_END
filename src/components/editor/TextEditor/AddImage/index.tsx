@@ -20,8 +20,10 @@ function AddImage({ active, inActive }: Props) {
   return (
     <>
       <label htmlFor="image">
-        <div className={styles.getImage}>
-          <Picture className={styles.getImage__Image} />
+        <div className={styles['image-box']}>
+          <div className={styles.imageButton}>
+            <Picture />
+          </div>
         </div>
         <input
           type="file"
@@ -29,15 +31,9 @@ function AddImage({ active, inActive }: Props) {
           id="image"
           className={styles.input}
           multiple
+          ref="upload"
         />
       </label>
-      {/* <button
-        type="button"
-        className={styles.item__button}
-        onClick={addImage}
-      >
-        <Picture />
-      </button> */}
       <div className={styles['image-container']}>
         { imageList?.map((value) => (
           <div key={value} className={styles['image-container__item']}>

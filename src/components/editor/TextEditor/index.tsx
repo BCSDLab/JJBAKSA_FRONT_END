@@ -8,7 +8,6 @@ import StarRating from 'components/StarRating';
 import AddImage from './AddImage';
 // import SlideToolBox from './SlideToolBox';
 import styles from './TextEditor.module.scss';
-// import AddImageFile from './AddImageFile';
 
 interface Props {
   shop: string | null;
@@ -75,7 +74,6 @@ export default function TextEditor({ shop, getShopname }: Props) {
       >
         <Wysiwyg ref={wysiwygRef} />
       </div>
-      {/* 여기 밑부분 */}
       <span className={styles.item}>
         <span className={styles.item__tools}>
           <AddImage active={open} inActive={close} />
@@ -85,9 +83,6 @@ export default function TextEditor({ shop, getShopname }: Props) {
             paragraph={() => wysiwygRef.current?.paragraph()}
             through={() => wysiwygRef.current?.through()}
           /> */}
-          {/* <span className={styles.item__gg}>
-            <AddImageFile />
-          </span> */}
         </span>
       </span>
     </div>
