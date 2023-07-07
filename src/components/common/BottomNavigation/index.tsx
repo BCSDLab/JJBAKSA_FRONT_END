@@ -12,7 +12,7 @@ const NAV_TABS = [
     text: '홈',
   },
   {
-    pathname: '/post',
+    pathname: '/search',
     icon: WriteIcon,
     text: '글쓰기',
   },

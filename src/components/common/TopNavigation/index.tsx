@@ -19,7 +19,7 @@ export default function TopNavigation(): JSX.Element {
     {
       name: '글쓰기',
       icon: <WriteIcon />,
-      link: '/post',
+      link: '/search',
     },
     {
       name: auth ? '마이페이지' : '로그인',
