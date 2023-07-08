@@ -1,10 +1,8 @@
 import { ReactComponent as Plus } from 'assets/svg/post/plus.svg';
-import { useRef } from 'react';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
-import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import StarRating from 'components/StarRating';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import AddImage from './AddImage';
 // import SlideToolBox from './SlideToolBox';
 import styles from './TextEditor.module.scss';
@@ -15,9 +13,7 @@ interface Props {
 }
 
 export default function TextEditor({ shop, getShopname }: Props) {
-  const wysiwygRef = useRef<WysiwygType | null>(null);
   const [actived, active] = useBooleanState(false);
-  const [opened, open, close] = useBooleanState(false);
 
   return (
     <div className={cn({
@@ -66,17 +62,9 @@ export default function TextEditor({ shop, getShopname }: Props) {
             </div>
           )}
       </title>
-      <div
-        className={cn({
-          [styles.editor]: true,
-          [styles['editor--withImage']]: opened,
-        })}
-      >
-        <Wysiwyg ref={wysiwygRef} />
-      </div>
       <span className={styles.item}>
         <span className={styles.item__tools}>
-          <AddImage active={open} inActive={close} />
+          <AddImage />
           {/* <SlideToolBox
             bold={() => wysiwygRef.current?.bold()}
             heading={() => wysiwygRef.current?.heading()}

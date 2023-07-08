@@ -106,18 +106,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    margin-bottom: 20px;
-  }
-}
-
-.editor {
-  line-height: 15px;
-  height: 119%;
-  font-size: 16px;
-  color: #222222;
-
-  &--withImage {
-    height: calc(100% - 196px);
+    margin-bottom: 16px;
   }
 }
 
@@ -137,8 +126,9 @@
   display: flex;
   box-sizing: border-box;
   justify-content: space-between;
-  z-index: 2;
+  z-index: 1;
   background-color: transparent;
+  height: 430px;
 
   button {
     border: none;
