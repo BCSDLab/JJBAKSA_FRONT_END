@@ -2,6 +2,8 @@
   display: flex;
   width: 327px;
   margin-left: 20px;
+  white-space: nowrap;
+  overflow-x: scroll;
 
   &__item {
     display: flex;
@@ -9,14 +11,17 @@
     align-items: center;
     padding-right: 4px;
     padding-left: 4px;
-    margin: 16px 2px;
+    margin: 10px 2px 12px;
+  }
+
+  &__Box {
+    display: flex;
   }
 
   &__button {
     width: 18px;
     height: 18px;
     margin-left: 60px;
-    //margin-bottom: 100px;
     border: solid 5px;
     border-color: #ff7f23;
     border-radius: 50%;
@@ -59,7 +64,6 @@
 .image-box {
   display: flex;
   flex-direction: row-reverse;
-  z-index: 0;
 }
 
 .imageButton {
@@ -72,8 +76,10 @@
   height: 48px;
   align-items: center;
   border-radius: 50px;
-  box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 10%);
-  //margin-left: 270px;
+  box-shadow: 2px 3px 12px 1px #000000(0, 0, 0, 10%);
+  position: relative;
+  right: 16px;
+  bottom: 32px;
 }
 
 .input {

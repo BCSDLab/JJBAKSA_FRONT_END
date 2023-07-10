@@ -14,7 +14,6 @@ function AddImage() {
   useEffect(() => {
     if (imageList === null || imageList.length === 0) inActive();
     else active();
-    console.log('여기서 처음 imageList 값 전달', imageList);
   }, [imageList, active, inActive]);
 
   return (
