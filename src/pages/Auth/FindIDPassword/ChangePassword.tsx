@@ -4,7 +4,7 @@ import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
-import style from 'pages/Auth/FindIDPassword/index.module.scss';
+import styles from 'pages/Auth/FindIDPassword/index.module.scss';
 import { PasswordInfo } from './entity';
 import Modal from './component/Modal';
 
@@ -31,37 +31,37 @@ export default function ChangePassword(): JSX.Element {
   };
 
   return (
-    <div className={style.layout}>
-      <div className={style.back}>
+    <div className={styles.layout}>
+      <div className={styles.back}>
         <PreviousButton />
       </div>
-      <div className={style.page}>
+      <div className={styles.page}>
         <div>
-          <p className={style.page__quote}>
+          <p className={styles.page__quote}>
             새 비밀번호를 설정해 주세요.
           </p>
         </div>
-        <div className={style.page__error}>
+        <div className={styles.page__error}>
           {(errors.password || errors.passwordCheck) && (
-            <span className={style.page__caution}>
-              <img src={error} alt="warning" className={style.page__image} />
+            <span className={styles.page__caution}>
+              <img src={error} alt="warning" className={styles.page__image} />
               {errors.password?.message || errors.passwordCheck?.message}
             </span>
           )}
         </div>
         <form
           className={cn({
-            [style.form]: true,
-            [style.form__space]: true,
+            [styles.form]: true,
+            [styles.form__space]: true,
           })}
           onSubmit={handleSubmit(changeUserPassword)}
         >
-          <div className={style.form__center}>
-            <div className={style.form__label}>새 비밀번호</div>
+          <div className={styles.form__center}>
+            <div className={styles.form__label}>새 비밀번호</div>
             <input
               type="password"
               placeholder="비밀번호를 입력하세요"
-              className={style.form__input}
+              className={styles.form__input}
               {...register('password', {
                 required: '비밀번호를 입력하세요',
                 pattern: {
@@ -70,11 +70,11 @@ export default function ChangePassword(): JSX.Element {
                 },
               })}
             />
-            <div className={cn({ [style['form__label--paddingTop']]: true })}>비밀번호 확인</div>
+            <div className={cn({ [styles['form__label--paddingTop']]: true })}>비밀번호 확인</div>
             <input
               type="password"
               placeholder="비밀번호를 입력하세요"
-              className={style.form__input}
+              className={styles.form__input}
               {...register('passwordCheck', {
                 required: '비밀번호 확인을 입력하세요',
                 validate: (values) => values === getValues('password') || '비밀번호가 일치하지 않습니다.',
@@ -84,8 +84,8 @@ export default function ChangePassword(): JSX.Element {
           <button
             type="submit"
             className={cn({
-              [style.active]: isValid,
-              [style.inactive]: true,
+              [styles.form__submit]: true,
+              [styles['form__submit--active']]: isValid,
             })}
           >
             인증번호 보내기
