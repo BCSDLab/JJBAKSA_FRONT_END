@@ -41,4 +41,6 @@ export const findPassowrd = (param: FindPasswordParams) => userApi.post('/passwo
   email: param.email,
 });
 
-export const changePassword = (param: ChangePasswordParams) => userApi.patch(`/password?password=${param.password}`);
+export const changePassword = (param: ChangePasswordParams) => userApi.patch('/me', {
+  password: param.password,
+});
