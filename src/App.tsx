@@ -22,6 +22,7 @@ import Myinquiry from 'pages/Inquiry/Myinquiry';
 import Notice from 'pages/Notice';
 import KakaoLogin from 'KakaoLogin';
 import NaverLogin from 'NaverLogin';
+import GoogleLogin from 'GoogleLogin';
 
 export default function App(): JSX.Element {
   return (
@@ -54,6 +55,7 @@ export default function App(): JSX.Element {
           <Route path="/find-password/change" element={<ChangePassword />} />
           <Route path="/login/oauth2/code/kakao" element={<KakaoLogin />} />
           <Route path="/login/oauth2/code/naver" element={<NaverLogin />} />
+          <Route path="/login/oauth2/code/google" element={<GoogleLogin />} />
         </Route>
       </Routes>
       <Toast />
