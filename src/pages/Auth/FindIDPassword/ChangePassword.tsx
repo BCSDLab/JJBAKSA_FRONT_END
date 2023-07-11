@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { changePassword } from 'api/user';
+import { modify } from 'api/user';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
@@ -20,7 +20,7 @@ export default function ChangePassword(): JSX.Element {
 
   const changeUserPassword = async (param: PasswordInfo) => {
     try {
-      const result = await changePassword(param);
+      const result = await modify({ password: param.password });
       if (result.status === 200) {
         sessionStorage.removeItem('accessToken');
         toggle();

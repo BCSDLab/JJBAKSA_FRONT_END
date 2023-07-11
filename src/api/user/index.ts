@@ -10,7 +10,6 @@ import {
   SendFindEmailParams,
   GetAccountParams,
   FindPasswordParams,
-  ChangePasswordParams,
 } from './entity';
 import userApi from './userApiClient';
 
@@ -39,8 +38,4 @@ export const findPassowrd = (param: FindPasswordParams) => userApi.post('/passwo
   account: param.account,
   code: param.code,
   email: param.email,
-});
-
-export const changePassword = (param: ChangePasswordParams) => userApi.patch('/me', {
-  password: param.password,
 });
