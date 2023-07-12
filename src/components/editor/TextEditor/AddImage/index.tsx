@@ -18,9 +18,9 @@ function AddImage() {
 
   return (
     <>
-      <div className={styles['image-container']}>
+      <div className={styles.container}>
         { imageList?.map((value) => (
-          <div key={value} className={styles['image-container__item']}>
+          <div key={value} className={styles.container__item}>
             <ImageItem value={value} onDelete={removeImage} />
           </div>
         ))}
@@ -33,9 +33,9 @@ function AddImage() {
       >
         <Wysiwyg ref={wysiwygRef} />
       </div>
-      <div className={styles['image-box']}>
+      <div className={styles['button-container']}>
         <label htmlFor="image">
-          <div className={styles.imageButton}>
+          <div className={styles['addImage-button']}>
             <Picture />
           </div>
           <input

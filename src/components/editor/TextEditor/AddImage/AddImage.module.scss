@@ -1,27 +1,20 @@
-.image-container {
+.container {
   display: flex;
-  width: 327px;
+  width: 320px;
   margin-left: 20px;
   white-space: nowrap;
   overflow-x: scroll;
 
   &__item {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-right: 4px;
-    padding-left: 4px;
-    margin: 10px 2px 12px;
-  }
-
-  &__Box {
-    display: flex;
+    margin: 6px 2px 10px;
+    position: relative;
   }
 
   &__button {
     width: 18px;
     height: 18px;
-    margin-left: 60px;
+    margin-left: 62px;
     border: solid 5px;
     border-color: #ff7f23;
     border-radius: 50%;
@@ -34,11 +27,10 @@
     display: flex;
     width: 80px;
     height: 80px;
-    cursor: pointer;
     object-fit: cover;
     border-radius: 10px;
-    position: relative;
     margin-top: 10px;
+    cursor: pointer;
   }
 
   &::-webkit-scrollbar {
@@ -49,26 +41,24 @@
 
 .editor {
   line-height: 15px;
-  height: 413px;
+  height: 450px;
   width: 357px;
   font-size: 16px;
   color: #222222;
-  justify-content: center;
   z-index: 1;
 
   &--withImage {
-    height: calc(100% - 196px);
+    height: calc(100% - 220px);
   }
 }
 
-.image-box {
+.button-container {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.imageButton {
+.addImage-button {
   display: flex;
-  box-sizing: border-box;
   justify-content: center;
   z-index: 2;
   background-color: white;
@@ -76,10 +66,10 @@
   height: 48px;
   align-items: center;
   border-radius: 50px;
-  box-shadow: 2px 3px 12px 1px #000000(0, 0, 0, 10%);
+  box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
   position: relative;
-  right: 16px;
-  bottom: 32px;
+  right: 35px;
+  bottom: 55px;
 }
 
 .input {

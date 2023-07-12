@@ -11,11 +11,11 @@ export default function ImageItem({ value, onDelete }: Props) {
   const imageRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="image-container__Box">
+    <div>
       <button
         type="button"
         aria-label="trash"
-        className={styles['image-container__button']}
+        className={styles.container__button}
         onClick={() => onDelete(value)}
       >
         <Trash />
@@ -23,7 +23,7 @@ export default function ImageItem({ value, onDelete }: Props) {
       <input
         type="image"
         alt=""
-        className={styles['image-container__image']}
+        className={styles.container__image}
         src={value}
         ref={imageRef}
       />
