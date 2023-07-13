@@ -1,5 +1,8 @@
-.top-options {
+.nav {
   position: absolute;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 50px;
   top: 20px;
   left: 50%;
   transform: translate(-50%);
@@ -10,7 +13,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 70%;
     height: 48px;
     background: #ffffff;
     box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
@@ -20,7 +22,6 @@
     color: #666666;
     padding-left: 18px;
     padding-right: 15px;
-    margin-bottom: 10px;
   }
 
   &__filter {

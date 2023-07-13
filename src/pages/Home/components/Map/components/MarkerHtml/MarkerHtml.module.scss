@@ -1,13 +1,13 @@
 @use "src/utils/styles/mediaQuery" as media;
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
 
-.marker {  
+.marker {
   width: 69px;
   height: 69px;
 
@@ -39,7 +39,6 @@
   height: 100%;
   align-items: center;
   box-sizing: content-box;
-
 
   &__photo img {
     width: 43px;
@@ -78,7 +77,7 @@
     font-size: 18px;
     font-weight: 500;
     text-align: center;
-    
+
     @include media.media-breakpoint-down(mobile) {
       font-size: 12px;
       font-weight: 700;

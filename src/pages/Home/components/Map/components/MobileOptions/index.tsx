@@ -17,9 +17,9 @@ export default function MobileOptions(): JSX.Element {
   };
   return (
     <div className={styles.options}>
-      <div className={styles['top-options']}>
+      <div className={styles.nav}>
         <div>
-          <Link to="/search" className={styles['top-options__search']}>
+          <Link to="/search" className={styles.nav__search}>
             검색어를 입력해주세요.
             <LensIcon />
           </Link>
@@ -27,20 +27,20 @@ export default function MobileOptions(): JSX.Element {
         <button
           type="button"
           className={cn({
-            [styles['top-options__filter']]: true,
-            [styles['top-options__filter--clicked']]: selected !== '' && !filter,
+            [styles.nav__filter]: true,
+            [styles['nav__filter--clicked']]: selected !== '' && !filter,
           })}
           onClick={toggle}
         >
           <VerticalDot />
         </button>
         {filter && (
-        <div className={styles['top-options__list']}>
+        <div className={styles.nav__list}>
           <button
             type="button"
             className={cn({
-              [styles['top-options__text']]: true,
-              [styles['top-options__text--clicked']]: selected === 'friend',
+              [styles.nav__text]: true,
+              [styles['nav__text--clicked']]: selected === 'friend',
             })}
             onClick={() => handleClick('friend')}
           >
@@ -50,8 +50,8 @@ export default function MobileOptions(): JSX.Element {
           <button
             type="button"
             className={cn({
-              [styles['top-options__text']]: true,
-              [styles['top-options__text--clicked']]: selected === 'bookmark',
+              [styles.nav__text]: true,
+              [styles['nav__text--clicked']]: selected === 'bookmark',
             })}
             onClick={() => handleClick('bookmark')}
           >
