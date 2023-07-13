@@ -6,7 +6,7 @@ import styles from './MarkerHtml.module.scss';
 export function MarkerHtml(defaultImg:string, name:string, index:number) {
   return `
   <div class=${styles.container}>
-    <img src=${MarkerLogo}  class=${styles.marker}/>
+    <img src=${MarkerLogo}  class=${styles.marker} alt="marker" />
       <div class=${styles.bubble}>
         <div class=${styles.bubble__photo}>
           <img src=${defaultImg} alt=""/>
