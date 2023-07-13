@@ -1,10 +1,13 @@
 @use "src/utils/styles/mediaQuery" as media;
 
-.marker {
+.container{
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
+}
+
+.marker {  
   width: 69px;
   height: 69px;
 
@@ -14,6 +17,8 @@
   }
 
   &--clicked {
+    position: absolute;
+    left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,13 +40,14 @@
   align-items: center;
   box-sizing: content-box;
 
+
   &__photo img {
     width: 43px;
     height: 43px;
     border-radius: 89.5px;
     position: absolute;
     top: 10px;
-    left: 13px;
+    left: 28px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 30px;
@@ -52,12 +58,12 @@
   }
 
   &__photo--clicked img {
-    width: 56px;
-    height: 56px;
+    width: 56.007px;
+    height: 55.723px;
     border-radius: 89.5px;
     position: absolute;
-    top: 3px;
-    left: 5px;
+    top: 2px;
+    left: 23px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 36px;
@@ -68,11 +74,11 @@
   }
 
   &__name {
-    text-align: center;
+    width: 100px;
     font-size: 18px;
     font-weight: 500;
-    width: 100%;
-
+    text-align: center;
+    
     @include media.media-breakpoint-down(mobile) {
       font-size: 12px;
       font-weight: 700;
@@ -88,7 +94,7 @@
       position: absolute;
       text-align: center;
       top: 10px;
-      left: 60px;
+      left: 75px;
       font-size: 20px;
       font-weight: 700;
       color: #fe7f23;

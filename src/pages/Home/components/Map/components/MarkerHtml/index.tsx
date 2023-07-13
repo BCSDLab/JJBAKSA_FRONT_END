@@ -1,11 +1,12 @@
 import Default from 'assets/images/search/defaultImg.png';
-import MarkerLogo from 'assets/svg/home/location-marker.svg';
-import Selected from 'assets/svg/home/selected-marker.svg';
+import MarkerLogo from 'assets/images/home/location-marker.png';
+import Selected from 'assets/images/home/selected-marker.png';
 import styles from './MarkerHtml.module.scss';
 
 export function MarkerHtml(defaultImg:string, name:string, index:number) {
   return `
-    <img src=${MarkerLogo} class=${styles.marker}>
+  <div class=${styles.container}>
+    <img src=${MarkerLogo}  class=${styles.marker}/>
       <div class=${styles.bubble}>
         <div class=${styles.bubble__photo}>
           <img src=${defaultImg} alt=""/>
@@ -18,12 +19,13 @@ export function MarkerHtml(defaultImg:string, name:string, index:number) {
           ${name}
         </div>
       </div>
-    </img>
+      </div>
   `;
 }
 
 export function ClickedMarkerHtml(defaultImg:string, name:string, index:number) {
   return `
+  <div class=${styles.continer}>
     <img src=${Selected} class=${styles['marker--clicked']}>
       <div class=${styles.bubble}>
         <div class=${styles['bubble__photo--clicked']}>
@@ -36,6 +38,6 @@ export function ClickedMarkerHtml(defaultImg:string, name:string, index:number) 
           ${name}
         </div>
       </div>
-    </img>
+    </div>
   `;
 }
