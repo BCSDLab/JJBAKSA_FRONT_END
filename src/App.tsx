@@ -20,6 +20,7 @@ import Withdrawal from 'pages/Setting/Withdrawal';
 import Inquiry from 'pages/Inquiry';
 import Myinquiry from 'pages/Inquiry/Myinquiry';
 import Notice from 'pages/Notice';
+import MyPage from 'pages/MyPage';
 
 export default function App(): JSX.Element {
   return (
@@ -40,6 +41,7 @@ export default function App(): JSX.Element {
             <Route path="/friend-list" element={<FollowPage />} />
           </Route>
           <Route path="/withdrawal" element={<Withdrawal />} />
+          <Route path="profile" element={<MyPage />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />
