@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import useGeolocation from 'utils/hooks/useGeolocation';
 import MARKER from 'pages/Home/static/marker';
-import defaultImg from 'assets/images/search/default-image.png';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './Map.module.scss';
 import OptionButtons from './components/OptionButtons';
@@ -28,7 +27,7 @@ export default function Map(): JSX.Element {
       if (selectedMarker.current) {
         selectedMarker.current.setIcon({
           content: MarkerHtml(
-            defaultImg,
+            '',
             selectedMarker.current.getTitle(),
             selectedMarker.current.getZIndex(),
           ),
@@ -38,7 +37,8 @@ export default function Map(): JSX.Element {
       }
 
       markerCur.setIcon({
-        content: ClickedMarkerHtml(defaultImg, item.placeName, item.index),
+        // 추후 각 마커벼로 이미지파일이 주어지면 첫번째 인자로 해당 이미지를 넘겨주도록 해야함
+        content: ClickedMarkerHtml('', item.placeName, item.index),
         size: new naver.maps.Size(50, 52),
         anchor: new naver.maps.Point(25, 26),
       });
@@ -84,7 +84,7 @@ export default function Map(): JSX.Element {
           map: mapRef.current,
           zIndex: item.index,
           icon: {
-            content: MarkerHtml(defaultImg, item.placeName, item.index),
+            content: MarkerHtml('', item.placeName, item.index),
             size: new naver.maps.Size(50, 52),
             anchor: new naver.maps.Point(25, 26),
           },

@@ -46,7 +46,7 @@
     border-radius: 89.5px;
     position: absolute;
     top: 10px;
-    left: 28px;
+    left: 29px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 30px;
@@ -62,13 +62,13 @@
     border-radius: 89.5px;
     position: absolute;
     top: 2px;
-    left: 23px;
+    left: 22px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 36px;
       height: 36px;
       top: 2px;
-      left: 22px;
+      left: 21px;
     }
   }
 
@@ -111,16 +111,33 @@
   &__index {
     color: #ffffff;
     position: absolute;
-    top: 20px;
-    left: 28px;
+    top: 18px;
+    left: 43px;
     font-size: 24px;
     font-weight: 700;
     z-index: 999;
 
     @include media.media-breakpoint-down(mobile) {
       font-size: 16px;
-      top: 12px;
-      left: 20px;
+      top: 13px;
+      left: 46px;
+    }
+
+    &--clidked{
+      color: #ffffff;
+      position: absolute;
+      top: 18px;
+      left: 43px;
+      font-size: 24px;
+      font-weight: 700;
+      z-index: 999;
+      top: 15px;
+
+       @include media.media-breakpoint-down(mobile) {
+        font-size: 16px;
+        top: 10px;
+        left:35px;
+    }
     }
   }
 }
