@@ -3,13 +3,13 @@
 .container {
   display: flex;
   width: 320px;
-  margin: 14px 16px;
   white-space: nowrap;
   overflow-x: scroll;
+  margin-left: 25px;
 
   &__item {
     display: flex;
-    margin: 0 2px;
+    margin: 14px 3px 0;
     position: relative;
   }
 
@@ -48,7 +48,7 @@
   color: #222222;
   z-index: 1;
 
-  @include media.media-breakpoint-down(mobile){
+  @include media.media-breakpoint-down(mobile) {
     width: 355px;
     height: 340px;
   }
@@ -61,10 +61,10 @@
     color: #222222;
     z-index: 1;
 
-    @include media.media-breakpoint-down(mobile){
+    @include media.media-breakpoint-down(mobile) {
       width: 355px;
       height: 260px;
-  }
+    }
   }
 }
 
