@@ -8,7 +8,7 @@ export default function MyInquiry(): JSX.Element {
       <Link to="/myinquiry" className={styles.link}>
         <div className={styles.title}>
           나의 문의 바로가기
-          <div className={styles.moveIcon}>
+          <div className={styles['move-icon']}>
             <MoveIcon />
           </div>
         </div>

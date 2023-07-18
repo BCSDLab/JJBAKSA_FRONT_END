@@ -17,7 +17,7 @@ function AddImage() {
   }, [imageList, active, inActive]);
 
   return (
-    <>
+    <div>
       <div className={styles.container}>
         { imageList?.map((value) => (
           <div key={value} className={styles.container__item}>
@@ -48,7 +48,7 @@ function AddImage() {
           />
         </label>
       </div>
-    </>
+    </div>
   );
 }
 

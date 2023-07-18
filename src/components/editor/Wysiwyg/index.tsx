@@ -37,13 +37,6 @@ const Wysiwyg = forwardRef((_props, ref) => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // const handleScroll = (event : any) => {
-  //   if (containerRef.current) {
-  //     const { scrollTop } = containerRef.current;
-  //     console.log(scrollTop);
-  //   }
-  // };
-
   return (
     <div className="wysiwygContainer" ref={containerRef}>
       <Editor
