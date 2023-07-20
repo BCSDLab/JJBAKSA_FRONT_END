@@ -25,4 +25,4 @@ export const KAKAO_REDIRECT_URL = `https://kauth.kakao.com/oauth/authorize?clien
 
 // 네이버 OAuth
 export const NAVER_CLIENT_ID = checkEnvVar('REACT_APP_NAVER_CLIENT_ID');
-export const NAVER_REDIRECT_URL = `https://nid.naver.com/oauth2.0/authorize?client_id=${NAVER_CLIENT_ID}&redirect_uri=${SERVER_LOGIN_REDIRECT_URL}/naver&response_type=code`;
+export const NAVER_REDIRECT_URL = `https://nid.naver.com/oauth2.0/authorize?client_id=${NAVER_CLIENT_ID}&redirect_uri=${SERVER_LOGIN_REDIRECT_URL}/naver&response_type=code&state=1`;
