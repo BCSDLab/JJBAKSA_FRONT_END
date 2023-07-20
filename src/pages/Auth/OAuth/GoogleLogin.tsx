@@ -39,6 +39,6 @@ export default function GoogleLogin() {
     }
   });
   return (
-    <div>구글 로그인임 ㅋ</div>
+    <div />
   );
 }
