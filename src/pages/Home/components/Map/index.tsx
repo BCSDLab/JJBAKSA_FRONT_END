@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import useGeolocation from 'utils/hooks/useGeolocation';
 import MARKER from 'pages/Home/static/marker';
-import defaultImage from 'assets/images/search/default-image.png';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './Map.module.scss';
 import OptionButtons from './components/OptionButtons';
@@ -12,6 +11,7 @@ interface MarkerType {
   latitude: number;
   longitude: number;
   placeName: string;
+  index: number;
 }
 const options = {
   maximumAge: 1000,
@@ -26,14 +26,19 @@ export default function Map(): JSX.Element {
     naver.maps.Event.addListener(markerCur, 'click', () => {
       if (selectedMarker.current) {
         selectedMarker.current.setIcon({
-          content: MarkerHtml(defaultImage, selectedMarker.current.getTitle()),
+          content: MarkerHtml(
+            '',
+            selectedMarker.current.getTitle(),
+            selectedMarker.current.getZIndex(),
+          ),
           size: new naver.maps.Size(50, 52),
           anchor: new naver.maps.Point(25, 26),
         });
       }
 
       markerCur.setIcon({
-        content: ClickedMarkerHtml(defaultImage, item.placeName),
+        // 추후 각 마커벼로 이미지파일이 주어지면 첫번째 인자로 해당 이미지를 넘겨주도록 해야함
+        content: ClickedMarkerHtml('', item.placeName, item.index),
         size: new naver.maps.Size(50, 52),
         anchor: new naver.maps.Point(25, 26),
       });
@@ -77,8 +82,9 @@ export default function Map(): JSX.Element {
           position: new naver.maps.LatLng(item.latitude, item.longitude),
           title: item.placeName,
           map: mapRef.current,
+          zIndex: item.index,
           icon: {
-            content: MarkerHtml(defaultImage, item.placeName),
+            content: MarkerHtml('', item.placeName, item.index),
             size: new naver.maps.Size(50, 52),
             anchor: new naver.maps.Point(25, 26),
           },
