@@ -2,7 +2,7 @@
 
 .container {
   display: flex;
-  width: 320px;
+  width: 100%;
   white-space: nowrap;
   overflow-x: scroll;
   margin-left: 25px;
@@ -43,51 +43,45 @@
 .editor {
   line-height: 15px;
   height: 650px;
-  width: 1950px;
+  width: 100%;
   font-size: 16px;
   color: #222222;
   z-index: 1;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 355px;
     height: 340px;
   }
 
   &--withImage {
     line-height: 15px;
     height: 600px;
-    width: 1950px;
+    width: 100%;
     font-size: 16px;
     color: #222222;
     z-index: 1;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 355px;
       height: 260px;
     }
   }
-}
 
-.button-container {
-  display: flex;
-  flex-direction: row-reverse;
-}
+  &__add-image {
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    background-color: white;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    border-radius: 50px;
+    box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+    position: fixed;
+    right: 35px;
+    bottom: 55px;
+    cursor: pointer;
 
-.addImage-button {
-  display: flex;
-  justify-content: center;
-  z-index: 2;
-  background-color: white;
-  width: 48px;
-  height: 48px;
-  align-items: center;
-  border-radius: 50px;
-  box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
-  position: relative;
-  right: 35px;
-  bottom: 55px;
-}
-
-.input {
-  display: none;
+    input {
+      display: none;
+    }
+  }
 }
