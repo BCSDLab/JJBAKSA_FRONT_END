@@ -26,7 +26,7 @@ export const getMe = () => userApi.get<User>('/me');
 
 export const withdrawUser = () => userApi.delete<User>('/me');
 
-export const modify = (param: ModifyParams) => userApi.patch<User>('/modify', param);
+export const modify = (param: ModifyParams) => userApi.patch<User>('/me', param);
 
 export const sendRegisterEmail = (param: SendRegisterEmailParams) => userApi.post(`/authenticate?email=${param.email}`);
 
