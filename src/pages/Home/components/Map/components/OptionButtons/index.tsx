@@ -6,7 +6,7 @@ import useBooleanState from 'utils/hooks/useBooleanState';
 import styles from './OptionButtons.module.scss';
 
 export default function OptionButtons() {
-  const [visible,,, toggle] = useBooleanState(false);
+  const [visible, , , toggle] = useBooleanState(false);
   return (
     <div className={styles.button}>
       <div
@@ -27,28 +27,19 @@ export default function OptionButtons() {
             <MenuIcon />
             <span>필터</span>
           </button>
-          <Link to="/post" className={styles.filter__button}>
+          <Link to="/search" className={styles.filter__button}>
             <PencilIcon />
             <span>글쓰기</span>
           </Link>
         </div>
         <div className={styles['slide-filter-list']}>
-          <button
-            type="button"
-            className={styles['slide-filter-list__button']}
-          >
+          <button type="button" className={styles['slide-filter-list__button']}>
             가까운 음식점
           </button>
-          <button
-            type="button"
-            className={styles['slide-filter-list__button']}
-          >
+          <button type="button" className={styles['slide-filter-list__button']}>
             친구 음식점
           </button>
-          <button
-            type="button"
-            className={styles['slide-filter-list__button']}
-          >
+          <button type="button" className={styles['slide-filter-list__button']}>
             북마크 음식점
           </button>
         </div>

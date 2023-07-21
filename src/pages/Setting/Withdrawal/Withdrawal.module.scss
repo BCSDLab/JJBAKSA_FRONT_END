@@ -90,6 +90,22 @@ $passive: #c4c4c4;
       position: relative;
     }
   }
+
+  &__checkbox {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid $default;
+    appearance: none;
+    cursor: pointer;
+    transition: 0.2s;
+    margin: 0 5px;
+
+    &:checked {
+      background: $active;
+      border: none;
+    }
+  }
 }
 
 .checkbox {
@@ -165,20 +181,4 @@ $passive: #c4c4c4;
     font-size: 16px;
     line-height: 20px;
   }
-}
-
-input[type="checkbox"] {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 1px solid $default;
-  appearance: none;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin: 0 5px;
-}
-
-input[type="checkbox"]:checked {
-  background: $active;
-  border: none;
 }
