@@ -29,7 +29,6 @@ export default function App(): JSX.Element {
     <Suspense fallback={<div />}>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
-          <Route path="/post" element={<Post />} />
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
           <Route path="/inquiry" element={<Inquiry />} />
@@ -43,6 +42,7 @@ export default function App(): JSX.Element {
             <Route path="/friend-list" element={<FollowPage />} />
           </Route>
           <Route path="/withdrawal" element={<Withdrawal />} />
+          <Route path="/post" element={<Post />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />

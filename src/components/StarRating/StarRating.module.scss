@@ -3,7 +3,7 @@
   align-items: center;
   width: 160px;
   height: 32px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .wrapper {
@@ -14,6 +14,8 @@
   justify-content: center;
   background: none;
   border: none;
+  padding-top: 35px;
+  padding-bottom: 35px;
 
   &__star {
     transition: all 0.2s ease-out;

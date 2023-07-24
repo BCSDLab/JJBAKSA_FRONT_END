@@ -11,7 +11,7 @@ export default function Post() {
   };
   return (
     <div className={styles.post}>
-      <TextEditor shop="asda" getShopname={getShopname} />
+      <TextEditor shop="비빔밥" getShopname={getShopname} />
     </div>
   );
 }
