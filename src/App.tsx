@@ -20,6 +20,9 @@ import Withdrawal from 'pages/Setting/Withdrawal';
 import Inquiry from 'pages/Inquiry';
 import Myinquiry from 'pages/Inquiry/Myinquiry';
 import Notice from 'pages/Notice';
+import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
+import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
+import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
 import MyPage from 'pages/MyPage';
 
 export default function App(): JSX.Element {
@@ -52,6 +55,9 @@ export default function App(): JSX.Element {
           <Route path="/find-password" element={<FindIdPassword type="password" />} />
           <Route path="/find/verify/:type" element={<VerifyField />} />
           <Route path="/find-password/change" element={<ChangePassword />} />
+          <Route path="/login/oauth2/code/kakao" element={<KakaoLogin />} />
+          <Route path="/login/oauth2/code/naver" element={<NaverLogin />} />
+          <Route path="/login/oauth2/code/google" element={<GoogleLogin />} />
         </Route>
       </Routes>
       <Toast />
