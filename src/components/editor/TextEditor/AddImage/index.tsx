@@ -34,15 +34,12 @@ function AddImage() {
         <Wysiwyg ref={wysiwygRef} />
       </div>
       <div className={styles['button-container']}>
-        <label htmlFor="image">
-          <div className={styles['addImage-button']}>
-            <Picture />
-          </div>
+        <label htmlFor="image" className={styles['editor__add-image']}>
+          <Picture />
           <input
             type="file"
             onChange={addImage}
             id="image"
-            className={styles.input}
             multiple
             accept="image/jpeg,image/gif,image/png"
           />

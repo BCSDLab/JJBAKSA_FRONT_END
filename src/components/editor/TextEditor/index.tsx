@@ -39,12 +39,12 @@ export default function TextEditor({ shop, getShopname }: Props) {
           저장
         </button>
       </header>
-      <title className={styles.box}>
+      <title className={styles.heading}>
         {shop == null ? (
           <div>
             <button
               type="button"
-              className={styles['box__button--add']}
+              className={styles['heading__button--add']}
             // 추후 검색 링크로 이동하는 이벤트로 변경
             // 해당 검색 링크에서 특정 상점 선택 시 getShopname함수 호출
             // 값이 null에서 string으로 변하면서 제목과 별점 생성
@@ -55,15 +55,15 @@ export default function TextEditor({ shop, getShopname }: Props) {
           </div>
         )
           : (
-            <div className={styles.box__box}>
-              <div className={styles.box__shopname}>{shop}</div>
-              <div className={styles['box__sub-title']}>음식에 대한 별점을 매겨주세요.</div>
+            <div className={styles.heading__contents}>
+              <div className={styles.heading__shopname}>{shop}</div>
+              <div className={styles['heading__sub-title']}>음식에 대한 별점을 매겨주세요.</div>
               <StarRating onClick={active} />
             </div>
           )}
       </title>
-      <span className={styles.item}>
-        <span className={styles.item__tools}>
+      <div className={styles.item}>
+        <div className={styles.item__tools}>
           <AddImage />
           {/* <SlideToolBox
             bold={() => wysiwygRef.current?.bold()}
@@ -71,8 +71,8 @@ export default function TextEditor({ shop, getShopname }: Props) {
             paragraph={() => wysiwygRef.current?.paragraph()}
             through={() => wysiwygRef.current?.through()}
           /> */}
-        </span>
-      </span>
+        </div>
+      </div>
     </div>
   );
 }
