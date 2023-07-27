@@ -1,0 +1,66 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.selector {
+  width: 106%;
+  margin-left: -3%;
+  margin-top: 105px;
+  display: flex;
+  justify-content: space-around;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 41px;
+  }
+
+  &__option {
+    all: unset;
+    width: 184px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 400;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 14px;
+      width: 80px;
+    }
+
+    &--selected {
+      all: unset;
+      width: 184px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 400;
+
+      @include media.media-breakpoint-down(mobile) {
+        font-size: 14px;
+        width: 80px;
+      }
+
+      &::after {
+        display: block;
+        content: "";
+        width: 184px;
+        padding-top: 19px;
+        margin-bottom: -20px;
+        border-bottom: 1px solid #ff7f23;
+
+        @include media.media-breakpoint-down(mobile) {
+          font-size: 14px;
+          width: 80px;
+          padding-top: 10px;
+          margin-bottom: -11px;
+        }
+      }
+    }
+  }
+}
+
+.underline {
+  margin-top: 19px;
+  border-bottom: 1px solid #eeeeee;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin-top: 10px;
+  }
+}

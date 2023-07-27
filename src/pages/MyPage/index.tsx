@@ -16,7 +16,7 @@ export default function MyPage() {
       {!isMobile && <TopNavigation />}
       <div className={style['my-page']}>
         <Information />
-        <BoardSelector setBoard={setBoard} />
+        <BoardSelector setBoard={setBoard} board={board} />
         {board === 'MYWRITE' && <MyWrite />}
         {board === 'BOOKMARK' && <BookMark />}
       </div>
