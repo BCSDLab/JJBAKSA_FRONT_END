@@ -6,6 +6,7 @@ import Information from './components/Information';
 import BoardSelector from './components/BoardSelector';
 import MyWrite from './components/MyWrite';
 import BookMark from './components/BookMark';
+import style from './MyPage.module.scss';
 
 export default function MyPage() {
   const { isMobile } = useMediaQuery();
@@ -13,10 +14,12 @@ export default function MyPage() {
   return (
     <>
       {!isMobile && <TopNavigation />}
-      <Information />
-      <BoardSelector setBoard={setBoard} />
-      {board === 'MYWRITE' && <MyWrite />}
-      {board === 'BOOKMARK' && <BookMark />}
+      <div className={style['my-page']}>
+        <Information />
+        <BoardSelector setBoard={setBoard} />
+        {board === 'MYWRITE' && <MyWrite />}
+        {board === 'BOOKMARK' && <BookMark />}
+      </div>
       {isMobile && <BottomNavigation />}
     </>
   );
