@@ -1,6 +1,6 @@
 import defaultImage from 'assets/images/follow/default-image.png';
 // import fixPencil from 'assets/images/mypage/pencil.svg';
-import option from 'assets/images/mypage/option.svg';
+import option from 'assets/svg/mypage/option.svg';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './Information.module.scss';
 

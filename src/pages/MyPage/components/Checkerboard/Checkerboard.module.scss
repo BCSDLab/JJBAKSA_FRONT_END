@@ -1,0 +1,14 @@
+.checkerboard {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 21px;
+  margin: 0 auto;
+  margin-top: 26px;
+
+  &__post {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+}

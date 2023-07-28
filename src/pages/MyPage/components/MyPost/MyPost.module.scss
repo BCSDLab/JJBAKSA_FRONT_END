@@ -1,0 +1,17 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.view-options {
+  display: flex;
+  width: 98%;
+  gap: 17px;
+  justify-content: end;
+  margin-top: 25px;
+
+  @include media.media-breakpoint-down(mobile) {
+    display: none;
+  }
+
+  &__option {
+    all: unset;
+  }
+}
