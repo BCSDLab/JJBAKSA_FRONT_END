@@ -2,6 +2,7 @@ import filledStar from 'assets/svg/mypage/star-filled.svg';
 import openArrow from 'assets/svg/mypage/open-arrow.svg';
 import closeArrow from 'assets/svg/mypage/close-arrow.svg';
 import { useState } from 'react';
+import notExist from 'assets/svg/mypage/not-exist.svg';
 import styles from './MobileBoard.module.scss';
 
 type Post = {
@@ -45,13 +46,26 @@ function Review() {
 export default function MoileBoard({ posts }:MobileBoardProps) {
   return (
     <div className={styles.board}>
-      <span className={styles.total}>총 120개의 리뷰</span>
-      {posts.map(() => (
+      {posts.length !== 0 ? (
         <>
-          <Review />
-          <div className={styles.underline} />
+          <span className={styles.total}>총 120개의 리뷰</span>
+          {posts.map(() => (
+            <>
+              <Review />
+              <div className={styles.underline} />
+            </>
+          ))}
         </>
-      ))}
+      ) : (
+        <div className={styles['not-exist']}>
+          <span className={styles['not-exist__phrase']}>
+            <p>둥록된 리뷰가 없어요.</p>
+            <p>다녀온 음식점의 리뷰를 작성해 보세요!</p>
+          </span>
+          <img src={notExist} alt="not-exist" className={styles['not-exist__image']} />
+        </div>
+      )}
+
     </div>
   );
 }
