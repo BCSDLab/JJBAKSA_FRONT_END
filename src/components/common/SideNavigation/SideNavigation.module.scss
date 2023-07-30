@@ -1,4 +1,4 @@
-@use "src/utils/styles/mediaQuery";
+@use "src/utils/styles/mediaQuery" as media;
 
 @keyframes slide-out {
   from {
@@ -23,6 +23,10 @@
   justify-content: space-between;
   z-index: 10;
 
+  @include media.media-breakpoint-down(mobile) {
+    display: none;
+  }
+
   &__lists {
     display: flex;
     flex-direction: column;
@@ -35,6 +39,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100px;
+    cursor: pointer;
 
     &--clicked {
       background-color: #fff1e8;
@@ -53,6 +58,7 @@
     border: none;
     background-color: transparent;
     width: 100px;
+    cursor: pointer;
   }
 
   &__login {
@@ -86,6 +92,10 @@
   animation: slide-out 0.3s ease-out normal forwards;
   display: flex;
   flex-direction: column;
+
+  @include media.media-breakpoint-down(mobile) {
+    display: none;
+  }
 
   &__search {
     display: flex;
