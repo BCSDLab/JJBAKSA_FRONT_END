@@ -56,11 +56,7 @@ export default function Map(): JSX.Element {
     if (!mapRef.current && typeof location !== 'undefined') {
       mapRef.current = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(location.latitude, location.longitude),
-        zoomControl: true,
-        zoomControlOptions: {
-          style: naver.maps.ZoomControlStyle.SMALL,
-          position: naver.maps.Position.BOTTOM_LEFT,
-        },
+        zoomControl: false,
         zoom: 10,
         scaleControl: false,
         logoControl: false,
