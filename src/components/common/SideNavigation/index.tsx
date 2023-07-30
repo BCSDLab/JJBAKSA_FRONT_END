@@ -5,7 +5,7 @@ import { ReactComponent as SettingIcon } from 'assets/svg/common/setting.svg';
 import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
 import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { useAuth } from 'store/auth';
-import styles from './TopNavigation.module.scss';
+import styles from './SideNavigation.module.scss';
 
 export default function TopNavigation(): JSX.Element {
   const auth = useAuth();
