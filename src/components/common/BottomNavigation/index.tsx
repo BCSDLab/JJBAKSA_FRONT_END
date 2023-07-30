@@ -3,28 +3,30 @@ import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
 import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
+import { useAuth } from 'store/auth';
 import styles from './BottomNavigation.module.scss';
-
-const NAV_TABS = [
-  {
-    pathname: '/',
-    icon: HomeIcon,
-    text: '홈',
-  },
-  {
-    pathname: '/search',
-    icon: WriteIcon,
-    text: '글쓰기',
-  },
-  {
-    pathname: '/profile',
-    icon: MyPageIcon,
-    text: '마이페이지',
-  },
-];
 
 export default function BottomNavigation(): JSX.Element {
   const { pathname } = useLocation();
+  const auth = useAuth();
+
+  const NAV_TABS = [
+    {
+      pathname: '/',
+      icon: HomeIcon,
+      text: '홈',
+    },
+    {
+      pathname: '/post',
+      icon: WriteIcon,
+      text: '글쓰기',
+    },
+    {
+      pathname: auth ? '/profile' : '/login',
+      icon: MyPageIcon,
+      text: '마이페이지',
+    },
+  ];
 
   return (
     <nav className={styles['bottom-navigation']}>
