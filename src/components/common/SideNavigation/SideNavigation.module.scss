@@ -1,63 +1,76 @@
 @use "src/utils/styles/mediaQuery";
 
-.top-navigation {
-  width: 100%;
-  height: 80px;
-  box-shadow: 0 0 5px rgb(0 0 0 / 15%);
-  display: grid;
-  grid-template-columns: 1fr 0.7fr 1fr;
-  align-items: center;
-  font-size: 18px;
-
-  &__logo {
-    display: flex;
+@keyframes slide-out {
+  from {
+    margin-left: -300px;
   }
 
-  &__logo-link {
-    margin-left: 72px;
+  to {
+    margin-left: 0;
+  }
+}
+
+.side-navigation {
+  background-color: #ffffff;
+  width: 100px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-right: #c4c4c4 solid 1.5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+
+  &__lists {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 14px;
-    font-weight: 700;
-    font-size: 18px;
-    color: #222222;
-    text-decoration: none;
+    list-style: none;
   }
 
-  &__address {
-    cursor: pointer;
+  &__list {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    gap: 8px;
+    height: 100px;
 
-    svg {
-      width: 24px;
-      height: 24px;
-
-      path {
-        stroke: #222222;
-      }
+    &--clicked {
+      background-color: #fff1e8;
     }
   }
 
-  &__links {
+  &__link {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 48px;
-    margin-right: 72px;
-    list-style: none;
-    opacity: 0.8;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: none;
+    color: #666666;
   }
+
+  &__button {
+    border: none;
+    background-color: transparent;
+    width: 100px;
+  }
+
+  &__login {
+    position: relative;
+    bottom: 0;
+  }
+}
+
+.bottom-navigation {
+  display: flex;
+  background-color: #ffffff;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
 
   &__link {
     text-decoration: none;
-    font-weight: 500;
-    color: #222222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    color: #666666;
   }
 }
