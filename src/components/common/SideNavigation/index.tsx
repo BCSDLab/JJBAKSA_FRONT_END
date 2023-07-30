@@ -3,6 +3,10 @@ import { ReactComponent as SettingIcon } from 'assets/svg/common/setting.svg';
 import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
 import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
+import { ReactComponent as MenuIcon } from 'assets/svg/common/menu.svg';
+import { ReactComponent as StoreFrontIcon } from 'assets/svg/home/storefront.svg';
+import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
+import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { useAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
@@ -89,6 +93,33 @@ export default function TopNavigation(): JSX.Element {
           )}
         </ul>
       </nav>
+      {visible && (
+        <div className={styles['side-pannel']}>
+          <div className={styles['side-pannel__search']}>
+            <div className={styles['side-pannel__search-bar']}>
+              <span><MenuIcon /></span>
+              <span>
+                <input type="text" placeholder="검색어를 입력해주세요." className={styles['side-pannel__search-input']} />
+                <SearchIcon className={styles['side-pannel__search-icon']} />
+              </span>
+            </div>
+            <div className={styles['side-pannel__search-buttons']}>
+              <button type="button" className={styles['side-pannel__search-button']}>
+                가까운 음식점
+                <StoreFrontIcon />
+              </button>
+              <button type="button" className={styles['side-pannel__search-button']}>
+                북마크 음식점
+                <BookMarkIcon />
+              </button>
+              <button type="button" className={styles['side-pannel__search-button']}>
+                친구 음식점
+                <GroupIcon />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
