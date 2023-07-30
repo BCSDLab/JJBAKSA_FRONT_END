@@ -2,11 +2,21 @@
 
 @keyframes slide-out {
   from {
-    margin-left: -300px;
+    margin-left: -550px;
   }
 
   to {
     margin-left: 0;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    margin-left: 0;
+  }
+
+  to {
+    margin-left: -550px;
   }
 }
 
@@ -65,6 +75,26 @@
     position: relative;
     bottom: 0;
   }
+
+  &__arrow {
+    position: absolute;
+    left: 100px;
+    top: 43%;
+    width: 30px;
+    height: 100px;
+    z-index: 10;
+    background-color: #ffffff;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    box-shadow: 2px 3px 4px 0 rgba(0 0 0 / 20%);
+    transform: translate(550px, 0);
+    animation: slide-in 0.3s ease-out normal forwards;
+    cursor: pointer;
+
+    &--expand {
+      animation: slide-out 0.3s ease-out forwards;
+    }
+  }
 }
 
 .bottom-navigation {
@@ -89,9 +119,13 @@
   left: 100px;
   z-index: 5;
   background-color: #ffffff;
-  animation: slide-out 0.3s ease-out normal forwards;
   display: flex;
   flex-direction: column;
+  animation: slide-in 0.3s ease-out normal forwards;
+
+  &--expand {
+    animation: slide-out 0.3s ease-out forwards;
+  }
 
   @include media.media-breakpoint-down(mobile) {
     display: none;

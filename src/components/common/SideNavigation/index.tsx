@@ -7,6 +7,8 @@ import { ReactComponent as MenuIcon } from 'assets/svg/common/menu.svg';
 import { ReactComponent as StoreFrontIcon } from 'assets/svg/home/storefront.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
+import { ReactComponent as ExpandIcon } from 'assets/svg/common/expand.svg';
+import { ReactComponent as FoldIcon } from 'assets/svg/common/fold.svg';
 import { useAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
@@ -62,10 +64,7 @@ export default function TopNavigation(): JSX.Element {
               {tab.name === '검색' ? (
                 <button
                   type="button"
-                  className={cn({
-                    [styles['side-navigation__button']]: true,
-                    [styles['side-navigation__button--show']]: visible,
-                  })}
+                  className={styles['side-navigation__button']}
                   onClick={toggle}
                   tabIndex={0}
                 >
@@ -92,34 +91,49 @@ export default function TopNavigation(): JSX.Element {
             </li>
           )}
         </ul>
+        <button
+          type="button"
+          className={cn({
+            [styles['side-navigation__arrow']]: true,
+            [styles['side-navigation__arrow--expand']]: visible,
+          })}
+          onClick={toggle}
+          aria-label="펼치기"
+        >
+          {visible ? <FoldIcon /> : <ExpandIcon />}
+        </button>
       </nav>
-      {visible && (
-        <div className={styles['side-pannel']}>
-          <div className={styles['side-pannel__search']}>
-            <div className={styles['side-pannel__search-bar']}>
-              <span><MenuIcon /></span>
-              <span>
-                <input type="text" placeholder="검색어를 입력해주세요." className={styles['side-pannel__search-input']} />
-                <SearchIcon className={styles['side-pannel__search-icon']} />
-              </span>
-            </div>
-            <div className={styles['side-pannel__search-buttons']}>
-              <button type="button" className={styles['side-pannel__search-button']}>
-                가까운 음식점
-                <StoreFrontIcon />
-              </button>
-              <button type="button" className={styles['side-pannel__search-button']}>
-                북마크 음식점
-                <BookMarkIcon />
-              </button>
-              <button type="button" className={styles['side-pannel__search-button']}>
-                친구 음식점
-                <GroupIcon />
-              </button>
-            </div>
+      <div
+        className={cn({
+          [styles['side-pannel']]: true,
+          [styles['side-pannel--expand']]: visible,
+        })}
+      >
+        <div className={styles['side-pannel__search']}>
+          <div className={styles['side-pannel__search-bar']}>
+            <span><MenuIcon /></span>
+            <span>
+              <input type="text" placeholder="검색어를 입력해주세요." className={styles['side-pannel__search-input']} />
+              <SearchIcon className={styles['side-pannel__search-icon']} />
+            </span>
+          </div>
+          <div className={styles['side-pannel__search-buttons']}>
+            <button type="button" className={styles['side-pannel__search-button']}>
+              가까운 음식점
+              <StoreFrontIcon />
+            </button>
+            <button type="button" className={styles['side-pannel__search-button']}>
+              북마크 음식점
+              <BookMarkIcon />
+            </button>
+            <button type="button" className={styles['side-pannel__search-button']}>
+              친구 음식점
+              <GroupIcon />
+            </button>
           </div>
         </div>
-      )}
+      </div>
+
     </div>
   );
 }
