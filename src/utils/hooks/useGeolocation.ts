@@ -1,4 +1,4 @@
-import { Coords } from 'api/search/entity';
+import { Coords } from 'api/shop/entity';
 import { useEffect, useState } from 'react';
 
 interface Position {

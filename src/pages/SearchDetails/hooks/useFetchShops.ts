@@ -1,7 +1,7 @@
 import useGeolocation from 'utils/hooks/useGeolocation';
 import { useQuery } from 'react-query';
-import { fetchShops } from 'api/search';
-import { ShopsParams } from 'api/search/entity';
+import { fetchShops } from 'api/shop';
+import { ShopsParams } from 'api/shop/entity';
 
 const useFetchShops = (keyword: string) => {
   const options = {
