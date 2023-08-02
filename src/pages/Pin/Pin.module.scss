@@ -1,0 +1,73 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.template {
+  height: calc(100vh - 81px);
+  position: absolute;
+  right: 0;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  z-index: 999;
+}
+
+.container {
+  height: 100%;
+  width: 550px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  width: 550px;
+  height: 362px;
+
+  &__left {
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    background-color: transparent;
+    color:#ffffff    
+  }
+
+    &__right {
+    position: absolute;
+    top:50%;
+    right:0;
+    background-color: transparent;
+    color:#ffffff    
+  }
+
+  &__inner {
+    width: 550px;
+    height:362px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  }
+  &__container {
+    position: absolute;
+    width: 550px;
+    height:362px;
+
+    &--ready {
+      display: none;
+    }
+  }
+  &__photo {
+    width: 550px;
+    height: 362px;
+  }
+  
+}
+.disabled{
+  opacity: 0;
+}
+// .img{
+//   width: 550px;
+//   height: 362px;
+  
+// }
