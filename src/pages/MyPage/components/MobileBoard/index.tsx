@@ -23,15 +23,15 @@ function Review({
   const { reviews, isLoading } = useReviwes(placeId);
   return (
     <div className={styles.post}>
-      <div className={styles.post__store}>
+      <label className={styles.post__store} htmlFor={`open${placeId}`}>
         <div className={styles.store}>
           <span className={styles.store__name}>{name}</span>
           <span className={styles.store__type}>{category}</span>
         </div>
-        <button type="button" onClick={() => setOpen(!isOpen)} className={styles.post__opener}>
+        <button type="button" id={`open${placeId}`} onClick={() => setOpen(!isOpen)} className={styles.post__opener}>
           <img src={isOpen ? closeArrow : openArrow} alt="post-opener" />
         </button>
-      </div>
+      </label>
       {!isLoading && reviews.map((review) => (
         isOpen && (
         <div key={review.id}>
