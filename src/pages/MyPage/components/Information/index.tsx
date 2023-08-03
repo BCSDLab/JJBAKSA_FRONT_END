@@ -2,33 +2,12 @@ import defaultImage from 'assets/images/follow/default-image.png';
 // import fixPencil from 'assets/images/mypage/pencil.svg';
 import option from 'assets/svg/mypage/option.svg';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import { getMe } from 'api/user';
-import { useEffect, useState } from 'react';
-import { User } from 'api/user/entity';
+import useMyProfile from 'pages/MyPage/hooks/useMyProfile';
 import styles from './Information.module.scss';
-
-type Profile = User & {
-  profileImage?: {
-    url: string
-  }
-};
-
-const useMyInfo = () => {
-  const [profile, setProfile] = useState<Profile>();
-  const getMyInfo = async () => {
-    const { data } = await getMe();
-    setProfile(data);
-  };
-  useEffect(() => {
-    getMyInfo();
-  }, []);
-
-  return { profile };
-};
 
 export default function Information() {
   const { isMobile } = useMediaQuery();
-  const { profile } = useMyInfo();
+  const { profile } = useMyProfile();
   return (
     <div className={styles.information}>
       <div className={styles.user}>
