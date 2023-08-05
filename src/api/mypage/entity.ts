@@ -20,3 +20,16 @@ export type Review = {
 export interface ReviewsResPonse {
   content: Review[]
 }
+
+export type Scrap = {
+  placeId: string,
+  category: string,
+  name:string,
+  photo: string,
+  ratingCount: number,
+  scrapId: number,
+  totalRating: number
+};
+export interface ScrapResponse {
+  content: Scrap[]
+}

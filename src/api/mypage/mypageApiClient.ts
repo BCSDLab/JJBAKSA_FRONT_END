@@ -2,7 +2,7 @@ import { API_PATH } from 'config/constants';
 import axios from 'axios';
 
 const myPageApi = axios.create({
-  baseURL: `${API_PATH}/review`,
+  baseURL: `${API_PATH}`,
   timeout: 2000,
 });
 
