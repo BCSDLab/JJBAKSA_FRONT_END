@@ -1,14 +1,17 @@
-import { Coords } from 'api/shop/entity';
 import { useEffect, useState } from 'react';
 
-interface Position {
-  coords: Coords
+interface GeolocationPosition {
+  latitude: number;
+  longitude: number;
 }
 
 export default function useGeolocation(options = {}) {
-  const [location, setLocation] = useState<Coords>();
-  const onGeoSuccess = (geolocation: Position) => {
-    setLocation(geolocation.coords);
+  const [location, setLocation] = useState<GeolocationPosition>();
+  const onGeoSuccess: PositionCallback = (position) => {
+    setLocation({
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    });
   };
   const onGeoError = () => {};
 
