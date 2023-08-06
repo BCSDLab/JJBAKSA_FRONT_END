@@ -8,7 +8,7 @@ const useFetchShops = (keyword: string) => {
     maximumAge: 1000,
   };
   const { location } = useGeolocation(options);
-  const params = { keyword, location };
+  const params = { keyword };
   const {
     isLoading, isError, data, refetch,
   } = useQuery('shop', () => fetchShops(params as ShopsParams), { enabled: !!location });
