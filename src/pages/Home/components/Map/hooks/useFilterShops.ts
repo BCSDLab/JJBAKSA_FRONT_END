@@ -16,8 +16,8 @@ const useFilterShops = ({
   const {
     isLoading, isError, data, refetch,
   } = useQuery('filterShops', () => getfilterShops(params, {
-    latitude: location?.latitude,
-    longitude: location?.longitude,
+    lat: location?.latitude,
+    lng: location?.longitude,
   }), {
     enabled: !!(location),
   });
