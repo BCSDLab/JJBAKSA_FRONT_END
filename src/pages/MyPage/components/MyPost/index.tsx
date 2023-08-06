@@ -34,15 +34,14 @@ export default function MyPost() {
           {isMobile && <MobileBoard posts={shops} />}
         </>
       ) : (
-        !isMobile
-        && (
-        <div className={styles['not-exist']}>
-          <span className={styles['not-exist__phrase']}>
-            <p>둥록된 리뷰가 없어요.</p>
-            <p>다녀온 음식점의 리뷰를 작성해 보세요!</p>
-          </span>
-          <img src={notExist} alt="not-exist" className={styles['not-exist__image']} />
-        </div>
+        (
+          <div className={styles['not-exist']}>
+            <span className={styles['not-exist__phrase']}>
+              <p>둥록된 리뷰가 없어요.</p>
+              <p>다녀온 음식점의 리뷰를 작성해 보세요!</p>
+            </span>
+            <img src={notExist} alt="not-exist" className={styles['not-exist__image']} />
+          </div>
         )
       )}
 
