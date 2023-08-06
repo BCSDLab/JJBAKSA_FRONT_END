@@ -5,16 +5,21 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 import useMyProfile from 'pages/MyPage/hooks/useMyProfile';
 import styles from './Information.module.scss';
 
-export default function Information() {
+interface InformationProps {
+  openModal:(url:string | undefined) => void
+}
+
+export default function Information({ openModal }:InformationProps) {
   const { isMobile } = useMediaQuery();
   const { profile } = useMyProfile();
+
   return (
     <div className={styles.information}>
       <div className={styles.user}>
-        <div className={styles.profile}>
+        <button type="button" className={styles.profile} onClick={() => openModal(profile?.profileImage?.url)}>
           <img src={profile?.profileImage ? profile.profileImage.url : defaultImage} alt="profileImage" className={styles.user__image} />
           {/* <img src={fixPencil} alt="changeProfile" className={styles['change--image']} /> */}
-        </div>
+        </button>
         <div>
           <span className={styles.user__nickname}>
             {profile?.nickname}
@@ -41,7 +46,6 @@ export default function Information() {
       </div>
       )}
       {isMobile && <img src={option} alt="option" className={styles.option} />}
-
     </div>
   );
 }

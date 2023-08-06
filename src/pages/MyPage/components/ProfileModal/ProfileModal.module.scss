@@ -1,0 +1,99 @@
+.phrase {
+  display: block;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22.46px;
+  margin-bottom: 30px;
+}
+
+.form {
+  &__upload {
+    background: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 25px;
+
+    &--image {
+      position: relative;
+    }
+
+    &--profile {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    &--plus {
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+      border-radius: 50%;
+    }
+  }
+
+  &__name {
+    position: relative;
+    margin: 0 auto;
+    width: 48%;
+    margin-bottom: 50px;
+  }
+
+  &__buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    &--cancle {
+      all: unset;
+      width: 45%;
+      height: 40px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #c4c4c4;
+      outline: 0;
+      text-align: center;
+      border-radius: 999px;
+    }
+
+    &--complete {
+      all: unset;
+      width: 45%;
+      height: 40px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #ff7f23;
+      outline: 0;
+      text-align: center;
+      border-radius: 999px;
+    }
+  }
+}
+
+.name {
+  &__input {
+    display: block;
+    width: calc(100% - 40px);
+    border: none;
+    margin: 0 auto;
+    border-bottom: 1px solid #c4c4c4;
+    padding: 4px 10px;
+    padding-right: 30px;
+    position: relative;
+    outline: none;
+  }
+
+  &__length {
+    display: block;
+    width: 20px;
+    right: 3px;
+    top: 5px;
+    position: absolute;
+    font-size: 10px;
+  }
+}

@@ -29,7 +29,6 @@
     @include media.media-breakpoint-down(mobile) {
       width: 46px;
       height: 46px;
-      margin-right: 16px;
     }
   }
 
@@ -119,7 +118,13 @@
 }
 
 .profile {
+  all: unset;
+  display: flex;
+  overflow: hidden;
   position: relative;
+  outline: none;
+  border-radius: 50%;
+  margin-right: 16px;
 
   &:hover {
     filter: brightness(50%);
