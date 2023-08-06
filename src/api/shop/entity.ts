@@ -6,10 +6,16 @@ export interface FilterShopsParams {
 }
 
 export interface FilterShopsResponse {
-  geometry?: Coords;
+  geometry: {
+    location: Coords;
+  };
   name: string;
   photo: null | string[];
   placeId: string;
+}
+
+export interface FilterShopsListResponse {
+  content: FilterShopsResponse[];
 }
 
 export interface FetchTrendingsResponse {
@@ -41,6 +47,6 @@ interface Shop {
 }
 
 export interface Coords {
-  latitude: number | undefined;
-  longitude: number | undefined;
+  lat: number | undefined;
+  lng: number | undefined;
 }
