@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useGeolocation from 'utils/hooks/useGeolocation';
 import MARKER from 'pages/Home/static/marker';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+import Pin from 'pages/Pin';
 import styles from './Map.module.scss';
 import OptionButtons from './components/OptionButtons';
 import MobileOptions from './components/MobileOptions';
@@ -17,6 +18,7 @@ const options = {
   maximumAge: 1000,
 };
 export default function Map(): JSX.Element {
+  const [select, setSelect] = useState<naver.maps.Marker | null>(null);
   const { isMobile } = useMediaQuery();
   const { location } = useGeolocation(options);
   const mapRef = useRef<naver.maps.Map | null>(null);
@@ -24,6 +26,7 @@ export default function Map(): JSX.Element {
 
   const markerHighlightEvent = (markerCur:naver.maps.Marker, item:MarkerType) => {
     naver.maps.Event.addListener(markerCur, 'click', () => {
+      setSelect(markerCur);
       if (selectedMarker.current) {
         selectedMarker.current.setIcon({
           content: MarkerHtml(
@@ -95,7 +98,9 @@ export default function Map(): JSX.Element {
   }, [location]);
   return (
     <div>
+      {select?.getTitle()}
       {isMobile && <MobileOptions />}
+      <Pin />
       <div id="map" className={styles.map} />
       {!isMobile && <OptionButtons />}
     </div>
