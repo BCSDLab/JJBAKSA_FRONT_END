@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
@@ -20,8 +21,6 @@ function useNaverMap(latitude: number | undefined, longitude: number | undefined
         newMaps.destroy();
       };
     }
-
-    return () => {};
   }, [latitude, longitude]);
 
   return map;
