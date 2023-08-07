@@ -1,19 +1,15 @@
-import Default from 'assets/images/search/defaultImg.png';
+import Default from 'assets/images/search/default-image.png';
 import MarkerLogo from 'assets/images/home/location-marker.png';
 import Selected from 'assets/images/home/selected-marker.png';
 import styles from './MarkerHtml.module.scss';
 
-export function MarkerHtml(thumbnail:string | null, name:string, index:number) {
+export function MarkerHtml(photo:string[] | null, name:string) {
   return `
   <div class=${styles.container}>
     <img src=${MarkerLogo}  class=${styles.marker} alt="marker" />
       <div class=${styles.bubble}>
         <div class=${styles.bubble__photo}>
-          <img src=${thumbnail || Default} alt=""/>
-        </div>
-        <div class=${styles.bubble__index}>
-          ${!thumbnail ? index : ''}
-          
+          <img src=${Default} alt="사진"/>
         </div>
         <div class=${styles.bubble__name}>
           ${name}
@@ -23,16 +19,13 @@ export function MarkerHtml(thumbnail:string | null, name:string, index:number) {
   `;
 }
 
-export function ClickedMarkerHtml(thumbnail:string | null, name:string, index:number) {
+export function ClickedMarkerHtml(photo:string[] | null, name:string) {
   return `
   <div class=${styles.continer}>
     <img src=${Selected} class=${styles['marker--clicked']}>
       <div class=${styles.bubble}>
         <div class=${styles['bubble__photo--clicked']}>
-          <img src=${thumbnail || Default} alt="" />
-        </div>
-        <div class=${styles['bubble__index--clidked']}>
-          ${!thumbnail ? index : ''}
+          <img src=${Default} alt="사진" />
         </div>
         <div class=${styles['bubble__name--clicked']}>
           ${name}
