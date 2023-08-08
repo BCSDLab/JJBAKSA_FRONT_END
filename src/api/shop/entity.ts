@@ -14,9 +14,7 @@ export interface FilterShopsResponse {
   placeId: string;
 }
 
-export interface FilterShopsListResponse {
-  content: FilterShopsResponse[];
-}
+export type FilterShopsListResponse = FilterShopsResponse[];
 
 export interface FetchTrendingsResponse {
   trendings: string[]
