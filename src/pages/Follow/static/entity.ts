@@ -3,10 +3,11 @@ export type FollowerInfo = Omit<Follower, 'email'>;
 export interface Follower {
   account: string,
   nickname: string,
-  followedType: 'FOLLOWED' | 'NONE' | 'RECEIVED',
+  followedType: 'FOLLOWED' | 'NONE' | 'REQUEST_RECEIVE' | 'REQUEST_SENT',
   id: number,
   email: string,
   userType: string;
+  requestId?: number;
 }
 
 export interface RequestUserInfo {
