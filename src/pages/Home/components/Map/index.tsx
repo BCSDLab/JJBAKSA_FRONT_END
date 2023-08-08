@@ -1,99 +1,29 @@
-import { useEffect, useRef } from 'react';
 import useGeolocation from 'utils/hooks/useGeolocation';
-import MARKER from 'pages/Home/static/marker';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './Map.module.scss';
-import OptionButtons from './components/OptionButtons';
 import MobileOptions from './components/MobileOptions';
-import { ClickedMarkerHtml, MarkerHtml } from './components/MarkerHtml';
+import useNaverMap from './hooks/useNaverMap';
+import useMarker from './hooks/useMarker';
+import useFilterShops from './hooks/useFilterShops';
 
-interface MarkerType {
-  latitude: number;
-  longitude: number;
-  placeName: string;
-  index: number;
-}
-const options = {
+const OPTIONS = {
   maximumAge: 1000,
 };
 export default function Map(): JSX.Element {
   const { isMobile } = useMediaQuery();
-  const { location } = useGeolocation(options);
-  const mapRef = useRef<naver.maps.Map | null>(null);
-  const selectedMarker = useRef<naver.maps.Marker | null>(null);
+  const { location } = useGeolocation(OPTIONS);
+  const map = useNaverMap(location?.latitude, location?.longitude);
+  const { data: filterShops } = useFilterShops({
+    options_friend: 1,
+    options_scrap: 1,
+    options_nearby: 1,
+  });
+  useMarker({ map, filterShops });
 
-  const markerHighlightEvent = (markerCur:naver.maps.Marker, item:MarkerType) => {
-    naver.maps.Event.addListener(markerCur, 'click', () => {
-      if (selectedMarker.current) {
-        selectedMarker.current.setIcon({
-          content: MarkerHtml(
-            '',
-            selectedMarker.current.getTitle(),
-            selectedMarker.current.getZIndex(),
-          ),
-          size: new naver.maps.Size(50, 52),
-          anchor: new naver.maps.Point(25, 26),
-        });
-      }
-
-      markerCur.setIcon({
-        // 추후 각 마커벼로 이미지파일이 주어지면 첫번째 인자로 해당 이미지를 넘겨주도록 해야함
-        content: ClickedMarkerHtml('', item.placeName, item.index),
-        size: new naver.maps.Size(50, 52),
-        anchor: new naver.maps.Point(25, 26),
-      });
-
-      selectedMarker.current = markerCur;
-
-      if (mapRef.current) {
-        const mapLatLng = new naver.maps.LatLng(item.latitude, item.longitude);
-        mapRef.current.panTo(mapLatLng);
-      }
-    });
-  };
-
-  useEffect(() => {
-    if (!mapRef.current && typeof location !== 'undefined') {
-      mapRef.current = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(location.latitude, location.longitude),
-        zoomControl: false,
-        zoom: 10,
-        scaleControl: false,
-        logoControl: false,
-        mapDataControl: false,
-      });
-    }
-
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.destroy();
-      }
-    };
-  }, [location]);
-
-  useEffect(() => {
-    MARKER.forEach((item:MarkerType) => {
-      if (mapRef.current) {
-        const markers = new naver.maps.Marker({
-          position: new naver.maps.LatLng(item.latitude, item.longitude),
-          title: item.placeName,
-          map: mapRef.current,
-          zIndex: item.index,
-          icon: {
-            content: MarkerHtml('', item.placeName, item.index),
-            size: new naver.maps.Size(50, 52),
-            anchor: new naver.maps.Point(25, 26),
-          },
-        });
-        markerHighlightEvent(markers, item);
-      }
-    });
-  }, [location]);
   return (
     <div>
       {isMobile && <MobileOptions />}
       <div id="map" className={styles.map} />
-      {!isMobile && <OptionButtons />}
     </div>
   );
 }
