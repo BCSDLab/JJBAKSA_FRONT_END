@@ -6,23 +6,30 @@ export interface FollowListParams {
   pageSize: number;
 }
 
-export interface GetFollowListParams {
+export interface GetFollowListResponse {
+  content: {
+    account: string;
+    email: string;
+    id: number;
+    nickname: string;
+    userType: string;
+  }[]
+}
+
+export interface SendedOrReceivedFollowParams {
   page: number;
   pageSize: number;
 }
 
-export interface GetFollowListResponse {
+export interface SendedOrReceivedFollowResponse {
   content: {
     id: number;
     follower: User;
     user: User;
-    account: string;
-  }[]
-}
-
-export interface CheckSendedFollowParams {
-  page: number;
-  pageSize: number;
+  }[];
+  empty: boolean;
+  last: boolean;
+  number: number;
 }
 
 export interface FollowerParams {
@@ -43,6 +50,15 @@ export interface SearchUsersResponse {
   content: FollowerInfo[]
 }
 
-export interface AcceptFollowParams {
+export interface RequestFollowParams {
   id: number;
+}
+
+export interface AcceptFollowParams extends RequestFollowParams {
+}
+
+export interface CancleFollowParams extends RequestFollowParams {
+}
+
+export interface RejectFollowParams extends RequestFollowParams {
 }
