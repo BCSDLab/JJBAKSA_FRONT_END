@@ -18,7 +18,7 @@ export default function SearchInput({
         value={text}
         onChange={onChange}
       />
-      <LensIcon title="검색" className={styles['search-bar__icon']} />
+      <LensIcon title="검색" className={styles['search-bar__icon']} onClick={() => console.log(text)} />
     </label>
   );
 }
