@@ -8,6 +8,10 @@
 }
 
 .form {
+  &__image-input {
+    display: none;
+  }
+
   &__upload {
     background: inherit;
     border: none;
@@ -19,6 +23,9 @@
     margin-bottom: 25px;
 
     &--image {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
       position: relative;
     }
 

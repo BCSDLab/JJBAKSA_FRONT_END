@@ -33,3 +33,12 @@ export type Scrap = {
 export interface ScrapResponse {
   content: Scrap[]
 }
+
+export interface PatchProfileImageResponse {
+  profileImage: {
+    id: number,
+    originalName: string,
+    path: string,
+    url: string
+  }
+}
