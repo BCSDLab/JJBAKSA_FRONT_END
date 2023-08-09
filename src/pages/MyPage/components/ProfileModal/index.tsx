@@ -20,7 +20,7 @@ export default function ProfileModal({ imgUrl }:ProfileModalProps) {
     toast.dismiss();
   };
   const {
-    onChange, onclick, previewUrl,
+    onChange, onClick, previewUrl,
   } = useChangeProfile();
   return (
     <div>
@@ -29,7 +29,7 @@ export default function ProfileModal({ imgUrl }:ProfileModalProps) {
         <br />
         프로필을 변경하시겠어요?
       </span>
-      <form className={styles.form} onSubmit={(e) => onclick(e)}>
+      <form className={styles.form} onSubmit={(e) => onClick(e)}>
         <label className={styles.form__upload} htmlFor="profileImageFile">
           <input type="file" accept="image/*" id="profileImageFile" className={styles['form__image-input']} onChange={(e) => onChange(e)} />
           <div className={styles['form__upload--image']}>

@@ -26,7 +26,7 @@ const useChangeProfile = () => {
     }
   };
 
-  const onclick = async (e:React.FormEvent<HTMLFormElement>) => {
+  const onClick = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (image) {
       imageRefetch();
@@ -42,7 +42,7 @@ const useChangeProfile = () => {
   }, [imageResponse]);
 
   return {
-    onChange, imageResponse, imageError, onclick, previewUrl,
+    onChange, imageResponse, imageError, onClick, previewUrl,
   };
 };
 
