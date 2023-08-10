@@ -42,3 +42,7 @@ export interface PatchProfileImageResponse {
     url: string
   }
 }
+
+export interface PatchNicknameResposne {
+  nickname:string
+}

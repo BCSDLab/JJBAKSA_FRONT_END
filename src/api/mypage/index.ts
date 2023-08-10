@@ -1,4 +1,5 @@
 import {
+  PatchNicknameResposne,
   PatchProfileImageResponse, ReviewedShopsResponse, ReviewsResPonse, ScrapResponse,
 } from './entity';
 import myPageApi from './mypageApiClient';
@@ -20,3 +21,5 @@ export const patchDefaultImage = async () => myPageApi.patch<PatchProfileImageRe
     'Content-Type': 'multipart/form-data',
   },
 });
+
+export const patchNickname = async (nickname:string) => myPageApi.patch<PatchNicknameResposne>('/user/me', { nickname });

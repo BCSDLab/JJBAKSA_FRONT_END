@@ -1,14 +1,16 @@
-import { patchDefaultImage, patchProfileImage } from 'api/mypage';
-import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
+import { patchProfileImage } from 'api/mypage';
+import React, { useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
 
 const useChangeProfile = () => {
   const [image, setImage] = useState<FormData | null>(null);
   const [previewUrl, setUrl] = useState<string | null>(null);
-  // const [nickname, setNickname] = useState(nickname);
-  const { isError: imageError, data: imageResponse, refetch: imageRefetch } = useQuery(['changeImage', image], () => patchProfileImage(image), { enabled: false });
-  const { refetch: defaultRefetch } = useQuery(['changeImage', image], () => patchDefaultImage(), { enabled: false });
-  // const { isError: nicknameError, data: nicknameResponse, refetch: nicknameRefetch
+  const queryClient = useQueryClient();
+  const changeImage = useMutation(() => patchProfileImage(image), {
+    onSuccess: () => {
+      queryClient.invalidateQueries('profile');
+    },
+  });
   const getImageUrl = (file:Blob) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -25,25 +27,12 @@ const useChangeProfile = () => {
       getImageUrl(e.target.files[0]);
     }
   };
-
-  const onClick = (e:React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onClick = () => {
     if (image) {
-      imageRefetch();
-    } else {
-      defaultRefetch();
+      changeImage.mutate();
     }
   };
-
-  useEffect(() => {
-    if (imageResponse) {
-      window.location.reload();
-    }
-  }, [imageResponse]);
-
-  return {
-    onChange, imageResponse, imageError, onClick, previewUrl,
-  };
+  return { previewUrl, onChange, onClick };
 };
 
 export default useChangeProfile;

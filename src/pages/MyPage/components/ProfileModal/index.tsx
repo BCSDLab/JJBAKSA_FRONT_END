@@ -1,8 +1,9 @@
 import defaultImage from 'assets/images/follow/default-image.png';
 import plus from 'assets/svg/mypage/plus.svg';
 import { toast } from 'react-toastify';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import useChangeProfile from 'pages/MyPage/hooks/useChangeProfile';
+import useChangeNickname from 'pages/MyPage/hooks/useChangeNickname';
 import styles from './ProfileModal.module.scss';
 
 interface ProfileModalProps {
@@ -20,8 +21,19 @@ export default function ProfileModal({ imgUrl }:ProfileModalProps) {
     toast.dismiss();
   };
   const {
-    onChange, onClick, previewUrl,
+    onChange, onClick: changeProfile, previewUrl,
   } = useChangeProfile();
+  const { onClick: changeNickname, nicknameRef } = useChangeNickname();
+
+  const onClick = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    changeProfile();
+    if (nicknameRef.current) {
+      changeNickname(nicknameRef.current.value);
+    }
+    closeModal();
+  };
+
   return (
     <div>
       <span className={styles.phrase}>
@@ -39,7 +51,7 @@ export default function ProfileModal({ imgUrl }:ProfileModalProps) {
           </div>
         </label>
         <div className={styles.form__name}>
-          <input type="text" defaultValue="이병건이올씨다" placeholder="유저이름" onChange={(e) => changeName(e)} className={styles.name__input} maxLength={10} />
+          <input type="text" defaultValue="이병건이올씨다" placeholder="유저이름" onChange={(e) => changeName(e)} className={styles.name__input} maxLength={10} ref={nicknameRef} />
           <span className={styles.name__length}>{`${nameLength}/10`}</span>
         </div>
         <div className={styles.form__buttons}>
