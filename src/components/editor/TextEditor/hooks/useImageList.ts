@@ -1,39 +1,43 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
+import { useSetReview } from 'store/review';
 
-interface ReturnType {
-  imageList: string[] | null;
-  setImageList: Dispatch<SetStateAction<string[] | null>>;
-  addImage: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  removeImage: (value: string) => void;
-}
-
-export default function useImageList(): ReturnType {
-  const [imageList, setImageList] = useState<string[] | null>(null);
+export default function useImageList() {
+  const [imageList, setImageList] = useState<string[]>([]);
+  const setReview = useSetReview();
 
   const addImage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = event.target;
     if (files) {
-      const fileArray: string[] = [];
       const fileCount = files.length;
-
+      const dataTransfer = new DataTransfer();
       for (let i = 0; i < fileCount; i += 1) {
         const reader = new FileReader();
         reader.onload = (e) => {
           const result = e.target?.result;
           if (typeof result === 'string') {
-            fileArray.push(result);
-            if (fileArray.length === fileCount) {
-              setImageList((prev) => (prev ? [...prev, ...fileArray] : fileArray));
-            }
+            setImageList((prev) => ([...prev, result]));
           }
         };
         reader.readAsDataURL(files[i]);
+        dataTransfer.items.add(files[i]);
+        setReview((prev) => ({
+          ...prev,
+          reviewImages: [...prev.reviewImages, files[i]],
+        }));
       }
     }
   };
 
-  const removeImage = (value: string) => {
-    setImageList((prev) => prev?.filter((item) => item !== value) || null);
+  const removeImage = (index: number) => {
+    setImageList((prev) => {
+      const newList = [...prev];
+      newList.splice(index, 1);
+      return newList;
+    });
+    setReview((prev) => ({
+      ...prev,
+      reviewImages: prev.reviewImages.filter((_, i) => i !== index),
+    }));
   };
 
   return {

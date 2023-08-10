@@ -1,4 +1,4 @@
-export interface ReviewData {
+export interface ReviewParams {
   placeId : string;
   content : string;
   rate : number;
