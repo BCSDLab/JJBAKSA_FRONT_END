@@ -14,7 +14,7 @@ const useFetchShops = (keyword: string) => {
   } = useQuery('shop', () => fetchShops(params as ShopsParams), { enabled: !!location });
 
   const isFetching = isLoading || !(location);
-  const shops = data?.data.content;
+  const shops = data?.data.shopQueryResponseList;
 
   return {
     isFetching, isError, data: shops, refetch,

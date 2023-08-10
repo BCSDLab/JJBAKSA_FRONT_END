@@ -19,7 +19,7 @@ export default function SearchDetails() {
           {isFetching
             ? <LoadingView />
             : shops && shops.map((shop) => (
-              <SearchItemPC key={shop.shopId} shop={shop} />
+              <SearchItemPC key={shop.placeId} shop={shop} />
             ))}
         </div>
       </div>
