@@ -1,5 +1,5 @@
 export interface ReviewData {
-  placeId : number;
+  placeId : string;
   content : string;
   rate : number;
   reviewImages : File[];

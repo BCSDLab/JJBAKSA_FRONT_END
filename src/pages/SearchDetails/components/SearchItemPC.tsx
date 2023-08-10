@@ -1,20 +1,22 @@
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { Link } from 'react-router-dom';
 import { Shop } from 'api/search/entity';
-import { getMockItem, SHOPS } from '../static/mockup';
+import { getMockItem } from '../static/mockup';
 
 interface Props {
   shop: Shop;
 }
 
 export default function SearchItemPC({ shop }: Props) {
-  const { name, formattedAddress, photoToken } = shop;
+  const {
+    name, formattedAddress, photoToken, placeId, dist, openNow,
+  } = shop;
   const {
     imageAlt, defaultImage, phoneNumber, image,
   } = getMockItem();
 
   return (
-    <Link to="/" className={styles.item}>
+    <Link to={`/post/${name}`} state={{ placeId }} className={styles.item}>
       <div className={styles.image}>
         <img className={styles.image__main} alt={imageAlt} src={photoToken ?? defaultImage} />
         <div className={styles.image__other}>
@@ -32,15 +34,15 @@ export default function SearchItemPC({ shop }: Props) {
           <div>
             <div className={styles.item__status}>
               <span className={styles['item__status--open']}>
-                {SHOPS.status}
+                {openNow ? '영업중' : '영업 종료'}
               </span>
-              <span className={styles.item__closing}>{SHOPS.closing}</span>
+              {/* <span className={styles.item__closing}></span> */}
             </div>
-            <div className={styles.item__distance}>{SHOPS.distance}</div>
+            <div className={styles.item__distance}>
+              {`내 위치로부터 ${dist.toFixed(2)}m`}
+            </div>
             <a
-              onClick={(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-                event.stopPropagation();
-              }}
+              onClick={(e) => e.stopPropagation()}
               href={`tel:${phoneNumber}`}
               className={styles.item__phone}
             >
