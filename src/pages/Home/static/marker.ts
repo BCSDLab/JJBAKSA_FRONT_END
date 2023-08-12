@@ -2,24 +2,35 @@ const MARKER = [
   {
     geometry: {
       location: {
-        lat: 37.5108295,
-        lng: 127.0292881,
+        lat: 37.5085007,
+        lng: 127.0243059,
       },
     },
-    name: '고기',
-    photo: ['string', 'string'],
-    placeId: 'string',
+    name: '삼촌네고깃집2',
+    photo: 'null',
+    placeId: 'nmap-119FC9E2-1E6F-4920-8734-0D82644CFFBF',
   },
   {
     geometry: {
       location: {
-        lat: 37,
-        lng: 127,
+        lat: 37.5018927,
+        lng: 127.0360738,
       },
     },
-    name: '고기2',
-    photo: ['string'],
-    placeId: 'string',
+    name: '멕시카나 치킨2',
+    photo: 'null',
+    placeId: 'nmarker-3DC43A25-00E4-485E-B823-C87666B8B4A0',
+  },
+  {
+    geometry: {
+      location: {
+        lat: 37.5030426,
+        lng: 127.041588,
+      },
+    },
+    name: '아라미즈2',
+    photo: 'null',
+    placeId: 'nmarker-B8FB8547-EFB9-416B-BA20-02749D239706',
   },
 ];
 
