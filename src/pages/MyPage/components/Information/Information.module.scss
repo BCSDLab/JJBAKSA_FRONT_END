@@ -4,57 +4,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  @include media.media-breakpoint-down(mobile) {
-    width: 91%;
-    margin: 0 auto;
-  }
+  width: 91%;
+  margin: 0 auto;
 }
 
 .user {
-  width: 308px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
-  @include media.media-breakpoint-down(mobile) {
-    width: 230px;
-    justify-content: start;
-  }
+  width: 230px;
+  justify-content: start;
 
   &__image {
-    width: 112px;
-    height: 112px;
-
-    @include media.media-breakpoint-down(mobile) {
-      width: 46px;
-      height: 46px;
-    }
+    width: 46px;
+    height: 46px;
   }
 
   &__nickname {
-    display: block;
-    font-size: 48px;
+    margin: 0;
     margin-bottom: 15px;
-    font-weight: 400;
-
-    @include media.media-breakpoint-down(mobile) {
-      display: inline;
-      font-size: 16px;
-      font-weight: 700;
-      margin: 0;
-    }
+    display: inline;
+    font-size: 16px;
+    font-weight: 700;
   }
 
   &__account {
     display: block;
-    font-size: 25px;
-    font-weight: 300;
-
-    @include media.media-breakpoint-down(mobile) {
-      font-size: 14px;
-      font-weight: 400;
-    }
+    font-size: 14px;
+    font-weight: 400;
   }
 }
 
@@ -87,13 +63,8 @@
     align-items: center;
 
     &--number {
-      font-size: 40px;
+      font-size: 14px;
       font-weight: 500;
-
-      @include media.media-breakpoint-down(mobile) {
-        font-size: 14px;
-        font-weight: 500;
-      }
     }
 
     &--label {
@@ -128,12 +99,6 @@
 
   &:hover {
     filter: brightness(50%);
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    &:hover {
-      filter: none;
-    }
   }
 }
 

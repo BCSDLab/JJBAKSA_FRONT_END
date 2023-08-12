@@ -1,13 +1,18 @@
+@use "src/utils/styles/mediaQuery" as media;
+
 .bookmarks {
   width: 91%;
   margin: 0 auto;
   height: calc(100vh - 228px);
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 
-  &::-webkit-scrollbar {
-    display: none;
+  @include media.media-breakpoint-down(mobile) {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__total {
