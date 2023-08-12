@@ -1,7 +1,8 @@
 /* eslint-disable consistent-return */
 import { useEffect, useState } from 'react';
 import { FilterShopsListResponse } from 'api/shop/entity';
-import { MarkerHtml } from '../components/MarkerHtml';
+import MARKER from 'pages/Home/static/marker';
+import { ClickedMarkerHtml, MarkerHtml } from '../components/MarkerHtml';
 
 interface MarkerProps {
   map: naver.maps.Map | null;
@@ -9,29 +10,49 @@ interface MarkerProps {
 }
 
 function useMarker({ map, filterShops }: MarkerProps) {
-  const [markerArray, setMarkerArray] = useState<naver.maps.Marker[]>([]);
+  const [, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
+  const [selected, setSelected] = useState<naver.maps.Marker | undefined>();
 
   useEffect(() => {
     if (!map || !filterShops) return;
-    const newMarkers = (filterShops.content ?? []).map((shop) => {
+    // 사용량 제한으로, 현재는 목업 데이터로 마커를 찍고 있음
+    // const newMarkers = (fitlerShops?? []).map((shop) => {
+    const newMarkers = (MARKER ?? []).map((shop) => {
       const lat = shop?.geometry?.location?.lat;
       const lng = shop?.geometry?.location?.lng;
-
       if (!lat || !lng) return;
+
       const marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(lat, lng),
         title: shop.name,
         map,
         icon: {
-          content: MarkerHtml(shop.photo, shop.name),
+          content: MarkerHtml(shop.name, shop.name),
         },
       });
+
+      naver.maps.Event.addListener(marker, 'click', () => {
+        newMarkers.forEach((m) => {
+          m?.setIcon({
+            content: MarkerHtml(m.getTitle(), m.getTitle()),
+          });
+        });
+
+        marker.setIcon({
+          content: ClickedMarkerHtml(shop.name, shop.name),
+        });
+        setSelected(marker);
+        if (map) {
+          map.panTo(marker.getPosition());
+        }
+      });
       return marker;
-    }).filter((marker) => marker !== undefined) as naver.maps.Marker[];
+    });
+
     setMarkerArray(newMarkers);
   }, [map, filterShops]);
 
-  return { markerArray };
+  return { selected };
 }
 
 export default useMarker;
