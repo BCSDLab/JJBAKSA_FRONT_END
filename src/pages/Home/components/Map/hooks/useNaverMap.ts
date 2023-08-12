@@ -10,7 +10,7 @@ function useNaverMap(latitude: number | undefined, longitude: number | undefined
       const newMaps = new naver.maps.Map('map', {
         center: new naver.maps.LatLng(latitude, longitude),
         zoomControl: false,
-        zoom: 10,
+        zoom: 15,
         scaleControl: false,
         logoControl: false,
         mapDataControl: false,
