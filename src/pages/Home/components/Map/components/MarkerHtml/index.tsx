@@ -3,7 +3,7 @@ import MarkerLogo from 'assets/images/home/location-marker.png';
 import Selected from 'assets/images/home/selected-marker.png';
 import styles from './MarkerHtml.module.scss';
 
-export function MarkerHtml(photo:string[] | null, name:string) {
+export function MarkerHtml(photo:string | null, name:string) {
   return `
   <div class=${styles.container}>
     <img src=${MarkerLogo}  class=${styles.marker} alt="marker" />
@@ -19,7 +19,7 @@ export function MarkerHtml(photo:string[] | null, name:string) {
   `;
 }
 
-export function ClickedMarkerHtml(photo:string[] | null, name:string) {
+export function ClickedMarkerHtml(photo:string | null, name:string) {
   return `
   <div class=${styles.continer}>
     <img src=${Selected} class=${styles['marker--clicked']}>
