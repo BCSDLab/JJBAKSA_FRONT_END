@@ -2,6 +2,7 @@ import useGeolocation from 'utils/hooks/useGeolocation';
 import { useQuery } from 'react-query';
 import { getfilterShops } from 'api/shop';
 import { FilterShopsParams } from 'api/shop/entity';
+import { useAuth } from 'store/auth';
 
 const OPTIONS = {
   maximumAge: 1000,
@@ -10,6 +11,8 @@ const useFilterShops = ({
   options_friend, options_nearby, options_scrap,
 }: FilterShopsParams) => {
   const { location } = useGeolocation(OPTIONS);
+  const auth = useAuth();
+  const enabled = !!(location) && !!auth;
   const params: FilterShopsParams = {
     options_friend, options_nearby, options_scrap,
   };
@@ -19,7 +22,7 @@ const useFilterShops = ({
     lat: location?.latitude,
     lng: location?.longitude,
   }), {
-    enabled: !!(location),
+    enabled,
   });
 
   const isFetching = isLoading || !(location);
