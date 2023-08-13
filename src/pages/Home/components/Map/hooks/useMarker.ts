@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 import { useEffect, useState } from 'react';
 import { FilterShopsListResponse } from 'api/shop/entity';
@@ -10,14 +11,14 @@ interface MarkerProps {
 }
 
 function useMarker({ map, filterShops }: MarkerProps) {
-  const [, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
+  const [,setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
   const [selected, setSelected] = useState<naver.maps.Marker | undefined>();
 
   useEffect(() => {
     if (!map || !filterShops) return;
     // 사용량 제한으로, 현재는 목업 데이터로 마커를 찍고 있음
-    // const newMarkers = (fitlerShops?? []).map((shop) => {
-    const newMarkers = (MARKER ?? []).map((shop, index) => {
+    const newMarkers = (filterShops ?? []).map((shop, index) => {
+    // const newMarkers = (MARKER ?? []).map((shop, index) => {
       const lat = shop?.geometry?.location?.lat;
       const lng = shop?.geometry?.location?.lng;
       if (!lat || !lng) return;
@@ -49,8 +50,13 @@ function useMarker({ map, filterShops }: MarkerProps) {
       });
       return marker;
     });
-
     setMarkerArray(newMarkers);
+
+    return () => {
+      newMarkers.forEach((marker) => {
+        marker?.setMap(null);
+      });
+    };
   }, [map, filterShops]);
 
   return { selected };

@@ -13,11 +13,15 @@ import { useAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { Link } from 'react-router-dom';
+import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import styles from './SideNavigation.module.scss';
 
 export default function TopNavigation(): JSX.Element {
   const auth = useAuth();
   const [visible, , , toggle] = useBooleanState(false);
+  const { filterFriendState, setFilterFriend } = useFilterFriend();
+  const { filterScrapState, setFilterScrap } = useFilterScrap();
+  const { filterNearbyState, setFilterNearby } = useFilterNearby();
 
   const TABS = [
     {
@@ -118,15 +122,36 @@ export default function TopNavigation(): JSX.Element {
             </span>
           </div>
           <div className={styles['side-pannel__search-buttons']}>
-            <button type="button" className={styles['side-pannel__search-button']}>
+            <button
+              type="button"
+              className={cn({
+                [styles['side-pannel__search-button']]: true,
+                [styles['side-pannel__search-button--clicked']]: filterNearbyState === 1,
+              })}
+              onClick={() => { setFilterNearby(filterNearbyState === 0 ? 1 : 0); }}
+            >
               가까운 음식점
               <StoreFrontIcon />
             </button>
-            <button type="button" className={styles['side-pannel__search-button']}>
+            <button
+              type="button"
+              className={cn({
+                [styles['side-pannel__search-button']]: true,
+                [styles['side-pannel__search-button--clicked']]: filterScrapState === 1,
+              })}
+              onClick={() => { setFilterScrap(filterScrapState === 0 ? 1 : 0); }}
+            >
               북마크 음식점
               <BookMarkIcon />
             </button>
-            <button type="button" className={styles['side-pannel__search-button']}>
+            <button
+              type="button"
+              className={cn({
+                [styles['side-pannel__search-button']]: true,
+                [styles['side-pannel__search-button--clicked']]: filterFriendState === 1,
+              })}
+              onClick={() => { setFilterFriend(filterFriendState === 0 ? 1 : 0); }}
+            >
               친구 음식점
               <GroupIcon />
             </button>
