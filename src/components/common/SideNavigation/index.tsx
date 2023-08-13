@@ -3,7 +3,6 @@ import { ReactComponent as SettingIcon } from 'assets/svg/common/setting.svg';
 import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
 import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
-import { ReactComponent as MenuIcon } from 'assets/svg/common/menu.svg';
 import { ReactComponent as StoreFrontIcon } from 'assets/svg/home/storefront.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
@@ -115,7 +114,6 @@ export default function TopNavigation(): JSX.Element {
       >
         <div className={styles['side-pannel__search']}>
           <div className={styles['side-pannel__search-bar']}>
-            <span><MenuIcon /></span>
             <span>
               <input type="text" placeholder="검색어를 입력해주세요." className={styles['side-pannel__search-input']} />
               <SearchIcon className={styles['side-pannel__search-icon']} />

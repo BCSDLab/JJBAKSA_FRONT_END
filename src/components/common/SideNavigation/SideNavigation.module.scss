@@ -171,6 +171,7 @@
 
   &__search-buttons {
     display: flex;
+    margin-right: 15px;
     gap: 8px;
     margin-top: 16px;
   }
@@ -179,7 +180,7 @@
     border: none;
     background-color: #ffffff;
     font-size: 15px;
-    width: 145px;
+    width: 135px;
     height: 35px;
     font-weight: 500;
     color: #666666;
@@ -189,6 +190,15 @@
 
     svg {
       padding-left: 5px;
+    }
+
+    &--clicked {
+      color: #ff7f23;
+      box-shadow: 2px 2px 3px 0 rgba(0 0 0 / 20%);
+
+      path {
+        fill: #ff7f23;
+      }
     }
   }
 }
