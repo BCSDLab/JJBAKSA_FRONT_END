@@ -9,6 +9,7 @@ interface Props {
 }
 
 export default function RelatedSearches({ text }: Props) {
+  // console.log('related', text);
   const isSearching = useSearchingMode();
   return (
     <div className={styles.search}>

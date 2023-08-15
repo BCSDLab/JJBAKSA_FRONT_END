@@ -11,6 +11,7 @@ interface Item {
 }
 
 export default function RelatedItem({ item }: Props) {
+  console.log(item);
   return (
     <Link to={`/search/${item.title}`} className={styles['search-related-list__wrapper']}>
       <li className={styles['search-related-list__item']}>
@@ -20,3 +21,5 @@ export default function RelatedItem({ item }: Props) {
     </Link>
   );
 }
+
+// 여기가 연관 검색어 부분이다.
