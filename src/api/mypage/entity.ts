@@ -1,3 +1,5 @@
+import { User } from 'api/user/entity';
+
 export type Shop = {
   shopId: number,
   placeId: string,
@@ -6,7 +8,9 @@ export type Shop = {
 
 };
 export interface ReviewedShopsResponse {
-  content: Shop[]
+  content: Shop[],
+  totalPages: number,
+  totalElements: number
 }
 
 export type Review = {
@@ -47,4 +51,8 @@ export interface PatchProfileImageResponse {
 
 export interface PatchNicknameResposne {
   nickname:string
+}
+
+export interface FollowersResponse {
+  content: User[],
 }

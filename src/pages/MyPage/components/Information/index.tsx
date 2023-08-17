@@ -9,7 +9,7 @@ interface InformationProps {
 }
 
 export default function Information({ openModal }:InformationProps) {
-  const { profile } = useMyProfile();
+  const { profile, followerNumber } = useMyProfile();
 
   return (
     <div className={styles.information}>
@@ -23,7 +23,9 @@ export default function Information({ openModal }:InformationProps) {
             {profile?.nickname}
           </span>
           <div className={styles.dot} />
-          <span className={styles['totals__follower--number']}>팔로워 120</span>
+          <span className={styles['totals__follower--number']}>
+            {`팔로워 ${followerNumber}`}
+          </span>
           <span className={styles.user__account}>{profile?.account}</span>
         </div>
       </div>

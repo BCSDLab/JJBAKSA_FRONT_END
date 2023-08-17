@@ -1,4 +1,6 @@
+import followApi from 'api/follow/followApiClient';
 import {
+  FollowersResponse,
   PatchNicknameResposne,
   PatchProfileImageResponse, ReviewedShopsResponse, ReviewsResPonse, ScrapResponse,
 } from './entity';
@@ -23,3 +25,5 @@ export const patchDefaultImage = async () => myPageApi.patch<PatchProfileImageRe
 });
 
 export const patchNickname = async (nickname:string) => myPageApi.patch<PatchNicknameResposne>('/user/me', { nickname });
+
+export const getFollwers = async () => followApi.get<FollowersResponse>('/follow/followers');
