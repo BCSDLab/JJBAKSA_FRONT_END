@@ -31,7 +31,7 @@ export default function Information({ openModal, followerNumber, profile }:Infor
           <span className={styles['totals__follower--number']}>
             {`팔로워 ${followerNumber}`}
           </span>
-          <span className={styles.user__account}>{profile?.account}</span>
+          <span className={styles.user__account}>{`@${profile?.account}`}</span>
         </div>
       </div>
       <Link to="/setting">
