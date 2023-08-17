@@ -20,19 +20,22 @@
   left: 0;
   right: 0;
   bottom: 0;
-
-  // width: 200vw;
-  // height: 100vh;
   background-color: rgb(0 0 0 / 50%);
   opacity: 1;
 }
 
 .bottom-sheet {
+  position: fixed;
+  bottom: -50px;
   height: 400px;
   padding: 28px 24px 35px 28px;
   border-radius: 10% 10% 0 0;
 
   @media (max-height: 500px) {
     height: 300px;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    position: relative;
   }
 }
