@@ -1,16 +1,20 @@
 import filledStar from 'assets/svg/mypage/star-filled.svg';
 import defaultImage from 'assets/images/search/default-image.png';
-import notExist from 'assets/svg/mypage/not-exist.svg';
 import useScraps from 'pages/MyPage/hooks/useScraps';
+import useObserver from 'pages/MyPage/hooks/useObeserver';
+import notExist from 'assets/svg/mypage/not-exist.svg';
 import styles from './BookMark.module.scss';
 
 export default function BookMark() {
-  const { scraps, isLoading } = useScraps();
+  const {
+    scraps, isLoading, fetchNextPage, total,
+  } = useScraps();
+  const { target: bottom } = useObserver(fetchNextPage);
   return (
     <div className={styles.bookmarks}>
-      {!isLoading && scraps.length !== 0 ? (
+      {!isLoading && scraps && (
         <>
-          <span className={styles.bookmarks__total}>{`총 ${scraps.length}개의 음식점`}</span>
+          <span className={styles.bookmarks__total}>{`총 ${total}개의 음식점`}</span>
           {scraps.map((scrap) => (
             <div className={styles.bookmark} key={scrap.scrapId}>
               <div className={styles.bookmark__detail}>
@@ -27,15 +31,18 @@ export default function BookMark() {
             </div>
           ))}
         </>
-      ) : (
-        <div className={styles['not-exist']}>
-          <span className={styles['not-exist__phrase']}>
-            <p>둥록된 북마크가 없어요.</p>
-            <p>새로운 음식점을 저장해 보세요!</p>
-          </span>
-          <img src={notExist} alt="not-exist" className={styles['not-exist__image']} />
-        </div>
       )}
+      {!isLoading && !scraps
+              && (
+              <div className={styles['not-exist']}>
+                <span className={styles['not-exist__phrase']}>
+                  <p>둥록된 북마크가 없어요.</p>
+                  <p>새로운 음식점을 저장해 보세요!</p>
+                </span>
+                <img src={notExist} alt="not-exist" className={styles['not-exist__image']} />
+              </div>
+              )}
+      <div ref={bottom} />
     </div>
   );
 }

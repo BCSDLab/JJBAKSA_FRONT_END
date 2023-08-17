@@ -31,7 +31,9 @@ export type Scrap = {
   totalRating: number
 };
 export interface ScrapResponse {
-  content: Scrap[]
+  content: Scrap[],
+  totalPages: number,
+  totalElements: number
 }
 
 export interface PatchProfileImageResponse {

@@ -3,9 +3,9 @@
 .bookmarks {
   width: 91%;
   margin: 0 auto;
-  height: calc(100vh - 228px);
 
   @include media.media-breakpoint-down(mobile) {
+    height: calc(100vh - 228px);
     overflow-y: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
