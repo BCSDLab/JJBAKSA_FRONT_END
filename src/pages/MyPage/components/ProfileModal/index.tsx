@@ -7,11 +7,12 @@ import useChangeNickname from 'pages/MyPage/hooks/useChangeNickname';
 import styles from './ProfileModal.module.scss';
 
 interface ProfileModalProps {
-  imgUrl:string | undefined
+  imgUrl:string | undefined,
+  nickname?:string
 }
 
-export default function ProfileModal({ imgUrl }:ProfileModalProps) {
-  const [nameLength, setName] = useState(7);
+export default function ProfileModal({ imgUrl, nickname }:ProfileModalProps) {
+  const [nameLength, setName] = useState(nickname?.length);
   const changeName = (e:React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length <= 10) {
       setName(e.target.value.length);
@@ -37,7 +38,8 @@ export default function ProfileModal({ imgUrl }:ProfileModalProps) {
   return (
     <div>
       <span className={styles.phrase}>
-        이병건이올씨다님,
+        {nickname}
+        님,
         <br />
         프로필을 변경하시겠어요?
       </span>
@@ -51,7 +53,7 @@ export default function ProfileModal({ imgUrl }:ProfileModalProps) {
           </div>
         </label>
         <div className={styles.form__name}>
-          <input type="text" defaultValue="이병건이올씨다" placeholder="유저이름" onChange={(e) => changeName(e)} className={styles.name__input} maxLength={10} ref={nicknameRef} />
+          <input type="text" defaultValue={nickname} placeholder="유저이름" onChange={(e) => changeName(e)} className={styles.name__input} maxLength={10} ref={nicknameRef} />
           <span className={styles.name__length}>{`${nameLength}/10`}</span>
         </div>
         <div className={styles.form__buttons}>

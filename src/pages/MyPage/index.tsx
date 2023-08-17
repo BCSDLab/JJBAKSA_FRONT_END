@@ -9,14 +9,17 @@ import BookMark from './components/BookMark';
 import styles from './MyPage.module.scss';
 import MyPost from './components/MyPost';
 import ProfileModal from './components/ProfileModal';
+import useMyProfile from './hooks/useMyProfile';
 
 export default function MyPage() {
   const { isMobile } = useMediaQuery();
   const [board, setBoard] = useState('MYPOST');
   const [isOpen, setOpen] = useState(false);
+  const { profile, followerNumber } = useMyProfile();
+
   const openModal = (url:string | undefined) => {
     setOpen(true);
-    toast(<ProfileModal imgUrl={url} />, {
+    toast(<ProfileModal imgUrl={url} nickname={profile?.nickname} />, {
       position: 'bottom-center',
       autoClose: false,
       closeOnClick: false,
@@ -30,7 +33,7 @@ export default function MyPage() {
     <>
       {!isMobile && <TopNavigation />}
       <div className={styles['my-page']}>
-        <Information openModal={openModal} />
+        <Information openModal={openModal} profile={profile} followerNumber={followerNumber} />
         <BoardSelector setBoard={setBoard} board={board} />
         {board === 'MYPOST' && <MyPost />}
         {board === 'BOOKMARK' && <BookMark />}

@@ -1,16 +1,22 @@
 import defaultImage from 'assets/images/follow/default-image.png';
 import option from 'assets/svg/mypage/option.svg';
-import useMyProfile from 'pages/MyPage/hooks/useMyProfile';
 import { Link } from 'react-router-dom';
+import { User } from 'api/user/entity';
 import styles from './Information.module.scss';
 
+type Profile = User & {
+  profileImage?: {
+    url: string
+  },
+};
 interface InformationProps {
-  openModal:(url:string | undefined) => void
+  openModal:(url:string | undefined) => void,
+  profile: Profile | null
+  followerNumber?: number
+
 }
 
-export default function Information({ openModal }:InformationProps) {
-  const { profile, followerNumber } = useMyProfile();
-
+export default function Information({ openModal, followerNumber, profile }:InformationProps) {
   return (
     <div className={styles.information}>
       <div className={styles.user}>
