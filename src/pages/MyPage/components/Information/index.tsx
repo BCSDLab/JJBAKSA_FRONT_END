@@ -1,7 +1,7 @@
 import defaultImage from 'assets/images/follow/default-image.png';
-// import fixPencil from 'assets/images/mypage/pencil.svg';
 import option from 'assets/svg/mypage/option.svg';
 import useMyProfile from 'pages/MyPage/hooks/useMyProfile';
+import { Link } from 'react-router-dom';
 import styles from './Information.module.scss';
 
 interface InformationProps {
@@ -16,7 +16,6 @@ export default function Information({ openModal }:InformationProps) {
       <div className={styles.user}>
         <button type="button" className={styles.profile} onClick={() => openModal(profile?.profileImage?.url)}>
           <img src={profile?.profileImage ? profile.profileImage.url : defaultImage} alt="profileImage" className={styles.user__image} />
-          {/* <img src={fixPencil} alt="changeProfile" className={styles['change--image']} /> */}
         </button>
         <div>
           <span className={styles.user__nickname}>
@@ -29,7 +28,9 @@ export default function Information({ openModal }:InformationProps) {
           <span className={styles.user__account}>{profile?.account}</span>
         </div>
       </div>
-      <img src={option} alt="option" className={styles.option} />
+      <Link to="/setting">
+        <img src={option} alt="option" className={styles.option} />
+      </Link>
     </div>
   );
 }
