@@ -6,11 +6,13 @@ import { ReactComponent as Star } from 'assets/svg/pin/star.svg';
 import { ReactComponent as BookMark } from 'assets/svg/pin/bookmark.svg';
 import { ReactComponent as Switch } from 'assets/svg/pin/switch-horizontal.svg';
 import { ReactComponent as Report } from 'assets/svg/pin/report.svg';
+import { ReactComponent as Pencil } from 'assets/svg/pin/pencil.svg';
 import {
   followersReview, myReview, latestFollowerReview, latestMyReview,
 } from 'api/review';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import { Link } from 'react-router-dom';
 import styles from './Pin.module.scss';
 import Carousel from './components/Carousel';
 
@@ -129,6 +131,10 @@ export default function Pin() {
             </div>
           ))}
         </div>
+        <Link className={styles.container__write} to="/write" type="button">
+          <Pencil className={styles['container__write--icon']} />
+          리뷰 작성하기
+        </Link>
       </div>
     </div>
   );
