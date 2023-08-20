@@ -40,6 +40,7 @@
   display: flex;
   width: 550px;
   height: 362px;
+  background-color: #eeeeee;
 
   &__left {
     position: absolute;
@@ -85,7 +86,31 @@
       width: 550px;
       height: 500px;
     }
-  }  
+  }
+
+  &__index {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;    
+    bottom: 22px;
+    z-index: 999;
+
+    &--dot {
+      width: 8px;
+      margin-right: 3px;
+      height: 8px;
+      background-color: #ffffff;
+      opacity: 0.8;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &--active {
+        background-color: #ff7f23;
+      }
+    }
+  }
 }
 
 .shop {

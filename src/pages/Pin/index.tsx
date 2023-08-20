@@ -1,5 +1,5 @@
 /* eslint-disable no-unsafe-optional-chaining */
-import { useRef, useState, useEffect } from 'react';
+import { useState } from 'react';
 import { fetchPinShop } from 'api/search';
 import { useQueries } from 'react-query';
 import { ReactComponent as Star } from 'assets/svg/pin/star.svg';
@@ -12,9 +12,9 @@ import {
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import styles from './Pin.module.scss';
+import Carousel from './components/Carousel';
 
 export default function Pin() {
-  const [count, setCount] = useState(0);
   const [sortType, setSortType] = useState<string>('createdAt');
   const [mode, Mine, Followers] = useBooleanState(true);
   const queries = useQueries([
@@ -34,39 +34,14 @@ export default function Pin() {
     return 0;
   };
 
-  const carouselRef = useRef<HTMLDivElement>(null);
   const handleSortButton = () => {
     if (sortType === 'createdAt') setSortType('rate');
     else setSortType('createdAt');
   };
 
-  const rightClick = () => {
-    if (queries[0].data?.photos) {
-      setCount(count + 1 < queries[0].data?.photos.length
-        ? count + 1 : queries[0].data?.photos.length - 1);
-    }
-  };
-
-  useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current.style.transform = `translateX(${(count) * -550}px)`;
-    }
-  }, [count]);
-
   return (
     <div className={styles.template}>
-      <div className={styles.carousel}>
-        <button className={styles.carousel__left} onClick={() => setCount(count > 0 ? count - 1 : 0)} type="button">{'<'}</button>
-        <div
-          className={styles.carousel__container}
-          ref={carouselRef}
-        >
-          {queries[0].data?.photos && queries[0].data?.photos.map((item:string) => (
-            <img src={item} alt="" className={styles['carousel__container--photo']} />
-          ))}
-        </div>
-        <button type="button" onClick={() => rightClick()} className={styles.carousel__right}>{'>'}</button>
-      </div>
+      <Carousel />
       <div className={styles.shop}>
         <div className={styles.shop__title}>
           <span className={styles['shop__title--name']}>
@@ -118,66 +93,6 @@ export default function Pin() {
             <Switch />
             {sortType === 'createdAt' ? '최신순' : '별점순'}
           </button>
-          {mode && queries[1].data?.content.map((item) => (
-            <div className={styles.comment__item} key={item.id}>
-              <div className={styles['comment__item--profile']}>프로필</div>
-              <div className={styles.comment__info}>
-                <div className={styles.comment__container}>
-                  <div className={styles['comment__info--nickname']}>
-                    {item.userReviewResponse.nickname}
-                  </div>
-                  <div className={styles['comment__info--id']}>
-                    {item.userReviewResponse.account}
-                  </div>
-                </div>
-                <div className={styles['comment__info--content']}>
-                  {item.content}
-                </div>
-                <div className={styles['comment__info--evaluation']}>
-                  {`${item.createdAt.slice(3).replaceAll('-', '/')}|`}
-                  <Star />
-                  {item.rate.toFixed(1)}
-                  {!mode
-                  && (
-                  <button className={styles.comment__report} type="button">
-                    <Report />
-                    신고하기
-                  </button>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-          {mode && queries[1].data?.content.map((item) => (
-            <div className={styles.comment__item} key={item.id}>
-              <div className={styles['comment__item--profile']}>프로필</div>
-              <div className={styles.comment__info}>
-                <div className={styles.comment__container}>
-                  <div className={styles['comment__info--nickname']}>
-                    {item.userReviewResponse.nickname}
-                  </div>
-                  <div className={styles['comment__info--id']}>
-                    {item.userReviewResponse.account}
-                  </div>
-                </div>
-                <div className={styles['comment__info--content']}>
-                  {item.content}
-                </div>
-                <div className={styles['comment__info--evaluation']}>
-                  {`${item.createdAt.slice(3).replaceAll('-', '/')}|`}
-                  <Star />
-                  {item.rate.toFixed(1)}
-                  {!mode
-                  && (
-                  <button className={styles.comment__report} type="button">
-                    <Report />
-                    신고하기
-                  </button>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
           {mode && queries[1].data?.content.map((item) => (
             <div className={styles.comment__item} key={item.id}>
               <div className={styles['comment__item--profile']}>프로필</div>

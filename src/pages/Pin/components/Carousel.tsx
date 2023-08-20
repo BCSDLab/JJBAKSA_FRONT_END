@@ -1,17 +1,20 @@
 import { useState, useRef, useEffect } from 'react';
+import { useQueryClient } from 'react-query';
+import cn from 'utils/ts/classNames';
+import { ShopPinResponse } from 'api/search/entity';
 import styles from '../Pin.module.scss';
 
-interface Props {
-  images: string[];
-}
-
-export default function Carousel({ images }: Props) {
+export default function Carousel() {
+  const cache = useQueryClient();
+  const data = cache.getQueryData<ShopPinResponse>(['pinInfo']);
   const [count, setCount] = useState<number>(0);
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const rightClick = () => {
-    setCount(count + 1 < images.length
-      ? count + 1 : images.length - 1);
+    if (data) {
+      setCount(count + 1 < data.photos.length
+        ? count + 1 : data.photos.length - 1);
+    }
   };
 
   useEffect(() => {
@@ -27,10 +30,25 @@ export default function Carousel({ images }: Props) {
         className={styles.carousel__container}
         ref={carouselRef}
       >
-        {images.map((item:string) => (
-          <img src={item} alt="" className={styles['carousel__container--photo']} />
+        {data && data.photos.map((item:string, index:number) => (
+          <img key={`${item + index}`} src={item} alt="" className={styles['carousel__container--photo']} />
         ))}
       </div>
+      <div className={styles.carousel__index}>
+        {data && data?.photos.map((_, index:number) => (
+          <button
+            className={cn({
+              [styles['carousel__index--dot']]: true,
+              [styles['carousel__index--dot--active']]: count === index,
+            })}
+            type="button"
+            onClick={() => setCount(index)}
+          >
+            <div />
+          </button>
+        ))}
+      </div>
+      <div className={styles.carousel__index} />
       <button type="button" onClick={() => rightClick()} className={styles.carousel__right}>{'>'}</button>
     </div>
   );
