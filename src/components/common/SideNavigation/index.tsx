@@ -11,16 +11,23 @@ import { ReactComponent as FoldIcon } from 'assets/svg/common/fold.svg';
 import { useAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import styles from './SideNavigation.module.scss';
 
 export default function TopNavigation(): JSX.Element {
   const auth = useAuth();
-  const [visible, , , toggle] = useBooleanState(false);
+  const location = useLocation();
+  const [visible, , , toggle, setValue] = useBooleanState(false);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+
+  const handleToggle = () => {
+    if (location.pathname === '/') {
+      setValue(!visible);
+    }
+  };
 
   const TABS = [
     {
@@ -38,7 +45,7 @@ export default function TopNavigation(): JSX.Element {
     {
       name: '글쓰기',
       icon: <WriteIcon />,
-      link: '/post',
+      link: '/search',
     },
     {
       name: '마이페이지',
@@ -68,7 +75,7 @@ export default function TopNavigation(): JSX.Element {
                 <button
                   type="button"
                   className={styles['side-navigation__button']}
-                  onClick={toggle}
+                  onClick={handleToggle}
                   tabIndex={0}
                 >
                   <div>{tab.icon}</div>
@@ -99,6 +106,7 @@ export default function TopNavigation(): JSX.Element {
           className={cn({
             [styles['side-navigation__arrow']]: true,
             [styles['side-navigation__arrow--expand']]: visible,
+            [styles['side-navigation__arrow--invisible']]: location.pathname !== '/',
           })}
           onClick={toggle}
           aria-label="펼치기"
