@@ -8,7 +8,7 @@ import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { ReactComponent as ExpandIcon } from 'assets/svg/common/expand.svg';
 import { ReactComponent as FoldIcon } from 'assets/svg/common/fold.svg';
-import { useAuth } from 'store/auth';
+import { useAuth, useClearAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { Link, useLocation } from 'react-router-dom';
@@ -17,6 +17,7 @@ import styles from './SideNavigation.module.scss';
 
 export default function TopNavigation(): JSX.Element {
   const auth = useAuth();
+  const clearAuth = useClearAuth();
   const location = useLocation();
   const [visible, , , toggle, setValue] = useBooleanState(false);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
@@ -92,12 +93,17 @@ export default function TopNavigation(): JSX.Element {
         </ul>
         <ul className={styles['bottom-navigation']}>
           {auth ? (
-            <li className={styles['bottom-navigation__login']}>
-              <div>사용자</div>
+            <li>
+              <div>
+                {/* 프로필 사진 추가 */}
+                <Link to="/" onClick={clearAuth}>
+                  <div className={styles['bottom-navigation__logout']}>로그아웃</div>
+                </Link>
+              </div>
             </li>
           ) : (
-            <li className={styles['bottom-navigation__login']}>
-              <Link to="/login" className={styles['bottom-navigation__link']}>로그인</Link>
+            <li>
+              <Link to="/login" className={styles['bottom-navigation__login']}>로그인</Link>
             </li>
           )}
         </ul>
