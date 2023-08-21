@@ -18,8 +18,8 @@
   margin-left: 1550px;
   margin-top: 24px;
   backdrop-filter: blur(2px);
-  background-color: rgba(255, 255, 255, 60%);
-  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 10%);
+  background-color: #ffffff99;
+  box-shadow: 1px 1px 10px 1px #0000001a;
   cursor: pointer;
 
   &__image {
@@ -45,5 +45,5 @@
   height: 100%;
   z-index: 1;
   backdrop-filter: blur(1px);
-  background-color: rgba(255, 255, 255, 40%);
+  background-color: #ffffff66;
 }
