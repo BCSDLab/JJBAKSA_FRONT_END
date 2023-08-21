@@ -47,7 +47,10 @@ export interface SearchUsersParams {
 }
 
 export interface SearchUsersResponse {
-  content: FollowerInfo[]
+  content: FollowerInfo[];
+  empty: boolean;
+  last: boolean;
+  number: number;
 }
 
 export interface RequestFollowParams {
