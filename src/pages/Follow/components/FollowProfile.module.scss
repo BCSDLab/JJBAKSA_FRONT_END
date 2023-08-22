@@ -30,9 +30,16 @@
   align-items: center;
   width: 100%;
 
+  &__container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__profile {
-    width: 112px;
-    height: 112px;
+    width: 100px;
+    height: 100px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 60px;
@@ -42,24 +49,27 @@
 
   &__info {
     margin-left: 20px;
-    margin-right: calc(100% - 306px);
-
-    @include media.media-breakpoint-down(mobile) {
-      margin-right: 40%;
-    }
+    width: 3vw;
 
     &--span {
       font-size: 25px;
+      width: 150px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
-  &__remove {
+  &__svg {
     width: 24px;
     height: 24px;
+    cursor: pointer;
+  }
 
-    :hover {
-      cursor: pointer;
-    }
+  &__button {
+    border: none;
+    background-color: #ffffff;
   }
 }
 

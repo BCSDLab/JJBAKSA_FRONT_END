@@ -1,15 +1,16 @@
 import defaultImage from 'assets/images/follow/default-image.png';
 import cn from 'utils/ts/classNames';
 import {
-  acceptFollow, cancleFollow, deleteFollow, requestFollow,
+  acceptFollow, cancelFollow, deleteFollow, requestFollow,
 } from 'api/follow';
 import { useMutation, useQueryClient } from 'react-query';
 import { ReactComponent as Unfollow } from 'assets/svg/follow/user-remove.svg';
 import { ReactComponent as Follow } from 'assets/svg/follow/user-add.svg';
+import { useNavigate } from 'react-router-dom';
 import style from './Follower.module.scss';
 
 // 팔로우 요청 후 유저 목록을 다시 받아와 요청중 상태로 변경
-const useRequestAndUpdate = () => {
+export const useRequestAndUpdate = () => {
   const queryClient = useQueryClient();
   const { mutate: request } = useMutation('request', (account: string) => requestFollow({ userAccount: account }), {
     onSuccess: () => {
@@ -31,26 +32,26 @@ const useAcceptFollow = () => {
   });
   return accept;
 };
-const useDeleteFollow = () => {
+export const useDeleteFollow = () => {
   const queryClient = useQueryClient();
-  const { mutate: del } = useMutation('delete', (account: string) => deleteFollow({ userAccount: account }), {
+  const { mutate: del, data } = useMutation('delete', (account: string) => deleteFollow({ userAccount: account }), {
     onSuccess: () => {
       queryClient.invalidateQueries('follower');
     },
   });
 
-  return del;
+  return { del, data };
 };
 
-const useCancleFollow = () => {
+const useCancelFollow = () => {
   const queryClient = useQueryClient();
-  const { mutate: cancle } = useMutation('cancel', (id: number) => cancleFollow({ id }), {
+  const { mutate: cancel } = useMutation('cancel', (id: number) => cancelFollow({ id }), {
     onSuccess: () => {
       queryClient.invalidateQueries('sended');
     },
   });
 
-  return cancle;
+  return cancel;
 };
 
 interface Props {
@@ -66,13 +67,27 @@ export default function Follower({
 }: Props) {
   const request = useRequestAndUpdate();
   const accept = useAcceptFollow();
-  const del = useDeleteFollow();
-  const cancle = useCancleFollow();
+  const { del } = useDeleteFollow();
+  const cancel = useCancelFollow();
+  const navigate = useNavigate();
   return (
     <div className={style.follower} id={`${id}`}>
       <img className={style.follower__image} src={defaultImage} alt="default" />
       <div className={style.follower__content}>
-        <p className={cn({ [style['follower__content--font']]: true })}>{nickname}</p>
+        <button
+          type="button"
+          className={cn({ [style['follower__content--font']]: true })}
+          onClick={() => navigate(`${id}`, {
+            state: {
+              followId: id,
+              nickname,
+              account,
+              followedType,
+            },
+          })}
+        >
+          {nickname}
+        </button>
         <p>
           @
           {account}
@@ -89,7 +104,7 @@ export default function Follower({
           () => (followedType === 'NONE' && request(account))
             || (followedType === 'REQUEST_RECEIVE' && requestId && accept(requestId))
             || (followedType === 'FOLLOWED' && del(account))
-            || (followedType === 'REQUEST_SENT' && requestId && cancle(requestId))
+            || (followedType === 'REQUEST_SENT' && requestId && cancel(requestId))
         }
       >
         {followedType === 'NONE' && <Follow />}
