@@ -26,7 +26,7 @@
 
   &__prev {
     display: none;
-  
+
     @include media.media-breakpoint-down(mobile) {
       display: flex;
       align-items: center;
