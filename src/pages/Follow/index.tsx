@@ -24,7 +24,7 @@ const useSearchFriend = () => {
     getNextPageParam: (lastPage) => {
       const len = lastPage.data.content.length;
       if (lastPage.data.empty || lastPage.data.last) return null;
-      // cursor: 마지막으로 조회의 유저의 id
+      // cursor: 마지막으로 조회한 유저의 id
       return `cursor=${lastPage.data.content[len - 1].id}`;
     },
   });
@@ -92,6 +92,43 @@ const useSendedOrReceivedFollow = (
   return { data: flatData };
 };
 
+// 친구 목록 가져오기
+const useGetFollowList = () => {
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
+    'follower',
+    ({ pageParam = '' }) => followList(pageParam),
+    {
+      getNextPageParam: (last) => {
+        const len = last.data.content.length;
+        if (last.data.empty || last.data.last) return null;
+        return `cursor=${last.data.content[len - 1].id}`;
+      },
+    },
+  );
+  const flatData: GetFollowListResponse = {
+    content: data ? data.pages.flatMap((page) => page.data.content) : [],
+    empty: !data || data.pages.every((page) => page.data.empty),
+    last: !data || data.pages.every((page) => page.data.last),
+    number: data ? data.pages.reduce((acc, page) => acc + page.data.number, 0) : 0,
+  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportHeight = window.innerHeight; // 뷰포트의 높이
+      const scrollPosition = window.scrollY; // 현재 스크롤 위치
+      const middleViewport = viewportHeight / 2; // 뷰포트의 중간 지점
+
+      if (scrollPosition > middleViewport) {
+        if (hasNextPage) fetchNextPage();
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [fetchNextPage, hasNextPage]);
+  return { data: flatData };
+};
+
 // user : 팔로우 요청을 받은 사람
 // follower : 팔로우를 요청한 사람
 // requestId : 팔로우 수락 혹은 거절을 할 때 사용됨, 유저의 id가 아닌 받은 요청이나 보낸 요청의 id값
@@ -123,12 +160,7 @@ const filterFollowInfo = (data: GetFollowListResponse): FollowerInfo[] => {
   return filteredData;
 };
 
-const useGetFollowList = () => {
-  const { data } = useQuery('follower', () => followList());
-
-  return { data };
-};
-
+// 최대 15명만 보임, 접속한지 24시가 지나면 사라짐
 const useGetRecentlyActiveFollower = () => {
   const { data, isLoading } = useQuery('recent', () => recentlyActiveFollow());
 
@@ -141,6 +173,7 @@ export default function FollowPage() {
   const { data: sended } = useSendedOrReceivedFollow('sended', checkSendedFollow);
   const { data: follower } = useGetFollowList();
   const { data: recent } = useGetRecentlyActiveFollower();
+  console.log(follower);
 
   return (
     <div className={style.template}>
@@ -162,13 +195,13 @@ export default function FollowPage() {
       </div>
       {keyword.length === 0
         && (
-          follower?.data.content.length === 0
+          follower?.content.length === 0
             && sended?.content.length === 0
             && receive?.content.length === 0 ? <EmptyFriend />
             : (
               <div className={style.container}>
                 {recent && <FollowList title="최근 접속한 친구" data={filterFollowInfo(recent.data)} />}
-                {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower.data)} />}
+                {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
                 {receive && sended && <FollowList title="친구 신청" data={filterSendOrReceiveInfo(receive, true)} sended={filterSendOrReceiveInfo(sended, false)} />}
               </div>
             )
