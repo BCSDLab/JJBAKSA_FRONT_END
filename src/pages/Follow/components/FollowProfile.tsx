@@ -66,9 +66,9 @@ export default function FollowProfile() {
   const { data } = useGetFollowerReview(state.followId);
   const [isCheckerboard, setIsCheckerboard, setIsList] = useBooleanState(true);
   const { isMobile } = useMediaQuery();
-  const { del, canDelete, deletedUser } = useDeleteState();
+  const { del, canDelete } = useDeleteState();
   const request = useRequestAndUpdate();
-  console.log(deletedUser);
+
   useEffect(() => {
     if (isMobile) setIsList();
   });
