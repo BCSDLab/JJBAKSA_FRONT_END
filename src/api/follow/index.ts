@@ -26,7 +26,7 @@ export const acceptFollow = (param: AcceptFollowParams) => followApi.post(`/foll
 
 export const searchUsers = (keyword: string, pageParam: string) => followApi.get<SearchUsersResponse>(`/users?keyword=${keyword}&${pageParam}&pageSize=10`);
 
-export const cancleFollow = (param: CancleFollowParams) => followApi.delete(`/follow/requests/${param.id}/cancel`);
+export const cancelFollow = (param: CancleFollowParams) => followApi.delete(`/follow/requests/${param.id}/cancel`);
 
 export const rejectFollow = (param: RejectFollowParams) => followApi.delete(`/follow/requests/${param.id}/reject`);
 
