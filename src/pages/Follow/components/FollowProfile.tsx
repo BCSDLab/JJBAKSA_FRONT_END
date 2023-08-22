@@ -9,6 +9,7 @@ import { ReactComponent as ClickedCheckerboard } from 'assets/svg/follow/checker
 import { ReactComponent as List } from 'assets/svg/follow/list.svg';
 import { ReactComponent as ClickedList } from 'assets/svg/follow/list-click.svg';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import style from './FollowProfile.module.scss';
 import FollowReview from './FollowReview';
 
@@ -30,8 +31,6 @@ const useGetFollowerReview = (id: number) => {
   };
   useEffect(() => {
     const handleScroll = () => {
-      console.log(window.innerHeight
-        + document.documentElement.scrollTop, document.body.scrollHeight - 1);
       if (window.innerHeight + document.documentElement.scrollTop
         > document.body.scrollHeight - 2) {
         if (hasNextPage) fetchNextPage();
@@ -48,7 +47,12 @@ const useGetFollowerReview = (id: number) => {
 export default function FollowProfile() {
   const { data } = useGetFollowerReview(361);
   const [isCheckerboard, setIsCheckerboard, setIsList] = useBooleanState(true);
-  console.log(data);
+
+  const { isMobile } = useMediaQuery();
+  useEffect(() => {
+    if (isMobile) setIsList();
+  });
+
   return (
     <div className={style.container}>
       <div className={style.top}>
@@ -61,7 +65,7 @@ export default function FollowProfile() {
             </div>
             <span>@아이디</span>
           </div>
-          <Remove />
+          <Remove className={style.user__remove} />
         </div>
         <div className={style.set}>리뷰</div>
       </div>
@@ -82,6 +86,7 @@ export default function FollowProfile() {
                 placeId={item.placeId}
                 name={item.name}
                 photos={item.photos?.[0]}
+                category={item.category}
                 isCheckerboard={isCheckerboard}
               />
             ),

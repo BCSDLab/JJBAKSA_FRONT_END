@@ -38,10 +38,15 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  overflow-x: scroll;
+  overflow: scroll;
+  gap: 10px;
   width: 1067px;
-}
 
-.recent::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 85vw;
+  }
 }

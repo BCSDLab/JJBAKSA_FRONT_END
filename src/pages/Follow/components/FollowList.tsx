@@ -24,7 +24,6 @@ export default function FollowList({
         <span>
           {title}
           {' '}
-          {title === '모든 친구' && data.length}
           {title === '친구 신청' && data.length !== 0 ? <Ellipse /> : null}
         </span>
         <Arrow className={cn(
@@ -46,7 +45,7 @@ export default function FollowList({
       {isShow && title !== '최근 접속한 친구' && data.map((item) => (
         <Follower
           id={item.id}
-          key={item.id}
+          key={item.account}
           nickname={item.nickname}
           account={item.account}
           followedType={item.followedType}

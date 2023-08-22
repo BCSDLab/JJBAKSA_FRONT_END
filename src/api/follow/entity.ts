@@ -75,6 +75,7 @@ export interface GetFollowReviewResponse {
     placeId: string;
     photos?: string[];
     shopId: number;
+    category: string;
   }[]
   empty: boolean;
   first: boolean;
