@@ -1,6 +1,10 @@
-.wysiwygContainer {
+.wysiwyg-container {
   height: 100%;
   width: 100%;
+
+  .toastui-editor-contents {
+    z-index: 1;
+  }
 }
 
 .auto-height {
@@ -13,7 +17,7 @@
   height: 100% !important;
 }
 
-.toastui-editor-contents {
+.wysiwygContainer.toastui-editor-contents {
   font-family:
     SUIT,
     system-ui,
@@ -26,7 +30,7 @@
     "Segoe UI Emoji",
     "Segoe UI Symbol";
   font-size: 12px;
-  z-index: 0;
+  z-index: 1;
 }
 
 .toastui-editor-contents::-webkit-scrollbar {
@@ -44,10 +48,6 @@
 
 .toastui-editor-mode-switch {
   display: none !important;
-}
-
-.ProseMirror {
-  padding: 0 !important;
 }
 
 .buttonEx {

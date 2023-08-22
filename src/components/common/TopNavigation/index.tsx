@@ -1,11 +1,32 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as LogoIcon } from 'assets/svg/common/favicon.svg';
 import { ReactComponent as ArrowIcon } from 'assets/svg/common/arrow.svg';
+import { ReactComponent as SettingIcon } from 'assets/svg/common/setting.svg';
+import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
+import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { useAuth } from 'store/auth';
 import styles from './TopNavigation.module.scss';
 
 export default function TopNavigation(): JSX.Element {
   const auth = useAuth();
+
+  const tabs = [
+    {
+      name: '설정',
+      icon: <SettingIcon />,
+      link: '/setting',
+    },
+    {
+      name: '글쓰기',
+      icon: <WriteIcon />,
+      link: '/search',
+    },
+    {
+      name: auth ? '마이페이지' : '로그인',
+      icon: <MyPageIcon />,
+      link: auth ? '/profile' : '/login',
+    },
+  ];
 
   return (
     <nav className={styles['top-navigation']}>
@@ -21,11 +42,14 @@ export default function TopNavigation(): JSX.Element {
       </div>
 
       <ul className={styles['top-navigation__links']}>
-        <li><Link to="/search" className={styles['top-navigation__link']}>검색</Link></li>
-        <li><Link to="/setting" className={styles['top-navigation__link']}>설정</Link></li>
-        {auth
-          ? <li><Link to="/profile" className={styles['top-navigation__link']}>마이페이지</Link></li>
-          : <li><Link to="/login" className={styles['top-navigation__link']}>로그인</Link></li>}
+        {tabs.map((tab) => (
+          <li key={tab.name}>
+            <Link to={tab.link} className={styles['top-navigation__link']}>
+              {tab.icon}
+              {tab.name}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

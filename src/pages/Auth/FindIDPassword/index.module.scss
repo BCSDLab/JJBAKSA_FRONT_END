@@ -6,13 +6,14 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .back {
   grid-column-start: 2;
   width: 270px;
   padding-bottom: 30px;
+  padding-top: 16px;
 }
 
 .page {
@@ -49,6 +50,7 @@
   display: flex;
   flex-direction: column;
   gap: 230px;
+  margin-bottom: 12px;
 
   &__space {
     gap: 190px !important;
@@ -82,23 +84,18 @@
     margin-bottom: 10px;
     background-color: #eeeeee;
   }
-}
 
-.inactive {
-  border: none;
-  border-radius: 100px;
-  width: 250px;
-  height: 40px;
-  color: white;
-  background-color: #c4c4c4;
-}
+  &__submit {
+    border: none;
+    border-radius: 100px;
+    width: 250px;
+    height: 40px;
+    color: white;
+    background-color: #c4c4c4;
 
-.active {
-  border: none;
-  border-radius: 100px;
-  width: 250px;
-  height: 40px;
-  color: white;
-  background-color: #ff7f23;
-  cursor: pointer;
+    &--active {
+      background-color: #ff7f23;
+      cursor: pointer;
+    }
+  }
 }

@@ -1,0 +1,87 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.container {
+  display: flex;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  margin-left: 25px;
+
+  &__item {
+    display: flex;
+    margin: 14px 3px 0;
+    position: relative;
+  }
+
+  &__button {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    margin-left: 62px;
+    border: solid 5px;
+    border-color: #ff7f23;
+    border-radius: 50%;
+    background-color: transparent;
+    z-index: 2;
+  }
+
+  &__image {
+    display: flex;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+}
+
+.editor {
+  line-height: 15px;
+  height: 650px;
+  width: 100%;
+  font-size: 16px;
+  color: #222222;
+  z-index: 1;
+
+  @include media.media-breakpoint-down(mobile) {
+    height: 340px;
+  }
+
+  &--withImage {
+    line-height: 15px;
+    height: 600px;
+    width: 100%;
+    font-size: 16px;
+    color: #222222;
+    z-index: 1;
+
+    @include media.media-breakpoint-down(mobile) {
+      height: 260px;
+    }
+  }
+
+  &__add-image {
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    background-color: white;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    border-radius: 50px;
+    box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+    position: fixed;
+    right: 35px;
+    bottom: 55px;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+  }
+}
