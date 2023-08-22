@@ -13,7 +13,10 @@ export interface GetFollowListResponse {
     id: number;
     nickname: string;
     userType: string;
-  }[]
+  }[];
+  empty: boolean;
+  last: boolean;
+  number: number;
 }
 
 export interface SendedOrReceivedFollowParams {
@@ -64,4 +67,28 @@ export interface CancleFollowParams extends RequestFollowParams {
 }
 
 export interface RejectFollowParams extends RequestFollowParams {
+}
+
+export interface GetFollowReviewResponse {
+  content: {
+    name: string;
+    placeId: string;
+    photos?: string[];
+    shopId: number;
+  }[]
+  empty: boolean;
+  first: boolean;
+  last: boolean;
+}
+
+export interface GetDetailReviewResponse {
+  content: {
+    content: string;
+    createdAt: string;
+    id: number;
+    rate: number;
+  }[];
+  empty: boolean;
+  first: boolean;
+  last: boolean;
 }

@@ -1,7 +1,5 @@
 import {
-  // FollowListParams,
   PostFollowerParams,
-  // SearchUsersParams,
   AcceptFollowParams,
   GetFollowListResponse,
   SearchUsersResponse,
@@ -9,10 +7,12 @@ import {
   RejectFollowParams,
   SendedOrReceivedFollowResponse,
   DeleteFollowerParams,
+  GetFollowReviewResponse,
+  GetDetailReviewResponse,
 } from './entity';
 import followApi from './followApiClient';
 
-export const followList = () => followApi.get<GetFollowListResponse>('/follow/followers');
+export const followList = (pageParam: string) => followApi.get<GetFollowListResponse>(`/follow/followers?pageSize=10&${pageParam}`);
 
 export const checkReceivedFollow = (pageParam: number) => followApi.get<SendedOrReceivedFollowResponse>(`/follow/requests/receive?page=${pageParam}&pageSize=20`);
 
@@ -35,3 +35,7 @@ export const deleteFollow = (param: DeleteFollowerParams) => followApi.delete('/
 });
 
 export const recentlyActiveFollow = () => followApi.get<GetFollowListResponse>('/recently-active-followers?pageSize=15');
+
+export const getFollowReview = (id: number, pageParam: string) => followApi.get<GetFollowReviewResponse>(`/review/follower/${id}/shops?size=9&${pageParam}`);
+
+export const getDetailReview = (followId: number, placeId: string) => followApi.get<GetDetailReviewResponse>(`/review/follower/${followId}/shop/${placeId}`);
