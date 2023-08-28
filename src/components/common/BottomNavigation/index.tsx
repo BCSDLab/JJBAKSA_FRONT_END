@@ -1,10 +1,8 @@
-import { ReactComponent as HomeIcon } from 'assets/svg/common/home.svg';
-import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
-import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import { useAuth } from 'store/auth';
 import styles from './BottomNavigation.module.scss';
+import SpriteSvg from '../SpriteSvg';
 
 export default function BottomNavigation(): JSX.Element {
   const { pathname } = useLocation();
@@ -13,17 +11,17 @@ export default function BottomNavigation(): JSX.Element {
   const NAV_TABS = [
     {
       pathname: '/',
-      icon: HomeIcon,
+      icon: 'home',
       text: '홈',
     },
     {
       pathname: '/post',
-      icon: WriteIcon,
+      icon: 'write',
       text: '글쓰기',
     },
     {
       pathname: auth ? '/profile' : '/login',
-      icon: MyPageIcon,
+      icon: 'my-page',
       text: '마이페이지',
     },
   ];
@@ -40,7 +38,10 @@ export default function BottomNavigation(): JSX.Element {
             })}
           >
             <Link className={styles.tab__link} to={tab.pathname}>
-              <tab.icon className={styles.tab__icon} aria-hidden />
+              <div className={styles.tab__icon}>
+
+                <SpriteSvg id={`${tab.icon}`} />
+              </div>
               <div className={styles.tab__text}>{tab.text}</div>
             </Link>
           </li>

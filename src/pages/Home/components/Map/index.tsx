@@ -1,4 +1,3 @@
-// import useGeolocation from 'utils/hooks/useGeolocation';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useEffect } from 'react';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
