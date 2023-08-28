@@ -12,7 +12,7 @@ import Pin from '../Pin';
 const OPTIONS = {
   maximumAge: 1000,
 };
-export default function Map(): JSX.Element {
+export default function NaverMap(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useGeolocation(OPTIONS);
   const map = useNaverMap(location?.latitude, location?.longitude);

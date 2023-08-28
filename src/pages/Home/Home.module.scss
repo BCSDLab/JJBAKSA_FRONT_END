@@ -9,7 +9,7 @@
   border-radius: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: 20px;
   font-weight: 500;
   line-height: 24.96px;
@@ -22,9 +22,14 @@
   box-shadow: 1px 1px 10px 1px #0000001a;
   cursor: pointer;
 
+  &__text {
+    display: flex;
+    margin-left: 24px;
+  }
+
   &__image {
     display: flex;
-    margin-left: 14px;
+    margin-right: 24px;
   }
 }
 

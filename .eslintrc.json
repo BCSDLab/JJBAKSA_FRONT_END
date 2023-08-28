@@ -29,6 +29,10 @@
 		"linebreak-style" : "off",
 		"react/jsx-props-no-spreading": "off",
 		"react/require-default-props": "off",
+		"import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/setupProxy.ts", "**/*.config.js", "**/*.config.ts"] }
+    ],
 		"no-restricted-imports": [
 			"error",
 			{
