@@ -3,7 +3,9 @@
 }
 
 .map-container {
-  position: relative;
+  position: absolute;
+  right: 24px;
+  top: 24px;
   width: 377px;
   height: 57px;
   border-radius: 100px;
@@ -15,8 +17,6 @@
   line-height: 24.96px;
   color: #222222;
   z-index: 2;
-  margin-left: 1550px;
-  margin-top: 24px;
   backdrop-filter: blur(2px);
   background-color: #ffffff99;
   box-shadow: 1px 1px 10px 1px #0000001a;

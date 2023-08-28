@@ -1,11 +1,11 @@
 .container {
   position: relative;
+  top: 140px;
+  left: 700px;
   display: flex;
   width: 617px;
   height: 749px;
   flex-direction: column;
-  margin-left: 700px;
-  margin-top: 140px;
   border-radius: 15px;
   backdrop-filter: blur(2px);
   background-color: #ffffffcc;

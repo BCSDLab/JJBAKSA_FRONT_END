@@ -1,12 +1,8 @@
 import { ReactComponent as Search } from 'assets/svg/home/search.svg';
 import { ReactComponent as Point } from 'assets/svg/home/point.svg';
-import { useEffect } from 'react';
 import styles from './Location.module.scss';
 
-export default function Map(): JSX.Element {
-  useEffect(() => {
-    console.log('열림');
-  }, []);
+export default function Location(): JSX.Element {
   return (
     <div>
       <div className={styles.container}>
