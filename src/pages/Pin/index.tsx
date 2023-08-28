@@ -98,7 +98,6 @@ export default function Pin() {
           {mode === 1 && (queries[1].data?.content.length !== 0
             ? queries[1].data?.content.map((item) => (
               <div className={styles.comment__item} key={item.id}>
-                <div className={styles['comment__item--profile']}>프로필</div>
                 <div className={styles.comment__info}>
                   <div className={styles.comment__container}>
                     <div className={styles['comment__info--nickname']}>

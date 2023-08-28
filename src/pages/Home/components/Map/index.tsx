@@ -18,7 +18,7 @@ const options = {
   maximumAge: 1000,
 };
 export default function Map(): JSX.Element {
-  const [select, setSelect] = useState<naver.maps.Marker | null>(null);
+  const [, setSelect] = useState<naver.maps.Marker | null>(null);
   const { isMobile } = useMediaQuery();
   const { location } = useGeolocation(options);
   const mapRef = useRef<naver.maps.Map | null>(null);
@@ -98,7 +98,6 @@ export default function Map(): JSX.Element {
   }, [location]);
   return (
     <div>
-      {select?.getTitle()}
       {isMobile && <MobileOptions />}
       <Pin />
       <div id="map" className={styles.map} />
