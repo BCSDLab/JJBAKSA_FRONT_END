@@ -7,18 +7,18 @@ import { ReactComponent as BookMark } from 'assets/svg/pin/bookmark.svg';
 import { ReactComponent as Switch } from 'assets/svg/pin/switch-horizontal.svg';
 import { ReactComponent as Report } from 'assets/svg/pin/report.svg';
 import { ReactComponent as Pencil } from 'assets/svg/pin/pencil.svg';
+import { ReactComponent as Empty } from 'assets/svg/pin/empty.svg';
 import {
   followersReview, myReview, latestFollowerReview, latestMyReview,
 } from 'api/review';
 import cn from 'utils/ts/classNames';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import { Link } from 'react-router-dom';
 import styles from './Pin.module.scss';
 import Carousel from './components/Carousel';
 
 export default function Pin() {
   const [sortType, setSortType] = useState<string>('createdAt');
-  const [mode, Mine, Followers] = useBooleanState(true);
+  const [mode, setMode] = useState(1);
   const queries = useQueries([
     { queryKey: 'pinInfo', queryFn: () => fetchPinShop('ChIJe9073fyefDUR4FggnKorNT4') },
     { queryKey: 'myReview', queryFn: () => myReview({ placeId: 'ChIJe9073fyefDUR4FggnKorNT4', sort: sortType }) },
@@ -72,20 +72,20 @@ export default function Pin() {
           <button
             className={cn({
               [styles.comment__button]: true,
-              [styles['comment__button--active']]: mode,
+              [styles['comment__button--active']]: mode === 1,
             })}
             type="button"
-            onClick={Mine}
+            onClick={() => setMode(1)}
           >
             내 리뷰
           </button>
           <button
             className={cn({
               [styles.comment__button]: true,
-              [styles['comment__button--active']]: !mode,
+              [styles['comment__button--active']]: mode === 2,
             })}
             type="button"
-            onClick={Followers}
+            onClick={() => setMode(2)}
           >
             친구 리뷰
           </button>
@@ -95,41 +95,87 @@ export default function Pin() {
             <Switch />
             {sortType === 'createdAt' ? '최신순' : '별점순'}
           </button>
-          {mode && queries[1].data?.content.map((item) => (
-            <div className={styles.comment__item} key={item.id}>
-              <div className={styles['comment__item--profile']}>프로필</div>
-              <div className={styles.comment__info}>
-                <div className={styles.comment__container}>
-                  <div className={styles['comment__info--nickname']}>
-                    {item.userReviewResponse.nickname}
+          {mode === 1 && (queries[1].data?.content.length !== 0
+            ? queries[1].data?.content.map((item) => (
+              <div className={styles.comment__item} key={item.id}>
+                <div className={styles['comment__item--profile']}>프로필</div>
+                <div className={styles.comment__info}>
+                  <div className={styles.comment__container}>
+                    <div className={styles['comment__info--nickname']}>
+                      {item.userReviewResponse.nickname}
+                    </div>
+                    <div className={styles['comment__info--id']}>
+                      {item.userReviewResponse.account}
+                    </div>
                   </div>
-                  <div className={styles['comment__info--id']}>
-                    {item.userReviewResponse.account}
+                  <div className={styles['comment__info--content']}>
+                    {item.content}
                   </div>
-                </div>
-                <div className={styles['comment__info--content']}>
-                  {item.content}
-                </div>
-                <div className={styles['comment__info--evaluation']}>
-                  {`${item.createdAt.slice(3).replaceAll('-', '/')}|`}
-                  <Star />
-                  {item.rate.toFixed(1)}
-                  {!mode
+                  <div className={styles['comment__info--evaluation']}>
+                    {`${item.createdAt.slice(3).replaceAll('-', '/')}|`}
+                    <Star />
+                    {item.rate.toFixed(1)}
+                    {!mode
                   && (
                   <button className={styles.comment__report} type="button">
                     <Report />
                     신고하기
                   </button>
                   )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-          {!mode && queries[2].data?.content.map((item) => (
-            <div key={item.id}>
-              {item.content}
-            </div>
-          ))}
+            )) : (
+              <div className={styles.comment__empty}>
+                <Empty />
+                <div className={styles['comment__empty--text']}>
+                  오늘 다녀오셨나요?
+                  {'\n'}
+                  리뷰를 한번 작성해보아요!
+                </div>
+              </div>
+            ))}
+          {mode === 2 && (queries[2].data?.content.length !== 0
+            ? queries[2].data?.content.map((item) => (
+              <div className={styles.comment__item} key={item.id}>
+                <div className={styles['comment__item--profile']}>프로필</div>
+                <div className={styles.comment__info}>
+                  <div className={styles.comment__container}>
+                    <div className={styles['comment__info--nickname']}>
+                      {item.userReviewResponse.nickname}
+                    </div>
+                    <div className={styles['comment__info--id']}>
+                      {item.userReviewResponse.account}
+                    </div>
+                  </div>
+                  <div className={styles['comment__info--content']}>
+                    {item.content}
+                  </div>
+                  <div className={styles['comment__info--evaluation']}>
+                    {`${item.createdAt.slice(3).replaceAll('-', '/')}|`}
+                    <Star />
+                    {item.rate.toFixed(1)}
+                    {!mode
+                  && (
+                  <button className={styles.comment__report} type="button">
+                    <Report />
+                    신고하기
+                  </button>
+                  )}
+                  </div>
+                </div>
+              </div>
+            )) : (
+              <div className={styles.comment__empty}>
+                <Empty />
+                <div className={styles['comment__empty--text']}>
+                  오늘 다녀오셨나요?
+                  {'\n'}
+                  리뷰를 한번 작성해보아요!
+                </div>
+              </div>
+            ))}
+
         </div>
         <Link className={styles.container__write} to="/write" type="button">
           <Pencil className={styles['container__write--icon']} />

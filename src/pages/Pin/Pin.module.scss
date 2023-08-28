@@ -35,10 +35,10 @@
   background-color: #ffffff;
 
   &__write {
-    position: absolute;
+    position: fixed;
     bottom: 40px;
-    left: 50%;
     transform: translateX(-50%);
+    left: 275px;
     width: 157px;
     height: 39px;
     display: flex;
@@ -83,7 +83,7 @@
     }
   }
 
-    &__right {
+  &__right {
     position: absolute;
     width: 50px;
     height: 100%;
@@ -93,11 +93,10 @@
     background-color: transparent;
     color:#ffffff;
 
-        &:hover {
+    &:hover {
       transition: 0.3s;
       background-color: rgba(0, 0, 0, 10%);
     }
-
   }
 
   &__container {
@@ -105,12 +104,12 @@
     display: flex;    
     top: 0;
     left: 0;
-    height:100%;
+    height: 100%;
     transition: 0.5s;
 
     &--photo {
       width: 550px;
-      height: 500px;
+      height: 362px;
     }
   }
 
@@ -203,6 +202,24 @@
   max-height: calc(100% - 116px);
   display: flex;
   flex-direction: column;
+
+  &__empty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &--text {
+      white-space: pre-wrap;
+      text-align: center;
+      margin-top: 24px;
+      font-size: 16px;
+      font-weight: 400;
+      color: #666666;
+    }
+  }
 
   &__container {
     display: flex;
