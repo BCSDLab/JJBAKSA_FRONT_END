@@ -3,6 +3,20 @@ export interface PostScrapParams {
   placeId:string;
 }
 
+export interface PostScrapResponse {
+  createdAt:string;
+  directory:{
+    createdAt:string;
+    id:number;
+    name:string;
+    scrapCount:number;
+    updatedAt:string;
+  }
+  id:number;
+  shopId:number;
+  updatedAt:string;
+}
+
 export interface GetScrapResponse {
   content: Content[];
   empty:boolean;

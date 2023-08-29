@@ -1,9 +1,7 @@
-/* eslint-disable no-unsafe-optional-chaining */
 import { useState } from 'react';
 import { fetchPinShop } from 'api/search';
 import { useQueries } from 'react-query';
 import { ReactComponent as Star } from 'assets/svg/pin/star.svg';
-import { ReactComponent as BookMark } from 'assets/svg/pin/bookmark.svg';
 import { ReactComponent as Switch } from 'assets/svg/pin/switch-horizontal.svg';
 import { ReactComponent as Report } from 'assets/svg/pin/report.svg';
 import { ReactComponent as Pencil } from 'assets/svg/pin/pencil.svg';
@@ -15,6 +13,7 @@ import cn from 'utils/ts/classNames';
 import { Link } from 'react-router-dom';
 import styles from './Pin.module.scss';
 import Carousel from './components/Carousel';
+import Scrap from './components/Scrap';
 
 export default function Pin() {
   const [sortType, setSortType] = useState<string>('createdAt');
@@ -30,8 +29,8 @@ export default function Pin() {
   const getRateValue = () => {
     if (queries[0].data?.totalRating
       && queries[0].data?.ratingCount) {
-      return Math.floor(queries[0].data?.totalRating
-        / queries[0].data?.ratingCount).toFixed(1);
+      return Math.floor((queries[0].data?.totalRating || 0)
+        / (queries[0].data?.ratingCount || 1)).toFixed(1);
     }
     return 0;
   };
@@ -62,10 +61,7 @@ export default function Pin() {
             {queries[3].data?.lastDate?.replaceAll('-', '/')}
           </div>
         </div>
-        <button className={styles.shop__bookmark} type="button">
-          <BookMark />
-          북마크
-        </button>
+        <Scrap placeId="ChIJe9073fyefDUR4FggnKorNT4" />
       </div>
       <div className={styles.comment}>
         <div className={styles.comment__mode}>

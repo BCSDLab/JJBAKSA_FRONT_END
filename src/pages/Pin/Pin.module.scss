@@ -95,7 +95,7 @@
 
     &:hover {
       transition: 0.3s;
-      background-color: rgba(0, 0, 0, 10%);
+      background-color: rgba(0, 0, 0, 5%);
     }
   }
 
@@ -109,7 +109,7 @@
 
     &--photo {
       width: 550px;
-      height: 362px;
+      object-fit: contain;
     }
   }
 

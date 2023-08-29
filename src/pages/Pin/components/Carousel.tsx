@@ -35,12 +35,13 @@ export default function Carousel() {
         ))}
       </div>
       <div className={styles.carousel__index}>
-        {data && data?.photos.map((_, index:number) => (
+        {data && data?.photos.map((item:string, index:number) => (
           <button
             className={cn({
               [styles['carousel__index--dot']]: true,
               [styles['carousel__index--dot--active']]: count === index,
             })}
+            key={`${item + index}`}
             type="button"
             onClick={() => setCount(index)}
           >
