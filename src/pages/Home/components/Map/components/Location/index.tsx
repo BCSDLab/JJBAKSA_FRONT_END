@@ -2,9 +2,23 @@ import { ReactComponent as Search } from 'assets/svg/home/search.svg';
 import { ReactComponent as Point } from 'assets/svg/home/point.svg';
 import styles from './Location.module.scss';
 
-export default function Location(): JSX.Element {
+interface Props {
+  unactive: () => void;
+}
+
+export default function Location({ unactive }: Props): JSX.Element {
+  const handleUnactive = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      unactive();
+    }
+  };
   return (
-    <div>
+    <div
+      onClick={unactive}
+      onKeyDown={handleUnactive}
+      role="button"
+      tabIndex={0}
+    >
       <div className={styles.container}>
         <div className={styles.box}>
           <div className={styles.box__title}>현재 위치가 올바르지 않은가요?</div>

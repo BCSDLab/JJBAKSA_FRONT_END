@@ -2,12 +2,13 @@ import { ReactComponent as Arrow } from 'assets/svg/home/arrow.svg';
 import React, { useEffect, useState } from 'react';
 import { Container as MapDiv } from 'react-naver-maps';
 import axios from 'axios';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import styles from './Home.module.scss';
 import Location from './components/Map/components/Location/index';
 import NaverMap from './components/Map';
 
 export default function Home(): JSX.Element {
-  const [isClickLocation, setIsClickLocation] = useState(false);
+  const [isClickLocation, active, unactive] = useBooleanState(false);
   const [userLocation, setUserLocation] = useState<{
     latitude: number | null;
     longitude: number | null;
@@ -65,13 +66,15 @@ export default function Home(): JSX.Element {
     }
   }, []);
 
-  const locationClick = () => {
-    setIsClickLocation(true);
+  const handleActive = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      active();
+    }
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent) => {
+  const handleUnactive = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' || event.key === ' ') {
-      locationClick();
+      unactive();
     }
   };
 
@@ -79,8 +82,8 @@ export default function Home(): JSX.Element {
     <div className={styles.home}>
       <div
         className={styles['map-container']}
-        onClick={locationClick}
-        onKeyDown={handleKeyPress}
+        onClick={active}
+        onKeyDown={handleActive}
         role="button"
         tabIndex={0}
       >
@@ -95,14 +98,20 @@ export default function Home(): JSX.Element {
         )}
         <Arrow className={styles['map-container__image']} />
       </div>
-      <div className={styles.map}>
+      <div
+        className={styles.map}
+        onClick={unactive}
+        onKeyDown={handleUnactive}
+        role="button"
+        tabIndex={0}
+      >
         <MapDiv>
           <NaverMap />
         </MapDiv>
       </div>
       {isClickLocation && (
         <div className={styles.locationBox}>
-          <Location />
+          <Location unactive={unactive} />
         </div>
       )}
     </div>

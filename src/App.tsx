@@ -23,7 +23,6 @@ import Notice from 'pages/Notice';
 import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
 import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
 import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
-import Location from 'pages/Home/components/Map/components/Location';
 
 export default function App(): JSX.Element {
   return (
@@ -35,7 +34,6 @@ export default function App(): JSX.Element {
           <Route path="/inquiry" element={<Inquiry />} />
           <Route path="/myinquiry" element={<Myinquiry />} />
           <Route path="/notice" element={<Notice />} />
-          <Route path="/location" element={<Location />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/setting" element={<Setting />} />
