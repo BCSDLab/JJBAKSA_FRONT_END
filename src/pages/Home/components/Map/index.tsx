@@ -99,7 +99,7 @@ export default function Map(): JSX.Element {
   return (
     <div>
       {isMobile && <MobileOptions />}
-      <Pin />
+      <Pin placeId="a" />
       <div id="map" className={styles.map} />
       {!isMobile && <OptionButtons />}
     </div>

@@ -15,7 +15,11 @@ import styles from './Pin.module.scss';
 import Carousel from './components/Carousel';
 import Scrap from './components/Scrap';
 
-export default function Pin() {
+interface Props {
+  placeId:string;
+}
+
+export default function Pin({ placeId }:Props) {
   const [sortType, setSortType] = useState<string>('createdAt');
   const [mode, setMode] = useState(1);
   const queries = useQueries([
@@ -25,6 +29,7 @@ export default function Pin() {
     { queryKey: 'latestMyReview', queryFn: () => latestMyReview('ChIJe9073fyefDUR4FggnKorNT4') },
     { queryKey: 'latestReview', queryFn: () => latestFollowerReview('ChIJe9073fyefDUR4FggnKorNT4') },
   ]);
+  console.log(placeId);
 
   const getRateValue = () => {
     if (queries[0].data?.totalRating
