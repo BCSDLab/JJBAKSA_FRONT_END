@@ -1,5 +1,5 @@
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Shop } from 'api/search/entity';
 import { getMockItem } from '../static/mockup';
 
@@ -14,9 +14,10 @@ export default function SearchItemPC({ shop }: Props) {
   const {
     imageAlt, defaultImage, phoneNumber, image,
   } = getMockItem();
+  const navigate = useNavigate();
 
   return (
-    <Link to={`/post/${name}`} state={{ placeId }} className={styles.item}>
+    <button onClick={() => navigate(`/post/${name}`, { state: { placeId } })} type="button" className={styles.item}>
       <div className={styles.image}>
         <img className={styles.image__main} alt={imageAlt} src={photoToken ?? defaultImage} />
         <div className={styles.image__other}>
@@ -51,6 +52,6 @@ export default function SearchItemPC({ shop }: Props) {
           </div>
         </section>
       </div>
-    </Link>
+    </button>
   );
 }
