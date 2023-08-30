@@ -10,7 +10,7 @@ import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import styles from './SideNavigation.module.scss';
 import SpriteSvg from '../SpriteSvg';
 
-export default function TopNavigation(): JSX.Element {
+export default function SideNavigation(): JSX.Element {
   const auth = useAuth();
   const clearAuth = useClearAuth();
   const location = useLocation();
