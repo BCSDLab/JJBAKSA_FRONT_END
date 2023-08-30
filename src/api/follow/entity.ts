@@ -19,12 +19,12 @@ export interface GetFollowListResponse {
   number: number;
 }
 
-export interface SendedOrReceivedFollowParams {
+export interface SentOrReceivedFollowParams {
   page: number;
   pageSize: number;
 }
 
-export interface SendedOrReceivedFollowResponse {
+export interface SentOrReceivedFollowResponse {
   content: {
     id: number;
     follower: User;
@@ -92,4 +92,8 @@ export interface GetDetailReviewResponse {
   empty: boolean;
   first: boolean;
   last: boolean;
+}
+
+export interface GetFollowerReviewCountParam {
+  followId: number;
 }

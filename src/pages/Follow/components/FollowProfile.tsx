@@ -58,6 +58,7 @@ const useDeleteState = () => {
   }, [deletedUser]);
   return { del, canDelete, deletedUser };
 };
+
 export default function FollowProfile() {
   const location = useLocation();
   const state = location.state as {
@@ -68,10 +69,12 @@ export default function FollowProfile() {
   const { isMobile } = useMediaQuery();
   const { del, canDelete } = useDeleteState();
   const request = useRequestAndUpdate();
+  // const count = useGetFollowerReviewCount(state.followId);
 
   useEffect(() => {
     if (isMobile) setIsList();
   });
+
   return (
     <div className={style.container}>
       <div className={style.top}>
@@ -81,7 +84,7 @@ export default function FollowProfile() {
             <div className={style.user__info}>
               <div>
                 <span className={cn({ [style['user__info--span']]: true })}>{state.nickname}</span>
-                <span>count</span>
+                <span>팔로워 count</span>
               </div>
               <span>
                 @

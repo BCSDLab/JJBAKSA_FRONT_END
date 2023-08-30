@@ -1,10 +1,10 @@
 import {
-  checkSendedFollow, followList, checkReceivedFollow, searchUsers, recentlyActiveFollow,
+  checkSentFollow, followList, checkReceivedFollow, searchUsers, recentlyActiveFollow,
 } from 'api/follow';
 import search from 'assets/svg/search/lens.svg';
 import { useState, useEffect } from 'react';
 import { useInfiniteQuery, useQuery } from 'react-query';
-import { GetFollowListResponse, SearchUsersResponse, SendedOrReceivedFollowResponse } from 'api/follow/entity';
+import { GetFollowListResponse, SearchUsersResponse, SentOrReceivedFollowResponse } from 'api/follow/entity';
 import { AxiosResponse } from 'axios';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
@@ -57,7 +57,7 @@ const useSearchFriend = () => {
 // useInfinitieQuery로 무한 스크롤 구현, pageParam의 기본값은 undefined
 const useSendedOrReceivedFollow = (
   key: string,
-  queryFn: (param: number) => Promise<AxiosResponse<SendedOrReceivedFollowResponse, any>>,
+  queryFn: (param: number) => Promise<AxiosResponse<SentOrReceivedFollowResponse, any>>,
 ) => {
   const {
     data,
@@ -71,7 +71,7 @@ const useSendedOrReceivedFollow = (
     },
   });
   // 이차원 배열을 일차원 배열로 변경 및 반환 타입 일치
-  const flatData: SendedOrReceivedFollowResponse = {
+  const flatData: SentOrReceivedFollowResponse = {
     content: data ? data.pages.flatMap((page) => page.data.content) : [],
     empty: !data || data.pages.every((page) => page.data.empty),
     last: !data || data.pages.every((page) => page.data.last),
@@ -133,7 +133,7 @@ const useGetFollowList = () => {
 // follower : 팔로우를 요청한 사람
 // requestId : 팔로우 수락 혹은 거절을 할 때 사용됨, 유저의 id가 아닌 받은 요청이나 보낸 요청의 id값
 const filterSendOrReceiveInfo = (
-  data: SendedOrReceivedFollowResponse,
+  data: SentOrReceivedFollowResponse,
   isReceive: boolean,
 ): FollowerInfo[] => {
   const filteredData: FollowerInfo[] = data.content.map((item) => ({
@@ -170,7 +170,7 @@ const useGetRecentlyActiveFollower = () => {
 export default function FollowPage() {
   const { keyword, handleInputChange, user } = useSearchFriend();
   const { data: receive } = useSendedOrReceivedFollow('received', checkReceivedFollow);
-  const { data: sended } = useSendedOrReceivedFollow('sended', checkSendedFollow);
+  const { data: sended } = useSendedOrReceivedFollow('sended', checkSentFollow);
   const { data: follower } = useGetFollowList();
   const { data: recent } = useGetRecentlyActiveFollower();
 
