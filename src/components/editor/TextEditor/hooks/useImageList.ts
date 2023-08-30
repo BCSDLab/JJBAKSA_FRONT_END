@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSetReview } from 'store/review';
+import makeToast from 'utils/ts/makeToast';
 
 export default function useImageList() {
   const [imageList, setImageList] = useState<string[]>([]);
@@ -11,6 +12,10 @@ export default function useImageList() {
       const fileCount = files.length;
       const dataTransfer = new DataTransfer();
       for (let i = 0; i < fileCount; i += 1) {
+        if (files[i].size > 1048576) {
+          makeToast('error', '최대 1MB 이미지만 업로드 가능합니다.');
+          return;
+        }
         const reader = new FileReader();
         reader.onload = (e) => {
           const result = e.target?.result;
