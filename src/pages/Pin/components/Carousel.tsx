@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useQueryClient } from 'react-query';
 import cn from 'utils/ts/classNames';
-import { ShopPinResponse } from 'api/search/entity';
+import { ShopPinResponse } from 'api/shop/entity';
 import styles from '../Pin.module.scss';
 
 export default function Carousel() {

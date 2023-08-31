@@ -4,14 +4,14 @@ import { getMockItem, SHOPS } from '../static/mockup';
 
 interface Props {
   shop: {
-    address: string,
-    placeName: string,
-    shopId: number,
+    formattedAddress:string;
+    name: string,
+    placeId: string,
   },
 }
 
 export default function SearchItemPC({ shop }: Props) {
-  const { placeName, address } = shop;
+  const { name, formattedAddress } = shop;
   const {
     imageAlt, defaultImage, phoneNumber, image,
   } = getMockItem();
@@ -28,8 +28,8 @@ export default function SearchItemPC({ shop }: Props) {
       </div>
       <div className={styles.item__content}>
         <section className={styles.item__name}>
-          <h1 className={styles.item__title}>{placeName}</h1>
-          <h2 className={styles.item__address}>{address}</h2>
+          <h1 className={styles.item__title}>{name}</h1>
+          <h2 className={styles.item__address}>{formattedAddress}</h2>
         </section>
         <section className={styles.item__info}>
           <div>

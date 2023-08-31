@@ -1,107 +1,44 @@
-import { useEffect, useRef, useState } from 'react';
-import useGeolocation from 'utils/hooks/useGeolocation';
-import MARKER from 'pages/Home/static/marker';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+import { useEffect } from 'react';
+import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import { useLocation } from 'store/location';
 import Pin from 'pages/Pin';
 import styles from './Map.module.scss';
-import OptionButtons from './components/OptionButtons';
 import MobileOptions from './components/MobileOptions';
-import { ClickedMarkerHtml, MarkerHtml } from './components/MarkerHtml';
+import useNaverMap from './hooks/useNaverMap';
+import useMarker from './hooks/useMarker';
+import useFilterShops from './hooks/useFilterShops';
 
-interface MarkerType {
-  latitude: number;
-  longitude: number;
-  placeName: string;
-  index: number;
-}
-const options = {
-  maximumAge: 1000,
-};
 export default function Map(): JSX.Element {
-  const [, setSelect] = useState<naver.maps.Marker | null>(null);
   const { isMobile } = useMediaQuery();
-  const { location } = useGeolocation(options);
-  const mapRef = useRef<naver.maps.Map | null>(null);
-  const selectedMarker = useRef<naver.maps.Marker | null>(null);
+  const { location } = useLocation();
+  const map = useNaverMap(location?.latitude, location?.longitude);
+  const { filterFriendState } = useFilterFriend();
+  const { filterScrapState } = useFilterScrap();
+  const { filterNearbyState } = useFilterNearby();
+  const { data: filterShops, refetch } = useFilterShops({
+    options_friend: filterFriendState,
+    options_scrap: filterScrapState,
+    options_nearby: filterNearbyState,
+  });
 
-  const markerHighlightEvent = (markerCur:naver.maps.Marker, item:MarkerType) => {
-    naver.maps.Event.addListener(markerCur, 'click', () => {
-      setSelect(markerCur);
-      if (selectedMarker.current) {
-        selectedMarker.current.setIcon({
-          content: MarkerHtml(
-            '',
-            selectedMarker.current.getTitle(),
-            selectedMarker.current.getZIndex(),
-          ),
-          size: new naver.maps.Size(50, 52),
-          anchor: new naver.maps.Point(25, 26),
-        });
-      }
-
-      markerCur.setIcon({
-        // 추후 각 마커벼로 이미지파일이 주어지면 첫번째 인자로 해당 이미지를 넘겨주도록 해야함
-        content: ClickedMarkerHtml('', item.placeName, item.index),
-        size: new naver.maps.Size(50, 52),
-        anchor: new naver.maps.Point(25, 26),
-      });
-
-      selectedMarker.current = markerCur;
-
-      if (mapRef.current) {
-        const mapLatLng = new naver.maps.LatLng(item.latitude, item.longitude);
-        mapRef.current.panTo(mapLatLng);
-      }
-    });
-  };
+  const { selected } = useMarker({ map, filterShops });
 
   useEffect(() => {
-    if (!mapRef.current && typeof location !== 'undefined') {
-      mapRef.current = new naver.maps.Map('map', {
-        center: new naver.maps.LatLng(location.latitude, location.longitude),
-        zoomControl: true,
-        zoomControlOptions: {
-          style: naver.maps.ZoomControlStyle.SMALL,
-          position: naver.maps.Position.BOTTOM_LEFT,
-        },
-        zoom: 10,
-        scaleControl: false,
-        logoControl: false,
-        mapDataControl: false,
-      });
-    }
+    refetch();
+  }, [filterFriendState, filterScrapState, filterNearbyState, refetch]);
 
-    return () => {
-      if (mapRef.current) {
-        mapRef.current.destroy();
-      }
-    };
-  }, [location]);
-
-  useEffect(() => {
-    MARKER.forEach((item:MarkerType) => {
-      if (mapRef.current) {
-        const markers = new naver.maps.Marker({
-          position: new naver.maps.LatLng(item.latitude, item.longitude),
-          title: item.placeName,
-          map: mapRef.current,
-          zIndex: item.index,
-          icon: {
-            content: MarkerHtml('', item.placeName, item.index),
-            size: new naver.maps.Size(50, 52),
-            anchor: new naver.maps.Point(25, 26),
-          },
-        });
-        markerHighlightEvent(markers, item);
-      }
-    });
-  }, [location]);
   return (
     <div>
       {isMobile && <MobileOptions />}
-      <Pin placeId="a" />
+      {selected && (
+      <Pin
+        title={selected.getTitle()}
+        lat={selected.getPosition().y}
+        lng={selected.getPosition().x}
+      />
+      )}
       <div id="map" className={styles.map} />
-      {!isMobile && <OptionButtons />}
     </div>
   );
 }

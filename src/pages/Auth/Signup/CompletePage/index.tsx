@@ -8,16 +8,29 @@ import AuthDetail from 'components/Auth/AuthDetail';
 import { ReactComponent as Progress } from 'assets/svg/auth/third-progress.svg';
 import { ReactComponent as Complete } from 'assets/svg/auth/complete.svg';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import { modify } from 'api/user';
+import makeToast from 'utils/ts/makeToast';
 import styles from './Complete.module.scss';
 import useRouteCheck from '../hooks/useRouteCheck';
 import { ERROR_MESSAGE } from '../static/signUp';
 import CompleteModal from './components/CompleteModal';
 
+interface CompleteFormData {
+  nickname: string;
+}
+
 export default function CompleteForm() {
   useRouteCheck('signUpCheck', '/signup');
-  const { register, handleSubmit, watch } = useForm();
-  const onSubmit = (data: any) => data;
   const navigate = useNavigate();
+  const { register, handleSubmit, watch } = useForm<CompleteFormData>();
+
+  const onSubmit = async ({ nickname }: CompleteFormData) => {
+    modify({ nickname }).then(() => {
+      navigate('/login', { replace: true });
+    }).catch(() => {
+      makeToast('error', '닉네임 설정에 실패했습니다.');
+    });
+  };
   const nicknameValue = watch('nickname');
   const [modal,, close] = useBooleanState(true);
 
@@ -48,10 +61,7 @@ export default function CompleteForm() {
           />
           <button
             type="submit"
-            className={
-              styles.form__button
-            }
-            onClick={() => navigate('/login', { replace: true })}
+            className={styles.form__button}
             disabled={nicknameValue === undefined || nicknameValue === ''}
           >
             완료

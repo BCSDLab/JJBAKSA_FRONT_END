@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { fetchPinShop } from 'api/search';
-import { useQueries } from 'react-query';
+import { fetchShop, fetchShops } from 'api/shop';
+import { useQueries, useQuery } from 'react-query';
 import { ReactComponent as Star } from 'assets/svg/pin/star.svg';
 import { ReactComponent as Switch } from 'assets/svg/pin/switch-horizontal.svg';
 import { ReactComponent as Report } from 'assets/svg/pin/report.svg';
@@ -16,26 +16,31 @@ import Carousel from './components/Carousel';
 import Scrap from './components/Scrap';
 
 interface Props {
-  placeId:string;
+  title:string;
+  lat:number;
+  lng:number;
 }
 
-export default function Pin({ placeId }:Props) {
+export default function Pin({ title, lat, lng }:Props) {
   const [sortType, setSortType] = useState<string>('createdAt');
   const [mode, setMode] = useState(1);
+  const placeId = useQuery('pinPlaceId', () => fetchShops({ keyword: title, location: { lat, lng } }));
+  const pinInfo = useQuery('pinInfos', () => fetchShop(placeId.data?.data.shopQueryResponseList[0].placeId || ''), { suspense: true, enabled: !!placeId.data });
   const queries = useQueries([
-    { queryKey: 'pinInfo', queryFn: () => fetchPinShop('ChIJe9073fyefDUR4FggnKorNT4') },
-    { queryKey: 'myReview', queryFn: () => myReview({ placeId: 'ChIJe9073fyefDUR4FggnKorNT4', sort: sortType }) },
-    { queryKey: 'followersReview', queryFn: () => followersReview({ placeId: 'ChIJe9073fyefDUR4FggnKorNT4', sort: sortType }) },
-    { queryKey: 'latestMyReview', queryFn: () => latestMyReview('ChIJe9073fyefDUR4FggnKorNT4') },
-    { queryKey: 'latestReview', queryFn: () => latestFollowerReview('ChIJe9073fyefDUR4FggnKorNT4') },
+    { queryKey: 'pinInfo', queryFn: () => fetchShop(placeId.data?.data.shopQueryResponseList[0].placeId || '') },
+    { queryKey: 'myReview', queryFn: () => myReview({ placeId: placeId.data?.data.shopQueryResponseList[0].placeId || '', sort: sortType }) },
+    { queryKey: 'followersReview', queryFn: () => followersReview({ placeId: placeId.data?.data.shopQueryResponseList[0].placeId || '', sort: sortType }) },
+    { queryKey: 'latestMyReview', queryFn: () => latestMyReview(placeId.data?.data.shopQueryResponseList[0].placeId || '') },
+    { queryKey: 'latestReview', queryFn: () => latestFollowerReview(placeId.data?.data.shopQueryResponseList[0].placeId || '') },
   ]);
-  console.log(placeId);
+
+  console.log(placeId, pinInfo);
 
   const getRateValue = () => {
-    if (queries[0].data?.totalRating
-      && queries[0].data?.ratingCount) {
-      return Math.floor((queries[0].data?.totalRating || 0)
-        / (queries[0].data?.ratingCount || 1)).toFixed(1);
+    if (pinInfo.data?.totalRating
+      && pinInfo.data?.ratingCount) {
+      return Math.floor((pinInfo.data?.totalRating || 0)
+        / (pinInfo.data?.ratingCount || 1)).toFixed(1);
     }
     return 0;
   };
@@ -51,9 +56,9 @@ export default function Pin({ placeId }:Props) {
       <div className={styles.shop}>
         <div className={styles.shop__title}>
           <span className={styles['shop__title--name']}>
-            {queries[0].data?.name}
+            {pinInfo.data?.name}
           </span>
-          <span className={styles['shop__title--category']}>{queries[0].data?.category}</span>
+          <span className={styles['shop__title--category']}>{pinInfo.data?.category}</span>
         </div>
         <div className={styles.shop__detail}>
           <div className={styles['shop__detail--rate']}>
@@ -66,7 +71,7 @@ export default function Pin({ placeId }:Props) {
             {queries[3].data?.lastDate?.replaceAll('-', '/')}
           </div>
         </div>
-        <Scrap placeId="ChIJe9073fyefDUR4FggnKorNT4" />
+        <Scrap placeId={placeId.data?.data.shopQueryResponseList[0].placeId || ''} />
       </div>
       <div className={styles.comment}>
         <div className={styles.comment__mode}>

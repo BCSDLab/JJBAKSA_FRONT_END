@@ -5,15 +5,20 @@ import { useFormContext } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { checkIdDuplicate } from 'api/user';
 import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
+import { AxiosError } from 'axios';
 import styles from '../SignUp.module.scss';
 import { SignUpFormData } from '../entity';
 
 const useIdCheckServer = (id: string) => {
-  const { status } = useQuery(['idDuplicate', id], ({ queryKey: [, account] }) => checkIdDuplicate({ account }), {
+  const { status, error } = useQuery<
+  unknown, AxiosError<{ errorMessage: string }>, unknown, [string, string]
+  >({
+    queryKey: ['idDuplicate', id],
+    queryFn: ({ queryKey: [, account] }) => checkIdDuplicate({ account }),
     enabled: id !== '',
   });
 
-  return status;
+  return { status, error };
 };
 
 const useIdDuplicateCheck = () => {
@@ -25,18 +30,22 @@ const useIdDuplicateCheck = () => {
     setCurrentCheckedId(id);
   };
 
-  const status = useIdCheckServer(currentCheckedId);
+  const { status, error } = useIdCheckServer(currentCheckedId);
 
   useEffect(() => {
     if (id && (id === currentCheckedId)) trigger('id');
   }, [trigger, currentCheckedId, id, status]);
 
-  return { status, handleCheckIdDuplicate, currentCheckedId };
+  return {
+    status, handleCheckIdDuplicate, currentCheckedId, error,
+  };
 };
 
 export default function IdInput() {
   const { register, watch, formState: { errors } } = useFormContext<SignUpFormData>();
-  const { status, handleCheckIdDuplicate, currentCheckedId } = useIdDuplicateCheck();
+  const {
+    status, handleCheckIdDuplicate, currentCheckedId, error,
+  } = useIdDuplicateCheck();
 
   return (
     <div className={styles.form__form}>
@@ -66,6 +75,8 @@ export default function IdInput() {
           required: ERROR_MESSAGE.id,
           validate: {
             checkValid: (val) => ((val === currentCheckedId) || '아이디 중복확인을 해주세요.'),
+            // 서버에서 타입을 같이 전달하고 있어 해당 부분 임시 처리
+            checkServerValidation: () => (error?.response?.data.errorMessage?.slice(-23)),
             checkError: () => ((status !== 'error') || '이미 사용중인 아이디입니다.'),
             checkLoading: () => ((status !== 'loading') || '중복 확인중입니다.'),
           },
