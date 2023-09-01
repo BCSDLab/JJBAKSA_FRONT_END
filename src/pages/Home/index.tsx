@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Container as MapDiv } from 'react-naver-maps';
 import { ReactComponent as Arrow } from 'assets/svg/home/arrow.svg';

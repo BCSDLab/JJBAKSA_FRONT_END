@@ -1,8 +1,13 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
 .home {
   width: 100%;
 }
 
 .map-container {
+  display: none;
+
+  @include media.media-breakpoint-up(mobile) {
   position: absolute;
   right: 24px;
   top: 24px;
@@ -21,6 +26,7 @@
   background-color: #ffffff99;
   box-shadow: 1px 1px 10px 1px #0000001a;
   cursor: pointer;
+  }
 
   &__text {
     display: flex;
