@@ -16,31 +16,25 @@ import Carousel from './components/Carousel';
 import Scrap from './components/Scrap';
 
 interface Props {
-  title:string;
-  lat:number;
-  lng:number;
+  placeId:string;
 }
 
-export default function Pin({ title, lat, lng }:Props) {
+export default function Pin({ placeId }:Props) {
   const [sortType, setSortType] = useState<string>('createdAt');
   const [mode, setMode] = useState(1);
-  const placeId = useQuery('pinPlaceId', () => fetchShops({ keyword: title, location: { lat, lng } }));
-  const pinInfo = useQuery('pinInfos', () => fetchShop(placeId.data?.data.shopQueryResponseList[0].placeId || ''), { suspense: true, enabled: !!placeId.data });
   const queries = useQueries([
-    { queryKey: 'pinInfo', queryFn: () => fetchShop(placeId.data?.data.shopQueryResponseList[0].placeId || '') },
-    { queryKey: 'myReview', queryFn: () => myReview({ placeId: placeId.data?.data.shopQueryResponseList[0].placeId || '', sort: sortType }) },
-    { queryKey: 'followersReview', queryFn: () => followersReview({ placeId: placeId.data?.data.shopQueryResponseList[0].placeId || '', sort: sortType }) },
-    { queryKey: 'latestMyReview', queryFn: () => latestMyReview(placeId.data?.data.shopQueryResponseList[0].placeId || '') },
-    { queryKey: 'latestReview', queryFn: () => latestFollowerReview(placeId.data?.data.shopQueryResponseList[0].placeId || '') },
+    { queryKey: 'queries[0]', queryFn: () => fetchShop(placeId) },
+    { queryKey: 'myReview', queryFn: () => myReview({ placeId, sort: sortType }) },
+    { queryKey: 'followersReview', queryFn: () => followersReview({ placeId, sort: sortType }) },
+    { queryKey: 'latestMyReview', queryFn: () => latestMyReview(placeId) },
+    { queryKey: 'latestReview', queryFn: () => latestFollowerReview(placeId) },
   ]);
 
-  console.log(placeId, pinInfo);
-
   const getRateValue = () => {
-    if (pinInfo.data?.totalRating
-      && pinInfo.data?.ratingCount) {
-      return Math.floor((pinInfo.data?.totalRating || 0)
-        / (pinInfo.data?.ratingCount || 1)).toFixed(1);
+    if (queries[0].data?.totalRating
+      && queries[0].data?.ratingCount) {
+      return Math.floor((queries[0].data?.totalRating || 0)
+        / (queries[0].data?.ratingCount || 1)).toFixed(1);
     }
     return 0;
   };
@@ -56,9 +50,9 @@ export default function Pin({ title, lat, lng }:Props) {
       <div className={styles.shop}>
         <div className={styles.shop__title}>
           <span className={styles['shop__title--name']}>
-            {pinInfo.data?.name}
+            {queries[0].data?.name}
           </span>
-          <span className={styles['shop__title--category']}>{pinInfo.data?.category}</span>
+          <span className={styles['shop__title--category']}>{queries[0].data?.category}</span>
         </div>
         <div className={styles.shop__detail}>
           <div className={styles['shop__detail--rate']}>
@@ -71,7 +65,7 @@ export default function Pin({ title, lat, lng }:Props) {
             {queries[3].data?.lastDate?.replaceAll('-', '/')}
           </div>
         </div>
-        <Scrap placeId={placeId.data?.data.shopQueryResponseList[0].placeId || ''} />
+        <Scrap placeId={placeId} />
       </div>
       <div className={styles.comment}>
         <div className={styles.comment__mode}>
