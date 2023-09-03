@@ -32,6 +32,17 @@ const MARKER = [
     photo: 'null',
     placeId: 'nmarker-B8FB8547-EFB9-416B-BA20-02749D239706',
   },
+  {
+    geometry: {
+      location: {
+        lat: 37.51700039999999,
+        lng: 126.9078048,
+      },
+    },
+    name: '신전떡볶이 영등포점',
+    photo: 'null',
+    placeId: 'ChIJe9073fyefDUR4FggnKorNT4',
+  },
 ];
 
 export default MARKER;

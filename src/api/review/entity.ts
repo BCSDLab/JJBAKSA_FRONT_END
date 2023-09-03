@@ -5,7 +5,7 @@ export interface PostReviewParams {
   reviewImages?:Array<string>;
 }
 
-export interface LatestReviewParams {
+export interface LatestReviewResponse {
   lastDate:null | string;
 }
 

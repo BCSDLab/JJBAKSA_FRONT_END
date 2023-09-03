@@ -7,10 +7,16 @@ import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { Link, useLocation } from 'react-router-dom';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import Pin from 'pages/Pin';
+import { useEffect } from 'react';
 import styles from './SideNavigation.module.scss';
 import SpriteSvg from '../SpriteSvg';
 
-export default function TopNavigation(): JSX.Element {
+interface Props {
+  selected:naver.maps.Marker | undefined;
+  placeId:string;
+}
+export default function TopNavigation({ selected, placeId }:Props): JSX.Element {
   const auth = useAuth();
   const clearAuth = useClearAuth();
   const location = useLocation();
@@ -55,6 +61,9 @@ export default function TopNavigation(): JSX.Element {
     },
   ];
 
+  useEffect(() => {
+    if (selected) setValue(true);
+  }, [selected, setValue]);
   return (
     <div>
       <nav className={styles['side-navigation']}>
@@ -164,6 +173,7 @@ export default function TopNavigation(): JSX.Element {
             </button>
           </div>
         </div>
+        <Pin placeId={placeId} />
       </div>
 
     </div>

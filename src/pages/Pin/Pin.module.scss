@@ -1,13 +1,10 @@
 @use "src/utils/styles/mediaQuery" as media;
 
 .template {
-  height: calc(100vh - 81px);
   width: 550px;
   justify-content: flex-end;
   align-items: center;
-  position: absolute;
   background-color: #ffffff;
-  z-index: 999;
   overflow-x: hidden;
   overflow-y: scroll;
 
@@ -22,41 +19,6 @@
 
   &::-webkit-scrollbar-track {
     background-color: #eeeeee;
-  }
-}
-
-.container {
-  height: 100%;
-  width: 550px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #ffffff;
-
-  &__write {
-    position: fixed;
-    bottom: 40px;
-    transform: translateX(-50%);
-    left: 275px;
-    width: 157px;
-    height: 39px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    border: 1px solid #c4c4c4;
-    background-color: #ffffff;
-    box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 10%);
-    text-decoration: none;
-    color: #666666;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-
-    &--icon {
-      margin-right: 8px;
-    }
   }
 }
 
@@ -75,11 +37,11 @@
     z-index: 999;
     border: none;
     background-color: transparent;
-    color:#ffffff;
+    color: #ffffff;
 
     &:hover {
       transition: 0.3s;
-      background-color: rgba(0, 0, 0, 10%);
+      background-color: rgba(0 0 0 / 10%);
     }
   }
 
@@ -89,19 +51,19 @@
     height: 100%;
     z-index: 999;
     border: none;
-    right:0;
+    right: 0;
     background-color: transparent;
-    color:#ffffff;
+    color: #ffffff;
 
     &:hover {
       transition: 0.3s;
-      background-color: rgba(0, 0, 0, 5%);
+      background-color: rgba(0 0 0 / 5%);
     }
   }
 
   &__container {
     position: absolute;
-    display: flex;    
+    display: flex;
     top: 0;
     left: 0;
     height: 100%;
@@ -117,7 +79,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    position: absolute;    
+    position: absolute;
     bottom: 22px;
     z-index: 999;
 
@@ -148,7 +110,7 @@
   &__title {
     display: flex;
     align-items: flex-end;
-    
+
     &--name {
       font-size: 28px;
       font-weight: 700;
@@ -167,7 +129,7 @@
     margin-top: 4px;
     color: #666666;
     position: sticky;
-    top:0;
+    top: 0;
 
     &--rate {
       display: flex;
@@ -200,6 +162,7 @@
 .comment {
   width: 100%;
   max-height: calc(100% - 116px);
+  padding-bottom: 30px;
   display: flex;
   flex-direction: column;
 
@@ -231,7 +194,7 @@
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #eeeeee;
-    box-shadow: 2px 3px 12px -4px rgba(0, 0, 0, 0.10);
+    box-shadow: 2px 3px 12px -4px rgba(0 0 0 10%);
   }
 
   &__button {
@@ -269,7 +232,7 @@
       background-color: #ffffff;
       cursor: pointer;
       margin-top: 16px;
-      z-index: 999
+      z-index: 999;
     }
   }
 
@@ -290,20 +253,20 @@
       overflow: hidden;
     }
   }
-  
+
   &__info {
     width: 100%;
     margin-left: 16px;
     display: flex;
     flex-direction: column;
-    
+
     &--nickname {
       font-size: 18px;
       font-weight: 700;
       margin-right: 5px;
       color: #222222;
     }
-    
+
     &--id {
       font-size: 14px;
       font-weight: 400;
@@ -340,8 +303,32 @@
     cursor: pointer;
   }
 
+  &__write {
+    position: absolute;
+    bottom: 40px;
+    transform: translateX(-50%);
+    left: 275px;
+    width: 157px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 1px solid #c4c4c4;
+    background-color: #ffffff;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    text-decoration: none;
+    color: #666666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+
+    &--icon {
+      margin-right: 8px;
+    }
+  }
 }
 
-.disabled{
+.disabled {
   opacity: 0;
 }
