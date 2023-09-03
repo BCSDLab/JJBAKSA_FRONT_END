@@ -1,16 +1,17 @@
-import { useState } from 'react';
-import { fetchShop, fetchShops } from 'api/shop';
-import { useQueries, useQuery } from 'react-query';
+import { useEffect, useState } from 'react';
+import { fetchShop } from 'api/shop';
 import { ReactComponent as Star } from 'assets/svg/pin/star.svg';
 import { ReactComponent as Switch } from 'assets/svg/pin/switch-horizontal.svg';
 import { ReactComponent as Report } from 'assets/svg/pin/report.svg';
 import { ReactComponent as Pencil } from 'assets/svg/pin/pencil.svg';
 import { ReactComponent as Empty } from 'assets/svg/pin/empty.svg';
 import {
-  followersReview, myReview, latestFollowerReview, latestMyReview,
+  getFollowersReview, getMyReview, latestFollowerReview, latestMyReview,
 } from 'api/review';
 import cn from 'utils/ts/classNames';
 import { Link } from 'react-router-dom';
+import { FetchShopResponse } from 'api/shop/entity';
+import { GetReviewResponse, LatestReviewResponse } from 'api/review/entity';
 import styles from './Pin.module.scss';
 import Carousel from './components/Carousel';
 import Scrap from './components/Scrap';
@@ -22,19 +23,17 @@ interface Props {
 export default function Pin({ placeId }:Props) {
   const [sortType, setSortType] = useState<string>('createdAt');
   const [mode, setMode] = useState(1);
-  const queries = useQueries([
-    { queryKey: 'queries[0]', queryFn: () => fetchShop(placeId) },
-    { queryKey: 'myReview', queryFn: () => myReview({ placeId, sort: sortType }) },
-    { queryKey: 'followersReview', queryFn: () => followersReview({ placeId, sort: sortType }) },
-    { queryKey: 'latestMyReview', queryFn: () => latestMyReview(placeId) },
-    { queryKey: 'latestReview', queryFn: () => latestFollowerReview(placeId) },
-  ]);
+  const [pinInfo, setPinInfo] = useState<FetchShopResponse>();
+  const [myReview, setMyReview] = useState<GetReviewResponse>();
+  const [followersReview, setFollowersReview] = useState<GetReviewResponse>();
+  const [latestMy, setLatestMy] = useState<LatestReviewResponse>();
+  const [latestFollowers, setLatestFollowers] = useState<LatestReviewResponse>();
 
   const getRateValue = () => {
-    if (queries[0].data?.totalRating
-      && queries[0].data?.ratingCount) {
-      return Math.floor((queries[0].data?.totalRating || 0)
-        / (queries[0].data?.ratingCount || 1)).toFixed(1);
+    if (pinInfo?.totalRating
+      && pinInfo?.ratingCount) {
+      return Math.floor((pinInfo?.totalRating || 0)
+        / (pinInfo?.ratingCount || 1)).toFixed(1);
     }
     return 0;
   };
@@ -44,15 +43,32 @@ export default function Pin({ placeId }:Props) {
     else setSortType('createdAt');
   };
 
+  useEffect(() => {
+    const getData = async () => {
+      setPinInfo(await fetchShop(placeId));
+      setLatestMy(await latestMyReview(placeId));
+      setLatestFollowers(await latestFollowerReview(placeId));
+    };
+    if (placeId !== '')getData();
+  }, [placeId]);
+
+  useEffect(() => {
+    const getReviews = async () => {
+      setMyReview(await getMyReview({ placeId, sort: sortType }));
+      setFollowersReview(await getFollowersReview({ placeId, sort: sortType }));
+    };
+    if (placeId !== '')getReviews();
+  }, [placeId, sortType]);
+
   return (
     <div className={styles.template}>
-      <Carousel />
+      <Carousel images={pinInfo?.photos || []} />
       <div className={styles.shop}>
         <div className={styles.shop__title}>
           <span className={styles['shop__title--name']}>
-            {queries[0].data?.name}
+            {pinInfo?.name}
           </span>
-          <span className={styles['shop__title--category']}>{queries[0].data?.category}</span>
+          <span className={styles['shop__title--category']}>{pinInfo?.category}</span>
         </div>
         <div className={styles.shop__detail}>
           <div className={styles['shop__detail--rate']}>
@@ -62,7 +78,8 @@ export default function Pin({ placeId }:Props) {
           <div className={styles['shop__detail--latest']}>
             마지막 리뷰
             {' '}
-            {queries[3].data?.lastDate?.replaceAll('-', '/')}
+            {mode === 1 ? latestMy?.lastDate?.replaceAll('-', '/')
+              : latestFollowers?.lastDate?.replaceAll('-', '/')}
           </div>
         </div>
         <Scrap placeId={placeId} />
@@ -95,8 +112,8 @@ export default function Pin({ placeId }:Props) {
             <Switch />
             {sortType === 'createdAt' ? '최신순' : '별점순'}
           </button>
-          {mode === 1 && (queries[1].data?.content.length !== 0
-            ? queries[1].data?.content.map((item) => (
+          {mode === 1 && (myReview?.content.length !== 0
+            ? myReview?.content.map((item) => (
               <div className={styles.comment__item} key={item.id}>
                 <div className={styles.comment__info}>
                   <div className={styles.comment__container}>
@@ -134,8 +151,8 @@ export default function Pin({ placeId }:Props) {
                 </div>
               </div>
             ))}
-          {mode === 2 && (queries[2].data?.content.length !== 0
-            ? queries[2].data?.content.map((item) => (
+          {mode === 2 && (followersReview?.content.length !== 0
+            ? followersReview?.content.map((item) => (
               <div className={styles.comment__item} key={item.id}>
                 <div className={styles['comment__item--profile']}>프로필</div>
                 <div className={styles.comment__info}>
@@ -154,13 +171,12 @@ export default function Pin({ placeId }:Props) {
                     {`${item.createdAt.slice(3).replaceAll('-', '/')}|`}
                     <Star />
                     {item.rate.toFixed(1)}
-                    {!mode
-                  && (
-                  <button className={styles.comment__report} type="button">
-                    <Report />
-                    신고하기
-                  </button>
-                  )}
+                    {!mode && (
+                    <button className={styles.comment__report} type="button">
+                      <Report />
+                      신고하기
+                    </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -174,9 +190,8 @@ export default function Pin({ placeId }:Props) {
                 </div>
               </div>
             ))}
-
         </div>
-        <Link className={styles.container__write} to="/write" type="button">
+        <Link className={styles.comment__write} to="/write" type="button">
           <Pencil className={styles['container__write--icon']} />
           리뷰 작성하기
         </Link>
