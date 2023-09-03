@@ -1,11 +1,6 @@
-import {
-  checkSentFollow, followList, checkReceivedFollow, searchUsers, recentlyActiveFollow,
-} from 'api/follow';
+import { checkSentFollow, checkReceivedFollow } from 'api/follow';
 import search from 'assets/svg/search/lens.svg';
-import { useState, useEffect } from 'react';
-import { useInfiniteQuery, useQuery } from 'react-query';
-import { GetFollowListResponse, SearchUsersResponse, SentOrReceivedFollowResponse } from 'api/follow/entity';
-import { AxiosResponse } from 'axios';
+import { GetFollowListResponse, SentOrReceivedFollowResponse } from 'api/follow/entity';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import style from './index.module.scss';
@@ -14,120 +9,10 @@ import SearchPage from './components/SearchPage';
 import FollowList from './components/FollowList';
 import { FollowerInfo } from './static/entity';
 import EmptyFriend from './components/EmptyFriend';
-
-const useSearchFriend = () => {
-  const [keyword, setKeyword] = useState<string>('');
-  const { data: user, fetchNextPage, hasNextPage } = useInfiniteQuery({
-    queryKey: ['search', keyword],
-    queryFn: ({ queryKey: [, target], pageParam = '' }) => searchUsers(target, pageParam),
-    enabled: keyword !== '',
-    getNextPageParam: (lastPage) => {
-      const len = lastPage.data.content.length;
-      if (lastPage.data.empty || lastPage.data.last) return null;
-      // cursor: 마지막으로 조회한 유저의 id
-      return `cursor=${lastPage.data.content[len - 1].id}`;
-    },
-  });
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-  };
-  const flatData: SearchUsersResponse = {
-    content: user ? user.pages.flatMap((page) => page.data.content) : [],
-    empty: !user || user.pages.every((page) => page.data.empty),
-    last: !user || user.pages.every((page) => page.data.last),
-    number: user ? user.pages.reduce((acc, page) => acc + page.data.number, 0) : 0,
-  };
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop
-        > document.body.scrollHeight - 1) {
-        if (hasNextPage) fetchNextPage();
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [fetchNextPage, hasNextPage]);
-  return {
-    user: flatData, keyword, handleInputChange,
-  };
-};
-
-// useInfinitieQuery로 무한 스크롤 구현, pageParam의 기본값은 undefined
-const useSendedOrReceivedFollow = (
-  key: string,
-  queryFn: (param: number) => Promise<AxiosResponse<SentOrReceivedFollowResponse, any>>,
-) => {
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-  } = useInfiniteQuery(key, ({ pageParam = 0 }) => queryFn(pageParam), {
-    // getNextPageParam은 다음 api를 요청할 때 사용될 pageParam값을 정할 수 있다.
-    getNextPageParam: (lastPage) => {
-      if (lastPage.data.empty || lastPage.data.last) return null;
-      return lastPage.data.number + 1;
-    },
-  });
-  // 이차원 배열을 일차원 배열로 변경 및 반환 타입 일치
-  const flatData: SentOrReceivedFollowResponse = {
-    content: data ? data.pages.flatMap((page) => page.data.content) : [],
-    empty: !data || data.pages.every((page) => page.data.empty),
-    last: !data || data.pages.every((page) => page.data.last),
-    number: data ? data.pages.reduce((acc, page) => acc + page.data.number, 0) : 0,
-  };
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop
-        > document.body.scrollHeight - 1) {
-        if (hasNextPage) fetchNextPage();
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [fetchNextPage, hasNextPage]);
-  return { data: flatData };
-};
-
-// 친구 목록 가져오기
-const useGetFollowList = () => {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
-    'follower',
-    ({ pageParam = '' }) => followList(pageParam),
-    {
-      getNextPageParam: (last) => {
-        const len = last.data.content.length;
-        if (last.data.empty || last.data.last) return null;
-        return `cursor=${last.data.content[len - 1].id}`;
-      },
-    },
-  );
-  const flatData: GetFollowListResponse = {
-    content: data ? data.pages.flatMap((page) => page.data.content) : [],
-    empty: !data || data.pages.every((page) => page.data.empty),
-    last: !data || data.pages.every((page) => page.data.last),
-    number: data ? data.pages.reduce((acc, page) => acc + page.data.number, 0) : 0,
-  };
-  useEffect(() => {
-    const handleScroll = () => {
-      const viewportHeight = window.innerHeight; // 뷰포트의 높이
-      const scrollPosition = window.scrollY; // 현재 스크롤 위치
-      const middleViewport = viewportHeight / 2; // 뷰포트의 중간 지점
-
-      if (scrollPosition > middleViewport) {
-        if (hasNextPage) fetchNextPage();
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [fetchNextPage, hasNextPage]);
-  return { data: flatData };
-};
+import useSearchFriend from './hooks/useSearchFriend';
+import useSentOrReceivedFollow from './hooks/useSentOrReceivedFollow';
+import useGetFollowList from './hooks/useGetFollowList';
+import useGetRecentlyActiveFollower from './hooks/useGetRecentlyActiveFollower';
 
 // user : 팔로우 요청을 받은 사람
 // follower : 팔로우를 요청한 사람
@@ -160,17 +45,10 @@ const filterFollowInfo = (data: GetFollowListResponse): FollowerInfo[] => {
   return filteredData;
 };
 
-// 최대 15명만 보임, 접속한지 24시가 지나면 사라짐
-const useGetRecentlyActiveFollower = () => {
-  const { data, isLoading } = useQuery('recent', () => recentlyActiveFollow());
-
-  return { data, isLoading };
-};
-
 export default function FollowPage() {
   const { keyword, handleInputChange, user } = useSearchFriend();
-  const { data: receive } = useSendedOrReceivedFollow('received', checkReceivedFollow);
-  const { data: sended } = useSendedOrReceivedFollow('sended', checkSentFollow);
+  const { data: receive } = useSentOrReceivedFollow('received', checkReceivedFollow);
+  const { data: sended } = useSentOrReceivedFollow('sended', checkSentFollow);
   const { data: follower } = useGetFollowList();
   const { data: recent } = useGetRecentlyActiveFollower();
 

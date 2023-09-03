@@ -2,8 +2,6 @@ import defaultImage from 'assets/images/follow/default-image.png';
 import { useEffect, useState } from 'react';
 import { ReactComponent as Remove } from 'assets/svg/follow/user-remove.svg';
 import cn from 'utils/ts/classNames';
-import { useInfiniteQuery } from 'react-query';
-import { getFollowReview } from 'api/follow';
 import { ReactComponent as Checkerboard } from 'assets/svg/follow/checkerboard.svg';
 import { ReactComponent as ClickedCheckerboard } from 'assets/svg/follow/checkerboard-click.svg';
 import { ReactComponent as List } from 'assets/svg/follow/list.svg';
@@ -14,38 +12,9 @@ import { useLocation } from 'react-router-dom';
 import { ReactComponent as Add } from 'assets/svg/follow/user-add.svg';
 import style from './FollowProfile.module.scss';
 import FollowReview from './FollowReview';
-import { useDeleteFollow, useRequestAndUpdate } from './Follower';
-
-const useGetFollowerReview = (id: number) => {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
-    ['review', id],
-    ({ pageParam = '' }) => getFollowReview(id, pageParam),
-    {
-      getNextPageParam: (last) => {
-        const len = last.data.content.length;
-        if (last.data.empty) return null;
-        // cursor: 마지막으로 조회한 상점 id
-        return `cursor=${last.data.content[len - 1].shopId}`;
-      },
-    },
-  );
-  const flatData = {
-    content: data ? data.pages.flatMap((page) => page.data.content) : [],
-  };
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop
-        > document.body.scrollHeight - 2) {
-        if (hasNextPage) fetchNextPage();
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [fetchNextPage, hasNextPage]);
-  return { data: flatData };
-};
+import useDeleteFollow from '../hooks/useDeleteFollow';
+import useRequestAndUpdate from '../hooks/useRequestAndUpdate';
+import useGetFollowerReview from '../hooks/useGetFollowerReview';
 
 const useDeleteState = () => {
   const [canDelete, setCanDelete] = useState(true);
@@ -56,6 +25,7 @@ const useDeleteState = () => {
       setCanDelete((prev) => !prev);
     }
   }, [deletedUser]);
+
   return { del, canDelete, deletedUser };
 };
 

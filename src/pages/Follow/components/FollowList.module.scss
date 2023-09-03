@@ -41,6 +41,7 @@
   overflow: scroll;
   gap: 10px;
   width: 1067px;
+  scrollbar-width: none; /* 파이어폭스 */
 
   &::-webkit-scrollbar {
     display: none;
