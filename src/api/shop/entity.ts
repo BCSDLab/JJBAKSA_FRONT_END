@@ -30,18 +30,21 @@ export interface ShopsParams {
 }
 
 export interface FetchShopsResponse {
-  content: Shop[];
+  shopQueryResponseList: Shop[];
 }
 
-interface Shop {
-  address: string,
-  dist: 0,
-  placeId: string,
-  placeName: string,
-  score: number,
-  shopId: number,
-  x: string,
-  y: string,
+export interface Shop {
+  placeId: string;
+  name: string;
+  formattedAddress: string;
+  lat: number;
+  lng: number;
+  openNow: boolean
+  totalRating: number | null;
+  ratingCount: number | null;
+  photoToken: string;
+  dist: number;
+  category: string; // 추후 카테고리 확인 필요
 }
 
 export interface Coords {
