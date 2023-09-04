@@ -9,9 +9,6 @@ import useMarker from './hooks/useMarker';
 import useFilterShops from './hooks/useFilterShops';
 import Pin from '../Pin';
 
-const OPTIONS = {
-  maximumAge: 1000,
-};
 export default function NaverMap(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useLocation();
