@@ -194,7 +194,7 @@
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #eeeeee;
-    box-shadow: 2px 3px 12px -4px rgba(0 0 0 10%);
+    box-shadow: 2px 3px 12px -4px rgba(0 0 0 / 10%);
   }
 
   &__button {
