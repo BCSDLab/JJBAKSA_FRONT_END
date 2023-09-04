@@ -1,4 +1,4 @@
-import spriteSvg from 'assets/svg/common/sprite-svg.svg';
+import navSpriteSvg from 'assets/svg/common/nav-sprite.svg';
 
 interface SpriteProps {
   id: string;
@@ -9,7 +9,7 @@ interface SpriteProps {
 export default function SpriteSvg({ id, height = '24', width = '24' }:SpriteProps): JSX.Element {
   return (
     <svg height={height} width={width} fill="#FFFFFF">
-      <use xlinkHref={`${spriteSvg}#${id}`} />
+      <use xlinkHref={`${navSpriteSvg}#${id}`} />
     </svg>
   );
 }
