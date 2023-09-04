@@ -9,7 +9,7 @@ import useMarker from './hooks/useMarker';
 import useFilterShops from './hooks/useFilterShops';
 import Pin from '../Pin';
 
-export default function Map(): JSX.Element {
+export default function NaverMap(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useLocation();
   const map = useNaverMap(location?.latitude, location?.longitude);
