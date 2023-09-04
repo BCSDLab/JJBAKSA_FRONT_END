@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import getAddress from 'api/location';
+import makeToast from 'utils/ts/makeToast';
 
 export default function useHome() {
   const [isClickLocation, active, unactive] = useBooleanState(false);
@@ -37,7 +38,7 @@ export default function useHome() {
           address: addressData,
         }));
       }, (error) => {
-        console.error('에러', error);
+        makeToast('error', error.message);
       });
     }
   };
