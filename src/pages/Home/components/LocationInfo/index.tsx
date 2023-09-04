@@ -8,12 +8,10 @@ interface LocationInfoProps {
 
 export default function LocationInfo({ address, onClick }: LocationInfoProps): JSX.Element {
   return (
-    <div
+    <button
+      type="button"
       className={styles['map-container']}
       onClick={onClick}
-      onKeyDown={onClick}
-      role="button"
-      tabIndex={0}
     >
       {address ? (
         <div className={styles['map-container__text']}>{address}</div>
@@ -21,6 +19,6 @@ export default function LocationInfo({ address, onClick }: LocationInfoProps): J
         <div className={styles['map-container__text']}>위치 정보를 가져오는 중...</div>
       )}
       <Arrow className={styles['map-container__image']} />
-    </div>
+    </button>
   );
 }

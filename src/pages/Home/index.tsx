@@ -7,7 +7,7 @@ import LocationInfo from './components/LocationInfo';
 
 export default function Home(): JSX.Element {
   const {
-    isClickLocation, active, locationRef, userLocation,
+    isClickLocation, active, userLocation, locationRef,
   } = useHome();
   return (
     <div className={styles.home}>
@@ -21,8 +21,6 @@ export default function Home(): JSX.Element {
         <div
           className={styles.locationBox}
           ref={locationRef}
-          role="button"
-          tabIndex={0}
         >
           <Location />
         </div>
