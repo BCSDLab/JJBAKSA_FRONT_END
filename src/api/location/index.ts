@@ -17,7 +17,7 @@ const getAddress = async (latitude: number, longitude: number): Promise<string> 
 
   const { data } = response;
   if (data?.results?.length > 0) {
-    return `${data.results[0].region.area1.name} ${data.results[0].region.area2.name}`;
+    return `${data.results[0].region.area1.name} ${data.results[0].region.area2.name} ${data.results[0].region.area3.name} ${data.results[0].land.name} ${data.results[0].land.number1}`;
   }
   return '주소 정보 없음';
 };

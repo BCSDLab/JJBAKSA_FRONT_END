@@ -7,7 +7,7 @@
     position: absolute;
     right: 24px;
     top: 24px;
-    width: 377px;
+    // width: 400px;
     height: 57px;
     border-radius: 100px;
     display: flex;
@@ -32,5 +32,6 @@
   &__image {
     display: flex;
     margin-right: 24px;
+    margin-left: 10px;
   }
 }
