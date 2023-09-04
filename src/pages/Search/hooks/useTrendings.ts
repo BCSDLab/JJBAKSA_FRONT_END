@@ -1,4 +1,4 @@
-import { fetchTrendings } from 'api/search';
+import { fetchTrendings } from 'api/shop';
 import { useQuery } from 'react-query';
 
 const useTrendingList = () => {

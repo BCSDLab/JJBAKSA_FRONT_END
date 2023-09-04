@@ -1,6 +1,6 @@
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { Shop } from 'api/search/entity';
+import { Shop } from 'api/shop/entity';
 import { getMockItem } from '../static/mockup';
 
 interface Props {

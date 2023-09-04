@@ -1,14 +1,14 @@
 import useGeolocation from 'utils/hooks/useGeolocation';
 import { useQuery } from 'react-query';
-import { fetchShops } from 'api/search';
-import { ShopsParams } from 'api/search/entity';
+import { fetchShops } from 'api/shop';
+import { ShopsParams } from 'api/shop/entity';
 
 const useFetchShops = (keyword: string) => {
   const options = {
     maximumAge: 1000,
   };
   const { location } = useGeolocation(options);
-  const params = { keyword, location };
+  const params = { keyword };
   const {
     isLoading, isError, data, refetch,
   } = useQuery('shop', () => fetchShops(params as ShopsParams), { enabled: !!location });
