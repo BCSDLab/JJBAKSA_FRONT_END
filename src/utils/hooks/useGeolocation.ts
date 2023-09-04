@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react';
-
-interface GeolocationPosition {
-  latitude: number;
-  longitude: number;
-}
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
+import { useLocation } from 'store/location';
 
 export default function useGeolocation(options = {}) {
-  const [location, setLocation] = useState<GeolocationPosition>();
+  const { location, setLocation } = useLocation();
   const onGeoSuccess: PositionCallback = (position) => {
     setLocation({
       latitude: position.coords.latitude,

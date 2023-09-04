@@ -18,7 +18,9 @@ export default function SearchInput({
         value={text}
         onChange={onChange}
       />
-      <LensIcon title="검색" className={styles['search-bar__icon']} />
+      <button type="submit" className={styles['search-bar__submit']}>
+        <LensIcon title="검색" className={styles['search-bar__icon']} />
+      </button>
     </label>
   );
 }

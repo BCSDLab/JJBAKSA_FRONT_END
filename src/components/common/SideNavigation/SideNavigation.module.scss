@@ -49,6 +49,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100px;
+    font-weight: 500;
     cursor: pointer;
 
     &--clicked {
@@ -68,6 +69,7 @@
     border: none;
     background-color: transparent;
     width: 100px;
+    font-weight: 500;
     cursor: pointer;
   }
 
@@ -94,6 +96,10 @@
     &--expand {
       animation: slide-out 0.3s ease-out forwards;
     }
+
+    &--invisible {
+      display: none;
+    }
   }
 }
 
@@ -105,9 +111,20 @@
   align-items: center;
   list-style: none;
 
-  &__link {
+  &__logout {
     text-decoration: none;
-    color: #666666;
+    text-decoration: underline;
+    color: #c4c4c4;
+    font-weight: 500;
+  }
+
+  &__login {
+    text-decoration: none;
+    border-radius: 999px;
+    border: solid 1px #ff7f23;
+    color: #ff7f23;
+    padding: 10px;
+    font-weight: 500;
   }
 }
 

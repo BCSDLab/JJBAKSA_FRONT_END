@@ -1,7 +1,7 @@
-import useGeolocation from 'utils/hooks/useGeolocation';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useEffect } from 'react';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import { useLocation } from 'store/location';
 import styles from './Map.module.scss';
 import MobileOptions from './components/MobileOptions';
 import useNaverMap from './hooks/useNaverMap';
@@ -14,7 +14,7 @@ const OPTIONS = {
 };
 export default function NaverMap(): JSX.Element {
   const { isMobile } = useMediaQuery();
-  const { location } = useGeolocation(OPTIONS);
+  const { location } = useLocation();
   const map = useNaverMap(location?.latitude, location?.longitude);
   const { filterFriendState } = useFilterFriend();
   const { filterScrapState } = useFilterScrap();

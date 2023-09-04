@@ -23,6 +23,7 @@
     border-radius: 50%;
     background-color: transparent;
     z-index: 2;
+    top: -5px;
   }
 
   &__image {
@@ -52,7 +53,7 @@
     height: 340px;
   }
 
-  &--withImage {
+  &--with-image {
     line-height: 15px;
     height: 600px;
     width: 100%;

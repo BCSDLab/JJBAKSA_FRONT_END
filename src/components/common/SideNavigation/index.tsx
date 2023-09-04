@@ -1,31 +1,34 @@
-import { ReactComponent as LogoIcon } from 'assets/svg/common/logo.svg';
-import { ReactComponent as SettingIcon } from 'assets/svg/common/setting.svg';
-import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
-import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
 import { ReactComponent as StoreFrontIcon } from 'assets/svg/home/storefront.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
-import { ReactComponent as ExpandIcon } from 'assets/svg/common/expand.svg';
-import { ReactComponent as FoldIcon } from 'assets/svg/common/fold.svg';
-import { useAuth } from 'store/auth';
+import { useAuth, useClearAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import styles from './SideNavigation.module.scss';
+import SpriteSvg from '../SpriteSvg';
 
-export default function TopNavigation(): JSX.Element {
+export default function SideNavigation(): JSX.Element {
   const auth = useAuth();
-  const [visible, , , toggle] = useBooleanState(false);
+  const clearAuth = useClearAuth();
+  const location = useLocation();
+  const [visible, , , toggle, setValue] = useBooleanState(false);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
 
+  const handleToggle = () => {
+    if (location.pathname === '/') {
+      setValue(!visible);
+    }
+  };
+
   const TABS = [
     {
       name: '',
-      icon: <LogoIcon />,
+      icon: <SpriteSvg id="logo" height="45" width="43" />,
       link: '/',
 
     },
@@ -37,17 +40,17 @@ export default function TopNavigation(): JSX.Element {
     },
     {
       name: '글쓰기',
-      icon: <WriteIcon />,
-      link: '/post',
+      icon: <SpriteSvg id="write" height="24" width="24" />,
+      link: '/search',
     },
     {
       name: '마이페이지',
-      icon: <MyPageIcon />,
+      icon: <SpriteSvg id="my-page" height="24" width="18" />,
       link: auth ? '/profile' : '/login',
     },
     {
       name: '설정',
-      icon: <SettingIcon />,
+      icon: <SpriteSvg id="setting" height="24" width="24" />,
       link: '/setting',
     },
   ];
@@ -68,7 +71,7 @@ export default function TopNavigation(): JSX.Element {
                 <button
                   type="button"
                   className={styles['side-navigation__button']}
-                  onClick={toggle}
+                  onClick={handleToggle}
                   tabIndex={0}
                 >
                   <div>{tab.icon}</div>
@@ -85,12 +88,17 @@ export default function TopNavigation(): JSX.Element {
         </ul>
         <ul className={styles['bottom-navigation']}>
           {auth ? (
-            <li className={styles['bottom-navigation__login']}>
-              <div>사용자</div>
+            <li>
+              <div>
+                {/* 프로필 사진 추가 */}
+                <Link to="/" onClick={clearAuth}>
+                  <div className={styles['bottom-navigation__logout']}>로그아웃</div>
+                </Link>
+              </div>
             </li>
           ) : (
-            <li className={styles['bottom-navigation__login']}>
-              <Link to="/login" className={styles['bottom-navigation__link']}>로그인</Link>
+            <li>
+              <Link to="/login" className={styles['bottom-navigation__login']}>로그인</Link>
             </li>
           )}
         </ul>
@@ -99,11 +107,12 @@ export default function TopNavigation(): JSX.Element {
           className={cn({
             [styles['side-navigation__arrow']]: true,
             [styles['side-navigation__arrow--expand']]: visible,
+            [styles['side-navigation__arrow--invisible']]: location.pathname !== '/',
           })}
           onClick={toggle}
           aria-label="펼치기"
         >
-          {visible ? <FoldIcon /> : <ExpandIcon />}
+          {visible ? <SpriteSvg id="fold" /> : <SpriteSvg id="expand" />}
         </button>
       </nav>
       <div
