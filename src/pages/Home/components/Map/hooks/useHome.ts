@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import getAddress from 'api/location';
 
-export default function useHomeLogic() {
+export default function useHome() {
   const [isClickLocation, active, unactive] = useBooleanState(false);
   const locationRef = useRef<HTMLDivElement | null>(null);
   const [userLocation, setUserLocation] = useState({
@@ -17,9 +17,9 @@ export default function useHomeLogic() {
         unactive();
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mouseup', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('mouseup', handleClickOutside);
     };
   }, [unactive]);
 

@@ -24,9 +24,7 @@ export default function Home(): JSX.Element {
           role="button"
           tabIndex={0}
         >
-          <div>
-            <Location />
-          </div>
+          <Location />
         </div>
       )}
     </div>
