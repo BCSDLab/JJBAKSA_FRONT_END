@@ -86,7 +86,9 @@ export default function Pin({ placeId }:Props) {
             <div className={styles['shop__detail--latest']}>
               마지막 리뷰
               {' '}
-              {mode === 1 ? latestMy?.lastDate?.replaceAll('-', '/')
+              {(latestMy?.lastDate?.replaceAll('-', '/') || '')
+                > (latestFollowers?.lastDate?.replaceAll('-', '/') || '')
+                ? latestMy?.lastDate?.replaceAll('-', '/')
                 : latestFollowers?.lastDate?.replaceAll('-', '/')}
             </div>
           </div>

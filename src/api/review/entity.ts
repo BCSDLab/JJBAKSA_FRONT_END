@@ -63,3 +63,10 @@ interface Sort {
   sorted:boolean;
   unsorted:boolean;
 }
+
+export interface ReviewParams {
+  placeId : string;
+  content : string;
+  rate : number;
+  reviewImages : File[];
+}

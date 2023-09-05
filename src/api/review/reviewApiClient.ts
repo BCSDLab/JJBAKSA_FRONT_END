@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import axios from 'axios';
 import { API_PATH } from 'config/constants';
 
@@ -10,11 +9,8 @@ const reviewApi = axios.create({
 reviewApi.interceptors.request.use(
   (config) => {
     const accessToken = sessionStorage.getItem('accessToken');
-    if (config.headers && accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-
-      config.headers['Content-Type'] = config.data instanceof FormData ? 'multipart/form-data' : 'applicatoin/json';
-    }
+    // eslint-disable-next-line no-param-reassign
+    if (config.headers && accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
     return config;
   },
 );

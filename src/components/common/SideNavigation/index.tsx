@@ -24,6 +24,7 @@ export default function TopNavigation({ selected, placeId }:Props): JSX.Element 
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+  console.log(placeId);
 
   const handleToggle = () => {
     if (location.pathname === '/') {
@@ -173,7 +174,7 @@ export default function TopNavigation({ selected, placeId }:Props): JSX.Element 
             </button>
           </div>
         </div>
-        {selected && <Pin placeId={placeId} />}
+        {(selected) && <Pin placeId={placeId} />}
       </div>
 
     </div>

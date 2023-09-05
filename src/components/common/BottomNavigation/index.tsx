@@ -39,7 +39,6 @@ export default function BottomNavigation(): JSX.Element {
           >
             <Link className={styles.tab__link} to={tab.pathname}>
               <div className={styles.tab__icon}>
-
                 <SpriteSvg id={`${tab.icon}`} />
               </div>
               <div className={styles.tab__text}>{tab.text}</div>

@@ -47,24 +47,6 @@ export interface FetchShopResponse {
   totalRating:number;
 }
 
-export interface FetchShopsResponse {
-  shopQueryResponseList: Shop[];
-}
-
-export interface Shop {
-  category:string;
-  dist:number;
-  formattedAddress:string;
-  lat:number;
-  lng:number;
-  name:string;
-  openNow:boolean | null;
-  photoToken:string;
-  placeId:string;
-  ratingCount:number;
-  totalRating:number;
-}
-
 export interface ShopPinResponse {
   businessDay:string;
   category:string;
@@ -82,6 +64,24 @@ export interface ShopPinResponse {
   shopId:number;
   todayBusinessHour:string;
   totalRating:number;
+}
+
+export interface FetchShopsResponse {
+  shopQueryResponseList: Shop[];
+}
+
+export interface Shop {
+  placeId: string;
+  name: string;
+  formattedAddress: string;
+  lat: number;
+  lng: number;
+  openNow: boolean
+  totalRating: number | null;
+  ratingCount: number | null;
+  photoToken: string;
+  dist: number;
+  category: string; // 추후 카테고리 확인 필요
 }
 
 export interface Coords {
