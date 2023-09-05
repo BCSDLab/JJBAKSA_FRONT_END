@@ -23,7 +23,7 @@ export default function BookMark() {
               </div>
               <div className={styles['bookmark__star-rate']}>
                 <img src={filledStar} alt="satr-rate" className={styles['bookmark__star-rate--image']} />
-                <span className={styles['bookmark__star-rate--rate']}>{parseFloat((scrap.totalRating / scrap.ratingCount).toString()).toFixed(1)}</span>
+                <span className={styles['bookmark__star-rate--rate']}>{(scrap.totalRating / scrap.ratingCount).toFixed(1)}</span>
               </div>
               <div className={styles['bookmark__store-image']}>
                 <img className={styles['bookmark__store-image--crop']} src={scrap.photo ? scrap.photo : defaultImage} alt="store" />
