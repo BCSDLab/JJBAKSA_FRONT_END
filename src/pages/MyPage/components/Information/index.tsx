@@ -11,7 +11,7 @@ type Profile = User & {
 };
 interface InformationProps {
   openModal:(url:string | undefined) => void,
-  profile: Profile | null
+  profile: Profile
   followerNumber?: number
 
 }
@@ -20,8 +20,8 @@ export default function Information({ openModal, followerNumber, profile }:Infor
   return (
     <div className={styles.information}>
       <div className={styles.user}>
-        <button type="button" className={styles.profile} onClick={() => openModal(profile?.profileImage?.url)}>
-          <img src={profile?.profileImage ? profile.profileImage.url : defaultImage} alt="profileImage" className={styles.user__image} />
+        <button type="button" className={styles.profile} onClick={() => openModal(profile.profileImage?.url)}>
+          <img src={profile.profileImage ? profile.profileImage.url : defaultImage} alt="profileImage" className={styles.user__image} />
         </button>
         <div>
           <span className={styles.user__nickname}>

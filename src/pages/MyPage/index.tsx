@@ -32,12 +32,14 @@ export default function MyPage() {
   return (
     <>
       {!isMobile && <TopNavigation />}
+      {profile && (
       <div className={styles['my-page']}>
         <Information openModal={openModal} profile={profile} followerNumber={followerNumber} />
         <BoardSelector setBoard={setBoard} board={board} />
         {board === 'MYPOST' && <MyPost />}
         {board === 'BOOKMARK' && <BookMark />}
       </div>
+      )}
       {isMobile && <BottomNavigation />}
       {isOpen && <div className={styles['modal-overlay']} />}
     </>
