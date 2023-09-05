@@ -43,7 +43,7 @@ export default function App(): JSX.Element {
             <Route path="/friend-list" element={<FollowPage />} />
           </Route>
           <Route path="/withdrawal" element={<Withdrawal />} />
-          <Route path="profile" element={<MyPage />} />
+          <Route path="/profile" element={<MyPage />} />
           <Route path="/post" element={<Post />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
