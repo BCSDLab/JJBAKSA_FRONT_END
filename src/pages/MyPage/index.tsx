@@ -1,5 +1,5 @@
 import BottomNavigation from 'components/common/BottomNavigation';
-import TopNavigation from 'components/common/TopNavigation';
+import SideNavigation from 'components/common/SideNavigation';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -31,7 +31,7 @@ export default function MyPage() {
   };
   return (
     <>
-      {!isMobile && <TopNavigation />}
+      {!isMobile && <SideNavigation />}
       {profile && (
       <div className={styles['my-page']}>
         <Information openModal={openModal} profile={profile} followerNumber={followerNumber} />
