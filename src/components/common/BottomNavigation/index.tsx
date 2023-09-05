@@ -1,30 +1,30 @@
-import { ReactComponent as HomeIcon } from 'assets/svg/common/home.svg';
-import { ReactComponent as WriteIcon } from 'assets/svg/common/write.svg';
-import { ReactComponent as MyPageIcon } from 'assets/svg/common/my-page.svg';
 import { Link, useLocation } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
+import { useAuth } from 'store/auth';
 import styles from './BottomNavigation.module.scss';
-
-const NAV_TABS = [
-  {
-    pathname: '/',
-    icon: HomeIcon,
-    text: '홈',
-  },
-  {
-    pathname: '/search',
-    icon: WriteIcon,
-    text: '글쓰기',
-  },
-  {
-    pathname: '/profile',
-    icon: MyPageIcon,
-    text: '마이페이지',
-  },
-];
+import SpriteSvg from '../SpriteSvg';
 
 export default function BottomNavigation(): JSX.Element {
   const { pathname } = useLocation();
+  const auth = useAuth();
+
+  const NAV_TABS = [
+    {
+      pathname: '/',
+      icon: 'home',
+      text: '홈',
+    },
+    {
+      pathname: '/post',
+      icon: 'write',
+      text: '글쓰기',
+    },
+    {
+      pathname: auth ? '/profile' : '/login',
+      icon: 'my-page',
+      text: '마이페이지',
+    },
+  ];
 
   return (
     <nav className={styles['bottom-navigation']}>
@@ -38,7 +38,9 @@ export default function BottomNavigation(): JSX.Element {
             })}
           >
             <Link className={styles.tab__link} to={tab.pathname}>
-              <tab.icon className={styles.tab__icon} aria-hidden />
+              <div className={styles.tab__icon}>
+                <SpriteSvg id={`${tab.icon}`} />
+              </div>
               <div className={styles.tab__text}>{tab.text}</div>
             </Link>
           </li>

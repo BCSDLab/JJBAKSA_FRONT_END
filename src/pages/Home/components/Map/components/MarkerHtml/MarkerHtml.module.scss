@@ -1,10 +1,13 @@
 @use "src/utils/styles/mediaQuery" as media;
 
 .container {
+  position: absolute;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  top: -65px;
+  left: -50px;
 }
 
 .marker {
@@ -18,13 +21,10 @@
 
   &--clicked {
     position: absolute;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 175px;
     height: 69px;
+    top: -70px;
+    left: -30px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 125px;
@@ -61,8 +61,8 @@
     height: 55.723px;
     border-radius: 89.5px;
     position: absolute;
-    top: 2px;
-    left: 22px;
+    top: -67px;
+    left: -26px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 36px;
@@ -91,12 +91,12 @@
       width: 100px;
       height: 40px;
       position: absolute;
+      bottom: 20px;
+      left: 30px;
       text-align: center;
-      top: 10px;
-      left: 75px;
       font-size: 20px;
       font-weight: 700;
-      color: #fe7f23;
+      color: #ffffff;
 
       @include media.media-breakpoint-down(mobile) {
         width: 70px;
@@ -104,38 +104,6 @@
         top: 3px;
         left: 55px;
         font-size: 14px;
-      }
-    }
-  }
-
-  &__index {
-    color: #ffffff;
-    position: absolute;
-    top: 18px;
-    left: 43px;
-    font-size: 24px;
-    font-weight: 700;
-    z-index: 999;
-
-    @include media.media-breakpoint-down(mobile) {
-      font-size: 16px;
-      top: 13px;
-      left: 46px;
-    }
-
-    &--clidked {
-      color: #ffffff;
-      position: absolute;
-      left: 43px;
-      font-size: 24px;
-      font-weight: 700;
-      z-index: 999;
-      top: 15px;
-
-      @include media.media-breakpoint-down(mobile) {
-        font-size: 16px;
-        top: 10px;
-        left: 35px;
       }
     }
   }
