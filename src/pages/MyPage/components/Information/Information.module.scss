@@ -18,6 +18,7 @@
   &__image {
     width: 46px;
     height: 46px;
+    border-radius: 50%;
   }
 
   &__nickname {
@@ -92,7 +93,6 @@
 .profile {
   all: unset;
   display: flex;
-  overflow: hidden;
   position: relative;
   outline: none;
   border-radius: 50%;
