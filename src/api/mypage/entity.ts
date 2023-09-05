@@ -14,10 +14,10 @@ export interface ReviewedShopsResponse {
 }
 
 export interface Review {
-  id:number,
+  id: number,
   content: string,
   rate: number,
-  createdAt:string
+  createdAt: string
 }
 
 export interface ReviewsResponse {
@@ -27,7 +27,7 @@ export interface ReviewsResponse {
 export type Scrap = {
   placeId: string,
   category: string,
-  name:string,
+  name: string,
   photo: string,
   ratingCount: number,
   scrapId: number,
@@ -49,7 +49,7 @@ export interface PatchProfileImageResponse {
 }
 
 export interface PatchNicknameResponse {
-  nickname:string
+  nickname: string
 }
 
 export interface FollowersResponse {
