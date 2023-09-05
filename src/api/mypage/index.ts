@@ -1,14 +1,14 @@
 import followApi from 'api/follow/followApiClient';
 import {
   FollowersResponse,
-  PatchNicknameResposne,
-  PatchProfileImageResponse, ReviewedShopsResponse, ReviewsResPonse, ScrapResponse,
+  PatchNicknameResponse,
+  PatchProfileImageResponse, ReviewedShopsResponse, ReviewsResponse, ScrapResponse,
 } from './entity';
 import myPageApi from './mypageApiClient';
 
 export const getReviewedShops = async () => myPageApi.get<ReviewedShopsResponse>('/review/shops');
 
-export const getReviews = async (placeId:string) => myPageApi.get<ReviewsResPonse>(`/review/shop/${placeId}`);
+export const getReviews = async (placeId:string) => myPageApi.get<ReviewsResponse>(`/review/shop/${placeId}`);
 
 export const getScraps = async (pageParam:number) => myPageApi.get<ScrapResponse>(`/scraps?cursor=${pageParam}`);
 
@@ -24,6 +24,6 @@ export const patchDefaultImage = async () => myPageApi.patch<PatchProfileImageRe
   },
 });
 
-export const patchNickname = async (nickname:string) => myPageApi.patch<PatchNicknameResposne>('/user/me', { nickname });
+export const patchNickname = async (nickname:string) => myPageApi.patch<PatchNicknameResponse>('/user/me', { nickname });
 
 export const getFollwers = async () => followApi.get<FollowersResponse>('/follow/followers');

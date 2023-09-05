@@ -1,27 +1,26 @@
 import { User } from 'api/user/entity';
 
-export type Shop = {
+export interface Shop {
   shopId: number,
   placeId: string,
   name: string,
   category: string,
+}
 
-};
 export interface ReviewedShopsResponse {
   content: Shop[],
   totalPages: number,
   totalElements: number
 }
 
-export type Review = {
+export interface Review {
   id:number,
   content: string,
   rate: number,
   createdAt:string
+}
 
-};
-
-export interface ReviewsResPonse {
+export interface ReviewsResponse {
   content: Review[]
 }
 
@@ -49,7 +48,7 @@ export interface PatchProfileImageResponse {
   }
 }
 
-export interface PatchNicknameResposne {
+export interface PatchNicknameResponse {
   nickname:string
 }
 
