@@ -17,8 +17,8 @@ function useMarker({ map, filterShops }: MarkerProps) {
   useEffect(() => {
     if (!map || !filterShops) return;
     // 사용량 제한으로, 현재는 목업 데이터로 마커를 찍고 있음
-    // const newMarkers = (filterShops ?? []).map((shop, index) => {
-    const newMarkers = (MARKER ?? []).map((shop, index) => {
+    const newMarkers = (filterShops ?? []).map((shop, index) => {
+    // const newMarkers = (MARKER ?? []).map((shop, index) => {
       const lat = shop?.geometry?.location?.lat;
       const lng = shop?.geometry?.location?.lng;
       if (!lat || !lng) return;
