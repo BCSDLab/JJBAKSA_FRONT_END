@@ -201,7 +201,7 @@ export default function Pin({ placeId }:Props) {
                 </div>
               ))}
           </div>
-          <Link className={styles.comment__write} to="/write" type="button">
+          <Link className={styles.comment__write} to="/search " type="button">
             <Pencil className={styles['container__write--icon']} />
             리뷰 작성하기
           </Link>

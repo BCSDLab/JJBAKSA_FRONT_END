@@ -24,7 +24,6 @@ export default function TopNavigation({ selected, placeId }:Props): JSX.Element 
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
-  console.log(placeId);
 
   const handleToggle = () => {
     if (location.pathname === '/') {

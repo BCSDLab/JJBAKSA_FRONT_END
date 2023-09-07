@@ -2,7 +2,6 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useEffect, useState } from 'react';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import { useLocation } from 'store/location';
-// import Pin from 'pages/Pin';
 import { fetchShops } from 'api/shop';
 import SideNavigation from 'components/common/SideNavigation';
 import BottomNavigation from 'components/common/BottomNavigation';
@@ -51,11 +50,6 @@ export default function Map(): JSX.Element {
     <div>
       {isMobile && <MobileOptions />}
       {!isMobile && <SideNavigation selected={selected} placeId={placeId} />}
-      {/* {selected && (
-      <Pin
-        placeId={placeId}
-      />
-      )} */}
       <div id="map" className={styles.map} />
       {isMobile && <BottomNavigation />}
     </div>
