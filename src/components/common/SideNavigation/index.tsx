@@ -173,7 +173,7 @@ export default function TopNavigation({ selected, placeId }:Props): JSX.Element 
             </button>
           </div>
         </div>
-        {(selected) && <Pin placeId={placeId} />}
+        {(selected && placeId !== '') && <Pin placeId={placeId} />}
       </div>
 
     </div>

@@ -17,6 +17,7 @@ export default function Scrap({ placeId }:Props) {
       setScrapId(scrapList.data.content.find((v) => v.placeId === placeId)?.scrapId || -1);
     }
   }, [placeId, scrapList.data, scrapList.status]);
+
   return (
     <button
       className={styles.shop__bookmark}

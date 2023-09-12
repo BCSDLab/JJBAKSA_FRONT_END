@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { fetchShop } from 'api/shop';
 import { ReactComponent as Star } from 'assets/svg/pin/star.svg';
 import { ReactComponent as Switch } from 'assets/svg/pin/switch-horizontal.svg';
 import { ReactComponent as Report } from 'assets/svg/pin/report.svg';
 import { ReactComponent as Pencil } from 'assets/svg/pin/pencil.svg';
 import { ReactComponent as Empty } from 'assets/svg/pin/empty.svg';
-import {
-  getFollowersReview, getMyReview, latestFollowerReview, latestMyReview,
-} from 'api/review';
+import { ReactComponent as FollowersEmpty } from 'assets/svg/pin/follower_empty.svg';
 import cn from 'utils/ts/classNames';
 import { Link } from 'react-router-dom';
-import { FetchShopResponse } from 'api/shop/entity';
-import { GetReviewResponse, LatestReviewResponse } from 'api/review/entity';
+import { useQueries } from 'react-query';
+import {
+  latestMyReview, latestFollowerReview, getMyReview, getFollowersReview,
+} from 'api/review';
 import styles from './Pin.module.scss';
 import Carousel from './components/Carousel';
 import Scrap from './components/Scrap';
@@ -21,20 +21,21 @@ interface Props {
 }
 
 export default function Pin({ placeId }:Props) {
-  const [loading, setLoading] = useState(false);
   const [sortType, setSortType] = useState<string>('createdAt');
   const [mode, setMode] = useState(1);
-  const [pinInfo, setPinInfo] = useState<FetchShopResponse>();
-  const [myReview, setMyReview] = useState<GetReviewResponse>();
-  const [followersReview, setFollowersReview] = useState<GetReviewResponse>();
-  const [latestMy, setLatestMy] = useState<LatestReviewResponse>();
-  const [latestFollowers, setLatestFollowers] = useState<LatestReviewResponse>();
+  const queries = useQueries([
+    { queryKey: [`pinInfo${placeId}`], queryFn: async () => fetchShop(placeId) },
+    { queryKey: [`latestMy${placeId}`], queryFn: async () => latestMyReview(placeId) },
+    { queryKey: [`latestFollower${placeId}`], queryFn: async () => latestFollowerReview(placeId) },
+    { queryKey: [`myReview${placeId}`], queryFn: async () => getMyReview({ placeId, sort: sortType }) },
+    { queryKey: [`followerReview${placeId}`], queryFn: async () => getFollowersReview({ placeId, sort: sortType }) },
+  ]);
 
   const getRateValue = () => {
-    if (pinInfo?.totalRating
-      && pinInfo?.ratingCount) {
-      return Math.floor((pinInfo?.totalRating || 0)
-        / (pinInfo?.ratingCount || 1)).toFixed(1);
+    if (queries[0].data?.totalRating
+      && queries[0].data?.ratingCount) {
+      return Math.floor((queries[0].data?.totalRating || 0)
+        / (queries[0].data?.ratingCount || 1)).toFixed(1);
     }
     return 0;
   };
@@ -44,39 +45,16 @@ export default function Pin({ placeId }:Props) {
     else setSortType('createdAt');
   };
 
-  useEffect(() => {
-    const getData = async () => {
-      setLoading(false);
-      setPinInfo(await fetchShop(placeId));
-      setLatestMy(await latestMyReview(placeId));
-      setLatestFollowers(await latestFollowerReview(placeId));
-      await setLoading(true);
-    };
-    if (placeId !== '')getData();
-  }, [placeId]);
-
-  useEffect(() => {
-    const getReviews = async () => {
-      setLoading(false);
-      setMyReview(await getMyReview({ placeId, sort: sortType }));
-      setFollowersReview(await getFollowersReview({ placeId, sort: sortType }));
-      await setLoading(true);
-    };
-    if (placeId !== '')getReviews();
-  }, [placeId, sortType]);
-
   return (
     <div className={styles.template}>
-      {loading
-      && (
       <div>
-        <Carousel images={pinInfo?.photos || []} />
+        <Carousel images={queries[0].data?.photos || []} />
         <div className={styles.shop}>
           <div className={styles.shop__title}>
             <span className={styles['shop__title--name']}>
-              {pinInfo?.name}
+              {queries[0].data?.name}
             </span>
-            <span className={styles['shop__title--category']}>{pinInfo?.category}</span>
+            <span className={styles['shop__title--category']}>{queries[0].data?.category}</span>
           </div>
           <div className={styles.shop__detail}>
             <div className={styles['shop__detail--rate']}>
@@ -86,10 +64,10 @@ export default function Pin({ placeId }:Props) {
             <div className={styles['shop__detail--latest']}>
               마지막 리뷰
               {' '}
-              {(latestMy?.lastDate?.replaceAll('-', '/') || '')
-                > (latestFollowers?.lastDate?.replaceAll('-', '/') || '')
-                ? latestMy?.lastDate?.replaceAll('-', '/')
-                : latestFollowers?.lastDate?.replaceAll('-', '/')}
+              {(queries[1].data?.lastDate?.replaceAll('-', '/') || '')
+                > (queries[2].data?.lastDate?.replaceAll('-', '/') || '')
+                ? queries[1].data?.lastDate?.replaceAll('-', '/')
+                : queries[2].data?.lastDate?.replaceAll('-', '/')}
             </div>
           </div>
           <Scrap placeId={placeId} />
@@ -122,8 +100,8 @@ export default function Pin({ placeId }:Props) {
               <Switch />
               {sortType === 'createdAt' ? '최신순' : '별점순'}
             </button>
-            {mode === 1 && (myReview?.content.length !== 0
-              ? myReview?.content.map((item) => (
+            {mode === 1 && (queries[3].data?.content.length !== 0
+              ? queries[3].data?.content.map((item) => (
                 <div className={styles.comment__item} key={item.id}>
                   <div className={styles.comment__info}>
                     <div className={styles.comment__container}>
@@ -141,13 +119,6 @@ export default function Pin({ placeId }:Props) {
                       {`${item.createdAt.slice(3).replaceAll('-', '/')}|`}
                       <Star />
                       {item.rate.toFixed(1)}
-                      {!mode
-                  && (
-                  <button className={styles.comment__report} type="button">
-                    <Report />
-                    신고하기
-                  </button>
-                  )}
                     </div>
                   </div>
                 </div>
@@ -161,8 +132,8 @@ export default function Pin({ placeId }:Props) {
                   </div>
                 </div>
               ))}
-            {mode === 2 && (followersReview?.content.length !== 0
-              ? followersReview?.content.map((item) => (
+            {mode === 2 && (queries[4].data?.content.length !== 0
+              ? queries[4].data?.content.map((item) => (
                 <div className={styles.comment__item} key={item.id}>
                   <div className={styles['comment__item--profile']}>프로필</div>
                   <div className={styles.comment__info}>
@@ -181,23 +152,19 @@ export default function Pin({ placeId }:Props) {
                       {`${item.createdAt.slice(3).replaceAll('-', '/')}|`}
                       <Star />
                       {item.rate.toFixed(1)}
-                      {!mode && (
                       <button className={styles.comment__report} type="button">
                         <Report />
                         신고하기
                       </button>
-                      )}
                     </div>
                   </div>
                 </div>
               )) : (
                 <div className={styles.comment__empty}>
-                  <Empty />
                   <div className={styles['comment__empty--text']}>
-                    오늘 다녀오셨나요?
-                    {'\n'}
-                    리뷰를 한번 작성해보아요!
+                    작성한 리뷰가 없어요.
                   </div>
+                  <FollowersEmpty />
                 </div>
               ))}
           </div>
@@ -207,7 +174,6 @@ export default function Pin({ placeId }:Props) {
           </Link>
         </div>
       </div>
-      )}
     </div>
   );
 }
