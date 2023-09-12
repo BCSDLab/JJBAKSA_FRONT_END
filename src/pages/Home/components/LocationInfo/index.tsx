@@ -12,6 +12,7 @@ export default function LocationInfo({ address, onClick }: LocationInfoProps): J
       type="button"
       className={styles['map-container']}
       onClick={onClick}
+      disabled
     >
       {address ? (
         <div className={styles['map-container__text']}>{address}</div>
