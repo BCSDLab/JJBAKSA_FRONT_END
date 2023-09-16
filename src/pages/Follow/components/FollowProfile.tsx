@@ -15,6 +15,7 @@ import FollowReview from './FollowReview';
 import useDeleteFollow from '../hooks/useDeleteFollow';
 import useRequestAndUpdate from '../hooks/useRequestAndUpdate';
 import useGetFollowerReview from '../hooks/useGetFollowerReview';
+import useGetFollowerReviewCount from '../hooks/useGetFollowerReviewCount';
 
 const useDeleteState = () => {
   const [canDelete, setCanDelete] = useState(true);
@@ -39,7 +40,7 @@ export default function FollowProfile() {
   const { isMobile } = useMediaQuery();
   const { del, canDelete } = useDeleteState();
   const request = useRequestAndUpdate();
-  // const count = useGetFollowerReviewCount(state.followId);
+  const reviewCount = useGetFollowerReviewCount(state.followId);
 
   useEffect(() => {
     if (isMobile) setIsList();
@@ -73,6 +74,13 @@ export default function FollowProfile() {
           </div>
         </div>
         <div className={style.set}>리뷰</div>
+      </div>
+      <div className={style.count}>
+        총
+        {' '}
+        {reviewCount && reviewCount.data.count}
+        {' '}
+        개의 리뷰
       </div>
       <div className={style.type}>
         <button type="button" onClick={() => setIsCheckerboard()} className={style.type__button}>
