@@ -54,7 +54,6 @@ export default function FollowProfile() {
             <div className={style.user__info}>
               <div>
                 <span className={cn({ [style['user__info--span']]: true })}>{state.nickname}</span>
-                <span>팔로워 count</span>
               </div>
               <span>
                 @
