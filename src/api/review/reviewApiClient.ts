@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { API_PATH } from 'config/constants';
 
-const searchApi = axios.create({
-  baseURL: `${API_PATH}`,
+const reviewApi = axios.create({
+  baseURL: `${API_PATH}/review`,
   timeout: 2000,
 });
 
-searchApi.interceptors.request.use(
+reviewApi.interceptors.request.use(
   (config) => {
     const accessToken = sessionStorage.getItem('accessToken');
     // eslint-disable-next-line no-param-reassign
@@ -15,4 +15,4 @@ searchApi.interceptors.request.use(
   },
 );
 
-export default searchApi;
+export default reviewApi;
