@@ -32,7 +32,7 @@ export default function Follower({
         <button
           type="button"
           className={cn({ [style['follower__content--nickname']]: true })}
-          onClick={() => navigate(`${id}`, {
+          onClick={() => followedType === 'FOLLOWED' && navigate(`${id}`, {
             state: {
               followId: id,
               nickname,
