@@ -36,7 +36,7 @@ export default function BookMark() {
               && (
               <div className={styles['not-exist']}>
                 <span className={styles['not-exist__phrase']}>
-                  <p>둥록된 북마크가 없어요.</p>
+                  <p>등록된 북마크가 없어요.</p>
                   <p>새로운 음식점을 저장해 보세요!</p>
                 </span>
                 <img src={notExist} alt="not-exist" className={styles['not-exist__image']} />
