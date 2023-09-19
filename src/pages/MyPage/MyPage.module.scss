@@ -4,7 +4,7 @@
   width: 68%;
   max-width: 575px;
   margin: 0 auto;
-  margin-top: 50px;
+  padding-top: 50px;
 
   @include media.media-breakpoint-down(mobile) {
     position: fixed;
