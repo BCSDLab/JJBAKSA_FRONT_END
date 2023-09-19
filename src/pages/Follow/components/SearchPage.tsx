@@ -5,7 +5,7 @@ import FollowList from './FollowList';
 export default function SearchPage({ data }: SearchPageInfo) {
   const auth = useAuth();
   const myFriends: FollowerInfo[] = data.filter((follower) => follower.followedType === 'FOLLOWED');
-  const newFriends: FollowerInfo[] = data.filter((follower) => follower.followedType !== 'FOLLOWED').filter((follower) => follower.account !== auth?.account);
+  const newFriends: FollowerInfo[] = data.filter((follower) => follower.followedType === 'NONE').filter((follower) => follower.account !== auth?.account);
 
   return (
     <div>

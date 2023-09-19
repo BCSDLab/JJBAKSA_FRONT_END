@@ -1,32 +1,44 @@
 import {
-  FollowListParams,
-  GetFollowListParams,
-  CheckSendedFollowParams,
-  DeleteFollowerParams,
   PostFollowerParams,
-  SearchUsersParams,
   AcceptFollowParams,
   GetFollowListResponse,
   SearchUsersResponse,
+  CancleFollowParams,
+  RejectFollowParams,
+  SentOrReceivedFollowResponse,
+  DeleteFollowerParams,
+  GetFollowReviewResponse,
+  GetDetailReviewResponse,
+  GetFollowerReviewCountParam,
 } from './entity';
 import followApi from './followApiClient';
 
-export const followList = (param: FollowListParams) => followApi.get(`/follow/followers?${param.cursor}&pageSize=${param.pageSize}`);
+export const followList = (pageParam: string) => followApi.get<GetFollowListResponse>(`/follow/followers?pageSize=10&${pageParam}`);
 
-export const getFollowList = (param: GetFollowListParams) => followApi.get<GetFollowListResponse>(`/follow/requests/receive?page=${param.page}&pageSize=${param.pageSize}`);
+export const checkReceivedFollow = (pageParam: number) => followApi.get<SentOrReceivedFollowResponse>(`/follow/requests/receive?page=${pageParam}&pageSize=20`);
 
-export const checkSendedFollow = (param: CheckSendedFollowParams) => followApi.get(`/follow/requests/send?page=${param.page}&pageSize=${param.pageSize}`);
+export const checkSentFollow = (pageParam: number) => followApi.get<SentOrReceivedFollowResponse>(`/follow/requests/send?page=${pageParam}&pageSize=10`);
 
 export const requestFollow = (param: PostFollowerParams) => followApi.post('/follow/requests', {
   userAccount: param.userAccount,
 });
 
-export const deleteFollower = (param: DeleteFollowerParams) => followApi.delete('/follow/follwers', {
-  data: {
-    userAccount: param.userAccount,
-  },
-});
-
 export const acceptFollow = (param: AcceptFollowParams) => followApi.post(`/follow/requests/${param.id}/accept`);
 
-export const searchUsers = (param: SearchUsersParams) => followApi.get<SearchUsersResponse>(`/users?keyword=${param.keyword}`);
+export const searchUsers = (keyword: string, pageParam: string) => followApi.get<SearchUsersResponse>(`/users?keyword=${keyword}&${pageParam}&pageSize=10`);
+
+export const cancelFollow = (param: CancleFollowParams) => followApi.delete(`/follow/requests/${param.id}/cancel`);
+
+export const rejectFollow = (param: RejectFollowParams) => followApi.delete(`/follow/requests/${param.id}/reject`);
+
+export const deleteFollow = (param: DeleteFollowerParams) => followApi.delete('/follow/followers', {
+  data: { userAccount: param.userAccount },
+});
+
+export const recentlyActiveFollow = () => followApi.get<GetFollowListResponse>('/recently-active-followers?pageSize=15');
+
+export const getFollowReview = (id: number, pageParam: string) => followApi.get<GetFollowReviewResponse>(`/review/follower/${id}/shops?size=9&${pageParam}`);
+
+export const getDetailReview = (followId: number, placeId: string, pageParam: number) => followApi.get<GetDetailReviewResponse>(`/review/follower/${followId}/shop/${placeId}?${pageParam}`);
+
+export const getFollowerReviewCount = (param: GetFollowerReviewCountParam) => followApi.get(`/review/follower/${param.followId}/count`);
