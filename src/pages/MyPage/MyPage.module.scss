@@ -26,7 +26,8 @@
 
 .bottom-sheet {
   position: fixed;
-  top: 50%;
+  width: 300px;
+  bottom: -300px;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 500px;
@@ -34,10 +35,11 @@
   border-radius: 10% 10% 0 0;
 
   @media (max-height: 500px) {
-    height: 300px;
+    height: 400px;
   }
 
   @include media.media-breakpoint-down(mobile) {
-    position: relative;
+    bottom: -300px;
+    width: 100%;
   }
 }
