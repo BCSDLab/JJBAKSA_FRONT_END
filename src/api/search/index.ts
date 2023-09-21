@@ -2,6 +2,8 @@ import {
   FetchShopsResponse,
   FetchTrendingsResponse,
   ShopsParams,
+  FetchAutoCompleteParams,
+  FetchAutoCompleteResponse,
 } from './entity';
 import searchApi from './searchApiClient';
 
@@ -18,4 +20,14 @@ export const fetchShops = (params: ShopsParams) => {
   };
 
   return searchApi.post<FetchShopsResponse>(url, requestBody);
+};
+
+export const fetchAutoComplete = (params: FetchAutoCompleteParams) => {
+  const { query, location } = params;
+  const url = `/shops/auto-complete?query=${query}`;
+  const requestBody = {
+    x: location?.latitude,
+    y: location?.longitude,
+  };
+  return searchApi.post<FetchAutoCompleteResponse>(url, requestBody);
 };
