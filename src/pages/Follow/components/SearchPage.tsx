@@ -1,9 +1,10 @@
 import { useAuth } from 'store/auth';
+import { User } from 'api/user/entity';
 import { FollowerInfo, SearchPageInfo } from '../static/entity';
 import FollowList from './FollowList';
 
 export default function SearchPage({ data }: SearchPageInfo) {
-  const auth = useAuth();
+  const auth = useAuth() as User;
   const myFriends: FollowerInfo[] = data.filter((follower) => follower.followedType === 'FOLLOWED');
   const newFriends: FollowerInfo[] = data.filter((follower) => follower.followedType !== 'FOLLOWED').filter((follower) => follower.account !== auth?.account);
 

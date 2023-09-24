@@ -26,6 +26,7 @@ $back: white;
     font-size: 16px;
     font-weight: bold;
     font-weight: 500;
+    padding-right: 30px;
   }
 }
 
@@ -39,12 +40,6 @@ $back: white;
     display: flex;
     font-size: 14px;
     margin: 0 290px 16.5px 17px;
-    color: $title;
-  }
-
-  &__id {
-    display: flex;
-    font-size: 14px;
     color: $title;
   }
 
@@ -109,6 +104,12 @@ $back: white;
     font-size: 14px;
     color: $title;
   }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
 
 .link {
@@ -125,19 +126,20 @@ $back: white;
   &__log-out {
     color: $default;
     display: flex;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     margin: 0 auto 10px 16px;
     border: none;
     background-color: $back;
     text-decoration: underline;
+    text-decoration-color: $back;
     cursor: pointer;
   }
 
   &__delete-account {
     font-size: 14px;
     margin: 0 auto 42px 16px;
-    color: $default;
+    color: #666666;
     text-decoration-line: none;
   }
 }
