@@ -13,7 +13,7 @@ import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
 import FollowPage from 'pages/Follow';
-import Setting from 'pages/Setting/UserSetting';
+import Setting from 'pages/Setting';
 import IdChange from 'pages/Setting/UserSetting/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
 import Withdrawal from 'pages/Setting/Withdrawal';
