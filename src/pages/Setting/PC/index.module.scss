@@ -1,0 +1,154 @@
+$title: #ff7f23;
+
+.formContainer {
+  padding-right: 100px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.selectContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__mark {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    border: none;
+    background-color: $title;
+    opacity: 0;
+
+    &--appear {
+      opacity: 1;
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: transparent;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 10px;
+    font-size: 18px;
+    padding-left: 10px;
+    color: #c4c4c4;
+
+    &--selected {
+      color: $title;
+    }
+  }
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: calc(100vh - 80px);
+}
+
+.setting {
+  position: relative;
+  bottom: 17vh;
+  padding-bottom: 120px;
+  right: 100px;
+
+  &__title {
+    font-size: 32px;
+    color: $title;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-right: 283.6px;
+}
+
+.account {
+  margin-top: 20px;
+
+  &__input {
+    width: 252px;
+    height: 30px;
+    border-radius: 18px;
+    border: none;
+    background-color: #eeeeee;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    padding-left: 10px;
+  }
+}
+
+.passwordContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.password {
+  width: 252px;
+  height: 30px;
+  border-radius: 18px;
+  border: 1px solid #c4c4c4;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding-left: 10px;
+
+  &__error {
+    border-radius: 18px;
+    border: 1px solid $title;
+  }
+}
+
+.button {
+  top: calc(688px - 80px);
+  width: 106px;
+  height: 29px;
+  border: 1px solid $title;
+  background-color: white;
+  border-radius: 20px;
+  color: $title;
+  font-weight: 600px;
+  box-shadow: 2px 3px 12px 1px #0000001a;
+  margin-top: 7px;
+}
+
+.blindBox {
+  align-items: center;
+  justify-content: center;
+
+  &__button {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    margin-top: 5px;
+    margin-left: -35px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.errorMessage {
+  color: $title;
+  font-size: 14px;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 50px;
+  width: 331.621px;
+}
