@@ -1,6 +1,6 @@
 .template {
   width: 726px;
-  height: 418px;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,6 +8,12 @@
 
 .content {
   width: 172px;
-  height: 40px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__svg {
+    margin-top: 8vh;
+  }
 }
