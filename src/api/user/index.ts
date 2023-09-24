@@ -10,6 +10,8 @@ import {
   SendFindEmailParams,
   GetAccountParams,
   FindPasswordParams,
+  Users,
+  CheckPasswordParams,
 } from './entity';
 import userApi from './userApiClient';
 
@@ -22,7 +24,7 @@ export const login = async (param: LoginParams) => {
   return { data };
 };
 
-export const getMe = () => userApi.get<User>('/me');
+export const getMe = () => userApi.get<Users>('/me');
 
 export const withdrawUser = () => userApi.delete<User>('/me');
 
@@ -39,3 +41,5 @@ export const findPassowrd = (param: FindPasswordParams) => userApi.post('/passwo
   code: param.code,
   email: param.email,
 });
+
+export const checkPassword = (param: CheckPasswordParams) => userApi.post(`/check-password?password=${param.password}`);
