@@ -3,7 +3,6 @@ import img from 'assets/images/search/not-found-img.jpeg';
 
 export default function NotFoundPage() {
   return (
-  // 전체 페이지를 이전에 건색 창이랑 동일하게 진행하자.
     <section>
       <div className={styles['not-found-page__container']}>
         <div className={styles['not-found-page__container__title']}>

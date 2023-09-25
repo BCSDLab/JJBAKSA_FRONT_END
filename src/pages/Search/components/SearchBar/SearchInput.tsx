@@ -7,7 +7,6 @@ interface Props {
   text: string,
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
-// 여기서 검색을 눌렀는데 이제 keystring을 넣었는데 값이 없으면 4o4로 이동
 export default function SearchInput({
   text, onChange,
 }: Props) {
@@ -47,6 +46,3 @@ export default function SearchInput({
     </label>
   );
 }
-
-// 여기가 검색어 입력하는 직접적인 부분 여기서 post를 또해야해.
-//  const { isFetching, data: shops } = useFetchShops(keyword ?? '');

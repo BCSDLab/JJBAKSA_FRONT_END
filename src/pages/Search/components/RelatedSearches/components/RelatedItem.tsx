@@ -20,5 +20,3 @@ export default function RelatedItem({ item }: Props) {
     </Link>
   );
 }
-
-// 여기가 연관 검색어 부분이다.
