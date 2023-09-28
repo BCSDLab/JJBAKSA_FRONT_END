@@ -1,52 +1,125 @@
-import { ReactComponent as Write } from 'assets/svg/inquiry/write.svg';
-import usePostList from 'pages/Post/hooks/usePostList';
 import { useState } from 'react';
-import Pagination from 'components/Pagination';
-import Datatable from 'components/DataTable';
-import MyInquiry from 'components/MyInquiry';
+import { Link } from 'react-router-dom';
+import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
+import usePostList from 'pages/Post/hooks/usePostList';
+import SearchInput from './components/SearchBar/SearchInput';
+import Pagination from './components/Pagination';
+import Datatable from './components/DataTable/DataTable';
+// import MyInquiry from './components/MyInquiry/MyInquiry';
 import styles from './Inquiry.module.scss';
 
+const useSearchForm = () => {
+  const [text, setText] = useState('');
+  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+    setText((e.target.value));
+  };
+
+  return {
+    text, handleChange,
+  };
+};
+
 export default function Inquiry(): JSX.Element {
+  const { text, handleChange } = useSearchForm();
   const [page, setPage] = useState(1);
   const { data: postData } = usePostList(page);
+  const [selectedTab, setSelectedTab] = useState('all');
   const title = '문의하기';
-  const subTitle = '쩝쩝박사에게 궁금한 점이 있나요?';
+  const inquireLinkTitle = '문의하러 가기';
+
+  function handleModClick(mod: string) {
+    setSelectedTab(mod);
+  }
 
   return (
-    <div>
-      <div className={styles.container}>
-        {
-          postData && (
-            <div>
-              <Datatable
-                data={postData.content}
-                title={title}
-                subTitle={subTitle}
-                TableTopButton={MyInquiry}
-              />
-              <Pagination
-                totalPage={postData.totalPages}
-                setPage={setPage}
-                page={page}
-              />
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <div className={styles['nav__side-navigation']}>
+          <h1 className={styles.nav__title}>{title}</h1>
+
+          <div className={styles['nav__mod-items']}>
+            <div
+              className={`${styles['nav__mod-allinquiries']} ${selectedTab === 'all' ? 'selected' : ''}`}
+              onClick={() => handleModClick('all')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleModClick('mod');
+                  console.log(selectedTab);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
+              전체 문의 내역
             </div>
-          )
-        }
+            <div
+              className={`${styles['nav__mod-myinquiries']} ${selectedTab === 'my' ? 'selected' : ''}`}
+              onClick={() => handleModClick('my')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleModClick('my');
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
+              <Link to="/myinquiry" className={styles.link}>
+                <div className={styles.title}>
+                  나의 문의 내역
+                </div>
+              </Link>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className={styles.nav__inquire}
+            // onClick={() => navigate('/signup', { state: { termsCheck: true } })}
+          >
+            <span>
+              {inquireLinkTitle}
+            </span>
+            <span>
+              <WriteIcon />
+            </span>
+          </button>
+
+          {/* <header className={styles.header}>
+            {MyInquiry && <MyInquiry />}
+          </header> */}
+        </div>
+
+        <div className={styles['main__search-and-data']}>
+          <div className={styles['main__search-bar']}>
+            <SearchInput
+              onChange={handleChange}
+              text={text}
+            />
+          </div>
+
+          {
+            postData && (
+              <div className={styles['main__data-table']}>
+                <Datatable
+                  data={postData.content}
+                />
+              </div>
+            )
+          }
+
+          {
+            postData && (
+              <div className={styles['main__foot-pagination']}>
+                <Pagination
+                  totalPage={postData.totalPages}
+                  setPage={setPage}
+                  page={page}
+                />
+              </div>
+            )
+          }
+        </div>
       </div>
-      <nav className={styles.nav}>
-        <div className={styles['nav__search-block']}>
-          <input placeholder="제목 혹은 작성자를 검색해보세요!" className={styles.nav__input} />
-          <input type="submit" value="찾기" className={styles.nav__button} />
-        </div>
-        <div className={styles['nav__post-button']}>
-          <div className={styles.nav__post}>
-            글쓰기
-          </div>
-          <div className={styles['nav__post-svg']}>
-            <Write />
-          </div>
-        </div>
-      </nav>
     </div>
   );
 }
