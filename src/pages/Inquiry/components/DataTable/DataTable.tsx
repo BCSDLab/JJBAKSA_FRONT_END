@@ -1,43 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './DataTable.module.scss';
 
 interface Props {
   data: {
-    title: string;
+    answer: string;
     content: string;
-    boardType: string;
     createdAt: string;
+    createdBy: string;
+    id: number;
+    isSecreted: number;
+    title: string;
   }[];
 }
 
 export default function DataTable({ data }: Props): JSX.Element {
-  console.log(data);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+
   return (
     <div>
-      <div className={styles.body}>
-        s
-      </div>
-      {/* <div>
-        {data.map((res) => (
-          <div key={res.title} className={styles.body__list}>
-            <div className={styles.body__element}>
-              {res.content}
-            </div>
-            <div className={styles.body__element}>
-              {res.title}
-            </div>
-            <div className={styles.body__element}>
-              {res.boardType}
-            </div>
-            <div className={styles.body__element}>
-              {res.createdAt}
-            </div>
-            <div className={styles.body__element}>
-              {res.content}
-            </div>
+      {data.map((item) => (
+        <div
+          key={item.id}
+          className={styles.body__list}
+          onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
+          style={{ maxHeight: expandedId === item.id ? 'none' : '97px' }}
+        >
+          <div className={styles.body__element}>
+            <p>{item.title}</p>
+            <span>{new Date(item.createdAt).toLocaleDateString()} | {item.createdBy}</span>
           </div>
-        ))}
-      </div> */}
+        </div>
+      ))}
     </div>
   );
 }

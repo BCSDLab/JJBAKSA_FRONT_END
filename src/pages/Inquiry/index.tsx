@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
-import usePostList from 'pages/Post/hooks/usePostList';
+import useInquiryList from 'pages/Inquiry/hooks/useInquiryList';
 import SearchInput from './components/SearchBar/SearchInput';
 import Pagination from './components/Pagination';
-import Datatable from './components/DataTable/DataTable';
+import DataTable from './components/DataTable/DataTable';
 // import MyInquiry from './components/MyInquiry/MyInquiry';
 import styles from './Inquiry.module.scss';
 
@@ -22,7 +22,7 @@ const useSearchForm = () => {
 export default function Inquiry(): JSX.Element {
   const { text, handleChange } = useSearchForm();
   const [page, setPage] = useState(1);
-  const { data: postData } = usePostList(page);
+  const { data: inquiryData } = useInquiryList(null, 0);
   const [selectedTab, setSelectedTab] = useState('all');
   const title = '문의하기';
   const inquireLinkTitle = '문의하러 가기';
@@ -98,20 +98,20 @@ export default function Inquiry(): JSX.Element {
           </div>
 
           {
-            postData && (
+            inquiryData && (
               <div className={styles['main__data-table']}>
-                <Datatable
-                  data={postData.content}
+                <DataTable
+                  data={inquiryData.content}
                 />
               </div>
             )
           }
 
           {
-            postData && (
+            inquiryData && (
               <div className={styles['main__foot-pagination']}>
                 <Pagination
-                  totalPage={postData.totalPages}
+                  totalPage={inquiryData.totalPages}
                   setPage={setPage}
                   page={page}
                 />

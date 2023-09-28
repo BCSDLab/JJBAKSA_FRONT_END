@@ -3,75 +3,39 @@ $highlight: #ff7f23;
 $back: white;
 $normal: #666666;
 
-.header {
-  display: flex;
-  justify-content: space-between;
-
-  &__title {
-    color: $highlight;
-    font-size: 32px;
-    font-weight: 700;
-    margin: 156px auto 10px;
-  }
-
-  &__sub-title {
-    color: $normal;
-    font-size: 16px;
-    font-weight: 400;
-    margin: 0 auto 40px;
-  }
-
-  &__my-inquiry {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid;
-    border-color: $highlight;
-    border-radius: 10px;
-    width: 178px;
-    height: 36px;
-    color: $highlight;
-    margin-top: 190px;
-    cursor: pointer;
-  }
-
-  &__link {
-    text-decoration: none;
-  }
-
-  &__move {
-    margin-left: 9px;
-  }
-}
-
 .body {
-  border: 1px;
-  border-top-color: $highlight;
-  border-bottom-color: #eeeeee;
-  border-top-style: solid;
-  border-bottom-style: solid;
-
-  &__list-title {
-    display: grid;
-    place-items: center;
-    color: $normal;
-    grid-template-columns: 200px 400px 150px 150px 150px;
-    grid-template-rows: 37px;
-  }
-
   &__list {
-    display: grid;
-    place-items: center;
-    grid-template-columns: 200px 400px 150px 150px 150px;
-    width: 1048px;
-    border: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    padding: 10px;
+    max-height: 97px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
   }
 
   &__element {
-    display: grid;
-    place-items: center;
-    grid-template-rows: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    p {
+      font-size: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    span {
+      font-size: 14px;
+      color: $normal;
+      margin-top: 4px;
+    }
   }
 }
