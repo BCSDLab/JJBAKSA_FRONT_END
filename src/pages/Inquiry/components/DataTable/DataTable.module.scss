@@ -3,8 +3,8 @@ $highlight: #ff7f23;
 $back: white;
 $normal: #666666;
 
-.body {
-  &__list {
+.block {
+  &__body {
     border-bottom: 1px solid #eeeeee;
     padding: 10px;
     max-height: 97px;
@@ -12,30 +12,60 @@ $normal: #666666;
     transition: max-height 0.3s ease-in-out;
     cursor: pointer;
 
-    &:hover {
-      background-color: #f0f0f0;
-    }
-  }
-
-  &__element {
     display: flex;
     flex-direction: column;
     align-items: start;
+    position: relative;
 
-    p {
-      font-size: 16px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
+    &:hover {
+      background-color: #f0f0f0;
     }
 
-    span {
-      font-size: 14px;
-      color: $normal;
-      margin-top: 4px;
+    &-extender {
+      position: absolute;
+      top: 14px;
+      right: 20px;
+
+      & > * {
+        transition: transform 0.15s ease-in-out;
+      }
     }
   }
+
+  &__title {
+    font-size: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__info {
+    font-size: 14px;
+    color: $normal;
+    margin-top: 4px;
+  }
+
+  &__answerBox {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #eeeeee;
+    border-radius: 3px;
+    margin-top: 8px;
+    padding: 16px;
+    font-size: 16px;
+
+    &-noAnswer {
+      opacity: 0.3;
+    }
+  }
+}
+
+.noData {
+  color: $normal;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
 }

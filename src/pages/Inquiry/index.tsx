@@ -37,7 +37,7 @@ export default function Inquiry(): JSX.Element {
         <div className={styles['nav__side-navigation']}>
           <h1 className={styles.nav__title}>{title}</h1>
 
-          <div className={styles['nav__mod-items']}>
+          <div className={styles['nav__link-inquiry']}>
             <div
               className={`${styles['nav__mod-allinquiries']} ${selectedTab === 'all' ? 'selected' : ''}`}
               onClick={() => handleModClick('all')}
@@ -53,7 +53,7 @@ export default function Inquiry(): JSX.Element {
               전체 문의 내역
             </div>
             <div
-              className={`${styles['nav__mod-myinquiries']} ${selectedTab === 'my' ? 'selected' : ''}`}
+              className={`${styles['nav__link-myinquiry']} ${selectedTab === 'my' ? 'selected' : ''}`}
               onClick={() => handleModClick('my')}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -63,8 +63,8 @@ export default function Inquiry(): JSX.Element {
               role="button"
               tabIndex={0}
             >
-              <Link to="/myinquiry" className={styles.link}>
-                <div className={styles.title}>
+              <Link to="/myinquiry">
+                <div>
                   나의 문의 내역
                 </div>
               </Link>
@@ -73,7 +73,7 @@ export default function Inquiry(): JSX.Element {
 
           <button
             type="button"
-            className={styles.nav__inquire}
+            className={styles['nav__link-inquire']}
             // onClick={() => navigate('/signup', { state: { termsCheck: true } })}
           >
             <span>
@@ -89,8 +89,8 @@ export default function Inquiry(): JSX.Element {
           </header> */}
         </div>
 
-        <div className={styles['main__search-and-data']}>
-          <div className={styles['main__search-bar']}>
+        <div className={styles['search-data-pagination']}>
+          <div className={styles['search-bar']}>
             <SearchInput
               onChange={handleChange}
               text={text}
@@ -99,7 +99,7 @@ export default function Inquiry(): JSX.Element {
 
           {
             inquiryData && (
-              <div className={styles['main__data-table']}>
+              <div className={styles['data__data-table']}>
                 <DataTable
                   data={inquiryData.content}
                 />
@@ -109,7 +109,7 @@ export default function Inquiry(): JSX.Element {
 
           {
             inquiryData && (
-              <div className={styles['main__foot-pagination']}>
+              <div className={styles.data__pagination}>
                 <Pagination
                   totalPage={inquiryData.totalPages}
                   setPage={setPage}

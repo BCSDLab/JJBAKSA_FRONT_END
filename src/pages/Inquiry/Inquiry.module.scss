@@ -35,7 +35,7 @@ $disabled: #c4c4c4;
     margin: 160px 0 52px 0;
   }
 
-  &__mod-items {
+  &__link-inquiry {
     padding-top: 17px;
     margin-left: 16px;
 
@@ -52,7 +52,7 @@ $disabled: #c4c4c4;
   }
 
 
-  &__inquire {
+  &__link-inquire {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,28 +80,27 @@ $disabled: #c4c4c4;
   }
 }
 
-.main {
-  &__search-and-data {
-    width: 720px;
-    display: flex;
-    flex-direction: column; // 내부 요소들을 세로로 배열합니다.
-  }
 
-  &__search-bar {
-    border-bottom: 1px solid #ff7f23;
-    width: 720px;
-    height: 252px;
-    margin-left: -1px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: end;
-  }
+.search-data-pagination {
+  width: 720px;
+  display: flex;
+  flex-direction: column; // 내부 요소들을 세로로 배열합니다.
+}
 
-  &__data-table {
-    width: 720px;
-    height: 252px;
-  }
+.search-bar {
+  border-bottom: 1px solid #ff7f23;
+  width: 720px;
+  height: 252px;
+  margin-left: -1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+}
+
+.data-table {
+  width: 720px;
+  height: 252px;
 }
 
 // .container {
