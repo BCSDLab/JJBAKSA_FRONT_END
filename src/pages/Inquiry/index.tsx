@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
-import useInquiryList from 'pages/Inquiry/hooks/useInquiryList';
 import SearchInput from './components/SearchBar/SearchInput';
-import Pagination from './components/Pagination';
 import DataTable from './components/DataTable/DataTable';
 // import MyInquiry from './components/MyInquiry/MyInquiry';
 import styles from './Inquiry.module.scss';
@@ -21,8 +19,6 @@ const useSearchForm = () => {
 
 export default function Inquiry(): JSX.Element {
   const { text, handleChange } = useSearchForm();
-  const [page, setPage] = useState(1);
-  const { data: inquiryData } = useInquiryList(null, 0);
   const [selectedTab, setSelectedTab] = useState('all');
   const title = '문의하기';
   const inquireLinkTitle = '문의하러 가기';
@@ -30,6 +26,33 @@ export default function Inquiry(): JSX.Element {
   function handleModClick(mod: string) {
     setSelectedTab(mod);
   }
+
+  // useEffect(() => { // DataTable 스크롤 시 linear-gradient 생성
+  //   const dataDiv = document.querySelector('.data');
+  //   const dataTable = document.querySelector('.data__data-table');
+  //   console.log(dataDiv);
+  //   console.log(dataTable);
+
+  //   function handleScroll() {
+  //     if (dataDiv) {
+  //       if (dataTable && dataTable.scrollTop > 0) {
+  //         dataDiv.classList.add('scrolled');
+  //       } else {
+  //         dataDiv.classList.remove('scrolled');
+  //       }
+  //     }
+  //   }
+
+  //   if (dataTable) {
+  //     dataTable.addEventListener('scroll', handleScroll);
+  //   }
+
+  //   return () => {
+  //     if (dataTable) {
+  //       dataTable.removeEventListener('scroll', handleScroll);
+  //     }
+  //   };
+  // }, [inquiryData]);
 
   return (
     <div className={styles.container}>
@@ -89,7 +112,7 @@ export default function Inquiry(): JSX.Element {
           </header> */}
         </div>
 
-        <div className={styles['search-data-pagination']}>
+        <div className={styles['search-data']}>
           <div className={styles['search-bar']}>
             <SearchInput
               onChange={handleChange}
@@ -97,27 +120,11 @@ export default function Inquiry(): JSX.Element {
             />
           </div>
 
-          {
-            inquiryData && (
-              <div className={styles['data__data-table']}>
-                <DataTable
-                  data={inquiryData.content}
-                />
-              </div>
-            )
-          }
-
-          {
-            inquiryData && (
-              <div className={styles.data__pagination}>
-                <Pagination
-                  totalPage={inquiryData.totalPages}
-                  setPage={setPage}
-                  page={page}
-                />
-              </div>
-            )
-          }
+          <div className={styles.data}>
+            <div className={styles['data__data-table']}>
+              <DataTable />
+            </div>
+          </div>
         </div>
       </div>
     </div>
