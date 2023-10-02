@@ -10,13 +10,9 @@ interface Props {
   text: string,
 }
 
-interface ShopData {
-  query: string[];
-}
-
 export default function RelatedSearches({ text }: Props) {
   const isSearching = useSearchingMode();
-  const { query: auto } = useFetchAutoComplete(text ?? '') as unknown as ShopData;
+  const { query: auto } = useFetchAutoComplete(text ?? '');
   const [toggle, setToggle] = useState(false);
   const clickToggle = () => {
     setToggle(!toggle);

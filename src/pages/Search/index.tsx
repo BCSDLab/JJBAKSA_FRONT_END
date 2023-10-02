@@ -24,7 +24,6 @@ export default function Search(): JSX.Element {
   const { text, handleChange } = useSearchForm();
   const isSearching = useSearchingMode();
   const { isMobile } = useMediaQuery();
-  console.log('test', text);
   return (
     <div>
       <div className={styles.search}>
