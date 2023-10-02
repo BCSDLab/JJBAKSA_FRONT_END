@@ -24,6 +24,10 @@
   left: 612px;
   z-index: 1;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   &__wrapper {
     text-decoration-line: none;
     color: black;
