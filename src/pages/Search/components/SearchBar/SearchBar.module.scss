@@ -89,7 +89,7 @@
     left: 0;
     bottom: 0;
     width: 30px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background: linear-gradient(to right, rgba(255 255 255 / 100%), rgba(255 255 255 / 0%));
     backdrop-filter: blur(0.1px);
     pointer-events: none;
     z-index: 2;
@@ -102,7 +102,7 @@
     right: 0;
     bottom: 0;
     width: 30px;
-    background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    background: linear-gradient(to left, rgba(255 255 255 / 100%), rgba(255 255 255 / 0%));
     backdrop-filter: blur(0.1px);
     pointer-events: none;
     z-index: 2;
