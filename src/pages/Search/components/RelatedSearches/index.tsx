@@ -2,7 +2,7 @@ import cn from 'utils/ts/classNames';
 import styles from 'pages/Search/components/RelatedSearches/RelatedSearches.module.scss';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import useFetchAutoComplete from 'pages/SearchDetails/hooks/useFetchAutoComplete';
-import { useState } from 'react';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import RelatedItem from './components/RelatedItem';
 import ToggleButton from './components/ToggleButton';
 
@@ -13,10 +13,7 @@ interface Props {
 export default function RelatedSearches({ text }: Props) {
   const isSearching = useSearchingMode();
   const { query: auto } = useFetchAutoComplete(text ?? '');
-  const [toggle, setToggle] = useState(false);
-  const clickToggle = () => {
-    setToggle(!toggle);
-  };
+  const [isActive, , , toggle] = useBooleanState(false);
 
   return (
     <div className={styles.search}>
@@ -26,11 +23,11 @@ export default function RelatedSearches({ text }: Props) {
       })}
       >
         <div className={styles['search-related-list__autoController']}>
-          <div className={`${styles['search-related-list__autoButtonTitle']} ${toggle ? styles.active : ''}`}>
+          <div className={`${styles['search-related-list__autoButtonTitle']} ${isActive ? styles.active : ''}`}>
             자동완성
           </div>
           <div className={styles['search-related-list__toggleButton']}>
-            <ToggleButton onClick={clickToggle} toggle={toggle} />
+            <ToggleButton onClick={toggle} isActive={isActive} />
           </div>
         </div>
         {
