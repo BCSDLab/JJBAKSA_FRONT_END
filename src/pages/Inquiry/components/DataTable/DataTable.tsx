@@ -9,10 +9,13 @@ import useInquiryList from 'pages/Inquiry/hooks/useInquiryList';
 import { InquiryContent } from 'api/inquiry/entity';
 import styles from './DataTable.module.scss';
 
-export default function DataTable(): JSX.Element {
+export default function DataTable({ typePath }: { typePath: string }): JSX.Element {
   const [dateCursor, setDateCursor] = useState<string | null>(null);
   const [idCursor, setIdCursor] = useState<number>(0);
-  const { data: inquiryData, isLoading } = useInquiryList(dateCursor, idCursor, 10);
+  const { data: inquiryData, isLoading } = useInquiryList({
+    typePath, dateCursor, idCursor, size: 10,
+  });
+
   const [allData, setAllData] = useState<InquiryContent[]>(
     inquiryData ? [...inquiryData.content] : [],
   );
@@ -52,6 +55,33 @@ export default function DataTable(): JSX.Element {
       observer.observe(loader.current);
     }
   }, [loadMoreData, isLoading]);
+
+  // useEffect(() => { // DataTable 스크롤 시 linear-gradient 생성
+  //   const dataDiv = document.querySelector('.data');
+  //   const dataTable = document.querySelector('.data__data-table');
+  //   console.log(dataDiv);
+  //   console.log(dataTable);
+
+  //   function handleScroll() {
+  //     if (dataDiv) {
+  //       if (dataTable && dataTable.scrollTop > 0) {
+  //         dataDiv.classList.add('scrolled');
+  //       } else {
+  //         dataDiv.classList.remove('scrolled');
+  //       }
+  //     }
+  //   }
+
+  //   if (dataTable) {
+  //     dataTable.addEventListener('scroll', handleScroll);
+  //   }
+
+  //   return () => {
+  //     if (dataTable) {
+  //       dataTable.removeEventListener('scroll', handleScroll);
+  //     }
+  //   };
+  // }, [inquiryData]);
 
   return (
     <div className={styles.table}>

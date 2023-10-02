@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
+import { useQueryClient } from 'react-query';
 import SearchInput from './components/SearchBar/SearchInput';
 import DataTable from './components/DataTable/DataTable';
-// import MyInquiry from './components/MyInquiry/MyInquiry';
 import styles from './Inquiry.module.scss';
 
 const useSearchForm = () => {
@@ -18,41 +18,20 @@ const useSearchForm = () => {
 };
 
 export default function Inquiry(): JSX.Element {
+  const { type } = useParams(); // 'all' 또는 'my'
+  const [selectedTab, setSelectedTab] = useState(type);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    setSelectedTab(type);
+
+    queryClient.invalidateQueries('Inquiry');
+  }, [type, queryClient]);
+
   const { text, handleChange } = useSearchForm();
-  const [selectedTab, setSelectedTab] = useState('all');
   const title = '문의하기';
   const inquireLinkTitle = '문의하러 가기';
-
-  function handleModClick(mod: string) {
-    setSelectedTab(mod);
-  }
-
-  // useEffect(() => { // DataTable 스크롤 시 linear-gradient 생성
-  //   const dataDiv = document.querySelector('.data');
-  //   const dataTable = document.querySelector('.data__data-table');
-  //   console.log(dataDiv);
-  //   console.log(dataTable);
-
-  //   function handleScroll() {
-  //     if (dataDiv) {
-  //       if (dataTable && dataTable.scrollTop > 0) {
-  //         dataDiv.classList.add('scrolled');
-  //       } else {
-  //         dataDiv.classList.remove('scrolled');
-  //       }
-  //     }
-  //   }
-
-  //   if (dataTable) {
-  //     dataTable.addEventListener('scroll', handleScroll);
-  //   }
-
-  //   return () => {
-  //     if (dataTable) {
-  //       dataTable.removeEventListener('scroll', handleScroll);
-  //     }
-  //   };
-  // }, [inquiryData]);
 
   return (
     <div className={styles.container}>
@@ -60,33 +39,39 @@ export default function Inquiry(): JSX.Element {
         <div className={styles['nav__side-navigation']}>
           <h1 className={styles.nav__title}>{title}</h1>
 
-          <div className={styles['nav__link-inquiry']}>
+          <div className={styles.nav__link}>
             <div
-              className={`${styles['nav__mod-allinquiries']} ${selectedTab === 'all' ? 'selected' : ''}`}
-              onClick={() => handleModClick('all')}
+              className={`${styles['nav__link-allinquiry']} ${selectedTab === 'all' ? 'selected' : ''}`}
+              onClick={() => {
+                navigate('/inquiry/all');
+              }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  handleModClick('mod');
-                  console.log(selectedTab);
+                  navigate('/inquiry/all');
                 }
               }}
               role="button"
               tabIndex={0}
             >
-              전체 문의 내역
+              <Link to="/inquiry/all" className={styles['link-no-underline']}>
+                전체 문의 내역
+              </Link>
             </div>
+
             <div
               className={`${styles['nav__link-myinquiry']} ${selectedTab === 'my' ? 'selected' : ''}`}
-              onClick={() => handleModClick('my')}
+              onClick={() => {
+                navigate('/inquiry/my');
+              }}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
-                  handleModClick('my');
+                  navigate('/inquiry/my');
                 }
               }}
               role="button"
               tabIndex={0}
             >
-              <Link to="/myinquiry">
+              <Link to="/inquiry/my" className={styles['link-no-underline']}>
                 <div>
                   나의 문의 내역
                 </div>
@@ -106,14 +91,10 @@ export default function Inquiry(): JSX.Element {
               <WriteIcon />
             </span>
           </button>
-
-          {/* <header className={styles.header}>
-            {MyInquiry && <MyInquiry />}
-          </header> */}
         </div>
 
-        <div className={styles['search-data']}>
-          <div className={styles['search-bar']}>
+        <div className={styles.searchData}>
+          <div className={styles.searchBar}>
             <SearchInput
               onChange={handleChange}
               text={text}
@@ -122,7 +103,7 @@ export default function Inquiry(): JSX.Element {
 
           <div className={styles.data}>
             <div className={styles['data__data-table']}>
-              <DataTable />
+              <DataTable typePath={type === 'my' ? '/me' : ''} key={type} />
             </div>
           </div>
         </div>

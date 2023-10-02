@@ -35,59 +35,61 @@ $disabled: #c4c4c4;
     margin: 160px 0 52px 0;
   }
 
-  &__link-inquiry {
+  &__link {
     padding-top: 17px;
     margin-left: 16px;
 
     & > * {
       width: 104px;
       margin-bottom: 24px;
-      color: $normal;
-      text-decoration: none;
 
       &[attribute*="selected"] {
         color: $highlight
       }
     }
-  }
 
+    &-inquire {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 152px;
+      height: 39px;
+      background: $highlight;
+      border: none;
+      appearance: none;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+      box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+      margin-top: 48px;
 
-  &__link-inquire {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 152px;
-    height: 39px;
-    background: $highlight;
-    border: none;
-    appearance: none;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 16px;
-    text-decoration: none;
-    color: white;
-    cursor: pointer;
-    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
-    margin-top: 48px;
+      &>:first-child {
+        margin-right: 5px;
+      }
 
-    &>:first-child {
-      margin-right: 5px;
+      // @include media.media-breakpoint-down(mobile) {
+      //   width: 100%;
+      // }
     }
-
-    // @include media.media-breakpoint-down(mobile) {
-    //   width: 100%;
-    // }
   }
 }
 
+.link-no-underline {
+  text-decoration: none;
+  color: $normal;
+}
 
-.search-data {
+
+.searchData {
   width: 720px;
   display: flex;
-  flex-direction: column; // 내부 요소들을 세로로 배열합니다.
+  flex-direction: column;
 }
 
-.search-bar {
+.searchBar {
   border-bottom: 1px solid #ff7f23;
   width: 720px;
   height: 252px;
