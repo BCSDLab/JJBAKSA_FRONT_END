@@ -1,11 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import { useRate } from 'store/review';
 import StarRateContext from './StarRateContext';
 import EnterStarRateContainer from './EnterStarRateContainer';
 import LeaveStarRateContainer from './LeaveStarRateContainer';
 
 export default function StarRating({ onClick }: { onClick: () => void }) {
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useRate();
   const [entered, enter, leave] = useBooleanState(false);
 
   const value = useMemo(() => ({
@@ -15,7 +16,7 @@ export default function StarRating({ onClick }: { onClick: () => void }) {
       setRating(num);
       onClick?.();
     },
-  }), [onClick, enter, leave]);
+  }), [onClick, enter, leave, setRating]);
 
   return (
     <StarRateContext.Provider value={value}>

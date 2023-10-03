@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from 'pages/Search/Search.module.scss';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+import { useNavigate } from 'react-router-dom';
 import Recommendation from './components/SearchBar/Recommendation';
 import SearchInput from './components/SearchBar/SearchInput';
 import RollingBanner from './components/SearchBar/RollingBanner';

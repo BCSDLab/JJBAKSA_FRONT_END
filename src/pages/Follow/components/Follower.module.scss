@@ -1,3 +1,5 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
 .follower {
   display: flex;
   align-items: center;
@@ -7,38 +9,68 @@
   margin-top: 39px;
   margin-bottom: 39px;
 
+  @include media.media-breakpoint-down(mobile) {
+    width: 85vw;
+  }
+
   &__image {
     width: 112px;
     height: 112px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 60px;
+      height: 60px;
+    }
   }
 
   &__content {
     width: 720px;
     padding-left: 60px;
 
-    &--font {
+    @include media.media-breakpoint-down(mobile) {
+      width: 200px;
+      overflow-x: hidden;
+    }
+
+    &--nickname {
       font-size: 30px;
+      border: none;
+      background-color: #ffffff;
     }
   }
 
   &__button {
+    border: none;
     width: 175px;
-    height: 49px;
-    color: white;
-    border: 1px solid #f6bf54;
-    border-radius: 10px;
-    background-color: #f6bf54;
-    font-size: 20px;
+    background-color: white;
     cursor: pointer;
+    font-size: 20px;
 
-    &--unfollow {
+    @include media.media-breakpoint-down(mobile) {
+      width: 100px;
+    }
+
+    &--cancel {
       width: 175px;
       height: 49px;
       border-radius: 10px;
-      border: 1px solid #c4c4c4;
       background-color: white;
+      border: 1px solid #c4c4c4;
       color: #c4c4c4;
-      font-size: 20px;
+      cursor: pointer;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 100px;
+      }
+    }
+
+    &--accept {
+      width: 175px;
+      height: 49px;
+      border-radius: 10px;
+      background-color: white;
+      border: 1px solid #f6bf54;
+      color: #f6bf54;
       cursor: pointer;
     }
   }

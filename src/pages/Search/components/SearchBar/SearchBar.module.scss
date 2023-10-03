@@ -68,6 +68,12 @@
     padding: 14px;
     cursor: pointer;
   }
+
+  &__submit {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
 }
 
 .search-rolling-banner {

@@ -23,7 +23,11 @@ import Notice from 'pages/Notice';
 import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
 import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
 import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
+<<<<<<< HEAD
 import NotFoundPage from 'pages/Search/components/NotFoundPage';
+=======
+import FollowProfile from 'pages/Follow/components/FollowProfile';
+>>>>>>> origin/develop
 
 export default function App(): JSX.Element {
   return (
@@ -42,9 +46,10 @@ export default function App(): JSX.Element {
           <Route path="/setting/id-change" element={<IdChange />} />
           <Route path="/" element={<DefaultLayout />}>
             <Route path="/friend-list" element={<FollowPage />} />
+            <Route path="/friend-list/:id" element={<FollowProfile />} />
           </Route>
           <Route path="/withdrawal" element={<Withdrawal />} />
-          <Route path="/post" element={<Post />} />
+          <Route path="/post/:name" element={<Post />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />
