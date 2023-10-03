@@ -41,6 +41,7 @@ export default function SearchInput({
         placeholder="검색어를 입력해주세요."
         value={text}
         onChange={onChange}
+        autoComplete="off"
       />
       <LensIcon title="검색" className={styles['search-bar__icon']} onClick={handleSearchClick} />
     </label>
