@@ -41,22 +41,26 @@
 
   &__button {
     border: none;
-    width: 175px;
-    background-color: white;
+    border-radius: 200px;
+    width: 120px;
+    height: 50px;
+    background-color: #eeeeee;
     cursor: pointer;
     font-size: 20px;
+    margin: 0 10px 0 10px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 100px;
     }
 
     &--cancel {
-      width: 175px;
-      height: 49px;
-      border-radius: 10px;
+      width: 120px;
+      height: 50px;
+      border-radius: 200px;
       background-color: white;
       border: 1px solid #c4c4c4;
       color: #c4c4c4;
+      font-size: 20px;
       cursor: pointer;
 
       @include media.media-breakpoint-down(mobile) {
@@ -65,12 +69,24 @@
     }
 
     &--accept {
-      width: 175px;
-      height: 49px;
-      border-radius: 10px;
-      background-color: white;
-      border: 1px solid #f6bf54;
-      color: #f6bf54;
+      width: 120px;
+      height: 50px;
+      border: none;
+      border-radius: 200px;
+      background-color: #f6bf54;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    &--request {
+      width: 120px;
+      height: 50px;
+      border: none;
+      border-radius: 200px;
+      background-color: #ff7f23;
+      color: white;
+      font-size: 20px;
       cursor: pointer;
     }
   }

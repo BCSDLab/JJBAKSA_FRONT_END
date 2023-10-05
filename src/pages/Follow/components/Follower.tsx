@@ -1,13 +1,13 @@
 import defaultImage from 'assets/images/follow/default-image.png';
 import cn from 'utils/ts/classNames';
-import { ReactComponent as Unfollow } from 'assets/svg/follow/user-remove.svg';
-import { ReactComponent as Follow } from 'assets/svg/follow/user-add.svg';
 import { useNavigate } from 'react-router-dom';
 import style from './Follower.module.scss';
 import useRequestAndUpdate from '../hooks/useRequestAndUpdate';
 import useAcceptFollow from '../hooks/useAcceptFollow';
 import useDeleteFollow from '../hooks/useDeleteFollow';
 import useCancelFollow from '../hooks/useCancelFollow';
+import useRejectRequest from '../hooks/useRejectRequest';
+import MobileUnfollow from './MobileUnfollow';
 
 interface Props {
   account: string,
@@ -22,9 +22,13 @@ export default function Follower({
 }: Props) {
   const request = useRequestAndUpdate();
   const accept = useAcceptFollow();
-  const { del } = useDeleteFollow();
+  const {
+    del, isMobile, mobileUnfollow, value, toggle,
+  } = useDeleteFollow();
   const cancel = useCancelFollow();
+  const reject = useRejectRequest();
   const navigate = useNavigate();
+
   return (
     <div className={style.follower} id={`${id}`}>
       <img className={style.follower__image} src={defaultImage} alt="default" />
@@ -50,23 +54,34 @@ export default function Follower({
       </div>
       <button
         className={cn({
-          [style.follower__button]: followedType === 'NONE' || followedType === 'FOLLOWED',
+          [style.follower__button]: followedType === 'FOLLOWED',
           [style['follower__button--cancel']]: followedType === 'REQUEST_SENT',
           [style['follower__button--accept']]: followedType === 'REQUEST_RECEIVE',
+          [style['follower__button--request']]: followedType === 'NONE',
         })}
         type="button"
         onClick={
           () => (followedType === 'NONE' && request(account))
             || (followedType === 'REQUEST_RECEIVE' && requestId && accept(requestId))
-            || (followedType === 'FOLLOWED' && del(account))
+            || (followedType === 'FOLLOWED' && (isMobile ? mobileUnfollow() : del(account)))
             || (followedType === 'REQUEST_SENT' && requestId && cancel(requestId))
         }
       >
-        {followedType === 'NONE' && <Follow />}
-        {followedType === 'REQUEST_SENT' && '신청 취소'}
-        {followedType === 'FOLLOWED' && <Unfollow />}
-        {followedType === 'REQUEST_RECEIVE' && '친구 수락'}
+        {followedType === 'NONE' && '팔로우'}
+        {followedType === 'REQUEST_SENT' && '요청됨'}
+        {followedType === 'FOLLOWED' && '팔로잉'}
+        {followedType === 'REQUEST_RECEIVE' && '확인'}
       </button>
+      {followedType === 'REQUEST_RECEIVE' && requestId && (
+      <button
+        type="button"
+        className={style.follower__button}
+        onClick={() => reject(requestId)}
+      >
+        거절
+      </button>
+      )}
+      {value && <MobileUnfollow nickname={nickname} del={del} toggle={toggle} account={account} />}
     </div>
   );
 }
