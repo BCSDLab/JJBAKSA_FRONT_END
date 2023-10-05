@@ -4,13 +4,11 @@ import FollowList from './FollowList';
 
 export default function SearchPage({ data }: SearchPageInfo) {
   const auth = useAuth();
-  const myFriends: FollowerInfo[] = data.filter((follower) => follower.followedType === 'FOLLOWED');
-  const newFriends: FollowerInfo[] = data.filter((follower) => follower.followedType === 'NONE').filter((follower) => follower.account !== auth?.account);
+  const searchFriends: FollowerInfo[] = data.filter((follower) => follower.followedType !== 'REQUEST_SENT').filter((follower) => follower.followedType !== 'REQUEST_RECEIVE').filter((follower) => follower.account !== auth?.account);
 
   return (
     <div>
-      <FollowList title="나의 친구" data={myFriends} />
-      <FollowList title="새 친구" data={newFriends} />
+      <FollowList title="검색" data={searchFriends} />
     </div>
   );
 }
