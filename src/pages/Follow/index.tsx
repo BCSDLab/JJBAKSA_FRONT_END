@@ -51,7 +51,6 @@ export default function FollowPage() {
   const { data: sended } = useSentOrReceivedFollow('sended', checkSentFollow);
   const { data: follower } = useGetFollowList();
   const { data: recent } = useGetRecentlyActiveFollower();
-
   return (
     <div className={style.template}>
       <div className={style.top}>
@@ -84,7 +83,12 @@ export default function FollowPage() {
             )
         )}
       {user && keyword.length > 0 && (user.content.length > 0
-        ? <SearchPage data={user.content} /> : <FailToSearch />)}
+        ? (
+          <div>
+            <SearchPage data={user.content} />
+            {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
+          </div>
+        ) : <FailToSearch />)}
     </div>
   );
 }
