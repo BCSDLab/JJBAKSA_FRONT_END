@@ -59,14 +59,14 @@ $title: #ff7f23;
 .setting {
   position: relative;
   bottom: 17vh;
-  padding-bottom: 120px;
+  padding-bottom: 90px;
   right: 100px;
 
   &__title {
     font-size: 32px;
     color: $title;
     font-weight: 700;
-    margin-bottom: 40px;
+    margin-bottom: 70px;
   }
 }
 
@@ -125,6 +125,7 @@ $title: #ff7f23;
   font-weight: 600px;
   box-shadow: 2px 3px 12px 1px #0000001a;
   margin-top: 7px;
+  cursor: pointer;
 }
 
 .blindBox {
@@ -139,6 +140,7 @@ $title: #ff7f23;
     margin-left: -35px;
     width: 16px;
     height: 16px;
+    cursor: pointer;
   }
 }
 
