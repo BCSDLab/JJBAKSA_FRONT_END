@@ -1,5 +1,5 @@
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import MobileSetting from './UserSetting';
+import MobileSetting from './Mobile';
 import PcSetting from './PC';
 
 export default function Setting() {
