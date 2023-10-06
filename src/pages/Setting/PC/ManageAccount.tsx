@@ -3,20 +3,16 @@ import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
 import { useAuth } from 'store/auth';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import cn from 'utils/ts/classNames';
-import useTripleBlindCheck from './hook/useTripleBlindCheck';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import style from './index.module.scss';
-import useModifyPassword, { ERROR_MESSAGE } from './hook/useModifyPassword';
+import useModifyPassword from '../hook/useModifyPassword';
 import PasswordSuccessModal from './PasswordSuccessModal';
+import { ERROR_MESSAGE } from '../static/setting';
 
 export default function ManageAccount() {
-  const {
-    isCurrentBlind,
-    changeCurrentBlind,
-    isNewBlind,
-    changeNewBlind,
-    isNewCheckBlind,
-    changeNewCheckBlind,
-  } = useTripleBlindCheck();
+  const [isCurrentBlind, , , changeCurrentBlind] = useBooleanState(false);
+  const [isNewBlind, changeNewBlind] = useBooleanState(false);
+  const [isNewCheckBlind, changeNewCheckBlind] = useBooleanState(false);
   const {
     current,
     newPassword,
@@ -32,7 +28,6 @@ export default function ManageAccount() {
   const auth = useAuth();
   return (
     <form className={style.formContainer}>
-
       <div className={style.title}>계정</div>
       <div className={style.account}>
         <span>이메일</span>
@@ -42,7 +37,6 @@ export default function ManageAccount() {
         <span>아이디</span>
         <input className={style.account__input} value={auth && 'account' in auth ? auth.account : 'SNSLogin'} disabled />
       </div>
-
       <div className={style.title}>비밀번호 변경</div>
       <div>
         <span>현재 비밀번호</span>
