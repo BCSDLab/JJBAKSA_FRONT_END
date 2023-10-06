@@ -14,7 +14,7 @@ import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
 import FollowPage from 'pages/Follow';
 import Setting from 'pages/Setting';
-import IdChange from 'pages/Setting/UserSetting/IdChange';
+import IdChange from 'pages/Setting/Mobile/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
 import Withdrawal from 'pages/Setting/Withdrawal';
 import Inquiry from 'pages/Inquiry';
@@ -37,11 +37,11 @@ export default function App(): JSX.Element {
           <Route path="/notice" element={<Notice />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
-          <Route path="/setting" element={<Setting />} />
-          <Route path="/setting/id-change" element={<IdChange />} />
           <Route path="/" element={<DefaultLayout />}>
             <Route path="/friend-list" element={<FollowPage />} />
             <Route path="/friend-list/:id" element={<FollowProfile />} />
+            <Route path="/setting" element={<Setting />} />
+            <Route path="/setting/id-change" element={<IdChange />} />
           </Route>
           <Route path="/withdrawal" element={<Withdrawal />} />
           <Route path="/post/:name" element={<Post />} />
