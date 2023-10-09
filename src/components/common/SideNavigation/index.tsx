@@ -4,6 +4,7 @@ import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { useAuth, useClearAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
+import defaultImage from 'assets/images/follow/default-image.png';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { Link, useLocation } from 'react-router-dom';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
@@ -89,12 +90,14 @@ export default function SideNavigation(): JSX.Element {
         <ul className={styles['bottom-navigation']}>
           {auth ? (
             <li>
-              <div>
-                {/* 프로필 사진 추가 */}
-                <Link to="/" onClick={clearAuth}>
-                  <div className={styles['bottom-navigation__logout']}>로그아웃</div>
-                </Link>
-              </div>
+              <img
+                src={auth.profileImage.url || `${defaultImage}`}
+                alt="프로필 이미지"
+                className={styles['bottom-navigation__profile-image']}
+              />
+              <Link to="/" onClick={clearAuth}>
+                <div className={styles['bottom-navigation__logout']}>로그아웃</div>
+              </Link>
             </li>
           ) : (
             <li>
