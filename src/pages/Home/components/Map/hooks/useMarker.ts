@@ -11,7 +11,7 @@ interface MarkerProps {
 }
 
 function useMarker({ map, filterShops }: MarkerProps) {
-  const [,setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
+  const [markerArray, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
   const [selected, setSelected] = useState<naver.maps.Marker | undefined>();
 
   useEffect(() => {
@@ -59,7 +59,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
     };
   }, [map, filterShops]);
 
-  return { selected };
+  return { markerArray, selected };
 }
 
 export default useMarker;
