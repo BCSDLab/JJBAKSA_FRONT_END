@@ -5,7 +5,7 @@ import React, {
   useCallback,
 } from 'react';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
-import useInquiryList from 'pages/Inquiry/hooks/useInquiryList';
+import useInquiryList from 'pages/Inquiry/Inquiry/hooks/useInquiryList';
 import { InquiryContent } from 'api/inquiry/entity';
 import styles from './DataTable.module.scss';
 

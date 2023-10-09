@@ -33,6 +33,7 @@ $disabled: #c4c4c4;
     font-size: 32px;
     font-weight: 700;
     margin: 160px 0 52px 0;
+    cursor: pointer;
   }
 
   &__link {
@@ -42,10 +43,7 @@ $disabled: #c4c4c4;
     & > * {
       width: 104px;
       margin-bottom: 24px;
-
-      &[attribute*="selected"] {
-        color: $highlight
-      }
+      position: relative;
     }
 
     &-inquire {
@@ -82,6 +80,16 @@ $disabled: #c4c4c4;
   color: $normal;
 }
 
+.selected{
+  color: $highlight;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -12px;
+}
 
 .searchData {
   width: 720px;
@@ -90,7 +98,7 @@ $disabled: #c4c4c4;
 }
 
 .searchBar {
-  border-bottom: 1px solid #ff7f23;
+  border-bottom: 1px solid $highlight;
   width: 720px;
   height: 252px;
   margin-left: -1px;

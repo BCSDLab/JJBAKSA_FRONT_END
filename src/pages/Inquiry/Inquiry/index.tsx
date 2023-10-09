@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
+import { ReactComponent as Dot } from 'assets/svg/inquiry/dot.svg';
 import { useQueryClient } from 'react-query';
-import SearchInput from './components/SearchBar/SearchInput';
-import DataTable from './components/DataTable/DataTable';
+import SearchInput from 'pages/Inquiry/Inquiry/components/SearchBar/SearchInput';
+import DataTable from 'pages/Inquiry/Inquiry/components/DataTable/DataTable';
 import styles from './Inquiry.module.scss';
 
 const useSearchForm = () => {
@@ -31,17 +32,33 @@ export default function Inquiry(): JSX.Element {
 
   const { text, handleChange } = useSearchForm();
   const title = '문의하기';
+  const allInquiryLinkTitle = '전체 문의 내역';
+  const myInquiryLinkTitle = '나의 문의 내역';
   const inquireLinkTitle = '문의하러 가기';
 
   return (
     <div className={styles.container}>
       <div className={styles.box}>
         <div className={styles['nav__side-navigation']}>
-          <h1 className={styles.nav__title}>{title}</h1>
+          <div
+            className={styles.nav__title}
+            onClick={() => {
+              navigate('/inquiry/all');
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/inquiry/all');
+              }
+            }}
+            role="button"
+            tabIndex={0}
+          >
+            {title}
+          </div>
 
           <div className={styles.nav__link}>
             <div
-              className={`${styles['nav__link-allinquiry']} ${selectedTab === 'all' ? 'selected' : ''}`}
+              className={styles['nav__link-allinquiry']}
               onClick={() => {
                 navigate('/inquiry/all');
               }}
@@ -53,13 +70,14 @@ export default function Inquiry(): JSX.Element {
               role="button"
               tabIndex={0}
             >
-              <Link to="/inquiry/all" className={styles['link-no-underline']}>
-                전체 문의 내역
+              {selectedTab === 'all' ? <Dot className={styles.dot} /> : null}
+              <Link to="/inquiry/all" className={`${styles['link-no-underline']} ${selectedTab === 'all' ? styles.selected : ''}`}>
+                {allInquiryLinkTitle}
               </Link>
             </div>
 
             <div
-              className={`${styles['nav__link-myinquiry']} ${selectedTab === 'my' ? 'selected' : ''}`}
+              className={`${styles['nav__link-myinquiry']} ${selectedTab === 'my' ? styles.selected : ''}`}
               onClick={() => {
                 navigate('/inquiry/my');
               }}
@@ -71,10 +89,9 @@ export default function Inquiry(): JSX.Element {
               role="button"
               tabIndex={0}
             >
-              <Link to="/inquiry/my" className={styles['link-no-underline']}>
-                <div>
-                  나의 문의 내역
-                </div>
+              {selectedTab === 'my' ? <Dot className={styles.dot} /> : null}
+              <Link to="/inquiry/my" className={`${styles['link-no-underline']} ${selectedTab === 'my' ? styles.selected : ''}`}>
+                {myInquiryLinkTitle}
               </Link>
             </div>
           </div>
@@ -82,7 +99,16 @@ export default function Inquiry(): JSX.Element {
           <button
             type="button"
             className={styles['nav__link-inquire']}
+            onClick={() => {
+              navigate('/inquiry/inquire');
+            }}
             // onClick={() => navigate('/signup', { state: { termsCheck: true } })}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                navigate('/inquiry/inquire');
+              }
+            }}
+            tabIndex={0}
           >
             <span>
               {inquireLinkTitle}
