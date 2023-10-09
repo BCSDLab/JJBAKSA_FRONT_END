@@ -14,7 +14,7 @@ export default function SideNavigation(): JSX.Element {
   const auth = useAuth();
   const clearAuth = useClearAuth();
   const location = useLocation();
-  const [visible, , , toggle, setValue] = useBooleanState(false);
+  const [visible, , , toggle, setValue] = useBooleanState(true);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
@@ -119,14 +119,17 @@ export default function SideNavigation(): JSX.Element {
         className={cn({
           [styles['side-pannel']]: true,
           [styles['side-pannel--expand']]: visible,
+          [styles['side-pannel--invisible']]: location.pathname !== '/',
         })}
       >
         <div className={styles['side-pannel__search']}>
           <div className={styles['side-pannel__search-bar']}>
-            <span>
-              <input type="text" placeholder="검색어를 입력해주세요." className={styles['side-pannel__search-input']} />
-              <SearchIcon className={styles['side-pannel__search-icon']} />
-            </span>
+            <Link to="/search" className={styles['side-pannel__search-link']}>
+              <button type="button" className={styles['side-pannel__search-link-button']}>
+                검색어를 입력해주세요.
+                <SearchIcon className={styles['side-pannel__search-icon']} />
+              </button>
+            </Link>
           </div>
           <div className={styles['side-pannel__search-buttons']}>
             <button
@@ -165,7 +168,6 @@ export default function SideNavigation(): JSX.Element {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
