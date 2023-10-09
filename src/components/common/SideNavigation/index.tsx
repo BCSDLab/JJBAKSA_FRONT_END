@@ -128,10 +128,8 @@ export default function SideNavigation(): JSX.Element {
         <div className={styles['side-pannel__search']}>
           <div className={styles['side-pannel__search-bar']}>
             <Link to="/search" className={styles['side-pannel__search-link']}>
-              <button type="button" className={styles['side-pannel__search-link-button']}>
-                검색어를 입력해주세요.
-                <SearchIcon className={styles['side-pannel__search-icon']} />
-              </button>
+              검색어를 입력해주세요.
+              <SearchIcon className={styles['side-pannel__search-icon']} />
             </Link>
           </div>
           <div className={styles['side-pannel__search-buttons']}>
