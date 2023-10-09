@@ -41,6 +41,7 @@
   box-sizing: content-box;
 
   &__photo img {
+    background-color: #ffffff;
     width: 43px;
     height: 43px;
     border-radius: 89.5px;
@@ -57,6 +58,7 @@
   }
 
   &__photo--clicked img {
+    background-color: #ffffff;
     width: 56.007px;
     height: 55.723px;
     border-radius: 89.5px;
