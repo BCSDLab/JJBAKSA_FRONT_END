@@ -108,3 +108,17 @@
     }
   }
 }
+
+.cluster {
+  background-image: url("../../../../../../assets/images/home/location-marker.png");
+  display: flex;
+  cursor: pointer;
+  width: 69px;
+  height: 69px;
+  font-size: 24px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  background-size: contain;
+}
