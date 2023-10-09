@@ -33,11 +33,11 @@ export default function Map(): JSX.Element {
   const { cluster } = useCluster({ markerArray, map });
 
   return (
-    <div>
+    <>
       {isMobile && <MobileOptions />}
       {selected && <Pin selected={selected} />}
       <div id="map" className={styles.map} />
       { cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
-    </div>
+    </>
   );
 }

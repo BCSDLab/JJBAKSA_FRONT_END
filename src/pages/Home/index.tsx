@@ -9,11 +9,9 @@ export default function Home(): JSX.Element {
     isClickLocation, active, userLocation, locationRef,
   } = useHome();
   return (
-    <div className={styles.home}>
+    <>
       <LocationInfo address={userLocation.address} onClick={active} />
-      <div className={styles.map}>
-        <Map />
-      </div>
+      <Map />
       {isClickLocation && (
         <div
           className={styles.locationBox}
@@ -22,6 +20,6 @@ export default function Home(): JSX.Element {
           <Location />
         </div>
       )}
-    </div>
+    </>
   );
 }

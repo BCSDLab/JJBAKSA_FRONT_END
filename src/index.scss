@@ -9,23 +9,11 @@
 body,
 html {
   /* https://css-tricks.com/snippets/css/system-font-stack/ */
-  font-family:
-    SUIT,
-    system-ui,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  font-family: SUIT, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 body {
-  min-height: 100vh;
-  min-width: 1148px;
-
   @include media.media-breakpoint-down(mobile) {
     min-width: 320px;
   }
