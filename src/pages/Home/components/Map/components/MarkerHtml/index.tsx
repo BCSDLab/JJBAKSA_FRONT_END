@@ -7,15 +7,15 @@ export function MarkerHtml(photo:string | null, name:string) {
   return `
   <div class=${styles.container}>
     <img src=${MarkerLogo}  class=${styles.marker} alt="marker" />
-      <div class=${styles.bubble}>
-        <div class=${styles.bubble__photo}>
-          <img src=${Default} alt="사진"/>
-        </div>
-        <div class=${styles.bubble__name}>
-          ${name}
-        </div>
+    <div class=${styles.bubble}>
+      <div class=${styles.bubble__photo}>
+        <img src=${Default} alt="사진"/>
       </div>
+      <div class=${styles.bubble__name}>
+        ${name}
       </div>
+    </div>
+  </div>
   `;
 }
 
@@ -23,14 +23,18 @@ export function ClickedMarkerHtml(photo:string | null, name:string) {
   return `
   <div class=${styles.continer}>
     <img src=${Selected} class=${styles['marker--clicked']}>
-      <div class=${styles.bubble}>
-        <div class=${styles['bubble__photo--clicked']}>
-          <img src=${Default} alt="사진" />
-        </div>
-        <div class=${styles['bubble__name--clicked']}>
-          ${name}
-        </div>
+    <div class=${styles.bubble}>
+      <div class=${styles['bubble__photo--clicked']}>
+        <img src=${Default} alt="사진" />
+      </div>
+      <div class=${styles['bubble__name--clicked']}>
+        ${name}
       </div>
     </div>
-  `;
+  </div>
+`;
+}
+
+export function ClusterHtml() {
+  return `<div class=${styles.cluster}></div>`;
 }
