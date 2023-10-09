@@ -10,7 +10,7 @@ export interface FilterShopsResponse {
     location: Coords;
   };
   name: string;
-  photo: null | string[];
+  photo: string;
   placeId: string;
 }
 
