@@ -2,7 +2,7 @@ import { ReactComponent as LensIcon } from 'assets/svg/home/lens.svg';
 import { ReactComponent as StoreFrontIcon } from 'assets/svg/home/storefront.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
-import { ReactComponent as VerticalDot } from 'assets/svg/home/verticaldot.svg';
+import { ReactComponent as VerticalDot } from 'assets/svg/home/verticalDot.svg';
 import { Link } from 'react-router-dom';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
