@@ -1,5 +1,5 @@
 import getInquiry from 'api/inquiry';
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 
 interface InquiryProps {
   typePath: string;
@@ -11,13 +11,20 @@ interface InquiryProps {
 const useInquiryList = ({
   typePath, dateCursor, idCursor, size,
 }: InquiryProps) => {
-  const queryKey = ['Inquiry', dateCursor, idCursor, size];
+  const queryKey = ['Inquiry', typePath, dateCursor, idCursor, size];
+  const queryClient = useQueryClient();
   const { isLoading, isError, data } = useQuery(queryKey, () => getInquiry({
     typePath, dateCursor, idCursor, size,
   }));
 
+  async function refetchInquiryData() {
+    if (!data) {
+      await queryClient.invalidateQueries(queryKey);
+    }
+  }
+
   return {
-    isLoading, isError, data,
+    isLoading, isError, data, refetchInquiryData,
   };
 };
 

@@ -104,8 +104,8 @@ $disabled: #c4c4c4;
   margin-left: -1px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: end;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 .data {
@@ -114,21 +114,6 @@ $disabled: #c4c4c4;
   display: flex;
   flex-direction: column;
   position: relative;
-
-  // &::before {    // dataTable 스크롤 시 linear-gradient 생성
-  //   content: "";
-  //   display: none;
-  //   position: absolute;
-  //   top: 0;
-  //   height: 66px;
-  //   width: 100%;
-  //   background: linear-gradient(to bottom, rgba(85, 85, 85, 0.5), transparent);
-  //   z-index: 2;
-  // }
-
-  // &.scrolled::before {
-  //   display: block;
-  // }
 
   &__data-table {
     width: 720px;

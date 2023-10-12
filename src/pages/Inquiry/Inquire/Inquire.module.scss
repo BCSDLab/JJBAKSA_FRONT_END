@@ -1,0 +1,54 @@
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+$normal: #666666;
+$disabled: #c4c4c4;
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  width: 947px;
+}
+
+.nav {
+  & > *{
+    position: fixed;
+  }
+
+  &__side-navigation {
+    width: 227px;
+    height: 100%;
+  }
+
+  &__title {
+    color: $highlight;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 160px 0 32px 0;
+    cursor: pointer;
+  }
+
+  &nav__explain {
+    &-title {
+      color: $default;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 19.97px;
+    }
+
+    &-smallTitle {
+      color: $normal;
+      font-size: 11px;
+      font-weight: 400;
+      line-height: 13.73px;
+    }
+  }
+}

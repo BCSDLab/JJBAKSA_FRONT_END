@@ -12,35 +12,47 @@ import styles from './DataTable.module.scss';
 export default function DataTable({ typePath }: { typePath: string }): JSX.Element {
   const [dateCursor, setDateCursor] = useState<string | null>(null);
   const [idCursor, setIdCursor] = useState<number>(0);
-  const { data: inquiryData, isLoading } = useInquiryList({
+  const [allData, setAllData] = useState<InquiryContent[]>([]);
+  const { data: inquiryData, isLoading, refetchInquiryData } = useInquiryList({
     typePath, dateCursor, idCursor, size: 10,
   });
 
-  const [allData, setAllData] = useState<InquiryContent[]>(
-    inquiryData ? [...inquiryData.content] : [],
-  );
-
   const [expandedId, setExpandedId] = useState<number | null>(null);
+
   const loader = useRef<HTMLDivElement | null>(null);
 
   const noDataTitle = '문의 내역이 없습니다.';
   const noAnswerTitle = '아직 답변이 없네요. 조금만 기다려주세요!';
 
+  /* eslint-disable */
+  useEffect(() => { // all, my, search params 바뀔 때 allData 초기화
+    setAllData([]);
+    setDateCursor(null);
+    setIdCursor(0);
+    refetchInquiryData();
+  }, [typePath]);
+  /* eslint-enable */
+
+  function toggleExpand(id: number) {
+    setExpandedId(expandedId === id ? null : id);
+  }
+
   const handleKeyPress = (e: React.KeyboardEvent, id: number) => {
     if (e.key === 'Enter' || e.key === ' ') {
-      setExpandedId(expandedId === id ? null : id);
+      toggleExpand(id);
     }
   };
 
   const loadMoreData = useCallback(() => {
     if (inquiryData && inquiryData.content.length > 0) {
-      const b = allData[allData.length - 1] === inquiryData.content[inquiryData.content.length - 1];
-      const value = b ? allData : [...allData, ...inquiryData.content];
       setDateCursor(inquiryData.content[inquiryData.content.length - 1].createdAt || null);
       setIdCursor(inquiryData.content[inquiryData.content.length - 1].id || 0);
+      refetchInquiryData();
+      const b = allData[allData.length - 1] === inquiryData.content[inquiryData.content.length - 1];
+      const value = b ? allData : [...allData, ...inquiryData.content];
       setAllData(value);
     }
-  }, [inquiryData, allData]);
+  }, [refetchInquiryData, inquiryData, allData]);
 
   useEffect(() => {
     function handleObserver(entities: IntersectionObserverEntry[]) {
@@ -50,38 +62,11 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
       }
     }
 
-    const observer = new IntersectionObserver(handleObserver, { threshold: 1 });
+    const observer = new IntersectionObserver(handleObserver, { threshold: 0.5 });
     if (loader.current) {
       observer.observe(loader.current);
     }
   }, [loadMoreData, isLoading]);
-
-  // useEffect(() => { // DataTable 스크롤 시 linear-gradient 생성
-  //   const dataDiv = document.querySelector('.data');
-  //   const dataTable = document.querySelector('.data__data-table');
-  //   console.log(dataDiv);
-  //   console.log(dataTable);
-
-  //   function handleScroll() {
-  //     if (dataDiv) {
-  //       if (dataTable && dataTable.scrollTop > 0) {
-  //         dataDiv.classList.add('scrolled');
-  //       } else {
-  //         dataDiv.classList.remove('scrolled');
-  //       }
-  //     }
-  //   }
-
-  //   if (dataTable) {
-  //     dataTable.addEventListener('scroll', handleScroll);
-  //   }
-
-  //   return () => {
-  //     if (dataTable) {
-  //       dataTable.removeEventListener('scroll', handleScroll);
-  //     }
-  //   };
-  // }, [inquiryData]);
 
   return (
     <div className={styles.table}>
@@ -95,7 +80,7 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
             <div
               key={item.id}
               className={styles.block}
-              onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
+              onClick={() => toggleExpand(item.id)}
               onKeyPress={(e) => handleKeyPress(e, item.id)}
               role="button"
               tabIndex={0}
@@ -131,7 +116,7 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
           ))
         )
       )}
-      <div ref={loader} />
+      <div ref={loader} className={styles.table__floor} />
     </div>
   );
 }

@@ -1,0 +1,67 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+// .search {
+//   width: 100%;
+//   height: 100vh;
+//   font-size: 32px;
+
+//   &__recommend {
+//     word-break: keep-all;
+//     height: 80px;
+//     padding-top: 168px;
+//     padding-left: 30px;
+//     font-size: 32px;
+//     font-weight: 300;
+//     line-height: 40px;
+//     white-space: pre-wrap;
+//     color: #000000;
+
+//     strong {
+//       color: #ff7f23;
+//     }
+
+//     @include media.media-breakpoint-down(mobile) {
+//       max-width: 767px;
+//       padding-top: 64px;
+//       margin: 0 auto;
+//     }
+//   }
+// }
+
+.search-bar {
+  display: flex;
+  border-radius: 24px;
+  border: none;
+  width: 395px;
+  height: 48px;
+  align-items: center;
+  margin-top: 152px;
+  background: #ffffff;
+  box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+  padding-left: 15px;
+
+  &__input {
+    width: 100%;
+    height: 15px;
+    border: none;
+    font-size: 14px;
+    line-height: 15px;
+
+    &::placeholder {
+      color: #666666;
+      font-size: 12px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+    padding-left: 15px;
+    padding-right: 14px;
+    cursor: pointer;
+  }
+}
