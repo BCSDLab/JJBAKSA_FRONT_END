@@ -1,3 +1,5 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
 .container {
   width: 100%;
   display: flex;
@@ -25,5 +27,27 @@
     &--up {
       transform: rotate(180deg);
     }
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 85vw;
+  }
+}
+
+.recent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
+  gap: 10px;
+  width: 1067px;
+  scrollbar-width: none; /* 파이어폭스 */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 85vw;
   }
 }

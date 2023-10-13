@@ -30,3 +30,12 @@ export interface Coords {
   latitude: number,
   longitude: number
 }
+
+export interface FetchAutoCompleteParams {
+  query: string;
+  location?: Coords;
+}
+
+export interface FetchAutoCompleteResponse {
+  data: string[];
+}

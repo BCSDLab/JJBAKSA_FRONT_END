@@ -4,10 +4,11 @@ import styles from './AddImage.module.scss';
 
 interface Props {
   value: string,
-  onDelete: (value: string) => void,
+  index: number,
+  onDelete: (index: number) => void,
 }
 
-export default function ImageItem({ value, onDelete }: Props) {
+export default function ImageItem({ value, onDelete, index }: Props) {
   const imageRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -16,7 +17,7 @@ export default function ImageItem({ value, onDelete }: Props) {
         type="button"
         aria-label="trash"
         className={styles.container__button}
-        onClick={() => onDelete(value)}
+        onClick={() => onDelete(index)}
       >
         <Trash />
       </button>

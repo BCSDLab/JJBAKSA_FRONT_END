@@ -10,12 +10,13 @@ import useSearchingMode from './hooks/useSearchingMode';
 
 const useSearchForm = () => {
   const [text, setText] = useState('');
-  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-    setText((e.target.value));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
   };
 
   return {
-    text, handleChange,
+    text,
+    handleChange,
   };
 };
 
@@ -23,20 +24,15 @@ export default function Search(): JSX.Element {
   const { text, handleChange } = useSearchForm();
   const isSearching = useSearchingMode();
   const { isMobile } = useMediaQuery();
-
   return (
     <div>
       <div className={styles.search}>
         <section>
           {isMobile && <NavigationBar />}
           {isMobile ? !isSearching && <Recommendation /> : <Recommendation />}
-          <SearchInput
-            onChange={handleChange}
-            text={text}
-          />
-          {isMobile ? !isSearching && <RollingBanner /> : <RollingBanner />}
+          <SearchInput onChange={handleChange} text={text} />
+          {!isMobile && isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
         </section>
-        <RelatedSearches text={text} />
       </div>
     </div>
   );

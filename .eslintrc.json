@@ -1,49 +1,42 @@
 {
-	"env": {
-		"browser": true,
-		"es6": true
-	},
-	"extends": [
-		"airbnb",
-		"airbnb/hooks",
-		"airbnb-typescript"
-	],
-	"globals": {
-		"Atomics": "readonly",
-		"SharedArrayBuffer": "readonly"
-	},
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": 2018,
-		"project": "./tsconfig.json"
-	},
-	"plugins": [
-		"react",
-		"@typescript-eslint"
-	],
-	"rules": {
-		"react/react-in-jsx-scope": "off",
-		"linebreak-style" : "off",
-		"react/jsx-props-no-spreading": "off",
-		"react/require-default-props": "off",
-		"no-restricted-imports": [
-			"error",
-			{
-				"patterns": [
-					{
-						"group": ["../../*"],
-						"message": "Usage of relative parent imports is not allowed."
-					}
-				]
-			}
-		]
-	},
-	"settings": {
-		"import/resolver": {
-			"typescript": {}
-		}
-	}
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["airbnb", "airbnb/hooks", "airbnb-typescript"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "linebreak-style": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["../../*"],
+            "message": "Usage of relative parent imports is not allowed."
+          }
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
 }

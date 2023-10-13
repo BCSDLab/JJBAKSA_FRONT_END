@@ -4,6 +4,7 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 import './Wysiwyg.scss';
 import fontSize from 'tui-editor-plugin-font-size';
 import 'tui-editor-plugin-font-size/dist/tui-editor-plugin-font-size.css';
+import { useSetReview } from 'store/review';
 
 export interface WysiwygType {
   addImg: () => void,
@@ -15,6 +16,7 @@ export interface WysiwygType {
 
 const Wysiwyg = forwardRef((_props, ref) => {
   const editorRef = useRef<Editor>(null);
+  const setReview = useSetReview();
   useImperativeHandle(ref, () => ({
     addImg() {
       editorRef.current?.getInstance().exec('addImage', { imageUrl: 'https://picsum.photos/200/300' });
@@ -48,6 +50,10 @@ const Wysiwyg = forwardRef((_props, ref) => {
         toolbarItems={[]}
         ref={editorRef}
         plugins={[fontSize]}
+        onChange={() => setReview((prev) => ({
+          ...prev,
+          content: editorRef.current?.getInstance().getMarkdown() || '',
+        }))}
       />
     </div>
   );

@@ -10,9 +10,9 @@
     height: 80px;
     padding-top: 168px;
     padding-left: 30px;
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 300;
-    line-height: 40px;
+    line-height: 49px;
     white-space: pre-wrap;
     color: #000000;
 
@@ -29,28 +29,32 @@
 }
 
 .search-bar {
+  position: relative;
   display: flex;
-  border-radius: 15px;
+  border-radius: 100px;
   border: none;
-  height: 30px;
+  height: 62px;
+  width: 875px;
   align-items: center;
-  margin-top: 32px;
+  margin-top: 34px;
   margin-right: 16px;
   margin-left: 16px;
   background: #ffffff;
   box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
   padding-left: 15px;
+  z-index: 6;
 
   &__input {
     width: 100%;
-    height: 15px;
+    height: 30px;
     border: none;
-    font-size: 14px;
+    font-size: 24px;
     line-height: 15px;
+    padding-left: 24px;
 
     &::placeholder {
       color: #666666;
-      font-size: 12px;
+      font-size: 24px;
     }
 
     &:focus {
@@ -59,10 +63,15 @@
   }
 
   &__icon {
-    width: 18px;
-    height: 18px;
-    padding-left: 15px;
-    padding-right: 14px;
+    width: 34px;
+    height: 34px;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  &__submit {
+    border: none;
+    background: none;
     cursor: pointer;
   }
 }
@@ -70,14 +79,39 @@
 .search-rolling-banner {
   display: flex;
   overflow: hidden;
-  margin-top: 8px;
+  margin-top: 24px;
   margin-right: 27px;
   margin-left: 27px;
-  height: 25px;
-  font-size: 12px;
+  height: 32px;
+  width: 875px;
+  font-size: 16px;
+  color: #666666;
+  position: relative;
 
-  strong {
-    margin-right: 16px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    background: linear-gradient(to right, rgba(255 255 255 / 100%), rgba(255 255 255 / 0%));
+    backdrop-filter: blur(0.1px);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 30px;
+    background: linear-gradient(to left, rgba(255 255 255 / 100%), rgba(255 255 255 / 0%));
+    backdrop-filter: blur(0.1px);
+    pointer-events: none;
+    z-index: 2;
   }
 
   &__tag-list {

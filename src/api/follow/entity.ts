@@ -6,23 +6,33 @@ export interface FollowListParams {
   pageSize: number;
 }
 
-export interface GetFollowListParams {
+export interface GetFollowListResponse {
+  content: {
+    account: string;
+    email: string;
+    id: number;
+    nickname: string;
+    userType: string;
+  }[];
+  empty: boolean;
+  last: boolean;
+  number: number;
+}
+
+export interface SentOrReceivedFollowParams {
   page: number;
   pageSize: number;
 }
 
-export interface GetFollowListResponse {
+export interface SentOrReceivedFollowResponse {
   content: {
     id: number;
     follower: User;
     user: User;
-    account: string;
-  }[]
-}
-
-export interface CheckSendedFollowParams {
-  page: number;
-  pageSize: number;
+  }[];
+  empty: boolean;
+  last: boolean;
+  number: number;
 }
 
 export interface FollowerParams {
@@ -40,9 +50,50 @@ export interface SearchUsersParams {
 }
 
 export interface SearchUsersResponse {
-  content: FollowerInfo[]
+  content: FollowerInfo[];
+  empty: boolean;
+  last: boolean;
+  number: number;
 }
 
-export interface AcceptFollowParams {
+export interface RequestFollowParams {
   id: number;
+}
+
+export interface AcceptFollowParams extends RequestFollowParams {
+}
+
+export interface CancleFollowParams extends RequestFollowParams {
+}
+
+export interface RejectFollowParams extends RequestFollowParams {
+}
+
+export interface GetFollowReviewResponse {
+  content: {
+    name: string;
+    placeId: string;
+    photos?: string[];
+    shopId: number;
+    category: string;
+  }[]
+  empty: boolean;
+  first: boolean;
+  last: boolean;
+}
+
+export interface GetDetailReviewResponse {
+  content: {
+    content: string;
+    createdAt: string;
+    id: number;
+    rate: number;
+  }[];
+  empty: boolean;
+  first: boolean;
+  last: boolean;
+}
+
+export interface GetFollowerReviewCountParam {
+  followId: number;
 }
