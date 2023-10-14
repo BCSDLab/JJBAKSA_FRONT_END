@@ -144,9 +144,16 @@ $title: #ff7f23;
   }
 }
 
+.errorMessageBox {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
 .errorMessage {
   color: $title;
   font-size: 14px;
+  text-align: right;
 }
 
 .copyright {
