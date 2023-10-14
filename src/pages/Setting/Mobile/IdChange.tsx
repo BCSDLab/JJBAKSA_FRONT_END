@@ -8,7 +8,7 @@ import useBooleanState from 'utils/hooks/useBooleanState';
 import styles from './IdChage.module.scss';
 import MobileCommonModal from './MobileCommonModal';
 import PasswordSuccessModal from '../PC/PasswordSuccessModal';
-import { ERROR_MESSAGE } from '../static/setting';
+import { correctError, currentError, typeError } from '../static/setting';
 
 // const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 
@@ -55,7 +55,7 @@ export default function IdChange(): JSX.Element {
                 className={cn({
                   [styles.form__input]: true,
                   [styles['form__input--error']]:
-                    message === ERROR_MESSAGE.currentError || message === ERROR_MESSAGE.typeError,
+                    message === currentError || message === typeError,
                 })}
                 disabled={!(auth && 'account' in auth)}
               />
@@ -81,7 +81,7 @@ export default function IdChange(): JSX.Element {
                 placeholder="비밀번호를 입력하세요"
                 className={cn({
                   [styles.form__input]: true,
-                  [styles['form__input--error']]: message === ERROR_MESSAGE.correctError,
+                  [styles['form__input--error']]: message === correctError,
                 })}
                 disabled={!(auth && 'account' in auth)}
               />
@@ -108,7 +108,7 @@ export default function IdChange(): JSX.Element {
                 className={cn({
                   [styles.form__input]: true,
                   [styles['form__input--error']]:
-                    message === ERROR_MESSAGE.correctError,
+                    message === correctError,
                 })}
                 disabled={!(auth && 'account' in auth)}
               />

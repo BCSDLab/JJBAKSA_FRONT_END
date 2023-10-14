@@ -7,7 +7,7 @@ import useBooleanState from 'utils/hooks/useBooleanState';
 import style from './index.module.scss';
 import useModifyPassword from '../hook/useModifyPassword';
 import PasswordSuccessModal from './PasswordSuccessModal';
-import { ERROR_MESSAGE } from '../static/setting';
+import { correctError, currentError, typeError } from '../static/setting';
 
 export default function ManageAccount() {
   const [isCurrentBlind, , , changeCurrentBlind] = useBooleanState(false);
@@ -46,7 +46,7 @@ export default function ManageAccount() {
             className={cn({
               [style.password]: true,
               [style.password__error]:
-                message === ERROR_MESSAGE.currentError || message === ERROR_MESSAGE.typeError,
+                message === currentError || message === typeError,
             })}
             type={isCurrentBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}
@@ -73,7 +73,7 @@ export default function ManageAccount() {
             className={cn({
               [style.password]: true,
               [style.password__error]:
-                message === ERROR_MESSAGE.correctError,
+                message === correctError,
             })}
             type={isNewBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}
@@ -100,7 +100,7 @@ export default function ManageAccount() {
             className={cn({
               [style.password]: true,
               [style.password__error]:
-                message === ERROR_MESSAGE.correctError,
+                message === correctError,
             })}
             type={isNewCheckBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}
@@ -121,7 +121,7 @@ export default function ManageAccount() {
         </span>
       </div>
       {isShowError && (
-        <div>
+        <div className={style.errorMessageBox}>
           <ErrorIcon />
           <span className={style.errorMessage}>
             {message}

@@ -1,13 +1,15 @@
 import { checkPassword, modify } from 'api/user';
 import { useState } from 'react';
-import { PATTERN, ERROR_MESSAGE } from 'pages/Setting/static/setting';
+import {
+  PATTERN, currentError, typeError, correctError,
+} from 'pages/Setting/static/setting';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import usePasswordState from './usePasswordState';
 
 const useModifyPassword = () => {
   const [isShowError, , , ,setIsShowError] = useBooleanState(false);
   const [isShowModal, , , ,setIsShowModal] = useBooleanState(false);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState<JSX.Element[]>();
   const {
     current,
     handleCurrentInput,
@@ -19,7 +21,7 @@ const useModifyPassword = () => {
 
   const typeCheck = (pw: string) => {
     if (!PATTERN.test(pw)) {
-      setMessage(ERROR_MESSAGE.typeError);
+      setMessage(typeError);
       setIsShowError(true);
       return false;
     }
@@ -32,7 +34,7 @@ const useModifyPassword = () => {
       await checkPassword({ password: current });
       return true;
     } catch (e) {
-      setMessage(ERROR_MESSAGE.currentError);
+      setMessage(currentError);
       setIsShowError(true);
       return false;
     }
@@ -40,7 +42,7 @@ const useModifyPassword = () => {
 
   const passwordCorrectCheck = () => {
     if (newPassword !== check) {
-      setMessage(ERROR_MESSAGE.currentError);
+      setMessage(correctError);
       setIsShowError(true);
       return false;
     }
