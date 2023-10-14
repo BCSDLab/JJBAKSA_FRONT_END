@@ -17,9 +17,9 @@ export default function ManageAccount() {
     current,
     newPassword,
     check,
-    handleCheck,
-    handleCurrent,
-    handleNewPassword,
+    handleCheckInput,
+    handleCurrentInput,
+    handleNewPasswordInput,
     modifyPassword,
     isShowError,
     message,
@@ -50,7 +50,7 @@ export default function ManageAccount() {
             type={isCurrentBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}
             value={current}
-            onChange={handleCurrent}
+            onChange={handleCurrentInput}
           />
           <button
             type="button"
@@ -77,7 +77,7 @@ export default function ManageAccount() {
             type={isNewBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}
             value={newPassword}
-            onChange={handleNewPassword}
+            onChange={handleNewPasswordInput}
           />
           <button
             type="button"
@@ -104,7 +104,7 @@ export default function ManageAccount() {
             type={isNewCheckBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}
             value={check}
-            onChange={handleCheck}
+            onChange={handleCheckInput}
           />
           <button
             type="button"

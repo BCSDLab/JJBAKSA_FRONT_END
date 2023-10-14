@@ -5,23 +5,23 @@ const usePasswordState = () => {
   const [newPassword, setnewPassword] = useState('');
   const [check, setCheck] = useState('');
 
-  const handleCurrent = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCurrentInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCurrent(e.target.value);
   };
-  const handleNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleNewPasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setnewPassword(e.target.value);
   };
-  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCheckInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCheck(e.target.value);
   };
 
   return {
     current,
-    handleCurrent,
+    handleCurrentInput,
     newPassword,
-    handleNewPassword,
+    handleNewPasswordInput,
     check,
-    handleCheck,
+    handleCheckInput,
   };
 };
 

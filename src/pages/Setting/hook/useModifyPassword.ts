@@ -10,11 +10,11 @@ const useModifyPassword = () => {
   const [message, setMessage] = useState('');
   const {
     current,
-    handleCurrent,
+    handleCurrentInput,
     newPassword,
-    handleNewPassword,
+    handleNewPasswordInput,
     check,
-    handleCheck,
+    handleCheckInput,
   } = usePasswordState();
 
   const typeCheck = (pw: string) => {
@@ -57,11 +57,11 @@ const useModifyPassword = () => {
 
   return {
     current,
-    handleCurrent,
+    handleCurrentInput,
     newPassword,
-    handleNewPassword,
+    handleNewPasswordInput,
     check,
-    handleCheck,
+    handleCheckInput,
     modifyPassword,
     isShowError,
     message,

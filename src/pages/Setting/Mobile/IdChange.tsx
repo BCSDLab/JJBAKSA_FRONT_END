@@ -21,9 +21,9 @@ export default function IdChange(): JSX.Element {
     current,
     newPassword,
     check,
-    handleCheck,
-    handleCurrent,
-    handleNewPassword,
+    handleCheckInput,
+    handleCurrentInput,
+    handleNewPasswordInput,
     modifyPassword,
     isShowError,
     message,
@@ -49,7 +49,7 @@ export default function IdChange(): JSX.Element {
             <span className={styles.blindBox}>
               <input
                 value={current}
-                onChange={handleCurrent}
+                onChange={handleCurrentInput}
                 type={isCurrentBlind ? 'text' : 'password'}
                 placeholder="비밀번호를 입력하세요"
                 className={cn({
@@ -76,7 +76,7 @@ export default function IdChange(): JSX.Element {
             <span className={styles.blindBox}>
               <input
                 value={newPassword}
-                onChange={handleNewPassword}
+                onChange={handleNewPasswordInput}
                 type={isNewBlind ? 'text' : 'password'}
                 placeholder="비밀번호를 입력하세요"
                 className={cn({
@@ -102,7 +102,7 @@ export default function IdChange(): JSX.Element {
             <span className={styles.blindBox}>
               <input
                 value={check}
-                onChange={handleCheck}
+                onChange={handleCheckInput}
                 type={isNewCheckBlind ? 'text' : 'password'}
                 placeholder="비밀번호를 입력하세요"
                 className={cn({
