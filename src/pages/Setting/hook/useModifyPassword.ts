@@ -1,23 +1,21 @@
 import { checkPassword, modify } from 'api/user';
 import { useState } from 'react';
 import { PATTERN, ERROR_MESSAGE } from 'pages/Setting/static/setting';
+import useBooleanState from 'utils/hooks/useBooleanState';
+import usePasswordState from './usePasswordState';
 
 const useModifyPassword = () => {
-  const [current, setCurrent] = useState('');
-  const [newPassword, setnewPassword] = useState('');
-  const [check, setCheck] = useState('');
-  const [isShowError, setIsShowError] = useState(false);
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowError, , , ,setIsShowError] = useBooleanState(false);
+  const [isShowModal, , , ,setIsShowModal] = useBooleanState(false);
   const [message, setMessage] = useState('');
-  const handleCurrent = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrent(e.target.value);
-  };
-  const handleNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setnewPassword(e.target.value);
-  };
-  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCheck(e.target.value);
-  };
+  const {
+    current,
+    handleCurrent,
+    newPassword,
+    handleNewPassword,
+    check,
+    handleCheck,
+  } = usePasswordState();
 
   const typeCheck = (pw: string) => {
     if (!PATTERN.test(pw)) {
