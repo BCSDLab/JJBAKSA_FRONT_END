@@ -1,4 +1,3 @@
-import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useInfiniteQuery } from 'react-query';
 import { getDetailReview } from 'api/follow';
 import useBooleanState from 'utils/hooks/useBooleanState';
@@ -10,8 +9,6 @@ import ListReview from './ListReview';
 interface Props {
   placeId: string;
   name: string;
-  photos: string | undefined;
-  isCheckerboard: boolean;
   category: string;
 }
 
@@ -34,18 +31,15 @@ const useGetDetailReview = (placeId: string, followerId: number) => {
 };
 
 export default function FollowReview({
-  placeId, name, photos, isCheckerboard, category,
+  placeId, name, category,
 }: Props) {
-  const { isMobile } = useMediaQuery();
   const { data } = useGetDetailReview(placeId, 361);
   const [isShow, , , toggle] = useBooleanState(false);
 
   return (
     <div className={style.container}>
-      {!isMobile && isCheckerboard && photos ? <img alt="shop" src={photos} className={style.review__img} /> : isCheckerboard && <div className={style.review__img}>{name}</div>}
-      {!isCheckerboard && (
-        <div className={style.content}>
-          {data
+      <div className={style.content}>
+        {data
             && (
               <button type="button" onClick={toggle} className={style.title}>
                 <div>
@@ -61,7 +55,7 @@ export default function FollowReview({
                 />
               </button>
             )}
-          {data && !isCheckerboard && isShow
+        {data && isShow
             && data.content.map((item) => (
               <ListReview
                 createdAt={item.createdAt}
@@ -69,8 +63,7 @@ export default function FollowReview({
                 rate={item.rate}
               />
             ))}
-        </div>
-      )}
+      </div>
     </div>
   );
 }
