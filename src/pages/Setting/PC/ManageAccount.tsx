@@ -26,6 +26,7 @@ export default function ManageAccount() {
     isShowModal,
   } = useModifyPassword();
   const auth = useAuth();
+  // const isEmailLogin = (a: User | null) => a && 'account' in a;
   return (
     <form className={style.formContainer}>
       <div className={style.title}>계정</div>
@@ -45,7 +46,7 @@ export default function ManageAccount() {
             className={cn({
               [style.password]: true,
               [style.password__error]:
-                message === ERROR_MESSAGE.Current_Error || message === ERROR_MESSAGE.Type_Error,
+                message === ERROR_MESSAGE.currentError || message === ERROR_MESSAGE.typeError,
             })}
             type={isCurrentBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}
@@ -72,7 +73,7 @@ export default function ManageAccount() {
             className={cn({
               [style.password]: true,
               [style.password__error]:
-                message === ERROR_MESSAGE.Correct_Error,
+                message === ERROR_MESSAGE.correctError,
             })}
             type={isNewBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}
@@ -99,7 +100,7 @@ export default function ManageAccount() {
             className={cn({
               [style.password]: true,
               [style.password__error]:
-                message === ERROR_MESSAGE.Correct_Error,
+                message === ERROR_MESSAGE.correctError,
             })}
             type={isNewCheckBlind ? 'text' : 'password'}
             disabled={!(auth && 'account' in auth)}

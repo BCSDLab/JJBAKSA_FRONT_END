@@ -55,7 +55,7 @@ export default function IdChange(): JSX.Element {
                 className={cn({
                   [styles.form__input]: true,
                   [styles['form__input--error']]:
-                    message === ERROR_MESSAGE.Current_Error || message === ERROR_MESSAGE.Type_Error,
+                    message === ERROR_MESSAGE.currentError || message === ERROR_MESSAGE.typeError,
                 })}
                 disabled={!(auth && 'account' in auth)}
               />
@@ -81,7 +81,7 @@ export default function IdChange(): JSX.Element {
                 placeholder="비밀번호를 입력하세요"
                 className={cn({
                   [styles.form__input]: true,
-                  [styles['form__input--error']]: message === ERROR_MESSAGE.Correct_Error,
+                  [styles['form__input--error']]: message === ERROR_MESSAGE.correctError,
                 })}
                 disabled={!(auth && 'account' in auth)}
               />
@@ -108,7 +108,7 @@ export default function IdChange(): JSX.Element {
                 className={cn({
                   [styles.form__input]: true,
                   [styles['form__input--error']]:
-                    message === ERROR_MESSAGE.Correct_Error,
+                    message === ERROR_MESSAGE.correctError,
                 })}
                 disabled={!(auth && 'account' in auth)}
               />

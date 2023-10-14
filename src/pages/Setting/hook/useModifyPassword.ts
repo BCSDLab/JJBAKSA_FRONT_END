@@ -19,7 +19,7 @@ const useModifyPassword = () => {
 
   const typeCheck = (pw: string) => {
     if (!PATTERN.test(pw)) {
-      setMessage(ERROR_MESSAGE.Type_Error);
+      setMessage(ERROR_MESSAGE.typeError);
       setIsShowError(true);
       return false;
     }
@@ -32,7 +32,7 @@ const useModifyPassword = () => {
       await checkPassword({ password: current });
       return true;
     } catch (e) {
-      setMessage(ERROR_MESSAGE.Current_Error);
+      setMessage(ERROR_MESSAGE.currentError);
       setIsShowError(true);
       return false;
     }
@@ -40,7 +40,7 @@ const useModifyPassword = () => {
 
   const passwordCorrectCheck = () => {
     if (newPassword !== check) {
-      setMessage(ERROR_MESSAGE.Correct_Error);
+      setMessage(ERROR_MESSAGE.currentError);
       setIsShowError(true);
       return false;
     }
