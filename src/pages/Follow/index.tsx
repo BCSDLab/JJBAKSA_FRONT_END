@@ -41,6 +41,7 @@ const filterFollowInfo = (data: GetFollowListResponse): FollowerInfo[] => {
     nickname: item.nickname,
     userType: item.userType,
     followedType: 'FOLLOWED',
+    userCountResponse: item.userCountResponse,
   }));
   return filteredData;
 };

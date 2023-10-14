@@ -50,6 +50,7 @@ export default function FollowList({
           account={item.account}
           followedType={item.followedType}
           requestId={item.requestId}
+          userCountResponse={item.userCountResponse}
         />
       ))}
       {isShow && sended && sended.map((item) => (

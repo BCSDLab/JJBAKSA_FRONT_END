@@ -15,10 +15,15 @@ interface Props {
   followedType: string,
   id: number,
   requestId?: number,
+  userCountResponse?: {
+    id: number;
+    reviewCount: number;
+    friendCount: number;
+  }
 }
 
 export default function Follower({
-  nickname, account, followedType, id, requestId,
+  nickname, account, followedType, id, requestId, userCountResponse,
 }: Props) {
   const request = useRequestAndUpdate();
   const accept = useAcceptFollow();
@@ -42,6 +47,7 @@ export default function Follower({
               nickname,
               account,
               followedType,
+              userCountResponse,
             },
           })}
         >
