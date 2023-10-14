@@ -5,17 +5,17 @@ import {
   LoginResponse,
   ModifyParams,
   RegisterParams,
-  User,
+  EmailUser,
   SendRegisterEmailParams,
   SendFindEmailParams,
   GetAccountParams,
   FindPasswordParams,
-  Users,
+  User,
   CheckPasswordParams,
 } from './entity';
 import userApi from './userApiClient';
 
-export const register = (param: RegisterParams) => userApi.post<User>('/', param);
+export const register = (param: RegisterParams) => userApi.post<EmailUser>('/', param);
 
 export const checkIdDuplicate = (param: CheckIdDuplicateParams) => userApi.get<User>(`/exists?account=${param.account}`);
 
@@ -24,7 +24,7 @@ export const login = async (param: LoginParams) => {
   return { data };
 };
 
-export const getMe = () => userApi.get<Users>('/me');
+export const getMe = () => userApi.get<User>('/me');
 
 export const withdrawUser = () => userApi.delete<User>('/me');
 

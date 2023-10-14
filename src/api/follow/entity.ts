@@ -1,4 +1,4 @@
-import { User } from 'api/user/entity';
+import { EmailUser } from 'api/user/entity';
 import { FollowerInfo } from 'pages/Follow/static/entity';
 
 export interface FollowListParams {
@@ -27,8 +27,8 @@ export interface SentOrReceivedFollowParams {
 export interface SentOrReceivedFollowResponse {
   content: {
     id: number;
-    follower: User;
-    user: User;
+    follower: EmailUser;
+    user: EmailUser;
   }[];
   empty: boolean;
   last: boolean;
