@@ -43,5 +43,3 @@ export const findPassowrd = (param: FindPasswordParams) => userApi.post('/passwo
 });
 
 export const checkPassword = (param: CheckPasswordParams) => userApi.post(`/check-password?password=${param.password}`);
-
-export const secession = () => userApi.delete('/me');

@@ -6,13 +6,13 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Withdrawal.module.scss';
 import WithdrawalModal from './components/WithdrawalModal';
-import useSecession from './useSecession';
+import useWithDrawal from './useWithdrawal';
 
 export default function Withdrawal() {
   const auth = useAuth();
   const [isCheck, setIsCheck] = useState(0);
   const [modal, open] = useBooleanState(false);
-  const deleteAccount = useSecession();
+  const deleteAccount = useWithDrawal();
   const checked = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       setIsCheck(isCheck + 1);
