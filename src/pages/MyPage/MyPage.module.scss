@@ -25,21 +25,16 @@
 }
 
 .bottom-sheet {
-  position: fixed;
   width: 300px;
-  bottom: -300px;
-  left: 50%;
-  transform: translate(-50%, -50%);
   height: 500px;
-  padding: 28px 24px 35px 28px;
-  border-radius: 10% 10% 0 0;
-
-  @media (max-height: 500px) {
-    height: 400px;
-  }
+  margin-bottom: 30%;
+  padding: 24px 24px 35px;
+  border-radius: 45px;
 
   @include media.media-breakpoint-down(mobile) {
-    bottom: -300px;
+    margin: 0;
+    padding: 24px 24px 100px;
+    bottom: -100px;
     width: 100%;
   }
 }

@@ -36,7 +36,7 @@ export default function ProfileModal({ imgUrl, nickname }:ProfileModalProps) {
   };
 
   return (
-    <div>
+    <>
       <span className={styles.phrase}>
         {nickname}
         님,
@@ -57,10 +57,10 @@ export default function ProfileModal({ imgUrl, nickname }:ProfileModalProps) {
           <span className={styles.name__length}>{`${nameLength}/10`}</span>
         </div>
         <div className={styles.form__buttons}>
-          <button type="button" onClick={closeModal} className={styles['form__buttons--cancle']}>취소</button>
+          <button type="button" onClick={closeModal} className={styles['form__buttons--cancel']}>취소</button>
           <button type="submit" className={styles['form__buttons--complete']}>완료</button>
         </div>
       </form>
-    </div>
+    </>
   );
 }
