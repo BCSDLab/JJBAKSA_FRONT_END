@@ -23,6 +23,7 @@ import Notice from 'pages/Notice';
 import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
 import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
 import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
+import MyPage from 'pages/MyPage';
 import NotFoundPage from 'pages/Search/components/NotFoundPage';
 import FollowProfile from 'pages/Follow/components/FollowProfile';
 
@@ -46,6 +47,7 @@ export default function App(): JSX.Element {
             <Route path="/friend-list/:id" element={<FollowProfile />} />
           </Route>
           <Route path="/withdrawal" element={<Withdrawal />} />
+          <Route path="/profile" element={<MyPage />} />
           <Route path="/post/:name" element={<Post />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
