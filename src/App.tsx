@@ -24,6 +24,7 @@ import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
 import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
 import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
 import MyPage from 'pages/MyPage';
+import NotFoundPage from 'pages/Search/components/NotFoundPage';
 import FollowProfile from 'pages/Follow/components/FollowProfile';
 
 export default function App(): JSX.Element {
@@ -33,6 +34,7 @@ export default function App(): JSX.Element {
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
+          <Route path="/search/not-found" element={<NotFoundPage />} />
           <Route path="/inquiry" element={<Inquiry />} />
           <Route path="/myinquiry" element={<Myinquiry />} />
           <Route path="/notice" element={<Notice />} />
