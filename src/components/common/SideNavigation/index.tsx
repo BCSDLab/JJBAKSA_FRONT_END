@@ -91,7 +91,7 @@ export default function SideNavigation(): JSX.Element {
           {auth ? (
             <li>
               <img
-                src={auth.profileImage.url || `${defaultImage}`}
+                src={auth.profileImage?.url || `${defaultImage}`}
                 alt="프로필 이미지"
                 className={styles['bottom-navigation__profile-image']}
               />
