@@ -12,7 +12,6 @@ function useNaverMap(latitude: number | undefined, longitude: number | undefined
         zoomControl: false,
         zoom: 15,
         scaleControl: false,
-        logoControl: false,
         mapDataControl: false,
       });
       setMap(newMaps);
