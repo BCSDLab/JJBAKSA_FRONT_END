@@ -12,7 +12,6 @@ export default function Scrap({ placeId }:Props) {
   const queryClient = useQueryClient();
   const scrapList = useQuery('scrapList', () => getScrap());
   const [scrapId, setScrapId] = useState<number>(-1);
-  console.log(scrapId);
 
   useEffect(() => {
     if (scrapList.status === 'success') {
