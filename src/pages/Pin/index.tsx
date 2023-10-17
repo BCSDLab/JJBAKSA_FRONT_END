@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { fetchShop } from 'api/shop';
 import { ReactComponent as Star } from 'assets/svg/pin/star.svg';
 import { ReactComponent as Switch } from 'assets/svg/pin/switch-horizontal.svg';
 import { ReactComponent as Report } from 'assets/svg/pin/report.svg';
@@ -8,13 +7,10 @@ import { ReactComponent as Empty } from 'assets/svg/pin/empty.svg';
 import { ReactComponent as FollowersEmpty } from 'assets/svg/pin/follower_empty.svg';
 import cn from 'utils/ts/classNames';
 import { Link } from 'react-router-dom';
-import { useQueries } from 'react-query';
-import {
-  latestMyReview, latestFollowerReview, getMyReview, getFollowersReview,
-} from 'api/review';
 import styles from './Pin.module.scss';
 import Carousel from './components/Carousel';
 import Scrap from './components/Scrap';
+import usePinQueries from './hooks/usePinQueries';
 
 interface Props {
   placeId:string;
@@ -23,22 +19,7 @@ interface Props {
 export default function Pin({ placeId }:Props) {
   const [sortType, setSortType] = useState<string>('createdAt');
   const [mode, setMode] = useState(1);
-  const queries = useQueries([
-    { queryKey: [`pinInfo${placeId}`], queryFn: async () => fetchShop(placeId) },
-    { queryKey: [`latestMy${placeId}`], queryFn: async () => latestMyReview(placeId) },
-    { queryKey: [`latestFollower${placeId}`], queryFn: async () => latestFollowerReview(placeId) },
-    { queryKey: [`myReview${placeId}`], queryFn: async () => getMyReview({ placeId, sort: sortType }) },
-    { queryKey: [`followerReview${placeId}`], queryFn: async () => getFollowersReview({ placeId, sort: sortType }) },
-  ]);
-
-  const getRateValue = () => {
-    if (queries[0].data?.totalRating
-      && queries[0].data?.ratingCount) {
-      return Math.floor((queries[0].data?.totalRating || 0)
-        / (queries[0].data?.ratingCount || 1)).toFixed(1);
-    }
-    return 0;
-  };
+  const { queries, rateValue } = usePinQueries({ placeId, sortType });
 
   const handleSortButton = () => {
     if (sortType === 'createdAt') setSortType('rate');
@@ -59,7 +40,7 @@ export default function Pin({ placeId }:Props) {
           <div className={styles.shop__detail}>
             <div className={styles['shop__detail--rate']}>
               <Star />
-              {getRateValue()}
+              {rateValue}
             </div>
             <div className={styles['shop__detail--latest']}>
               마지막 리뷰
