@@ -15,14 +15,14 @@ export default function SideNavigation(): JSX.Element {
   const auth = useAuth();
   const clearAuth = useClearAuth();
   const location = useLocation();
-  const [visible, , , toggle, setValue] = useBooleanState(true);
+  const [visible, , , toggle, setVisible] = useBooleanState(true);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
 
   const handleToggle = () => {
     if (location.pathname === '/') {
-      setValue(!visible);
+      setVisible(!visible);
     }
   };
 
