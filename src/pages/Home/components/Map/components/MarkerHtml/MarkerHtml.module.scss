@@ -1,7 +1,5 @@
 @use "src/utils/styles/mediaQuery" as media;
 
-$default-image: "/assets/images/home/location-marker.png";
-
 .container {
   position: absolute;
   display: flex;
@@ -114,7 +112,7 @@ $default-image: "/assets/images/home/location-marker.png";
 }
 
 .cluster {
-  background-image: url("#{$default-image}");
+  background-image: url("../../../../../../assets/images/home/location-marker.png");
   display: flex;
   cursor: pointer;
   width: 69px;
