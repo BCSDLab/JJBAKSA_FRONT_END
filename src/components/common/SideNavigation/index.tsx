@@ -1,5 +1,5 @@
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
-import { ReactComponent as StoreFrontIcon } from 'assets/svg/home/storefront.svg';
+import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { useAuth, useClearAuth } from 'store/auth';
@@ -142,7 +142,7 @@ export default function SideNavigation(): JSX.Element {
               onClick={() => { setFilterNearby(filterNearbyState === 0 ? 1 : 0); }}
             >
               가까운 음식점
-              <StoreFrontIcon />
+              <NearbyIcon />
             </button>
             <button
               type="button"

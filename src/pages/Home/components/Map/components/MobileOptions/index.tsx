@@ -1,5 +1,5 @@
 import { ReactComponent as LensIcon } from 'assets/svg/home/lens.svg';
-import { ReactComponent as StoreFrontIcon } from 'assets/svg/home/storefront.svg';
+import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { ReactComponent as VerticalDot } from 'assets/svg/home/verticalDot.svg';
@@ -42,7 +42,7 @@ export default function MobileOptions(): JSX.Element {
             })}
             onClick={() => { setFilterNearby(filterNearbyState === 0 ? 1 : 0); }}
           >
-            <StoreFrontIcon />
+            <NearbyIcon />
             가까운 음식점
           </button>
           <button
