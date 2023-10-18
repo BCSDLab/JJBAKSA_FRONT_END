@@ -34,6 +34,7 @@ export default function App(): JSX.Element {
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/search" element={<Search />} />
           <Route path="/search/:keyword" element={<SearchDetails />} />
+          <Route path="/search/not-found" element={<NotFoundPage />} />
           <Route path="/inquiry/:type" element={<Inquiry />} />
           <Route path="/inquiry/search/:keyword" element={<Inquiry />} />
           <Route path="/inquiry/inquire" element={<Inquire />} />
