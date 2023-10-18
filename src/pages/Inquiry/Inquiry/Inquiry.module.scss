@@ -19,7 +19,7 @@ $disabled: #c4c4c4;
 }
 
 .nav {
-  & > *{
+  & > * {
     position: fixed;
   }
 
@@ -32,7 +32,7 @@ $disabled: #c4c4c4;
     color: $highlight;
     font-size: 32px;
     font-weight: 700;
-    margin: 160px 0 52px 0;
+    margin: 160px 0 52px;
     cursor: pointer;
   }
 
@@ -64,7 +64,7 @@ $disabled: #c4c4c4;
       box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
       margin-top: 48px;
 
-      &>:first-child {
+      & > :first-child {
         margin-right: 5px;
       }
 
@@ -80,7 +80,7 @@ $disabled: #c4c4c4;
   color: $normal;
 }
 
-.selected{
+.selected {
   color: $highlight;
 }
 

@@ -19,7 +19,7 @@ $disabled: #c4c4c4;
 }
 
 .nav {
-  & > *{
+  & > * {
     position: fixed;
   }
 
@@ -32,7 +32,7 @@ $disabled: #c4c4c4;
     color: $highlight;
     font-size: 32px;
     font-weight: 700;
-    margin: 160px 0 32px 0;
+    margin: 160px 0 32px;
     cursor: pointer;
   }
 
