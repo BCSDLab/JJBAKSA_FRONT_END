@@ -9,6 +9,25 @@ import useInquiryList from 'pages/Inquiry/Inquiry/hooks/useInquiryList';
 import { InquiryContent } from 'api/inquiry/entity';
 import styles from './DataTable.module.scss';
 
+function ClampText({ text }: { text: string }): JSX.Element {
+  const [isClamped, setIsClamped] = useState(false);
+  const textRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (textRef.current) {
+      const isOverflowing = textRef.current.scrollHeight > textRef.current.offsetHeight;
+      setIsClamped(isOverflowing);
+    }
+  }, [text]);
+
+  return (
+    <div className={styles.block__title} ref={textRef}>
+      {text}
+      {isClamped && '...'}
+    </div>
+  );
+}
+
 export default function DataTable({ typePath }: { typePath: string }): JSX.Element {
   const [dateCursor, setDateCursor] = useState<string | null>(null);
   const [idCursor, setIdCursor] = useState<number>(0);
@@ -87,14 +106,14 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
             >
               <div className={`${styles.block__body} ${expandedId === item.id ? styles.expanded : ''}`}>
                 <p className={styles.block__title}>
-                  {item.title}
+                  <ClampText text={item.title} />
                 </p>
                 <span className={styles.block__info}>
                   {new Date(item.createdAt).toLocaleDateString()}
                   |
                   {item.createdBy}
                 </span>
-                <span className={styles['block__body-extender']}>
+                <span className={styles['block__body-expander']}>
                   <Arrow style={{ transform: expandedId === item.id ? 'rotate(-180deg)' : 'rotate(0deg)' }} />
                 </span>
 

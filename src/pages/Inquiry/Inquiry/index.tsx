@@ -42,7 +42,7 @@ function createNavigationLink(link: NavigationLink) {
       tabIndex={0}
     >
       {isSelected ? <Dot className={styles.dot} /> : null}
-      <Link to={path} className={`${styles['link-no-underline']} ${isSelected ? styles.selected : ''}`}>
+      <Link to={path} className={`${styles.noUnderline} ${isSelected ? styles.selected : ''}`}>
         {text}
       </Link>
     </div>
@@ -85,9 +85,9 @@ export default function Inquiry(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        <div className={styles['nav__side-navigation']}>
+        <div className={styles.menu}>
           <div
-            className={styles.nav__title}
+            className={styles.menu__title}
             onClick={() => {
               navigate('/inquiry/all');
             }}
@@ -102,7 +102,7 @@ export default function Inquiry(): JSX.Element {
             {title}
           </div>
 
-          <div className={styles.nav__link}>
+          <div className={styles.menu__link}>
             {createNavigationLink({
               path: '/inquiry/all',
               text: allInquiryLinkTitle,
@@ -119,7 +119,7 @@ export default function Inquiry(): JSX.Element {
 
           <button
             type="button"
-            className={styles['nav__link-inquire']}
+            className={styles['menu__link-inquire']}
             onClick={() => {
               navigate('/inquiry/inquire');
             }}
@@ -140,17 +140,19 @@ export default function Inquiry(): JSX.Element {
           </button>
         </div>
 
-        <div className={styles.searchData}>
-          <div className={styles.searchBar}>
-            <SearchInput
-              onChange={handleChange}
-              text={text}
-              onLensIconClick={() => navigate(`/inquiry/search/${text}`)}
-            />
+        <div className={styles.data}>
+          <div className={styles.data__searchBar}>
+            <div className={styles['data__searchBar-component']}>
+              <SearchInput
+                onChange={handleChange}
+                text={text}
+                onLensIconClick={() => navigate(`/inquiry/search/${text}`)}
+              />
+            </div>
           </div>
 
-          <div className={styles.data}>
-            <div className={styles['data__data-table']}>
+          <div className={styles.data__dataTable}>
+            <div className={styles['data__dataTable-component']}>
               <DataTable typePath={typePath} />
             </div>
           </div>

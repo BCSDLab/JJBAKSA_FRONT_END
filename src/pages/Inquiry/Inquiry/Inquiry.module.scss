@@ -5,27 +5,45 @@ $normal: #666666;
 $disabled: #c4c4c4;
 
 .container {
-  width: 100%;
-  height: 100%;
+  width: calc(100vw - 100px);
+  height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin-left: 100px;
+
+  @media (max-width: 576px) { // 모바일 브레이크 포인트
+    width: 100vw;
+    margin-left: 0;
+  }
 }
 
 .box {
+  width: 947px;
   display: flex;
   flex-direction: row;
-  width: 947px;
-}
+  justify-content: center;
 
-.nav {
-  & > * {
-    position: fixed;
+  @media (max-width: 1148px) { // 메뉴 이동 브레이크 포인트
+    width: 720px;
+    margin-left: 0;
   }
 
-  &__side-navigation {
-    width: 227px;
-    height: 100%;
+  @media (max-width: 822px) {
+    width: calc(100vw - 100px);
+  }
+
+  @media (max-width: 576px) { // 모바일 브레이크 포인트
+    width: 100%;
+  }
+}
+
+.menu {
+  width: 227px;
+  height: 100%;
+
+  @media (max-width: 1148px) {
+    display: none;
   }
 
   &__title {
@@ -75,7 +93,7 @@ $disabled: #c4c4c4;
   }
 }
 
-.link-no-underline {
+.noUnderline {
   text-decoration: none;
   color: $normal;
 }
@@ -91,40 +109,79 @@ $disabled: #c4c4c4;
   left: -12px;
 }
 
-.searchData {
-  width: 720px;
-  display: flex;
-  flex-direction: column;
-}
-
-.searchBar {
-  border-bottom: 1px solid $highlight;
-  width: 720px;
-  height: 252px;
-  margin-left: -1px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
-}
-
 .data {
   width: 720px;
-  flex-grow: 1;
   display: flex;
-  flex-direction: column;
-  position: relative;
+  flex-flow: column wrap;
+  align-items: center;
+  margin: 0 auto;
 
-  &__data-table {
-    width: 720px;
-    height: calc(100vh - 333px);
-    overflow-y: auto;
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+
+  &__searchBar {
+    width: 100%;
+    height: 252px;
+    border-bottom: 1px solid $highlight;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+
+    @media (max-width: 576px) { // 모바일 브레이크 포인트, 디자인 변경
+      background: none;
+      border-bottom: none;
+      height: 0;
+      align-items: center;
+    }
+
+    &-component {
+      margin-top: 152px;
+
+      @media (max-width: 576px) { // 모바일 브레이크 포인트, 디자인 변경
+        margin-top: 0;
+        position: fixed;
+        top: 24px;
+        z-index: 1;
+      }
+    }
+  }
+
+  &__dataTable {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: calc(100vh - 253px);
+
+    @media (max-width: 576px) { // 사이드 네비 브레이크 포인트에 따른 height 변경
+      height: calc(100vh - 80px);
+    }
+
+    &-component {
+      overflow-y: auto;
+    }
   }
 }
 
-.loader {
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar:hover {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $highlight;
+  border-radius: 8px;
 }
