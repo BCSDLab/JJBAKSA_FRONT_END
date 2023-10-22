@@ -1,0 +1,109 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.information {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 91%;
+  margin: 0 auto;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  &__image {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+  }
+
+  &__nickname {
+    margin: 0;
+    margin-bottom: 15px;
+    display: inline;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__account {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
+.totals {
+  width: 174px;
+  display: flex;
+  justify-content: space-between;
+
+  &__post {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &--number {
+      font-size: 40px;
+      font-weight: 500;
+    }
+
+    &--label {
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+
+  &__follower {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &--number {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    &--label {
+      font-size: 24px;
+      font-weight: 400;
+    }
+  }
+}
+
+.dot {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border: 1px solid black;
+  border-radius: 100;
+  margin: 5px;
+}
+
+.option {
+  width: 24px;
+  height: 24px;
+}
+
+.profile {
+  all: unset;
+  display: flex;
+  position: relative;
+  outline: none;
+  border-radius: 50%;
+  margin-right: 16px;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(50%);
+  }
+}
+
+.change--image {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
