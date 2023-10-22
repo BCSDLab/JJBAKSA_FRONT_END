@@ -1,8 +1,8 @@
 import { getFollowerReviewCount } from 'api/follow';
 import { useQuery } from 'react-query';
 
-const useGetFollowerReviewCount = (followId: number) => {
-  const { data } = useQuery(['reviewCount', followId], () => getFollowerReviewCount({ followId }));
+const useGetFollowerReviewCount = (id: number) => {
+  const { data } = useQuery(['reviewCount', id], () => getFollowerReviewCount({ id }));
   return data;
 };
 

@@ -100,5 +100,5 @@ export interface GetDetailReviewResponse {
 }
 
 export interface GetFollowerReviewCountParam {
-  followId: number;
+  id: number;
 }
