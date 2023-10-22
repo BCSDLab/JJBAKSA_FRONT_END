@@ -54,23 +54,24 @@ export default function FollowPage() {
   const { data: recent } = useGetRecentlyActiveFollower();
   return (
     <div className={style.template}>
-      <div className={style.top}>
-        <div className={style.top__prev}>
-          <PreviousButton />
-          <p>친구 목록</p>
+      <div className={style.content}>
+        <div className={style.top}>
+          <div className={style.top__prev}>
+            <PreviousButton />
+            <p>친구 목록</p>
+          </div>
+          <div className={style.top__search}>
+            <input
+              type="text"
+              className={cn({ [style['top__search--input']]: true })}
+              placeholder="검색어를 입력해주세요."
+              onChange={handleInputChange}
+              value={keyword}
+            />
+            <img className={cn({ [style['top__search--img']]: true })} src={search} alt="search" />
+          </div>
         </div>
-        <div className={style.top__search}>
-          <input
-            type="text"
-            className={cn({ [style['top__search--input']]: true })}
-            placeholder="검색어를 입력해주세요."
-            onChange={handleInputChange}
-            value={keyword}
-          />
-          <img className={cn({ [style['top__search--img']]: true })} src={search} alt="search" />
-        </div>
-      </div>
-      {keyword.length === 0
+        {keyword.length === 0
         && (
           follower?.content.length === 0
             && sended?.content.length === 0
@@ -83,13 +84,14 @@ export default function FollowPage() {
               </div>
             )
         )}
-      {user && keyword.length > 0 && (user.content.length > 0
-        ? (
-          <div>
-            <SearchPage data={user.content} />
-            {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
-          </div>
-        ) : <FailToSearch />)}
+        {user && keyword.length > 0 && (user.content.length > 0
+          ? (
+            <div>
+              <SearchPage data={user.content} />
+              {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
+            </div>
+          ) : <FailToSearch />)}
+      </div>
     </div>
   );
 }
