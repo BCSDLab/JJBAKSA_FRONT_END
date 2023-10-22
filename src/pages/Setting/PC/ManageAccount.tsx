@@ -4,6 +4,7 @@ import { useAuth } from 'store/auth';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import { User } from 'api/user/entity';
 import style from './index.module.scss';
 import useModifyPassword from '../hook/useModifyPassword';
 import PasswordSuccessModal from './PasswordSuccessModal';
@@ -25,8 +26,16 @@ export default function ManageAccount() {
     message,
     isShowModal,
   } = useModifyPassword();
+
+  const isEmailLogin = (auth: User | null) => {
+    if (auth && 'account' in auth) {
+      return auth.account;
+    }
+
+    return 'SNSLogin';
+  };
   const auth = useAuth();
-  // const isEmailLogin = (a: User | null) => a && 'account' in a;
+
   return (
     <form className={style.formContainer}>
       <div className={style.title}>계정</div>
@@ -36,7 +45,7 @@ export default function ManageAccount() {
       </div>
       <div>
         <span>아이디</span>
-        <input className={style.account__input} value={auth && 'account' in auth ? auth.account : 'SNSLogin'} disabled />
+        <input className={style.account__input} value={isEmailLogin(auth)} disabled />
       </div>
       <div className={style.title}>비밀번호 변경</div>
       <div>
