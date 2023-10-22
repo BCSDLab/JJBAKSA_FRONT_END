@@ -11,23 +11,23 @@ import useGetFollowerReview from '../hooks/useGetFollowerReview';
 import useGetFollowerReviewCount from '../hooks/useGetFollowerReviewCount';
 
 const useDeleteState = () => {
-  const [canDelete, setCanDelete] = useState(true);
+  const [isFollowed, setIsFollowed] = useState(true);
   const { del, data: deletedUser } = useDeleteFollow();
 
   useEffect(() => {
     if (deletedUser && deletedUser.status >= 200 && deletedUser.status <= 299) {
-      setCanDelete((prev) => !prev);
+      setIsFollowed((prev) => !prev);
     }
   }, [deletedUser]);
 
-  return { del, canDelete, deletedUser };
+  return { del, isFollowed, deletedUser };
 };
 
 export default function FollowProfile() {
   const location = useLocation();
   const state = location.state as User;
   const { data } = useGetFollowerReview(state.id);
-  const { del, canDelete } = useDeleteState();
+  const { del, isFollowed } = useDeleteState();
   const request = useRequestAndUpdate();
   const reviewCount = useGetFollowerReviewCount(state.id);
 
@@ -49,10 +49,10 @@ export default function FollowProfile() {
             <button
               type="button"
               className={style.user__button}
-              onClick={() => (canDelete && del(state.account))
-                || (!canDelete && request(state.account))}
+              onClick={() => (isFollowed && del(state.account))
+                || (!isFollowed && request(state.account))}
             >
-              {canDelete
+              {isFollowed
                 ? '팔로잉'
                 : '팔로우'}
             </button>
