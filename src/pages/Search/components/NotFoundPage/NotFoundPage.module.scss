@@ -1,0 +1,37 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.not-found-page__container {
+  padding-top: 180px;
+  max-width: 980px;
+  margin: 0 auto;
+
+  &__title {
+    width: 544px;
+    height: 100px;
+    color: #000;
+    font-family: SUIT, system-ui;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &__description {
+    margin-top: 22px;
+    width: 240px;
+    height: 30px;
+    color: #666;
+    font-family: SUIT, system-ui;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &__image {
+    display: flex;
+    margin-left: auto;
+    margin-top: 55px;
+    width: 676px;
+    height: 451px;
+  }
+}
