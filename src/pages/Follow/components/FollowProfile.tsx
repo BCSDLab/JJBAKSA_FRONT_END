@@ -2,6 +2,7 @@ import defaultImage from 'assets/images/follow/default-image.png';
 import { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import { useLocation } from 'react-router-dom';
+import { User } from 'api/user/entity';
 import style from './FollowProfile.module.scss';
 import FollowReview from './FollowReview';
 import useDeleteFollow from '../hooks/useDeleteFollow';
@@ -24,28 +25,18 @@ const useDeleteState = () => {
 
 export default function FollowProfile() {
   const location = useLocation();
-  const state = location.state as {
-    followId: number,
-    nickname: string,
-    account: string,
-    followedType: string
-    userCountResponse: {
-      id: number;
-      reviewCount: number;
-      friendCount: number;
-    }
-  };
-  const { data } = useGetFollowerReview(state.followId);
+  const state = location.state as User;
+  const { data } = useGetFollowerReview(state.id);
   const { del, canDelete } = useDeleteState();
   const request = useRequestAndUpdate();
-  const reviewCount = useGetFollowerReviewCount(state.followId);
+  const reviewCount = useGetFollowerReviewCount(state.id);
 
   return (
     <div className={style.container}>
       <div className={style.top}>
         <div className={style.top__container}>
           <div className={style.user}>
-            <img alt="img" src={defaultImage} className={style.user__profile} />
+            <img alt="유저 프로필 이미지" src={defaultImage} className={style.user__profile} />
             <div className={style.user__info}>
               <div>
                 <span className={cn({ [style['user__info--span']]: true })}>{state.nickname}</span>
