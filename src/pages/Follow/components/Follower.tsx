@@ -87,7 +87,8 @@ export default function Follower({
         거절
       </button>
       )}
-      {value && <MobileUnfollow nickname={nickname} del={del} toggle={toggle} account={account} />}
+      {value && isMobile
+      && <MobileUnfollow nickname={nickname} del={del} toggle={toggle} account={account} />}
     </div>
   );
 }
