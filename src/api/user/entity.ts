@@ -25,7 +25,7 @@ export interface ModifyParams {
   email?: string;
 }
 
-export interface User {
+export interface EmailUser {
   account: string;
   nickname: string;
   email: string;
@@ -48,6 +48,14 @@ export interface User {
   };
 }
 
+export interface SNSUser {
+  id: number,
+  nickname: string,
+  email: string,
+}
+
+export type User = EmailUser | SNSUser;
+
 export interface SendRegisterEmailParams {
   email: string;
 }
@@ -66,5 +74,9 @@ export interface FindPasswordParams {
 }
 
 export interface ChangePasswordParams {
+  password: string
+}
+
+export interface CheckPasswordParams {
   password: string
 }
