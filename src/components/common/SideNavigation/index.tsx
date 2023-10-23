@@ -1,9 +1,10 @@
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
-import { ReactComponent as StoreFrontIcon } from 'assets/svg/home/storefront.svg';
+import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { useAuth, useClearAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
+import defaultImage from 'assets/images/follow/default-image.png';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { Link, useLocation } from 'react-router-dom';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
@@ -14,14 +15,14 @@ export default function SideNavigation(): JSX.Element {
   const auth = useAuth();
   const clearAuth = useClearAuth();
   const location = useLocation();
-  const [visible, , , toggle, setValue] = useBooleanState(false);
+  const [visible, , , toggle, setVisible] = useBooleanState(true);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
 
   const handleToggle = () => {
     if (location.pathname === '/') {
-      setValue(!visible);
+      setVisible(!visible);
     }
   };
 
@@ -89,12 +90,14 @@ export default function SideNavigation(): JSX.Element {
         <ul className={styles['bottom-navigation']}>
           {auth ? (
             <li>
-              <div>
-                {/* 프로필 사진 추가 */}
-                <Link to="/" onClick={clearAuth}>
-                  <div className={styles['bottom-navigation__logout']}>로그아웃</div>
-                </Link>
-              </div>
+              <img
+                src={auth.profileImage?.url || `${defaultImage}`}
+                alt="프로필 이미지"
+                className={styles['bottom-navigation__profile-image']}
+              />
+              <Link to="/" onClick={clearAuth}>
+                <div className={styles['bottom-navigation__logout']}>로그아웃</div>
+              </Link>
             </li>
           ) : (
             <li>
@@ -119,14 +122,15 @@ export default function SideNavigation(): JSX.Element {
         className={cn({
           [styles['side-pannel']]: true,
           [styles['side-pannel--expand']]: visible,
+          [styles['side-pannel--invisible']]: location.pathname !== '/',
         })}
       >
         <div className={styles['side-pannel__search']}>
           <div className={styles['side-pannel__search-bar']}>
-            <span>
-              <input type="text" placeholder="검색어를 입력해주세요." className={styles['side-pannel__search-input']} />
+            <Link to="/search" className={styles['side-pannel__search-link']}>
+              검색어를 입력해주세요.
               <SearchIcon className={styles['side-pannel__search-icon']} />
-            </span>
+            </Link>
           </div>
           <div className={styles['side-pannel__search-buttons']}>
             <button
@@ -138,7 +142,7 @@ export default function SideNavigation(): JSX.Element {
               onClick={() => { setFilterNearby(filterNearbyState === 0 ? 1 : 0); }}
             >
               가까운 음식점
-              <StoreFrontIcon />
+              <NearbyIcon />
             </button>
             <button
               type="button"
@@ -165,7 +169,6 @@ export default function SideNavigation(): JSX.Element {
           </div>
         </div>
       </div>
-
     </div>
   );
 }

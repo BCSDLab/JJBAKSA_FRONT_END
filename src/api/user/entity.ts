@@ -33,6 +33,12 @@ export interface EmailUser {
   // 아래 두 파라미터도 확실한 도메인이 정해지면 수정 필요.
   // oauthType = 'KAKAO' | 'NAVER' | 'GOOGLE'...
   // userType = 'ADMIN' | 'NORMAL'...
+  profileImage: {
+    id: number;
+    path: string;
+    originalName: string;
+    url: string;
+  }
   oauthType: string;
   userType: string;
   userCountResponse: {
