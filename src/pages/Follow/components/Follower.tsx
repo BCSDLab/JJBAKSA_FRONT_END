@@ -33,6 +33,36 @@ export default function Follower({
   const cancel = useCancelFollow();
   const reject = useRejectRequest();
   const navigate = useNavigate();
+  const buttonConfigs: {
+    [key: string]:
+    {
+      className: string;
+      onClick: () => void;
+      text: string;
+    }
+  } = {
+    NONE: {
+      className: style['follower__button--request'],
+      onClick: () => request(account),
+      text: '팔로우',
+    },
+    REQUEST_SENT: {
+      className: style['follower__button--cancel'],
+      onClick: () => requestId && cancel(requestId),
+      text: '요청됨',
+    },
+    FOLLOWED: {
+      className: style.follower__button,
+      onClick: () => (isMobile ? mobileUnfollow() : del(account)),
+      text: '팔로잉',
+    },
+    REQUEST_RECEIVE: {
+      className: style['follower__button--accept'],
+      onClick: () => requestId && accept(requestId),
+      text: '확인',
+    },
+  };
+  const config = buttonConfigs[followedType];
 
   return (
     <div className={style.follower} id={`${id}`}>
@@ -60,23 +90,12 @@ export default function Follower({
       </div>
       <button
         className={cn({
-          [style.follower__button]: followedType === 'FOLLOWED',
-          [style['follower__button--cancel']]: followedType === 'REQUEST_SENT',
-          [style['follower__button--accept']]: followedType === 'REQUEST_RECEIVE',
-          [style['follower__button--request']]: followedType === 'NONE',
+          [config.className]: true,
         })}
         type="button"
-        onClick={
-          () => (followedType === 'NONE' && request(account))
-            || (followedType === 'REQUEST_RECEIVE' && requestId && accept(requestId))
-            || (followedType === 'FOLLOWED' && (isMobile ? mobileUnfollow() : del(account)))
-            || (followedType === 'REQUEST_SENT' && requestId && cancel(requestId))
-        }
+        onClick={config.onClick}
       >
-        {followedType === 'NONE' && '팔로우'}
-        {followedType === 'REQUEST_SENT' && '요청됨'}
-        {followedType === 'FOLLOWED' && '팔로잉'}
-        {followedType === 'REQUEST_RECEIVE' && '확인'}
+        {config.text}
       </button>
       {followedType === 'REQUEST_RECEIVE' && requestId && (
       <button
