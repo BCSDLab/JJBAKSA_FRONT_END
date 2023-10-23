@@ -6,17 +6,19 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './Withdrawal.module.scss';
 import WithdrawalModal from './components/WithdrawalModal';
+import useWithDrawal from './useWithdrawal';
 
 export default function Withdrawal() {
   const auth = useAuth();
   const [isCheck, setIsCheck] = useState(0);
   const [modal, open] = useBooleanState(false);
+  const deleteAccount = useWithDrawal();
   const checked = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       setIsCheck(isCheck + 1);
     } else { setIsCheck(isCheck - 1); }
   };
-  const handleSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     withdrawUser();
     event.preventDefault();
   };
@@ -73,7 +75,7 @@ export default function Withdrawal() {
               <li>추후 같은 계정으로 재가입해도 작성한 내역은 복구되지 않아요.</li>
             </ul>
           </div>
-          <button type="submit" className={styles.form__button} onClick={open} disabled={isCheck === 0}>
+          <button type="submit" className={styles.form__button} onClick={() => { open(); deleteAccount(); }} disabled={isCheck === 0}>
             회원탈퇴
           </button>
         </form>
