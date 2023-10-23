@@ -26,6 +26,7 @@ $back: white;
     font-size: 16px;
     font-weight: bold;
     font-weight: 500;
+    padding-right: 30px;
   }
 }
 
@@ -42,13 +43,7 @@ $back: white;
     color: $title;
   }
 
-  &__id {
-    display: flex;
-    font-size: 14px;
-    color: $title;
-  }
-
-  &__contents {
+  &__content {
     display: flex;
     flex-direction: row;
     margin: 0 auto 14px 16px;
@@ -89,7 +84,7 @@ $back: white;
     color: $title;
   }
 
-  &__contents {
+  &__content {
     display: flex;
     flex-direction: row;
     margin: 0 auto 12.5px 16px;
@@ -102,12 +97,23 @@ $back: white;
     display: flex;
     background-color: $back;
     border-style: none;
+    cursor: pointer;
   }
 
   &__app-version {
     display: flex;
     font-size: 14px;
     color: $title;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__version {
+    cursor: pointer;
   }
 }
 
@@ -125,19 +131,20 @@ $back: white;
   &__log-out {
     color: $default;
     display: flex;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     margin: 0 auto 10px 16px;
     border: none;
     background-color: $back;
     text-decoration: underline;
+    text-decoration-color: $back;
     cursor: pointer;
   }
 
   &__delete-account {
     font-size: 14px;
     margin: 0 auto 42px 16px;
-    color: $default;
+    color: #666666;
     text-decoration-line: none;
   }
 }
