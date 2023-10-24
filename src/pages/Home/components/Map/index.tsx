@@ -1,3 +1,4 @@
+import { Overlay } from 'react-naver-maps';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useEffect } from 'react';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
@@ -8,8 +9,9 @@ import useNaverMap from './hooks/useNaverMap';
 import useMarker from './hooks/useMarker';
 import useFilterShops from './hooks/useFilterShops';
 import Pin from '../Pin';
+import useCluster from './hooks/useCluster';
 
-export default function NaverMap(): JSX.Element {
+export default function Map(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useLocation();
   const map = useNaverMap(location?.latitude, location?.longitude);
@@ -22,17 +24,20 @@ export default function NaverMap(): JSX.Element {
     options_nearby: filterNearbyState,
   });
 
-  const { selected } = useMarker({ map, filterShops });
+  const { markerArray, selected } = useMarker({ map, filterShops });
 
   useEffect(() => {
     refetch();
   }, [filterFriendState, filterScrapState, filterNearbyState, refetch]);
 
+  const { cluster } = useCluster({ markerArray, map });
+
   return (
-    <div>
+    <>
       {isMobile && <MobileOptions />}
       {selected && <Pin selected={selected} />}
       <div id="map" className={styles.map} />
-    </div>
+      { cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
+    </>
   );
 }

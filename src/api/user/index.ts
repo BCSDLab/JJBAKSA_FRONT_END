@@ -5,15 +5,17 @@ import {
   LoginResponse,
   ModifyParams,
   RegisterParams,
-  User,
+  EmailUser,
   SendRegisterEmailParams,
   SendFindEmailParams,
   GetAccountParams,
   FindPasswordParams,
+  User,
+  CheckPasswordParams,
 } from './entity';
 import userApi from './userApiClient';
 
-export const register = (param: RegisterParams) => userApi.post<User>('/', param);
+export const register = (param: RegisterParams) => userApi.post<EmailUser>('/', param);
 
 export const checkIdDuplicate = (param: CheckIdDuplicateParams) => userApi.get<User>(`/exists?account=${param.account}`);
 
@@ -39,3 +41,5 @@ export const findPassowrd = (param: FindPasswordParams) => userApi.post('/passwo
   code: param.code,
   email: param.email,
 });
+
+export const checkPassword = (param: CheckPasswordParams) => userApi.post(`/check-password?password=${param.password}`);
