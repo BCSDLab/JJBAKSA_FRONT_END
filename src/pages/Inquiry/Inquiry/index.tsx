@@ -42,7 +42,7 @@ function createNavigationLink(link: NavigationLink) {
       tabIndex={0}
     >
       {isSelected ? <Dot className={styles.dot} /> : null}
-      <Link to={path} className={`${styles.noUnderline} ${isSelected ? styles.selected : ''}`}>
+      <Link to={path} className={`${styles['no-underline']} ${isSelected ? styles.selected : ''}`}>
         {text}
       </Link>
     </div>
@@ -119,7 +119,7 @@ export default function Inquiry(): JSX.Element {
 
           <button
             type="button"
-            className={styles['menu__link-inquire']}
+            className={styles['menu__link--inquire']}
             onClick={() => {
               navigate('/inquiry/inquire');
             }}
@@ -141,8 +141,8 @@ export default function Inquiry(): JSX.Element {
         </div>
 
         <div className={styles.data}>
-          <div className={styles.data__searchBar}>
-            <div className={styles['data__searchBar-component']}>
+          <div className={styles['data__search-bar']}>
+            <div className={styles['data__search-bar--component']}>
               <SearchInput
                 onChange={handleChange}
                 text={text}
@@ -151,8 +151,8 @@ export default function Inquiry(): JSX.Element {
             </div>
           </div>
 
-          <div className={styles.data__dataTable}>
-            <div className={styles['data__dataTable-component']}>
+          <div className={styles['data__data-table']}>
+            <div className={styles['data__data-table--component']}>
               <DataTable typePath={typePath} />
             </div>
           </div>

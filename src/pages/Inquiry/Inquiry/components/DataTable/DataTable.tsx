@@ -90,7 +90,7 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
   return (
     <div className={styles.table}>
       {allData && allData.length === 0 ? (
-        <div className={styles.noData}>
+        <div className={styles['no-data']}>
           {noDataTitle}
         </div>
       ) : (
@@ -113,18 +113,18 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
                   |
                   {item.createdBy}
                 </span>
-                <span className={styles['block__body-expander']}>
+                <span className={styles['block__body--expander']}>
                   <Arrow style={{ transform: expandedId === item.id ? 'rotate(-180deg)' : 'rotate(0deg)' }} />
                 </span>
 
                 {expandedId === item.id && (
                   <div className={styles.block__answerBox}>
                     {item.answer ? (
-                      <p className={styles['block__answerBox-answer']}>
+                      <p className={styles['block__answer-box--answer']}>
                         {item.answer}
                       </p>
                     ) : (
-                      <p className={styles['block__answerBox-noAnswer']}>
+                      <p className={styles['block__answer-box--no-answer']}>
                         {noAnswerTitle}
                       </p>
                     )}

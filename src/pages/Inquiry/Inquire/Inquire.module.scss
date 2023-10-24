@@ -18,15 +18,9 @@ $disabled: #c4c4c4;
   width: 947px;
 }
 
-.nav {
-  & > * {
-    position: fixed;
-  }
-
-  &__side-navigation {
-    width: 227px;
-    height: 100%;
-  }
+.menu {
+  width: 227px;
+  height: 100%;
 
   &__title {
     color: $highlight;
@@ -36,7 +30,7 @@ $disabled: #c4c4c4;
     cursor: pointer;
   }
 
-  &nav__explain {
+  &__explain {
     &-title {
       color: $default;
       font-size: 16px;
@@ -44,7 +38,7 @@ $disabled: #c4c4c4;
       line-height: 19.97px;
     }
 
-    &-smallTitle {
+    &--small-title {
       color: $normal;
       font-size: 11px;
       font-weight: 400;

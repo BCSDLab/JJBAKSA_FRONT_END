@@ -59,7 +59,7 @@ $normal: #666666;
     margin-top: 0;
   }
 
-  &__answerBox {
+  &__answer-box {
     width: 100%;
     height: auto;
     box-sizing: border-box;
@@ -69,13 +69,13 @@ $normal: #666666;
     padding: 16px;
     font-size: 16px;
 
-    &-noAnswer {
+    &--no-answer {
       opacity: 0.3;
     }
   }
 }
 
-.noData {
+.no-data {
   color: $normal;
   font-size: 16px;
   text-align: center;

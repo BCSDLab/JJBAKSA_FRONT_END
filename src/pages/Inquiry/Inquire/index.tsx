@@ -13,9 +13,9 @@ export default function Inquiry(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        <div className={styles['nav__side-navigation']}>
+        <div className={styles.menu}>
           <div
-            className={styles.nav__title}
+            className={styles.menu__title}
             onClick={() => {
               navigate('/inquiry/all');
             }}
@@ -30,22 +30,22 @@ export default function Inquiry(): JSX.Element {
             {title}
           </div>
 
-          <div className={styles.nav__explain}>
-            <div className={styles['nav__explain-svg']}>
+          <div className={styles.menu__explain}>
+            <div className={styles['menu__explain--svg']}>
               <WriteInquiryIcon />
             </div>
 
-            <div className={styles['nav__explain-title']}>
+            <div className={styles['menu__explain--title']}>
               {explainTitle}
             </div>
 
-            <div className={styles['nav__explain-smallTitle']}>
+            <div className={styles['menu__explain--small-title']}>
               {explainSmallTitle}
             </div>
           </div>
         </div>
 
-        <div className={styles.searchData}>
+        <div className={styles['search-data']}>
           a
         </div>
       </div>
