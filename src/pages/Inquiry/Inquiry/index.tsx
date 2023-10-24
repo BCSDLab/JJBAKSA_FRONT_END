@@ -58,10 +58,6 @@ export default function Inquiry(): JSX.Element {
   const navigate = useNavigate();
 
   const { text, handleChange } = useSearchForm();
-  const title = '문의하기';
-  const allInquiryLinkTitle = '전체 문의 내역';
-  const myInquiryLinkTitle = '나의 문의 내역';
-  const inquireLinkTitle = '문의하러 가기';
 
   /* eslint-disable */
   useEffect(() => { // typePath는 서버에 데이터를 요청할 때 사용
@@ -99,19 +95,19 @@ export default function Inquiry(): JSX.Element {
             role="button"
             tabIndex={0}
           >
-            {title}
+            문의하기
           </div>
 
           <div className={styles.menu__link}>
             {createNavigationLink({
               path: '/inquiry/all',
-              text: allInquiryLinkTitle,
+              text: '전체 문의 내역',
               isSelected: selectedTab === 'all',
               onClick: () => navigate('/inquiry/all'),
             })}
             {createNavigationLink({
               path: '/inquiry/my',
-              text: myInquiryLinkTitle,
+              text: '나의 문의 내역',
               isSelected: selectedTab === 'my',
               onClick: () => navigate('/inquiry/my'),
             })}
@@ -132,7 +128,7 @@ export default function Inquiry(): JSX.Element {
             tabIndex={0}
           >
             <span>
-              {inquireLinkTitle}
+              문의하러 가기
             </span>
             <span>
               <WriteIcon />

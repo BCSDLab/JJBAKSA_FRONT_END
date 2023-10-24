@@ -40,9 +40,6 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
 
   const loader = useRef<HTMLDivElement | null>(null);
 
-  const noDataTitle = '문의 내역이 없습니다.';
-  const noAnswerTitle = '아직 답변이 없네요. 조금만 기다려주세요!';
-
   /* eslint-disable */
   useEffect(() => { // all, my, search params 바뀔 때 allData 초기화
     setAllData([]);
@@ -91,7 +88,7 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
     <div className={styles.table}>
       {allData && allData.length === 0 ? (
         <div className={styles['no-data']}>
-          {noDataTitle}
+          문의 내역이 없습니다.
         </div>
       ) : (
         allData && (
@@ -125,7 +122,7 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
                       </p>
                     ) : (
                       <p className={styles['block__answer-box--no-answer']}>
-                        {noAnswerTitle}
+                        아직 답변이 없네요. 조금만 기다려주세요!
                       </p>
                     )}
                   </div>
