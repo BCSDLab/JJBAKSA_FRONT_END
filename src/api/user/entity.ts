@@ -52,6 +52,7 @@ export interface SNSUser {
   id: number,
   nickname: string,
   email: string,
+  profileImage: null;
 }
 
 export type User = EmailUser | SNSUser;
