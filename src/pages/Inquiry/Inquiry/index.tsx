@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 // import cn from 'utils/ts/classNames';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
 import InquirySelectButton from 'pages/Inquiry/Inquire/components/InquirySelectButton';
-import SearchInput from 'pages/Inquiry/Inquiry/components/SearchBar/SearchInput';
+import SearchBar from 'pages/Inquiry/Inquiry/components/SearchBar/SearchBar';
 import DataTable from 'pages/Inquiry/Inquiry/components/DataTable/DataTable';
 import styles from './Inquiry.module.scss';
 
@@ -108,7 +108,7 @@ export default function Inquiry(): JSX.Element {
         <div className={styles.data}>
           <div className={styles['data__search-bar']}>
             <div className={styles['data__search-bar--component']}>
-              <SearchInput
+              <SearchBar
                 onChange={handleChange}
                 text={text}
                 onLensIconClick={() => navigate(`/inquiry/search/${text}`)}
