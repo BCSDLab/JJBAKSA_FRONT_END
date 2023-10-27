@@ -51,7 +51,7 @@ export default function Inquiry(): JSX.Element {
     <div className={styles.container}>
       <div className={styles.box}>
         <div className={styles.menu}>
-          <div
+          <button
             className={styles.menu__title}
             onClick={() => {
               navigate('/inquiry/all');
@@ -61,11 +61,11 @@ export default function Inquiry(): JSX.Element {
                 navigate('/inquiry/all');
               }
             }}
-            role="button"
+            type="button"
             tabIndex={0}
           >
             문의하기
-          </div>
+          </button>
 
           <div className={styles.menu__select}>
             <InquirySelectButton
@@ -83,8 +83,8 @@ export default function Inquiry(): JSX.Element {
           </div>
 
           <button
+            className={styles.menu__inquire}
             type="button"
-            className={styles['menu__link--inquire']}
             onClick={() => {
               navigate('/inquiry/inquire');
             }}
@@ -96,12 +96,8 @@ export default function Inquiry(): JSX.Element {
             }}
             tabIndex={0}
           >
-            <span>
-              문의하러 가기
-            </span>
-            <span>
-              <WriteIcon />
-            </span>
+            문의하러 가기
+            <WriteIcon />
           </button>
         </div>
 

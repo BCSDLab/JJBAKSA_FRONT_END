@@ -28,7 +28,7 @@ export default function Inquiry(): JSX.Element {
     <div className={styles.container}>
       <div className={styles.box}>
         <div className={styles.menu}>
-          <div
+          <button
             className={styles.menu__title}
             onClick={() => {
               navigate('/inquiry/all');
@@ -38,16 +38,16 @@ export default function Inquiry(): JSX.Element {
                 navigate('/inquiry/all');
               }
             }}
-            role="button"
+            type="button"
             tabIndex={0}
           >
             문의하기
-          </div>
+          </button>
 
           <Explain />
         </div>
 
-        <div className={styles['search-data']}>
+        <div className={styles.form}>
           a
         </div>
       </div>
