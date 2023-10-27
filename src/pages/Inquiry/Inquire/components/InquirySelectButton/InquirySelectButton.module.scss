@@ -1,0 +1,31 @@
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+$normal: #666666;
+$disabled: #c4c4c4;
+
+.btn {
+  display: block;
+  width: 104px;
+  margin-bottom: 24px;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  color: $disabled;
+
+  &--selected {
+    color: $highlight;
+  }
+
+  &__dot {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -14px;
+  }
+}
+
+

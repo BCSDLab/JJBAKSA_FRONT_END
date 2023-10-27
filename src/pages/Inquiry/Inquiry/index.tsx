@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+// import cn from 'utils/ts/classNames';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
-import { ReactComponent as Dot } from 'assets/svg/inquiry/dot.svg';
+import InquirySelectButton from 'pages/Inquiry/Inquire/components/InquirySelectButton';
 import SearchInput from 'pages/Inquiry/Inquiry/components/SearchBar/SearchInput';
 import DataTable from 'pages/Inquiry/Inquiry/components/DataTable/DataTable';
 import styles from './Inquiry.module.scss';
@@ -16,38 +17,6 @@ const useSearchForm = () => {
     text, handleChange,
   };
 };
-
-interface NavigationLink {
-  path: string;
-  text: string;
-  isSelected: boolean;
-  onClick: () => void;
-}
-
-function createNavigationLink(link: NavigationLink) {
-  const {
-    path, text, isSelected, onClick,
-  } = link;
-
-  return (
-    <div
-      className={isSelected ? styles.selected : ''}
-      onClick={onClick}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          onClick();
-        }
-      }}
-      role="button"
-      tabIndex={0}
-    >
-      {isSelected ? <Dot className={styles.dot} /> : null}
-      <Link to={path} className={`${styles['no-underline']} ${isSelected ? styles.selected : ''}`}>
-        {text}
-      </Link>
-    </div>
-  );
-}
 
 export default function Inquiry(): JSX.Element {
   const { pathname } = useLocation();
@@ -98,19 +67,19 @@ export default function Inquiry(): JSX.Element {
             문의하기
           </div>
 
-          <div className={styles.menu__link}>
-            {createNavigationLink({
-              path: '/inquiry/all',
-              text: '전체 문의 내역',
-              isSelected: selectedTab === 'all',
-              onClick: () => navigate('/inquiry/all'),
-            })}
-            {createNavigationLink({
-              path: '/inquiry/my',
-              text: '나의 문의 내역',
-              isSelected: selectedTab === 'my',
-              onClick: () => navigate('/inquiry/my'),
-            })}
+          <div className={styles.menu__select}>
+            <InquirySelectButton
+              name="all"
+              path="/inquiry/all"
+              text="전체 문의 내역"
+              isSelected={selectedTab === 'all'}
+            />
+            <InquirySelectButton
+              name="my"
+              path="/inquiry/my"
+              text="나의 문의 내역"
+              isSelected={selectedTab === 'my'}
+            />
           </div>
 
           <button

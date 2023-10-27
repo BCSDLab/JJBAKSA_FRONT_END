@@ -54,15 +54,11 @@ $disabled: #c4c4c4;
     cursor: pointer;
   }
 
-  &__link {
+  &__select {
     padding-top: 17px;
     margin-left: 16px;
+  }
 
-    & > * {
-      width: 104px;
-      margin-bottom: 24px;
-      position: relative;
-    }
 
     &--inquire {
       display: flex;
@@ -91,22 +87,6 @@ $disabled: #c4c4c4;
       // }
     }
   }
-}
-
-.no-underline {
-  text-decoration: none;
-  color: $normal;
-}
-
-.selected {
-  color: $highlight;
-}
-
-.dot {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -12px;
 }
 
 .data {
