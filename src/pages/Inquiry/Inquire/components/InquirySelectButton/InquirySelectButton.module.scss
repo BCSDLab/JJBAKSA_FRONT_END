@@ -15,6 +15,7 @@ $disabled: #c4c4c4;
   font-weight: 500;
   position: relative;
   color: $disabled;
+  cursor: pointer;
 
   &--selected {
     color: $highlight;

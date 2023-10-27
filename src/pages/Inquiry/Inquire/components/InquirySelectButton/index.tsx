@@ -4,17 +4,17 @@ import cn from 'utils/ts/classNames';
 import { ReactComponent as Dot } from 'assets/svg/inquiry/dot.svg';
 import styles from './InquirySelectButton.module.scss';
 
-interface InquirySelect {
+interface Props {
   name: string;
   path: string;
   text: string;
   isSelected: boolean;
 }
 
-export default function InquirySelectButton(link: InquirySelect): JSX.Element {
+export default function InquirySelectButton(data: Props): JSX.Element {
   const {
     name, path, text, isSelected,
-  } = link;
+  } = data;
   const navigate = useNavigate();
 
   return (
