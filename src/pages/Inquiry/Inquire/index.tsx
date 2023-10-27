@@ -3,6 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import { ReactComponent as WriteInquiryIcon } from 'assets/svg/inquiry/write-inquiry.svg';
 import styles from './Inquire.module.scss';
 
+function Explain(): JSX.Element {
+  return (
+    <div className={styles.explain}>
+      <div className={styles.explain__svg}>
+        <WriteInquiryIcon />
+      </div>
+
+      <div className={styles.explain__title}>
+        쩝쩝박사 이용 중에 생긴 불편한 점이나 문의사항을 등록해주세요.
+      </div>
+
+      <div className={styles['explain__small-title']}>
+        확인 후 순차적으로 답변 드리겠습니다.
+      </div>
+    </div>
+  );
+}
+
 export default function Inquiry(): JSX.Element {
   const navigate = useNavigate();
 
@@ -26,19 +44,7 @@ export default function Inquiry(): JSX.Element {
             문의하기
           </div>
 
-          <div className={styles.menu__explain}>
-            <div className={styles['menu__explain--svg']}>
-              <WriteInquiryIcon />
-            </div>
-
-            <div className={styles['menu__explain--title']}>
-              쩝쩝박사 이용 중에 생긴 불편한 점이나 문의사항을 등록해주세요.
-            </div>
-
-            <div className={styles['menu__explain--small-title']}>
-              확인 후 순차적으로 답변 드리겠습니다.
-            </div>
-          </div>
+          <Explain />
         </div>
 
         <div className={styles['search-data']}>
