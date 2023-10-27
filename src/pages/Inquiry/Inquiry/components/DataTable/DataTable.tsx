@@ -4,29 +4,10 @@ import React, {
   useRef,
   useCallback,
 } from 'react';
-import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import useInquiryList from 'pages/Inquiry/Inquiry/hooks/useInquiryList';
+import DataBlock from 'pages/Inquiry/Inquiry/components/DataTable/components/DataBlock';
 import { InquiryContent } from 'api/inquiry/entity';
 import styles from './DataTable.module.scss';
-
-function ClampText({ text }: { text: string }): JSX.Element {
-  const [isClamped, setIsClamped] = useState(false);
-  const textRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (textRef.current) {
-      const isOverflowing = textRef.current.scrollHeight > textRef.current.offsetHeight;
-      setIsClamped(isOverflowing);
-    }
-  }, [text]);
-
-  return (
-    <div className={styles.block__title} ref={textRef}>
-      {text}
-      {isClamped && '...'}
-    </div>
-  );
-}
 
 export default function DataTable({ typePath }: { typePath: string }): JSX.Element {
   const [dateCursor, setDateCursor] = useState<string | null>(null);
@@ -87,47 +68,21 @@ export default function DataTable({ typePath }: { typePath: string }): JSX.Eleme
   return (
     <div className={styles.table}>
       {allData && allData.length === 0 ? (
-        <div className={styles['no-data']}>
+        <p className={styles['table--no-data']}>
           문의 내역이 없습니다.
-        </div>
+        </p>
       ) : (
         allData && (
           allData.map((item) => (
             <div
-              key={item.id}
               className={styles.block}
+              key={item.id}
               onClick={() => toggleExpand(item.id)}
               onKeyPress={(e) => handleKeyPress(e, item.id)}
               role="button"
               tabIndex={0}
             >
-              <div className={`${styles.block__body} ${expandedId === item.id ? styles.expanded : ''}`}>
-                <p className={styles.block__title}>
-                  <ClampText text={item.title} />
-                </p>
-                <span className={styles.block__info}>
-                  {new Date(item.createdAt).toLocaleDateString()}
-                  |
-                  {item.createdBy}
-                </span>
-                <span className={styles['block__body--expander']}>
-                  <Arrow style={{ transform: expandedId === item.id ? 'rotate(-180deg)' : 'rotate(0deg)' }} />
-                </span>
-
-                {expandedId === item.id && (
-                  <div className={styles.block__answerBox}>
-                    {item.answer ? (
-                      <p className={styles['block__answer-box--answer']}>
-                        {item.answer}
-                      </p>
-                    ) : (
-                      <p className={styles['block__answer-box--no-answer']}>
-                        아직 답변이 없네요. 조금만 기다려주세요!
-                      </p>
-                    )}
-                  </div>
-                )}
-              </div>
+              <DataBlock isExpanded={expandedId === item.id} content={item} />
             </div>
           ))
         )
