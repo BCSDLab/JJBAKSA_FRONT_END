@@ -88,7 +88,7 @@ export default function ChangePassword(): JSX.Element {
               [styles['form__submit--active']]: isValid,
             })}
           >
-            인증번호 보내기
+            완료
           </button>
         </form>
       </div>
