@@ -50,7 +50,7 @@ export default function SearchDetails() {
   const { isFetching, data: shops, count } = useFetchShops(text ?? '');
   const navigate = useNavigate();
 
-  const renderShopsOrNotFound = () => {
+  const componentsController = () => {
     if (isFetching) {
       return <LoadingView />;
     }
@@ -78,7 +78,7 @@ export default function SearchDetails() {
           {`${count}개의 검색결과`}
         </div>
         <div className={styles.details__list}>
-          {renderShopsOrNotFound()}
+          {componentsController()}
         </div>
       </div>
     </div>
