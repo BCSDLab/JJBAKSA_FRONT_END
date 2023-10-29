@@ -27,9 +27,6 @@ const useSearchForm = () => {
 
   useEffect(() => {
     setEntered(false);
-    console.log('text', text);
-    console.log('entered', entered);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
 
   return {
@@ -47,10 +44,6 @@ export default function Search(): JSX.Element {
   } = useSearchForm();
   const isSearching = useSearchingMode();
   const { isMobile } = useMediaQuery();
-  useEffect(() => {
-    console.log('isSearching', isSearching);
-    console.log('mobile', isMobile);
-  }, [text, isSearching, isMobile]);
 
   return (
     <div>
