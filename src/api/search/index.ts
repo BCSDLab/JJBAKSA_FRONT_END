@@ -26,8 +26,8 @@ export const fetchAutoComplete = (params: FetchAutoCompleteParams) => {
   const { query, location } = params;
   const url = `/shops/auto-complete?query=${query}`;
   const requestBody = {
-    x: location?.latitude,
-    y: location?.longitude,
+    lat: location?.latitude,
+    lng: location?.longitude,
   };
   return searchApi.post<FetchAutoCompleteResponse>(url, requestBody);
 };

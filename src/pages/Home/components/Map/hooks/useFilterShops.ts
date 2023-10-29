@@ -13,6 +13,7 @@ const useFilterShops = ({
   const { location } = useGeolocation(OPTIONS);
   const auth = useAuth();
   const enabled = !!(location) && !!auth;
+
   const params: FilterShopsParams = {
     options_friend, options_nearby, options_scrap,
   };

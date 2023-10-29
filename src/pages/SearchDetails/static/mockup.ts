@@ -1,4 +1,4 @@
-import defaultImage from 'assets/images/search/default-image.png';
+import defaultImage from 'assets/images/search/defaultImage.png';
 
 export interface GetItemResponse {
   imageAlt: string,

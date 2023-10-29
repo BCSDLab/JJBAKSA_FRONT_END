@@ -6,9 +6,10 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   text: string,
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 export default function SearchInput({
-  text, onChange,
+  text, onChange, onKeyDown,
 }: Props) {
   const { isFetching, data: shops, refetch } = useFetchShops(text ?? '');
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ export default function SearchInput({
         value={text}
         onChange={onChange}
         autoComplete="off"
+        onKeyDown={onKeyDown}
       />
       <LensIcon title="검색" className={styles['search-bar__icon']} onClick={handleSearchClick} />
     </label>

@@ -1,35 +1,43 @@
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Shop } from 'api/shop/entity';
+import { ReactComponent as PhoneImg } from 'assets/svg/search/phone.svg';
 import { getMockItem } from '../static/mockup';
 
 interface Props {
   shop: Shop;
 }
-
 export default function SearchItem({ shop }: Props) {
   const {
-    name, formattedAddress, photoToken, placeId, dist, openNow,
+    name, formattedAddress, photoToken, placeId, dist, openNow, category,
   } = shop;
+
   const {
-    imageAlt, defaultImage, phoneNumber, image,
+    imageAlt, defaultImage, phoneNumber,
   } = getMockItem();
+
   const navigate = useNavigate();
+  const distInKm = (dist / 1000).toFixed(1);
 
   return (
-    <button onClick={() => navigate(`/post/${name}`, { state: { placeId } })} type="button" className={styles.item}>
-      <div className={styles.image}>
-        <img className={styles.image__main} alt={imageAlt} src={photoToken ?? defaultImage} />
-        <div className={styles.image__other}>
-          <img className={styles['image__other--second']} alt={imageAlt} src={image ?? defaultImage} />
-          <img className={styles['image__other--third']} alt={imageAlt} src={image ?? defaultImage} />
-          <img className={styles['image__other--fourth']} alt={imageAlt} src={image ?? defaultImage} />
-        </div>
-      </div>
+    <button
+      onClick={() => navigate(
+        `/post/${name}`,
+        { state: { placeId } },
+      )}
+      type="button"
+      className={styles.item}
+    >
       <div className={styles.item__content}>
         <section className={styles.item__name}>
-          <h1 className={styles.item__title}>{name}</h1>
-          <h2 className={styles.item__address}>{formattedAddress}</h2>
+          <div className={styles.item__header}>
+            <h1 className={styles['item__header--title']}>{name}</h1>
+            <h2 className={styles['item__header--category']}>{category}</h2>
+          </div>
+          <div className={styles.item__header}>
+            <h2 className={styles['item__header--address']}>{formattedAddress}</h2>
+            <h2 className={styles['item__header--dist']}>{`${distInKm}Km`}</h2>
+          </div>
         </section>
         <section className={styles.item__info}>
           <div>
@@ -37,20 +45,24 @@ export default function SearchItem({ shop }: Props) {
               <span className={styles['item__status--open']}>
                 {openNow ? '영업중' : '영업 종료'}
               </span>
-              {/* <span className={styles.item__closing}></span> */}
-            </div>
-            <div className={styles.item__distance}>
-              {`내 위치로부터 ${dist.toFixed(2)}m`}
             </div>
             <a
               onClick={(e) => e.stopPropagation()}
               href={`tel:${phoneNumber}`}
               className={styles.item__phone}
             >
-              {`전화하기    ${phoneNumber}`}
+              <div className={styles['item__phone--image']}>
+                <PhoneImg />
+              </div>
+              <div className={styles['item__phone--text']}>
+                {phoneNumber}
+              </div>
             </a>
           </div>
         </section>
+      </div>
+      <div className={styles.image}>
+        <img className={styles.image__item} alt={imageAlt} src={photoToken ?? defaultImage} />
       </div>
     </button>
   );
