@@ -13,8 +13,8 @@ import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
 import FollowPage from 'pages/Follow';
-import Setting from 'pages/Setting/UserSetting';
-import IdChange from 'pages/Setting/UserSetting/IdChange';
+import Setting from 'pages/Setting';
+import IdChange from 'pages/Setting/Mobile/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
 import Withdrawal from 'pages/Setting/Withdrawal';
 import Inquiry from 'pages/Inquiry';
@@ -23,6 +23,7 @@ import Notice from 'pages/Notice';
 import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
 import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
 import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
+import MyPage from 'pages/MyPage';
 import NotFoundPage from 'pages/Search/components/NotFoundPage';
 import FollowProfile from 'pages/Follow/components/FollowProfile';
 
@@ -39,13 +40,14 @@ export default function App(): JSX.Element {
           <Route path="/notice" element={<Notice />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
-          <Route path="/setting" element={<Setting />} />
-          <Route path="/setting/id-change" element={<IdChange />} />
           <Route path="/" element={<DefaultLayout />}>
             <Route path="/friend-list" element={<FollowPage />} />
             <Route path="/friend-list/:id" element={<FollowProfile />} />
+            <Route path="/setting" element={<Setting />} />
+            <Route path="/setting/id-change" element={<IdChange />} />
           </Route>
           <Route path="/withdrawal" element={<Withdrawal />} />
+          <Route path="/profile" element={<MyPage />} />
           <Route path="/post/:name" element={<Post />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>

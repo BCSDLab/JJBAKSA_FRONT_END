@@ -2,8 +2,9 @@ import { getMe } from 'api/user';
 import { refreshAccessToken } from 'api/user/userApiClient';
 import { atom, useAtomValue, useSetAtom } from 'jotai';
 import { atomWithDefault } from 'jotai/utils';
+import { User } from 'api/user/entity';
 
-const getAuth = async () => {
+const getAuth = async (): Promise< User | null> => {
   const token = {
     access: sessionStorage.getItem('accessToken'),
     refresh: localStorage.getItem('refreshToken'),

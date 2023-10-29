@@ -11,7 +11,7 @@ interface MarkerProps {
 }
 
 function useMarker({ map, filterShops }: MarkerProps) {
-  const [,setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
+  const [markerArray, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
   const [selected, setSelected] = useState<naver.maps.Marker | undefined>();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
         map,
         zIndex: MARKER.length - index,
         icon: {
-          content: MarkerHtml(shop.name, shop.name),
+          content: MarkerHtml(shop.photo, shop.name),
         },
       });
 
@@ -41,7 +41,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
         });
 
         marker.setIcon({
-          content: ClickedMarkerHtml(shop.name, shop.name),
+          content: ClickedMarkerHtml(shop.photo, shop.name),
         });
         setSelected(marker);
         if (map) {
@@ -59,7 +59,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
     };
   }, [map, filterShops]);
 
-  return { selected };
+  return { markerArray, selected };
 }
 
 export default useMarker;

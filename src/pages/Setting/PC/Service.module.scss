@@ -1,0 +1,65 @@
+$default: #666666;
+$title: #ff7f23;
+$back: white;
+
+.service {
+  font-weight: 500;
+  display: flex;
+  white-space: nowrap;
+  flex-direction: column;
+  margin: 60px;
+
+  &__text {
+    font-size: 18px;
+    color: $default;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    left: 796px;
+    margin-bottom: 50px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto 12.5px 16px;
+    justify-content: space-between;
+    width: 328px;
+    height: 20px;
+  }
+
+  &__announcement {
+    display: flex;
+    background-color: $back;
+    border-style: none;
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: 120px;
+  margin-right: 290px;
+
+  &__log-out {
+    color: $default;
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 auto 10px 16px;
+    border: none;
+    background-color: $back;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: $back;
+  }
+
+  &__delete-account {
+    font-size: 16px;
+    margin: 0 auto 42px 16px;
+    color: $default;
+    text-decoration-line: underline;
+  }
+}
