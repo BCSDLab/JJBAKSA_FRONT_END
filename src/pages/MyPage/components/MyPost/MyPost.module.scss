@@ -1,0 +1,42 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.view-options {
+  display: flex;
+  width: 98%;
+  gap: 17px;
+  justify-content: flex-end;
+  margin-top: 25px;
+
+  @include media.media-breakpoint-down(mobile) {
+    display: none;
+  }
+
+  &__option {
+    all: unset;
+  }
+}
+
+.not-exist {
+  width: 100%;
+  height: calc(100vh - 228px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__phrase {
+    display: flex;
+    gap: 9px;
+    flex-direction: column;
+    text-align: center;
+    font-size: 14px;
+    color: #666666;
+    white-space: pre;
+  }
+
+  &__image {
+    margin-top: 24px;
+    width: 207px;
+    height: 158px;
+  }
+}

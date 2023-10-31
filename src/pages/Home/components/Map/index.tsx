@@ -1,3 +1,4 @@
+import { Overlay } from 'react-naver-maps';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useEffect } from 'react';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
@@ -10,6 +11,7 @@ import useNaverMap from './hooks/useNaverMap';
 import useMarker from './hooks/useMarker';
 import useFilterShops from './hooks/useFilterShops';
 import usePlaceId from './hooks/usePlaceId';
+import useCluster from './hooks/useCluster';
 
 export default function Map(): JSX.Element {
   const { isMobile } = useMediaQuery();
@@ -24,7 +26,7 @@ export default function Map(): JSX.Element {
     options_nearby: filterNearbyState,
   });
 
-  const { selected } = useMarker({ map, filterShops });
+  const { markerArray, selected } = useMarker({ map, filterShops });
   const { placeId } = usePlaceId({
     title: selected?.getTitle(),
     lat: selected?.getPosition().y,
@@ -35,12 +37,16 @@ export default function Map(): JSX.Element {
     refetch();
   }, [filterFriendState, filterScrapState, filterNearbyState, refetch]);
 
+  const { cluster } = useCluster({ markerArray, map });
+
   return (
-    <div>
+    <>
       {isMobile && <MobileOptions />}
       {!isMobile && <SideNavigation selected={selected} placeId={placeId} />}
-      <div id="map" className={styles.map} />
-      {isMobile && <BottomNavigation />}
-    </div>
+      <div id="map" className={styles.map}>
+        {isMobile && <BottomNavigation />}
+      </div>
+      { cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
+    </>
   );
 }

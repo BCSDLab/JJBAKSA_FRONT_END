@@ -1,0 +1,51 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.content {
+  border-bottom: 5px solid #eeeeee;
+}
+
+.title {
+  border: none;
+  background-color: #ffffff;
+  width: 70vw;
+  height: 4vh;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 1vw;
+  padding-left: 1vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100vw;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__name {
+    font-size: 25px;
+    margin-right: 5px;
+  }
+
+  &__category {
+    color: #c4c4c4;
+  }
+
+  &__arrow {
+    &--up {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.review {
+  &__img {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

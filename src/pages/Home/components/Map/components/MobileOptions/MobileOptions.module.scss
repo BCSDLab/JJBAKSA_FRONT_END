@@ -2,7 +2,7 @@
   position: absolute;
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 50px;
+  gap: 55px;
   top: 20px;
   left: 50%;
   transform: translate(-50%);
@@ -24,7 +24,8 @@
     padding-right: 15px;
   }
 
-  &__filter {
+  &__icon {
+    display: flex;
     width: 48px;
     height: 48px;
     background-color: #ffffff;
@@ -35,30 +36,33 @@
     position: absolute;
     top: 0;
     right: 0;
-    display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
-    &--clicked {
-      svg path {
+    &--changed {
+      path {
         stroke: #ff7f23;
       }
     }
   }
+}
 
-  &__list {
-    display: flex;
-    float: right;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 118px;
-    height: 78px;
-    border-radius: 15px;
-    opacity: 0.8;
-    border: 1px solid #eeeeee;
-    background-color: #ffffff;
-    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
-  }
+.filter {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  float: right;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 118px;
+  height: 78px;
+  border-radius: 15px;
+  opacity: 0.8;
+  border: 1px solid #eeeeee;
+  background-color: #ffffff;
+  box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
 
   &__text {
     display: flex;

@@ -1,4 +1,4 @@
-import { User } from 'api/user/entity';
+import { EmailUser } from 'api/user/entity';
 import { FollowerInfo } from 'pages/Follow/static/entity';
 
 export interface FollowListParams {
@@ -6,23 +6,33 @@ export interface FollowListParams {
   pageSize: number;
 }
 
-export interface GetFollowListParams {
-  page: number;
-  pageSize: number;
-}
-
 export interface GetFollowListResponse {
   content: {
-    id: number;
-    follower: User;
-    user: User;
     account: string;
-  }[]
+    email: string;
+    id: number;
+    nickname: string;
+    userType: string;
+  }[];
+  empty: boolean;
+  last: boolean;
+  number: number;
 }
 
-export interface CheckSendedFollowParams {
+export interface SentOrReceivedFollowParams {
   page: number;
   pageSize: number;
+}
+
+export interface SentOrReceivedFollowResponse {
+  content: {
+    id: number;
+    follower: EmailUser;
+    user: EmailUser;
+  }[];
+  empty: boolean;
+  last: boolean;
+  number: number;
 }
 
 export interface FollowerParams {
@@ -40,9 +50,50 @@ export interface SearchUsersParams {
 }
 
 export interface SearchUsersResponse {
-  content: FollowerInfo[]
+  content: FollowerInfo[];
+  empty: boolean;
+  last: boolean;
+  number: number;
 }
 
-export interface AcceptFollowParams {
+export interface RequestFollowParams {
   id: number;
+}
+
+export interface AcceptFollowParams extends RequestFollowParams {
+}
+
+export interface CancleFollowParams extends RequestFollowParams {
+}
+
+export interface RejectFollowParams extends RequestFollowParams {
+}
+
+export interface GetFollowReviewResponse {
+  content: {
+    name: string;
+    placeId: string;
+    photos?: string[];
+    shopId: number;
+    category: string;
+  }[]
+  empty: boolean;
+  first: boolean;
+  last: boolean;
+}
+
+export interface GetDetailReviewResponse {
+  content: {
+    content: string;
+    createdAt: string;
+    id: number;
+    rate: number;
+  }[];
+  empty: boolean;
+  first: boolean;
+  last: boolean;
+}
+
+export interface GetFollowerReviewCountParam {
+  followId: number;
 }
