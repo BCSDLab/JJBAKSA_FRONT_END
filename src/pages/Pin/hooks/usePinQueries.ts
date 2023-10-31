@@ -26,7 +26,14 @@ const usePinQueries = ({ placeId, sortType }:QueryParam) => {
       / (queries[0].data?.ratingCount || 1)).toFixed(1));
     }
   }, [queries]);
-  return { queries, rateValue };
+  return {
+    pinInfo: queries[0],
+    latestMyReview: queries[1],
+    latestFollowerReview: queries[2],
+    myReviews: queries[3],
+    followersReviews: queries[4],
+    rateValue,
+  };
 };
 
 export default usePinQueries;

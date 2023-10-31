@@ -19,7 +19,10 @@ interface Props {
 export default function Pin({ placeId }:Props) {
   const [sortType, setSortType] = useState<string>('createdAt');
   const [mode, setMode] = useState(1);
-  const { queries, rateValue } = usePinQueries({ placeId, sortType });
+  const {
+    pinInfo, latestMyReview, latestFollowerReview,
+    myReviews, followersReviews, rateValue,
+  } = usePinQueries({ placeId, sortType });
 
   const handleSortButton = () => {
     if (sortType === 'createdAt') setSortType('rate');
@@ -29,13 +32,13 @@ export default function Pin({ placeId }:Props) {
   return (
     <div className={styles.template}>
       <div>
-        <Carousel images={queries[0].data?.photos || []} />
+        <Carousel images={pinInfo.data?.photos || []} />
         <div className={styles.shop}>
           <div className={styles.shop__title}>
             <span className={styles['shop__title--name']}>
-              {queries[0].data?.name}
+              {pinInfo.data?.name}
             </span>
-            <span className={styles['shop__title--category']}>{queries[0].data?.category}</span>
+            <span className={styles['shop__title--category']}>{pinInfo.data?.category}</span>
           </div>
           <div className={styles.shop__detail}>
             <div className={styles['shop__detail--rate']}>
@@ -45,10 +48,10 @@ export default function Pin({ placeId }:Props) {
             <div className={styles['shop__detail--latest']}>
               마지막 리뷰
               {' '}
-              {(queries[1].data?.lastDate?.replaceAll('-', '/') || '')
-                > (queries[2].data?.lastDate?.replaceAll('-', '/') || '')
-                ? queries[1].data?.lastDate?.replaceAll('-', '/')
-                : queries[2].data?.lastDate?.replaceAll('-', '/')}
+              {(latestMyReview.data?.lastDate?.replaceAll('-', '/') || '')
+                > (latestFollowerReview.data?.lastDate?.replaceAll('-', '/') || '')
+                ? latestMyReview.data?.lastDate?.replaceAll('-', '/')
+                : latestFollowerReview.data?.lastDate?.replaceAll('-', '/')}
             </div>
           </div>
           <Scrap placeId={placeId} />
@@ -81,8 +84,8 @@ export default function Pin({ placeId }:Props) {
               <Switch />
               {sortType === 'createdAt' ? '최신순' : '별점순'}
             </button>
-            {mode === 1 && (queries[3].data?.content.length !== 0
-              ? queries[3].data?.content.map((item) => (
+            {mode === 1 && (myReviews.data?.content.length !== 0
+              ? myReviews.data?.content.map((item) => (
                 <div className={styles.comment__item} key={item.id}>
                   <div className={styles.comment__info}>
                     <div className={styles.comment__container}>
@@ -113,8 +116,8 @@ export default function Pin({ placeId }:Props) {
                   </div>
                 </div>
               ))}
-            {mode === 2 && (queries[4].data?.content.length !== 0
-              ? queries[4].data?.content.map((item) => (
+            {mode === 2 && (followersReviews.data?.content.length !== 0
+              ? followersReviews.data?.content.map((item) => (
                 <div className={styles.comment__item} key={item.id}>
                   <div className={styles['comment__item--profile']}>프로필</div>
                   <div className={styles.comment__info}>
