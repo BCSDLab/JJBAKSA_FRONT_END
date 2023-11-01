@@ -41,7 +41,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
         });
 
         marker.setIcon({
-          content: ClickedMarkerHtml(shop.photo, shop.name),
+          content: ClickedMarkerHtml(shop.photo, shop.name, shop.placeId),
         });
         setSelected(marker);
         if (map) {
