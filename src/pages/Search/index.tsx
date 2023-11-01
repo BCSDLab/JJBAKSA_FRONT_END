@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from 'pages/Search/Search.module.scss';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import SearchDetails from 'pages/SearchDetails';
@@ -40,9 +40,6 @@ export default function Search(): JSX.Element {
   } = useSearchForm();
   const isSearching = useSearchingMode();
   const { isMobile } = useMediaQuery();
-  useEffect(() => {
-    console.log('d', isEnter);
-  }, [isEnter]);
 
   return (
     isMobile ? (

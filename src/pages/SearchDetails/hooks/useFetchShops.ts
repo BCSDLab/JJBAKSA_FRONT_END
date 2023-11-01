@@ -13,9 +13,6 @@ const useFetchShops = (text: string) => {
   const debouncedText = useDebounce(text, 500);
 
   const params: ShopsParams = { keyword: debouncedText };
-  if (location) {
-    params.location = location;
-  }
   const {
     isLoading, isError, data, refetch,
   } = useQuery(['shop', location], () => fetchShops(params), {
