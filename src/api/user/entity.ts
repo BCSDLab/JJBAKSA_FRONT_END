@@ -36,7 +36,8 @@ export interface EmailUser {
     originalName: string;
     url: string;
   }
-  oauthType: 'KAKAO' | 'NAVER' | 'GOOGLE';
+
+  oauthType: string; // 'KAKAO' | 'NAVER' | 'GOOGLE'
   userType: string; // 'ADMIN' | 'NORMAL'...
   userCountResponse: {
     id: number;
