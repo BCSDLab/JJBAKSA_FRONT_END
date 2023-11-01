@@ -8,10 +8,14 @@ export const fetchTrendings = () => shopApi.get<FetchTrendingsResponse>('/trendi
 
 export const fetchShop = (shopId: string) => shopApi.get(`/shop?place_id=${shopId}`);
 
-export const getfilterShops = (params: FilterShopsParams, location: Coords) => shopApi.post<FilterShopsListResponse>(`/shops/maps?options_friend=${params.options_friend}&options_nearby=${params.options_nearby}&options_scrap=${params.options_scrap}`, {
-  lat: location.lat,
-  lng: location.lng,
-});
+export const getfilterShops = (params: FilterShopsParams, location: Coords) => {
+  const url = `/shops/maps?options_friend=${params.options_friend}&options_nearby=${params.options_nearby}&options_scrap=${params.options_scrap}`;
+  const requestBody = {
+    lat: location.lat,
+    lng: location.lng,
+  };
+  return shopApi.post<FilterShopsListResponse>(url, requestBody);
+};
 
 export const fetchShops = (params: ShopsParams) => {
   const { location, keyword } = params;

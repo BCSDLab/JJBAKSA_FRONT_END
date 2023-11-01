@@ -2,6 +2,7 @@ import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Shop } from 'api/shop/entity';
 import { ReactComponent as PhoneImg } from 'assets/svg/search/phone.svg';
+import { useCallback } from 'react';
 import { getMockItem } from '../static/mockup';
 
 interface Props {
@@ -18,13 +19,13 @@ export default function SearchItem({ shop }: Props) {
 
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
+  const onClick = useCallback(() => {
+    navigate(`/post/${name}`, { state: { placeId } });
+  }, [navigate, name, placeId]);
 
   return (
     <button
-      onClick={() => navigate(
-        `/post/${name}`,
-        { state: { placeId } },
-      )}
+      onClick={onClick}
       type="button"
       className={styles.item}
     >
