@@ -17,11 +17,11 @@ export interface FilterShopsResponse {
 export type FilterShopsListResponse = FilterShopsResponse[];
 
 export interface FetchTrendingsResponse {
-  trendings: string[]
+  trendings: string[];
 }
 
 export interface SearchQueryParams {
-  searchText : string;
+  searchText: string;
 }
 
 export interface ShopsParams {
@@ -39,12 +39,30 @@ export interface Shop {
   formattedAddress: string;
   lat: number;
   lng: number;
-  openNow: boolean
+  openNow: boolean;
   totalRating: number | null;
   ratingCount: number | null;
   photoToken: string;
   dist: number;
   category: string; // 추후 카테고리 확인 필요
+}
+
+export interface FetchShopResponse {
+  shopId: number;
+  placeId: string;
+  name: string;
+  formattedAddress: string;
+  lat: number;
+  lng: number;
+  formattedPhoneNumber: string;
+  openNow: boolean;
+  totalRating: number;
+  ratingCount: number;
+  category: string;
+  todayPeriod: [number, number];
+  periods: [any, Object];
+  scrap: any;
+  photos: string[];
 }
 
 export interface Coords {
