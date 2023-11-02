@@ -2,7 +2,6 @@ import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { Shop } from 'api/shop/entity';
 import { ReactComponent as PhoneImg } from 'assets/svg/search/phone.svg';
-import { useCallback } from 'react';
 import { getMockItem } from '../static/mockup';
 
 interface Props {
