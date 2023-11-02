@@ -21,8 +21,8 @@ export const fetchShops = (params: ShopsParams) => {
   const { location, keyword } = params;
   const url = `/shops?keyword=${keyword}`;
   const requestBody = {
-    lat: location?.latitude,
-    lng: location?.longitude,
+    lat: location?.lat,
+    lng: location?.lng,
   };
   return shopApi.post<FetchShopsResponse>(url, requestBody);
 };

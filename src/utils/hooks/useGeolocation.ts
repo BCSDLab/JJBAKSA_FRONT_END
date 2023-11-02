@@ -6,8 +6,8 @@ export default function useGeolocation(options = {}) {
   const { location, setLocation } = useLocation();
   const onGeoSuccess: PositionCallback = (position) => {
     setLocation({
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
     });
   };
   const onGeoError = () => {};

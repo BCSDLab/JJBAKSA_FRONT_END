@@ -8,7 +8,7 @@ export interface SearchQueryParams {
 
 export interface ShopsParams {
   keyword: string;
-  location: Coords;
+  location?: Coords;
 }
 
 export interface FetchShopsResponse {
@@ -27,8 +27,8 @@ interface Shop {
 }
 
 export interface Coords {
-  latitude: number,
-  longitude: number
+  lng: any | number;
+  lat: any | number;
 }
 
 export interface FetchAutoCompleteParams {
