@@ -21,7 +21,8 @@ const useFetchShops = (text: string) => {
 
   useEffect(() => {
     refetch();
-  }, [debouncedText, refetch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedText]);
 
   const isFetching = isLoading || !(location);
   const shops = useMemo(() => data?.data.shopQueryResponseList, [data]);

@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 interface Props {
   text: string,
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 export default function SearchInput({
-  text, onChange, onKeyDown,
+  text, onChange, onSubmit,
 }: Props) {
   const { isFetching, data: shops, refetch } = useFetchShops(text ?? '');
   const navigate = useNavigate();
@@ -37,15 +37,16 @@ export default function SearchInput({
 
   return (
     <label title="검색어 입력" className={styles['search-bar']} htmlFor="searchBarInput">
-      <input
-        className={styles['search-bar__input']}
-        placeholder="검색어를 입력해주세요."
-        id="searchBarInput"
-        autoComplete="off"
-        value={text}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-      />
+      <form onSubmit={onSubmit}>
+        <input
+          className={styles['search-bar__input']}
+          placeholder="검색어를 입력해주세요."
+          id="searchBarInput"
+          autoComplete="off"
+          value={text}
+          onChange={onChange}
+        />
+      </form>
       <LensIcon title="검색" className={styles['search-bar__icon']} onClick={handleSearchClick} />
     </label>
   );

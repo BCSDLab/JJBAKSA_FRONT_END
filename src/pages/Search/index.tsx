@@ -17,8 +17,9 @@ const useSearchForm = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setText(e.target.value);
   };
-  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && text) {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (text) {
       setSubmittedText(text);
       toggle();
     }
@@ -27,7 +28,7 @@ const useSearchForm = () => {
   return {
     text,
     handleChange,
-    handleEnter,
+    handleSubmit,
     submittedText,
     isEnter,
     toggle,
@@ -36,7 +37,7 @@ const useSearchForm = () => {
 
 export default function Search(): JSX.Element {
   const {
-    text, handleChange, handleEnter, isEnter,
+    text, handleChange, handleSubmit, isEnter,
   } = useSearchForm();
   const isSearching = useSearchingMode();
   const { isMobile } = useMediaQuery();
@@ -60,7 +61,7 @@ export default function Search(): JSX.Element {
             <>
               <SearchInput
                 onChange={handleChange}
-                onKeyDown={handleEnter}
+                onSubmit={handleSubmit}
                 text={text}
               />
               {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
