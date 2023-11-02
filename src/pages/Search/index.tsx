@@ -41,33 +41,33 @@ export default function Search(): JSX.Element {
   const isSearching = useSearchingMode();
   const { isMobile } = useMediaQuery();
 
-  return (
-    isMobile ? (
+  if (isMobile) {
+    return (
       <div className={styles.search}>
         <section>
           {isMobile && <NavigationBar />}
           {!isEnter && !isSearching && <Recommendation />}
         </section>
       </div>
-    )
-      : (
-        <div className={styles.search}>
-          <section>
-            {!isEnter && <Recommendation />}
-            {!isEnter
-              ? (
-                <>
-                  <SearchInput
-                    onChange={handleChange}
-                    onKeyDown={handleEnter}
-                    text={text}
-                  />
-                  {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-                </>
-              )
-              : <SearchDetails />}
-          </section>
-        </div>
-      )
+    );
+  }
+  return (
+    <div className={styles.search}>
+      <section>
+        {!isEnter && <Recommendation />}
+        {!isEnter
+          ? (
+            <>
+              <SearchInput
+                onChange={handleChange}
+                onKeyDown={handleEnter}
+                text={text}
+              />
+              {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+            </>
+          )
+          : <SearchDetails />}
+      </section>
+    </div>
   );
 }

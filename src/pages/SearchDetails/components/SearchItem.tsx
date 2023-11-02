@@ -19,10 +19,9 @@ export default function SearchItem({ shop }: Props) {
 
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
-  const onClick = useCallback(() => {
+  const onClick = () => {
     navigate(`/post/${name}`, { state: { placeId } });
-  }, [navigate, name, placeId]);
-
+  };
   return (
     <button
       onClick={onClick}
