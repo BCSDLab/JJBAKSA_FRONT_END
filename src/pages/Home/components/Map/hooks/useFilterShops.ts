@@ -1,6 +1,6 @@
 import useGeolocation from 'utils/hooks/useGeolocation';
 import { useQuery } from 'react-query';
-import { getfilterShops } from 'api/shop';
+import { getFilterShops } from 'api/shop';
 import { FilterShopsParams } from 'api/shop/entity';
 import { useAuth } from 'store/auth';
 
@@ -18,7 +18,7 @@ const useFilterShops = ({
   };
   const {
     isLoading, isError, data, refetch,
-  } = useQuery('filterShops', () => getfilterShops(params, {
+  } = useQuery('filterShops', () => getFilterShops(params, {
     lat: location?.latitude,
     lng: location?.longitude,
   }), {

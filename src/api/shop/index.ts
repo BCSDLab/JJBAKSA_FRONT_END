@@ -13,7 +13,7 @@ export const fetchShops = (params: ShopsParams) => shopApi.post<FetchShopsRespon
   lng: params.location?.lng,
 });
 
-export const getfilterShops = (params: FilterShopsParams, location: Coords) => shopApi.post<FilterShopsListResponse>(`/shops/maps?options_friend=${params.options_friend}&options_nearby=${params.options_nearby}&options_scrap=${params.options_scrap}`, {
+export const getFilterShops = (params: FilterShopsParams, location: Coords) => shopApi.post<FilterShopsListResponse>(`/shops/maps?options_friend=${params.options_friend}&options_nearby=${params.options_nearby}&options_scrap=${params.options_scrap}`, {
   lat: location.lat,
   lng: location.lng,
 });
