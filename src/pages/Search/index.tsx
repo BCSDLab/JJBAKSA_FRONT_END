@@ -46,8 +46,14 @@ export default function Search(): JSX.Element {
     return (
       <div className={styles.search}>
         <section>
-          {isMobile && <NavigationBar />}
-          {!isEnter && !isSearching && <Recommendation />}
+          <NavigationBar />
+          <Recommendation />
+          <SearchInput
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            text={text}
+          />
+          {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
         </section>
       </div>
     );
@@ -55,10 +61,10 @@ export default function Search(): JSX.Element {
   return (
     <div className={styles.search}>
       <section>
-        {!isEnter && <Recommendation />}
         {!isEnter
           ? (
             <>
+              <Recommendation />
               <SearchInput
                 onChange={handleChange}
                 onSubmit={handleSubmit}

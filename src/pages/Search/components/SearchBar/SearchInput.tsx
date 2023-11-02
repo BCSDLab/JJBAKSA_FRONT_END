@@ -37,7 +37,7 @@ export default function SearchInput({
 
   return (
     <label title="검색어 입력" className={styles['search-bar']} htmlFor="searchBarInput">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className={styles['search-bar__form']}>
         <input
           className={styles['search-bar__input']}
           placeholder="검색어를 입력해주세요."
@@ -46,8 +46,8 @@ export default function SearchInput({
           value={text}
           onChange={onChange}
         />
+        <LensIcon title="검색" className={styles['search-bar__icon']} onClick={handleSearchClick} />
       </form>
-      <LensIcon title="검색" className={styles['search-bar__icon']} onClick={handleSearchClick} />
     </label>
   );
 }
