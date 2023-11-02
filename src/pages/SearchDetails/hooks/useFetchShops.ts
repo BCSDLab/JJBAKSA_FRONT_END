@@ -12,7 +12,8 @@ const useFetchShops = (text: string) => {
   const { location } = useGeolocation(OPTIONS);
   const debouncedText = useDebounce(text, 500);
 
-  const params: ShopsParams = { keyword: debouncedText };
+  const params: ShopsParams = { keyword: debouncedText, location };
+
   const {
     isLoading, isError, data, refetch,
   } = useQuery(['shop', location], () => fetchShops(params), {
@@ -21,8 +22,7 @@ const useFetchShops = (text: string) => {
 
   useEffect(() => {
     refetch();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedText]);
+  }, [debouncedText, refetch]);
 
   const isFetching = isLoading || !(location);
   const shops = useMemo(() => data?.data.shopQueryResponseList, [data]);
