@@ -48,6 +48,7 @@
       border-radius: 24px;
       color: #ff7f23;
     }
+
     @include media.media-breakpoint-down(mobile) {
       max-width: 343px;
     }
