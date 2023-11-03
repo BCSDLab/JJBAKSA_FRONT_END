@@ -44,11 +44,28 @@ function Answer({ text }: { text: string }): JSX.Element {
 }
 
 interface Props {
-  isExpanded: boolean,
   content: InquiryContent,
+  expandedId: number | null,
+  setExpandedId: (id: number | null) => void,
 }
 
-export default function DataBlock({ isExpanded, content }: Props): JSX.Element {
+export default function DataBlock({
+  content,
+  expandedId,
+  setExpandedId,
+}: Props): JSX.Element {
+  const isExpanded = expandedId === content.id;
+
+  function toggleExpand(id: number) {
+    setExpandedId(expandedId === id ? null : id);
+  }
+
+  const handleKeyPress = (e: React.KeyboardEvent, id: number) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      toggleExpand(id);
+    }
+  };
+
   return (
     <button
       className={cn({

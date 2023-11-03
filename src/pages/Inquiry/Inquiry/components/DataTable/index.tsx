@@ -36,16 +36,6 @@ export default function DataTable({
   }, [typePath]);
   /* eslint-enable */
 
-  function toggleExpand(id: number) {
-    setExpandedId(expandedId === id ? null : id);
-  }
-
-  const handleKeyPress = (e: React.KeyboardEvent, id: number) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      toggleExpand(id);
-    }
-  };
-
   const loadMoreData = useCallback(() => {
     if (inquiryData && inquiryData.content.length > 0) {
       setDateCursor(inquiryData.content[inquiryData.content.length - 1].createdAt || null);
