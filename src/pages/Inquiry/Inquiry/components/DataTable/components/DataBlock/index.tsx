@@ -23,11 +23,11 @@ export default function DataBlock({
     setExpandedId(expandedId === id ? null : id);
   }
 
-  const handleKeyPress = (e: React.KeyboardEvent, id: number) => {
+  function handleKeyPress(e: React.KeyboardEvent, id: number) {
     if (e.key === 'Enter' || e.key === ' ') {
       toggleExpand(id);
     }
-  };
+  }
 
   return (
     <button
