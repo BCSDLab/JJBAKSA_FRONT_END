@@ -61,8 +61,9 @@ export default function Search(): JSX.Element {
   return (
     <div className={styles.search}>
       <section>
-        {!isEnter
-          ? (
+        {isEnter
+          ? <SearchDetails />
+          : (
             <>
               <Recommendation />
               <SearchInput
@@ -72,8 +73,7 @@ export default function Search(): JSX.Element {
               />
               {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
             </>
-          )
-          : <SearchDetails />}
+          )}
       </section>
     </div>
   );
