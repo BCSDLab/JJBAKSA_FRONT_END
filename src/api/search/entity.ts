@@ -27,8 +27,8 @@ interface Shop {
 }
 
 export interface Coords {
-  lng: any | number;
-  lat: any | number;
+  lng: number;
+  lat: number;
 }
 
 export interface FetchAutoCompleteParams {
