@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
   useState,
   useEffect,
@@ -27,14 +28,12 @@ export default function DataTable({
 
   const loader = useRef<HTMLDivElement | null>(null);
 
-  /* eslint-disable */
   useEffect(() => { // all, my, search params 바뀔 때 allData 초기화
     setAllData([]);
     setDateCursor(null);
     setIdCursor(0);
     refetchInquiryData();
   }, [typePath]);
-  /* eslint-enable */
 
   const loadMoreData = useCallback(() => {
     if (inquiryData && inquiryData.content.length > 0) {

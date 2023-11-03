@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
@@ -27,7 +28,6 @@ export default function Inquiry(): JSX.Element {
 
   const { text, handleChange } = useSearchForm();
 
-  /* eslint-disable */
   useEffect(() => { // typePath는 서버에 데이터를 요청할 때 사용
     setSelectedTab(type);
     switch (type) {
@@ -44,7 +44,6 @@ export default function Inquiry(): JSX.Element {
         break;
     }
   }, [type]);
-  /* eslint-enable */
 
   return (
     <div className={styles.container}>
