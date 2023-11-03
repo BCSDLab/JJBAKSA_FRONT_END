@@ -43,3 +43,10 @@ export interface InquirySort {
   sorted: boolean;
   unsorted: boolean;
 }
+
+export interface InquiryProps {
+  typePath: string;
+  dateCursor: string | null;
+  idCursor: number | null;
+  size: number;
+}

@@ -1,12 +1,6 @@
 import getInquiry from 'api/inquiry';
+import { InquiryProps } from 'api/inquiry/entity';
 import { useQuery, useQueryClient } from 'react-query';
-
-interface InquiryProps {
-  typePath: string;
-  dateCursor: string | null;
-  idCursor: number | null;
-  size: number;
-}
 
 const useInquiryList = ({
   typePath, dateCursor, idCursor, size,

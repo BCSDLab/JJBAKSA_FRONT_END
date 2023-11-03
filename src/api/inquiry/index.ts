@@ -1,12 +1,5 @@
-import { GetInquiryResponse } from './entity';
+import { GetInquiryResponse, InquiryProps } from './entity';
 import inquiryApi from './inquiryApiClient';
-
-interface InquiryProps {
-  typePath: string;
-  dateCursor: string | null;
-  idCursor: number | null;
-  size: number;
-}
 
 const getInquiry = async ({
   typePath, dateCursor, idCursor, size,
