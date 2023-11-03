@@ -4,10 +4,10 @@ $back: white;
 $normal: #666666;
 $disabled: #c4c4c4;
 
-.btn {
+.link {
   display: block;
   width: 104px;
-  margin-bottom: 24px;
+  margin: 0;
   padding: 0;
   border: 0;
   background-color: transparent;
@@ -15,7 +15,11 @@ $disabled: #c4c4c4;
   font-weight: 500;
   position: relative;
   color: $disabled;
-  cursor: pointer;
+  text-decoration: none;
+
+  &:visited {
+    color: none;
+  }
 
   &--selected {
     color: $highlight;

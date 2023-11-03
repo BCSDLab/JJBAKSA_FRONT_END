@@ -3,18 +3,24 @@ $highlight: #ff7f23;
 $back: white;
 $normal: #666666;
 
-.body {
-  border-bottom: 1px solid #eeeeee;
-  padding: 16px 10px;
-  height: auto;
-  max-height: 97px;
-  overflow: hidden;
-  transition: height 0.7s ease-in-out;
-  cursor: pointer;
+.block {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 16px 10px;
+  border: 0;
+  border-bottom: 1px solid #eeeeee;
+  font-weight: normal;
+  color: $default;
+  background-color: transparent;
+  max-height: 97px;
+  overflow: hidden;
+  transition: height 0.7s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     background-color: #f0f0f0;
