@@ -1,47 +1,10 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-} from 'react';
+import React from 'react';
 import cn from 'utils/ts/classNames';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import { InquiryContent } from 'api/inquiry/entity';
+import TextTruncation from './components/TextTruncation';
+import Answer from './components/Answer';
 import styles from './DataBlock.module.scss';
-
-function ClampText({ text }: { text: string }): JSX.Element {
-  const [isClamped, setIsClamped] = useState(false);
-  const textRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (textRef.current) {
-      const isOverflowing = textRef.current.scrollHeight > textRef.current.offsetHeight;
-      setIsClamped(isOverflowing);
-    }
-  }, [text]);
-
-  return (
-    <p className={styles.block__title} ref={textRef}>
-      {text}
-      {isClamped && '...'}
-    </p>
-  );
-}
-
-function Answer({ text }: { text: string }): JSX.Element {
-  return (
-    <div className={styles.answer}>
-      {text ? (
-        <p className={styles['answer--answered']}>
-          {text}
-        </p>
-      ) : (
-        <p className={styles['answer--no-answered']}>
-          아직 답변이 없네요. 조금만 기다려주세요!
-        </p>
-      )}
-    </div>
-  );
-}
 
 interface Props {
   content: InquiryContent,
@@ -76,7 +39,7 @@ export default function DataBlock({
       onClick={() => toggleExpand(content.id)}
       onKeyDown={(e) => handleKeyPress(e, content.id)}
     >
-      <ClampText text={content.title} />
+      <TextTruncation text={content.title} />
 
       <p className={styles.block__info}>
         {new Date(content.createdAt).toLocaleDateString()}
