@@ -36,10 +36,10 @@ $normal: #666666;
     top: 14px;
     right: 20px;
     transition: transform 0.15s ease-in-out;
-    transform: rotate(0deg)
+    transform: rotate(0deg);
 
     &--expanded {
-      transform: rotate(-180deg)
+      transform: rotate(-180deg);
     }
   }
 
