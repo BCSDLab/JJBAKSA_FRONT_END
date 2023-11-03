@@ -4,3 +4,89 @@
   position: absolute;
   top: 80px;
 }
+
+.line-divisor {
+  width: 1px;
+  height: 12px;
+  background: #c4c4c4;
+}
+
+.shop-detail {
+  width: 972px;
+  margin: 52px auto;
+}
+
+.detail-main {
+  display: flex;
+  flex-direction: column;
+
+  & > div:first-child {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #c4c4c4;
+  }
+
+  & > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 16px;
+  }
+
+  & > div:last-child {
+    display: flex;
+    align-items: center;
+    color: #666;
+    gap: 4px;
+    margin: 12px 0;
+    font-size: 14px;
+  }
+
+  &__rate {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    & > span {
+      color: #c4c4c4;
+      font-size: 18px;
+    }
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > h1 {
+      font-size: 36px;
+      font-family: SUIT-Medium;
+      font-weight: normal;
+    }
+
+    & > button {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      justify-content: center;
+      background: #f8f8f8;
+      padding: 16px 24px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #666;
+    }
+  }
+
+  &__info-name {
+    font-weight: 700;
+    color: #ff7f23;
+  }
+
+  &__info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    & > span:first-child {
+      font-weight: 500;
+    }
+  }
+}
