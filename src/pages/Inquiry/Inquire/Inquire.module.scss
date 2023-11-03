@@ -22,30 +22,14 @@ $disabled: #c4c4c4;
   width: 227px;
   height: 100%;
 
-  &__title {
+  &__link {
+    display: block;
     margin: 160px 0 32px;
-    padding: 0;
-    border: 0;
     background-color: transparent;
     font-size: 32px;
     font-weight: 700;
+    text-decoration: none;
     color: $highlight;
     cursor: pointer;
-  }
-}
-
-.explain {
-  &__title {
-    color: $default;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 19.97px;
-  }
-
-  &__small-title {
-    color: $normal;
-    font-size: 11px;
-    font-weight: 400;
-    line-height: 13.73px;
   }
 }
