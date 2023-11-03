@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 // import cn from 'utils/ts/classNames';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
-import InquirySelectButton from 'pages/Inquiry/Inquire/components/InquirySelectButton';
-import SearchBar from 'pages/Inquiry/Inquiry/components/SearchBar/SearchBar';
-import DataTable from 'pages/Inquiry/Inquiry/components/DataTable/DataTable';
+import InquirySelectButton from 'pages/Inquiry/Inquiry/components/InquirySelectButton';
+import SearchBar from 'pages/Inquiry/Inquiry/components/SearchBar';
+import DataTable from 'pages/Inquiry/Inquiry/components/DataTable';
 import styles from './Inquiry.module.scss';
 
 const useSearchForm = () => {
