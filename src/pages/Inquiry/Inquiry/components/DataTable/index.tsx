@@ -43,7 +43,7 @@ export default function DataTable({
       const alreadyExist = allData.slice(-1) === inquiryData.content.slice(-1);
       setAllData(alreadyExist ? allData : [...allData, ...inquiryData.content]);
     }
-  }, [inquiryData]);
+  }, [refetchInquiryData, inquiryData]);
 
   useEffect(() => {
     function handleObserver(entities: IntersectionObserverEntry[]) {
