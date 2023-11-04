@@ -1,3 +1,4 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
 $default: #222222;
 $highlight: #ff7f23;
 $back: white;
@@ -12,7 +13,7 @@ $disabled: #c4c4c4;
   flex-direction: row;
   margin-left: 100px;
 
-  @media (max-width: 576px) { // 모바일 브레이크 포인트
+  @include media.media-breakpoint-down(mobile) {
     width: 100vw;
     margin-left: 0;
   }
@@ -33,7 +34,7 @@ $disabled: #c4c4c4;
     width: calc(100vw - 100px);
   }
 
-  @media (max-width: 576px) { // 모바일 브레이크 포인트
+  @include media.media-breakpoint-down(mobile) {
     width: 100%;
   }
 }
@@ -112,7 +113,7 @@ $disabled: #c4c4c4;
   align-items: center;
   margin: 0 auto;
 
-  @media (max-width: 576px) {
+  @include media.media-breakpoint-down(mobile) {
     width: 100%;
   }
 }
@@ -127,7 +128,7 @@ $disabled: #c4c4c4;
   position: relative;
   z-index: 2;
 
-  @media (max-width: 576px) { // 모바일 브레이크 포인트, 디자인 변경
+  @include media.media-breakpoint-down(mobile) {
     background: transparent;
     border-bottom: none;
     height: 0;
@@ -137,7 +138,7 @@ $disabled: #c4c4c4;
   &__item {
     margin-top: 152px;
 
-    @media (max-width: 576px) { // 모바일 브레이크 포인트, 디자인 변경
+    @include media.media-breakpoint-down(mobile) {
       margin-top: 0;
       position: fixed;
       top: 24px;
@@ -154,7 +155,7 @@ $disabled: #c4c4c4;
   position: relative;
   height: calc(100vh - 253px);
 
-  @media (max-width: 576px) { // 사이드 네비 브레이크 포인트에 따른 height 변경
+  @include media.media-breakpoint-down(mobile) {
     height: calc(100vh - 80px);
   }
 
