@@ -40,11 +40,10 @@ export default function DataTable({
       setDateCursor(inquiryData.content[inquiryData.content.length - 1].createdAt || null);
       setIdCursor(inquiryData.content[inquiryData.content.length - 1].id || 0);
       refetchInquiryData();
-      const b = allData[allData.length - 1] === inquiryData.content[inquiryData.content.length - 1];
-      const value = b ? allData : [...allData, ...inquiryData.content];
-      setAllData(value);
+      const alreadyExist = allData.slice(-1) === inquiryData.content.slice(-1);
+      setAllData(alreadyExist ? allData : [...allData, ...inquiryData.content]);
     }
-  }, [refetchInquiryData, inquiryData, allData]);
+  }, [inquiryData]);
 
   useEffect(() => {
     function handleObserver(entities: IntersectionObserverEntry[]) {
