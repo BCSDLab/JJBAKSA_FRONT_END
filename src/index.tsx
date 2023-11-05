@@ -4,6 +4,7 @@ import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider as JotaiProvider } from 'jotai';
+import worker from './mocks/browser';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -18,6 +19,10 @@ const queryClient = new QueryClient({
     },
   },
 });
+
+if (process.env.NODE_ENV === 'development') {
+  worker.start({ quiet: true });
+}
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
