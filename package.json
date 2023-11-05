@@ -16,6 +16,7 @@
     "axios": "^0.27.2",
     "http-proxy-middleware": "1",
     "jotai": "^1.11.0",
+    "msw": "^2.0.2",
     "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -73,5 +74,8 @@
     "stylelint-config-standard": "^26.0.0",
     "stylelint-config-standard-scss": "^4.0.0"
   },
-  "proxy": "https://naveropenapi.apigw.ntruss.com"
+  "proxy": "https://naveropenapi.apigw.ntruss.com",
+  "msw": {
+    "workerDirectory": "public"
+  }
 }
