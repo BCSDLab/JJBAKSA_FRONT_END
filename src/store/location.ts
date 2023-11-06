@@ -1,8 +1,8 @@
 import { atom, useAtom } from 'jotai';
 
 export interface GeolocationPosition {
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lng: number;
 }
 
 export const locationAtom = atom<GeolocationPosition | undefined>(undefined);

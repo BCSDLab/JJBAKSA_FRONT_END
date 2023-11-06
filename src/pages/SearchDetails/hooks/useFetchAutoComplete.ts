@@ -4,10 +4,10 @@ import { fetchAutoComplete } from 'api/search';
 import { FetchAutoCompleteParams } from 'api/search/entity';
 
 const useFetchAutoComplete = (query: string) => {
-  const options = {
+  const OPTIONS = {
     maximumAge: 1000,
   };
-  const { location } = useGeolocation(options);
+  const { location } = useGeolocation(OPTIONS);
 
   const params: FetchAutoCompleteParams = { query };
   if (location) {
