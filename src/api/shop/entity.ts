@@ -26,7 +26,11 @@ export interface SearchQueryParams {
 
 export interface ShopsParams {
   keyword: string;
-  location: Coords;
+  location?: Coords;
+}
+export interface Coords {
+  lat: number | undefined;
+  lng: number | undefined;
 }
 
 export interface FetchShopsResponse {
@@ -44,10 +48,5 @@ export interface Shop {
   ratingCount: number | null;
   photoToken: string;
   dist: number;
-  category: string; // 추후 카테고리 확인 필요
-}
-
-export interface Coords {
-  lat: number | undefined;
-  lng: number | undefined;
+  category: string;
 }
