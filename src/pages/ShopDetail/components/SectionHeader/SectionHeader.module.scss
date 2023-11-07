@@ -1,0 +1,25 @@
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > div > h2 {
+    font-family: SUIT-Medium;
+    font-size: 24px;
+    font-weight: normal;
+  }
+
+  & > div > div {
+    color: #979797;
+    font-size: 18px;
+  }
+
+  & > button {
+    color: #666;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background: #f9f9f9;
+  }
+}
