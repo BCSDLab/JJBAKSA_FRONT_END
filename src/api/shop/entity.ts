@@ -68,8 +68,3 @@ export interface FetchShopResponse {
   scrap: any;
   photos: string[];
 }
-
-export interface Coords {
-  lat: number | undefined;
-  lng: number | undefined;
-}

@@ -24,10 +24,9 @@
 .shop-detail {
   display: grid;
   grid-template-areas:
-    'a a'
-    'b c'
-    'd .';
-
+    "a a"
+    "b c"
+    "d .";
   grid-template-columns: 1fr 1fr;
   gap: 18px;
   width: 972px;
@@ -39,6 +38,7 @@
   display: flex;
   flex-direction: column;
   grid-area: a;
+
   & > div:first-child {
     padding-bottom: 16px;
     border-bottom: 1px solid #c4c4c4;
@@ -64,6 +64,7 @@
     display: flex;
     gap: 8px;
     align-items: flex-end;
+
     & > span {
       color: #c4c4c4;
       font-size: 18px;
@@ -76,8 +77,8 @@
     justify-content: space-between;
 
     & > h1 {
-      font-size: 36px;
       font-family: SUIT-Medium;
+      font-size: 36px;
       font-weight: normal;
     }
 
