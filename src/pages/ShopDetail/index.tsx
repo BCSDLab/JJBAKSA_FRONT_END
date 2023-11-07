@@ -7,7 +7,13 @@ import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import { ReactComponent as InfoIcon } from 'assets/svg/shop/info.svg';
 import styles from './ShopDetail.module.scss';
 import ImageCarousel from './components/ImageCarousel';
+import FriendReviewList from './components/ReviewList/FriendReviewList';
+import MyReviewList from './components/ReviewList/MyReviewList';
+import Map from './components/Map';
 // import mock from './mock';
+
+const formatPeriod = (period: [number, number]) =>
+  period.map((time) => `${time.toString().slice(0, 2)}:${time.toString().slice(2)}`).join('~');
 
 function ShopDetail() {
   const { placeId } = useParams();
@@ -18,33 +24,35 @@ function ShopDetail() {
     const {
       // shopId,
       // placeId,
-      name,
-      formattedAddress,
-      // lat,
-      // lng,
-      formattedPhoneNumber,
-      // openNow,
-      totalRating,
-      // category,
-      todayPeriod,
       // periods,
       // scrap,
+      // openNow,
+      // category,
+      name,
+      formattedAddress,
+      lat,
+      lng,
+      formattedPhoneNumber,
+      totalRating,
+      todayPeriod,
       photos,
     } = data.data;
 
     return (
       <>
-        <AuthTopNavigation />
+        <header className={styles.header}>
+          <AuthTopNavigation />
+        </header>
+
         <div className={styles.container}>
           <ImageCarousel imageUrls={photos} />
+
           <article className={styles['shop-detail']}>
             <section className={styles['detail-main']}>
               <div>
                 <div className={styles['detail-main__rate']}>
                   <StarRatingPreview rate={totalRating} />
-                  <span>
-                    {totalRating === -1 ? '0.0' : totalRating.toFixed(1)}
-                  </span>
+                  <span>{totalRating === -1 ? '0.0' : totalRating.toFixed(1)}</span>
                 </div>
                 <div className={styles['detail-main__name']}>
                   <h1>{name}</h1>
@@ -56,21 +64,11 @@ function ShopDetail() {
               </div>
 
               <div>
-                <div className={styles['detail-main__info-name']}>
-                  기본 정보
-                </div>
+                <div className={styles['detail-main__info-name']}>기본 정보</div>
                 <div className={styles['detail-main__info']}>
                   <span>영업시간</span>
                   <div className={styles['line-divisor']} />
-                  <span>
-                    {todayPeriod
-                      .map((time) => {
-                        const hour = time.toString().slice(0, 2);
-                        const minute = time.toString().slice(2);
-                        return `${hour}:${minute}`;
-                      })
-                      .join('~')}
-                  </span>
+                  <span>{formatPeriod(todayPeriod)}</span>
                 </div>
                 <div className={styles['detail-main__info']}>
                   <span>전화번호</span>
@@ -83,12 +81,15 @@ function ShopDetail() {
                   <span>{formattedAddress}</span>
                 </div>
               </div>
-              <div className={styles['detail-main__report']}>
+              <button className={styles['detail-main__report']} type="button" onClick={() => {}}>
                 <InfoIcon />
                 <div>틀린 정보 신고</div>
-              </div>
+              </button>
             </section>
-            <section>{}</section>
+
+            <FriendReviewList placeId={placeId as string} />
+            <Map formattedAddress={formattedAddress} latitude={lat} longitude={lng} />
+            <MyReviewList placeId={placeId as string} />
           </article>
         </div>
       </>
