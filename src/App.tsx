@@ -47,6 +47,7 @@ export default function App(): JSX.Element {
             <Route path="/setting" element={<Setting />} />
             <Route path="/setting/id-change" element={<IdChange />} />
           </Route>
+          <Route path="/shop/:placeId" element={<ShopDetail />} />
           <Route path="/withdrawal" element={<Withdrawal />} />
           <Route path="/profile" element={<MyPage />} />
           <Route path="/post/:name" element={<Post />} />
@@ -63,7 +64,6 @@ export default function App(): JSX.Element {
           <Route path="/login/oauth2/code/kakao" element={<KakaoLogin />} />
           <Route path="/login/oauth2/code/naver" element={<NaverLogin />} />
           <Route path="/login/oauth2/code/google" element={<GoogleLogin />} />
-          <Route path="/shop/:placeId" element={<ShopDetail />} />
         </Route>
       </Routes>
       <Toast />
