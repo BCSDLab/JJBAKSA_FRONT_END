@@ -6,7 +6,8 @@ const useSearchingMode = () => {
   const changeMode = useCallback((event: MouseEvent) => {
     if ((event.target as Element).id === 'searchBarInput') {
       setIsSearching(true);
-    } else if ((event.target as Element).id === 'root') {
+      event.stopPropagation();
+    } else {
       setIsSearching(false);
     }
   }, []);
@@ -17,7 +18,7 @@ const useSearchingMode = () => {
     return () => {
       document.removeEventListener('click', changeMode);
     };
-  }, [changeMode, isSearching]);
+  }, [changeMode]);
 
   return isSearching;
 };

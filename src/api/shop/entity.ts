@@ -26,7 +26,11 @@ export interface SearchQueryParams {
 
 export interface ShopsParams {
   keyword: string;
-  location: Coords;
+  location?: Coords;
+}
+export interface Coords {
+  lat: number | undefined;
+  lng: number | undefined;
 }
 
 export interface FetchShopsResponse {
@@ -68,4 +72,5 @@ export interface FetchShopResponse {
 export interface Coords {
   lat: number | undefined;
   lng: number | undefined;
+  category: string;
 }
