@@ -72,5 +72,4 @@ export interface FetchShopResponse {
 export interface Coords {
   lat: number | undefined;
   lng: number | undefined;
-  category: string;
 }
