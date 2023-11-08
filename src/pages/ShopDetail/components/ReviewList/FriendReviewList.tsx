@@ -31,7 +31,7 @@ function FriendReviewList({ placeId }: Props) {
                   alt={`${userReviewResponse.nickname}의 프로필`}
                   src={userReviewResponse?.profileImage?.url}
                 />
-                <div className={styles['review-list__main__follower-content']}>
+                <div className={styles['review-list__main--follower-content']}>
                   <h3>{userReviewResponse.nickname}</h3>
                   <div>{reviewContent}</div>
                 </div>

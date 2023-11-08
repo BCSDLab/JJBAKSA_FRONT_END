@@ -34,7 +34,7 @@ function MyReviewList({ placeId }: Props) {
                   alt={`${userReviewResponse.nickname}의 프로필`}
                   src={userReviewResponse?.profileImage?.url}
                 />
-                <div className={styles['review-list__main__my-content']}>
+                <div className={styles['review-list__main--my-content']}>
                   <div>{reviewContent}</div>
                 </div>
               </li>
