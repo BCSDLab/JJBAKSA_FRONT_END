@@ -7,7 +7,7 @@ interface RequestBody {
 }
 
 const handlers = [
-  http.post('https://api.stage.jjbaksa.com/shops?keyword=', async ({ request }) => {
+  http.post('https://api.stage.jjbaksa.com/shops', async ({ request }) => {
     const body = await request.json() as RequestBody;
 
     body.lat = 37.71;
