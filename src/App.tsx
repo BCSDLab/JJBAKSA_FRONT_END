@@ -11,7 +11,6 @@ import VerifyField from 'pages/Auth/FindIDPassword/VerifyField';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
 import { Suspense } from 'react';
-import SearchDetails from 'pages/SearchDetails';
 import FollowPage from 'pages/Follow';
 import Setting from 'pages/Setting';
 import IdChange from 'pages/Setting/Mobile/IdChange';
@@ -33,7 +32,6 @@ export default function App(): JSX.Element {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/search" element={<Search />} />
-          <Route path="/search/:keyword" element={<SearchDetails />} />
           <Route path="/search/not-found" element={<NotFoundPage />} />
           <Route path="/inquiry" element={<Inquiry />} />
           <Route path="/myinquiry" element={<Myinquiry />} />
