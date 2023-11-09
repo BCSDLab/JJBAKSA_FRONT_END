@@ -21,7 +21,7 @@ const queryClient = new QueryClient({
 });
 
 if (process.env.NODE_ENV === 'development') {
-  worker.start({ quiet: true });
+  worker.start({ onUnhandledRequest: 'bypass' });
 }
 
 const root = ReactDOM.createRoot(
