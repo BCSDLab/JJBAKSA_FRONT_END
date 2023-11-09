@@ -24,6 +24,7 @@
       max-width: 767px;
       padding-top: 64px;
       margin: 0 auto;
+      font-size: 35px;
     }
   }
 }
@@ -35,14 +36,26 @@
   border: none;
   height: 62px;
   width: 875px;
-  align-items: center;
   margin-top: 34px;
   margin-right: 16px;
   margin-left: 16px;
   background: #ffffff;
   box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
   padding-left: 15px;
-  z-index: 6;
+  z-index: 3;
+
+  @include media.media-breakpoint-down(mobile) {
+    max-width: 343px;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
 
   &__input {
     width: 100%;
@@ -63,6 +76,7 @@
   }
 
   &__icon {
+    display: flex;
     width: 34px;
     height: 34px;
     padding: 20px;
@@ -129,6 +143,11 @@
       100% {
         transform: translate3d(-100%, 0, 0);
       }
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      max-width: 343px;
+      font-size: 16px;
     }
   }
 

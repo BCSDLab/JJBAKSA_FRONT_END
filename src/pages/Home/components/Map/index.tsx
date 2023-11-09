@@ -14,7 +14,7 @@ import useCluster from './hooks/useCluster';
 export default function Map(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useLocation();
-  const map = useNaverMap(location?.latitude, location?.longitude);
+  const map = useNaverMap(location?.lat, location?.lng);
   const { filterFriendState } = useFilterFriend();
   const { filterScrapState } = useFilterScrap();
   const { filterNearbyState } = useFilterNearby();
