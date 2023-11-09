@@ -1,4 +1,5 @@
 import { http, HttpResponse } from 'msw';
+import { API_PATH } from 'config/constants';
 import shopsResultData from './data/shopsResultData';
 
 interface RequestBody {
@@ -7,7 +8,7 @@ interface RequestBody {
 }
 
 const handlers = [
-  http.post('https://api.stage.jjbaksa.com/shops', async ({ request }) => {
+  http.post(`${API_PATH}/shops`, async ({ request }) => {
     const body = await request.json() as RequestBody;
 
     body.lat = 37.71;
