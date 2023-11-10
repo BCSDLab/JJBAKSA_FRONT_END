@@ -21,7 +21,7 @@ Make an issue or Contact with this repository leader.
 - Language
   - [TypeScript](https://github.com/typescript-cheatsheets/react)
 - Server State Management Library
-  - [React-Query](https://react-query.tanstack.com/overview)
+  - [@tanstack/react-query](https://@tanstack/react-query.tanstack.com/overview)
 - Routing Library
   - [React Router v6](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
 - Linting Library

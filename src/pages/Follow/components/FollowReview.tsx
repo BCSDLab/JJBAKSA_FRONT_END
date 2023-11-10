@@ -1,5 +1,5 @@
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { getDetailReview } from 'api/follow';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
@@ -17,9 +17,10 @@ interface Props {
 
 const useGetDetailReview = (placeId: string, followerId: number) => {
   const { data } = useInfiniteQuery(
-    ['detail', placeId],
-    ({ pageParam = '' }) => getDetailReview(followerId, placeId, pageParam),
     {
+      queryKey: ['detail', placeId],
+      initialPageParam: '',
+      queryFn: () => getDetailReview(followerId, placeId),
       getNextPageParam: (last) => {
         const len = last.data.content.length;
         if (last.data.empty || last.data.last) return null;

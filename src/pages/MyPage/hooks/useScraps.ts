@@ -1,10 +1,11 @@
 import { getScraps } from 'api/mypage';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 const useScraps = () => {
   const { data, isLoading, fetchNextPage } = useInfiniteQuery({
     queryKey: ['scraps'],
     queryFn: ({ pageParam = 0 }) => getScraps(pageParam),
+    initialPageParam: 0,
     // eslint-disable-next-line consistent-return
     getNextPageParam: (lastResponse, allResponse) => {
       const currentPage = allResponse.length - 1;
