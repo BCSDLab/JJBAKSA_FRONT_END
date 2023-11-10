@@ -26,4 +26,4 @@ export const patchDefaultImage = async () => myPageApi.patch<PatchProfileImageRe
 
 export const patchNickname = async (nickname:string) => myPageApi.patch<PatchNicknameResponse>('/user/me', { nickname });
 
-export const getFollwers = async () => followApi.get<FollowersResponse>('/follow/followers');
+export const getFollowers = async () => followApi.get<FollowersResponse>('/follow/followers');
