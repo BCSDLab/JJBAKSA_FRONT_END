@@ -6,10 +6,9 @@ import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage';
 import Login from 'pages/Auth/Login';
 import Post from 'pages/Post';
 import Search from 'pages/Search';
-import FindIdPassword from 'pages/Auth/FindIDPassword';
-import VerifyField from 'pages/Auth/FindIDPassword/VerifyField';
+import VerifyField from 'pages/Auth/FindIDPassword/mobile/VerifyField';
 import { Routes, Route } from 'react-router-dom';
-import ChangePassword from 'pages/Auth/FindIDPassword/ChangePassword';
+import ChangePassword from 'pages/Auth/FindIDPassword/mobile/ChangePassword';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
 import FollowPage from 'pages/Follow';
@@ -26,6 +25,8 @@ import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
 import MyPage from 'pages/MyPage';
 import NotFoundPage from 'pages/Search/components/NotFoundPage';
 import FollowProfile from 'pages/Follow/components/FollowProfile';
+import FindIDPassword from 'pages/Auth/FindIDPassword';
+import ChangePasswordPC from 'pages/Auth/FindIDPassword/PC/ChangePassword';
 
 export default function App(): JSX.Element {
   return (
@@ -55,8 +56,11 @@ export default function App(): JSX.Element {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signup/complete" element={<Complete />} />
-          <Route path="/find-id" element={<FindIdPassword type="id" />} />
-          <Route path="/find-password" element={<FindIdPassword type="password" />} />
+          <Route path="/" element={<DefaultLayout />}>
+            <Route path="/find-id" element={<FindIDPassword type="id" />} />
+            <Route path="/find-password" element={<FindIDPassword type="password" />} />
+            <Route path="/change-password-pc" element={<ChangePasswordPC />} />
+          </Route>
           <Route path="/find/verify/:type" element={<VerifyField />} />
           <Route path="/find-password/change" element={<ChangePassword />} />
           <Route path="/login/oauth2/code/kakao" element={<KakaoLogin />} />
