@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
 import { sendFindEmail, getAccount, findPassowrd } from 'api/user';
+import useInputCheck from 'pages/Auth/FindIDPassword/hook/useInputCheck';
+import { RegisterProp, CodeInfo } from 'pages/Auth/FindIDPassword/entity';
 import Modal from './Modal';
-import useInputCheck from '../hook/useInputCheck';
 import style from './VerifyCode.module.scss';
-import { RegisterProp, CodeInfo } from '../entity';
 import Input from './Input';
 
 const CODE = ['first', 'second', 'third', 'fourth'] as const;

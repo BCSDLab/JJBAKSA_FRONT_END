@@ -1,6 +1,6 @@
 import cn from 'utils/ts/classNames';
+import { InputInfo } from 'pages/Auth/FindIDPassword/entity';
 import style from './VerifyCode.module.scss';
-import { InputInfo } from '../entity';
 
 export default function Input({
   register, name, preventOverLength, number, index, inputRef,
