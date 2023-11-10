@@ -71,7 +71,7 @@ $body: #666666;
 
   &__button {
     position: absolute;
-    right: 0px;
+    right: 0;
     border: none;
     border-radius: 100px;
     height: 40px;
@@ -92,9 +92,8 @@ $body: #666666;
     background-color: #c4c4c4;
     margin-top: 60px;
     margin-bottom: 90px;
-    box-shadow: 2px 3px 12px 1px rgba(0, 0, 0, 0.10);
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 10%);
 
-    
     &--active {
       background-color: $title;
       cursor: pointer;
