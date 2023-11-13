@@ -43,7 +43,7 @@ export default function ChangePasswordPC(): JSX.Element {
               <Error />
             </div>
             <input
-              placeholder="비밀번호를 입력하세요."
+              placeholder="비밀번호를 입력해주세요."
               className={style.form__input}
             />
             <Error className={style.form__error} />
