@@ -5,6 +5,7 @@ import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import { useLocation } from 'store/location';
 import SideNavigation from 'components/common/SideNavigation';
 import BottomNavigation from 'components/common/BottomNavigation';
+import Pin from 'pages/Pin';
 import styles from './Map.module.scss';
 import MobileOptions from './components/MobileOptions';
 import useNaverMap from './hooks/useNaverMap';
@@ -42,6 +43,7 @@ export default function Map(): JSX.Element {
   return (
     <>
       {isMobile && <MobileOptions />}
+      {(isMobile && selected) && <Pin placeId={placeId} />}
       {!isMobile && <SideNavigation selected={selected} placeId={placeId} />}
       <div id="map" className={styles.map}>
         {isMobile && <BottomNavigation />}

@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
 import cn from 'utils/ts/classNames';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from '../Pin.module.scss';
 
 interface Props {
   images:string[];
 }
+
 export default function Carousel({ images }:Props) {
+  const { isMobile } = useMediaQuery();
   const [count, setCount] = useState<number>(0);
 
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -15,10 +18,14 @@ export default function Carousel({ images }:Props) {
   };
 
   useEffect(() => {
-    if (carouselRef.current) {
+    if (carouselRef.current && !isMobile) {
       carouselRef.current.style.transform = `translateX(${(count) * -550}px)`;
     }
-  }, [count]);
+
+    if (carouselRef.current && isMobile) {
+      carouselRef.current.style.transform = `translateX(${(count) * -window.innerWidth}px)`;
+    }
+  }, [count, isMobile]);
 
   return (
     <div className={styles.carousel}>
@@ -28,7 +35,9 @@ export default function Carousel({ images }:Props) {
         ref={carouselRef}
       >
         {images && images.map((item:string, index:number) => (
-          <img key={`${item + index}`} src={item} alt="" className={styles['carousel__container--photo']} />
+          <div className={styles.carousel__image}>
+            <img key={`${item + index}`} src={item} alt="" className={styles['carousel__container--photo']} />
+          </div>
         ))}
       </div>
       <div className={styles.carousel__index}>
