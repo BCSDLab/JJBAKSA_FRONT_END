@@ -59,10 +59,10 @@ export default function App(): JSX.Element {
           <Route path="/" element={<DefaultLayout />}>
             <Route path="/find-id" element={<FindIDPassword type="id" />} />
             <Route path="/find-password" element={<FindIDPassword type="password" />} />
-            <Route path="/change-password-pc" element={<ChangePasswordPC />} />
+            <Route path="/find-password/change-pc" element={<ChangePasswordPC />} />
           </Route>
           <Route path="/find/verify/:type" element={<VerifyField />} />
-          <Route path="/find-password/change" element={<ChangePassword />} />
+          <Route path="/find-password/change-mobile" element={<ChangePassword />} />
           <Route path="/login/oauth2/code/kakao" element={<KakaoLogin />} />
           <Route path="/login/oauth2/code/naver" element={<NaverLogin />} />
           <Route path="/login/oauth2/code/google" element={<GoogleLogin />} />
