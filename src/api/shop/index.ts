@@ -11,12 +11,21 @@ export const fetchShop = async (placeId: string) => {
   return data;
 };
 
-export const fetchShops = (params: ShopsParams) => shopApi.post<FetchShopsResponse>(`/shops?keyword=${params.keyword}`, {
-  lat: params.location?.lat,
-  lng: params.location?.lng,
-});
+export const getfilterShops = (params: FilterShopsParams, location: Coords) => {
+  const url = `/shops/maps?options_friend=${params.options_friend}&options_nearby=${params.options_nearby}&options_scrap=${params.options_scrap}`;
+  const requestBody = {
+    lat: location.lat,
+    lng: location.lng,
+  };
+  return shopApi.post<FilterShopsListResponse>(url, requestBody);
+};
 
-export const getfilterShops = (params: FilterShopsParams, location: Coords) => shopApi.post<FilterShopsListResponse>(`/shops/maps?options_friend=${params.options_friend}&options_nearby=${params.options_nearby}&options_scrap=${params.options_scrap}`, {
-  lat: location.lat,
-  lng: location.lng,
-});
+export const fetchShops = (params: ShopsParams) => {
+  const { location, keyword } = params;
+  const url = `/shops?keyword=${keyword}`;
+  const requestBody = {
+    lat: location?.lat,
+    lng: location?.lng,
+  };
+  return shopApi.post<FetchShopsResponse>(url, requestBody);
+};

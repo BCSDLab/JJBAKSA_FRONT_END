@@ -20,10 +20,6 @@ export default function Carousel({ images }:Props) {
     }
   }, [count]);
 
-  useEffect(() => {
-    setCount(0);
-  }, [images]);
-
   return (
     <div className={styles.carousel}>
       <button className={styles.carousel__left} onClick={() => setCount(count > 0 ? count - 1 : 0)} type="button">{'<'}</button>

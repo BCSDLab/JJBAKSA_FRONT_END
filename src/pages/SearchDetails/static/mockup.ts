@@ -7,7 +7,7 @@ export interface GetItemResponse {
   image: undefined,
 }
 
-export const getMockItem = ():GetItemResponse => {
+export const getMockItem = (): GetItemResponse => {
   const data = {
     imageAlt: '가게 이미지 없음',
     phoneNumber: '010-0000-0000',

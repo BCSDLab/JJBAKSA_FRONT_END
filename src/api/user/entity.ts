@@ -27,20 +27,18 @@ export interface ModifyParams {
 
 export interface EmailUser {
   account: string;
+  id: number;
   nickname: string;
   email: string;
-  id: number;
-  // 아래 두 파라미터도 확실한 도메인이 정해지면 수정 필요.
-  // oauthType = 'KAKAO' | 'NAVER' | 'GOOGLE'...
-  // userType = 'ADMIN' | 'NORMAL'...
   profileImage: {
     id: number;
     path: string;
     originalName: string;
     url: string;
   }
-  oauthType: string;
-  userType: string;
+
+  oauthType: string; // 'KAKAO' | 'NAVER' | 'GOOGLE'
+  userType: string; // 'ADMIN' | 'NORMAL'...
   userCountResponse: {
     id: number;
     reviewCount: number;
@@ -48,11 +46,8 @@ export interface EmailUser {
   };
 }
 
-export interface SNSUser {
-  id: number,
-  nickname: string,
-  email: string,
-  profileImage:null
+export interface SNSUser extends Omit<EmailUser, 'account' | 'profileImage'> {
+  profileImage?: EmailUser['profileImage'];
 }
 
 export type User = EmailUser | SNSUser;
