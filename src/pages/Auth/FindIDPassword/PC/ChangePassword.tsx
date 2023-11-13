@@ -1,6 +1,6 @@
 import { ReactComponent as SecondProgress } from 'assets/svg/auth/two-step-second-progress.svg';
 import Copyright from 'components/Auth/Copyright';
-import { ReactComponent as Error } from 'assets/svg/auth/error.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useForm } from 'react-hook-form';
 import cn from 'utils/ts/classNames';
 import style from './index.module.scss';
@@ -35,18 +35,18 @@ export default function ChangePasswordPC(): JSX.Element {
               placeholder="비밀번호를 입력해주세요."
               className={style.form__input}
             />
-            <Error className={style.form__error} />
+            <ErrorIcon className={style.form__error} />
           </div>
           <div className={style.form__box}>
             <div className={style.form__label}>
               새 비밀번호 확인
-              <Error />
+              <ErrorIcon />
             </div>
             <input
               placeholder="비밀번호를 입력해주세요."
               className={style.form__input}
             />
-            <Error className={style.form__error} />
+            <ErrorIcon className={style.form__error} />
           </div>
           <button
             type="submit"

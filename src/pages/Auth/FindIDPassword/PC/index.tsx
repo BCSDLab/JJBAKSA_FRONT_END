@@ -2,7 +2,7 @@ import { ReactComponent as FirstProgress } from 'assets/svg/auth/two-step-first-
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
 import { useForm } from 'react-hook-form';
-import { ReactComponent as Error } from 'assets/svg/auth/error.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useNavigate } from 'react-router-dom';
 import style from './index.module.scss';
 import { EmailParams, FindProp } from '../entity';
@@ -54,31 +54,31 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
             <div className={style.form__box}>
               <div className={style.form__label}>
                 아이디
-                <Error />
+                <ErrorIcon />
               </div>
 
               <input
                 placeholder="아이디를 입력하세요."
                 className={style.form__input}
               />
-              <Error className={style.form__error} />
+              <ErrorIcon className={style.form__error} />
             </div>
           )}
           <div className={style.form__box}>
             <div className={style.form__label}>
               이메일
-              <Error />
+              <ErrorIcon />
             </div>
             <input
               placeholder="이메일을 입력하세요."
               className={style.form__input}
             />
-            <Error className={style.form__error} />
+            <ErrorIcon className={style.form__error} />
           </div>
           <div className={style.form__box}>
             <div className={style.form__label}>
               인증번호
-              <Error />
+              <ErrorIcon />
             </div>
             <input
               placeholder="인증번호를 입력하세요."
