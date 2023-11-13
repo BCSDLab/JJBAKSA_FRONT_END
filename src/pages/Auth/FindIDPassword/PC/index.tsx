@@ -16,7 +16,6 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
   const nav = useNavigate();
   return (
     <div>
-
       <div className={style.page}>
         <div className={style.page__container}>
           {type === 'id' && (

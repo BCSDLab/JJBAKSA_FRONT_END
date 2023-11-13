@@ -1,9 +1,9 @@
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import FindIdPasswordMobile from './mobile';
-import FindIdPasswordPC from './PC';
-import { FindProp } from './entity';
+import FindIdPasswordMobile from 'pages/Auth/FindIdPassword/mobile';
+import FindIdPasswordPC from 'pages/Auth/FindIdPassword/PC';
+import { FindProp } from 'pages/Auth/FindIdPassword/entity';
 
-export default function FindIDPassword({ type }: FindProp) {
+export default function FindIdPassword({ type }: FindProp) {
   const { isMobile } = useMediaQuery();
   return (
     <div>

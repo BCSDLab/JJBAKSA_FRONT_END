@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
-import style from 'pages/Auth/FindIDPassword/mobile/index.module.scss';
-import { CodeInfo } from '../entity';
-import VerifyCode from './VerifyCode';
+import style from 'pages/Auth/FindIdPassword/mobile/index.module.scss';
+import { CodeInfo } from 'pages/Auth/FindIdPassword/entity';
+import VerifyCode from 'pages/Auth/FindIdPassword/mobile/VerifyCode';
 
 export default function VerifyField(): JSX.Element {
   const {
