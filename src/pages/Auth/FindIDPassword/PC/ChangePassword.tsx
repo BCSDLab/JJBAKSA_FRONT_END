@@ -52,8 +52,8 @@ export default function ChangePasswordPC(): JSX.Element {
             type="submit"
             disabled={isSubmitting || !isValid}
             className={cn({
-              [style['form__submit--active']]: isValid,
               [style.form__submit]: true,
+              [style['form__submit--active']]: isValid,
             })}
           >
             완료
