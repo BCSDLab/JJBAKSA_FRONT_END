@@ -52,6 +52,7 @@ function ShopDetail() {
               <div>
                 <div className={styles['detail-main__rate']}>
                   <StarRatingPreview rate={totalRating} />
+                  {/* totalRating이 -1인 경우는 아예 별점이 없는 경우를 의미합니다. */}
                   <span>{totalRating === -1 ? '0.0' : totalRating.toFixed(1)}</span>
                 </div>
                 <div className={styles['detail-main__name']}>
