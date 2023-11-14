@@ -4,8 +4,8 @@ interface Props {
   title: string;
   description: string;
   button?: {
-    name: string;
-    handler: React.ReactEventHandler<HTMLButtonElement>;
+    content: string;
+    onClick: React.ReactEventHandler<HTMLButtonElement>;
   };
 }
 
@@ -17,8 +17,8 @@ function SectionHeader({ title, description, button }: Props) {
         <div className={styles['section-header__description']}>{description}</div>
       </div>
       {button && (
-        <button className={styles['section-header__button']} type="button" onClick={button.handler}>
-          {button.name}
+        <button className={styles['section-header__button']} type="button" onClick={button.onClick}>
+          {button.content}
         </button>
       )}
     </div>

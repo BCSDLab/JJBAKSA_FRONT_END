@@ -16,7 +16,7 @@ function Map({ formattedAddress, latitude, longitude }: Props) {
       <SectionHeader
         title="지도"
         description={formattedAddress}
-        button={{ name: 'URL 복사', handler: () => {} }}
+        button={{ content: 'URL 복사', onClick: () => {} }}
       />
       <div id="map" className={styles.map} />
     </section>

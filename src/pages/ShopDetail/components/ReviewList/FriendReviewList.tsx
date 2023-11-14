@@ -20,7 +20,7 @@ function FriendReviewList({ placeId }: Props) {
         <SectionHeader
           title="친구의 리뷰"
           description={`총 ${totalElements}개의 리뷰`}
-          button={totalElements > size ? { name: '전체보기', handler: () => {} } : undefined}
+          button={totalElements > size ? { content: '전체보기', onClick: () => {} } : undefined}
         />
 
         {content.length ? (
