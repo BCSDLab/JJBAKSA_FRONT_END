@@ -43,7 +43,7 @@ export default function Follower({
   } = {
     NONE: {
       className: style['follower__button--request'],
-      onClick: () => request(account),
+      onClick: () => account && request(account),
       text: '팔로우',
     },
     REQUEST_SENT: {
