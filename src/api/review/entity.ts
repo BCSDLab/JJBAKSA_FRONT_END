@@ -5,31 +5,29 @@ export interface ReviewParams {
   reviewImages: File[];
 }
 
-export interface ReviewContent {
-  content: string;
-  createdAt: string;
-  id: number;
-  rate: number;
-  reviewImages: {
-    imageUrl: string;
-    originalName: string;
-  }[];
-  shopPlaceId: string;
-  userReviewResponse: {
-    account: string;
-    id: number;
-    nickname: string;
-    profileImage: {
-      id: number;
-      originalName: string;
-      path: string;
-      url: string;
-    };
-  };
-}
-
 export interface ShopReviewsResponse {
-  content: ReviewContent[];
+  content: {
+    content: string;
+    createdAt: string;
+    id: number;
+    rate: number;
+    reviewImages: {
+      imageUrl: string;
+      originalName: string;
+    }[];
+    shopPlaceId: string;
+    userReviewResponse: {
+      account: string;
+      id: number;
+      nickname: string;
+      profileImage: {
+        id: number;
+        originalName: string;
+        path: string;
+        url: string;
+      };
+    };
+  }[];
   empty: boolean;
   first: boolean;
   last: boolean;

@@ -51,6 +51,11 @@ export interface Shop {
   category: string; // 추후 카테고리 확인 필요
 }
 
+type Period = {
+  close: { day: number; time: number };
+  open: { day: number; time: number };
+} | null;
+
 export interface FetchShopResponse {
   shopId: number;
   placeId: string;
@@ -64,7 +69,7 @@ export interface FetchShopResponse {
   ratingCount: number;
   category: string;
   todayPeriod: [number, number];
-  periods: [any, Object];
-  scrap: any;
+  periods: Period[];
+  scrap: number | null;
   photos: string[];
 }
