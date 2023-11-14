@@ -10,13 +10,13 @@ interface Props {
 function ImageCarousel({ imageUrls }: Props) {
   const { count: currentIndex, increment, decrement } = useCounter(0);
 
-  const next: React.ReactEventHandler<HTMLButtonElement> = () => {
+  const next = () => {
     if (currentIndex === imageUrls.length - 3) return;
 
     increment();
   };
 
-  const prev: React.ReactEventHandler<HTMLButtonElement> = () => {
+  const prev = () => {
     if (currentIndex === 0) return;
 
     decrement();
