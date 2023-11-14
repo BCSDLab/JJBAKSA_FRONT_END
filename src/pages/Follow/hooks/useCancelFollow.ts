@@ -5,7 +5,7 @@ const useCancelFollow = () => {
   const queryClient = useQueryClient();
   const { mutate: cancel } = useMutation('cancel', (id: number) => cancelFollow({ id }), {
     onSuccess: () => {
-      queryClient.invalidateQueries('sended');
+      queryClient.invalidateQueries('sent');
       queryClient.invalidateQueries('search');
     },
   });

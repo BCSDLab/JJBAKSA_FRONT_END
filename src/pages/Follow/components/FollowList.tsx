@@ -3,24 +3,24 @@ import cn from 'utils/ts/classNames';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { ReactComponent as Ellipse } from 'assets/svg/follow/Ellipse.svg';
 import Follower from './Follower';
-import style from './FollowList.module.scss';
+import styles from './FollowList.module.scss';
 import { FollowerInfo } from '../static/entity';
 import Recent from './Recent';
 
 export interface Props {
   title: string;
   data: FollowerInfo[];
-  sended?: FollowerInfo[];
+  sent?: FollowerInfo[];
 }
 
 // 유저 검색 시 자신의 정보는 안보이도록 자신의 정보를 받아서 비교, 자신과의 followedType은 NONE
 export default function FollowList({
-  title, data, sended,
+  title, data, sent,
 }: Props) {
   const [isShow, , , toggle] = useBooleanState(true);
   return (
-    <div className={style.container}>
-      <button onClick={toggle} type="button" className={style.title}>
+    <div className={styles.container}>
+      <button onClick={toggle} type="button" className={styles.title}>
         <span>
           {title}
           {' '}
@@ -28,13 +28,13 @@ export default function FollowList({
         </span>
         <Arrow className={cn(
           {
-            [style.title__arrow]: true,
-            [style['title__arrow--up']]: isShow,
+            [styles.title__arrow]: true,
+            [styles['title__arrow--up']]: isShow,
           },
         )}
         />
       </button>
-      <div className={style.recent}>
+      <div className={styles.recent}>
         {isShow && title === '최근 접속한 친구' && data.map((item) => (
           <Recent
             key={item.id}
@@ -45,7 +45,7 @@ export default function FollowList({
       {isShow && title !== '최근 접속한 친구' && data.map((item) => (
         <Follower
           id={item.id}
-          key={item.account}
+          key={item.nickname}
           nickname={item.nickname}
           account={item.account}
           followedType={item.followedType}
@@ -53,7 +53,7 @@ export default function FollowList({
           userCountResponse={item.userCountResponse}
         />
       ))}
-      {isShow && sended && sended.map((item) => (
+      {isShow && sent && sent.map((item) => (
         <Follower
           id={item.id}
           key={item.id}

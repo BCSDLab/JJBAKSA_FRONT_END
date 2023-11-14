@@ -7,7 +7,7 @@ const useRequestAndUpdate = () => {
   const queryClient = useQueryClient();
   const { mutate: request } = useMutation('request', (account: string) => requestFollow({ userAccount: account }), {
     onSuccess: () => {
-      queryClient.invalidateQueries('sended');
+      queryClient.invalidateQueries('sent');
       queryClient.invalidateQueries('search');
     },
     onError: () => {
