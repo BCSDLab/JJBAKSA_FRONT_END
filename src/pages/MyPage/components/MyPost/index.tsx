@@ -4,13 +4,10 @@ import styles from './MyPost.module.scss';
 import MobileBoard from '../MobileBoard';
 
 export default function MyPost() {
-  const { isLoading, shops } = useReviwedShops();
-  return (
-    <div>
-      {!isLoading && shops && (
-        <MobileBoard posts={shops} />
-      ) }
-      {!isLoading && !shops && (
+  const { shops } = useReviwedShops();
+
+  if (shops.length <= 0) {
+    return (
       <div className={styles['not-exist']}>
         <span className={styles['not-exist__phrase']}>
           <p>등록된 리뷰가 없어요.</p>
@@ -18,7 +15,10 @@ export default function MyPost() {
         </span>
         <img src={notExist} alt="not-exist" className={styles['not-exist__image']} />
       </div>
-      )}
-    </div>
+    );
+  }
+
+  return (
+    <MobileBoard posts={shops} />
   );
 }
