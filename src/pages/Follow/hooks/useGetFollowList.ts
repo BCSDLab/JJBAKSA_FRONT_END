@@ -1,21 +1,20 @@
 import { followList } from 'api/follow';
 import { GetFollowListResponse } from 'api/follow/entity';
 import { useEffect } from 'react';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 // 친구 목록 가져오기
 const useGetFollowList = () => {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery(
-    'follower',
-    ({ pageParam = '' }) => followList(pageParam),
-    {
-      getNextPageParam: (last) => {
-        const len = last.data.content.length;
-        if (last.data.empty || last.data.last) return null;
-        return `cursor=${last.data.content[len - 1].id}`;
-      },
+  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
+    queryKey: ['follower'],
+    queryFn: ({ pageParam = '' }) => followList(pageParam),
+    initialPageParam: 'cursor=0',
+    getNextPageParam: (last) => {
+      const len = last.data.content.length;
+      if (last.data.empty || last.data.last) return null;
+      return `cursor=${last.data.content[len - 1].id}`;
     },
-  );
+  });
   const flatData: GetFollowListResponse = {
     content: data ? data.pages.flatMap((page) => page.data.content) : [],
     empty: !data || data.pages.every((page) => page.data.empty),
