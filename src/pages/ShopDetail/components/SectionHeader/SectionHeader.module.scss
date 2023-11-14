@@ -3,17 +3,17 @@
   align-items: center;
   justify-content: space-between;
 
-  & > div > h2 {
+  &__title {
     font-size: 24px;
     font-weight: normal;
   }
 
-  & > div > div {
+  &__description {
     color: #979797;
     font-size: 18px;
   }
 
-  & > button {
+  &__button {
     color: #666;
     font-size: 14px;
     padding: 8px 16px;

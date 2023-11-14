@@ -13,11 +13,11 @@ function SectionHeader({ title, description, button }: Props) {
   return (
     <div className={styles['section-header']}>
       <div>
-        <h2>{title}</h2>
-        <div>{description}</div>
+        <h2 className={styles['section-header__title']}>{title}</h2>
+        <div className={styles['section-header__description']}>{description}</div>
       </div>
       {button && (
-        <button type="button" onClick={button.handler}>
+        <button className={styles['section-header__button']} type="button" onClick={button.handler}>
           {button.name}
         </button>
       )}
