@@ -7,7 +7,7 @@ export default function LeaveStarRateContainer({ rating }: { rating: number }) {
   const { handleMouseEnter } = useContext(StarRateContext);
   return (
     <div
-      className={styles.starRateContainer}
+      className={styles['star-rate-container']}
       onMouseEnter={handleMouseEnter}
     >
       { [1, 2, 3, 4, 5].map((num) => (

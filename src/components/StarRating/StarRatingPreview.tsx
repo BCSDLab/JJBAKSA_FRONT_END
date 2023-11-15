@@ -7,7 +7,7 @@ interface Props {
 
 function StarRatingPreview({ rate }: Props) {
   return (
-    <div className={styles.starRateContainer}>
+    <div className={styles['star-rate-container']}>
       {[1, 2, 3, 4, 5].map((num) => (
         <Star
           key={num}

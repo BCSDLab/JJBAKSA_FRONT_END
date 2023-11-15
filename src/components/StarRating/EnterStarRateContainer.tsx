@@ -10,7 +10,7 @@ export default function EnterStarRateContainer({ rating }: { rating: number }) {
 
   return (
     <div
-      className={styles.starRateContainer}
+      className={styles['star-rate-container']}
       onMouseLeave={() => {
         handleMouseLeave();
         setStarQuantity(0);
