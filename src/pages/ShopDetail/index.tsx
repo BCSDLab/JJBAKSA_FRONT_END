@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import { fetchShop } from 'api/shop';
 import StarRatingPreview from 'components/StarRating/StarRatingPreview';
@@ -18,7 +18,10 @@ const formatPeriod = (period: [number, number]) =>
 function ShopDetail() {
   const { placeId } = useParams();
 
-  const { data } = useQuery('shopDetail', () => fetchShop(placeId as string));
+  const { data } = useQuery({
+    queryKey: ['shopDetail'],
+    queryFn: () => fetchShop(placeId as string),
+  });
 
   if (data) {
     const {

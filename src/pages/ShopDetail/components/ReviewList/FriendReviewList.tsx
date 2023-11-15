@@ -1,5 +1,5 @@
 import { fetchFollowerReview } from 'api/review';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import styles from './ReviewList.module.scss';
 import SectionHeader from '../SectionHeader';
 import NotFoundDescription from '../NotFoundDescription';
@@ -10,7 +10,10 @@ interface Props {
 }
 
 function FriendReviewList({ placeId }: Props) {
-  const { data } = useQuery('followerReviews', () => fetchFollowerReview(placeId));
+  const { data } = useQuery({
+    queryKey: ['followerReviews'],
+    queryFn: () => fetchFollowerReview(placeId),
+  });
 
   if (data) {
     const { content, totalElements, size } = data.data;

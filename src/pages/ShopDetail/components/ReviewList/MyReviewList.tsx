@@ -1,5 +1,5 @@
 import { fetchMyReview } from 'api/review';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import formatISODate from 'utils/ts/formatISODate';
 import styles from './ReviewList.module.scss';
 import SectionHeader from '../SectionHeader';
@@ -11,8 +11,10 @@ interface Props {
 }
 
 function MyReviewList({ placeId }: Props) {
-  const { data } = useQuery('myReviews', () => fetchMyReview(placeId));
-
+  const { data } = useQuery({
+    queryKey: ['myReviews'],
+    queryFn: () => fetchMyReview(placeId),
+  });
   if (data) {
     const { content } = data.data;
 
