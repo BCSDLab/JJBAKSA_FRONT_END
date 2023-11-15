@@ -1,6 +1,6 @@
 import useGeolocation from 'utils/hooks/useGeolocation';
 import { useQuery } from '@tanstack/react-query';
-import { getfilterShops } from 'api/shop';
+import { getFilterShops } from 'api/shop';
 import { FilterShopsParams } from 'api/shop/entity';
 import { useAuth } from 'store/auth';
 
@@ -21,7 +21,7 @@ const useFilterShops = ({
     isLoading, isError, data, refetch,
   } = useQuery({
     queryKey: ['filterShops'],
-    queryFn: () => getfilterShops(params, {
+    queryFn: () => getFilterShops(params, {
       lat: location?.lat,
       lng: location?.lng,
     }),

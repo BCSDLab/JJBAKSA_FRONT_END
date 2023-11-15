@@ -81,8 +81,8 @@ export default function Login(): JSX.Element {
     },
   });
 
-  const [errorMsg, setErroMsg] = useState<string>('');
-  const submitLogin = useLoginRequest({ onError: setErroMsg });
+  const [errorMsg, setErrorMsg] = useState<string>('');
+  const submitLogin = useLoginRequest({ onError: setErrorMsg });
 
   return (
     <div className={styles.template}>
