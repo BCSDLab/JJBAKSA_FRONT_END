@@ -1,22 +1,17 @@
 import { getFollowers } from 'api/mypage';
 import { getMe } from 'api/user';
-import { EmailUser } from 'api/user/entity';
-import { useQuery } from 'react-query';
-
-type Profile = EmailUser & {
-  profileImage?: {
-    url: string
-  },
-};
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 const useMyProfile = () => {
-  const { data: profileData, isLoading } = useQuery('profile', getMe);
-  const { data: followers } = useQuery('myFollowers', getFollowers);
-  const profile:Profile | null = profileData ? profileData.data as EmailUser : null;
-  const getTotal = () => (profileData && 'account' in profileData.data ? profileData.data.userCountResponse.reviewCount : 0);
-  const followerNumber = followers?.data.content.length;
+  const { data: profileData, isLoading } = useSuspenseQuery({ queryKey: ['profile'], queryFn: getMe });
+  const { data: followers } = useSuspenseQuery({ queryKey: ['myFollowers'], queryFn: getFollowers });
+
+  const getTotal = () => profileData.data.userCountResponse.reviewCount;
+
+  const followerNumber = followers.data.content.length;
+
   return {
-    profile, isLoading, getTotal, followerNumber,
+    profile: profileData.data, isLoading, getTotal, followerNumber,
   };
 };
 

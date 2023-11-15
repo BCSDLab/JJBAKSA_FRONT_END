@@ -25,7 +25,7 @@ export interface ModifyParams {
   email?: string;
 }
 
-export interface EmailUser {
+export interface User {
   account: string;
   id: number;
   nickname: string;
@@ -45,12 +45,6 @@ export interface EmailUser {
     friendCount: number;
   };
 }
-
-export interface SNSUser extends Omit<EmailUser, 'account' | 'profileImage'> {
-  profileImage?: EmailUser['profileImage'];
-}
-
-export type User = EmailUser | SNSUser;
 
 export interface SendRegisterEmailParams {
   email: string;
