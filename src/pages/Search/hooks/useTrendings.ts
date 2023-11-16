@@ -4,7 +4,10 @@ import { useQuery } from 'react-query';
 const useTrendingList = () => {
   const {
     isLoading, isError, data,
-  } = useQuery('trending', fetchTrendings);
+  } = useQuery({
+    queryKey: ['trendings'],
+    queryFn: () => fetchTrendings(),
+  });
   const trendings = data?.data.trendings;
   return {
     isLoading, isError, data: trendings,

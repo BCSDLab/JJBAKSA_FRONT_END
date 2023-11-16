@@ -16,7 +16,11 @@ const useFetchAutoComplete = (query: string) => {
 
   const {
     isLoading, isError, data, refetch,
-  } = useQuery(['shop', query], () => fetchAutoComplete(params), { enabled: !!query });
+  } = useQuery({
+    queryKey: ['autoShop', query],
+    queryFn: () => fetchAutoComplete(params),
+    enabled: !!query,
+  });
 
   const isFetching = isLoading || !(location);
   const shop = data?.data;
