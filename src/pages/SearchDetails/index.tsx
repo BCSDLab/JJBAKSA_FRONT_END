@@ -15,24 +15,25 @@ export default function SearchDetails() {
   const isSearching = useSearchingMode();
   const { isMobile } = useMediaQuery();
   const {
-    text, handleChange, handleSubmit, isEnter,
+    text, handleChange, handleSubmit, isEnter, submittedText,
   } = useSearchForm();
   const {
     isFetching, data: shops, count,
-  } = useFetchShops(text);
+  } = useFetchShops(submittedText);
   const navigate = useNavigate();
+
   useEffect(() => {
-    if (!isFetching && count === 0) {
+    if (!isFetching && count === 0 && submittedText.length !== 0) {
       navigate('/search/not-found');
     }
-  }, [isFetching, count, navigate]);
+  }, [isFetching, count, submittedText, navigate]);
 
   const componentsController = () => {
     if (isFetching) {
       return <LoadingView />;
     }
 
-    return (shops || []).map((shop: Shop) => (
+    return shops?.map((shop: Shop) => (
       <div className={styles.details__line} key={shop.placeId}>
         <SearchItem shop={shop} />
       </div>
