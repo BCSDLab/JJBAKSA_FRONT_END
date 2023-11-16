@@ -51,47 +51,58 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
         <form className={style.form}>
           {type === 'password' && (
             <div className={style.form__box}>
-              <div className={style.form__label}>
-                아이디
-                <ErrorIcon />
-              </div>
+              <label className={style.form__label} htmlFor="id">
+                <div className={cn({ [style['form__label--box']]: true })}>
+                  아이디
+                  <ErrorIcon />
+                </div>
+                <input
+                  id="id"
+                  placeholder="아이디를 입력하세요."
+                  className={style.form__input}
+                />
+                <ErrorIcon className={style.form__error} />
+              </label>
 
-              <input
-                placeholder="아이디를 입력하세요."
-                className={style.form__input}
-              />
-              <ErrorIcon className={style.form__error} />
             </div>
           )}
           <div className={style.form__box}>
-            <div className={style.form__label}>
-              이메일
-              <ErrorIcon />
-            </div>
-            <input
-              placeholder="이메일을 입력하세요."
-              className={style.form__input}
-            />
-            <ErrorIcon className={style.form__error} />
+            <label className={style.form__label} htmlFor="email">
+              <div className={cn({ [style['form__label--box']]: true })}>
+                이메일
+                <ErrorIcon />
+              </div>
+              <input
+                id="email"
+                placeholder="이메일을 입력하세요."
+                className={style.form__input}
+              />
+              <ErrorIcon className={style.form__error} />
+            </label>
           </div>
           <div className={style.form__box}>
-            <div className={style.form__label}>
-              인증번호
-              <ErrorIcon />
-            </div>
-            <input
-              placeholder="인증번호를 입력하세요."
-              className={style.form__input}
-            />
+            <label className={style.form__label} htmlFor="verify">
+              <div className={cn({ [style['form__label--box']]: true })}>
+                인증번호
+                <ErrorIcon />
+              </div>
+              <div>
+                <input
+                  id="verify"
+                  placeholder="인증번호를 입력하세요."
+                  className={style.form__input}
+                />
+                <button
+                  type="button"
+                  className={cn({
+                    [style.form__button]: true,
+                  })}
+                >
+                  인증번호 발송
+                </button>
+              </div>
+            </label>
 
-            <button
-              type="button"
-              className={cn({
-                [style.form__button]: true,
-              })}
-            >
-              인증번호 발송
-            </button>
           </div>
           <button
             type="submit"
@@ -100,7 +111,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
               [style['form__submit--active']]: isValid,
               [style.form__submit]: true,
             })}
-            onClick={() => type === 'password' && nav('/change-password-pc')}
+            onClick={() => type === 'password' && nav('/find-password/change-pc')}
           >
             다음
           </button>

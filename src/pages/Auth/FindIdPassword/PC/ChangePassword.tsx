@@ -28,24 +28,28 @@ export default function ChangePasswordPC(): JSX.Element {
         </div>
         <form className={style.form}>
           <div className={style.form__box}>
-            <div className={style.form__label}>
+            <label className={style.form__label} htmlFor="password">
               새 비밀번호
-            </div>
-            <input
-              placeholder="비밀번호를 입력해주세요."
-              className={style.form__input}
-            />
-            <ErrorIcon className={style.form__error} />
+              <input
+                id="password"
+                placeholder="비밀번호를 입력해주세요."
+                className={style.form__input}
+              />
+            </label>
           </div>
           <div className={style.form__box}>
-            <div className={style.form__label}>
-              새 비밀번호 확인
-              <ErrorIcon />
-            </div>
-            <input
-              placeholder="비밀번호를 입력해주세요."
-              className={style.form__input}
-            />
+            <label className={style.form__label} htmlFor="password-check">
+              <div className={cn({ [style['form__label--box']]: true })}>
+                새 비밀번호 확인
+                <ErrorIcon />
+              </div>
+              <input
+                id="password-check"
+                placeholder="비밀번호를 입력해주세요."
+                className={style.form__input}
+              />
+            </label>
+
             <ErrorIcon className={style.form__error} />
           </div>
           <button
