@@ -7,16 +7,21 @@ import { useNavigate } from 'react-router-dom';
 import style from './index.module.scss';
 import { EmailParams, FindProp } from '../entity';
 
+const useChangePage = () => {
+  const nav = useNavigate();
+  const changePage = () => {
+    nav('/find-password/change-pc');
+  };
+  return changePage;
+};
+
 export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
   const {
     formState: { isSubmitting, isValid },
   } = useForm<EmailParams>({
     mode: 'onChange',
   });
-  const nav = useNavigate();
-  const chagnePage = () => {
-    nav('/find-password/change-pc');
-  };
+  const chagnePage = useChangePage();
   return (
     <div>
       <div className={style.page}>
