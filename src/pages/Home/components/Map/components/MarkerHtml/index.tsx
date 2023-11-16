@@ -19,19 +19,21 @@ export function MarkerHtml(src:string | null, name:string) {
   `;
 }
 
-export function ClickedMarkerHtml(src:string, name:string) {
+export function ClickedMarkerHtml(src:string, name:string, id: string) {
   return `
-  <div class=${styles.continer}>
-    <img src=${Selected} class=${styles['marker--clicked']}>
-    <div class=${styles.bubble}>
-      <div class=${styles['bubble__photo--clicked']}>
-        <img src=${src || `${defaultImage}`} alt="사진" />
-      </div>
-      <div class=${styles['bubble__name--clicked']}>
-        ${name}
+  <a href='/shop/${id}'>
+    <div class=${styles.continer}>
+      <img src=${Selected} class=${styles['marker--clicked']}>
+      <div class=${styles.bubble}>
+        <div class=${styles['bubble__photo--clicked']}>
+          <img src=${src || `${defaultImage}`} alt="사진" />
+        </div>
+        <div class=${styles['bubble__name--clicked']}>
+          ${name}
+        </div>
       </div>
     </div>
-  </div>
+  </a>
 `;
 }
 

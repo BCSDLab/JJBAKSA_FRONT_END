@@ -1,12 +1,16 @@
 import { cancelFollow } from 'api/follow';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const useCancelFollow = () => {
   const queryClient = useQueryClient();
-  const { mutate: cancel } = useMutation('cancel', (id: number) => cancelFollow({ id }), {
+
+  const { mutate: cancel } = useMutation({
+    mutationKey: ['cancel'],
+    mutationFn: (id: number) => cancelFollow({ id }),
     onSuccess: () => {
-      queryClient.invalidateQueries('sended');
-      queryClient.invalidateQueries('search');
+      queryClient.invalidateQueries({
+        queryKey: ['sended', 'search'],
+      });
     },
   });
 
