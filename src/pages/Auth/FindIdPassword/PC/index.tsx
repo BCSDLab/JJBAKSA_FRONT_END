@@ -14,6 +14,9 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
     mode: 'onChange',
   });
   const nav = useNavigate();
+  const chagnePage = () => {
+    nav('/find-password/change-pc');
+  };
   return (
     <div>
       <div className={style.page}>
@@ -111,7 +114,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
               [style['form__submit--active']]: isValid,
               [style.form__submit]: true,
             })}
-            onClick={() => type === 'password' && nav('/find-password/change-pc')}
+            onClick={chagnePage}
           >
             다음
           </button>
