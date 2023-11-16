@@ -26,3 +26,5 @@ jobs:
         run: yarn
       - name: Check lint
         run: yarn lint
+      - name: TS check
+        run: yarn tsc
