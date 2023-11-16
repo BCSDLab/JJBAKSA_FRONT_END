@@ -32,6 +32,8 @@
     "linebreak-style": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "implicit-arrow-linebreak": "off",
     "no-restricted-imports": [
       "error",
       {

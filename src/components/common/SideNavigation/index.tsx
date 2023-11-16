@@ -46,7 +46,7 @@ export default function SideNavigation(): JSX.Element {
     },
     {
       name: '마이페이지',
-      icon: <SpriteSvg id="my-page" height="24" width="18" />,
+      icon: <SpriteSvg id="my-page" height="24" width="24" />,
       link: auth ? '/profile' : '/login',
     },
     {
@@ -91,7 +91,7 @@ export default function SideNavigation(): JSX.Element {
           {auth ? (
             <li>
               <img
-                // src={('account' in auth && auth.profileImage?.url) || `${defaultImage}`}
+                src={auth?.profileImage?.url}
                 alt="프로필 이미지"
                 className={styles['bottom-navigation__profile-image']}
               />

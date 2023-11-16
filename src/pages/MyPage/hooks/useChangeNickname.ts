@@ -1,14 +1,14 @@
 import { patchNickname } from 'api/mypage';
 import { useRef } from 'react';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const useChangeNickname = () => {
   const nicknameRef = useRef<HTMLInputElement>(null);
   const queryClient = useQueryClient();
-  const changeNickname = useMutation(
-    (nickname:string) => patchNickname(nickname),
-    { onSuccess: () => queryClient.invalidateQueries('profile') },
-  );
+  const changeNickname = useMutation({
+    mutationFn: (nickname:string) => patchNickname(nickname),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['profile'] }),
+  });
   const onClick = (nickname:string) => {
     changeNickname.mutate(nickname);
   };

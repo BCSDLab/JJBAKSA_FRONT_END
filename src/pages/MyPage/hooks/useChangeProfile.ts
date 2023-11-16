@@ -1,14 +1,15 @@
 import { patchProfileImage } from 'api/mypage';
 import React, { useState } from 'react';
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 const useChangeProfile = () => {
   const [image, setImage] = useState<FormData | null>(null);
   const [previewUrl, setUrl] = useState<string | null>(null);
   const queryClient = useQueryClient();
-  const changeImage = useMutation(() => patchProfileImage(image), {
+  const changeImage = useMutation({
+    mutationFn: () => patchProfileImage(image),
     onSuccess: () => {
-      queryClient.invalidateQueries('profile');
+      queryClient.invalidateQueries({ queryKey: ['profile'] });
     },
   });
   const getImageUrl = (file:Blob) => {

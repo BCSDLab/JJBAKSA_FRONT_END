@@ -27,6 +27,7 @@ import NotFoundPage from 'pages/Search/components/NotFoundPage';
 import FollowProfile from 'pages/Follow/components/FollowProfile';
 import FindIDPassword from 'pages/Auth/FindIdPassword';
 import ChangePasswordPC from 'pages/Auth/FindIdPassword/PC/ChangePassword';
+import ShopDetail from 'pages/ShopDetail';
 
 export default function App(): JSX.Element {
   return (
@@ -47,6 +48,7 @@ export default function App(): JSX.Element {
             <Route path="/setting" element={<Setting />} />
             <Route path="/setting/id-change" element={<IdChange />} />
           </Route>
+          <Route path="/shop/:placeId" element={<ShopDetail />} />
           <Route path="/withdrawal" element={<Withdrawal />} />
           <Route path="/profile" element={<MyPage />} />
           <Route path="/post/:name" element={<Post />} />

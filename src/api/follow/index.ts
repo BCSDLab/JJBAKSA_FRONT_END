@@ -39,6 +39,6 @@ export const recentlyActiveFollow = () => followApi.get<GetFollowListResponse>('
 
 export const getFollowReview = (id: number, pageParam: string) => followApi.get<GetFollowReviewResponse>(`/review/follower/${id}/shops?size=9&${pageParam}`);
 
-export const getDetailReview = (followId: number, placeId: string, pageParam: number) => followApi.get<GetDetailReviewResponse>(`/review/follower/${followId}/shop/${placeId}?${pageParam}`);
+export const getDetailReview = (followId: number, placeId: string) => followApi.get<GetDetailReviewResponse>(`/review/follower/${followId}/shop/${placeId}`);
 
 export const getFollowerReviewCount = (param: GetFollowerReviewCountParam) => followApi.get(`/review/follower/${param.followId}/count`);

@@ -1,8 +1,9 @@
 import BottomNavigation from 'components/common/BottomNavigation';
 import SideNavigation from 'components/common/SideNavigation';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { toast } from 'react-toastify';
+import LoadingSpinner from 'components/common/LoadingSpinner';
 import Information from './components/Information';
 import BoardSelector from './components/BoardSelector';
 import BookMark from './components/BookMark';
@@ -36,7 +37,9 @@ export default function MyPage() {
       <div className={styles['my-page']}>
         <Information openModal={openModal} profile={profile} followerNumber={followerNumber} />
         <BoardSelector setBoard={setBoard} board={board} />
-        {board === 'MYPOST' && <MyPost />}
+        <Suspense fallback={<LoadingSpinner size={100} />}>
+          {board === 'MYPOST' && <MyPost />}
+        </Suspense>
         {board === 'BOOKMARK' && <BookMark />}
       </div>
       )}

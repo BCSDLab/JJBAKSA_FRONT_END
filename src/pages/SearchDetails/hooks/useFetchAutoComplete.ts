@@ -1,5 +1,5 @@
 import useGeolocation from 'utils/hooks/useGeolocation';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { fetchAutoComplete } from 'api/search';
 import { FetchAutoCompleteParams } from 'api/search/entity';
 
@@ -16,7 +16,7 @@ const useFetchAutoComplete = (query: string) => {
 
   const {
     isLoading, isError, data, refetch,
-  } = useQuery(['shop', query], () => fetchAutoComplete(params), { enabled: !!query });
+  } = useQuery({ queryKey: ['shop', query], queryFn: () => fetchAutoComplete(params), enabled: !!query });
 
   const isFetching = isLoading || !(location);
   const shop = data?.data;
