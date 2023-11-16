@@ -6,9 +6,9 @@ import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage';
 import Login from 'pages/Auth/Login';
 import Post from 'pages/Post';
 import Search from 'pages/Search';
-import VerifyField from 'pages/Auth/FindIdPassword/mobile/VerifyField';
+import VerifyField from 'pages/Auth/temp/hook/mobile/VerifyField';
 import { Routes, Route } from 'react-router-dom';
-import ChangePassword from 'pages/Auth/FindIdPassword/mobile/ChangePassword';
+import ChangePassword from 'pages/Auth/temp/hook/mobile/ChangePassword';
 import { Suspense } from 'react';
 import SearchDetails from 'pages/SearchDetails';
 import FollowPage from 'pages/Follow';
@@ -25,8 +25,8 @@ import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
 import MyPage from 'pages/MyPage';
 import NotFoundPage from 'pages/Search/components/NotFoundPage';
 import FollowProfile from 'pages/Follow/components/FollowProfile';
-import FindIDPassword from 'pages/Auth/FindIdPassword';
-import ChangePasswordPC from 'pages/Auth/FindIdPassword/PC/ChangePassword';
+import FindIDPassword from 'pages/Auth/temp';
+import ChangePasswordPC from 'pages/Auth/temp/hook/PC/ChangePassword';
 
 export default function App(): JSX.Element {
   return (

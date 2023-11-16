@@ -5,8 +5,8 @@ import cn from 'utils/ts/classNames';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
 import styles from 'pages/Auth/FindIdPassword/mobile/index.module.scss';
-import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
-import { PasswordInfo } from 'pages/Auth/FindIdPassword/entity';
+import Modal from 'pages/Auth/temp/hook/mobile/Modal';
+import { PasswordInfo } from 'pages/Auth/temp/hook/entity';
 
 const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 

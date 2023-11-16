@@ -1,5 +1,5 @@
 import cn from 'utils/ts/classNames';
-import { InputInfo } from 'pages/Auth/FindIdPassword/entity';
+import { InputInfo } from 'pages/Auth/temp/hook/entity';
 import style from './VerifyCode.module.scss';
 
 export default function Input({

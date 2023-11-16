@@ -3,8 +3,8 @@ import { useLocation } from 'react-router-dom';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import error from 'assets/svg/auth/error.svg';
 import style from 'pages/Auth/FindIdPassword/mobile/index.module.scss';
-import { CodeInfo } from 'pages/Auth/FindIdPassword/entity';
-import VerifyCode from 'pages/Auth/FindIdPassword/mobile/VerifyCode';
+import { CodeInfo } from 'pages/Auth/temp/hook/entity';
+import VerifyCode from 'pages/Auth/temp/hook/mobile/VerifyCode';
 
 export default function VerifyField(): JSX.Element {
   const {
