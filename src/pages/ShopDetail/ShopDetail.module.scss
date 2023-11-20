@@ -24,9 +24,9 @@
 .shop-detail {
   display: grid;
   grid-template-areas:
-    "a a"
-    "b c"
-    "d .";
+    'a a'
+    'b c'
+    'd .';
   grid-template-columns: 1fr 1fr;
   gap: 18px;
   width: 972px;
@@ -80,18 +80,6 @@
       font-size: 36px;
       font-weight: normal;
     }
-
-    & > button {
-      display: flex;
-      gap: 2px;
-      align-items: center;
-      justify-content: center;
-      background: #f8f8f8;
-      padding: 16px 24px;
-      border-radius: 4px;
-      font-size: 16px;
-      color: #666;
-    }
   }
 
   &__info-name {
@@ -115,5 +103,23 @@
     color: #666;
     font-size: 14px;
     margin: 12px 0;
+  }
+}
+
+.scrap-button {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  padding: 16px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #666;
+  transition: all 0.2s ease;
+
+  &__active {
+    background: #ff7f23;
+    color: #fff;
   }
 }

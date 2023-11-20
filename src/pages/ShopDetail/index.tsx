@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import cn from 'utils/ts/classNames';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import { fetchShop } from 'api/shop';
 import StarRatingPreview from 'components/StarRating/StarRatingPreview';
@@ -10,6 +11,7 @@ import ImageCarousel from './components/ImageCarousel';
 import FriendReviewList from './components/ReviewList/FriendReviewList';
 import MyReviewList from './components/ReviewList/MyReviewList';
 import Map from './components/Map';
+import useScrap from './hooks/useScrap';
 // import mock from './mock';
 
 const formatPeriod = (period: [number, number]) =>
@@ -17,6 +19,7 @@ const formatPeriod = (period: [number, number]) =>
 
 function ShopDetail() {
   const { placeId } = useParams();
+  const { scrapId, toggleScrap, isPending } = useScrap(placeId as string);
 
   const { data } = useQuery({
     queryKey: ['shopDetail'],
@@ -26,11 +29,11 @@ function ShopDetail() {
   if (data) {
     const {
       // shopId,
-      // placeId,
       // periods,
       // scrap,
       // openNow,
       // category,
+      // placeId,
       name,
       formattedAddress,
       lat,
@@ -60,8 +63,20 @@ function ShopDetail() {
                 </div>
                 <div className={styles['detail-main__name']}>
                   <h1>{name}</h1>
-                  <button type="button" onClick={() => {}}>
-                    <BookMarkIcon />
+                  <button
+                    type="button"
+                    onClick={toggleScrap}
+                    disabled={isPending}
+                    className={cn({
+                      [styles['scrap-button']]: true,
+                      [styles['scrap-button__active']]: scrapId !== null,
+                    })}
+                  >
+                    {scrapId ? (
+                      <BookMarkIcon fill="#fff" stroke="#fff" />
+                    ) : (
+                      <BookMarkIcon stroke="#666" />
+                    )}
                     <span>북마크 하기</span>
                   </button>
                 </div>
