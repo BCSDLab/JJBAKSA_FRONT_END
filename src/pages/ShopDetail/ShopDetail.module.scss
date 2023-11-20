@@ -105,21 +105,3 @@
     margin: 12px 0;
   }
 }
-
-.scrap-button {
-  display: flex;
-  gap: 2px;
-  align-items: center;
-  justify-content: center;
-  background: #f8f8f8;
-  padding: 16px 24px;
-  border-radius: 4px;
-  font-size: 16px;
-  color: #666;
-  transition: all 0.2s ease;
-
-  &__active {
-    background: #ff7f23;
-    color: #fff;
-  }
-}

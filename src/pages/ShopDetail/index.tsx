@@ -1,17 +1,15 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import cn from 'utils/ts/classNames';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import { fetchShop } from 'api/shop';
 import StarRatingPreview from 'components/StarRating/StarRatingPreview';
-import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import { ReactComponent as InfoIcon } from 'assets/svg/shop/info.svg';
 import styles from './ShopDetail.module.scss';
 import ImageCarousel from './components/ImageCarousel';
 import FriendReviewList from './components/ReviewList/FriendReviewList';
 import MyReviewList from './components/ReviewList/MyReviewList';
 import Map from './components/Map';
-import useScrap from './hooks/useScrap';
+import ScrapButton from './components/ScrapButton';
 // import mock from './mock';
 
 const formatPeriod = (period: [number, number]) =>
@@ -19,7 +17,6 @@ const formatPeriod = (period: [number, number]) =>
 
 function ShopDetail() {
   const { placeId } = useParams();
-  const { scrapId, toggleScrap, isPending } = useScrap(placeId as string);
 
   const { data } = useQuery({
     queryKey: ['shopDetail'],
@@ -30,10 +27,10 @@ function ShopDetail() {
     const {
       // shopId,
       // periods,
-      // scrap,
       // openNow,
       // category,
       // placeId,
+      scrap,
       name,
       formattedAddress,
       lat,
@@ -63,22 +60,7 @@ function ShopDetail() {
                 </div>
                 <div className={styles['detail-main__name']}>
                   <h1>{name}</h1>
-                  <button
-                    type="button"
-                    onClick={toggleScrap}
-                    disabled={isPending}
-                    className={cn({
-                      [styles['scrap-button']]: true,
-                      [styles['scrap-button__active']]: scrapId !== null,
-                    })}
-                  >
-                    {scrapId ? (
-                      <BookMarkIcon fill="#fff" stroke="#fff" />
-                    ) : (
-                      <BookMarkIcon stroke="#666" />
-                    )}
-                    <span>북마크 하기</span>
-                  </button>
+                  {placeId && <ScrapButton placeId={placeId} initialScrapId={scrap} />}
                 </div>
               </div>
 

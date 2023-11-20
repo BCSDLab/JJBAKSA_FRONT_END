@@ -2,8 +2,8 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { deleteScrapShop, getMyScrapShop, scrapShop } from 'api/scrap';
 import { useEffect, useState } from 'react';
 
-const useScrap = (placeId: string) => {
-  const [scrapId, setScrapId] = useState<number | null>(null);
+const useScrap = (placeId: string, initialScrapId: number | null) => {
+  const [scrapId, setScrapId] = useState<number | null>(initialScrapId);
 
   const { mutate: postScrap, isPending: postPending } = useMutation({
     mutationFn: scrapShop,
