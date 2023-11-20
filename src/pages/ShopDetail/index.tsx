@@ -8,8 +8,8 @@ import styles from './ShopDetail.module.scss';
 import ImageCarousel from './components/ImageCarousel';
 import FriendReviewList from './components/ReviewList/FriendReviewList';
 import MyReviewList from './components/ReviewList/MyReviewList';
-import Map from './components/Map';
 import ScrapButton from './components/ScrapButton';
+import Map from './components/Map';
 // import mock from './mock';
 
 const formatPeriod = (period: [number, number]) =>

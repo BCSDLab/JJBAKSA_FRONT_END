@@ -1,11 +1,6 @@
-import type {
-  Coords,
-  FetchShopsResponse,
-  FetchTrendingsResponse,
-  FilterShopsParams,
-  FilterShopsListResponse,
-  ShopsParams,
-  FetchShopResponse,
+import {
+  Coords, FetchShopsResponse, FetchTrendingsResponse, FilterShopsParams,
+  FilterShopsListResponse, ShopsParams, FetchShopResponse,
 } from './entity';
 import shopApi from './shopApiClient';
 
