@@ -5,10 +5,10 @@ import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
 import { sendFindEmail, checkIdDuplicate } from 'api/user';
-import { FindProp, EmailParams } from './entity';
+import { FindProp, EmailParams } from 'pages/Auth/FindIdPassword/entity';
 import style from './index.module.scss';
 
-export default function FindIdPassword({ type }: FindProp): JSX.Element {
+export default function FindIdPasswordMobile({ type }: FindProp): JSX.Element {
   const {
     register,
     handleSubmit,
