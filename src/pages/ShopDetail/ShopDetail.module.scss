@@ -24,9 +24,9 @@
 .shop-detail {
   display: grid;
   grid-template-areas:
-    'a a'
-    'b c'
-    'd .';
+    "a a"
+    "b c"
+    "d .";
   grid-template-columns: 1fr 1fr;
   gap: 18px;
   width: 972px;
