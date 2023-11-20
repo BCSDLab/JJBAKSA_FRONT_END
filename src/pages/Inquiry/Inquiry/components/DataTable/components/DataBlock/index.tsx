@@ -1,8 +1,7 @@
 import React from 'react';
-import cn from 'utils/ts/classNames';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import { InquiryContent } from 'api/inquiry/entity';
-import TextTruncation from './components/TextTruncation';
+import cn from 'utils/ts/classNames';
 import Answer from './components/Answer';
 import styles from './DataBlock.module.scss';
 
@@ -39,7 +38,9 @@ export default function DataBlock({
       onClick={() => toggleExpand(content.id)}
       onKeyDown={(e) => handleKeyPress(e, content.id)}
     >
-      <TextTruncation text={content.title} />
+      <p className={styles.block__title}>
+        {content.title}
+      </p>
 
       <p className={styles.block__info}>
         {new Date(content.createdAt).toLocaleDateString()}
