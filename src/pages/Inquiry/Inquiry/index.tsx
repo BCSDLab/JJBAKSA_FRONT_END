@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
 import InquirySelectButton from 'pages/Inquiry/Inquiry/components/InquirySelectButton';
@@ -7,28 +7,18 @@ import SearchBar from 'pages/Inquiry/Inquiry/components/SearchBar';
 import DataTable from 'pages/Inquiry/Inquiry/components/DataTable';
 import styles from './Inquiry.module.scss';
 
-const useSearchForm = () => {
-  const [text, setText] = useState('');
-  const handleChange = (e : React.ChangeEvent<HTMLInputElement>) => {
-    setText((e.target.value));
-  };
-
-  return {
-    text, handleChange,
-  };
-};
-
 export default function Inquiry(): JSX.Element {
-  const { pathname } = useLocation();
-  const pathParts = pathname.split('/');
+  const [keyword, setKeyword] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const pathParts = location.pathname.split('/');
+
   const type = pathParts[2]; // 'all' 또는 'my' 또는 'search'
   const [typePath, setTypePath] = useState<string>('');
   const [selectedTab, setSelectedTab] = useState<string>(type);
-  const navigate = useNavigate();
 
-  const { text, handleChange } = useSearchForm();
-
-  useEffect(() => { // typePath는 서버에 데이터를 요청할 때 사용
+  // typePath는 서버에 데이터를 요청할 때 사용
+  useEffect(() => {
     setSelectedTab(type);
     switch (type) {
       case 'all':
@@ -38,16 +28,25 @@ export default function Inquiry(): JSX.Element {
         setTypePath('/me');
         break;
       case 'search':
-        setTypePath(`/search/${text}`);
+        setTypePath(`/search/${keyword}`);
         break;
       default:
         break;
     }
   }, [type]);
 
+  // SearchBar의 값이 변경되었을 때 수행할 작업
+  const handleSearchChange = (text: string) => {
+    setKeyword(text);
+  };
+
+  const handleSearchSubmit = () => {
+    navigate(`${location.pathname}?keyword=${keyword}`);
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles['menu-box']}>
+      <div className={styles['inner-container']}>
         <ul className={styles.menu}>
           <li className={`${styles.menu__item} ${styles.menu__title}`}>
             <Link to="/inquiry/all" className={styles.menu__link}>
@@ -85,9 +84,8 @@ export default function Inquiry(): JSX.Element {
           <div className={styles['search-bar']}>
             <SearchBar
               className={styles['search-bar__item']}
-              onChange={handleChange}
-              text={text}
-              onLensIconClick={() => navigate(`/inquiry/search/${text}`)}
+              onSearchChange={handleSearchChange}
+              onSearchSubmit={handleSearchSubmit}
             />
           </div>
 

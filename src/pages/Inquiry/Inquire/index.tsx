@@ -1,7 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Inquire.module.scss';
 import Explain from './components/Explain';
+import styles from './Inquire.module.scss';
 
 export default function Inquiry(): JSX.Element {
   return (

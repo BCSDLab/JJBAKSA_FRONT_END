@@ -1,33 +1,3 @@
-// @use "src/utils/styles/mediaQuery.scss" as media;
-
-// .search {
-//   width: 100%;
-//   height: 100vh;
-//   font-size: 32px;
-
-//   &__recommend {
-//     word-break: keep-all;
-//     height: 80px;
-//     padding-top: 168px;
-//     padding-left: 30px;
-//     font-size: 32px;
-//     font-weight: 300;
-//     line-height: 40px;
-//     white-space: pre-wrap;
-//     color: #000000;
-
-//     strong {
-//       color: #ff7f23;
-//     }
-
-//     @include media.media-breakpoint-down(mobile) {
-//       max-width: 767px;
-//       padding-top: 64px;
-//       margin: 0 auto;
-//     }
-//   }
-// }
-
 .search-bar {
   width: 395px;
   height: 48px;
@@ -39,16 +9,24 @@
   box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
   padding-left: 15px;
 
+  &__form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
   &__input {
     width: 100%;
     height: 15px;
     border: none;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 15px;
 
     &::placeholder {
       color: #666666;
-      font-size: 12px;
+      font-size: 16px;
     }
 
     &:focus {
