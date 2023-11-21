@@ -1,7 +1,7 @@
 import { searchUsers } from 'api/follow';
 import { SearchUsersResponse } from 'api/follow/entity';
 import { useState, useEffect } from 'react';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 // useInfinitieQuery로 무한 스크롤 구현, pageParam의 기본값은 undefined
 const useSearchFriend = () => {
@@ -10,6 +10,7 @@ const useSearchFriend = () => {
     queryKey: ['search', keyword],
     queryFn: ({ queryKey: [, target], pageParam = '' }) => searchUsers(target, pageParam),
     enabled: keyword !== '',
+    initialPageParam: 'cursor=0',
     getNextPageParam: (lastPage) => {
       const len = lastPage.data.content.length;
       if (lastPage.data.empty || lastPage.data.last) return null;
