@@ -2,7 +2,7 @@ import defaultImage from 'assets/images/follow/default-image.png';
 import { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import { useLocation } from 'react-router-dom';
-import { EmailUser } from 'api/user/entity';
+import { User } from 'api/user/entity';
 import style from './FollowProfile.module.scss';
 import FollowReview from './FollowReview';
 import useDeleteFollow from '../hooks/useDeleteFollow';
@@ -25,11 +25,13 @@ const useDeleteState = () => {
 
 export default function FollowProfile() {
   const location = useLocation();
-  const state = location.state as EmailUser;
-  const { data } = useGetFollowerReview(state.id);
+  const {
+    nickname, account, userCountResponse, id,
+  } = location.state as User;
+  const { data } = useGetFollowerReview(id);
   const { del, isFollowed } = useDeleteState();
   const request = useRequestAndUpdate();
-  const reviewCount = useGetFollowerReviewCount(state.id);
+  const reviewCount = useGetFollowerReviewCount(id);
 
   return (
     <div className={style.container}>
@@ -39,18 +41,18 @@ export default function FollowProfile() {
             <img alt="유저 프로필 이미지" src={defaultImage} className={style.user__profile} />
             <div className={style.user__info}>
               <div>
-                <span className={cn({ [style['user__info--span']]: true })}>{state.nickname}</span>
+                <span className={cn({ [style['user__info--span']]: true })}>{nickname}</span>
               </div>
               <div>
                 @
-                {state.account !== undefined ? state.account : 'SNS User'}
+                {account}
               </div>
             </div>
             <button
               type="button"
               className={style.user__button}
-              onClick={() => (isFollowed && del(state.account))
-                || (!isFollowed && request(state.account))}
+              onClick={() => (isFollowed && del(account))
+                || (!isFollowed && request(account))}
             >
               {isFollowed
                 ? '팔로잉'
@@ -59,11 +61,11 @@ export default function FollowProfile() {
           </div>
           <div className={style.user__count}>
             <div>
-              <div className={cn({ [style['user__count--font']]: true })}>{state.userCountResponse.reviewCount}</div>
+              <div className={cn({ [style['user__count--font']]: true })}>{userCountResponse.reviewCount}</div>
               <div>게시물</div>
             </div>
             <div>
-              <div className={cn({ [style['user__count--font']]: true })}>{state.userCountResponse.friendCount}</div>
+              <div className={cn({ [style['user__count--font']]: true })}>{userCountResponse.friendCount}</div>
               <div>팔로워</div>
             </div>
           </div>
