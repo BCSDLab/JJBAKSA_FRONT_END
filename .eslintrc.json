@@ -18,22 +18,10 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "jsx-a11y/label-has-associated-control": [
-      2,
-      {
-        "labelComponents": ["CustomLabel"],
-        "labelAttributes": ["inputLabel"],
-        "controlComponents": ["CustomInput"],
-        "assert": "both",
-        "depth": 3
-      }
-    ],
     "react/react-in-jsx-scope": "off",
     "linebreak-style": "off",
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "implicit-arrow-linebreak": "off",
     "no-restricted-imports": [
       "error",
       {
@@ -46,6 +34,7 @@
       }
     ]
   },
+
   "settings": {
     "import/resolver": {
       "typescript": {}

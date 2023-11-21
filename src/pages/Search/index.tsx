@@ -9,6 +9,7 @@ import RollingBanner from './components/SearchBar/RollingBanner';
 import NavigationBar from './components/NavigationBar';
 import RelatedSearches from './components/RelatedSearches';
 import useSearchingMode from './hooks/useSearchingMode';
+import ResentSearches from './components/SearchBar/RecentSearches';
 
 const useSearchForm = () => {
   const [text, setText] = useState('');
@@ -71,9 +72,15 @@ export default function Search(): JSX.Element {
                 onSubmit={handleSubmit}
                 text={text}
               />
-              {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+              {isSearching ? <RelatedSearches text={text} /> : (
+                <>
+                  <RollingBanner />
+                  <ResentSearches />
+                </>
+              )}
             </>
           )}
+
       </section>
     </div>
   );

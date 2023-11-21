@@ -109,7 +109,12 @@
     left: 0;
     bottom: 0;
     width: 30px;
-    background: linear-gradient(to right, rgba(255 255 255 / 100%), rgba(255 255 255 / 0%));
+    /* stylelint-disable-next-line declaration-colon-newline-after */
+    background: linear-gradient(
+      to right,
+      rgba(255 255 255 / 100%),
+      rgba(255 255 255 / 0%)
+    );
     backdrop-filter: blur(0.1px);
     pointer-events: none;
     z-index: 2;
@@ -122,7 +127,12 @@
     right: 0;
     bottom: 0;
     width: 30px;
-    background: linear-gradient(to left, rgba(255 255 255 / 100%), rgba(255 255 255 / 0%));
+    /* stylelint-disable-next-line declaration-colon-newline-after */
+    background: linear-gradient(
+      to left,
+      rgba(255 255 255 / 100%),
+      rgba(255 255 255 / 0%)
+    );
     backdrop-filter: blur(0.1px);
     pointer-events: none;
     z-index: 2;
@@ -170,5 +180,102 @@
       color: #ff7f23;
       background-color: rgba(246 191 84 / 20%);
     }
+  }
+}
+
+.search-recent {
+  display: flex;
+  flex-direction: column;
+  height: 32px;
+  width: 851px;
+
+  // border: 1px solid #222;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 28px;
+  margin-top: 40px;
+
+  &__title-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #222;
+  }
+
+  &__title {
+    //    color: var(--text, #222);
+    color: #222;
+
+    /* Medium/18pt */
+    // font-family: SUIT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &__detele-all {
+    // color: var(--text, #c4c4c4);
+    color: #c4c4c4;
+
+    /* Medium/18pt */
+    //  font-family: SUIT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &__content-list {
+    display: flex;
+    gap: 23px;
+    margin-top: 16px;
+  }
+
+  &__content {
+    width: 155px;
+    height: 220px;
+    border-radius: 4px;
+    background: #fff;
+
+    /* Shadow */
+    box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+  }
+
+  &__content-img {
+    width: 155px;
+    height: 155px;
+  }
+
+  &__content-text-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 12px;
+    padding-left: 16px;
+  }
+
+  &__content-text {
+    color: #979797;
+
+    /* Regular/14pt */
+    // font-family: SUIT;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &__content-text2 {
+    color: #000;
+
+    /* Bold/16pt */
+    // font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
   }
 }
