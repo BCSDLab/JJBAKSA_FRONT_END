@@ -46,7 +46,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "react/prefer-stateless-function": 0
+    }
   },
   "browserslist": {
     "production": [
