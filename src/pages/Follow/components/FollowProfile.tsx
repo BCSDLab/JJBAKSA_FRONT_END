@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import { useLocation } from 'react-router-dom';
 import { User } from 'api/user/entity';
-import style from './FollowProfile.module.scss';
+import styles from './FollowProfile.module.scss';
 import FollowReview from './FollowReview';
 import useDeleteFollow from '../hooks/useDeleteFollow';
 import useRequestAndUpdate from '../hooks/useRequestAndUpdate';
@@ -34,14 +34,14 @@ export default function FollowProfile() {
   const reviewCount = useGetFollowerReviewCount(id);
 
   return (
-    <div className={style.container}>
-      <div className={style.top}>
-        <div className={style.top__container}>
-          <div className={style.user}>
-            <img alt="유저 프로필 이미지" src={defaultImage} className={style.user__profile} />
-            <div className={style.user__info}>
+    <div className={styles.container}>
+      <div className={styles.top}>
+        <div className={styles.top__container}>
+          <div className={styles.user}>
+            <img alt="유저 프로필 이미지" src={defaultImage} className={styles.user__profile} />
+            <div className={styles.user__info}>
               <div>
-                <span className={cn({ [style['user__info--span']]: true })}>{nickname}</span>
+                <span className={cn({ [styles['user__info--span']]: true })}>{nickname}</span>
               </div>
               <div>
                 @
@@ -50,7 +50,7 @@ export default function FollowProfile() {
             </div>
             <button
               type="button"
-              className={style.user__button}
+              className={styles.user__button}
               onClick={() => (isFollowed && del(account))
                 || (!isFollowed && request(account))}
             >
@@ -59,28 +59,28 @@ export default function FollowProfile() {
                 : '팔로우'}
             </button>
           </div>
-          <div className={style.user__count}>
+          <div className={styles.user__count}>
             <div>
-              <div className={cn({ [style['user__count--font']]: true })}>{userCountResponse.reviewCount}</div>
+              <div className={cn({ [styles['user__count--font']]: true })}>{userCountResponse.reviewCount}</div>
               <div>게시물</div>
             </div>
             <div>
-              <div className={cn({ [style['user__count--font']]: true })}>{userCountResponse.friendCount}</div>
+              <div className={cn({ [styles['user__count--font']]: true })}>{userCountResponse.friendCount}</div>
               <div>팔로워</div>
             </div>
           </div>
         </div>
-        <div className={style.set}>리뷰</div>
+        <div className={styles.set}>리뷰</div>
       </div>
-      <div className={style.count}>
+      <div className={styles.count}>
         총
         {' '}
         {reviewCount && reviewCount.data.count}
         {' '}
         개의 리뷰
       </div>
-      <div className={style.content}>
-        <div className={style.review__list}>
+      <div className={styles.content}>
+        <div className={styles.review__list}>
           {data && data.content.map(
             (item) => (
               <FollowReview
