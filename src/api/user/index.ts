@@ -5,7 +5,6 @@ import {
   LoginResponse,
   ModifyParams,
   RegisterParams,
-  EmailUser,
   SendRegisterEmailParams,
   SendFindEmailParams,
   GetAccountParams,
@@ -15,7 +14,7 @@ import {
 } from './entity';
 import userApi from './userApiClient';
 
-export const register = (param: RegisterParams) => userApi.post<EmailUser>('/', param);
+export const register = (param: RegisterParams) => userApi.post<User>('/', param);
 
 export const checkIdDuplicate = (param: CheckIdDuplicateParams) => userApi.get<User>(`/exists?account=${param.account}`);
 

@@ -2,6 +2,7 @@ import { followList } from 'api/follow';
 import { GetFollowListResponse } from 'api/follow/entity';
 import { useEffect } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 // 친구 목록 가져오기
 const useGetFollowList = () => {

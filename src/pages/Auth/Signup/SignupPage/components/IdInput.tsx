@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useFormContext } from 'react-hook-form';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { checkIdDuplicate } from 'api/user';
 import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
 import { AxiosError } from 'axios';
@@ -78,7 +78,7 @@ export default function IdInput() {
             // 서버에서 타입을 같이 전달하고 있어 해당 부분 임시 처리
             checkServerValidation: () => (error?.response?.data.errorMessage?.slice(-23)),
             checkError: () => ((status !== 'error') || '이미 사용중인 아이디입니다.'),
-            checkLoading: () => ((status !== 'loading') || '중복 확인중입니다.'),
+            checkLoading: () => ((status !== 'pending') || '중복 확인중입니다.'),
           },
         })}
       />

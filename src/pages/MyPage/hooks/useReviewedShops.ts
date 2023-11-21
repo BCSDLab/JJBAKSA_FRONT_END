@@ -1,10 +1,10 @@
 import { getReviewedShops } from 'api/mypage';
-import { useQuery } from 'react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 const useReviwedShops = () => {
-  const { isLoading, isError, data } = useQuery('reviewedShops', () => getReviewedShops());
-  const shops = data ? data.data.content : [];
-  return { isLoading, isError, shops };
+  const { isLoading, isError, data } = useSuspenseQuery({ queryKey: ['reviewedShops'], queryFn: () => getReviewedShops() });
+
+  return { isLoading, isError, shops: data.data.content };
 };
 
 export default useReviwedShops;

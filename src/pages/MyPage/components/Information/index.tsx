@@ -1,10 +1,10 @@
 import defaultImage from 'assets/images/follow/default-image.png';
 import option from 'assets/svg/mypage/option.svg';
 import { Link, useNavigate } from 'react-router-dom';
-import { EmailUser } from 'api/user/entity';
+import { User } from 'api/user/entity';
 import styles from './Information.module.scss';
 
-type Profile = EmailUser & {
+type Profile = User & {
   profileImage?: {
     url: string
   },

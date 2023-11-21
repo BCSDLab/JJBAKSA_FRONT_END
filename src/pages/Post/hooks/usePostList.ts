@@ -1,10 +1,10 @@
 import getPost from 'api/Post';
-import { useQuery } from 'react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 const usePostList = (page: number) => {
   const {
     isLoading, isError, data,
-  } = useQuery(['Post', page], () => getPost(page));
+  } = useSuspenseQuery({ queryKey: ['Post', page], queryFn: () => getPost(page) });
 
   return {
     isLoading, isError, data,
