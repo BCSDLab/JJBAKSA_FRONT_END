@@ -41,4 +41,4 @@ export const getFollowReview = (id: number, pageParam: string) => followApi.get<
 
 export const getDetailReview = (followId: number, placeId: string) => followApi.get<GetDetailReviewResponse>(`/review/follower/${followId}/shop/${placeId}`);
 
-export const getFollowerReviewCount = (param: GetFollowerReviewCountParam) => followApi.get(`/review/follower/${param.followId}/count`);
+export const getFollowerReviewCount = (param: GetFollowerReviewCountParam) => followApi.get(`/review/follower/${param.id}/count`);

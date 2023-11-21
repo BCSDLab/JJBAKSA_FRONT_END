@@ -10,6 +10,5 @@ export default function EmptyFriend() {
         <Empty className={style.content__svg} />
       </div>
     </div>
-
   );
 }
