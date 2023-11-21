@@ -22,7 +22,7 @@ function ScrapButton({ placeId, initialScrapId = null }: Props) {
       })}
     >
       {scrapId ? <BookMarkIcon fill="#fff" stroke="#fff" /> : <BookMarkIcon stroke="#666" />}
-      <span>북마크 하기</span>
+      <span>{scrapId ? '북마크된 장소' : '북마크 하기'}</span>
     </button>
   );
 }
