@@ -4,6 +4,7 @@ import cn from 'utils/ts/classNames';
 import { useForm } from 'react-hook-form';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useNavigate } from 'react-router-dom';
+import { emailPassword } from 'api/user';
 import style from './index.module.scss';
 import { EmailParams, FindProp } from '../entity';
 
@@ -17,11 +18,23 @@ const useChangePage = () => {
 
 export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
   const {
+    register,
     formState: { isSubmitting, isValid },
+    setError,
+    handleSubmit,
   } = useForm<EmailParams>({
     mode: 'onChange',
   });
-  const chagnePage = useChangePage();
+  const changePage = useChangePage();
+  const checkEmail = async (param: EmailParams) => {
+    try {
+      const res = await emailPassword(param);
+      console.log(res);
+    } catch {
+      setError('email', { message: '존재하지 않는 이메일입니다.' });
+    }
+  };
+
   return (
     <div>
       <div className={style.page}>
@@ -68,6 +81,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
                   id="id"
                   placeholder="아이디를 입력하세요."
                   className={style.form__input}
+                  {...register('account')}
                 />
                 <ErrorIcon className={style.form__error} />
               </label>
@@ -84,6 +98,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
                 id="email"
                 placeholder="이메일을 입력하세요."
                 className={style.form__input}
+                {...register('email')}
               />
               <ErrorIcon className={style.form__error} />
             </label>
@@ -105,6 +120,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
                   className={cn({
                     [style.form__button]: true,
                   })}
+                  onClick={handleSubmit(checkEmail)}
                 >
                   인증번호 발송
                 </button>
@@ -119,7 +135,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
               [style['form__submit--active']]: isValid,
               [style.form__submit]: true,
             })}
-            onClick={chagnePage}
+            onClick={changePage}
           >
             다음
           </button>
