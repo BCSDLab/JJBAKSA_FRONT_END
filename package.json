@@ -15,6 +15,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "axios": "^0.27.2",
+    "caniuse-lite": "^1.0.30001559",
     "http-proxy-middleware": "1",
     "jotai": "^1.11.0",
     "qs": "^6.11.2",
