@@ -20,7 +20,7 @@ export default function DataTable({
   const [dateCursor, setDateCursor] = useState<string | null>(null);
   const [idCursor, setIdCursor] = useState<number>(0);
   const [allData, setAllData] = useState<InquiryContent[]>([]);
-  const { data: inquiryData, isLoading, refetchInquiryData } = useInquiryList({
+  const { data: inquiryData, isLoading } = useInquiryList({
     typePath, dateCursor, idCursor, size: 10,
   });
 
@@ -32,18 +32,16 @@ export default function DataTable({
     setAllData([]);
     setDateCursor(null);
     setIdCursor(0);
-    refetchInquiryData();
   }, [typePath]);
 
   const loadMoreData = useCallback(() => {
     if (inquiryData && inquiryData.content.length > 0) {
       setDateCursor(inquiryData.content[inquiryData.content.length - 1].createdAt || null);
       setIdCursor(inquiryData.content[inquiryData.content.length - 1].id || 0);
-      refetchInquiryData();
       const alreadyExist = allData.slice(-1) === inquiryData.content.slice(-1);
       setAllData(alreadyExist ? allData : [...allData, ...inquiryData.content]);
     }
-  }, [refetchInquiryData, inquiryData]);
+  }, [inquiryData]);
 
   useEffect(() => {
     function handleObserver(entities: IntersectionObserverEntry[]) {
