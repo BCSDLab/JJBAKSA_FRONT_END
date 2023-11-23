@@ -23,6 +23,7 @@ export default function EnterStarRateContainer({ rating }: { rating: number }) {
           className={styles.wrapper}
           onMouseEnter={() => setStarQuantity(num)}
           onClick={() => handleClick(num)}
+          aria-label="별점 주기"
         >
           <Star
             key={num}

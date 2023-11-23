@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
 import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';

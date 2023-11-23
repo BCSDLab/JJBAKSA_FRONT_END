@@ -28,7 +28,7 @@ function AddImage() {
         <Wysiwyg ref={wysiwygRef} />
       </div>
       <div className={styles['button-container']}>
-        <label htmlFor="image" className={styles['editor__add-image']}>
+        <label htmlFor="image" className={styles['editor__add-image']} aria-label="이미지 추가">
           <Picture />
           <input
             type="file"

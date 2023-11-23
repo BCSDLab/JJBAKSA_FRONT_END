@@ -10,7 +10,7 @@ export default function SearchInput({
   text, onChange, onSubmit,
 }: Props) {
   return (
-    <label title="검색어 입력" className={styles['search-bar']} htmlFor="searchBarInput">
+    <label title="검색어 입력" aria-label="검색어 입력" className={styles['search-bar']} htmlFor="searchBarInput">
       <form onSubmit={onSubmit} className={styles['search-bar__form']}>
         <input
           className={styles['search-bar__input']}

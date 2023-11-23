@@ -30,6 +30,7 @@ export default function PreviousButton({ fallback = '/', position } : Props) {
           navigate(-1);
         }
       }}
+      aria-label="이전 페이지로 이동"
     >
       <ChevronRight title="이전 페이지로 이동" />
     </button>

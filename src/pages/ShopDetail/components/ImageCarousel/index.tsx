@@ -36,12 +36,12 @@ function ImageCarousel({ imageUrls }: Props) {
       </ul>
 
       <div className={styles['back-drop__left']}>
-        <button type="button" onClick={prev}>
+        <button type="button" onClick={prev} aria-label="이전 이미지">
           <PrevIcon />
         </button>
       </div>
       <div className={styles['back-drop__right']}>
-        <button type="button" onClick={next}>
+        <button type="button" onClick={next} aria-label="다음 이미지">
           <NextIcon />
         </button>
       </div>
