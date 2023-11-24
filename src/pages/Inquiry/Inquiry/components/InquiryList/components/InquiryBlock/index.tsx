@@ -5,17 +5,17 @@ import cn from 'utils/ts/classNames';
 import Answer from './components/Answer';
 import styles from './InquiryBlock.module.scss';
 
-interface Props {
+interface InquiryBlockProps {
   content: InquiryContent,
   expandedId: number | null,
   setExpandedId: (id: number | null) => void,
 }
 
-export default function DataBlock({
+export default function InquiryBlock({
   content,
   expandedId,
   setExpandedId,
-}: Props): JSX.Element {
+}: InquiryBlockProps): JSX.Element {
   const isExpanded = expandedId === content.id;
 
   function toggleExpand(id: number) {

@@ -1,7 +1,7 @@
 import { SentOrReceivedFollowResponse } from 'api/follow/entity';
 import { AxiosResponse } from 'axios';
 import { useEffect } from 'react';
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 const useSentOrReceivedFollow = (
   key: string,
@@ -11,7 +11,10 @@ const useSentOrReceivedFollow = (
     data,
     fetchNextPage,
     hasNextPage,
-  } = useInfiniteQuery(key, ({ pageParam = 0 }) => queryFn(pageParam), {
+  } = useInfiniteQuery({
+    queryKey: [key],
+    queryFn: ({ pageParam = 0 }) => queryFn(pageParam),
+    initialPageParam: 0,
     // getNextPageParam은 다음 api를 요청할 때 사용될 pageParam값을 정할 수 있다.
     getNextPageParam: (lastPage) => {
       if (lastPage.data.empty || lastPage.data.last) return null;

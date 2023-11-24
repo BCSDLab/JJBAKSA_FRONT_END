@@ -8,6 +8,11 @@ export interface Follower {
   email: string,
   userType: string;
   requestId?: number;
+  userCountResponse?: {
+    id: number;
+    reviewCount: number;
+    friendCount: number;
+  }
 }
 
 export interface RequestUserInfo {

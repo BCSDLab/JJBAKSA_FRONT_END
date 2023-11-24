@@ -1,10 +1,10 @@
 import defaultImage from 'assets/images/follow/default-image.png';
 import option from 'assets/svg/mypage/option.svg';
-import { Link } from 'react-router-dom';
-import { EmailUser } from 'api/user/entity';
+import { Link, useNavigate } from 'react-router-dom';
+import { User } from 'api/user/entity';
 import styles from './Information.module.scss';
 
-type Profile = EmailUser & {
+type Profile = User & {
   profileImage?: {
     url: string
   },
@@ -17,6 +17,7 @@ interface InformationProps {
 }
 
 export default function Information({ openModal, followerNumber, profile }: InformationProps) {
+  const navigate = useNavigate();
   return (
     <div className={styles.information}>
       <div className={styles.user}>
@@ -28,9 +29,13 @@ export default function Information({ openModal, followerNumber, profile }: Info
             {profile?.nickname}
           </span>
           <div className={styles.dot} />
-          <span className={styles['totals__follower--number']}>
+          <button
+            className={styles['totals__follower--number']}
+            type="button"
+            onClick={() => navigate('/friend-list')}
+          >
             {`팔로워 ${followerNumber}`}
-          </span>
+          </button>
           <span className={styles.user__account}>{`@${profile?.account}`}</span>
         </div>
       </div>

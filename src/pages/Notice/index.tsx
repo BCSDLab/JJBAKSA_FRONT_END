@@ -13,22 +13,18 @@ export default function Notice(): JSX.Element {
   return (
     <div>
       <div className={styles.container}>
-        {
-          postData && (
-            <div>
-              <Datatable
-                data={postData.content}
-                title={title}
-                subTitle={subTitle}
-              />
-              <Pagination
-                totalPage={postData.totalPages}
-                setPage={setPage}
-                page={page}
-              />
-            </div>
-          )
-        }
+        <div>
+          <Datatable
+            data={postData.content}
+            title={title}
+            subTitle={subTitle}
+          />
+          <Pagination
+            totalPage={postData.totalPages}
+            setPage={setPage}
+            page={page}
+          />
+        </div>
       </div>
       <nav className={styles.nav}>
         <div className={styles['nav__search-block']}>

@@ -41,6 +41,7 @@ const filterFollowInfo = (data: GetFollowListResponse): FollowerInfo[] => {
     nickname: item.nickname,
     userType: item.userType,
     followedType: 'FOLLOWED',
+    userCountResponse: item.userCountResponse,
   }));
   return filteredData;
 };
@@ -48,43 +49,49 @@ const filterFollowInfo = (data: GetFollowListResponse): FollowerInfo[] => {
 export default function FollowPage() {
   const { keyword, handleInputChange, user } = useSearchFriend();
   const { data: receive } = useSentOrReceivedFollow('received', checkReceivedFollow);
-  const { data: sended } = useSentOrReceivedFollow('sended', checkSentFollow);
+  const { data: sent } = useSentOrReceivedFollow('sent', checkSentFollow);
   const { data: follower } = useGetFollowList();
   const { data: recent } = useGetRecentlyActiveFollower();
-
   return (
     <div className={style.template}>
-      <div className={style.top}>
-        <div className={style.top__prev}>
-          <PreviousButton />
-          <p>친구 목록</p>
+      <div className={style.content}>
+        <div className={style.top}>
+          <div className={style.top__prev}>
+            <PreviousButton />
+            <p>친구 목록</p>
+          </div>
+          <div className={style.top__search}>
+            <input
+              type="text"
+              className={cn({ [style['top__search--input']]: true })}
+              placeholder="검색어를 입력해주세요."
+              onChange={handleInputChange}
+              value={keyword}
+            />
+            <img className={cn({ [style['top__search--img']]: true })} src={search} alt="search" />
+          </div>
         </div>
-        <div className={style.top__search}>
-          <input
-            type="text"
-            className={cn({ [style['top__search--input']]: true })}
-            placeholder="검색어를 입력해주세요."
-            onChange={handleInputChange}
-            value={keyword}
-          />
-          <img className={cn({ [style['top__search--img']]: true })} src={search} alt="search" />
-        </div>
-      </div>
-      {keyword.length === 0
+        {keyword.length === 0
         && (
           follower?.content.length === 0
-            && sended?.content.length === 0
+            && sent?.content.length === 0
             && receive?.content.length === 0 ? <EmptyFriend />
             : (
               <div className={style.container}>
                 {recent && <FollowList title="최근 접속한 친구" data={filterFollowInfo(recent.data)} />}
                 {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
-                {receive && sended && <FollowList title="친구 신청" data={filterSendOrReceiveInfo(receive, true)} sended={filterSendOrReceiveInfo(sended, false)} />}
+                {receive && sent && <FollowList title="친구 신청" data={filterSendOrReceiveInfo(receive, true)} sent={filterSendOrReceiveInfo(sent, false)} />}
               </div>
             )
         )}
-      {user && keyword.length > 0 && (user.content.length > 0
-        ? <SearchPage data={user.content} /> : <FailToSearch />)}
+        {user && keyword.length > 0 && (user.content.length > 0
+          ? (
+            <div>
+              <SearchPage data={user.content} />
+              {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
+            </div>
+          ) : <FailToSearch />)}
+      </div>
     </div>
   );
 }

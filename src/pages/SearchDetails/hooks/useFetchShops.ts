@@ -1,6 +1,6 @@
 import useGeolocation from 'utils/hooks/useGeolocation';
 import useDebounce from 'utils/hooks/useDebounce';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { fetchShops } from 'api/shop';
 import { ShopsParams } from 'api/shop/entity';
 import { useEffect, useMemo } from 'react';
@@ -16,7 +16,9 @@ const useFetchShops = (text: string) => {
 
   const {
     isLoading, isError, data, refetch,
-  } = useQuery(['shop', location], () => fetchShops(params), {
+  } = useQuery({
+    queryKey: ['shop', location],
+    queryFn: () => fetchShops(params),
     enabled: !!location,
   });
 

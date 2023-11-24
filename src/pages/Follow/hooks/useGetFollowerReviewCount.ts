@@ -1,8 +1,8 @@
 import { getFollowerReviewCount } from 'api/follow';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
-const useGetFollowerReviewCount = (followId: number) => {
-  const { data } = useQuery('reviewCount', () => getFollowerReviewCount({ followId }));
+const useGetFollowerReviewCount = (id: number) => {
+  const { data } = useQuery({ queryKey: ['reviewCount'], queryFn: () => getFollowerReviewCount({ id }) });
   return data;
 };
 
