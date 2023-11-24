@@ -3,7 +3,7 @@ import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import { InquiryContent } from 'api/inquiry/entity';
 import cn from 'utils/ts/classNames';
 import Answer from './components/Answer';
-import styles from './DataBlock.module.scss';
+import styles from './InquiryBlock.module.scss';
 
 interface Props {
   content: InquiryContent,

@@ -6,11 +6,11 @@ import React, {
   useCallback,
 } from 'react';
 import useInquiryList from 'pages/Inquiry/Inquiry/hooks/useInquiryList';
-import DataBlock from 'pages/Inquiry/Inquiry/components/DataTable/components/DataBlock';
+import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/components/InquiryBlock';
 import { InquiryContent } from 'api/inquiry/entity';
-import styles from './DataTable.module.scss';
+import styles from './InquiryList.module.scss';
 
-export default function DataTable({
+export default function InquiryList({
   className,
   typePath,
 }: {
@@ -59,15 +59,15 @@ export default function DataTable({
 
   return (
     <div className={className}>
-      <div className={styles.table}>
+      <div className={styles.list}>
         {allData && allData.length === 0 ? (
-          <p className={styles['table--no-data']}>
+          <p className={styles['list--no-data']}>
             문의 내역이 없습니다.
           </p>
         ) : (
           allData && (
             allData.map((item) => (
-              <DataBlock
+              <InquiryBlock
                 key={item.id}
                 content={item}
                 expandedId={expandedId}

@@ -4,7 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
 import InquirySelectButton from 'pages/Inquiry/Inquiry/components/InquirySelectButton';
 import SearchBar from 'pages/Inquiry/Inquiry/components/SearchBar';
-import DataTable from 'pages/Inquiry/Inquiry/components/DataTable';
+import InquiryList from 'pages/Inquiry/Inquiry/components/InquiryList';
 import styles from './Inquiry.module.scss';
 
 export default function Inquiry(): JSX.Element {
@@ -89,9 +89,9 @@ export default function Inquiry(): JSX.Element {
             />
           </div>
 
-          <div className={styles['data-table']}>
-            <DataTable
-              className={styles['data-table__item']}
+          <div className={styles['inquiry-list']}>
+            <InquiryList
+              className={styles['inquiry-list__item']}
               typePath={typePath}
             />
           </div>
