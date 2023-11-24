@@ -65,16 +65,14 @@ export default function InquiryList({
             문의 내역이 없습니다.
           </p>
         ) : (
-          allData && (
-            allData.map((item) => (
-              <InquiryBlock
-                key={item.id}
-                content={item}
-                expandedId={expandedId}
-                setExpandedId={setExpandedId}
-              />
-            ))
-          )
+          allData.map((item) => (
+            <InquiryBlock
+              key={item.id}
+              content={item}
+              expandedId={expandedId}
+              setExpandedId={setExpandedId}
+            />
+          ))
         )}
         <div ref={loader} className={styles.table__floor} />
       </div>
