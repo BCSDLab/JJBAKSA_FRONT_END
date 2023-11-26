@@ -1,14 +1,15 @@
 import getInquiry from 'api/inquiry';
+import { useQuery } from '@tanstack/react-query';
 import { InquiryProps } from 'api/inquiry/entity';
-import { useQuery } from 'react-query';
 
 const useInquiryList = ({
-  typePath, dateCursor, idCursor, size,
+  queryType, dateCursor, idCursor, size,
 }: InquiryProps) => {
-  const queryKey = ['Inquiry', typePath, dateCursor, idCursor, size];
-  const { isLoading, isError, data } = useQuery(queryKey, () => getInquiry({
-    typePath, dateCursor, idCursor, size,
-  }), {
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ['Inquiry', queryType, dateCursor, idCursor, size],
+    queryFn: () => getInquiry({
+      queryType, dateCursor, idCursor, size,
+    }),
     refetchOnMount: 'always',
   });
 

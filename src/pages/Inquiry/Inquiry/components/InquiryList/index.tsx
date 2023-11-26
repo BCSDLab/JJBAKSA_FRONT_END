@@ -21,7 +21,7 @@ export default function InquiryList({
   const [idCursor, setIdCursor] = useState<number>(0);
   const [allData, setAllData] = useState<InquiryContent[]>([]);
   const { data: inquiryData, isLoading } = useInquiryList({
-    typePath, dateCursor, idCursor, size: 10,
+    queryType: typePath, dateCursor, idCursor, size: 10,
   });
 
   const [expandedId, setExpandedId] = useState<number | null>(null);

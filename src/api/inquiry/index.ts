@@ -2,7 +2,7 @@ import { GetInquiryResponse, InquiryProps } from './entity';
 import inquiryApi from './inquiryApiClient';
 
 const getInquiry = async ({
-  typePath, dateCursor, idCursor, size,
+  queryType: typePath, dateCursor, idCursor, size,
 }: InquiryProps) => {
   try {
     const queryParams = `${typePath}?dateCursor=${dateCursor}&idCursor=${idCursor}&size=${size}`;

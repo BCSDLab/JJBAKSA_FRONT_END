@@ -7,35 +7,38 @@ import SearchBar from 'pages/Inquiry/Inquiry/components/SearchBar';
 import InquiryList from 'pages/Inquiry/Inquiry/components/InquiryList';
 import styles from './Inquiry.module.scss';
 
+type QueryTypeMap = {
+  all: string;
+  my: string;
+  search: string;
+};
+
+type QueryType = keyof QueryTypeMap;
+
+const createQueryTypeMap = (keyword: string): QueryTypeMap => ({
+  all: '',
+  my: '/me',
+  search: `/search/${keyword}`,
+});
+
 export default function Inquiry(): JSX.Element {
-  const [keyword, setKeyword] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const pathParts = location.pathname.split('/');
 
-  const type = pathParts[2]; // 'all' 또는 'my' 또는 'search'
-  const [typePath, setTypePath] = useState<string>('');
-  const [selectedTab, setSelectedTab] = useState<string>(type);
+  const [keyword, setKeyword] = useState('');
+  const queryTypeMap = createQueryTypeMap(keyword);
 
-  // typePath는 서버에 데이터를 요청할 때 사용
+  // type은 'all', 'my', 'search' 중 하나여야 함.
+  const rawPageType = location.pathname.split('/')[2];
+  const pageType = Object.keys(queryTypeMap).includes(rawPageType) ? rawPageType as QueryType : 'all';
+
+  // queryType은 데이터 쿼리 시 사용
+  const [queryType, setQueryType] = useState<string>('');
+
   useEffect(() => {
-    setSelectedTab(type);
-    switch (type) {
-      case 'all':
-        setTypePath('');
-        break;
-      case 'my':
-        setTypePath('/me');
-        break;
-      case 'search':
-        setTypePath(`/search/${keyword}`);
-        break;
-      default:
-        break;
-    }
-  }, [type]);
+    setQueryType(queryTypeMap[pageType] || '');
+  }, [pageType, keyword]);
 
-  // SearchBar의 값이 변경되었을 때 수행할 작업
   const handleSearchChange = (text: string) => {
     setKeyword(text);
   };
@@ -60,7 +63,7 @@ export default function Inquiry(): JSX.Element {
             <InquirySelectButton
               path="/inquiry/all"
               text="전체 문의 내역"
-              isSelected={selectedTab === 'all'}
+              isSelected={pageType === 'all'}
             />
           </li>
 
@@ -68,15 +71,15 @@ export default function Inquiry(): JSX.Element {
             <InquirySelectButton
               path="/inquiry/my"
               text="나의 문의 내역"
-              isSelected={selectedTab === 'my'}
+              isSelected={pageType === 'my'}
             />
           </li>
 
           <li className={`${styles.menu__item} ${styles.menu__inquire}`}>
             <Link to="/inquiry/inquire" className={styles.menu__link}>
               문의하러 가기
-              <WriteIcon />
             </Link>
+            <WriteIcon />
           </li>
         </ul>
 
@@ -92,7 +95,7 @@ export default function Inquiry(): JSX.Element {
           <div className={styles['inquiry-list']}>
             <InquiryList
               className={styles['inquiry-list__item']}
-              typePath={typePath}
+              typePath={queryType}
             />
           </div>
         </div>

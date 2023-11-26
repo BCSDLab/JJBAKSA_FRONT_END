@@ -2,7 +2,7 @@ import defaultImage from 'assets/images/follow/default-image.png';
 import { useEffect, useState } from 'react';
 import cn from 'utils/ts/classNames';
 import { useLocation } from 'react-router-dom';
-import { EmailUser } from 'api/user/entity';
+import { User } from 'api/user/entity';
 import style from './FollowProfile.module.scss';
 import FollowReview from './FollowReview';
 import useDeleteFollow from '../hooks/useDeleteFollow';
@@ -25,7 +25,7 @@ const useDeleteState = () => {
 
 export default function FollowProfile() {
   const location = useLocation();
-  const state = location.state as EmailUser;
+  const state = location.state as User;
   const { data } = useGetFollowerReview(state.id);
   const { del, isFollowed } = useDeleteState();
   const request = useRequestAndUpdate();
