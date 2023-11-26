@@ -1,4 +1,4 @@
-import useScrap from 'pages/ShopDetail/hooks/useScrap';
+import useScrap from 'utils/hooks/useScrap';
 import cn from 'utils/ts/classNames';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import styles from './ScrapButton.module.scss';
@@ -18,7 +18,7 @@ function ScrapButton({ placeId, initialScrapId = null }: Props) {
       disabled={isPending}
       className={cn({
         [styles['scrap-button']]: true,
-        [styles['scrap-button__active']]: scrapId !== null,
+        [styles['scrap-button--active']]: scrapId !== null,
       })}
     >
       {scrapId ? <BookMarkIcon fill="#fff" stroke="#fff" /> : <BookMarkIcon stroke="#666" />}
