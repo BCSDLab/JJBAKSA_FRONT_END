@@ -3,7 +3,7 @@ import { getDetailReview } from 'api/follow';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import cn from 'utils/ts/classNames';
-import style from './FollowReview.module.scss';
+import styles from './FollowReview.module.scss';
 import ListReview from './ListReview';
 
 interface Props {
@@ -38,19 +38,19 @@ export default function FollowReview({
   const [isShow, , , toggle] = useBooleanState(false);
 
   return (
-    <div className={style.container}>
-      <div className={style.content}>
+    <div className={styles.container}>
+      <div className={styles.content}>
         {data
             && (
-              <button type="button" onClick={toggle} className={style.title}>
+              <button type="button" onClick={toggle} className={styles.title}>
                 <div>
-                  <span className={style.title__name}>{name}</span>
-                  <span className={style.title__category}>{category}</span>
+                  <span className={styles.title__name}>{name}</span>
+                  <span className={styles.title__category}>{category}</span>
                 </div>
                 <Arrow className={cn(
                   {
-                    [style.title__arrow]: true,
-                    [style['title__arrow--up']]: isShow,
+                    [styles.title__arrow]: true,
+                    [styles['title__arrow--up']]: isShow,
                   },
                 )}
                 />
