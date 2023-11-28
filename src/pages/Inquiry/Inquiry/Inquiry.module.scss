@@ -26,7 +26,7 @@ $disabled: #c4c4c4;
   flex-direction: row;
   justify-content: center;
 
-  @media (max-width: 1148px) { // 메뉴 이동 브레이크 포인트
+  @media (max-width: 1148px) {
     width: 720px;
     margin-left: 0;
   }
@@ -107,7 +107,7 @@ $disabled: #c4c4c4;
   }
 }
 
-.contents-box {
+.content-box {
   width: 720px;
   display: flex;
   flex-flow: column wrap;

@@ -1,33 +1,87 @@
 $default: #222222;
 $highlight: #ff7f23;
-$back: white;
-$normal: #666666;
 $disabled: #c4c4c4;
 
 .container {
-  width: 100%;
-  height: 100%;
+  width: calc(100vw - 100px);
+  height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin-left: 100px;
 }
 
-.box {
+.inner-container {
   width: 947px;
+  margin-top: 160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .menu {
-  width: 227px;
+  width: 168px;
   height: 100%;
 
   &__link {
     display: block;
-    margin: 160px 0 32px;
+    margin-bottom: 32px;
     background-color: transparent;
     font-size: 32px;
     font-weight: 700;
     text-decoration: none;
     color: $highlight;
     cursor: pointer;
+  }
+
+  &__explain {
+    width: 100%;
+  }
+}
+
+.content-box {
+  width: 815px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+}
+
+.form {
+  width: 571px;
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+  }
+
+  &__submit-box {
+    position: relative;
+  }
+
+  &__submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 176px;
+    height: 44px;
+    background: $highlight;
+    border: none;
+    appearance: none;
+    border-radius: 22px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    margin-top: 48px;
+    position: absolute;
+    right: 0;
   }
 }
