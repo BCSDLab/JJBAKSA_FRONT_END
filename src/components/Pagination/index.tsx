@@ -26,10 +26,10 @@ export default function Pagination({ totalPage, setPage, page }: Props): JSX.Ele
 
   return (
     <nav className={styles.pagination}>
-      <button type="button" className={styles.pagination__svg} onClick={() => movePage(-10)}>
+      <button type="button" className={styles.pagination__svg} onClick={() => movePage(-10)} aria-label="처음 페이지">
         <DoubleArrowLeft />
       </button>
-      <button type="button" className={styles.pagination__svg} onClick={() => movePage(-1)}>
+      <button type="button" className={styles.pagination__svg} onClick={() => movePage(-1)} aria-label="이전 페이지로 건너뛰기">
         <ArrowLeft />
       </button>
       {pageList.map((item) => (
@@ -45,10 +45,10 @@ export default function Pagination({ totalPage, setPage, page }: Props): JSX.Ele
           {item}
         </button>
       ))}
-      <button type="button" className={styles.pagination__svg} onClick={() => movePage(1)}>
+      <button type="button" className={styles.pagination__svg} onClick={() => movePage(1)} aria-label="다음 페이지">
         <ArrowRight />
       </button>
-      <button type="button" className={styles.pagination__svg} onClick={() => movePage(10)}>
+      <button type="button" className={styles.pagination__svg} onClick={() => movePage(10)} aria-label="이후 페이지로 건너 뛰기">
         <DoubleArrowRight />
       </button>
     </nav>

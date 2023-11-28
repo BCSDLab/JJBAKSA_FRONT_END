@@ -25,7 +25,7 @@ function AddImageFile() {
 
   return (
     <main>
-      <label htmlFor="image">
+      <label htmlFor="image" aria-label="이미지 추가">
         <div className={styles.getImage}>
           <Plus className={styles.getImage__Image} />
         </div>
