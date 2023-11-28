@@ -1,6 +1,6 @@
 import { atom, useAtom } from 'jotai';
-import { toast } from 'react-toastify';
 import { useState } from 'react';
+import makeToast from 'utils/ts/makeToast';
 
 export const searchFormAtom = atom({
   text: '',
@@ -22,7 +22,7 @@ const useSearchForm = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (searchForm.text.trim().length === 0) {
-      toast('검색어를 입력해주세요.');
+      makeToast('warning', '검색어를 입력해주세요.');
       return;
     }
 
