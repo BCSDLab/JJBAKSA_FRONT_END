@@ -22,7 +22,7 @@ export default function VerifyCode({
   const loginOrChangePassword = () => {
     if (isDone) {
       if (param.type === 'id') setOpenModal(true);
-      else if (param.type === 'password') navigate('/find-password/change');
+      else if (param.type === 'password') navigate('/find-password/change-mobile');
     }
   };
   const findUserInfo = async (parameter: CodeInfo) => {
