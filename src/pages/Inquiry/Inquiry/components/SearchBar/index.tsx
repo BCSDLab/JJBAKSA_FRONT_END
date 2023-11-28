@@ -29,12 +29,11 @@ export default function SearchBar({
 
   return (
     <div className={className}>
-      <label title="검색어 입력" className={styles['search-bar']} htmlFor="searchBarInput">
+      <div className={styles['search-bar']}>
         <form onSubmit={handleSubmit} className={styles['search-bar__form']}>
           <input
             className={styles['search-bar__input']}
             placeholder="검색어를 입력해주세요."
-            id="searchBarInput"
             value={text}
             onChange={handleChange}
           />
@@ -46,7 +45,7 @@ export default function SearchBar({
             tabIndex={0}
           />
         </form>
-      </label>
+      </div>
     </div>
   );
 }
