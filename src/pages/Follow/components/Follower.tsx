@@ -1,7 +1,7 @@
 import defaultImage from 'assets/images/follow/default-image.png';
 import cn from 'utils/ts/classNames';
 import { useNavigate } from 'react-router-dom';
-import style from './Follower.module.scss';
+import styles from './Follower.module.scss';
 import useRequestAndUpdate from '../hooks/useRequestAndUpdate';
 import useAcceptFollow from '../hooks/useAcceptFollow';
 import useDeleteFollow from '../hooks/useDeleteFollow';
@@ -42,22 +42,22 @@ export default function Follower({
     }
   } = {
     NONE: {
-      className: style['follower__button--request'],
+      className: styles['follower__button--request'],
       onClick: () => account && request(account),
       text: '팔로우',
     },
     REQUEST_SENT: {
-      className: style['follower__button--cancel'],
+      className: styles['follower__button--cancel'],
       onClick: () => requestId && cancel(requestId),
       text: '요청됨',
     },
     FOLLOWED: {
-      className: style.follower__button,
+      className: styles.follower__button,
       onClick: () => (isMobile ? mobileUnfollow() : del(account)),
       text: '팔로잉',
     },
     REQUEST_RECEIVE: {
-      className: style['follower__button--accept'],
+      className: styles['follower__button--accept'],
       onClick: () => requestId && accept(requestId),
       text: '확인',
     },
@@ -65,12 +65,12 @@ export default function Follower({
   const config = buttonConfigs[followedType];
 
   return (
-    <div className={style.follower} id={`${id}`}>
-      <img className={style.follower__image} src={defaultImage} alt="default" />
-      <div className={style.follower__content}>
+    <div className={styles.follower} id={`${id}`}>
+      <img className={styles.follower__image} src={defaultImage} alt="default" />
+      <div className={styles.follower__content}>
         <button
           type="button"
-          className={cn({ [style['follower__content--nickname']]: true })}
+          className={cn({ [styles['follower__content--nickname']]: true })}
           onClick={() => followedType === 'FOLLOWED' && navigate(`${id}`, {
             state: {
               id,
@@ -100,7 +100,7 @@ export default function Follower({
       {followedType === 'REQUEST_RECEIVE' && requestId && (
       <button
         type="button"
-        className={style.follower__button}
+        className={styles.follower__button}
         onClick={() => reject(requestId)}
       >
         거절

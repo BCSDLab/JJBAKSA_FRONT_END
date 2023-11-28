@@ -3,7 +3,7 @@ import search from 'assets/svg/search/lens.svg';
 import { GetFollowListResponse, SentOrReceivedFollowResponse } from 'api/follow/entity';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import cn from 'utils/ts/classNames';
-import style from './index.module.scss';
+import styles from './index.module.scss';
 import FailToSearch from './components/FailToSearch';
 import SearchPage from './components/SearchPage';
 import FollowList from './components/FollowList';
@@ -53,22 +53,22 @@ export default function FollowPage() {
   const { data: follower } = useGetFollowList();
   const { data: recent } = useGetRecentlyActiveFollower();
   return (
-    <div className={style.template}>
-      <div className={style.content}>
-        <div className={style.top}>
-          <div className={style.top__prev}>
+    <div className={styles.template}>
+      <div className={styles.content}>
+        <div className={styles.top}>
+          <div className={styles.top__prev}>
             <PreviousButton />
             <p>친구 목록</p>
           </div>
-          <div className={style.top__search}>
+          <div className={styles.top__search}>
             <input
               type="text"
-              className={cn({ [style['top__search--input']]: true })}
+              className={cn({ [styles['top__search--input']]: true })}
               placeholder="검색어를 입력해주세요."
               onChange={handleInputChange}
               value={keyword}
             />
-            <img className={cn({ [style['top__search--img']]: true })} src={search} alt="search" />
+            <img className={cn({ [styles['top__search--img']]: true })} src={search} alt="search" />
           </div>
         </div>
         {keyword.length === 0
@@ -77,7 +77,7 @@ export default function FollowPage() {
             && sent?.content.length === 0
             && receive?.content.length === 0 ? <EmptyFriend />
             : (
-              <div className={style.container}>
+              <div className={styles.container}>
                 {recent && <FollowList title="최근 접속한 친구" data={filterFollowInfo(recent.data)} />}
                 {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
                 {receive && sent && <FollowList title="친구 신청" data={filterSendOrReceiveInfo(receive, true)} sent={filterSendOrReceiveInfo(sent, false)} />}
