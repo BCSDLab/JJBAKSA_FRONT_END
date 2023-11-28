@@ -25,8 +25,10 @@ const useDeleteState = () => {
 
 export default function FollowProfile() {
   const location = useLocation();
-  const state = location.state as EmailUser;
-  const { data } = useGetFollowerReview(state.id);
+  const {
+    nickname, account, userCountResponse, id,
+  } = location.state as User;
+  const { data } = useGetFollowerReview(id);
   const { del, isFollowed } = useDeleteState();
   const request = useRequestAndUpdate();
   const reviewCount = useGetFollowerReviewCount(id);
