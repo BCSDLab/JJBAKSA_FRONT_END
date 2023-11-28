@@ -15,8 +15,8 @@ import Setting from 'pages/Setting';
 import IdChange from 'pages/Setting/Mobile/IdChange';
 import AuthRoute from 'components/common/AuthRoute';
 import Withdrawal from 'pages/Setting/Withdrawal';
-import Inquiry from 'pages/Inquiry';
-import Myinquiry from 'pages/Inquiry/Myinquiry';
+import Inquiry from 'pages/Inquiry/Inquiry';
+import Inquire from 'pages/Inquiry/Inquire';
 import Notice from 'pages/Notice';
 import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
 import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
@@ -35,8 +35,9 @@ export default function App(): JSX.Element {
         <Route path="/" element={<DefaultLayout />}>
           <Route path="/search" element={<Search />} />
           <Route path="/search/not-found" element={<NotFoundPage />} />
-          <Route path="/inquiry" element={<Inquiry />} />
-          <Route path="/myinquiry" element={<Myinquiry />} />
+          <Route path="/inquiry/:type" element={<Inquiry />} />
+          <Route path="/inquiry/search/:keyword" element={<Inquiry />} />
+          <Route path="/inquiry/inquire" element={<Inquire />} />
           <Route path="/notice" element={<Notice />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>

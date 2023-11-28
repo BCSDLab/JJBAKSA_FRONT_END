@@ -1,0 +1,34 @@
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+$normal: #666666;
+$disabled: #c4c4c4;
+
+.link {
+  display: block;
+  width: 104px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  color: $disabled;
+  text-decoration: none;
+
+  &:visited {
+    color: none;
+  }
+
+  &--selected {
+    color: $highlight;
+  }
+
+  &__dot {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -14px;
+  }
+}

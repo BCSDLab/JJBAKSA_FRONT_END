@@ -1,0 +1,62 @@
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+$normal: #666666;
+
+.block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  height: auto;
+  width: 100%;
+  margin: 0;
+  padding: 16px 10px;
+  border: 0;
+  border-bottom: 1px solid #eeeeee;
+  font-weight: normal;
+  color: $default;
+  background-color: transparent;
+  max-height: 97px;
+  overflow: hidden;
+  transition: height 0.7s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f0f0f0;
+  }
+
+  &--expanded {
+    height: auto;
+    max-height: 1000px;
+  }
+
+  &__info {
+    font-size: 14px;
+    color: $normal;
+    margin-top: 0;
+  }
+
+  &__title {
+    font-size: 16px;
+    max-height: 39px;
+    margin: 0 0 8px;
+    padding: 0;
+    word-break: break-all;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__expander {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    transition: transform 0.15s ease-in-out;
+    transform: rotate(0deg);
+
+    &--expanded {
+      transform: rotate(-180deg);
+    }
+  }
+}

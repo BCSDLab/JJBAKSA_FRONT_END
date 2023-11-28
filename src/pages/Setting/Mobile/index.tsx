@@ -51,7 +51,7 @@ export default function MobileSetting() {
         </div>
         <div className={styles.service__content}>
           <div className={styles.service__text}>문의하기</div>
-          <Link to="/inquiry">
+          <Link to="/inquiry/all">
             <button type="submit" className={styles.service__announcement} aria-label="문의하기로 이동">
               <Move />
             </button>
