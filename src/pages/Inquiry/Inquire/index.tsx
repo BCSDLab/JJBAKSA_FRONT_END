@@ -6,7 +6,7 @@ import ToggleButton from 'components/common/ToggleButton';
 import Explain from './components/Explain';
 import styles from './Inquire.module.scss';
 
-export default function Inquiry(): JSX.Element {
+export default function Inquire(): JSX.Element {
   const [content, setContent] = useState('');
   const maxLength = 500;
   const [a, , , toggle] = useBooleanState(false);
@@ -31,12 +31,12 @@ export default function Inquiry(): JSX.Element {
         <div className={styles['content-box']}>
           <form className={styles.form}>
             <div className={styles.form__title}>
-              <div className={styles['form__label-box']}>
+              <div className={styles['form__label-group']}>
                 <div className={styles.form__label}>
                   제목
                 </div>
-                <div className={styles['form__essential-circle-box']}>
-                  <span className={styles['form__essential-circle']} />
+                <div className={styles['form__required-indicator']}>
+                  <span className={styles.form__circle} />
                 </div>
               </div>
               <input
@@ -50,16 +50,16 @@ export default function Inquiry(): JSX.Element {
               />
             </div>
 
-            <div className={styles['form__content-information']}>
-              <div className={styles['form__label-box']}>
+            <div className={styles['form__content-header']}>
+              <div className={styles['form__label-group']}>
                 <div className={styles.form__label}>
                   문의 내용
                 </div>
-                <div className={styles['form__essential-circle-box']}>
-                  <span className={styles['form__essential-circle']} />
+                <div className={styles['form__required-indicator']}>
+                  <span className={styles.form__circle} />
                 </div>
               </div>
-              <div className={styles['form__character-count']}>
+              <div className={styles['form__content-length']}>
                 {`${content.length}/${maxLength}`}
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function Inquiry(): JSX.Element {
                   accept="image/*"
                   aria-label="이미지 업로드"
                 />
-                <span className={styles['form__upload-explain']}>최대 3장 첨부 가능</span>
+                <span className={styles['form__upload-description']}>최대 3장 첨부 가능</span>
               </div>
             </div>
 
@@ -97,11 +97,11 @@ export default function Inquiry(): JSX.Element {
                 toggleFn={toggle}
               />
             </div>
-            <div className={styles['form__secret-guide']}>
+            <div className={styles['form__privacy-note']}>
               비밀글을 나의 문의 내역에서만 볼 수 있어요.
             </div>
 
-            <div className={styles['form__submit-box']}>
+            <div className={styles['form__submit-container']}>
               <button type="submit" className={styles.form__submit}>
                 등록하기
               </button>
