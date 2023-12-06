@@ -9,7 +9,7 @@ import styles from './Inquire.module.scss';
 export default function Inquire(): JSX.Element {
   const [content, setContent] = useState('');
   const maxLength = 500;
-  const [a, , , toggle] = useBooleanState(false);
+  const [isSecret, , , toggle] = useBooleanState(false);
 
   const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
@@ -93,8 +93,8 @@ export default function Inquire(): JSX.Element {
               </span>
               <ToggleButton
                 className={styles['form__toggle-button']}
-                firstState={a}
-                toggleFn={toggle}
+                firstState={isSecret}
+                toggleExternalState={toggle}
               />
             </div>
             <div className={styles['form__privacy-note']}>

@@ -1,21 +1,21 @@
-import { useState } from 'react';
 import cn from 'utils/ts/classNames';
+import useBooelanState from 'utils/hooks/useBooleanState';
 import styles from './ToggleButton.module.scss';
 
 interface ToggleButtonProps {
   className: string;
   firstState: boolean;
-  toggleFn: () => void;
+  toggleExternalState: () => void;
 }
 
 export default function ToggleButton({
-  className, firstState, toggleFn,
+  className, firstState, toggleExternalState,
 }: ToggleButtonProps): JSX.Element {
-  const [toggle, setToggle] = useState(firstState);
+  const [active, , , toggle] = useBooelanState(!!firstState || false);
 
   const handleToggle = () => {
-    setToggle((prevState) => !prevState);
-    toggleFn();
+    toggle();
+    toggleExternalState();
   };
 
   return (
@@ -23,7 +23,7 @@ export default function ToggleButton({
       <label
         className={cn({
           [styles.toggle__label]: true,
-          [styles['toggle__label--active']]: toggle,
+          [styles['toggle__label--active']]: active,
         })}
         htmlFor="toggleInput"
       >
@@ -32,13 +32,13 @@ export default function ToggleButton({
           type="checkbox"
           aria-label="토글"
           id="toggleInput"
-          checked={toggle}
+          checked={active}
           onChange={() => handleToggle()}
         />
         <span
           className={cn({
             [styles.toggle__circle]: true,
-            [styles['toggle__circle--active']]: toggle,
+            [styles['toggle__circle--active']]: active,
           })}
         />
       </label>
