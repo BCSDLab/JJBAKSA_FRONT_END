@@ -5,19 +5,19 @@ $disabled: #c4c4c4;
   &__label {
     position: relative;
     display: inline-block;
-    width: 27px; // 토글 너비
-    height: 13.5px; // 토글 높이
-    background-color: $disabled; // 토글 비활성화 배경색
+    width: 27px;
+    height: 13.5px;
+    background-color: $disabled;
     border-radius: 6.75px;
     transition: background-color 0.2s;
 
     &--active {
-      background-color: $active; // 토글 활성화 배경색
+      background-color: $active;
     }
   }
 
   &__input {
-    opacity: 0; // 실제 체크박스 보이지 않도록
+    opacity: 0;
     width: 0;
     height: 0;
     position: absolute;
@@ -25,17 +25,17 @@ $disabled: #c4c4c4;
 
   &__circle {
     position: absolute;
-    top: 50%; // 상단 여백
-    left: 1px; // 좌측 여백
+    top: 50%;
+    left: 1px;
     transform: translate(0, -50%);
-    width: 11.25px; // 원형 토글 너비
-    height: 11.25px; // 원형 토글 높이
-    background-color: white; // 원형 토글 색상
-    border-radius: 50%; // 원형 모양 설정
-    transition: transform 0.2s; // 이동 애니메이션
+    width: 11.25px;
+    height: 11.25px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
 
     &--active {
-      transform: translate(13.5px, -50%); // 토글 활성화 시 움직일 거리 설정
+      transform: translate(13.5px, -50%);
     }
   }
 }
