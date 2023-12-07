@@ -12,7 +12,7 @@ export default function Service() {
         <div className={styles.service__content}>
           <div className={styles.service__text}>공지사항</div>
           <Link to="/notice">
-            <button type="submit" className={styles.service__announcement} aria-label="공지사항으로 이동">
+            <button type="button" className={styles.service__announcement} aria-label="공지사항으로 이동">
               <Move />
             </button>
           </Link>
@@ -20,7 +20,7 @@ export default function Service() {
         <div className={styles.service__content}>
           <div className={styles.service__text}>문의하기</div>
           <Link to="/inquiry/all">
-            <button type="submit" className={styles.service__announcement} aria-label="문의하기로 이동">
+            <button type="button" className={styles.service__announcement} aria-label="문의하기로 이동">
               <Move />
             </button>
           </Link>
