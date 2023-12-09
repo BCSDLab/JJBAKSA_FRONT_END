@@ -35,8 +35,7 @@ export interface User {
     path: string;
     originalName: string;
     url: string;
-  }
-
+  },
   oauthType: string; // 'KAKAO' | 'NAVER' | 'GOOGLE'
   userType: string; // 'ADMIN' | 'NORMAL'...
   userCountResponse: {

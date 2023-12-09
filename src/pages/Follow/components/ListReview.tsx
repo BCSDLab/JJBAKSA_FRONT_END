@@ -1,7 +1,7 @@
 import { ReactComponent as Rating } from 'assets/svg/follow/fill-star.svg';
 import { ReactComponent as EmptyStar } from 'assets/svg/follow/empty-star.svg';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import style from './ListReview.module.scss';
+import styles from './ListReview.module.scss';
 
 interface Props {
   createdAt: string;
@@ -14,7 +14,7 @@ export default function ListReview({ createdAt, content, rate }: Props) {
   const fillStarArray = new Array<number>(rate).fill(1);
   const emptyStarArray = new Array<number>(5 - rate).fill(1);
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       {content}
       <div>
         {createdAt}
