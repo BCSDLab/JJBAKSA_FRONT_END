@@ -3,12 +3,12 @@ import styles from './ToggleButton.module.scss';
 
 interface ToggleButtonProps {
   className: string;
-  isSecret: boolean;
+  active: boolean;
   toggle: () => void;
 }
 
 export default function ToggleButton({
-  className, isSecret, toggle,
+  className, active, toggle,
 }: ToggleButtonProps): JSX.Element {
   const handleToggle = () => {
     toggle();
@@ -19,7 +19,7 @@ export default function ToggleButton({
       <label
         className={cn({
           [styles.toggle__label]: true,
-          [styles['toggle__label--active']]: isSecret,
+          [styles['toggle__label--active']]: active,
         })}
         htmlFor="toggleInput"
       >
@@ -28,13 +28,13 @@ export default function ToggleButton({
           type="checkbox"
           aria-label="토글"
           id="toggleInput"
-          checked={isSecret}
+          checked={active}
           onChange={() => handleToggle()}
         />
         <span
           className={cn({
             [styles.toggle__circle]: true,
-            [styles['toggle__circle--active']]: isSecret,
+            [styles['toggle__circle--active']]: active,
           })}
         />
       </label>
