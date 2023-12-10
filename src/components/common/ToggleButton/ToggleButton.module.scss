@@ -7,9 +7,13 @@ $disabled: #c4c4c4;
     display: inline-block;
     width: 27px;
     height: 13.5px;
+    margin: 0;
     background-color: $disabled;
     border-radius: 6.75px;
     transition: background-color 0.2s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     &--active {
       background-color: $active;
@@ -20,14 +24,12 @@ $disabled: #c4c4c4;
     opacity: 0;
     width: 0;
     height: 0;
-    position: absolute;
   }
 
   &__circle {
-    position: absolute;
-    top: 50%;
-    left: 1px;
-    transform: translate(0, -50%);
+    box-sizing: border-box;
+    margin-left: 1.12px;
+    transform: translate(0, 0);
     width: 11.25px;
     height: 11.25px;
     background-color: white;
@@ -35,7 +37,7 @@ $disabled: #c4c4c4;
     transition: transform 0.2s;
 
     &--active {
-      transform: translate(13.5px, -50%);
+      transform: translate(13.51px, 0);
     }
   }
 }
