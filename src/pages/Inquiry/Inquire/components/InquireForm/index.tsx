@@ -67,8 +67,8 @@ export default function InquireForm(): JSX.Element {
           </span>
           <ToggleButton
             className={styles['secret__toggle-button']}
-            firstState={isSecret}
-            toggleExternalState={toggle}
+            isSecret={isSecret}
+            toggle={toggle}
           />
         </div>
         <div className={styles.secret__description}>

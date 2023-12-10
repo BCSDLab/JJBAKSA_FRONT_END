@@ -1,21 +1,17 @@
 import cn from 'utils/ts/classNames';
-import useBooelanState from 'utils/hooks/useBooleanState';
 import styles from './ToggleButton.module.scss';
 
 interface ToggleButtonProps {
   className: string;
-  firstState: boolean;
-  toggleExternalState: () => void;
+  isSecret: boolean;
+  toggle: () => void;
 }
 
 export default function ToggleButton({
-  className, firstState, toggleExternalState,
+  className, isSecret, toggle,
 }: ToggleButtonProps): JSX.Element {
-  const [active, , , toggle] = useBooelanState(!!firstState || false);
-
   const handleToggle = () => {
     toggle();
-    toggleExternalState();
   };
 
   return (
@@ -23,7 +19,7 @@ export default function ToggleButton({
       <label
         className={cn({
           [styles.toggle__label]: true,
-          [styles['toggle__label--active']]: active,
+          [styles['toggle__label--active']]: isSecret,
         })}
         htmlFor="toggleInput"
       >
@@ -32,13 +28,13 @@ export default function ToggleButton({
           type="checkbox"
           aria-label="토글"
           id="toggleInput"
-          checked={active}
+          checked={isSecret}
           onChange={() => handleToggle()}
         />
         <span
           className={cn({
             [styles.toggle__circle]: true,
-            [styles['toggle__circle--active']]: active,
+            [styles['toggle__circle--active']]: isSecret,
           })}
         />
       </label>
