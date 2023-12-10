@@ -42,7 +42,7 @@ export default function SideNavigation(): JSX.Element {
     {
       name: '글쓰기',
       icon: <SpriteSvg id="write" height="24" width="24" />,
-      link: '/search',
+      link: '/post',
     },
     {
       name: '마이페이지',
@@ -127,7 +127,7 @@ export default function SideNavigation(): JSX.Element {
       >
         <div className={styles['side-pannel__search']}>
           <div className={styles['side-pannel__search-bar']}>
-            <Link to="/search" className={styles['side-pannel__search-link']}>
+            <Link to="/shop" className={styles['side-pannel__search-link']}>
               검색어를 입력해주세요.
               <SearchIcon className={styles['side-pannel__search-icon']} />
             </Link>

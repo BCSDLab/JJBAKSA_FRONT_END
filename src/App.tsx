@@ -5,7 +5,6 @@ import SignUp from 'pages/Auth/Signup/SignupPage/index';
 import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage';
 import Login from 'pages/Auth/Login';
 import Post from 'pages/Post';
-import Search from 'pages/Search';
 import VerifyField from 'pages/Auth/FindIdPassword/mobile/VerifyField';
 import { Routes, Route } from 'react-router-dom';
 import ChangePassword from 'pages/Auth/FindIdPassword/mobile/ChangePassword';
@@ -27,13 +26,17 @@ import FollowProfile from 'pages/Follow/components/FollowProfile';
 import FindIDPassword from 'pages/Auth/FindIdPassword';
 import ChangePasswordPC from 'pages/Auth/FindIdPassword/PC/ChangePassword';
 import ShopDetail from 'pages/ShopDetail';
+import SearchShop from 'pages/Search/SearchShop';
+import SearchPost from 'pages/Search/SearchPost';
 
 export default function App(): JSX.Element {
   return (
     <Suspense fallback={<div />}>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
-          <Route path="/search" element={<Search />} />
+          <Route path="/shop" element={<SearchShop />} />
+          <Route path="/shop/:placeId" element={<ShopDetail />} />
+          <Route path="/post" element={<SearchPost />} />
           <Route path="/search/not-found" element={<NotFoundPage />} />
           <Route path="/inquiry/:type" element={<Inquiry />} />
           <Route path="/inquiry/search/:keyword" element={<Inquiry />} />
@@ -47,7 +50,6 @@ export default function App(): JSX.Element {
             <Route path="/setting" element={<Setting />} />
             <Route path="/setting/id-change" element={<IdChange />} />
           </Route>
-          <Route path="/shop/:placeId" element={<ShopDetail />} />
           <Route path="/withdrawal" element={<Withdrawal />} />
           <Route path="/profile" element={<MyPage />} />
           <Route path="/post/:name" element={<Post />} />
