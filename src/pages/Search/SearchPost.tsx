@@ -5,7 +5,7 @@ import SearchDetails from 'pages/SearchDetails';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useSearchForm from 'store/text';
-import Recommendation from './components/SearchBar/Recommendation';
+import Sentence from './components/SearchBar/Sentence';
 import SearchInput from './components/SearchBar/SearchInput';
 import RollingBanner from './components/SearchBar/RollingBanner';
 import NavigationBar from './components/NavigationBar';
@@ -29,7 +29,7 @@ export default function SearchPost(): JSX.Element {
       <div className={styles.search}>
         <section>
           <NavigationBar />
-          <Recommendation />
+          <Sentence />
           <SearchInput
             onChange={handleChange}
             onSubmit={handleSubmit}
@@ -47,7 +47,7 @@ export default function SearchPost(): JSX.Element {
           ? <SearchDetails />
           : (
             <>
-              <Recommendation />
+              <Sentence />
               <SearchInput
                 onChange={handleChange}
                 onSubmit={handleSubmit}
