@@ -1,17 +1,14 @@
-import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { getDetailReview } from 'api/follow';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import cn from 'utils/ts/classNames';
-import style from './FollowReview.module.scss';
+import styles from './FollowReview.module.scss';
 import ListReview from './ListReview';
 
 interface Props {
   placeId: string;
   name: string;
-  photos: string | undefined;
-  isCheckerboard: boolean;
   category: string;
 }
 
@@ -35,34 +32,31 @@ const useGetDetailReview = (placeId: string, followerId: number) => {
 };
 
 export default function FollowReview({
-  placeId, name, photos, isCheckerboard, category,
+  placeId, name, category,
 }: Props) {
-  const { isMobile } = useMediaQuery();
   const { data } = useGetDetailReview(placeId, 361);
   const [isShow, , , toggle] = useBooleanState(false);
 
   return (
-    <div className={style.container}>
-      {!isMobile && isCheckerboard && photos ? <img alt="shop" src={photos} className={style.review__img} /> : isCheckerboard && <div className={style.review__img}>{name}</div>}
-      {!isCheckerboard && (
-        <div className={style.content}>
-          {data
+    <div className={styles.container}>
+      <div className={styles.content}>
+        {data
             && (
-              <button type="button" onClick={toggle} className={style.title}>
+              <button type="button" onClick={toggle} className={styles.title}>
                 <div>
-                  <span className={style.title__name}>{name}</span>
-                  <span className={style.title__category}>{category}</span>
+                  <span className={styles.title__name}>{name}</span>
+                  <span className={styles.title__category}>{category}</span>
                 </div>
                 <Arrow className={cn(
                   {
-                    [style.title__arrow]: true,
-                    [style['title__arrow--up']]: isShow,
+                    [styles.title__arrow]: true,
+                    [styles['title__arrow--up']]: isShow,
                   },
                 )}
                 />
               </button>
             )}
-          {data && !isCheckerboard && isShow
+        {data && isShow
             && data.content.map((item) => (
               <ListReview
                 createdAt={item.createdAt}
@@ -70,8 +64,7 @@ export default function FollowReview({
                 rate={item.rate}
               />
             ))}
-        </div>
-      )}
+      </div>
     </div>
   );
 }

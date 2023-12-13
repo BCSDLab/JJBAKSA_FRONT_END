@@ -1,5 +1,5 @@
 import defaultImage from 'assets/images/follow/default-image.png';
-import style from './Recent.module.scss';
+import styles from './Recent.module.scss';
 
 interface Props {
   nickname: string;
@@ -7,9 +7,9 @@ interface Props {
 
 export default function Recent({ nickname }: Props) {
   return (
-    <div className={style.person}>
-      <img src={defaultImage} alt={nickname} className={style.person__profile} />
-      <span className={style.person__nickname}>{nickname}</span>
+    <div className={styles.person}>
+      <img src={defaultImage} alt={nickname} className={styles.person__profile} />
+      <span className={styles.person__nickname}>{nickname}</span>
     </div>
   );
 }

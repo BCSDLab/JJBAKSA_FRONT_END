@@ -9,7 +9,7 @@ const useRequestAndUpdate = () => {
     mutationKey: ['request'],
     mutationFn: (account: string) => requestFollow({ userAccount: account }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['sended', 'search'] });
+      queryClient.invalidateQueries({ queryKey: ['sent', 'search'] });
     },
     onError: () => {
       makeToast('error', '잘못된 친구 정보입니다.');

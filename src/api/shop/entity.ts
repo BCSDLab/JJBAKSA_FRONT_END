@@ -43,10 +43,10 @@ export interface Shop {
   formattedAddress: string;
   lat: number;
   lng: number;
-  openNow: boolean;
+  openNow: boolean | null;
   totalRating: number | null;
   ratingCount: number | null;
-  photoToken: string;
+  photoToken: string | null;
   dist: number;
   category: string; // 추후 카테고리 확인 필요
 }
