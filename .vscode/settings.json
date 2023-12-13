@@ -4,7 +4,4 @@
     "**/package-lock.json": true,
     "**/yarn.lock": true,
   },
-  "cSpell.words": [
-    "tanstack"
-  ],
 }
