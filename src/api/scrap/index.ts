@@ -1,7 +1,7 @@
 import scrapApi from './scrapApiClient';
 import type { GetMyScrapShopResponse } from './entity';
 
-export const scrapShop = (shopId: string) =>
+export const postScrapShop = (shopId: string) =>
   scrapApi.post('/scraps', { directoryId: 0, placeId: shopId });
 
 export const getMyScrapShop = () => scrapApi.get<GetMyScrapShopResponse>('/scraps');
