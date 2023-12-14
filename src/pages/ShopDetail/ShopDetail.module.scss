@@ -80,18 +80,6 @@
       font-size: 36px;
       font-weight: normal;
     }
-
-    & > button {
-      display: flex;
-      gap: 2px;
-      align-items: center;
-      justify-content: center;
-      background: #f8f8f8;
-      padding: 16px 24px;
-      border-radius: 4px;
-      font-size: 16px;
-      color: #666;
-    }
   }
 
   &__info-name {
