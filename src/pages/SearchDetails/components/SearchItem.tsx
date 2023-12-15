@@ -7,6 +7,29 @@ import { getMockItem } from '../static/mockup';
 interface Props {
   shop: Shop;
 }
+
+interface StorageProps {
+  name: string;
+  category: string;
+  defaultImage: string;
+}
+const MAX_STORAGE_ITEMS = 5;
+
+function addToLocalStorage(item: StorageProps) {
+  const existingItems:StorageProps[] = JSON.parse(localStorage.getItem('shop') || '[]');
+
+  const isDuplicate = existingItems.some((existingItem) => existingItem.name === item.name);
+
+  if (!isDuplicate) {
+    existingItems.push(item);
+
+    if (existingItems.length > MAX_STORAGE_ITEMS) {
+      existingItems.shift(); // 가장 오래된 항목 삭제
+    }
+
+    localStorage.setItem('shop', JSON.stringify(existingItems));
+  }
+}
 export default function SearchItem({ shop }: Props) {
   const {
     name, formattedAddress, photoToken, placeId, dist, openNow, category,
@@ -15,12 +38,18 @@ export default function SearchItem({ shop }: Props) {
   const {
     imageAlt, defaultImage, phoneNumber,
   } = getMockItem();
-
+  const storage: StorageProps = {
+    name,
+    category,
+    defaultImage,
+  };
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
   const onClick = () => {
     navigate(`/post/${name}`, { state: { placeId } });
+    addToLocalStorage(storage);
   };
+
   return (
     <button
       onClick={onClick}

@@ -234,7 +234,32 @@
     margin-top: 16px;
   }
 
+  &__content-dim {
+    display: none;
+    width: 155px;
+    height: 220px;
+    position: absolute;
+    top: 0;
+    border-radius: 4px;
+    background: #000;
+    opacity: 0.3;
+  }
+
+  &__content-dim-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  &__content-dim-icon:hover {
+    color: #ff7f23;
+  }
+
   &__content {
+    position: relative;
     width: 155px;
     height: 220px;
     border-radius: 4px;
@@ -242,6 +267,16 @@
 
     /* Shadow */
     box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+
+    // &:hover {
+    //   background-color: #222222;
+    //   opacity: 0.3;
+    // }
+    &:hover {
+      .search-recent__content-dim {
+        display: block;
+      }
+    }
   }
 
   &__content-img {
