@@ -1,13 +1,14 @@
 import styles from 'pages/SearchDetails/SearchDetails.module.scss';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Shop } from 'api/shop/entity';
 import { ReactComponent as PhoneImg } from 'assets/svg/search/phone.svg';
 import { getMockItem } from '../static/mockup';
 
 interface Props {
   shop: Shop;
+  pathname: string;
 }
-export default function SearchItem({ shop }: Props) {
+export default function SearchItem({ shop, pathname }: Props) {
   const {
     name, formattedAddress, photoToken, placeId, dist, openNow, category,
   } = shop;
@@ -17,14 +18,10 @@ export default function SearchItem({ shop }: Props) {
   } = getMockItem();
 
   const navigate = useNavigate();
-  const location = useLocation();
   const distInKm = (dist / 1000).toFixed(1);
   const onClick = () => {
-    if (location.pathname.includes('/post')) {
-      navigate(`/post/${name}`, { state: { placeId } });
-    } else {
-      navigate(`/shop/${name}`, { state: { placeId } });
-    }
+    const newPath = pathname.includes('/post') ? `/post/${name}` : `/shop/${name}`;
+    navigate(newPath, { state: { placeId } });
   };
   return (
     <button

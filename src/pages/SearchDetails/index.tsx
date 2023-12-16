@@ -37,7 +37,7 @@ export default function SearchDetails() {
 
     return shops?.map((shop: Shop) => (
       <div className={styles.details__line} key={shop.placeId}>
-        <SearchItem shop={shop} />
+        <SearchItem shop={shop} pathname={location.pathname} />
       </div>
     ));
   };
