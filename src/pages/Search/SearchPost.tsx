@@ -5,6 +5,7 @@ import SearchDetails from 'pages/SearchDetails';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useSearchForm from 'store/text';
+import { SHOP_TEXT, POST_TEXT } from 'pages/Search/static/searchText';
 import Sentence from './components/SearchBar/Sentence';
 import SearchInput from './components/SearchBar/SearchInput';
 import RollingBanner from './components/SearchBar/RollingBanner';
@@ -14,6 +15,7 @@ import useSearchingMode from './hooks/useSearchingMode';
 
 export default function SearchPost(): JSX.Element {
   const location = useLocation();
+  const subText = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
   const {
     text, handleChange, handleSubmit, isEnter, resetText,
   } = useSearchForm(location.pathname);
@@ -29,7 +31,7 @@ export default function SearchPost(): JSX.Element {
       <div className={styles.search}>
         <section>
           <NavigationBar />
-          <Sentence />
+          <Sentence subText={subText} />
           <SearchInput
             onChange={handleChange}
             onSubmit={handleSubmit}
@@ -47,7 +49,7 @@ export default function SearchPost(): JSX.Element {
           ? <SearchDetails />
           : (
             <>
-              <Sentence />
+              <Sentence subText={subText} />
               <SearchInput
                 onChange={handleChange}
                 onSubmit={handleSubmit}

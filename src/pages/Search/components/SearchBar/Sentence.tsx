@@ -1,15 +1,13 @@
-import { SHOP_TEXT, POST_TEXT } from 'pages/Search/static/searchText';
 import styles from 'pages/Search/components/SearchBar/SearchBar.module.scss';
 import { useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 
-export default function Sentence() {
-  const location = useLocation();
-  const text = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
+interface SentenceProps {
+  subText: JSX.Element[];
+}
 
-  const textIndex = useRef(Math.floor(Math.random() * text.length));
-
-  const sentence = text[textIndex.current];
+export default function Sentence({ subText }: SentenceProps) {
+  const textIndex = useRef(Math.floor(Math.random() * subText.length));
+  const sentence = subText[textIndex.current];
 
   return (
     <h1 className={styles.search__sentence}>
