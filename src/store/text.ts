@@ -1,17 +1,14 @@
 import { atom, useAtom } from 'jotai';
 import makeToast from 'utils/ts/makeToast';
 
-export const shopSearchFormAtom = atom({
+const initialSearchFormState = {
   text: '',
   isEnter: false,
   submittedText: '',
-});
+};
 
-export const postSearchFormAtom = atom({
-  text: '',
-  isEnter: false,
-  submittedText: '',
-});
+export const shopSearchFormAtom = atom(initialSearchFormState);
+export const postSearchFormAtom = atom(initialSearchFormState);
 
 const useSearchForm = (pathname: string) => {
   const searchFormAtom = pathname === '/shop' ? shopSearchFormAtom : postSearchFormAtom;
@@ -25,11 +22,7 @@ const useSearchForm = (pathname: string) => {
   };
 
   const resetText = () => {
-    setSearchForm({
-      text: '',
-      submittedText: '',
-      isEnter: false,
-    });
+    setSearchForm(initialSearchFormState);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
