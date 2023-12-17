@@ -1,39 +1,13 @@
-import React, { useState } from 'react';
 import styles from 'pages/Search/Search.module.scss';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import SearchDetails from 'pages/SearchDetails';
-import useBooleanState from 'utils/hooks/useBooleanState';
+import useSearchForm from 'store/text';
 import Recommendation from './components/SearchBar/Recommendation';
 import SearchInput from './components/SearchBar/SearchInput';
 import RollingBanner from './components/SearchBar/RollingBanner';
 import NavigationBar from './components/NavigationBar';
 import RelatedSearches from './components/RelatedSearches';
 import useSearchingMode from './hooks/useSearchingMode';
-
-const useSearchForm = () => {
-  const [text, setText] = useState('');
-  const [isEnter,,,toggle] = useBooleanState(false);
-  const [submittedText, setSubmittedText] = useState('');
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
-  };
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (text) {
-      setSubmittedText(text);
-      toggle();
-    }
-  };
-
-  return {
-    text,
-    handleChange,
-    handleSubmit,
-    submittedText,
-    isEnter,
-    toggle,
-  };
-};
 
 export default function Search(): JSX.Element {
   const {

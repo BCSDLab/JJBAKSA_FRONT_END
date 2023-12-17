@@ -14,7 +14,6 @@ const useGetFollowList = () => {
       if (last.data.empty || last.data.last) return null;
       return `cursor=${last.data.content[len - 1].id}`;
     },
-
   });
   const flatData: GetFollowListResponse = {
     content: data ? data.pages.flatMap((page) => page.data.content) : [],

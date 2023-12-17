@@ -1,0 +1,33 @@
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+$normal: #666666;
+$disabled: #c4c4c4;
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.box {
+  width: 947px;
+}
+
+.menu {
+  width: 227px;
+  height: 100%;
+
+  &__link {
+    display: block;
+    margin: 160px 0 32px;
+    background-color: transparent;
+    font-size: 32px;
+    font-weight: 700;
+    text-decoration: none;
+    color: $highlight;
+    cursor: pointer;
+  }
+}

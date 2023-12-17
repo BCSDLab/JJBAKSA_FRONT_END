@@ -29,7 +29,7 @@ function Review({
           <span className={styles.store__type}>{category}</span>
         </div>
         <button type="button" id={`open${placeId}`} onClick={() => setOpen(!isOpen)} className={styles.post__opener}>
-          <img src={isOpen ? closeArrow : openArrow} alt="post-opener" />
+          <img src={isOpen ? closeArrow : openArrow} alt="post-opener" className={styles.post__opener} />
         </button>
       </label>
       {!isLoading && reviews.map((review) => (

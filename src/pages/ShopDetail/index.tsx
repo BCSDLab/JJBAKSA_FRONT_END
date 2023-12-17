@@ -3,12 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import { fetchShop } from 'api/shop';
 import StarRatingPreview from 'components/StarRating/StarRatingPreview';
-import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import { ReactComponent as InfoIcon } from 'assets/svg/shop/info.svg';
 import styles from './ShopDetail.module.scss';
 import ImageCarousel from './components/ImageCarousel';
 import FriendReviewList from './components/ReviewList/FriendReviewList';
 import MyReviewList from './components/ReviewList/MyReviewList';
+import ScrapButton from './components/ScrapButton';
 import Map from './components/Map';
 // import mock from './mock';
 
@@ -26,11 +26,11 @@ function ShopDetail() {
   if (data) {
     const {
       // shopId,
-      // placeId,
       // periods,
-      // scrap,
       // openNow,
       // category,
+      // placeId,
+      scrap,
       name,
       formattedAddress,
       lat,
@@ -60,10 +60,7 @@ function ShopDetail() {
                 </div>
                 <div className={styles['detail-main__name']}>
                   <h1>{name}</h1>
-                  <button type="button" onClick={() => {}}>
-                    <BookMarkIcon />
-                    <span>북마크 하기</span>
-                  </button>
+                  {placeId && <ScrapButton placeId={placeId} initialScrapId={scrap} />}
                 </div>
               </div>
 
