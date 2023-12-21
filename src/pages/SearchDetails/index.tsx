@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { Shop } from 'api/shop/entity';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useSearchForm from 'store/text';
 import LoadingView from './components/LoadingView';
 import useFetchShops from './hooks/useFetchShops';
@@ -14,9 +14,10 @@ import SearchItem from './components/SearchItem';
 export default function SearchDetails() {
   const isSearching = useSearchingMode();
   const { isMobile } = useMediaQuery();
+  const location = useLocation();
   const {
-    text, handleChange, handleSubmit, isEnter, submittedText,
-  } = useSearchForm();
+    text, handleChange, handleSubmit, isEnter, submittedText, resetText,
+  } = useSearchForm(location.pathname);
   const {
     isFetching, data: shops, count,
   } = useFetchShops(submittedText);
@@ -25,8 +26,9 @@ export default function SearchDetails() {
   useEffect(() => {
     if (!isFetching && count === 0 && submittedText.length !== 0) {
       navigate('/search/not-found');
+      resetText();
     }
-  }, [isFetching, count, submittedText, navigate]);
+  }, [isFetching, count, submittedText, navigate, resetText]);
 
   const componentsController = () => {
     if (isFetching) {
@@ -35,7 +37,7 @@ export default function SearchDetails() {
 
     return shops?.map((shop: Shop) => (
       <div className={styles.details__line} key={shop.placeId}>
-        <SearchItem shop={shop} />
+        <SearchItem shop={shop} pathname={location.pathname} />
       </div>
     ));
   };

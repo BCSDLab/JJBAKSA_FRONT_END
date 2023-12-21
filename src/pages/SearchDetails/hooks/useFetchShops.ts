@@ -3,7 +3,7 @@ import useDebounce from 'utils/hooks/useDebounce';
 import { useQuery } from '@tanstack/react-query';
 import { fetchShops } from 'api/shop';
 import { ShopsParams } from 'api/shop/entity';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 const useFetchShops = (text: string) => {
   const OPTIONS = {
@@ -17,14 +17,10 @@ const useFetchShops = (text: string) => {
   const {
     isLoading, isError, data, refetch,
   } = useQuery({
-    queryKey: ['shop', location],
+    queryKey: ['shop', location, debouncedText],
     queryFn: () => fetchShops(params),
     enabled: !!location,
   });
-
-  useEffect(() => {
-    refetch();
-  }, [debouncedText, refetch]);
 
   const isFetching = isLoading || !(location);
   const shops = useMemo(() => data?.data.shopQueryResponseList, [data]);

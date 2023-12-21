@@ -6,8 +6,9 @@ import { getMockItem } from '../static/mockup';
 
 interface Props {
   shop: Shop;
+  pathname: string;
 }
-export default function SearchItem({ shop }: Props) {
+export default function SearchItem({ shop, pathname }: Props) {
   const {
     name, formattedAddress, photoToken, placeId, dist, openNow, category,
   } = shop;
@@ -19,7 +20,8 @@ export default function SearchItem({ shop }: Props) {
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
   const onClick = () => {
-    navigate(`/post/${name}`, { state: { placeId } });
+    const newPath = pathname.includes('/post') ? `/post/${name}` : `/shop/${name}`;
+    navigate(newPath, { state: { placeId } });
   };
   return (
     <button
