@@ -1,4 +1,3 @@
-import React from 'react';
 import { ReactComponent as WriteInquiryIcon } from 'assets/svg/inquiry/write-inquiry.svg';
 import styles from './Explain.module.scss';
 
@@ -6,7 +5,7 @@ export default function Explain({ className }: { className: string }): JSX.Eleme
   return (
     <div className={className}>
       <div className={styles.explain}>
-        <div className={styles.explain__svg}>
+        <div className={styles.explain__icon}>
           <WriteInquiryIcon />
         </div>
         <div className={styles.explain__title}>
