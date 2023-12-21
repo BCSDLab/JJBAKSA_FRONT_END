@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import cn from 'utils/ts/classNames';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import ToggleButton from 'components/common/ToggleButton';
 import RequiredLabel from './components/RequiredLabel';
@@ -10,8 +11,10 @@ export default function InquireForm(): JSX.Element {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const maxLength = 500;
-  // const [inquiryImages, setInquiryImages] = useState<File[]>([]);
+  const [inquiryImages, setInquiryImages] = useState<string[]>([]);
   const [isSecret, , , toggle] = useBooleanState(false);
+
+  const isAttached = inquiryImages.length > 0;
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -22,10 +25,13 @@ export default function InquireForm(): JSX.Element {
   };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event);
-    // const files = event.target.files;
-    // const filesArray = Array.from(files);
-    // setInquiryImages(prevImages => [...prevImages, ...filesArray]);
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const url = URL.createObjectURL(file);
+      if (inquiryImages.length < 3) {
+        setInquiryImages((prevImages) => [...prevImages, url]);
+      }
+    }
   };
 
   const handleSubmit = () => {
@@ -71,7 +77,11 @@ export default function InquireForm(): JSX.Element {
             value={content}
             onChange={handleContentChange}
           />
-          <div className={styles.contents__attach}>
+          <div className={cn({
+            [styles.contents__attach]: true,
+            [styles['contents__attach--attached']]: isAttached,
+          })}
+          >
             <label
               className={styles['contents__upload-button']}
               htmlFor="file"
@@ -85,10 +95,21 @@ export default function InquireForm(): JSX.Element {
               accept="image/*"
               aria-label="이미지 업로드"
               onChange={handleImageUpload}
-              multiple
             />
-            <div className={styles.contents__images}>a</div>
-            <span className={styles.contents__description}>최대 3장 첨부 가능</span>
+            <div className={styles.contents__images}>
+              {inquiryImages.map((image) => (
+                <div className={styles['contents__image-box']}>
+                  <img
+                    className={styles.contents__image}
+                    src={image}
+                    alt="문의 이미지"
+                  />
+                </div>
+              ))}
+            </div>
+            {isAttached ? null : (
+              <span className={styles.contents__description}>최대 3장 첨부 가능</span>
+            )}
           </div>
         </div>
 

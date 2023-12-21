@@ -85,6 +85,10 @@ $disabled: #c4c4c4;
     border-bottom-right-radius: 3px;
     position: relative;
 
+    &--attached {
+      height: 122px;
+    }
+
     > svg {
       cursor: pointer;
       position: absolute;
@@ -108,8 +112,21 @@ $disabled: #c4c4c4;
   }
 
   &__images {
+    height: 90px;
     position: absolute;
     left: 48px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__image-box {
+    margin-right: 32px;
+  }
+
+  &__image {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
   }
 
   &__description {
