@@ -76,7 +76,10 @@ export default function InquireForm(): JSX.Element {
         </div>
 
         <div className={styles.submit}>
-          <button type="submit" className={styles.submit__button}>
+          <button
+            className={styles.submit__button}
+            type="submit"
+          >
             등록하기
           </button>
         </div>
