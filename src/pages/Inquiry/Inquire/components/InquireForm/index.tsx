@@ -3,6 +3,7 @@ import { useState } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
+import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
 import ToggleButton from 'components/common/ToggleButton';
 import RequiredLabel from './components/RequiredLabel';
 import styles from './InquireForm.module.scss';
@@ -24,7 +25,7 @@ export default function InquireForm(): JSX.Element {
     setContent(event.target.value);
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       const url = URL.createObjectURL(file);
@@ -34,9 +35,15 @@ export default function InquireForm(): JSX.Element {
     }
   };
 
-  const handleSubmit = () => {
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const index = parseInt(event.currentTarget.name, 10);
+    setInquiryImages((prevImages) => prevImages.filter((_, i) => i !== index));
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
+    event.preventDefault();
     console.log(content);
-    // console.log(inquiryImages);
+    console.log(inquiryImages);
     console.log(isSecret);
     console.log(title);
   };
@@ -84,26 +91,35 @@ export default function InquireForm(): JSX.Element {
           >
             <label
               className={styles['contents__upload-button']}
-              htmlFor="file"
+              htmlFor="upload"
             >
               <UploadIcon />
             </label>
             <input
               className={styles.contents__input}
-              id="file"
+              id="upload"
               type="file"
               accept="image/*"
               aria-label="이미지 업로드"
-              onChange={handleImageUpload}
+              onChange={handleUpload}
             />
             <div className={styles.contents__images}>
-              {inquiryImages.map((image) => (
+              {inquiryImages.map((image, index) => (
                 <div className={styles['contents__image-box']}>
                   <img
                     className={styles.contents__image}
                     src={image}
-                    alt="문의 이미지"
+                    alt={`문의 이미지${index}`}
                   />
+                  <button
+                    className={styles['contents__delete-button']}
+                    type="button"
+                    aria-label="delete"
+                    name={`${index}`}
+                    onClick={handleDelete}
+                  >
+                    <DeleteIcon />
+                  </button>
                 </div>
               ))}
             </div>

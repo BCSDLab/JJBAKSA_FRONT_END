@@ -121,12 +121,20 @@ $disabled: #c4c4c4;
 
   &__image-box {
     margin-right: 32px;
+    position: relative;
   }
 
   &__image {
     width: 90px;
     height: 90px;
     border-radius: 10px;
+  }
+
+  &__delete-button {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    cursor: pointer;
   }
 
   &__description {
