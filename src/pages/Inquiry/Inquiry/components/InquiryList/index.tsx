@@ -8,15 +8,18 @@ import React, {
 import useInquiryList from 'pages/Inquiry/Inquiry/hooks/useInquiryList';
 import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/components/InquiryBlock';
 import { InquiryContent } from 'api/inquiry/entity';
+import cn from 'utils/ts/classNames';
 import styles from './InquiryList.module.scss';
+
+interface InquiryListProps {
+  className: string;
+  typePath: string;
+}
 
 export default function InquiryList({
   className,
   typePath,
-}: {
-  className?: string;
-  typePath: string;
-}): JSX.Element {
+}: InquiryListProps): JSX.Element {
   const [dateCursor, setDateCursor] = useState<string | null>(null);
   const [idCursor, setIdCursor] = useState<number>(0);
   const [allData, setAllData] = useState<InquiryContent[]>([]);
@@ -27,8 +30,10 @@ export default function InquiryList({
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   const loader = useRef<HTMLDivElement | null>(null);
+  const [isGradientVisible, setIsGradientVisible] = useState(false);
+  const gradient = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => { // all, my, search params 바뀔 때 allData 초기화
+  useEffect(() => {
     setAllData([]);
     setDateCursor(null);
     setIdCursor(0);
@@ -44,12 +49,12 @@ export default function InquiryList({
   }, [inquiryData]);
 
   useEffect(() => {
-    function handleObserver(entities: IntersectionObserverEntry[]) {
+    const handleObserver = (entities: IntersectionObserverEntry[]) => {
       const target = entities[0];
       if (target.isIntersecting && !isLoading) {
         loadMoreData();
       }
-    }
+    };
 
     const observer = new IntersectionObserver(handleObserver, { threshold: 0.5 });
     if (loader.current) {
@@ -57,22 +62,52 @@ export default function InquiryList({
     }
   }, [loadMoreData, isLoading]);
 
+  const handleGradientObserver = (entities: IntersectionObserverEntry[]) => {
+    const target = entities[0];
+    if (target.isIntersecting) {
+      setIsGradientVisible(false);
+    } else {
+      setIsGradientVisible(true);
+    }
+  };
+
+  useEffect(() => {
+    const gradientObserver = new IntersectionObserver(handleGradientObserver, { threshold: 1.0 });
+    if (gradient.current) {
+      gradientObserver.observe(gradient.current);
+    }
+
+    return () => {
+      if (gradient.current) {
+        gradientObserver.unobserve(gradient.current);
+      }
+    };
+  }, [isLoading]);
+
   return (
-    <div className={className}>
+    <div className={cn({
+      [styles.container]: true,
+      [className]: !!className,
+    })}
+    >
+      {isGradientVisible ? <div className={styles.list__gradient} /> : null}
       <div className={styles.list}>
         {allData && allData.length === 0 ? (
           <p className={styles['list--no-data']}>
             문의 내역이 없습니다.
           </p>
         ) : (
-          allData.map((item) => (
-            <InquiryBlock
-              key={item.id}
-              content={item}
-              expandedId={expandedId}
-              setExpandedId={setExpandedId}
-            />
-          ))
+          <>
+            <div ref={gradient} />
+            {allData.map((item) => (
+              <InquiryBlock
+                key={item.id}
+                content={item}
+                expandedId={expandedId}
+                setExpandedId={setExpandedId}
+              />
+            ))}
+          </>
         )}
         <div ref={loader} className={styles.table__floor} />
       </div>

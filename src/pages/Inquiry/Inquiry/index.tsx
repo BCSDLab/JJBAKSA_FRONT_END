@@ -83,7 +83,7 @@ export default function Inquiry(): JSX.Element {
           </li>
         </ul>
 
-        <div className={styles['contents-box']}>
+        <div className={styles['content-box']}>
           <div className={styles['search-bar']}>
             <SearchBar
               className={styles['search-bar__item']}
