@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
@@ -6,12 +7,32 @@ import RequiredLabel from './components/RequiredLabel';
 import styles from './InquireForm.module.scss';
 
 export default function InquireForm(): JSX.Element {
+  const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const maxLength = 500;
+  // const [inquiryImages, setInquiryImages] = useState<File[]>([]);
   const [isSecret, , , toggle] = useBooleanState(false);
+
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
 
   const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(event.target.value);
+  };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event);
+    // const files = event.target.files;
+    // const filesArray = Array.from(files);
+    // setInquiryImages(prevImages => [...prevImages, ...filesArray]);
+  };
+
+  const handleSubmit = () => {
+    console.log(content);
+    // console.log(inquiryImages);
+    console.log(isSecret);
+    console.log(title);
   };
 
   return (
@@ -27,6 +48,8 @@ export default function InquireForm(): JSX.Element {
             id="inquiryTitle"
             maxLength={50}
             placeholder="제목을 작성해주세요."
+            value={title}
+            onChange={handleTitleChange}
           />
         </div>
 
@@ -49,12 +72,20 @@ export default function InquireForm(): JSX.Element {
             onChange={handleContentChange}
           />
           <div className={styles.contents__attach}>
-            <UploadIcon />
-            <input
+            <label
               className={styles['contents__upload-button']}
+              htmlFor="file"
+            >
+              <UploadIcon />
+            </label>
+            <input
+              className={styles.contents__input}
+              id="file"
               type="file"
               accept="image/*"
               aria-label="이미지 업로드"
+              onChange={handleImageUpload}
+              multiple
             />
             <div className={styles.contents__images}>a</div>
             <span className={styles.contents__description}>최대 3장 첨부 가능</span>
@@ -79,6 +110,7 @@ export default function InquireForm(): JSX.Element {
           <button
             className={styles.submit__button}
             type="submit"
+            onClick={handleSubmit}
           >
             등록하기
           </button>

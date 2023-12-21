@@ -94,6 +94,16 @@ $disabled: #c4c4c4;
   }
 
   &__upload-button {
+    color: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__input {
     display: none;
   }
 
