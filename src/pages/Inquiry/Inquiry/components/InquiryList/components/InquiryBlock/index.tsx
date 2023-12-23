@@ -27,6 +27,10 @@ export default function InquiryBlock({
       toggleExpand(id);
     }
   }
+  // console.log(content);
+  // console.log(content.content);
+  // 쩝박 백엔드 여쭤봐서 content.content 제대로 서버에서 주는 지 확인
+  // 이미지도 출력하도록
 
   return (
     <button
@@ -40,6 +44,14 @@ export default function InquiryBlock({
     >
       <p className={styles.block__title}>
         {content.title}
+      </p>
+      <p
+        className={cn({
+          [styles.block__content]: true,
+          [styles['block__content--visible']]: isExpanded,
+        })}
+      >
+        {content.content}
       </p>
 
       <p className={styles.block__info}>
