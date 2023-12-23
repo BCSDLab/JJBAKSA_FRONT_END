@@ -24,6 +24,7 @@ export default function InquireForm(): JSX.Element {
     isSecret,
   };
   const submit = useSubmitInquiry();
+  const isSubmissionReady = !!(inquiryData.title.trim() && inquiryData.content.trim());
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -80,13 +81,14 @@ export default function InquireForm(): JSX.Element {
 
   const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    if (!inquiryData.title.trim() || !inquiryData.content.trim()) {
+    if (!isSubmissionReady) {
       makeToast('error', '필수 항목을 기입해주세요.');
       return;
     }
 
     sessionStorage.removeItem('inquiryForm');
     submit(inquiryData);
+    // 이미지 저장 방법
   };
 
   return (
@@ -187,7 +189,10 @@ export default function InquireForm(): JSX.Element {
 
         <div className={styles.submit}>
           <button
-            className={styles.submit__button}
+            className={cn({
+              [styles.submit__button]: true,
+              [styles['submit__button--active']]: isSubmissionReady,
+            })}
             type="submit"
             onClick={handleSubmit}
           >
