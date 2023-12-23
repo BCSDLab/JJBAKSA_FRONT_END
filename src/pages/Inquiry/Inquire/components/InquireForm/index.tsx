@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import useSubmitInquiry from 'pages/Inquiry/hooks/useSubmitInquiry';
 import cn from 'utils/ts/classNames';
+import makeToast from 'utils/ts/makeToast';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
 import ToggleButton from 'components/common/ToggleButton';
@@ -13,7 +14,7 @@ export default function InquireForm(): JSX.Element {
   const [content, setContent] = useState('');
   const maxLength = 500;
   const [inquiryImages, setInquiryImages] = useState<string[]>([]);
-  const [isSecret, , , toggle] = useBooleanState(false);
+  const [isSecret, , , toggle, setValue] = useBooleanState(false);
   const isAttached = inquiryImages.length > 0;
 
   const inquiryData = {
@@ -47,13 +48,45 @@ export default function InquireForm(): JSX.Element {
     setInquiryImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
+  useEffect(() => {
+    const handleSave = () => {
+      const currentData = {
+        title, content, inquiryImages, isSecret,
+      };
+      sessionStorage.setItem('inquiryForm', JSON.stringify(currentData));
+    };
+
+    const debouncedSave = setTimeout(handleSave, 1000);
+
+    return () => clearTimeout(debouncedSave);
+  }, [title, content, inquiryImages, isSecret]);
+
+  useEffect(() => {
+    const savedData = sessionStorage.getItem('inquiryForm');
+    if (savedData) {
+      const {
+        title: savedTitle,
+        content: savedContent,
+        inquiryImages: savedInquiryImages,
+        isSecret: savedIsSecret,
+      } = JSON.parse(savedData);
+
+      setTitle(savedTitle || '');
+      setContent(savedContent || '');
+      setInquiryImages(Array.isArray(savedInquiryImages) ? savedInquiryImages : []);
+      setValue(savedIsSecret);
+    }
+  }, [setValue]);
+
   const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    if (!inquiryData.title.trim() || !inquiryData.content.trim()) {
+      makeToast('error', '필수 항목을 기입해주세요.');
+      return;
+    }
+
+    sessionStorage.removeItem('inquiryForm');
     submit(inquiryData);
-    // swagger
-    // 성공 시 navigate
-    // 정보 임시 저장, 실패 시 alert 다시
-    // 폼 안 채우면 형식을 모두 기입해주세요.
   };
 
   return (
