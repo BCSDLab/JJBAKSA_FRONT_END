@@ -50,3 +50,10 @@ export interface InquiryProps {
   idCursor: number | null;
   size: number;
 }
+
+export interface SubmitInquiryProps {
+  title: string;
+  content: string;
+  inquiryImages: string[] | null;
+  isSecret: boolean;
+}

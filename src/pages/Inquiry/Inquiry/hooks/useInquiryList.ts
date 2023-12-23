@@ -1,4 +1,4 @@
-import getInquiry from 'api/inquiry';
+import getInquiry from 'api/inquiry/inquiry';
 import { useQuery } from '@tanstack/react-query';
 import { InquiryProps } from 'api/inquiry/entity';
 

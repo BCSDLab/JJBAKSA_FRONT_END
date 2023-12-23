@@ -1,5 +1,5 @@
-import { GetInquiryResponse, InquiryProps } from './entity';
-import inquiryApi from './inquiryApiClient';
+import { GetInquiryResponse, InquiryProps } from '../entity';
+import inquiryApi from '../inquiryApiClient';
 
 const getInquiry = async ({
   queryType: typePath, dateCursor, idCursor, size,

@@ -1,21 +1,30 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
 import ToggleButton from 'components/common/ToggleButton';
+import useSubmitInquiry from 'pages/Inquiry/Inquire/hooks/useSubmitInquiry';
 import RequiredLabel from './components/RequiredLabel';
 import styles from './InquireForm.module.scss';
 
 export default function InquireForm(): JSX.Element {
+  const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const maxLength = 500;
   const [inquiryImages, setInquiryImages] = useState<string[]>([]);
   const [isSecret, , , toggle] = useBooleanState(false);
-
   const isAttached = inquiryImages.length > 0;
+
+  const inquiryData = {
+    title,
+    content,
+    inquiryImages,
+    isSecret,
+  };
+  const submit = useSubmitInquiry();
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -42,10 +51,12 @@ export default function InquireForm(): JSX.Element {
 
   const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    console.log(content);
-    console.log(inquiryImages);
-    console.log(isSecret);
-    console.log(title);
+    submit(inquiryData);
+    navigate('/inquiry/all');
+    // swagger
+    // 성공 시 navigate
+    // 정보 임시 저장, 실패 시 alert 다시
+    // 폼 안 채우면 형식을 모두 기입해주세요.
   };
 
   return (
@@ -89,6 +100,7 @@ export default function InquireForm(): JSX.Element {
             [styles['contents__attach--attached']]: isAttached,
           })}
           >
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label
               className={styles['contents__upload-button']}
               htmlFor="upload"
@@ -105,7 +117,7 @@ export default function InquireForm(): JSX.Element {
             />
             <div className={styles.contents__images}>
               {inquiryImages.map((image, index) => (
-                <div className={styles['contents__image-box']}>
+                <div className={styles['contents__image-box']} key={image}>
                   <img
                     className={styles.contents__image}
                     src={image}
