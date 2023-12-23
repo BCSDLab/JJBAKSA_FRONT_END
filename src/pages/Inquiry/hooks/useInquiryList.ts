@@ -6,7 +6,7 @@ const useInquiryList = ({
   queryType, dateCursor, idCursor, size,
 }: InquiryProps) => {
   const { isLoading, isError, data } = useQuery({
-    queryKey: ['Inquiry', queryType, dateCursor, idCursor, size],
+    queryKey: ['inquiry'],
     queryFn: () => getInquiry({
       queryType, dateCursor, idCursor, size,
     }),

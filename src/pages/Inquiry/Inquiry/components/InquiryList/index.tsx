@@ -5,7 +5,7 @@ import React, {
   useRef,
   useCallback,
 } from 'react';
-import useInquiryList from 'pages/Inquiry/Inquiry/hooks/useInquiryList';
+import useInquiryList from 'pages/Inquiry/hooks/useInquiryList';
 import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/components/InquiryBlock';
 import { InquiryContent } from 'api/inquiry/entity';
 import cn from 'utils/ts/classNames';
