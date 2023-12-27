@@ -1,15 +1,18 @@
 import { useParams } from 'react-router-dom';
+
 import { useQuery } from '@tanstack/react-query';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+
 import { fetchShop } from 'api/shop';
-import StarRatingPreview from 'components/StarRating/StarRatingPreview';
 import { ReactComponent as InfoIcon } from 'assets/svg/shop/info.svg';
+import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+import StarRatingPreview from 'components/StarRating/StarRatingPreview';
+import ImageCarousel from 'pages/ShopDetail/components/ImageCarousel/index';
+import Map from 'pages/ShopDetail/components/Map/index';
+import FriendReviewList from 'pages/ShopDetail/components/ReviewList/FriendReviewList';
+import MyReviewList from 'pages/ShopDetail/components/ReviewList/MyReviewList';
+import ScrapButton from 'pages/ShopDetail/components/ScrapButton/index';
+
 import styles from './ShopDetail.module.scss';
-import ImageCarousel from './components/ImageCarousel';
-import FriendReviewList from './components/ReviewList/FriendReviewList';
-import MyReviewList from './components/ReviewList/MyReviewList';
-import ScrapButton from './components/ScrapButton';
-import Map from './components/Map';
 // import mock from './mock';
 
 const formatPeriod = (period: [number, number]) =>

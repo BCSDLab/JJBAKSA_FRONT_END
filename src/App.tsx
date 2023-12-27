@@ -1,33 +1,34 @@
+import { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import AuthRoute from 'components/common/AuthRoute';
 import Toast from 'components/toast';
 import DefaultLayout from 'layout/DefaultLayout';
+import FindIDPassword from 'pages/Auth/FindIdPassword';
+import ChangePassword from 'pages/Auth/FindIdPassword/mobile/ChangePassword';
+import VerifyField from 'pages/Auth/FindIdPassword/mobile/VerifyField';
+import ChangePasswordPC from 'pages/Auth/FindIdPassword/PC/ChangePassword';
+import Login from 'pages/Auth/Login';
+import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
+import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
+import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
 import Complete from 'pages/Auth/Signup/CompletePage';
 import SignUp from 'pages/Auth/Signup/SignupPage/index';
 import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage';
-import Login from 'pages/Auth/Login';
+import FollowProfile from 'pages/Follow/components/FollowProfile';
+import FollowPage from 'pages/Follow/index';
+import Inquire from 'pages/Inquiry/Inquire';
+import Inquiry from 'pages/Inquiry/Inquiry';
+import MyPage from 'pages/MyPage';
+import Notice from 'pages/Notice';
 import Post from 'pages/Post';
-import VerifyField from 'pages/Auth/FindIdPassword/mobile/VerifyField';
-import { Routes, Route } from 'react-router-dom';
-import ChangePassword from 'pages/Auth/FindIdPassword/mobile/ChangePassword';
-import { Suspense } from 'react';
-import FollowPage from 'pages/Follow';
+import NotFoundPage from 'pages/Search/components/NotFoundPage';
+import SearchPost from 'pages/Search/SearchPost';
+import SearchShop from 'pages/Search/SearchShop';
 import Setting from 'pages/Setting';
 import IdChange from 'pages/Setting/Mobile/IdChange';
-import AuthRoute from 'components/common/AuthRoute';
 import Withdrawal from 'pages/Setting/Withdrawal';
-import Inquiry from 'pages/Inquiry/Inquiry';
-import Inquire from 'pages/Inquiry/Inquire';
-import Notice from 'pages/Notice';
-import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
-import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
-import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
-import MyPage from 'pages/MyPage';
-import NotFoundPage from 'pages/Search/components/NotFoundPage';
-import FollowProfile from 'pages/Follow/components/FollowProfile';
-import FindIDPassword from 'pages/Auth/FindIdPassword';
-import ChangePasswordPC from 'pages/Auth/FindIdPassword/PC/ChangePassword';
 import ShopDetail from 'pages/ShopDetail';
-import SearchShop from 'pages/Search/SearchShop';
-import SearchPost from 'pages/Search/SearchPost';
 
 export default function App(): JSX.Element {
   return (

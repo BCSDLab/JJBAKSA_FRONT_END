@@ -1,8 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
-import cn from 'utils/ts/classNames';
+
+import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth } from 'store/auth';
+import cn from 'utils/ts/classNames';
+
 import styles from './BottomNavigation.module.scss';
-import SpriteSvg from '../SpriteSvg';
 
 export default function BottomNavigation(): JSX.Element {
   const { pathname } = useLocation();

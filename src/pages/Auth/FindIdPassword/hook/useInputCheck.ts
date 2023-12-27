@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const useInputCheck = () => {
   const inputRef = useRef<HTMLInputElement[] | null[]>([]);

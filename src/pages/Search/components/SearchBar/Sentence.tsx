@@ -1,5 +1,6 @@
-import styles from 'pages/Search/components/SearchBar/SearchBar.module.scss';
 import { useRef } from 'react';
+
+import styles from './SearchBar.module.scss';
 
 interface SentenceProps {
   subText: JSX.Element[];

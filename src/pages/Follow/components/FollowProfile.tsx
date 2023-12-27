@@ -1,14 +1,16 @@
-import defaultImage from 'assets/images/follow/default-image.png';
 import { useEffect, useState } from 'react';
-import cn from 'utils/ts/classNames';
 import { useLocation } from 'react-router-dom';
+
 import { User } from 'api/user/entity';
+import defaultImage from 'assets/images/follow/default-image.png';
+import FollowReview from 'pages/Follow/components/FollowReview';
+import useDeleteFollow from 'pages/Follow/hooks/useDeleteFollow';
+import useGetFollowerReview from 'pages/Follow/hooks/useGetFollowerReview';
+import useGetFollowerReviewCount from 'pages/Follow/hooks/useGetFollowerReviewCount';
+import useRequestAndUpdate from 'pages/Follow/hooks/useRequestAndUpdate';
+import cn from 'utils/ts/classNames';
+
 import styles from './FollowProfile.module.scss';
-import FollowReview from './FollowReview';
-import useDeleteFollow from '../hooks/useDeleteFollow';
-import useRequestAndUpdate from '../hooks/useRequestAndUpdate';
-import useGetFollowerReview from '../hooks/useGetFollowerReview';
-import useGetFollowerReviewCount from '../hooks/useGetFollowerReviewCount';
 
 const useDeleteState = () => {
   const [isFollowed, setIsFollowed] = useState(true);

@@ -1,5 +1,6 @@
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
+
 import styles from './TextEditor.module.scss';
 
 interface Props {

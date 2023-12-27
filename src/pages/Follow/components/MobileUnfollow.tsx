@@ -1,7 +1,10 @@
 import { createPortal } from 'react-dom';
-import defaultImage from 'assets/images/follow/default-image.png';
+
 import { UseMutateFunction } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
+
+import defaultImage from 'assets/images/follow/default-image.png';
+
 import styles from './MobileUnfollow.module.scss';
 
 interface Props {

@@ -1,5 +1,6 @@
-import { fetchTrendings } from 'api/shop';
 import { useQuery } from '@tanstack/react-query';
+
+import { fetchTrendings } from 'api/shop';
 
 const useTrendingList = () => {
   const {

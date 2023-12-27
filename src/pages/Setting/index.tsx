@@ -1,6 +1,6 @@
+import MobileSetting from 'pages/Setting/Mobile/index';
+import PcSetting from 'pages/Setting/PC/index';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import MobileSetting from './Mobile';
-import PcSetting from './PC';
 
 export default function Setting() {
   const { isMobile } = useMediaQuery();

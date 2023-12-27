@@ -1,5 +1,6 @@
-import { requestFollow } from 'api/follow';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { requestFollow } from 'api/follow';
 import makeToast from 'utils/ts/makeToast';
 
 // 팔로우 요청 후 유저 목록을 다시 받아와 요청중 상태로 변경

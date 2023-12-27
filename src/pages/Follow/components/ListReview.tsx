@@ -1,6 +1,7 @@
-import { ReactComponent as Rating } from 'assets/svg/follow/fill-star.svg';
 import { ReactComponent as EmptyStar } from 'assets/svg/follow/empty-star.svg';
+import { ReactComponent as Rating } from 'assets/svg/follow/fill-star.svg';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+
 import styles from './ListReview.module.scss';
 
 interface Props {

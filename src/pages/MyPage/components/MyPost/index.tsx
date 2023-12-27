@@ -1,7 +1,8 @@
 import notExist from 'assets/svg/mypage/not-exist.svg';
+import MobileBoard from 'pages/MyPage/components/MobileBoard/index';
 import useReviwedShops from 'pages/MyPage/hooks/useReviewedShops';
+
 import styles from './MyPost.module.scss';
-import MobileBoard from '../MobileBoard';
 
 export default function MyPost() {
   const { shops } = useReviwedShops();

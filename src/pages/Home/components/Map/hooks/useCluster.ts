@@ -1,8 +1,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable react-hooks/exhaustive-deps */
-import MarkerClustering from 'utils/js/MarkerClustering';
 import { useEffect, useState } from 'react';
-import { ClusterHtml } from '../components/MarkerHtml';
+
+import { ClusterHtml } from 'pages/Home/components/Map/components/MarkerHtml/index';
+import MarkerClustering from 'utils/js/MarkerClustering';
 
 interface ClusterProps {
   markerArray: (naver.maps.Marker | undefined)[];

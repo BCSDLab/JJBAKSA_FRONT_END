@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import useBooleanState from 'utils/hooks/useBooleanState';
+
 import getAddress from 'api/location';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import makeToast from 'utils/ts/makeToast';
 
 export default function useHome() {

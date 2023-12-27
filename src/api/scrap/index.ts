@@ -1,4 +1,5 @@
 import scrapApi from './scrapApiClient';
+
 import type { GetMyScrapShopResponse } from './entity';
 
 export const postScrapShop = (shopId: string) =>

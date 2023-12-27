@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
-import Copyright from 'components/Auth/Copyright';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
-import AuthDetail from 'components/Auth/AuthDetail';
+
 import { ReactComponent as Progress } from 'assets/svg/auth/first-progress.svg';
+import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
+import AuthDetail from 'components/Auth/AuthDetail';
+import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+import Copyright from 'components/Auth/Copyright';
+import PRIVACY from 'pages/Auth/Signup/static/privacy';
+
 import styles from './TermsOfService.module.scss';
-import PRIVACY from '../static/privacy';
 
 export default function TermsOfService() {
   const navigate = useNavigate();

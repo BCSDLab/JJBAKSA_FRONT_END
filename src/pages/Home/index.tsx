@@ -1,8 +1,9 @@
-import useHome from './components/Map/hooks/useHome';
-import Location from './components/Map/components/Location/index';
-import Map from './components/Map';
+import LocationInfo from 'pages/Home/components/LocationInfo/index';
+import Location from 'pages/Home/components/Map/components/Location/index';
+import useHome from 'pages/Home/components/Map/hooks/useHome';
+import Map from 'pages/Home/components/Map/index';
+
 import styles from './Home.module.scss';
-import LocationInfo from './components/LocationInfo';
 
 export default function Home(): JSX.Element {
   const {

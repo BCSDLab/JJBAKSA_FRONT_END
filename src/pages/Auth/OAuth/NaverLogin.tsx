@@ -1,7 +1,9 @@
-import axios from 'axios';
-import { API_PATH } from 'config/constants';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import axios from 'axios';
+
+import { API_PATH } from 'config/constants';
 import { useUpdateAuth } from 'store/auth';
 
 export default function NaverLogin() {

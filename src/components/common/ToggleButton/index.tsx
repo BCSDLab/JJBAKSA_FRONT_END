@@ -1,4 +1,5 @@
 import cn from 'utils/ts/classNames';
+
 import styles from './ToggleButton.module.scss';
 
 interface ToggleButtonProps {

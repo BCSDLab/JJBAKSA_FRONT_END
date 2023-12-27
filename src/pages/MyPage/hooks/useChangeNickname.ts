@@ -1,6 +1,8 @@
-import { patchNickname } from 'api/mypage';
 import { useRef } from 'react';
+
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { patchNickname } from 'api/mypage';
 
 const useChangeNickname = () => {
   const nicknameRef = useRef<HTMLInputElement>(null);

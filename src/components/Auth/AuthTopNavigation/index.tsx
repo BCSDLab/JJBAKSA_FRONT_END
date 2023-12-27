@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+
 import AuthTitle from 'components/Auth/AuthTitle';
+
 import styles from './AuthTopNavigation.module.scss';
 
 export default function AuthTopNavigation() {

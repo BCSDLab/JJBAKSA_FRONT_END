@@ -1,4 +1,5 @@
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+
 import styles from './BoardSelector.module.scss';
 
 type SelectorProps = {

@@ -1,8 +1,9 @@
-import { getMe } from 'api/user';
-import { refreshAccessToken } from 'api/user/userApiClient';
 import { atom, useAtomValue, useSetAtom } from 'jotai';
 import { atomWithDefault } from 'jotai/utils';
+
+import { getMe } from 'api/user';
 import { User } from 'api/user/entity';
+import { refreshAccessToken } from 'api/user/userApiClient';
 
 const getAuth = async (): Promise< User | null> => {
   const token = {

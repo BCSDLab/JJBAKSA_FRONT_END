@@ -1,8 +1,10 @@
 import React from 'react';
-import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
+
 import { InquiryContent } from 'api/inquiry/entity';
+import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
+import Answer from 'pages/Inquiry/Inquiry/components/InquiryList/components/InquiryBlock/components/Answer/index';
 import cn from 'utils/ts/classNames';
-import Answer from './components/Answer';
+
 import styles from './InquiryBlock.module.scss';
 
 interface InquiryBlockProps {

@@ -1,6 +1,8 @@
-import { getFollowReview } from 'api/follow';
 import { useEffect } from 'react';
+
 import { useInfiniteQuery } from '@tanstack/react-query';
+
+import { getFollowReview } from 'api/follow';
 
 const useGetFollowerReview = (id: number) => {
   const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({

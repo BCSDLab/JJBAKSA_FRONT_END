@@ -1,19 +1,20 @@
-import React from 'react';
-import { FormProvider, UseFormSetError, useForm } from 'react-hook-form';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+import { FormProvider, useForm, UseFormSetError } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import Copyright from 'components/Auth/Copyright';
+
 import { register, sendRegisterEmail } from 'api/user';
-import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
-import AuthDetail from 'components/Auth/AuthDetail';
 import { ReactComponent as Progress } from 'assets/svg/auth/second-progress.svg';
+import AuthDetail from 'components/Auth/AuthDetail';
+import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+import Copyright from 'components/Auth/Copyright';
+import useRouteCheck from 'pages/Auth/Signup/hooks/useRouteCheck';
+import EmailInput from 'pages/Auth/Signup/SignupPage/components/EmailInput';
+import IdInput from 'pages/Auth/Signup/SignupPage/components/IdInput';
+import PasswordCheckInput from 'pages/Auth/Signup/SignupPage/components/PasswordCheckInput';
+import PasswordInput from 'pages/Auth/Signup/SignupPage/components/PasswordInput';
+import { SignUpFormData } from 'pages/Auth/Signup/SignupPage/entity';
+import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
+
 import styles from './SignUp.module.scss';
-import useRouteCheck from '../hooks/useRouteCheck';
-import { SignUpFormData } from './entity';
-import IdInput from './components/IdInput';
-import EmailInput from './components/EmailInput';
-import PasswordInput from './components/PasswordInput';
-import PasswordCheckInput from './components/PasswordCheckInput';
 
 const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) => {
   const navigate = useNavigate();

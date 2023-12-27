@@ -1,10 +1,11 @@
-import cn from 'utils/ts/classNames';
-import styles from 'pages/Search/components/RelatedSearches/RelatedSearches.module.scss';
+import RelatedItem from 'pages/Search/components/RelatedSearches/components/RelatedItem';
+import ToggleButton from 'pages/Search/components/RelatedSearches/components/ToggleButton';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import useFetchAutoComplete from 'pages/SearchDetails/hooks/useFetchAutoComplete';
 import useBooleanState from 'utils/hooks/useBooleanState';
-import RelatedItem from './components/RelatedItem';
-import ToggleButton from './components/ToggleButton';
+import cn from 'utils/ts/classNames';
+
+import styles from './RelatedSearches.module.scss';
 
 interface Props {
   text: string,

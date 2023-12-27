@@ -1,9 +1,11 @@
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { useClearAuth } from 'store/auth';
+
 import { ReactComponent as Favicon } from 'assets/svg/common/favicon.svg';
-import style from 'pages/Setting/PC/PasswordSuccessModal.module.scss';
+import { useClearAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
+
+import style from '../PC/PasswordSuccessModal.module.scss';
 
 interface Props {
   children: React.ReactNode;

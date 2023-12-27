@@ -1,19 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+
+import { modify } from 'api/user';
+import { ReactComponent as Complete } from 'assets/svg/auth/complete.svg';
+import { ReactComponent as Progress } from 'assets/svg/auth/third-progress.svg';
+import AuthDetail from 'components/Auth/AuthDetail';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
 import { NICKNAME_REGEXP } from 'components/Auth/static/Regexp';
-import AuthDetail from 'components/Auth/AuthDetail';
-import { ReactComponent as Progress } from 'assets/svg/auth/third-progress.svg';
-import { ReactComponent as Complete } from 'assets/svg/auth/complete.svg';
+import CompleteModal from 'pages/Auth/Signup/CompletePage/components/CompleteModal';
+import useRouteCheck from 'pages/Auth/Signup/hooks/useRouteCheck';
+import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
 import useBooleanState from 'utils/hooks/useBooleanState';
-import { modify } from 'api/user';
 import makeToast from 'utils/ts/makeToast';
+
 import styles from './Complete.module.scss';
-import useRouteCheck from '../hooks/useRouteCheck';
-import { ERROR_MESSAGE } from '../static/signUp';
-import CompleteModal from './components/CompleteModal';
 
 interface CompleteFormData {
   nickname: string;

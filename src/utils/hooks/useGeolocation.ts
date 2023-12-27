@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
+
 import { useLocation } from 'store/location';
 
 export default function useGeolocation(options = {}) {

@@ -1,8 +1,10 @@
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { API_PATH } from 'config/constants';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import axios, { AxiosResponse } from 'axios';
 import qs from 'qs';
+
+import { API_PATH } from 'config/constants';
 import { useUpdateAuth } from 'store/auth';
 
 interface KakaoResponse {

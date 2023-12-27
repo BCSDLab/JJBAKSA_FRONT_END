@@ -1,5 +1,6 @@
-import { cancelFollow } from 'api/follow';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { cancelFollow } from 'api/follow';
 
 const useCancelFollow = () => {
   const queryClient = useQueryClient();

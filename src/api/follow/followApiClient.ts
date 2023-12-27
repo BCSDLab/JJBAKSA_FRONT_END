@@ -1,5 +1,6 @@
-import { API_PATH } from 'config/constants';
 import axios from 'axios';
+
+import { API_PATH } from 'config/constants';
 
 const followApi = axios.create({
   baseURL: `${API_PATH}`,

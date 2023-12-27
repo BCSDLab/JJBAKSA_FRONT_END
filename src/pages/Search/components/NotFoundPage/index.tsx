@@ -1,5 +1,6 @@
-import styles from 'pages/Search/components/NotFoundPage/NotFoundPage.module.scss';
 import img from 'assets/images/search/not-found-img.jpeg';
+
+import styles from './NotFoundPage.module.scss';
 
 export default function NotFoundPage() {
   return (

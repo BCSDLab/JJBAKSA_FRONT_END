@@ -1,17 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import styles from 'pages/Search/Search.module.scss';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
-import SearchDetails from 'pages/SearchDetails';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import NavigationBar from 'pages/Search/components/NavigationBar/index';
+import RelatedSearches from 'pages/Search/components/RelatedSearches/index';
+import RollingBanner from 'pages/Search/components/SearchBar/RollingBanner';
+import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
+import Sentence from 'pages/Search/components/SearchBar/Sentence';
+import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
+import { POST_TEXT, SHOP_TEXT } from 'pages/Search/static/searchText';
+import SearchDetails from 'pages/SearchDetails';
 import useSearchForm from 'store/text';
-import { SHOP_TEXT, POST_TEXT } from 'pages/Search/static/searchText';
-import Sentence from './components/SearchBar/Sentence';
-import SearchInput from './components/SearchBar/SearchInput';
-import RollingBanner from './components/SearchBar/RollingBanner';
-import NavigationBar from './components/NavigationBar';
-import RelatedSearches from './components/RelatedSearches';
-import useSearchingMode from './hooks/useSearchingMode';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
+
+import styles from './Search.module.scss';
 
 export default function SearchShop(): JSX.Element {
   const location = useLocation();

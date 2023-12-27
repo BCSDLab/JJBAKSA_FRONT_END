@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
-import useBooleanState from 'utils/hooks/useBooleanState';
+
+import EnterStarRateContainer from 'components/StarRating/EnterStarRateContainer';
+import LeaveStarRateContainer from 'components/StarRating/LeaveStarRateContainer';
+import StarRateContext from 'components/StarRating/StarRateContext';
 import { useRate } from 'store/review';
-import StarRateContext from './StarRateContext';
-import EnterStarRateContainer from './EnterStarRateContainer';
-import LeaveStarRateContainer from './LeaveStarRateContainer';
+import useBooleanState from 'utils/hooks/useBooleanState';
 
 export default function StarRating({ onClick }: { onClick: () => void }) {
   const [rating, setRating] = useRate();
