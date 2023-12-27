@@ -44,6 +44,33 @@
           }
         ]
       }
+    ],
+    "import/order": [
+      "error",{
+        "groups": ["builtin", "external", "internal", ["sibling", "parent", "index"], "type", "unknown"],
+        "pathGroups": [
+          {
+            "pattern": "react*",
+            "group": "builtin",
+            "position": "after"
+          }
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between":"always",
+        "pathGroupsExcludedImportTypes": ["react*"]
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
     ]
   },
   "settings": {
