@@ -12,7 +12,7 @@ import styles from './InquireForm.module.scss';
 export default function InquireForm(): JSX.Element {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const maxLength = 500;
+  const MAX_LENGTH = 500;
   const [inquiryImages, setInquiryImages] = useState<string[]>([]);
   const [isSecret, , , toggle, setValue] = useBooleanState(false);
   const isAttached = inquiryImages.length > 0;
@@ -112,7 +112,7 @@ export default function InquireForm(): JSX.Element {
         <div className={styles.contents}>
           <RequiredLabel text="문의 내용" />
           <div className={styles.contents__length}>
-            {`${content.length}/${maxLength}`}
+            {`${content.length}/${MAX_LENGTH}`}
           </div>
         </div>
         <div className={styles.contents__inputs}>
