@@ -1,4 +1,5 @@
 import React from 'react';
+import InquiryImages from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock/InquiryImages';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import { InquiryContent } from 'api/inquiry/entity';
 import cn from 'utils/ts/classNames';
@@ -30,7 +31,7 @@ export default function InquiryBlock({
   // console.log(content);
   // console.log(content.content);
   // 쩝박 백엔드 여쭤봐서 content.content 제대로 서버에서 주는 지 확인
-  // 이미지도 출력하도록 컴포넌트 수정
+  // 이미지 렌더링 css 작업
 
   // 비밀글 표시
   // 자신의 비밀글 + 비밀 아닌 글만 렌더링
@@ -71,7 +72,10 @@ export default function InquiryBlock({
       />
 
       {isExpanded && (
-        <Answer text={content.answer} />
+        <>
+          <InquiryImages inquiryImages={content.inquiryImages} />
+          <Answer text={content.answer} />
+        </>
       )}
     </button>
   );

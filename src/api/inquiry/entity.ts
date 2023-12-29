@@ -51,9 +51,9 @@ export interface InquiryProps {
   size: number;
 }
 
-export interface SubmitInquiryProps {
+export interface SubmitInquiry {
   title: string;
   content: string;
-  inquiryImages: string[] | null;
+  inquiryImages?: InquiryImage[];
   isSecret: boolean;
 }

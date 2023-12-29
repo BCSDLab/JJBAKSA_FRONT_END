@@ -1,7 +1,7 @@
-import { SubmitInquiryProps } from '../entity';
+import { SubmitInquiry } from '../entity';
 import inquiryApi from '../inquiryApiClient';
 
-const submitInquiry = async (inquiryData: SubmitInquiryProps) => {
+const submitInquiry = async (inquiryData: SubmitInquiry) => {
   try {
     const formData = new FormData();
 
@@ -10,8 +10,8 @@ const submitInquiry = async (inquiryData: SubmitInquiryProps) => {
     formData.append('isSecret', String(inquiryData.isSecret));
 
     if (inquiryData.inquiryImages) {
-      inquiryData.inquiryImages.forEach((image) => {
-        formData.append('inquiryImages', image);
+      inquiryData.inquiryImages.forEach((imageData) => {
+        formData.append('inquiryImages', imageData.imageUrl);
       });
     }
 

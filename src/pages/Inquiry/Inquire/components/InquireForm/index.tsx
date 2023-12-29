@@ -6,6 +6,7 @@ import makeToast from 'utils/ts/makeToast';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
 import ToggleButton from 'components/common/ToggleButton';
+import { InquiryImage } from 'api/inquiry/entity';
 import RequiredLabel from './RequiredLabel';
 import styles from './InquireForm.module.scss';
 
@@ -13,7 +14,7 @@ export default function InquireForm(): JSX.Element {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const MAX_LENGTH = 500;
-  const [inquiryImages, setInquiryImages] = useState<string[]>([]);
+  const [inquiryImages, setInquiryImages] = useState<InquiryImage[]>([]);
   const [isSecret, , , toggle, setValue] = useBooleanState(false);
   const isAttached = inquiryImages.length > 0;
 
@@ -39,7 +40,12 @@ export default function InquireForm(): JSX.Element {
       const file = event.target.files[0];
       const url = URL.createObjectURL(file);
       if (inquiryImages.length < 3) {
-        setInquiryImages((prevImages) => [...prevImages, url]);
+        const data = {
+          imageUrl: url,
+          originalName: url,
+          path: url,
+        };
+        setInquiryImages((prevImages) => [...prevImages, data]);
       }
     }
   };
@@ -148,11 +154,11 @@ export default function InquireForm(): JSX.Element {
               onChange={handleUpload}
             />
             <div className={styles.contents__images}>
-              {inquiryImages.map((image, index) => (
-                <div className={styles['contents__image-box']} key={image}>
+              {inquiryImages.map((imageData, index) => (
+                <div className={styles['contents__image-box']} key={imageData.imageUrl}>
                   <img
                     className={styles.contents__image}
-                    src={image}
+                    src={imageData.imageUrl}
                     alt={`문의 이미지${index}`}
                   />
                   <button
