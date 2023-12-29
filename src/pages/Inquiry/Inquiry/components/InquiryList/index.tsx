@@ -6,7 +6,7 @@ import React, {
   useCallback,
 } from 'react';
 import useInquiryList from 'pages/Inquiry/hooks/useInquiryList';
-import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/components/InquiryBlock';
+import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock';
 import { InquiryContent } from 'api/inquiry/entity';
 import cn from 'utils/ts/classNames';
 import styles from './InquiryList.module.scss';

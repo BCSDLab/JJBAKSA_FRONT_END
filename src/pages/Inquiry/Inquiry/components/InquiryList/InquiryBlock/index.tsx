@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import { InquiryContent } from 'api/inquiry/entity';
 import cn from 'utils/ts/classNames';
-import Answer from './components/Answer';
+import Answer from './Answer';
 import styles from './InquiryBlock.module.scss';
 
 interface InquiryBlockProps {

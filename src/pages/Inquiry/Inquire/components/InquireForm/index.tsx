@@ -6,7 +6,7 @@ import makeToast from 'utils/ts/makeToast';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
 import ToggleButton from 'components/common/ToggleButton';
-import RequiredLabel from './components/RequiredLabel';
+import RequiredLabel from './RequiredLabel';
 import styles from './InquireForm.module.scss';
 
 export default function InquireForm(): JSX.Element {
