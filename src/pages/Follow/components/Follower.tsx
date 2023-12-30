@@ -1,13 +1,15 @@
-import defaultImage from 'assets/images/follow/default-image.png';
-import cn from 'utils/ts/classNames';
 import { useNavigate } from 'react-router-dom';
+
+import defaultImage from 'assets/images/follow/default-image.png';
+import MobileUnfollow from 'pages/Follow/components/MobileUnfollow';
+import useAcceptFollow from 'pages/Follow/hooks/useAcceptFollow';
+import useCancelFollow from 'pages/Follow/hooks/useCancelFollow';
+import useDeleteFollow from 'pages/Follow/hooks/useDeleteFollow';
+import useRejectRequest from 'pages/Follow/hooks/useRejectRequest';
+import useRequestAndUpdate from 'pages/Follow/hooks/useRequestAndUpdate';
+import cn from 'utils/ts/classNames';
+
 import styles from './Follower.module.scss';
-import useRequestAndUpdate from '../hooks/useRequestAndUpdate';
-import useAcceptFollow from '../hooks/useAcceptFollow';
-import useDeleteFollow from '../hooks/useDeleteFollow';
-import useCancelFollow from '../hooks/useCancelFollow';
-import useRejectRequest from '../hooks/useRejectRequest';
-import MobileUnfollow from './MobileUnfollow';
 
 interface Props {
   account: string,

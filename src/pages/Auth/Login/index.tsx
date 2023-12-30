@@ -1,20 +1,22 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
-import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
-import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+
+import { login } from 'api/user';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
+import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
+import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
+import AuthDetail from 'components/Auth/AuthDetail';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
-import cn from 'utils/ts/classNames';
-import { useState } from 'react';
-import { login } from 'api/user';
-import { useUpdateAuth } from 'store/auth';
 import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
-import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
 import { GOOGLE_REDIRECT_URL, KAKAO_REDIRECT_URL, NAVER_REDIRECT_URL } from 'config/constants';
-import AuthDetail from 'components/Auth/AuthDetail';
+import { useUpdateAuth } from 'store/auth';
+import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
+import cn from 'utils/ts/classNames';
+
 import styles from './Login.module.scss';
 
 interface LoginFormInput {

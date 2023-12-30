@@ -1,6 +1,8 @@
-import { patchProfileImage } from 'api/mypage';
 import React, { useState } from 'react';
+
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { patchProfileImage } from 'api/mypage';
 
 const useChangeProfile = () => {
   const [image, setImage] = useState<FormData | null>(null);

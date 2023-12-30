@@ -1,14 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {
-  useState,
+import {
+  useCallback,
   useEffect,
   useRef,
-  useCallback,
+  useState,
 } from 'react';
-import useInquiryList from 'pages/Inquiry/Inquiry/hooks/useInquiryList';
-import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/components/InquiryBlock';
+
 import { InquiryContent } from 'api/inquiry/entity';
+import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/components/InquiryBlock';
+import useInquiryList from 'pages/Inquiry/Inquiry/hooks/useInquiryList';
 import cn from 'utils/ts/classNames';
+
 import styles from './InquiryList.module.scss';
 
 interface InquiryListProps {

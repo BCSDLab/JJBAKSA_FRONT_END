@@ -1,6 +1,7 @@
+import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import useScrap from 'utils/hooks/useScrap';
 import cn from 'utils/ts/classNames';
-import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
+
 import styles from './ScrapButton.module.scss';
 
 interface Props {

@@ -1,4 +1,5 @@
 import defaultImage from 'assets/images/follow/default-image.png';
+
 import styles from './Recent.module.scss';
 
 interface Props {

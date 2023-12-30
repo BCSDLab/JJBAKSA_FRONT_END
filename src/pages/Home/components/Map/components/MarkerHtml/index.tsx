@@ -1,6 +1,7 @@
+import defaultImage from 'assets/images/home/favicon.png';
 import MarkerLogo from 'assets/images/home/location-marker.png';
 import Selected from 'assets/images/home/selected-marker.png';
-import defaultImage from 'assets/images/home/favicon.png';
+
 import styles from './MarkerHtml.module.scss';
 
 export function MarkerHtml(src:string | null, name:string) {

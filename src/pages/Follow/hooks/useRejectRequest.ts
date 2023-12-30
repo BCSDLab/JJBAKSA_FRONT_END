@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+
 import { rejectFollow } from 'api/follow';
 
 const useRejectRequest = () => {

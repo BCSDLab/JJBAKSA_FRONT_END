@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import useBooleanState from 'utils/hooks/useBooleanState';
+
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import ToggleButton from 'components/common/ToggleButton';
-import RequiredLabel from './components/RequiredLabel';
+import RequiredLabel from 'pages/Inquiry/Inquire/components/InquireForm/components/RequiredLabel/index';
+import useBooleanState from 'utils/hooks/useBooleanState';
+
 import styles from './InquireForm.module.scss';
 
 export default function InquireForm(): JSX.Element {

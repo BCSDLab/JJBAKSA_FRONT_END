@@ -1,5 +1,6 @@
-import getPost from 'api/Post';
 import { useSuspenseQuery } from '@tanstack/react-query';
+
+import getPost from 'api/Post';
 
 const usePostList = (page: number) => {
   const {

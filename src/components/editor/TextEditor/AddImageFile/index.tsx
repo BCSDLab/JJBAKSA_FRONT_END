@@ -1,5 +1,7 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { ChangeEvent, useState } from 'react';
+
 import { ReactComponent as Plus } from 'assets/svg/post/picture.svg';
+
 import styles from './AddImageFile.module.scss';
 
 function AddImageFile() {

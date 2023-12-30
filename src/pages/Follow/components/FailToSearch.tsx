@@ -1,4 +1,5 @@
 import { ReactComponent as Astronaut } from 'assets/svg/follow/search-fail.svg';
+
 import styles from './FailToSearch.module.scss';
 
 export default function FailToSearch() {

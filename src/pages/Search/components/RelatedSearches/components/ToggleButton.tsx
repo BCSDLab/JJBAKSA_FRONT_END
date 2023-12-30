@@ -1,4 +1,4 @@
-import styles from 'pages/Search/components/RelatedSearches/components/ToggleButton.module.scss';
+import styles from './ToggleButton.module.scss';
 
 interface Props {
   onClick: () => void;

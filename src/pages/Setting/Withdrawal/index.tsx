@@ -1,12 +1,14 @@
-import { useAuth } from 'store/auth';
-import { withdrawUser } from 'api/user';
-import AuthTitle from 'components/Auth/AuthTitle';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
+
+import { withdrawUser } from 'api/user';
+import AuthTitle from 'components/Auth/AuthTitle';
+import WithdrawalModal from 'pages/Setting/Withdrawal/components/WithdrawalModal';
+import useWithDrawal from 'pages/Setting/Withdrawal/useWithdrawal';
+import { useAuth } from 'store/auth';
+import useBooleanState from 'utils/hooks/useBooleanState';
+
 import styles from './Withdrawal.module.scss';
-import WithdrawalModal from './components/WithdrawalModal';
-import useWithDrawal from './useWithdrawal';
 
 export default function Withdrawal() {
   const auth = useAuth();

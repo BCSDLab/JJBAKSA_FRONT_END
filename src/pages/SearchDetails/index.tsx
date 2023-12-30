@@ -1,15 +1,17 @@
-import styles from 'pages/SearchDetails/SearchDetails.module.scss';
-import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
-import RelatedSearches from 'pages/Search/components/RelatedSearches';
 import { useEffect } from 'react';
-import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
-import { Shop } from 'api/shop/entity';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import { Shop } from 'api/shop/entity';
+import RelatedSearches from 'pages/Search/components/RelatedSearches';
+import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
+import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
+import LoadingView from 'pages/SearchDetails/components/LoadingView';
+import SearchItem from 'pages/SearchDetails/components/SearchItem';
+import useFetchShops from 'pages/SearchDetails/hooks/useFetchShops';
 import useSearchForm from 'store/text';
-import LoadingView from './components/LoadingView';
-import useFetchShops from './hooks/useFetchShops';
-import SearchItem from './components/SearchItem';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
+
+import styles from './SearchDetails.module.scss';
 
 export default function SearchDetails() {
   const isSearching = useSearchingMode();

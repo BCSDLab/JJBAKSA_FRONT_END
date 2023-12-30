@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import Cap from 'assets/images/search/image-100.png';
+
+import styles from '../SearchDetails.module.scss';
 
 export default function ControllBar() {
   return (

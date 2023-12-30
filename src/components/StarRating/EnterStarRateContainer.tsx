@@ -1,7 +1,9 @@
-import useContext from 'utils/hooks/useWrappingContext';
-import { ReactComponent as Star } from 'assets/svg/post/star.svg';
 import { useState } from 'react';
-import StarRateContext from './StarRateContext';
+
+import { ReactComponent as Star } from 'assets/svg/post/star.svg';
+import StarRateContext from 'components/StarRating/StarRateContext';
+import useContext from 'utils/hooks/useWrappingContext';
+
 import styles from './StarRating.module.scss';
 
 export default function EnterStarRateContainer({ rating }: { rating: number }) {

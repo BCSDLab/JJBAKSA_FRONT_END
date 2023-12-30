@@ -1,5 +1,6 @@
-import { ReviewParams } from 'api/review/entity';
 import { atom, useAtomValue, useSetAtom } from 'jotai';
+
+import { ReviewParams } from 'api/review/entity';
 
 type ReviewAtom = Omit<ReviewParams, 'placeId'>;
 

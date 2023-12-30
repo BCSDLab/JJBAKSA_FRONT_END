@@ -1,4 +1,5 @@
 import { atom, useAtom } from 'jotai';
+
 import makeToast from 'utils/ts/makeToast';
 
 const initialSearchFormState = {

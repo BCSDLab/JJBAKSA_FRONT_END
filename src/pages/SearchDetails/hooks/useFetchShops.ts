@@ -1,9 +1,11 @@
-import useGeolocation from 'utils/hooks/useGeolocation';
-import useDebounce from 'utils/hooks/useDebounce';
+import { useMemo } from 'react';
+
 import { useQuery } from '@tanstack/react-query';
+
 import { fetchShops } from 'api/shop';
 import { ShopsParams } from 'api/shop/entity';
-import { useMemo } from 'react';
+import useDebounce from 'utils/hooks/useDebounce';
+import useGeolocation from 'utils/hooks/useGeolocation';
 
 const useFetchShops = (text: string) => {
   const OPTIONS = {

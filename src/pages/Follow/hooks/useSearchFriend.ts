@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react';
+
+import { useInfiniteQuery } from '@tanstack/react-query';
+
 import { searchUsers } from 'api/follow';
 import { SearchUsersResponse } from 'api/follow/entity';
-import { useState, useEffect } from 'react';
-import { useInfiniteQuery } from '@tanstack/react-query';
 
 // useInfinitieQuery로 무한 스크롤 구현, pageParam의 기본값은 undefined
 const useSearchFriend = () => {

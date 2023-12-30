@@ -1,10 +1,11 @@
-import { checkPassword, modify } from 'api/user';
 import { useState } from 'react';
+
+import { checkPassword, modify } from 'api/user';
+import usePasswordState from 'pages/Setting/hook/usePasswordState';
 import {
-  PATTERN, currentError, typeError, correctError,
+  correctError, currentError, PATTERN, typeError,
 } from 'pages/Setting/static/setting';
 import useBooleanState from 'utils/hooks/useBooleanState';
-import usePasswordState from './usePasswordState';
 
 const useModifyPassword = () => {
   const [isShowError, , , ,setIsShowError] = useBooleanState(false);

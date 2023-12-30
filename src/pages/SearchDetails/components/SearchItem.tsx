@@ -1,8 +1,10 @@
-import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { useNavigate } from 'react-router-dom';
+
 import { Shop } from 'api/shop/entity';
 import { ReactComponent as PhoneImg } from 'assets/svg/search/phone.svg';
-import { getMockItem } from '../static/mockup';
+import { getMockItem } from 'pages/SearchDetails/static/mockup';
+
+import styles from '../SearchDetails.module.scss';
 
 interface Props {
   shop: Shop;

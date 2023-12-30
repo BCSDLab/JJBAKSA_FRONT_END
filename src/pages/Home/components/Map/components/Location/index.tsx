@@ -1,5 +1,6 @@
-import { ReactComponent as Search } from 'assets/svg/home/search.svg';
 import { ReactComponent as Point } from 'assets/svg/home/point.svg';
+import { ReactComponent as Search } from 'assets/svg/home/search.svg';
+
 import styles from './Location.module.scss';
 
 export default function Location(): JSX.Element {

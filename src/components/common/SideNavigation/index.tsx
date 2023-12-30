@@ -1,15 +1,17 @@
-import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
-import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
+import { Link, useLocation } from 'react-router-dom';
+
+import defaultImage from 'assets/images/follow/default-image.png';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
+import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
+import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
+import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
-import cn from 'utils/ts/classNames';
-import defaultImage from 'assets/images/follow/default-image.png';
-import useBooleanState from 'utils/hooks/useBooleanState';
-import { Link, useLocation } from 'react-router-dom';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import useBooleanState from 'utils/hooks/useBooleanState';
+import cn from 'utils/ts/classNames';
+
 import styles from './SideNavigation.module.scss';
-import SpriteSvg from '../SpriteSvg';
 
 export default function SideNavigation(): JSX.Element {
   const auth = useAuth();

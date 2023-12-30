@@ -1,15 +1,15 @@
 import {
-  PostFollowerParams,
   AcceptFollowParams,
-  GetFollowListResponse,
-  SearchUsersResponse,
   CancleFollowParams,
-  RejectFollowParams,
-  SentOrReceivedFollowResponse,
   DeleteFollowerParams,
-  GetFollowReviewResponse,
   GetDetailReviewResponse,
   GetFollowerReviewCountParam,
+  GetFollowListResponse,
+  GetFollowReviewResponse,
+  PostFollowerParams,
+  RejectFollowParams,
+  SearchUsersResponse,
+  SentOrReceivedFollowResponse,
 } from './entity';
 import followApi from './followApiClient';
 
