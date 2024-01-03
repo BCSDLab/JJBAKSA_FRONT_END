@@ -95,7 +95,7 @@ export default function Inquiry(): JSX.Element {
           <div className={styles['inquiry-list']}>
             <InquiryList
               className={styles['inquiry-list__item']}
-              typePath={queryType}
+              queryType={queryType}
             />
           </div>
         </div>

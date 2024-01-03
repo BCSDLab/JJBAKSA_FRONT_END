@@ -3,86 +3,92 @@ import React, {
   useState,
   useEffect,
   useRef,
-  useCallback,
 } from 'react';
-import useInquiryList from 'pages/Inquiry/hooks/useInquiryList';
+import useGetInquiry from 'pages/Inquiry/hooks/useGetInquiry';
 import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock';
-import { InquiryContent } from 'api/inquiry/entity';
+import { InquiryContent, InquiryProps } from 'api/inquiry/entity';
 import cn from 'utils/ts/classNames';
 import styles from './InquiryList.module.scss';
 
+const RENDER_SIZE = 10;
+
 interface InquiryListProps {
   className: string;
-  typePath: string;
+  queryType: string;
 }
 
 export default function InquiryList({
   className,
-  typePath,
-}: InquiryListProps): JSX.Element {
-  const [dateCursor, setDateCursor] = useState<string | null>(null);
-  const [idCursor, setIdCursor] = useState<number>(0);
-  const [allData, setAllData] = useState<InquiryContent[]>([]);
-  const { data: inquiryData, isLoading } = useInquiryList({
-    queryType: typePath, dateCursor, idCursor, size: 10,
+  queryType,
+}: InquiryListProps) {
+  const [inquiryProps, setInquiryProps] = useState<InquiryProps>({
+    queryType,
+    dateCursor: null,
+    idCursor: 0,
+    size: RENDER_SIZE,
   });
-
-  const [expandedId, setExpandedId] = useState<number | null>(null);
-
+  const { data, refetch } = useGetInquiry(inquiryProps);
+  const [allContents, setAllContents] = useState<InquiryContent[] | []>([]);
+  const [maxRendering, setMaxRendering] = useState<number>(0);
   const loader = useRef<HTMLDivElement | null>(null);
+
   const [isGradientVisible, setIsGradientVisible] = useState(false);
   const gradient = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    setAllData([]);
-    setDateCursor(null);
-    setIdCursor(0);
-  }, [typePath]);
-
-  const loadMoreData = useCallback(() => {
-    if (inquiryData && inquiryData.content.length > 0) {
-      setDateCursor(inquiryData.content[inquiryData.content.length - 1].createdAt || null);
-      setIdCursor(inquiryData.content[inquiryData.content.length - 1].id || 0);
-      const alreadyExist = allData.slice(-1) === inquiryData.content.slice(-1);
-      setAllData(alreadyExist ? allData : [...allData, ...inquiryData.content]);
-    }
-  }, [inquiryData]);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
   useEffect(() => {
-    const handleObserver = (entities: IntersectionObserverEntry[]) => {
-      const target = entities[0];
-      if (target.isIntersecting && !isLoading) {
-        loadMoreData();
-      }
-    };
+    setAllContents([]);
+    setMaxRendering(0);
+    refetch();
+  }, [queryType]);
 
-    const observer = new IntersectionObserver(handleObserver, { threshold: 0.5 });
-    if (loader.current) {
-      observer.observe(loader.current);
+  useEffect(() => {
+    if (data && maxRendering === 0) {
+      setMaxRendering(data.totalElements);
+      setAllContents(data.content);
     }
-  }, [loadMoreData, isLoading]);
+  }, [data]);
 
-  const handleGradientObserver = (entities: IntersectionObserverEntry[]) => {
-    const target = entities[0];
-    if (target.isIntersecting) {
-      setIsGradientVisible(false);
-    } else {
-      setIsGradientVisible(true);
+  const loadMore = () => {
+    const lastContent = allContents[allContents.length - 1];
+    const nextDataCursor = lastContent.createdAt;
+    const nextIdCursor = lastContent.id;
+    setInquiryProps((prev) => ({
+      ...prev,
+      dateCursor: nextDataCursor,
+      idCursor: nextIdCursor,
+    }));
+    if (data && data.content) {
+      const newData = data.content.filter((contentItem) =>
+        !allContents.some((existingItem) => existingItem.id === contentItem.id));
+      setAllContents((prevContents) => [...prevContents, ...newData]);
     }
   };
 
   useEffect(() => {
-    const gradientObserver = new IntersectionObserver(handleGradientObserver, { threshold: 1.0 });
-    if (gradient.current) {
-      gradientObserver.observe(gradient.current);
-    }
+    if (!loader.current) return;
 
-    return () => {
-      if (gradient.current) {
-        gradientObserver.unobserve(gradient.current);
+    const observer = new IntersectionObserver((entries) => {
+      const target = entries[0];
+      if (target.isIntersecting && allContents.length < maxRendering) {
+        loadMore();
       }
-    };
-  }, [isLoading]);
+    }, { threshold: 1.0 });
+
+    observer.observe(loader.current);
+  }, [allContents, loadMore, maxRendering]);
+
+  useEffect(() => {
+    if (!gradient.current) return;
+
+    const gradientObserver = new IntersectionObserver((entries) => {
+      const target = entries[0];
+      setIsGradientVisible(!target.isIntersecting);
+    }, { threshold: 1.0 });
+
+    gradientObserver.observe(gradient.current);
+  }, []);
 
   return (
     <div className={cn({
@@ -92,24 +98,27 @@ export default function InquiryList({
     >
       {isGradientVisible ? <div className={styles.list__gradient} /> : null}
       <div className={styles.list}>
-        {allData && allData.length === 0 ? (
+        <div ref={gradient} />
+        {allContents.length !== 0 ? (
+          <>
+            {allContents.map((content, index) => (
+              <div key={`${content.id}${content.createdAt}${content.title}`}>
+                {index === allContents.length - 1 ? (
+                  <div ref={loader} className={styles.list__floor} />
+                ) : null}
+                <InquiryBlock
+                  content={content}
+                  expandedId={expandedId}
+                  setExpandedId={setExpandedId}
+                />
+              </div>
+            ))}
+          </>
+        ) : (
           <p className={styles['list--no-data']}>
             문의 내역이 없습니다.
           </p>
-        ) : (
-          <>
-            <div ref={gradient} />
-            {allData.map((item) => (
-              <InquiryBlock
-                key={item.id}
-                content={item}
-                expandedId={expandedId}
-                setExpandedId={setExpandedId}
-              />
-            ))}
-          </>
         )}
-        <div ref={loader} className={styles.table__floor} />
       </div>
     </div>
   );

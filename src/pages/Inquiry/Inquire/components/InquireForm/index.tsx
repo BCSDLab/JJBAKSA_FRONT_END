@@ -37,14 +37,16 @@ export default function InquireForm(): JSX.Element {
 
   const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files[0];
-      const url = URL.createObjectURL(file);
+      const url = URL.createObjectURL(event.target.files[0]);
+      const data: InquiryImage = {
+        imageUrl: url,
+        originalName: url, // 어떤 값을 넣어야 할까?
+        path: url, // 어떤 값을 넣어야 할까?
+      };
+
+      console.log(data);
+      console.log(data.imageUrl);
       if (inquiryImages.length < 3) {
-        const data = {
-          imageUrl: url,
-          originalName: url,
-          path: url,
-        };
         setInquiryImages((prevImages) => [...prevImages, data]);
       }
     }
@@ -93,6 +95,7 @@ export default function InquireForm(): JSX.Element {
     }
 
     sessionStorage.removeItem('inquiryForm');
+    console.log(inquiryData);
     submit(inquiryData);
     // 이미지 저장 방법
   };

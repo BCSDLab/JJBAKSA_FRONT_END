@@ -13,11 +13,11 @@ interface InquiryBlockProps {
 }
 
 export default function InquiryBlock({
-  content,
+  content: inquiry,
   expandedId,
   setExpandedId,
 }: InquiryBlockProps): JSX.Element {
-  const isExpanded = expandedId === content.id;
+  const isExpanded = expandedId === inquiry.id;
 
   function toggleExpand(id: number) {
     setExpandedId(expandedId === id ? null : id);
@@ -28,9 +28,9 @@ export default function InquiryBlock({
       toggleExpand(id);
     }
   }
-  // console.log(content);
-  // console.log(content.content);
-  // 쩝박 백엔드 여쭤봐서 content.content 제대로 서버에서 주는 지 확인
+  // console.log(inquiry);
+  // console.log(inquiry.content);
+  // 쩝박 백엔드 여쭤봐서 data.content 제대로 서버에서 주는 지 확인
   // 이미지 렌더링 css 작업
 
   // 비밀글 표시
@@ -43,11 +43,11 @@ export default function InquiryBlock({
         [styles['block--expanded']]: isExpanded,
       })}
       type="button"
-      onClick={() => toggleExpand(content.id)}
-      onKeyDown={(e) => handleKeyPress(e, content.id)}
+      onClick={() => toggleExpand(inquiry.id)}
+      onKeyDown={(e) => handleKeyPress(e, inquiry.id)}
     >
       <p className={styles.block__title}>
-        {content.title}
+        {inquiry.title}
       </p>
       <p
         className={cn({
@@ -55,13 +55,13 @@ export default function InquiryBlock({
           [styles['block__content--visible']]: isExpanded,
         })}
       >
-        {content.content}
+        {inquiry.content}
       </p>
 
       <p className={styles.block__info}>
-        {new Date(content.createdAt).toLocaleDateString()}
+        {new Date(inquiry.createdAt).toLocaleDateString()}
         |
-        {content.createdBy}
+        {inquiry.createdBy}
       </p>
 
       <Arrow
@@ -73,8 +73,8 @@ export default function InquiryBlock({
 
       {isExpanded && (
         <>
-          <InquiryImages inquiryImages={content.inquiryImages} />
-          <Answer text={content.answer} />
+          <InquiryImages inquiryImages={inquiry.inquiryImages} />
+          <Answer text={inquiry.answer} />
         </>
       )}
     </button>
