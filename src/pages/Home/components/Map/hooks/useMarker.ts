@@ -13,13 +13,11 @@ interface MarkerProps {
 
 function useMarker({ map, filterShops }: MarkerProps) {
   const [markerArray, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
-  const [selected, setSelected] = useState<naver.maps.Marker | undefined>();
+  const [selected, setSelected] = useState<string>();
 
   useEffect(() => {
     if (!map || !filterShops) return;
-    // 사용량 제한으로, 현재는 목업 데이터로 마커를 찍고 있음
     const newMarkers = (filterShops ?? []).map((shop, index) => {
-    // const newMarkers = (MARKER ?? []).map((shop, index) => {
       const lat = shop?.geometry?.location?.lat;
       const lng = shop?.geometry?.location?.lng;
       if (!lat || !lng) return;
@@ -35,6 +33,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
       });
 
       naver.maps.Event.addListener(marker, 'click', () => {
+        const clickedPlaceId = shop.placeId;
         newMarkers.forEach((m) => {
           m?.setIcon({
             content: MarkerHtml(m.getTitle(), m.getTitle()),
@@ -44,7 +43,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
         marker.setIcon({
           content: ClickedMarkerHtml(shop.photo, shop.name, shop.placeId),
         });
-        setSelected(marker);
+        setSelected(clickedPlaceId);
         if (map) {
           map.panTo(marker.getPosition());
         }
