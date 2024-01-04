@@ -5,7 +5,7 @@ import useCounter from 'utils/hooks/useCounter';
 import styles from './ImageCarousel.module.scss';
 
 interface Props {
-  imageUrls: string[];
+  imageUrls: string[] | string;
 }
 
 function ImageCarousel({ imageUrls }: Props) {
@@ -29,13 +29,18 @@ function ImageCarousel({ imageUrls }: Props) {
         className={`${styles['image-carousel']}`}
         style={{ transform: `translateX(-${360 * currentIndex}px)` }}
       >
-        {imageUrls.map((url, index) => (
-          <li key={url}>
-            <img src={url} alt={`${index}번 음식점`} />
+        {typeof imageUrls === 'string' ? (
+          <li>
+            <img src={imageUrls} alt="음식점 사진 없음" />
           </li>
-        ))}
+        ) : (
+          imageUrls.map((url, index) => (
+            <li key={url}>
+              <img src={url} alt={`${index}번 음식점`} />
+            </li>
+          ))
+        )}
       </ul>
-
       <div className={styles['back-drop__left']}>
         <button type="button" onClick={prev} aria-label="이전 이미지">
           <PrevIcon />

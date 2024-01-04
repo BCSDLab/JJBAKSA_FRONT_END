@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
 import { fetchShop } from 'api/shop';
+import defaultImage from 'assets/images/search/default-image.png';
 import { ReactComponent as InfoIcon } from 'assets/svg/shop/info.svg';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import StarRatingPreview from 'components/StarRating/StarRatingPreview';
@@ -51,7 +52,7 @@ function ShopDetail() {
         </header>
 
         <div className={styles.container}>
-          <ImageCarousel imageUrls={photos} />
+          <ImageCarousel imageUrls={photos ?? defaultImage} />
 
           <article className={styles['shop-detail']}>
             <section className={styles['detail-main']}>
