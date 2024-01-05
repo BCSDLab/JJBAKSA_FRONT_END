@@ -29,8 +29,8 @@ export default function InquiryList({
   });
   const { data, refetch } = useGetInquiry(inquiryProps);
   const [allContents, setAllContents] = useState<InquiryContent[] | []>([]);
-  const [maxRendering, setMaxRendering] = useState<number>(0);
   const loader = useRef<HTMLDivElement | null>(null);
+  const [isLoaderObserved, setIsLoaderObserved] = useState(false);
 
   const [isGradientVisible, setIsGradientVisible] = useState(false);
   const gradient = useRef<HTMLDivElement | null>(null);
@@ -38,46 +38,57 @@ export default function InquiryList({
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   useEffect(() => {
+    console.log('queryType changed');
     setAllContents([]);
-    setMaxRendering(0);
     refetch();
   }, [queryType]);
 
   useEffect(() => {
-    if (data && maxRendering === 0) {
-      setMaxRendering(data.totalElements);
-      setAllContents(data.content);
+    console.log(queryType);
+    refetch();
+    if (data && data.content) {
+      const newContents = data.content.filter((contentItem) =>
+        !allContents.some((existingItem) => existingItem.id === contentItem.id));
+      if (newContents.length > 0) {
+        setAllContents((prevContents) => [...prevContents, ...newContents]);
+      }
     }
-  }, [data]);
+  }, [data, inquiryProps]);
 
   const loadMore = () => {
+    console.log('loadMore');
     const lastContent = allContents[allContents.length - 1];
-    const nextDataCursor = lastContent.createdAt;
-    const nextIdCursor = lastContent.id;
+    const nextDataCursor = lastContent?.createdAt;
+    const nextIdCursor = lastContent?.id;
+
     setInquiryProps((prev) => ({
       ...prev,
       dateCursor: nextDataCursor,
       idCursor: nextIdCursor,
     }));
-    if (data && data.content) {
-      const newData = data.content.filter((contentItem) =>
-        !allContents.some((existingItem) => existingItem.id === contentItem.id));
-      setAllContents((prevContents) => [...prevContents, ...newData]);
-    }
   };
 
   useEffect(() => {
-    if (!loader.current) return;
-
     const observer = new IntersectionObserver((entries) => {
       const target = entries[0];
-      if (target.isIntersecting && allContents.length < maxRendering) {
+      if (target.isIntersecting && !isLoaderObserved) {
+        setIsLoaderObserved(true);
         loadMore();
+      } else if (!target.isIntersecting && isLoaderObserved) {
+        setIsLoaderObserved(false);
       }
-    }, { threshold: 1.0 });
+    }, { threshold: 0.5 });
 
-    observer.observe(loader.current);
-  }, [allContents, loadMore, maxRendering]);
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+
+    return () => {
+      if (loader.current) {
+        observer.unobserve(loader.current);
+      }
+    };
+  });
 
   useEffect(() => {
     if (!gradient.current) return;
@@ -101,11 +112,8 @@ export default function InquiryList({
         <div ref={gradient} />
         {allContents.length !== 0 ? (
           <>
-            {allContents.map((content, index) => (
-              <div key={`${content.id}${content.createdAt}${content.title}`}>
-                {index === allContents.length - 1 ? (
-                  <div ref={loader} className={styles.list__floor} />
-                ) : null}
+            {allContents.map((content) => (
+              <div key={content.id}>
                 <InquiryBlock
                   content={content}
                   expandedId={expandedId}
@@ -119,6 +127,7 @@ export default function InquiryList({
             문의 내역이 없습니다.
           </p>
         )}
+        <div ref={loader} className={styles['list__loader-observer']} />
       </div>
     </div>
   );

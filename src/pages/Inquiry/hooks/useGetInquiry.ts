@@ -6,7 +6,7 @@ const useGetInquiry = ({
   queryType, dateCursor, idCursor, size,
 }: InquiryProps) => {
   const { data, isLoading, refetch } = useQuery({
-    queryKey: ['inquiry', idCursor],
+    queryKey: ['inquiry'],
     queryFn: () => getInquiry({
       queryType, dateCursor, idCursor, size,
     }),
