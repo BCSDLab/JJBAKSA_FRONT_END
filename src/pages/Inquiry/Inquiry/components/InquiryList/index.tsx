@@ -38,13 +38,15 @@ export default function InquiryList({
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   useEffect(() => {
-    console.log('queryType changed');
     setAllContents([]);
-    refetch();
+    setInquiryProps((prev) => ({
+      ...prev,
+      dateCursor: null,
+      idCursor: 0,
+    }));
   }, [queryType]);
 
   useEffect(() => {
-    console.log(queryType);
     refetch();
     if (data && data.content) {
       const newContents = data.content.filter((contentItem) =>
@@ -56,7 +58,6 @@ export default function InquiryList({
   }, [data, inquiryProps]);
 
   const loadMore = () => {
-    console.log('loadMore');
     const lastContent = allContents[allContents.length - 1];
     const nextDataCursor = lastContent?.createdAt;
     const nextIdCursor = lastContent?.id;

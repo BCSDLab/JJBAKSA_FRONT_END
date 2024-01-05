@@ -2,10 +2,10 @@ import { GetInquiryResponse, InquiryProps } from '../entity';
 import inquiryApi from '../inquiryApiClient';
 
 const getInquiry = async ({
-  queryType: typePath, dateCursor, idCursor, size,
+  queryType, dateCursor, idCursor, size,
 }: InquiryProps) => {
   try {
-    const queryParams = `${typePath}?dateCursor=${dateCursor}&idCursor=${idCursor}&size=${size}`;
+    const queryParams = `${queryType}?dateCursor=${dateCursor}&idCursor=${idCursor}&size=${size}`;
     const { data } = await inquiryApi.get<GetInquiryResponse>(`/inquiry${queryParams}`);
     return data;
   } catch (error) {

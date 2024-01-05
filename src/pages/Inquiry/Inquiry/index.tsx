@@ -28,11 +28,9 @@ export default function Inquiry(): JSX.Element {
   const [keyword, setKeyword] = useState('');
   const queryTypeMap = createQueryTypeMap(keyword);
 
-  // type은 'all', 'my', 'search' 중 하나여야 함.
   const rawPageType = location.pathname.split('/')[2];
   const pageType = Object.keys(queryTypeMap).includes(rawPageType) ? rawPageType as QueryType : 'all';
 
-  // queryType은 데이터 쿼리 시 사용
   const [queryType, setQueryType] = useState<string>('');
 
   useEffect(() => {
