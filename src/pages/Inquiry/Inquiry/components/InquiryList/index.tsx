@@ -29,7 +29,7 @@ export default function InquiryList({
     size: RENDER_SIZE,
   });
   const { data, refetch } = useGetInquiry(inquiryProps);
-  const [allContents, setAllContents] = useState<InquiryContent[] | []>([]);
+  const [allContents, setAllContents] = useState<InquiryContent[]>([]);
   const loader = useRef<HTMLDivElement | null>(null);
 
   const gradient = useRef<HTMLDivElement | null>(null);
@@ -38,7 +38,8 @@ export default function InquiryList({
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   useEffect(() => {
-    setAllContents([]);
+    // eslint-disable-next-line @typescript-eslint/no-array-constructor
+    setAllContents(new Array());
     setInquiryProps((prev) => ({
       ...prev,
       queryType,
@@ -49,10 +50,18 @@ export default function InquiryList({
 
   useEffect(() => {
     if (data && data.content) {
-      const newContents = data.content.filter((contentItem) =>
+      const newContents: InquiryContent[] = data.content.filter((contentItem) =>
         !allContents.some((existingItem) => existingItem.id === contentItem.id));
       if (newContents.length > 0) {
-        setAllContents((prevContents) => [...prevContents, ...newContents]);
+        if (allContents.length > 0) {
+          setAllContents((prevContents) => (
+            (newContents[0].id > allContents[0].id
+              ? [...newContents, ...prevContents]
+              : [...prevContents, ...newContents])
+          ));
+        } else {
+          setAllContents([...newContents]);
+        }
       }
     }
   }, [data]);

@@ -15,7 +15,6 @@ const useSubmitInquiry = () => {
       });
 
       navigate('/inquiry/all');
-      // window.location.reload();
     },
   });
 
