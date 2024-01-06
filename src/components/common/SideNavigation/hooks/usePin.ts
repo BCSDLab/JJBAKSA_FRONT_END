@@ -9,6 +9,7 @@ const usePin = (placeId: string) => {
     queryKey: ['pinShop', placeId],
     queryFn: () => fetchPinShop(placeId),
   });
+
   const pinShop = data?.data;
 
   return {
