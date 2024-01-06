@@ -4,10 +4,15 @@ import cn from 'utils/ts/classNames';
 import { useForm } from 'react-hook-form';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useNavigate } from 'react-router-dom';
-import { emailPassword, checkIdDuplicate } from 'api/user';
+import {
+  emailPassword, checkIdDuplicate, findPassword, emailId, findId,
+} from 'api/user';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
+import { useState } from 'react';
+import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
 import style from './index.module.scss';
-import { EmailParams, FindProp } from '../entity';
+import { FindParams, FindProp } from '../entity';
+import Timer from './Timer';
 
 const useChangePage = () => {
   const nav = useNavigate();
@@ -18,40 +23,84 @@ const useChangePage = () => {
 };
 
 export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
+  const [isClicked, setIsClicked] = useState(false);
+  const [openModal, setOpenModal] = useState<boolean>();
+  const [user, setUser] = useState({
+    email: null,
+    id: null,
+  });
+
   const {
     register,
     formState: { isSubmitting, errors, isValid },
     setError,
     handleSubmit,
-  } = useForm<EmailParams>({
+  } = useForm<FindParams>({
     mode: 'onChange',
   });
+
   const changePage = useChangePage();
-  const checkEmail = async (param: EmailParams) => {
+  const checkEmail = async (param: FindParams) => {
     try {
-      await emailPassword(param);
+      if (type === 'password') {
+        await emailPassword(param);
+        setIsClicked(true);
+      } else {
+        await emailId(param);
+        setIsClicked(true);
+      }
     } catch {
       setError('email', { message: '이메일이 올바르지 않습니다.' });
     }
   };
-  const checkId = async (param: EmailParams) => {
+  const checkId = async (param: FindParams) => {
     try {
-      const result = await checkIdDuplicate(param);
-      if (result.status === 200) {
-        setError('account', { message: '아이디가 올바르지 않습니다.' });
-      }
+      await checkIdDuplicate(param);
+      setError('account', { message: '아이디가 올바르지 않습니다.' });
     } catch {
       checkEmail(param);
     }
   };
 
-  const checkUser = (param: EmailParams) => {
-    checkEmail(param);
-    checkId(param);
+  const checkUser = (param: FindParams) => {
+    if (type === 'password') {
+      checkId(param);
+    } else {
+      checkEmail(param);
+    }
+  };
+
+  const toNextPage = async (param: FindParams) => {
+    try {
+      if (type === 'password') {
+        const result = await findPassword({
+          account: param.account as string, // 비밀번호 찾기 페이지에서는 account가 필수임
+          email: param.email,
+          code: param.code,
+        });
+        const token = result.data;
+        sessionStorage.setItem('accessToken', token);
+        changePage();
+      } else {
+        const result = await findId({
+          email: param.email,
+          code: param.code,
+        });
+        setUser({
+          id: result.data.account,
+          email: result.data.email,
+        });
+        setOpenModal(true);
+      }
+    } catch (e) {
+      setError('code', { message: '인증번호가 올바르지 않습니다.' });
+      setIsClicked(false);
+    }
   };
   return (
     <div>
       <div className={style.page}>
+
         <div className={style.page__container}>
           {type === 'id' && (
             <div className={style.page__title}>
@@ -90,20 +139,22 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
                 <div className={cn({ [style['form__label--box']]: true })}>
                   아이디
                   {errors.account && (
-                    <span>
+                    <span className={style.form__message}>
                       <ErrorIcon />
                       {errors.account.message}
-
                     </span>
                   )}
                 </div>
                 <input
                   id="id"
                   placeholder="아이디를 입력하세요."
-                  className={style.form__input}
+                  className={cn({
+                    [style['form__input--active']]: !isValid,
+                    [style.form__input]: true,
+                  })}
                   {...register('account')}
                 />
-                <ErrorIcon className={style.form__error} />
+                {errors.account && <ErrorIcon className={style.form__error} />}
               </label>
 
             </div>
@@ -113,7 +164,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
               <div className={cn({ [style['form__label--box']]: true })}>
                 이메일
                 {errors.email && (
-                  <span>
+                  <span className={style.form__message}>
                     <ErrorIcon />
                     {errors.email.message}
                   </span>
@@ -122,33 +173,50 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
               <input
                 id="email"
                 placeholder="이메일을 입력하세요."
-                className={style.form__input}
+                className={cn({
+                  [style['form__input--active']]: !isValid,
+                  [style.form__input]: true,
+                })}
                 {...register('email', {
                   pattern: {
                     value: EMAIL_REGEXP,
-                    message: '올바른 email 형식이 아닙니다.',
+                    message: '이메일이 올바르지 않습니다.',
                   },
                 })}
               />
-              <ErrorIcon className={style.form__error} />
+              {errors.email && <ErrorIcon className={style.form__error} />}
             </label>
           </div>
           <div className={style.form__box}>
             <label className={style.form__label} htmlFor="verify">
               <div className={cn({ [style['form__label--box']]: true })}>
                 인증번호
-                <ErrorIcon />
+                {errors.code && (
+                  <span className={style.form__message}>
+                    <ErrorIcon />
+                    {errors.code.message}
+                  </span>
+                )}
               </div>
-              <div>
+              <div className={style.form__box}>
                 <input
                   id="verify"
                   placeholder="인증번호를 입력하세요."
-                  className={style.form__input}
+                  className={cn({
+                    [style['form__input--active']]: !!errors.code,
+                    [style.form__input]: true,
+                  })}
+                  {...register('code')}
                 />
+                <div className={style.form__timer}>
+                  {isClicked && <Timer />}
+                </div>
                 <button
                   type="button"
+                  disabled={isClicked || !isValid}
                   className={cn({
-                    [style.form__button]: true,
+                    [style['form__button--active']]: !isClicked,
+                    [style.form__button]: isClicked,
                   })}
                   onClick={handleSubmit(checkUser)}
                 >
@@ -159,17 +227,28 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
 
           </div>
           <button
-            type="submit"
+            type="button"
             disabled={isSubmitting || !isValid}
             className={cn({
               [style['form__submit--active']]: isValid,
               [style.form__submit]: true,
             })}
-            onClick={changePage}
+            onClick={handleSubmit(toNextPage)}
           >
             다음
           </button>
         </form>
+        {openModal && (
+          <Modal type="아이디">
+            {user.email}
+            으로
+            <br />
+            가입된 아이디는
+            {' '}
+            {user.id}
+            입니다
+          </Modal>
+        )}
         <div className={style.copyright}>
           <Copyright />
         </div>

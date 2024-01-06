@@ -1,5 +1,5 @@
 // import makeToast from 'utils/ts/makeToast';
-import { EmailParams } from 'pages/Auth/FindIdPassword/entity';
+import { AccountParams, EmailParams } from 'pages/Auth/FindIdPassword/entity';
 import {
   CheckIdDuplicateParams,
   LoginParams,
@@ -36,7 +36,7 @@ export const sendFindEmail = (param: SendFindEmailParams) => userApi.post(`/emai
 
 export const getAccount = (param: GetAccountParams) => userApi.get(`/account?email=${param.email}&code=${param.code}`);
 
-export const findPassowrd = (param: FindPasswordParams) => userApi.post('/password', {
+export const findPassword = (param: FindPasswordParams) => userApi.post('/password', {
   account: param.account,
   code: param.code,
   email: param.email,
@@ -45,3 +45,7 @@ export const findPassowrd = (param: FindPasswordParams) => userApi.post('/passwo
 export const checkPassword = (param: CheckPasswordParams) => userApi.post(`/check-password?password=${param.password}`);
 
 export const emailPassword = (Param: EmailParams) => userApi.post(`/email/password?account=${Param.account}&email=${Param.email}`);
+
+export const emailId = (Param : EmailParams) => userApi.post(`/email/account?email=${Param.email}`);
+
+export const findId = (Param : AccountParams) => userApi.get(`/account?email=${Param.email}&code=${Param.code}`);

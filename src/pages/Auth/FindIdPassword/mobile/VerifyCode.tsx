@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import cn from 'utils/ts/classNames';
-import { sendFindEmail, getAccount, findPassowrd } from 'api/user';
+import { sendFindEmail, getAccount, findPassword } from 'api/user';
 import useInputCheck from 'pages/Auth/FindIdPassword/hook/useInputCheck';
 import { RegisterProp, CodeInfo } from 'pages/Auth/FindIdPassword/entity';
 import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
@@ -37,7 +37,7 @@ export default function VerifyCode({
           });
         }
       } else if (param.type === 'password' && account) {
-        const result = await findPassowrd({ account, email, code });
+        const result = await findPassword({ account, email, code });
         if (result.status === 200) {
           sessionStorage.setItem('accessToken', result.data);
         }

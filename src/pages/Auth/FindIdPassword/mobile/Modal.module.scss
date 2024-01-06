@@ -27,20 +27,22 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 295px;
-  height: 180px;
+  width: 380px;
+  height: 230px;
   border-radius: 20px;
   padding: 15px;
   padding-bottom: 0.5px;
 
   &__title {
+    color: #ff7f23;
     font-size: 18px;
     font-weight: 700;
+    margin-bottom: 10px;
   }
 
   &__content {
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   &__button {
@@ -48,9 +50,16 @@
     border-radius: 20px;
     background-color: #ff7f23;
     text-align: center;
-    width: 259px;
+    width: 100px;
     height: 40px;
     color: white;
     cursor: pointer;
+  }
+
+  &__close {
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    color: #c4c4c4;
   }
 }
