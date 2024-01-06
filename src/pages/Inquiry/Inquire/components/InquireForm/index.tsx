@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
-import useBooleanState from 'utils/hooks/useBooleanState';
-import useSubmitInquiry from 'pages/Inquiry/hooks/useSubmitInquiry';
+
 import cn from 'utils/ts/classNames';
 import makeToast from 'utils/ts/makeToast';
+import useSubmitInquiry from 'pages/Inquiry/hooks/useSubmitInquiry';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
 import ToggleButton from 'components/common/ToggleButton';
 import { InquiryImage } from 'api/inquiry/entity';
-import RequiredLabel from './RequiredLabel';
+import RequiredLabel from 'pages/Inquiry/Inquire/components/InquireForm/RequiredLabel';
+import useBooleanState from 'utils/hooks/useBooleanState';
+
 import styles from './InquireForm.module.scss';
 
 export default function InquireForm(): JSX.Element {

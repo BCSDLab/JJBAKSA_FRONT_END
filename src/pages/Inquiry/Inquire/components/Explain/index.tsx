@@ -1,4 +1,5 @@
 import { ReactComponent as WriteInquiryIcon } from 'assets/svg/inquiry/write-inquiry.svg';
+
 import styles from './Explain.module.scss';
 
 export default function Explain({ className }: { className: string }): JSX.Element {

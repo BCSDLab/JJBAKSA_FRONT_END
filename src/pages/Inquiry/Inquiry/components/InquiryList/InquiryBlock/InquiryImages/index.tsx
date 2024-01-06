@@ -1,5 +1,6 @@
 import { InquiryImage } from 'api/inquiry/entity';
 import cn from 'utils/ts/classNames';
+
 import styles from './InquiryImages.module.scss';
 
 interface InquiryImagesProps {

@@ -1,10 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
 import InquirySelectButton from 'pages/Inquiry/Inquiry/components/InquirySelectButton';
 import SearchBar from 'pages/Inquiry/Inquiry/components/SearchBar';
 import InquiryList from 'pages/Inquiry/Inquiry/components/InquiryList';
+
 import styles from './Inquiry.module.scss';
 
 type QueryTypeMap = {

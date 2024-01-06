@@ -1,5 +1,7 @@
 import { useState } from 'react';
+
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
+
 import styles from './SearchBar.module.scss';
 
 interface SearchBarProps {

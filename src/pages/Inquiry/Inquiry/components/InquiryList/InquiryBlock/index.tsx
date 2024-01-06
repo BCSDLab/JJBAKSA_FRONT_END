@@ -1,9 +1,11 @@
 import React from 'react';
-import InquiryImages from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock/InquiryImages';
+
+import cn from 'utils/ts/classNames';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import { InquiryContent } from 'api/inquiry/entity';
-import cn from 'utils/ts/classNames';
-import Answer from './Answer';
+import InquiryImages from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock/InquiryImages';
+import Answer from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock/Answer';
+
 import styles from './InquiryBlock.module.scss';
 
 interface InquiryBlockProps {

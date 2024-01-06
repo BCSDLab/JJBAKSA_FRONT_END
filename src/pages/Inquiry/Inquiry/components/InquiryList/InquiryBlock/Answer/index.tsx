@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Answer.module.scss';
 
 export default function Answer({ text }: { text: string }): JSX.Element {

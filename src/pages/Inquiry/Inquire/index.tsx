@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import Explain from './components/Explain';
-import InquireForm from './components/InquireForm';
+
+import Explain from 'pages/Inquiry/Inquire/components/Explain';
+import InquireForm from 'pages/Inquiry/Inquire/components/InquireForm';
+
 import styles from './Inquire.module.scss';
 
 export default function Inquire(): JSX.Element {
