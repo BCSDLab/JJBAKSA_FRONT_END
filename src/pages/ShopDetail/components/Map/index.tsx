@@ -1,6 +1,7 @@
 import useNaverMap from 'pages/Home/components/Map/hooks/useNaverMap';
+import SectionHeader from 'pages/ShopDetail/components/SectionHeader/index';
 import makeToast from 'utils/ts/makeToast';
-import SectionHeader from '../SectionHeader';
+
 import styles from './Map.module.scss';
 
 interface Props {

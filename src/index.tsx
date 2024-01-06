@@ -1,10 +1,13 @@
-import ReactDOM from 'react-dom/client';
-import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
+
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider as JotaiProvider } from 'jotai';
-import worker from './mocks/browser';
+import ReactDOM from 'react-dom/client';
+
+import './index.scss';
+
 import App from './App';
+import worker from './mocks/browser';
 import reportWebVitals from './reportWebVitals';
 
 const queryClient = new QueryClient({

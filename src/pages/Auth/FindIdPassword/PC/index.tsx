@@ -1,18 +1,20 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+import {
+  checkIdDuplicate, emailId, emailPassword, findId, findPassword,
+} from 'api/user';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as FirstProgress } from 'assets/svg/auth/two-step-first-progress.svg';
 import Copyright from 'components/Auth/Copyright';
-import cn from 'utils/ts/classNames';
-import { useForm } from 'react-hook-form';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
-import { useNavigate } from 'react-router-dom';
-import {
-  emailPassword, checkIdDuplicate, findPassword, emailId, findId,
-} from 'api/user';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
-import { useState } from 'react';
-import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
+import cn from 'utils/ts/classNames';
+
 import style from './index.module.scss';
-import { FindParams, FindProp } from '../entity';
 import Timer from './Timer';
+import { FindParams, FindProp } from '../entity';
+import Modal from '../mobile/Modal';
 
 const useChangePage = () => {
   const nav = useNavigate();

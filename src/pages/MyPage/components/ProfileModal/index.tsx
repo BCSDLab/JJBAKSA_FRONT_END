@@ -1,9 +1,11 @@
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+
 import defaultImage from 'assets/images/follow/default-image.png';
 import plus from 'assets/svg/mypage/plus.svg';
-import { toast } from 'react-toastify';
-import React, { useState } from 'react';
-import useChangeProfile from 'pages/MyPage/hooks/useChangeProfile';
 import useChangeNickname from 'pages/MyPage/hooks/useChangeNickname';
+import useChangeProfile from 'pages/MyPage/hooks/useChangeProfile';
+
 import styles from './ProfileModal.module.scss';
 
 interface ProfileModalProps {

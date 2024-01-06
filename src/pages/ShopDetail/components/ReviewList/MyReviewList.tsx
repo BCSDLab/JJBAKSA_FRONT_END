@@ -1,9 +1,11 @@
-import { fetchMyReview } from 'api/review';
 import { useQuery } from '@tanstack/react-query';
+
+import { fetchMyReview } from 'api/review';
+import NotFoundDescription from 'pages/ShopDetail/components/NotFoundDescription/index';
+import SectionHeader from 'pages/ShopDetail/components/SectionHeader/index';
 import formatISODate from 'utils/ts/formatISODate';
+
 import styles from './ReviewList.module.scss';
-import SectionHeader from '../SectionHeader';
-import NotFoundDescription from '../NotFoundDescription';
 // import mockReviews from './mock';
 
 interface Props {

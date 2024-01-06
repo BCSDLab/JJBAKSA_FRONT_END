@@ -1,6 +1,8 @@
 import axios, { AxiosError } from 'axios';
-import makeToast from 'utils/ts/makeToast';
+
 import { API_PATH } from 'config/constants';
+import makeToast from 'utils/ts/makeToast';
+
 import { RefreshResponse } from './entity';
 
 const userApi = axios.create({

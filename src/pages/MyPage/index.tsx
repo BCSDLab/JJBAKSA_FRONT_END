@@ -1,16 +1,18 @@
-import BottomNavigation from 'components/common/BottomNavigation';
-import SideNavigation from 'components/common/SideNavigation';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { Suspense, useState } from 'react';
 import { toast } from 'react-toastify';
+
+import BottomNavigation from 'components/common/BottomNavigation';
 import LoadingSpinner from 'components/common/LoadingSpinner';
-import Information from './components/Information';
-import BoardSelector from './components/BoardSelector';
-import BookMark from './components/BookMark';
+import SideNavigation from 'components/common/SideNavigation';
+import BoardSelector from 'pages/MyPage/components/BoardSelector/index';
+import BookMark from 'pages/MyPage/components/BookMark/index';
+import Information from 'pages/MyPage/components/Information/index';
+import MyPost from 'pages/MyPage/components/MyPost/index';
+import ProfileModal from 'pages/MyPage/components/ProfileModal/index';
+import useMyProfile from 'pages/MyPage/hooks/useMyProfile';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
+
 import styles from './MyPage.module.scss';
-import MyPost from './components/MyPost';
-import ProfileModal from './components/ProfileModal';
-import useMyProfile from './hooks/useMyProfile';
 
 export default function MyPage() {
   const { isMobile } = useMediaQuery();

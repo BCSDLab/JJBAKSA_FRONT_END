@@ -1,6 +1,6 @@
+import FollowList from 'pages/Follow/components/FollowList';
+import { FollowerInfo, SearchPageInfo } from 'pages/Follow/static/entity';
 import { useAuth } from 'store/auth';
-import { FollowerInfo, SearchPageInfo } from '../static/entity';
-import FollowList from './FollowList';
 
 export default function SearchPage({ data }: SearchPageInfo) {
   const auth = useAuth();

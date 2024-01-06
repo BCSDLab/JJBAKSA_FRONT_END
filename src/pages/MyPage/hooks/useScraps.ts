@@ -1,5 +1,6 @@
-import { getScraps } from 'api/mypage';
 import { useInfiniteQuery } from '@tanstack/react-query';
+
+import { getScraps } from 'api/mypage';
 
 const useScraps = () => {
   const { data, isLoading, fetchNextPage } = useInfiniteQuery({

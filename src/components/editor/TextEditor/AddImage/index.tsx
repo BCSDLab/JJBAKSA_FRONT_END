@@ -1,10 +1,12 @@
-import { ReactComponent as Picture } from 'assets/svg/post/picture.svg';
 import { useRef } from 'react';
+
+import { ReactComponent as Picture } from 'assets/svg/post/picture.svg';
+import ImageItem from 'components/editor/TextEditor/AddImage/ImageItem';
+import useImageList from 'components/editor/TextEditor/hooks/useImageList';
 import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
 import cn from 'utils/ts/classNames';
+
 import styles from './AddImage.module.scss';
-import useImageList from '../hooks/useImageList';
-import ImageItem from './ImageItem';
 
 function AddImage() {
   const { imageList, addImage, removeImage } = useImageList();

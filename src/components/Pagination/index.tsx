@@ -3,6 +3,7 @@ import { ReactComponent as ArrowRight } from 'assets/svg/inquiry/arrow-right.svg
 import { ReactComponent as DoubleArrowLeft } from 'assets/svg/inquiry/double-arrow-left.svg';
 import { ReactComponent as DoubleArrowRight } from 'assets/svg/inquiry/double-arrow-right.svg';
 import cn from 'utils/ts/classNames';
+
 import styles from './pagination.module.scss';
 
 interface Props {

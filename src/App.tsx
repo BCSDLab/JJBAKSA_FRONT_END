@@ -1,31 +1,33 @@
+import { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import AuthRoute from 'components/common/AuthRoute';
 import Toast from 'components/toast';
 import DefaultLayout from 'layout/DefaultLayout';
+import FindIDPassword from 'pages/Auth/FindIdPassword';
+import ChangePassword from 'pages/Auth/FindIdPassword/mobile/ChangePassword';
+import VerifyField from 'pages/Auth/FindIdPassword/mobile/VerifyField';
+import ChangePasswordPC from 'pages/Auth/FindIdPassword/PC/ChangePassword';
+import Login from 'pages/Auth/Login';
+import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
+import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
+import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
 import Complete from 'pages/Auth/Signup/CompletePage';
 import SignUp from 'pages/Auth/Signup/SignupPage/index';
 import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage';
-import Login from 'pages/Auth/Login';
+import FollowProfile from 'pages/Follow/components/FollowProfile';
+import FollowPage from 'pages/Follow/index';
+import Inquire from 'pages/Inquiry/Inquire';
+import Inquiry from 'pages/Inquiry/Inquiry';
+import MyPage from 'pages/MyPage';
+import Notice from 'pages/Notice';
 import Post from 'pages/Post';
-import Search from 'pages/Search';
-import VerifyField from 'pages/Auth/FindIdPassword/mobile/VerifyField';
-import { Routes, Route } from 'react-router-dom';
-import ChangePassword from 'pages/Auth/FindIdPassword/mobile/ChangePassword';
-import { Suspense } from 'react';
-import FollowPage from 'pages/Follow';
+import NotFoundPage from 'pages/Search/components/NotFoundPage';
+import SearchPost from 'pages/Search/SearchPost';
+import SearchShop from 'pages/Search/SearchShop';
 import Setting from 'pages/Setting';
 import IdChange from 'pages/Setting/Mobile/IdChange';
-import AuthRoute from 'components/common/AuthRoute';
 import Withdrawal from 'pages/Setting/Withdrawal';
-import Inquiry from 'pages/Inquiry/Inquiry';
-import Inquire from 'pages/Inquiry/Inquire';
-import Notice from 'pages/Notice';
-import KakaoLogin from 'pages/Auth/OAuth/KakaoLogin';
-import NaverLogin from 'pages/Auth/OAuth/NaverLogin';
-import GoogleLogin from 'pages/Auth/OAuth/GoogleLogin';
-import MyPage from 'pages/MyPage';
-import NotFoundPage from 'pages/Search/components/NotFoundPage';
-import FollowProfile from 'pages/Follow/components/FollowProfile';
-import FindIDPassword from 'pages/Auth/FindIdPassword';
-import ChangePasswordPC from 'pages/Auth/FindIdPassword/PC/ChangePassword';
 import ShopDetail from 'pages/ShopDetail';
 
 export default function App(): JSX.Element {
@@ -33,7 +35,9 @@ export default function App(): JSX.Element {
     <Suspense fallback={<div />}>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
-          <Route path="/search" element={<Search />} />
+          <Route path="/shop" element={<SearchShop />} />
+          <Route path="/shop/:placeId" element={<ShopDetail />} />
+          <Route path="/post" element={<SearchPost />} />
           <Route path="/search/not-found" element={<NotFoundPage />} />
           <Route path="/inquiry/:type" element={<Inquiry />} />
           <Route path="/inquiry/search/:keyword" element={<Inquiry />} />
@@ -47,7 +51,6 @@ export default function App(): JSX.Element {
             <Route path="/setting" element={<Setting />} />
             <Route path="/setting/id-change" element={<IdChange />} />
           </Route>
-          <Route path="/shop/:placeId" element={<ShopDetail />} />
           <Route path="/withdrawal" element={<Withdrawal />} />
           <Route path="/profile" element={<MyPage />} />
           <Route path="/post/:name" element={<Post />} />

@@ -1,6 +1,7 @@
 import { ReactComponent as Star } from 'assets/svg/post/star.svg';
+import StarRateContext from 'components/StarRating/StarRateContext';
 import useContext from 'utils/hooks/useWrappingContext';
-import StarRateContext from './StarRateContext';
+
 import styles from './StarRating.module.scss';
 
 export default function LeaveStarRateContainer({ rating }: { rating: number }) {

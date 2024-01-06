@@ -1,16 +1,18 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+
+import { modify } from 'api/user';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
+import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
 import { ReactComponent as SecondProgress } from 'assets/svg/auth/two-step-second-progress.svg';
 import Copyright from 'components/Auth/Copyright';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
-import { useForm } from 'react-hook-form';
-import cn from 'utils/ts/classNames';
-import { modify } from 'api/user';
 import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
-import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
-import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
 import useBooleanState from 'utils/hooks/useBooleanState';
-import { useState } from 'react';
-import { PasswordInfo } from '../entity';
+import cn from 'utils/ts/classNames';
+
 import style from './index.module.scss';
+import { PasswordInfo } from '../entity';
 
 export default function ChangePasswordPC(): JSX.Element {
   const [isNewBlind, , , changeNewBlind] = useBooleanState(false);

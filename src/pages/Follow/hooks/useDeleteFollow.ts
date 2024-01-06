@@ -1,5 +1,6 @@
-import { deleteFollow } from 'api/follow';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { deleteFollow } from 'api/follow';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 

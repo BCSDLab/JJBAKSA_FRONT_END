@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
+import LogoutModal from 'pages/Setting/PC/LogoutModal';
 import useBooleanState from 'utils/hooks/useBooleanState';
+
 import styles from './Service.module.scss';
-import LogoutModal from './LogoutModal';
 
 export default function Service() {
   const [isShowModal, setIsShowModal] = useBooleanState(false);
@@ -12,15 +14,15 @@ export default function Service() {
         <div className={styles.service__content}>
           <div className={styles.service__text}>공지사항</div>
           <Link to="/notice">
-            <button type="submit" className={styles.service__announcement} aria-label="공지사항으로 이동">
+            <button type="button" className={styles.service__announcement} aria-label="공지사항으로 이동">
               <Move />
             </button>
           </Link>
         </div>
         <div className={styles.service__content}>
           <div className={styles.service__text}>문의하기</div>
-          <Link to="/inquiry">
-            <button type="submit" className={styles.service__announcement} aria-label="문의하기로 이동">
+          <Link to="/inquiry/all">
+            <button type="button" className={styles.service__announcement} aria-label="문의하기로 이동">
               <Move />
             </button>
           </Link>

@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import cn from 'utils/ts/classNames';
+
 import Copyright from 'components/Auth/Copyright';
-import ManageAccount from './ManageAccount';
-import Service from './Service';
-import style from './index.module.scss';
+import ManageAccount from 'pages/Setting/PC/ManageAccount';
+import Service from 'pages/Setting/PC/Service';
+import cn from 'utils/ts/classNames';
+
+import style from './PcSetting.module.scss';
 
 export default function PcSetting() {
   const [isAccount, setIsAccount] = useState(true);

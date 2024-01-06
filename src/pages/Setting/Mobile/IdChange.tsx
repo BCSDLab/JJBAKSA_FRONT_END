@@ -1,14 +1,15 @@
-import cn from 'utils/ts/classNames';
-import PreviousButton from 'components/PreviousButton/PreviousButton';
-import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
 import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
-import { useAuth } from 'store/auth';
+import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
 import useModifyPassword from 'pages/Setting/hook/useModifyPassword';
+import MobileCommonModal from 'pages/Setting/Mobile/MobileCommonModal';
+import PasswordSuccessModal from 'pages/Setting/PC/PasswordSuccessModal';
+import { correctError, currentError, typeError } from 'pages/Setting/static/setting';
+import { useAuth } from 'store/auth';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import cn from 'utils/ts/classNames';
+
 import styles from './IdChage.module.scss';
-import MobileCommonModal from './MobileCommonModal';
-import PasswordSuccessModal from '../PC/PasswordSuccessModal';
-import { correctError, currentError, typeError } from '../static/setting';
 
 // const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 

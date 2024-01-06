@@ -1,14 +1,15 @@
-import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
-import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
-import { useAuth } from 'store/auth';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
-import cn from 'utils/ts/classNames';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import { User } from 'api/user/entity';
-import style from './index.module.scss';
-import useModifyPassword from '../hook/useModifyPassword';
-import PasswordSuccessModal from './PasswordSuccessModal';
-import { correctError, currentError, typeError } from '../static/setting';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
+import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
+import useModifyPassword from 'pages/Setting/hook/useModifyPassword';
+import PasswordSuccessModal from 'pages/Setting/PC/PasswordSuccessModal';
+import { correctError, currentError, typeError } from 'pages/Setting/static/setting';
+import { useAuth } from 'store/auth';
+import useBooleanState from 'utils/hooks/useBooleanState';
+import cn from 'utils/ts/classNames';
+
+import style from './PcSetting.module.scss';
 
 export default function ManageAccount() {
   const [isCurrentBlind, , , changeCurrentBlind] = useBooleanState(false);

@@ -1,5 +1,6 @@
-import styles from 'pages/Search/components/SearchBar/SearchBar.module.scss';
 import useTrendingList from 'pages/Search/hooks/useTrendings';
+
+import styles from './SearchBar.module.scss';
 
 export default function RollingBanner() {
   const { isLoading, data: trendings } = useTrendingList();

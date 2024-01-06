@@ -1,8 +1,9 @@
-import useGeolocation from 'utils/hooks/useGeolocation';
 import { useQuery } from '@tanstack/react-query';
+
 import { getFilterShops } from 'api/shop';
 import { FilterShopsParams } from 'api/shop/entity';
 import { useAuth } from 'store/auth';
+import useGeolocation from 'utils/hooks/useGeolocation';
 
 const OPTIONS = {
   maximumAge: 1000,

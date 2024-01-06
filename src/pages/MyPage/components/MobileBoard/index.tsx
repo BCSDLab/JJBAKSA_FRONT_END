@@ -1,11 +1,13 @@
-import filledStar from 'assets/svg/mypage/star-filled.svg';
-import openArrow from 'assets/svg/mypage/open-arrow.svg';
-import closeArrow from 'assets/svg/mypage/close-arrow.svg';
 import { useState } from 'react';
-import notExist from 'assets/svg/mypage/not-exist.svg';
+
 import { Shop } from 'api/mypage/entity';
-import useReviwes from 'pages/MyPage/hooks/useReviews';
+import closeArrow from 'assets/svg/mypage/close-arrow.svg';
+import notExist from 'assets/svg/mypage/not-exist.svg';
+import openArrow from 'assets/svg/mypage/open-arrow.svg';
+import filledStar from 'assets/svg/mypage/star-filled.svg';
 import useMyProfile from 'pages/MyPage/hooks/useMyProfile';
+import useReviwes from 'pages/MyPage/hooks/useReviews';
+
 import styles from './MobileBoard.module.scss';
 
 interface MobileBoardProps {

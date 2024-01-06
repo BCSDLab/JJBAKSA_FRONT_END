@@ -1,9 +1,9 @@
 import {
+  FetchAutoCompleteParams,
+  FetchAutoCompleteResponse,
   FetchShopsResponse,
   FetchTrendingsResponse,
   ShopsParams,
-  FetchAutoCompleteParams,
-  FetchAutoCompleteResponse,
 } from './entity';
 import searchApi from './searchApiClient';
 

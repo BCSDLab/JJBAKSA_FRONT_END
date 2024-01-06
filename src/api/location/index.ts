@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { NAVER_MAPS_CLIENT_ID, NAVER_MAP_CLOUD_SECRET_ID } from 'config/constants';
+
+import { NAVER_MAP_CLOUD_SECRET_ID, NAVER_MAPS_CLIENT_ID } from 'config/constants';
 
 const getAddress = async (latitude: number, longitude: number): Promise<string> => {
   const response = await axios.get('/map-reversegeocode/v2/gc', {

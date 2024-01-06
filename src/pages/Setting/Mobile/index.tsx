@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg';
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
-import { Link } from 'react-router-dom';
-import PreviousButton from 'components/PreviousButton/PreviousButton';
 import { ReactComponent as Version } from 'assets/svg/setting/version-check.svg';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
+import useModifyPassword from 'pages/Setting/hook/useModifyPassword';
+import MobileCommonModal from 'pages/Setting/Mobile/MobileCommonModal';
+import MobileLogoutModal from 'pages/Setting/Mobile/MobileLogoutModal';
+
 import styles from './Setting.module.scss';
-import MobileCommonModal from './MobileCommonModal';
-import useModifyPassword from '../hook/useModifyPassword';
-import MobileLogoutModal from './MobileLogoutModal';
 
 export default function MobileSetting() {
   const {
@@ -25,7 +27,7 @@ export default function MobileSetting() {
         <div className={styles.account__content}>
           <div className={styles.account__text}>비밀번호 변경 </div>
           <Link to="id-Change">
-            <button type="submit" className={styles['account__right-arrow']} aria-label="비밀번호 변경 페이지로 이동">
+            <button type="button" className={styles['account__right-arrow']} aria-label="비밀번호 변경 페이지로 이동">
               <ArrowRight />
             </button>
           </Link>
@@ -44,7 +46,7 @@ export default function MobileSetting() {
         <div className={styles.service__content}>
           <div className={styles.service__text}>공지사항</div>
           <Link to="/notice">
-            <button type="submit" className={styles.service__announcement} aria-label="공지사항으로 이동">
+            <button type="button" className={styles.service__announcement} aria-label="공지사항으로 이동">
               <Move />
             </button>
           </Link>
@@ -52,7 +54,7 @@ export default function MobileSetting() {
         <div className={styles.service__content}>
           <div className={styles.service__text}>문의하기</div>
           <Link to="/inquiry/all">
-            <button type="submit" className={styles.service__announcement} aria-label="문의하기로 이동">
+            <button type="button" className={styles.service__announcement} aria-label="문의하기로 이동">
               <Move />
             </button>
           </Link>

@@ -1,5 +1,6 @@
-import AuthTitle from 'components/Auth/AuthTitle';
 import AuthDetail from 'components/Auth/AuthDetail';
+import AuthTitle from 'components/Auth/AuthTitle';
+
 import styles from './CompleteModal.module.scss';
 
 interface Props {

@@ -1,15 +1,17 @@
-import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
-import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
+import { Link, useLocation } from 'react-router-dom';
+
+import defaultImage from 'assets/images/follow/default-image.png';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
+import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
+import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
+import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
-import cn from 'utils/ts/classNames';
-// import defaultImage from 'assets/images/follow/default-image.png';
-import useBooleanState from 'utils/hooks/useBooleanState';
-import { Link, useLocation } from 'react-router-dom';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import useBooleanState from 'utils/hooks/useBooleanState';
+import cn from 'utils/ts/classNames';
+
 import styles from './SideNavigation.module.scss';
-import SpriteSvg from '../SpriteSvg';
 
 export default function SideNavigation(): JSX.Element {
   const auth = useAuth();
@@ -42,7 +44,7 @@ export default function SideNavigation(): JSX.Element {
     {
       name: '글쓰기',
       icon: <SpriteSvg id="write" height="24" width="24" />,
-      link: '/search',
+      link: '/post',
     },
     {
       name: '마이페이지',
@@ -60,18 +62,20 @@ export default function SideNavigation(): JSX.Element {
     <div>
       <nav className={styles['side-navigation']}>
         <ul className={styles['side-navigation__lists']}>
-          {TABS.map((tab) => (
+          {TABS.map((tab, index) => (
             <li
               key={tab.name}
               className={cn({
                 [styles['side-navigation__list']]: true,
-                [styles['side-navigation__list--clicked']]: tab.name === '검색' && visible,
               })}
             >
               {tab.name === '검색' ? (
                 <button
                   type="button"
-                  className={styles['side-navigation__button']}
+                  className={cn({
+                    [styles['side-navigation__button']]: true,
+                    [styles['side-navigation__button--clicked']]: location.pathname === '/' || location.pathname === '/shop',
+                  })}
                   onClick={handleToggle}
                   tabIndex={0}
                 >
@@ -79,7 +83,13 @@ export default function SideNavigation(): JSX.Element {
                   <div>{tab.name}</div>
                 </button>
               ) : (
-                <Link to={tab.link} className={styles['side-navigation__link']}>
+                <Link
+                  to={tab.link}
+                  className={cn({
+                    [styles['side-navigation__link']]: true,
+                    [styles['side-navigation__link--clicked']]: index >= 2 && tab.link === location.pathname,
+                  })}
+                >
                   <div>{tab.icon}</div>
                   <div>{tab.name}</div>
                 </Link>
@@ -91,7 +101,7 @@ export default function SideNavigation(): JSX.Element {
           {auth ? (
             <li>
               <img
-                src={auth?.profileImage?.url}
+                src={auth?.profileImage?.url || defaultImage}
                 alt="프로필 이미지"
                 className={styles['bottom-navigation__profile-image']}
               />
@@ -127,7 +137,7 @@ export default function SideNavigation(): JSX.Element {
       >
         <div className={styles['side-pannel__search']}>
           <div className={styles['side-pannel__search-bar']}>
-            <Link to="/search" className={styles['side-pannel__search-link']}>
+            <Link to="/shop" className={styles['side-pannel__search-link']}>
               검색어를 입력해주세요.
               <SearchIcon className={styles['side-pannel__search-icon']} />
             </Link>

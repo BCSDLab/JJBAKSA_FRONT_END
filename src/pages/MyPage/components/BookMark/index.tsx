@@ -1,8 +1,9 @@
-import filledStar from 'assets/svg/mypage/star-filled.svg';
 import defaultImage from 'assets/images/search/default-image.png';
-import useScraps from 'pages/MyPage/hooks/useScraps';
-import useObserver from 'pages/MyPage/hooks/useObeserver';
 import notExist from 'assets/svg/mypage/not-exist.svg';
+import filledStar from 'assets/svg/mypage/star-filled.svg';
+import useObserver from 'pages/MyPage/hooks/useObeserver';
+import useScraps from 'pages/MyPage/hooks/useScraps';
+
 import styles from './BookMark.module.scss';
 
 export default function BookMark() {

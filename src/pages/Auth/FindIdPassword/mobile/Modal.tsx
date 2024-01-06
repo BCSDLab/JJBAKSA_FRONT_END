@@ -1,6 +1,8 @@
 import { createPortal } from 'react-dom';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { ReactComponent as Favicon } from 'assets/svg/common/favicon.svg';
+
 import style from './Modal.module.scss';
 
 interface ModalProp {

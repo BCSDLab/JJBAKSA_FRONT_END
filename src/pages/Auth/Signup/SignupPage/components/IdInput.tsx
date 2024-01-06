@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-import cn from 'utils/ts/classNames';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { useFormContext } from 'react-hook-form';
+
 import { useQuery } from '@tanstack/react-query';
-import { checkIdDuplicate } from 'api/user';
-import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
 import { AxiosError } from 'axios';
+
+import { checkIdDuplicate } from 'api/user';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { SignUpFormData } from 'pages/Auth/Signup/SignupPage/entity';
+import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
+import cn from 'utils/ts/classNames';
+
 import styles from '../SignUp.module.scss';
-import { SignUpFormData } from '../entity';
 
 const useIdCheckServer = (id: string) => {
   const { status, error } = useQuery<

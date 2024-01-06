@@ -1,0 +1,25 @@
+$highlight: #ff7f23;
+
+.box {
+  display: flex;
+  flex-direction: row;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+}
+
+.indicator {
+  position: relative;
+}
+
+.circle {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: $highlight;
+  position: absolute;
+  left: 3px;
+}

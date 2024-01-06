@@ -1,5 +1,6 @@
-import getInquiry from 'api/inquiry';
 import { useQuery } from '@tanstack/react-query';
+
+import getInquiry from 'api/inquiry';
 import { InquiryProps } from 'api/inquiry/entity';
 
 const useInquiryList = ({

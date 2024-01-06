@@ -1,4 +1,4 @@
-import styles from 'pages/SearchDetails/SearchDetails.module.scss';
+import styles from '../SearchDetails.module.scss';
 
 export default function Slider() {
   return (

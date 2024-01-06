@@ -1,15 +1,17 @@
-import { Overlay } from 'react-naver-maps';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
 import { useEffect } from 'react';
+import { Overlay } from 'react-naver-maps';
+
+import MobileOptions from 'pages/Home/components/Map/components/MobileOptions';
+import useCluster from 'pages/Home/components/Map/hooks/useCluster';
+import useFilterShops from 'pages/Home/components/Map/hooks/useFilterShops';
+import useMarker from 'pages/Home/components/Map/hooks/useMarker';
+import useNaverMap from 'pages/Home/components/Map/hooks/useNaverMap';
+import Pin from 'pages/Home/components/Pin/index';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import { useLocation } from 'store/location';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
+
 import styles from './Map.module.scss';
-import MobileOptions from './components/MobileOptions';
-import useNaverMap from './hooks/useNaverMap';
-import useMarker from './hooks/useMarker';
-import useFilterShops from './hooks/useFilterShops';
-import Pin from '../Pin';
-import useCluster from './hooks/useCluster';
 
 export default function Map(): JSX.Element {
   const { isMobile } = useMediaQuery();

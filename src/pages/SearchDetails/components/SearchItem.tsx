@@ -1,13 +1,16 @@
-import styles from 'pages/SearchDetails/SearchDetails.module.scss';
 import { useNavigate } from 'react-router-dom';
+
 import { Shop } from 'api/shop/entity';
 import { ReactComponent as PhoneImg } from 'assets/svg/search/phone.svg';
-import { getMockItem } from '../static/mockup';
+import { getMockItem } from 'pages/SearchDetails/static/mockup';
+
+import styles from '../SearchDetails.module.scss';
 
 interface Props {
   shop: Shop;
+  pathname: string;
 }
-export default function SearchItem({ shop }: Props) {
+export default function SearchItem({ shop, pathname }: Props) {
   const {
     name, formattedAddress, photoToken, placeId, dist, openNow, category,
   } = shop;
@@ -19,7 +22,8 @@ export default function SearchItem({ shop }: Props) {
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
   const onClick = () => {
-    navigate(`/post/${name}`, { state: { placeId } });
+    const newPath = pathname.includes('/post') ? `/post/${name}` : `/shop/${name}`;
+    navigate(newPath, { state: { placeId } });
   };
   return (
     <button

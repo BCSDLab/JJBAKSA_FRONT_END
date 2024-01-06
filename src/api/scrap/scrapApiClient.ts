@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { API_PATH } from 'config/constants';
 
 const scrapApi = axios.create({

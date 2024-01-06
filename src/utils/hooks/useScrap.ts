@@ -1,6 +1,8 @@
-import { useMutation } from '@tanstack/react-query';
-import { deleteScrapShop, postScrapShop } from 'api/scrap';
 import { useState } from 'react';
+
+import { useMutation } from '@tanstack/react-query';
+
+import { deleteScrapShop, postScrapShop } from 'api/scrap';
 
 const useScrap = (placeId: string, initialScrapId: number | null) => {
   const [scrapId, setScrapId] = useState<number | null>(initialScrapId);

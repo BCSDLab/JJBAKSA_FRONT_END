@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom';
+
 import style from './MobileCommonModal.module.scss';
 
 interface Props {

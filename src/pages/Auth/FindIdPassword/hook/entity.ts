@@ -1,5 +1,5 @@
 import {
-  UseFormRegister, UseFormHandleSubmit, UseFormSetError,
+  UseFormHandleSubmit, UseFormRegister, UseFormSetError,
 } from 'react-hook-form';
 
 export interface FindProp {

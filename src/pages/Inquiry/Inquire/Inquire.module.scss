@@ -1,33 +1,38 @@
-$default: #222222;
 $highlight: #ff7f23;
-$back: white;
-$normal: #666666;
-$disabled: #c4c4c4;
 
 .container {
-  width: 100%;
-  height: 100%;
+  width: calc(100vw - 104px);
+  height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: row;
+  margin-left: 100px;
 }
 
-.box {
+.inner-container {
   width: 947px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .menu {
-  width: 227px;
+  width: 168px;
   height: 100%;
 
   &__link {
     display: block;
-    margin: 160px 0 32px;
+    margin-bottom: 32px;
     background-color: transparent;
     font-size: 32px;
     font-weight: 700;
     text-decoration: none;
     color: $highlight;
     cursor: pointer;
+  }
+
+  &__explain {
+    width: 100%;
   }
 }

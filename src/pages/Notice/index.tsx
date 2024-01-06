@@ -1,7 +1,9 @@
-import usePostList from 'pages/Post/hooks/usePostList';
 import { useState } from 'react';
-import Pagination from 'components/Pagination';
+
 import Datatable from 'components/DataTable';
+import Pagination from 'components/Pagination';
+import usePostList from 'pages/Post/hooks/usePostList';
+
 import styles from './Notice.module.scss';
 
 export default function Notice(): JSX.Element {

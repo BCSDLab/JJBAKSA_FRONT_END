@@ -1,4 +1,5 @@
 import { ReactComponent as Empty } from 'assets/svg/follow/no-friend.svg';
+
 import styles from './FailToSearch.module.scss';
 
 export default function EmptyFriend() {

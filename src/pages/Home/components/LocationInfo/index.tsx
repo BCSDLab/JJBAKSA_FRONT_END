@@ -1,4 +1,5 @@
 import { ReactComponent as Arrow } from 'assets/svg/home/arrow.svg';
+
 import styles from './LocationInfo.module.scss';
 
 interface LocationInfoProps {
