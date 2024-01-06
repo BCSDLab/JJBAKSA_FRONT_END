@@ -47,7 +47,7 @@ export interface InquirySort {
 export interface InquiryProps {
   queryType: string;
   dateCursor: string | null;
-  idCursor: number | null;
+  idCursor: number | 0;
   size: number;
 }
 

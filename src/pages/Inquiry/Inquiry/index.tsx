@@ -31,11 +31,12 @@ export default function Inquiry(): JSX.Element {
   const rawPageType = location.pathname.split('/')[2];
   const pageType = Object.keys(queryTypeMap).includes(rawPageType) ? rawPageType as QueryType : 'all';
 
-  const [queryType, setQueryType] = useState<string>('');
+  const [queryType, setQueryType] = useState<string>(queryTypeMap[pageType] || '');
 
   useEffect(() => {
-    setQueryType(queryTypeMap[pageType] || '');
-  }, [pageType, keyword]);
+    const newPageType = Object.keys(queryTypeMap).includes(rawPageType) ? rawPageType as QueryType : 'all';
+    setQueryType(queryTypeMap[newPageType] || '');
+  }, [location.pathname, keyword]);
 
   const handleSearchChange = (text: string) => {
     setKeyword(text);

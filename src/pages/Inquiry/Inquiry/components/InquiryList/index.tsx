@@ -3,6 +3,7 @@ import React, {
   useState,
   useEffect,
   useRef,
+  useCallback,
 } from 'react';
 import useGetInquiry from 'pages/Inquiry/hooks/useGetInquiry';
 import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock';
@@ -30,10 +31,9 @@ export default function InquiryList({
   const { data, refetch } = useGetInquiry(inquiryProps);
   const [allContents, setAllContents] = useState<InquiryContent[] | []>([]);
   const loader = useRef<HTMLDivElement | null>(null);
-  const [isLoaderObserved, setIsLoaderObserved] = useState(false);
 
-  const [isGradientVisible, setIsGradientVisible] = useState(false);
   const gradient = useRef<HTMLDivElement | null>(null);
+  const [isGradientVisible, setIsGradientVisible] = useState(false);
 
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
@@ -47,7 +47,6 @@ export default function InquiryList({
   }, [queryType]);
 
   useEffect(() => {
-    refetch();
     if (data && data.content) {
       const newContents = data.content.filter((contentItem) =>
         !allContents.some((existingItem) => existingItem.id === contentItem.id));
@@ -55,41 +54,42 @@ export default function InquiryList({
         setAllContents((prevContents) => [...prevContents, ...newContents]);
       }
     }
-  }, [data, inquiryProps]);
+  }, [data]);
 
-  const loadMore = () => {
+  useEffect(() => {
+    refetch({ cancelRefetch: false });
+  }, [inquiryProps]);
+
+  const updateCursor = useCallback(() => {
     const lastContent = allContents[allContents.length - 1];
     const nextDataCursor = lastContent?.createdAt;
     const nextIdCursor = lastContent?.id;
 
     setInquiryProps((prev) => ({
       ...prev,
-      dateCursor: nextDataCursor,
-      idCursor: nextIdCursor,
+      dateCursor: nextDataCursor || null,
+      idCursor: nextIdCursor || 0,
     }));
-  };
+  }, [allContents]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
+    const loaderObserver = new IntersectionObserver((entries) => {
       const target = entries[0];
-      if (target.isIntersecting && !isLoaderObserved) {
-        setIsLoaderObserved(true);
-        loadMore();
-      } else if (!target.isIntersecting && isLoaderObserved) {
-        setIsLoaderObserved(false);
+      if (target.isIntersecting) {
+        updateCursor();
       }
     }, { threshold: 0.5 });
 
     if (loader.current) {
-      observer.observe(loader.current);
+      loaderObserver.observe(loader.current);
     }
 
     return () => {
       if (loader.current) {
-        observer.unobserve(loader.current);
+        loaderObserver.unobserve(loader.current);
       }
     };
-  });
+  }, [allContents]);
 
   useEffect(() => {
     if (!gradient.current) return;
@@ -128,7 +128,7 @@ export default function InquiryList({
             문의 내역이 없습니다.
           </p>
         )}
-        <div ref={loader} className={styles['list__loader-observer']} />
+        {allContents.length > 0 ? <div ref={loader} className={styles['list__loader-observer']} /> : null}
       </div>
     </div>
   );
