@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { FilterShopsListResponse } from 'api/shop/entity';
 import { ClickedMarkerHtml, MarkerHtml } from 'pages/Home/components/Map/components/MarkerHtml/index';
 import MARKER from 'pages/Home/static/marker';
+import { useSelected } from 'store/placeId';
 
 interface MarkerProps {
   map: naver.maps.Map | null;
@@ -13,7 +14,7 @@ interface MarkerProps {
 
 function useMarker({ map, filterShops }: MarkerProps) {
   const [markerArray, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
-  const [selected, setSelected] = useState<string>();
+  const { setSelected } = useSelected();
 
   useEffect(() => {
     if (!map || !filterShops) return;
@@ -59,7 +60,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
     };
   }, [map, filterShops]);
 
-  return { markerArray, selected };
+  return { markerArray };
 }
 
 export default useMarker;
