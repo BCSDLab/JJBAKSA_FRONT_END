@@ -44,8 +44,6 @@ export default function InquireForm(): JSX.Element {
         path: url, // 어떤 값을 넣어야 할까?
       };
 
-      console.log(data);
-      console.log(data.imageUrl);
       if (inquiryImages.length < 3) {
         setInquiryImages((prevImages) => [...prevImages, data]);
       }
@@ -95,7 +93,6 @@ export default function InquireForm(): JSX.Element {
     }
 
     sessionStorage.removeItem('inquiryForm');
-    console.log(inquiryData);
     submit(inquiryData);
     // 이미지 저장 방법
   };
