@@ -41,6 +41,7 @@ export default function InquiryList({
     setAllContents([]);
     setInquiryProps((prev) => ({
       ...prev,
+      queryType,
       dateCursor: null,
       idCursor: 0,
     }));
