@@ -6,7 +6,6 @@ import useCluster from 'pages/Home/components/Map/hooks/useCluster';
 import useFilterShops from 'pages/Home/components/Map/hooks/useFilterShops';
 import useMarker from 'pages/Home/components/Map/hooks/useMarker';
 import useNaverMap from 'pages/Home/components/Map/hooks/useNaverMap';
-import Pin from 'pages/Home/components/Pin/index';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import { useLocation } from 'store/location';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
@@ -26,7 +25,7 @@ export default function Map(): JSX.Element {
     options_nearby: filterNearbyState,
   });
 
-  const { markerArray, selected } = useMarker({ map, filterShops });
+  const { markerArray } = useMarker({ map, filterShops });
 
   useEffect(() => {
     refetch();
@@ -37,7 +36,6 @@ export default function Map(): JSX.Element {
   return (
     <>
       {isMobile && <MobileOptions />}
-      {selected && <Pin selected={selected} />}
       <div id="map" className={styles.map} />
       { cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
     </>
