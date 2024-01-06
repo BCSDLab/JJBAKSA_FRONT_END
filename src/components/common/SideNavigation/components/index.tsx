@@ -10,7 +10,7 @@ export default function Pin({ placeId } : PinProps): JSX.Element {
 
   return (
     <div>
-      <ImageCarousel pathname="main" imageUrls={data?.photos} />
+      <ImageCarousel pathname="pin" imageUrls={data?.photos} />
       <div>{data?.category}</div>
       <div>{data?.name}</div>
     </div>
