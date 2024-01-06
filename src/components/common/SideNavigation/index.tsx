@@ -180,10 +180,8 @@ export default function SideNavigation(): JSX.Element {
               <GroupIcon />
             </button>
           </div>
-          <div>
-            {selected && <Pin placeId={selected} />}
-          </div>
         </div>
+        {selected && <Pin placeId={selected} />}
       </div>
     </div>
   );
