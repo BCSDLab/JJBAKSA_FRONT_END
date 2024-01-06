@@ -94,7 +94,6 @@ export default function InquireForm(): JSX.Element {
 
     sessionStorage.removeItem('inquiryForm');
     submit(inquiryData);
-    // 이미지 저장 방법
   };
 
   return (

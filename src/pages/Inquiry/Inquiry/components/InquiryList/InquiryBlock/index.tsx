@@ -28,13 +28,6 @@ export default function InquiryBlock({
       toggleExpand(id);
     }
   }
-  // console.log(inquiry);
-  // console.log(inquiry.content);
-  // 쩝박 백엔드 여쭤봐서 data.content 제대로 서버에서 주는 지 확인
-  // 이미지 렌더링 css 작업
-
-  // 비밀글 표시
-  // 자신의 비밀글 + 비밀 아닌 글만 렌더링
 
   return (
     <button
