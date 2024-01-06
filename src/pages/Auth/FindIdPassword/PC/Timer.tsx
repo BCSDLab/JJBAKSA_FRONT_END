@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Timer() {
   const [remainingTime, setRemainingTime] = useState(300); // 초 단위로 5분 설정
