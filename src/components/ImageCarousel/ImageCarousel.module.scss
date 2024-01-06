@@ -1,9 +1,3 @@
-img {
-  object-fit: cover;
-  width: 360px;
-  height: 400px;
-}
-
 button {
   background: none;
   border: none;
@@ -15,6 +9,19 @@ button {
   min-width: 1196px;
   position: relative;
   overflow-x: hidden;
+}
+
+.empty-image {
+  margin-left: max(calc((100vw - 1080px) / 2), 68px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 1131px;
+  height: 416px;
+  background-color: #eeeeee;
+  gap: 10px;
+  font-size: 14px;
 }
 
 .image-carousel {
@@ -31,6 +38,12 @@ button {
   & > li {
     width: fit-content;
     list-style: none;
+  }
+
+  img {
+    object-fit: cover;
+    width: 360px;
+    height: 400px;
   }
 }
 
@@ -61,4 +74,40 @@ button {
     min-width: 68px;
     height: 400px;
   }
+}
+
+.pin-container {
+  width: 550px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.image-slider {
+  padding-left: max(calc((100vw - 1080px) / 2), 68px);
+  max-width: 100vw;
+  width: 100vw;
+  display: flex;
+  flex-flow: nowrap;
+  justify-content: flex-start;
+  overflow-x: visible;
+  align-items: center;
+  transition: all 0.4s ease;
+
+  & > li {
+    width: fit-content;
+    list-style: none;
+  }
+}
+
+.not-found {
+  display: flex;
+  margin-top: 15px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 550px;
+  height: 362px;
+  background-color: #eeeeee;
+  gap: 10px;
+  font-size: 11px;
 }
