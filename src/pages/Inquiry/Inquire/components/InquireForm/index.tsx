@@ -1,40 +1,36 @@
 import { useEffect, useState } from 'react';
 
-import { InquiryImage } from 'api/inquiry/entity';
+import { InquiryImage, SubmitInquiry } from 'api/inquiry/entity';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import ToggleButton from 'components/common/ToggleButton';
 import useSubmitInquiry from 'pages/Inquiry/hooks/useSubmitInquiry';
 import RequiredLabel from 'pages/Inquiry/Inquire/components/InquireForm/RequiredLabel';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 import makeToast from 'utils/ts/makeToast';
 
 import styles from './InquireForm.module.scss';
 
-export default function InquireForm(): JSX.Element {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const MAX_LENGTH = 500;
-  const [inquiryImages, setInquiryImages] = useState<InquiryImage[]>([]);
-  const [isSecret, , , toggle, setValue] = useBooleanState(false);
-  const isAttached = inquiryImages.length > 0;
+const MAX_LENGTH = 500;
 
-  const inquiryData = {
-    title,
-    content,
-    inquiryImages,
-    isSecret,
-  };
+export default function InquireForm(): JSX.Element {
+  const [inquiry, setInquiry] = useState<SubmitInquiry>({
+    title: '',
+    content: '',
+    inquiryImages: [],
+    isSecret: false,
+  });
+  const isAttached = inquiry.inquiryImages ? inquiry.inquiryImages.length > 0 : false;
+
   const submit = useSubmitInquiry();
-  const isSubmissionReady = !!(inquiryData.title.trim() && inquiryData.content.trim());
+  const isSubmissionReady = !!(inquiry.title.trim() && inquiry.content.trim());
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
+    setInquiry((prev) => ({ ...prev, title: event.target.value }));
   };
 
   const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(event.target.value);
+    setInquiry((prev) => ({ ...prev, content: event.target.value }));
   };
 
   const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,52 +38,48 @@ export default function InquireForm(): JSX.Element {
       const url = URL.createObjectURL(event.target.files[0]);
       const data: InquiryImage = {
         imageUrl: url,
-        originalName: url, // 어떤 값을 넣어야 할까?
-        path: url, // 어떤 값을 넣어야 할까?
+        originalName: url, // 적절한 값 할당
+        path: url, // 적절한 값 할당
       };
 
-      if (inquiryImages.length < 3) {
-        setInquiryImages((prevImages) => [...prevImages, data]);
+      if (inquiry.inquiryImages && inquiry.inquiryImages.length < 3) {
+        setInquiry((prev) => (
+          prev.inquiryImages
+            ? { ...prev, inquiryImages: [...prev.inquiryImages, data] }
+            : { ...prev, inquiryImages: [data] }
+        ));
       }
     }
   };
 
   const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
     const index = parseInt(event.currentTarget.name, 10);
-    setInquiryImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    setInquiry((prev) => ({
+      ...prev,
+      inquiryImages: prev.inquiryImages ? prev.inquiryImages.filter((_, i) => i !== index) : [],
+    }));
   };
 
   useEffect(() => {
     const handleSave = () => {
-      const currentData = {
-        title, content, inquiryImages, isSecret,
-      };
-      sessionStorage.setItem('inquiryForm', JSON.stringify(currentData));
+      sessionStorage.setItem('inquiryForm', JSON.stringify(inquiry));
     };
 
     const debouncedSave = setTimeout(handleSave, 1000);
 
     return () => clearTimeout(debouncedSave);
-  }, [title, content, inquiryImages, isSecret]);
+  }, [inquiry]);
 
   useEffect(() => {
+    // 로컬 저장소에서 데이터 불러오기 및 상태 업데이트
     const savedData = sessionStorage.getItem('inquiryForm');
     if (savedData) {
-      const {
-        title: savedTitle,
-        content: savedContent,
-        inquiryImages: savedInquiryImages,
-        isSecret: savedIsSecret,
-      } = JSON.parse(savedData);
-
-      setTitle(savedTitle || '');
-      setContent(savedContent || '');
-      setInquiryImages(Array.isArray(savedInquiryImages) ? savedInquiryImages : []);
-      setValue(savedIsSecret);
+      const savedInquiry = JSON.parse(savedData);
+      setInquiry(savedInquiry);
     }
-  }, [setValue]);
+  }, []);
 
-  const handleSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!isSubmissionReady) {
       makeToast('error', '필수 항목을 기입해주세요.');
@@ -95,12 +87,15 @@ export default function InquireForm(): JSX.Element {
     }
 
     sessionStorage.removeItem('inquiryForm');
-    submit(inquiryData);
+    submit(inquiry);
   };
 
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit}
+      >
         <div className={styles.title}>
           <RequiredLabel text="제목" />
           <input
@@ -111,7 +106,7 @@ export default function InquireForm(): JSX.Element {
             id="inquiryTitle"
             maxLength={50}
             placeholder="제목을 작성해주세요."
-            value={title}
+            value={inquiry.title}
             onChange={handleTitleChange}
           />
         </div>
@@ -119,7 +114,7 @@ export default function InquireForm(): JSX.Element {
         <div className={styles.contents}>
           <RequiredLabel text="문의 내용" />
           <div className={styles.contents__length}>
-            {`${content.length}/${MAX_LENGTH}`}
+            {`${inquiry.content.length}/${MAX_LENGTH}`}
           </div>
         </div>
         <div className={styles.contents__inputs}>
@@ -131,7 +126,7 @@ export default function InquireForm(): JSX.Element {
             rows={10}
             maxLength={500}
             placeholder="문의 내용을 작성해주세요."
-            value={content}
+            value={inquiry.content}
             onChange={handleContentChange}
           />
           <div className={cn({
@@ -155,7 +150,7 @@ export default function InquireForm(): JSX.Element {
               onChange={handleUpload}
             />
             <div className={styles.contents__images}>
-              {inquiryImages.map((imageData, index) => (
+              {inquiry.inquiryImages?.map((imageData, index) => (
                 <div className={styles['contents__image-box']} key={imageData.imageUrl}>
                   <img
                     className={styles.contents__image}
@@ -186,8 +181,8 @@ export default function InquireForm(): JSX.Element {
           </span>
           <ToggleButton
             className={styles['secret__toggle-button']}
-            active={isSecret}
-            toggle={toggle}
+            active={inquiry.isSecret}
+            toggle={() => setInquiry((prev) => ({ ...prev, isSecret: !prev.isSecret }))}
           />
         </div>
         <div className={styles.secret__description}>
@@ -201,7 +196,6 @@ export default function InquireForm(): JSX.Element {
               [styles['submit__button--active']]: isSubmissionReady,
             })}
             type="submit"
-            onClick={handleSubmit}
           >
             등록하기
           </button>
