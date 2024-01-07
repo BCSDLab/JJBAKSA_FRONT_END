@@ -1,7 +1,9 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import submitInquiry from 'api/inquiry/inquire';
-import { SubmitInquiry } from 'api/inquiry/entity';
 import { useNavigate } from 'react-router-dom';
+
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { SubmitInquiry } from 'api/inquiry/entity';
+import submitInquiry from 'api/inquiry/inquire';
 
 const useSubmitInquiry = () => {
   const navigate = useNavigate();
