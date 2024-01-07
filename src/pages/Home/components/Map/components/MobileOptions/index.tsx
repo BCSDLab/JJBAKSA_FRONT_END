@@ -1,12 +1,14 @@
-import { ReactComponent as LensIcon } from 'assets/svg/home/lens.svg';
-import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
+import { ReactComponent as LensIcon } from 'assets/svg/home/lens.svg';
+import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
 import { ReactComponent as VerticalDot } from 'assets/svg/home/verticalDot.svg';
-import { Link } from 'react-router-dom';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
+
 import styles from './MobileOptions.module.scss';
 
 export default function MobileOptions(): JSX.Element {

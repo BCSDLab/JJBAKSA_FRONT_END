@@ -1,6 +1,7 @@
+import { useSuspenseQuery } from '@tanstack/react-query';
+
 import { getFollowers } from 'api/mypage';
 import { getMe } from 'api/user';
-import { useSuspenseQuery } from '@tanstack/react-query';
 
 const useMyProfile = () => {
   const { data: profileData, isLoading } = useSuspenseQuery({ queryKey: ['profile'], queryFn: getMe });

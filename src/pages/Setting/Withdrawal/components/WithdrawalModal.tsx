@@ -1,6 +1,7 @@
-import AuthTitle from 'components/Auth/AuthTitle';
 import AuthDetail from 'components/Auth/AuthDetail';
+import AuthTitle from 'components/Auth/AuthTitle';
 import { useClearAuth } from 'store/auth';
+
 import styles from './WithdrawalModal.module.scss';
 
 export default function WithdrawalModalModal() {

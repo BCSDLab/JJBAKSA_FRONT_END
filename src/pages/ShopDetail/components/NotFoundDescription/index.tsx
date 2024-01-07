@@ -1,4 +1,5 @@
 import { ReactComponent as NotFoundIcon } from 'assets/svg/shop/not-found.svg';
+
 import styles from './NotFoundDescription.module.scss';
 
 function NotFoundDescription() {

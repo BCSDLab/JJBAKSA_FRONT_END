@@ -1,12 +1,14 @@
 import { useForm } from 'react-hook-form';
+
 import { modify } from 'api/user';
+import error from 'assets/svg/auth/error.svg';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
+import { PasswordInfo } from 'pages/Auth/FindIdPassword/entity';
+import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
-import PreviousButton from 'components/PreviousButton/PreviousButton';
-import error from 'assets/svg/auth/error.svg';
-import styles from 'pages/Auth/FindIdPassword/mobile/index.module.scss';
-import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
-import { PasswordInfo } from 'pages/Auth/FindIdPassword/entity';
+
+import styles from './index.module.scss';
 
 const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 

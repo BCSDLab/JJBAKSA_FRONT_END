@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom';
+
 import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg';
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
-import { Link } from 'react-router-dom';
-import PreviousButton from 'components/PreviousButton/PreviousButton';
 import { ReactComponent as Version } from 'assets/svg/setting/version-check.svg';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
+import useModifyPassword from 'pages/Setting/hook/useModifyPassword';
+import MobileCommonModal from 'pages/Setting/Mobile/MobileCommonModal';
+import MobileLogoutModal from 'pages/Setting/Mobile/MobileLogoutModal';
+
 import styles from './Setting.module.scss';
-import MobileCommonModal from './MobileCommonModal';
-import useModifyPassword from '../hook/useModifyPassword';
-import MobileLogoutModal from './MobileLogoutModal';
 
 export default function MobileSetting() {
   const {

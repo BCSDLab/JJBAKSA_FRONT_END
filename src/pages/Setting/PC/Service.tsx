@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
+import LogoutModal from 'pages/Setting/PC/LogoutModal';
 import useBooleanState from 'utils/hooks/useBooleanState';
+
 import styles from './Service.module.scss';
-import LogoutModal from './LogoutModal';
 
 export default function Service() {
   const [isShowModal, setIsShowModal] = useBooleanState(false);

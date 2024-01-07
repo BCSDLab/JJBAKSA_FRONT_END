@@ -1,5 +1,7 @@
 import { http, HttpResponse } from 'msw';
+
 import { API_PATH } from 'config/constants';
+
 import shopsResultData from './data/shopsResultData';
 
 interface RequestBody {

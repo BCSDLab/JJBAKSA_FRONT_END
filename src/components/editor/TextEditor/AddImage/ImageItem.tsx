@@ -1,5 +1,7 @@
-import { ReactComponent as Trash } from 'assets/svg/post/cancel.svg';
 import { useRef } from 'react';
+
+import { ReactComponent as Trash } from 'assets/svg/post/cancel.svg';
+
 import styles from './AddImage.module.scss';
 
 interface Props {

@@ -1,4 +1,5 @@
 import followApi from 'api/follow/followApiClient';
+
 import {
   FollowersResponse,
   PatchNicknameResponse,

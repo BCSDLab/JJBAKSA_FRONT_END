@@ -1,6 +1,7 @@
-import useCounter from 'utils/hooks/useCounter';
-import { ReactComponent as PrevIcon } from 'assets/svg/shop/prev-arrow.svg';
 import { ReactComponent as NextIcon } from 'assets/svg/shop/next-arrow.svg';
+import { ReactComponent as PrevIcon } from 'assets/svg/shop/prev-arrow.svg';
+import useCounter from 'utils/hooks/useCounter';
+
 import styles from './ImageCarousel.module.scss';
 
 interface Props {

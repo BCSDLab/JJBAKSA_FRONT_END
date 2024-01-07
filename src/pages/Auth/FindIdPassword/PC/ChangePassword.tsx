@@ -1,8 +1,10 @@
+import { useForm } from 'react-hook-form';
+
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as SecondProgress } from 'assets/svg/auth/two-step-second-progress.svg';
 import Copyright from 'components/Auth/Copyright';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
-import { useForm } from 'react-hook-form';
 import cn from 'utils/ts/classNames';
+
 import style from './index.module.scss';
 import { EmailParams } from '../entity';
 

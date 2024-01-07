@@ -1,11 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+
+import { checkIdDuplicate, sendFindEmail } from 'api/user';
 import error from 'assets/svg/auth/error.svg';
-import PreviousButton from 'components/PreviousButton/PreviousButton';
-import cn from 'utils/ts/classNames';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
-import { sendFindEmail, checkIdDuplicate } from 'api/user';
-import { FindProp, EmailParams } from 'pages/Auth/FindIdPassword/entity';
+import PreviousButton from 'components/PreviousButton/PreviousButton';
+import { EmailParams, FindProp } from 'pages/Auth/FindIdPassword/entity';
+import cn from 'utils/ts/classNames';
+
 import style from './index.module.scss';
 
 export default function FindIdPasswordMobile({ type }: FindProp): JSX.Element {

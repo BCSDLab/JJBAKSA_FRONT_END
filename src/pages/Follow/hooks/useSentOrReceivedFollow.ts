@@ -1,7 +1,9 @@
-import { SentOrReceivedFollowResponse } from 'api/follow/entity';
-import { AxiosResponse } from 'axios';
 import { useEffect } from 'react';
+
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { AxiosResponse } from 'axios';
+
+import { SentOrReceivedFollowResponse } from 'api/follow/entity';
 
 const useSentOrReceivedFollow = (
   key: string,

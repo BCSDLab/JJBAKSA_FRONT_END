@@ -1,10 +1,10 @@
 import React from 'react';
 
-import cn from 'utils/ts/classNames';
-import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import { InquiryContent } from 'api/inquiry/entity';
-import InquiryImages from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock/InquiryImages';
+import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import Answer from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock/Answer';
+import InquiryImages from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock/InquiryImages';
+import cn from 'utils/ts/classNames';
 
 import styles from './InquiryBlock.module.scss';
 

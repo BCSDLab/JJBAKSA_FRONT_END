@@ -1,9 +1,11 @@
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as FirstProgress } from 'assets/svg/auth/two-step-first-progress.svg';
 import Copyright from 'components/Auth/Copyright';
 import cn from 'utils/ts/classNames';
-import { useForm } from 'react-hook-form';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
-import { useNavigate } from 'react-router-dom';
+
 import style from './index.module.scss';
 import { EmailParams, FindProp } from '../entity';
 

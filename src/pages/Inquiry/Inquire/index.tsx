@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import Explain from 'pages/Inquiry/Inquire/components/Explain';
-import InquireForm from 'pages/Inquiry/Inquire/components/InquireForm';
+import Explain from 'pages/Inquiry/Inquire/components/Explain/index';
+import InquireForm from 'pages/Inquiry/Inquire/components/InquireForm/index';
 
 import styles from './Inquire.module.scss';
 

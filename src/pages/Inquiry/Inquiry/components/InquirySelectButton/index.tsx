@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import cn from 'utils/ts/classNames';
 import { ReactComponent as Dot } from 'assets/svg/inquiry/dot.svg';
+import cn from 'utils/ts/classNames';
 
 import styles from './InquirySelectButton.module.scss';
 

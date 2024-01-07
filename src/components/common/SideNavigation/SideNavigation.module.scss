@@ -51,18 +51,21 @@
     height: 100px;
     font-weight: 500;
     cursor: pointer;
-
-    &--clicked {
-      background-color: #fff1e8;
-    }
   }
 
   &__link {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
     text-decoration: none;
     color: #666666;
+    height: 100px;
+    width: 100px;
+
+    &--clicked {
+      background-color: #fff1e8;
+    }
   }
 
   &__button {
@@ -71,6 +74,12 @@
     width: 100px;
     font-weight: 500;
     cursor: pointer;
+
+    &--clicked {
+      width: 100px;
+      height: 100px;
+      background-color: #fff1e8;
+    }
   }
 
   &__login {

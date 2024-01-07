@@ -1,18 +1,19 @@
-import { checkSentFollow, checkReceivedFollow } from 'api/follow';
-import search from 'assets/svg/search/lens.svg';
+import { checkReceivedFollow, checkSentFollow } from 'api/follow';
 import { GetFollowListResponse, SentOrReceivedFollowResponse } from 'api/follow/entity';
+import search from 'assets/svg/search/lens.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
+import EmptyFriend from 'pages/Follow/components/EmptyFriend';
+import FailToSearch from 'pages/Follow/components/FailToSearch';
+import FollowList from 'pages/Follow/components/FollowList';
+import SearchPage from 'pages/Follow/components/SearchPage';
+import useGetFollowList from 'pages/Follow/hooks/useGetFollowList';
+import useGetRecentlyActiveFollower from 'pages/Follow/hooks/useGetRecentlyActiveFollower';
+import useSearchFriend from 'pages/Follow/hooks/useSearchFriend';
+import useSentOrReceivedFollow from 'pages/Follow/hooks/useSentOrReceivedFollow';
+import { FollowerInfo } from 'pages/Follow/static/entity';
 import cn from 'utils/ts/classNames';
+
 import styles from './index.module.scss';
-import FailToSearch from './components/FailToSearch';
-import SearchPage from './components/SearchPage';
-import FollowList from './components/FollowList';
-import { FollowerInfo } from './static/entity';
-import EmptyFriend from './components/EmptyFriend';
-import useSearchFriend from './hooks/useSearchFriend';
-import useSentOrReceivedFollow from './hooks/useSentOrReceivedFollow';
-import useGetFollowList from './hooks/useGetFollowList';
-import useGetRecentlyActiveFollower from './hooks/useGetRecentlyActiveFollower';
 
 // user : 팔로우 요청을 받은 사람
 // follower : 팔로우를 요청한 사람

@@ -1,5 +1,6 @@
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
+
 import style from './Modal.module.scss';
 
 interface ModalProp {

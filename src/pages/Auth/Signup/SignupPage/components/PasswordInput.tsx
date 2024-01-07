@@ -1,14 +1,16 @@
 import React from 'react';
-import cn from 'utils/ts/classNames';
-import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
-import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
-import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
 import { useFormContext } from 'react-hook-form';
+
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
+import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
 import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
-import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
 import useBlindCheck from 'pages/Auth/Signup/hooks/useBlindCheck';
+import { SignUpFormData } from 'pages/Auth/Signup/SignupPage/entity';
+import { ERROR_MESSAGE } from 'pages/Auth/Signup/static/signUp';
+import cn from 'utils/ts/classNames';
+
 import styles from '../SignUp.module.scss';
-import { SignUpFormData } from '../entity';
 
 export default function PasswordInput() {
   const { register, formState: { errors } } = useFormContext<SignUpFormData>();

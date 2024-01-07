@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
-import styles from 'pages/Search/components/RelatedSearches/RelatedSearches.module.scss';
+
 import { ReactComponent as PointerIcon } from 'assets/svg/search/pointer.svg';
+
+import styles from '../RelatedSearches.module.scss';
 
 interface Props {
   item: string;

@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable consistent-return */
 import { useEffect, useState } from 'react';
+
 import { FilterShopsListResponse } from 'api/shop/entity';
+import { ClickedMarkerHtml, MarkerHtml } from 'pages/Home/components/Map/components/MarkerHtml/index';
 import MARKER from 'pages/Home/static/marker';
-import { ClickedMarkerHtml, MarkerHtml } from '../components/MarkerHtml';
 
 interface MarkerProps {
   map: naver.maps.Map | null;

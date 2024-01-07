@@ -1,11 +1,12 @@
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
-import cn from 'utils/ts/classNames';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import { ReactComponent as Ellipse } from 'assets/svg/follow/Ellipse.svg';
-import Follower from './Follower';
+import Follower from 'pages/Follow/components/Follower';
+import Recent from 'pages/Follow/components/Recent';
+import { FollowerInfo } from 'pages/Follow/static/entity';
+import useBooleanState from 'utils/hooks/useBooleanState';
+import cn from 'utils/ts/classNames';
+
 import styles from './FollowList.module.scss';
-import { FollowerInfo } from '../static/entity';
-import Recent from './Recent';
 
 export interface Props {
   title: string;

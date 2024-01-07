@@ -1,4 +1,5 @@
 import { ReactComponent as Star } from 'assets/svg/post/star.svg';
+
 import styles from './StarRating.module.scss';
 
 interface Props {

@@ -1,10 +1,12 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
+
 import { getDetailReview } from 'api/follow';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
+import ListReview from 'pages/Follow/components/ListReview';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
+
 import styles from './FollowReview.module.scss';
-import ListReview from './ListReview';
 
 interface Props {
   placeId: string;
