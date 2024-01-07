@@ -1,4 +1,7 @@
-import { useEffect, useState } from 'react';
+import {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { InquiryImage, SubmitInquiry } from 'api/inquiry/entity';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
@@ -14,32 +17,33 @@ import styles from './InquireForm.module.scss';
 const MAX_LENGTH = 500;
 
 export default function InquireForm(): JSX.Element {
+  const submit = useSubmitInquiry();
+  const location = useLocation();
+
   const [inquiry, setInquiry] = useState<SubmitInquiry>({
     title: '',
     content: '',
     inquiryImages: [],
     isSecret: false,
   });
-  const isAttached = inquiry.inquiryImages ? inquiry.inquiryImages.length > 0 : false;
 
-  const submit = useSubmitInquiry();
-  const isSubmissionReady = !!(inquiry.title.trim() && inquiry.content.trim());
+  const isAttached = useMemo(
+    () => !!inquiry.inquiryImages && inquiry.inquiryImages.length > 0,
+    [inquiry.inquiryImages],
+  );
 
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInquiry((prev) => ({ ...prev, title: event.target.value }));
-  };
+  const isSubmissionReady = useMemo(
+    () => !!(inquiry.title.trim() && inquiry.content.trim()),
+    [inquiry.title, inquiry.content],
+  );
 
-  const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInquiry((prev) => ({ ...prev, content: event.target.value }));
-  };
-
-  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const url = URL.createObjectURL(event.target.files[0]);
       const data: InquiryImage = {
         imageUrl: url,
-        originalName: url, // 적절한 값 할당
-        path: url, // 적절한 값 할당
+        originalName: url, // 적당한 값
+        path: url, // 적당한 값
       };
 
       if (inquiry.inquiryImages && inquiry.inquiryImages.length < 3) {
@@ -50,45 +54,40 @@ export default function InquireForm(): JSX.Element {
         ));
       }
     }
-  };
+  }, [inquiry.inquiryImages, setInquiry]);
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDeleteImage = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     const index = parseInt(event.currentTarget.name, 10);
     setInquiry((prev) => ({
       ...prev,
       inquiryImages: prev.inquiryImages ? prev.inquiryImages.filter((_, i) => i !== index) : [],
     }));
-  };
+  }, [setInquiry]);
+
+  const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmissionReady) {
+      sessionStorage.removeItem('inquiryForm');
+      submit(inquiry);
+    } else {
+      makeToast('error', '필수 항목을 기입해주세요.');
+    }
+  }, [isSubmissionReady, inquiry, submit]);
 
   useEffect(() => {
-    const handleSave = () => {
-      sessionStorage.setItem('inquiryForm', JSON.stringify(inquiry));
-    };
+    const savedData = sessionStorage.getItem('inquiryForm');
+    if (savedData) {
+      setInquiry(JSON.parse(savedData));
+    }
+  }, [location]);
 
-    const debouncedSave = setTimeout(handleSave, 1000);
+  useEffect(() => {
+    const debouncedSave = setTimeout(() => {
+      sessionStorage.setItem('inquiryForm', JSON.stringify(inquiry));
+    }, 1000);
 
     return () => clearTimeout(debouncedSave);
   }, [inquiry]);
-
-  useEffect(() => {
-    // 로컬 저장소에서 데이터 불러오기 및 상태 업데이트
-    const savedData = sessionStorage.getItem('inquiryForm');
-    if (savedData) {
-      const savedInquiry = JSON.parse(savedData);
-      setInquiry(savedInquiry);
-    }
-  }, []);
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!isSubmissionReady) {
-      makeToast('error', '필수 항목을 기입해주세요.');
-      return;
-    }
-
-    sessionStorage.removeItem('inquiryForm');
-    submit(inquiry);
-  };
 
   return (
     <div className={styles.container}>
@@ -107,7 +106,7 @@ export default function InquireForm(): JSX.Element {
             maxLength={50}
             placeholder="제목을 작성해주세요."
             value={inquiry.title}
-            onChange={handleTitleChange}
+            onChange={(e) => setInquiry((prev) => ({ ...prev, title: e.target.value }))}
           />
         </div>
 
@@ -127,7 +126,7 @@ export default function InquireForm(): JSX.Element {
             maxLength={500}
             placeholder="문의 내용을 작성해주세요."
             value={inquiry.content}
-            onChange={handleContentChange}
+            onChange={(e) => setInquiry((prev) => ({ ...prev, content: e.target.value }))}
           />
           <div className={cn({
             [styles.contents__attach]: true,
@@ -162,7 +161,7 @@ export default function InquireForm(): JSX.Element {
                     type="button"
                     aria-label="delete"
                     name={`${index}`}
-                    onClick={handleDelete}
+                    onClick={handleDeleteImage}
                   >
                     <DeleteIcon />
                   </button>
