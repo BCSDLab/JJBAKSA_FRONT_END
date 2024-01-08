@@ -9,11 +9,11 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as FirstProgress } from 'assets/svg/auth/two-step-first-progress.svg';
 import Copyright from 'components/Auth/Copyright';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
+import { FindParams, FindProp } from 'pages/Auth/FindIdPassword/entity';
 import cn from 'utils/ts/classNames';
 
-import style from './index.module.scss';
+import styles from './index.module.scss';
 import Timer from './Timer';
-import { FindParams, FindProp } from '../entity';
 import Modal from '../mobile/Modal';
 
 const useChangePage = () => {
@@ -101,47 +101,47 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
   };
   return (
     <div>
-      <div className={style.page}>
+      <div className={styles.page}>
 
-        <div className={style.page__container}>
+        <div className={styles.page__container}>
           {type === 'id' && (
-            <div className={style.page__title}>
+            <div className={styles.page__title}>
               아이디 찾기
             </div>
           )}
           {type === 'password' && (
-            <div className={style.page__title}>
+            <div className={styles.page__title}>
               비밀번호 찾기
             </div>
           )}
           <div>
             {type === 'id' && (
-              <p className={style.page__quote}>
+              <p className={styles.page__quote}>
                 쩝쩝박사 가입 이메일을 통해
                 <br />
                 아이디를 찾을 수 있어요.
               </p>
             )}
             {type === 'password' && (
-              <p className={style.page__quote}>
+              <p className={styles.page__quote}>
                 쩝쩝박사 가입 아이디를 통해
                 <br />
                 비밀번호를 찾을 수 있어요.
               </p>
             )}
           </div>
-          <div className={style.page__progress}>
+          <div className={styles.page__progress}>
             <FirstProgress />
           </div>
         </div>
-        <form className={style.form}>
+        <form className={styles.form}>
           {type === 'password' && (
-            <div className={style.form__box}>
-              <label className={style.form__label} htmlFor="id">
-                <div className={cn({ [style['form__label--box']]: true })}>
+            <div className={styles.form__box}>
+              <label className={styles.form__label} htmlFor="id">
+                <div className={cn({ [styles['form__label--box']]: true })}>
                   아이디
                   {errors.account && (
-                    <span className={style.form__message}>
+                    <span className={styles.form__message}>
                       <ErrorIcon />
                       {errors.account.message}
                     </span>
@@ -151,22 +151,22 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
                   id="id"
                   placeholder="아이디를 입력하세요."
                   className={cn({
-                    [style['form__input--active']]: !isValid,
-                    [style.form__input]: true,
+                    [styles['form__input--active']]: !isValid,
+                    [styles.form__input]: true,
                   })}
                   {...register('account')}
                 />
-                {errors.account && <ErrorIcon className={style.form__error} />}
+                {errors.account && <ErrorIcon className={styles.form__error} />}
               </label>
 
             </div>
           )}
-          <div className={style.form__box}>
-            <label className={style.form__label} htmlFor="email">
-              <div className={cn({ [style['form__label--box']]: true })}>
+          <div className={styles.form__box}>
+            <label className={styles.form__label} htmlFor="email">
+              <div className={cn({ [styles['form__label--box']]: true })}>
                 이메일
                 {errors.email && (
-                  <span className={style.form__message}>
+                  <span className={styles.form__message}>
                     <ErrorIcon />
                     {errors.email.message}
                   </span>
@@ -176,8 +176,8 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
                 id="email"
                 placeholder="이메일을 입력하세요."
                 className={cn({
-                  [style['form__input--active']]: !isValid,
-                  [style.form__input]: true,
+                  [styles['form__input--active']]: !isValid,
+                  [styles.form__input]: true,
                 })}
                 {...register('email', {
                   pattern: {
@@ -186,39 +186,39 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
                   },
                 })}
               />
-              {errors.email && <ErrorIcon className={style.form__error} />}
+              {errors.email && <ErrorIcon className={styles.form__error} />}
             </label>
           </div>
-          <div className={style.form__box}>
-            <label className={style.form__label} htmlFor="verify">
-              <div className={cn({ [style['form__label--box']]: true })}>
+          <div className={styles.form__box}>
+            <label className={styles.form__label} htmlFor="verify">
+              <div className={cn({ [styles['form__label--box']]: true })}>
                 인증번호
                 {errors.code && (
-                  <span className={style.form__message}>
+                  <span className={styles.form__message}>
                     <ErrorIcon />
                     {errors.code.message}
                   </span>
                 )}
               </div>
-              <div className={style.form__box}>
+              <div className={styles.form__box}>
                 <input
                   id="verify"
                   placeholder="인증번호를 입력하세요."
                   className={cn({
-                    [style['form__input--active']]: !!errors.code,
-                    [style.form__input]: true,
+                    [styles['form__input--active']]: !!errors.code,
+                    [styles.form__input]: true,
                   })}
                   {...register('code')}
                 />
-                <div className={style.form__timer}>
+                <div className={styles.form__timer}>
                   {isClicked && <Timer />}
                 </div>
                 <button
                   type="button"
                   disabled={isClicked || !isValid}
                   className={cn({
-                    [style['form__button--active']]: !isClicked,
-                    [style.form__button]: isClicked,
+                    [styles['form__button--active']]: !isClicked,
+                    [styles.form__button]: isClicked,
                   })}
                   onClick={handleSubmit(checkUser)}
                 >
@@ -232,8 +232,8 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
             type="button"
             disabled={isSubmitting || !isValid}
             className={cn({
-              [style['form__submit--active']]: isValid,
-              [style.form__submit]: true,
+              [styles['form__submit--active']]: isValid,
+              [styles.form__submit]: true,
             })}
             onClick={handleSubmit(toNextPage)}
           >
@@ -251,7 +251,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
             입니다
           </Modal>
         )}
-        <div className={style.copyright}>
+        <div className={styles.copyright}>
           <Copyright />
         </div>
       </div>
