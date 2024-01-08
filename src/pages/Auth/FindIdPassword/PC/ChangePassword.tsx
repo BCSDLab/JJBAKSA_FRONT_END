@@ -15,8 +15,8 @@ import cn from 'utils/ts/classNames';
 import styles from './index.module.scss';
 
 export default function ChangePasswordPC(): JSX.Element {
-  const [isNewBlind, , , changeNewBlind] = useBooleanState(false);
-  const [isNewCheckBlind, , , changeNewCheckBlind] = useBooleanState(false);
+  const [isNewBlind, , , toggleNewBlind] = useBooleanState(false);
+  const [isNewCheckBlind, , , toggleNewCheckBlind] = useBooleanState(false);
   const {
     register,
     formState: { isSubmitting, errors, isValid },
@@ -71,8 +71,8 @@ export default function ChangePasswordPC(): JSX.Element {
               />
               <button
                 type="button"
-                onClick={() => changeNewBlind()}
-                className={styles.form__blindbox}
+                onClick={() => toggleNewBlind()}
+                className={styles['form__blind-icon']}
               >
                 {isNewBlind ? (
                   <ShowIcon aria-hidden />
@@ -105,8 +105,8 @@ export default function ChangePasswordPC(): JSX.Element {
               />
               <button
                 type="button"
-                onClick={() => changeNewCheckBlind()}
-                className={styles.form__blindbox}
+                onClick={() => toggleNewCheckBlind()}
+                className={styles['form__blind-icon']}
               >
                 {isNewCheckBlind ? (
                   !errors.passwordCheck && <ShowIcon aria-hidden />
