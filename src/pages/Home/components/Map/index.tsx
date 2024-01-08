@@ -20,9 +20,9 @@ export default function Map(): JSX.Element {
   const { filterScrapState } = useFilterScrap();
   const { filterNearbyState } = useFilterNearby();
   const { data: filterShops, refetch } = useFilterShops({
-    options_friend: filterFriendState,
-    options_scrap: filterScrapState,
-    options_nearby: filterNearbyState,
+    options_friend: filterFriendState ? 1 : 0,
+    options_scrap: filterScrapState ? 1 : 0,
+    options_nearby: filterNearbyState ? 1 : 0,
   });
 
   const { markerArray } = useMarker({ map, filterShops });

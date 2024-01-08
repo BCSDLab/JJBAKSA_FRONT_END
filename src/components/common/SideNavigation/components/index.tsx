@@ -3,16 +3,14 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import usePin from 'components/common/SideNavigation/hooks/usePin';
 import ImageCarousel from 'components/ImageCarousel';
+import { useSelected } from 'store/placeId';
 import useScrap from 'utils/hooks/useScrap';
 
 import styles from './Pin.module.scss';
 
-interface PinProps {
-  placeId : string | undefined;
-}
-
-export default function Pin({ placeId } : PinProps): JSX.Element {
-  const { data } = usePin(String(placeId));
+export default function Pin(): JSX.Element {
+  const { selected } = useSelected();
+  const { data } = usePin(String(selected));
   const [scrapId, setScrapId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -22,10 +20,10 @@ export default function Pin({ placeId } : PinProps): JSX.Element {
     }
   }, [data]);
 
-  const { toggleScrap, isPending } = useScrap(String(placeId), scrapId);
-
+  const { toggleScrap, isPending } = useScrap(String(selected), scrapId);
   return (
     <>
+      안녕
       <ImageCarousel pathname="pin" imageUrls={data?.photos} />
       <div className={styles.container}>
         <div className={styles.container__name}>{data?.name}</div>
