@@ -13,9 +13,10 @@ interface Props {
 
 function ImageCarousel({ pathname, imageUrls }: Props) {
   const { count: currentIndex, increment, decrement } = useCounter(0);
+  const imageCheck = pathname === 'shop' ? 3 : 1;
+  const transfromValue = imageCheck === 3 ? `translateX(-${360 * currentIndex}px)` : `translateX(-${100 * currentIndex}%)`;
 
   const next = () => {
-    const imageCheck = pathname === 'shop' ? 3 : 1;
     if (imageUrls && currentIndex >= imageUrls.length - imageCheck) {
       makeToast('info', '마지막 이미지입니다.');
       return;
@@ -43,7 +44,7 @@ function ImageCarousel({ pathname, imageUrls }: Props) {
         <>
           <ul
             className={styles[`${pathname}__image-carousel`]}
-            style={{ transform: `translateX(-${100 * currentIndex}%)` }}
+            style={{ transform: transfromValue }}
           >
             {imageUrls.map((url, index) => (
               <li key={url}>
