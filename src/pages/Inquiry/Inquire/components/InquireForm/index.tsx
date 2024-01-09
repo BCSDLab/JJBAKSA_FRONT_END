@@ -30,7 +30,7 @@ export default function InquireForm(): JSX.Element {
 
   const { inquiryImages, addImage, removeImage } = useInquiryImages(inquiry, setInquiry);
   const isAttached = inquiryImages.length > 0;
-  const isSubmissionReady = !!(inquiry.title.trim() && inquiry.content.trim());
+  const isSubmissionReady = inquiry.title.trim().length + inquiry.content.trim().length > 0;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
