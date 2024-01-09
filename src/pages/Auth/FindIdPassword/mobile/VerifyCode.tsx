@@ -93,7 +93,7 @@ export default function VerifyCode({
       </form>
       {
         openModal && (
-          <Modal type="아이디">
+          <Modal type="아이디" setOpenModal={setOpenModal}>
             {user.email}
             으로
             <br />

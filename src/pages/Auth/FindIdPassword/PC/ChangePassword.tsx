@@ -130,7 +130,7 @@ export default function ChangePasswordPC(): JSX.Element {
           </button>
         </form>
         {openModal && (
-          <Modal type="비밀번호">
+          <Modal setOpenModal={setOpenModal} type="비밀번호">
             변경된 비밀번호로 로그인 해 주세요.
           </Modal>
         )}

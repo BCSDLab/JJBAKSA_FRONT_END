@@ -1,7 +1,7 @@
 import { InputInfo } from 'pages/Auth/FindIdPassword/entity';
 import cn from 'utils/ts/classNames';
 
-import style from './VerifyCode.module.scss';
+import styles from './VerifyCode.module.scss';
 
 export default function Input({
   register, name, preventOverLength, number, index, inputRef,
@@ -9,7 +9,7 @@ export default function Input({
   return (
     <input
       type="number"
-      className={cn({ [style['form__input--block']]: true })}
+      className={cn({ [styles['form__input--block']]: true })}
       {...register(name, {
         required: true,
         maxLength: 1,
