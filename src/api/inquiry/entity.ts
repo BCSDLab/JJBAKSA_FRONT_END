@@ -54,6 +54,6 @@ export interface InquiryProps {
 export interface SubmitInquiry {
   title: string;
   content: string;
-  inquiryImages?: InquiryImage[];
+  inquiryImages: InquiryImage[];
   isSecret: boolean;
 }

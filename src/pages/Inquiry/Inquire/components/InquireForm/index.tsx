@@ -1,5 +1,5 @@
 import {
-  useCallback, useEffect, useMemo, useState,
+  useEffect, useState,
 } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -27,17 +27,10 @@ export default function InquireForm(): JSX.Element {
     isSecret: false,
   });
 
-  const isAttached = useMemo(
-    () => !!inquiry.inquiryImages && inquiry.inquiryImages.length > 0,
-    [inquiry.inquiryImages],
-  );
+  const isAttached = inquiry.inquiryImages.length > 0;
+  const isSubmissionReady = !!(inquiry.title.trim() && inquiry.content.trim());
 
-  const isSubmissionReady = useMemo(
-    () => !!(inquiry.title.trim() && inquiry.content.trim()),
-    [inquiry.title, inquiry.content],
-  );
-
-  const handleUpload = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const url = URL.createObjectURL(event.target.files[0]);
       const data: InquiryImage = {
@@ -46,7 +39,7 @@ export default function InquireForm(): JSX.Element {
         path: url, // 적당한 값
       };
 
-      if (inquiry.inquiryImages && inquiry.inquiryImages.length < 3) {
+      if (inquiry.inquiryImages.length < 3) {
         setInquiry((prev) => (
           prev.inquiryImages
             ? { ...prev, inquiryImages: [...prev.inquiryImages, data] }
@@ -54,17 +47,17 @@ export default function InquireForm(): JSX.Element {
         ));
       }
     }
-  }, [inquiry.inquiryImages, setInquiry]);
+  };
 
-  const handleDeleteImage = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleDeleteImage = (event: React.MouseEvent<HTMLButtonElement>) => {
     const index = parseInt(event.currentTarget.name, 10);
     setInquiry((prev) => ({
       ...prev,
       inquiryImages: prev.inquiryImages ? prev.inquiryImages.filter((_, i) => i !== index) : [],
     }));
-  }, [setInquiry]);
+  };
 
-  const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isSubmissionReady) {
       sessionStorage.removeItem('inquiryForm');
@@ -72,7 +65,7 @@ export default function InquireForm(): JSX.Element {
     } else {
       makeToast('error', '필수 항목을 기입해주세요.');
     }
-  }, [isSubmissionReady, inquiry, submit]);
+  };
 
   useEffect(() => {
     const savedData = sessionStorage.getItem('inquiryForm');
@@ -149,7 +142,7 @@ export default function InquireForm(): JSX.Element {
               onChange={handleUpload}
             />
             <div className={styles.contents__images}>
-              {inquiry.inquiryImages?.map((imageData, index) => (
+              {inquiry.inquiryImages.map((imageData, index) => (
                 <div className={styles['contents__image-box']} key={imageData.imageUrl}>
                   <img
                     className={styles.contents__image}
