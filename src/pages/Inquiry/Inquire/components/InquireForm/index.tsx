@@ -9,11 +9,11 @@ import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.sv
 import ToggleButton from 'components/common/ToggleButton';
 import useInquiryImages from 'pages/Inquiry/hooks/useInquiryImages';
 import useSubmitInquiry from 'pages/Inquiry/hooks/useSubmitInquiry';
-import RequiredLabel from 'pages/Inquiry/Inquire/components/InquireForm/RequiredLabel';
 import cn from 'utils/ts/classNames';
 import makeToast from 'utils/ts/makeToast';
 
 import styles from './InquireForm.module.scss';
+import RequiredLabel from './RequiredLabel';
 
 const MAX_LENGTH = 500;
 
