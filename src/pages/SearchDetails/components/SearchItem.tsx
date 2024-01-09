@@ -22,6 +22,36 @@ export default function SearchItem({ shop, pathname }: Props) {
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
   const onClick = () => {
+    // 로컬 스토리지에 최근 검색한 상점 저장
+    const recentList = {
+      photoToken,
+      name,
+      category,
+      placeId,
+    };
+    if (localStorage.getItem('recent')) {
+      let flag = false;
+      const existingRecentList = localStorage.getItem('recent') as string;
+      // 왜 string | null로 추론되는지 모르겠음, 일단 타입 단언함
+      const parsingResult: {
+        photoToken: string,
+        name: string,
+        category: string,
+        placeId: string
+      }[] = JSON.parse(existingRecentList);
+      Object.values(parsingResult).forEach((value) => {
+        if (value.placeId === recentList.placeId) flag = true;
+      });
+      if (!flag) {
+        const obj = [recentList, ...parsingResult];
+        localStorage.setItem('recent', JSON.stringify(obj));
+      }
+    } else {
+      // 처음 저장할 때
+      localStorage.setItem('recent', JSON.stringify([recentList]));
+    }
+
+    // 음식점 상세 정보로 이동
     const newPath = pathname.includes('/post') ? `/post/${name}` : `/shop/${name}`;
     navigate(newPath, { state: { placeId } });
   };
