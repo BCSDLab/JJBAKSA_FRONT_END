@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { findPassowrd, getAccount, sendFindEmail } from 'api/user';
-import { CodeInfo, RegisterProp } from 'pages/Auth/FindIdPassword/entity';
+import { findPassword, getAccount, sendFindEmail } from 'api/user';
 import useInputCheck from 'pages/Auth/FindIdPassword/hook/useInputCheck';
 import Input from 'pages/Auth/FindIdPassword/mobile/Input';
 import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
 import cn from 'utils/ts/classNames';
 
 import style from './VerifyCode.module.scss';
+import { CodeInfo, RegisterProp } from '../entity';
 
 const CODE = ['first', 'second', 'third', 'fourth'] as const;
 
@@ -39,7 +39,7 @@ export default function VerifyCode({
           });
         }
       } else if (param.type === 'password' && account) {
-        const result = await findPassowrd({ account, email, code });
+        const result = await findPassword({ account, email, code });
         if (result.status === 200) {
           sessionStorage.setItem('accessToken', result.data);
         }
