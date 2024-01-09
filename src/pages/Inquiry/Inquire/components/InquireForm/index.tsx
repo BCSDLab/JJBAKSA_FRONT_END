@@ -3,10 +3,11 @@ import {
 } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { InquiryImage, SubmitInquiry } from 'api/inquiry/entity';
+import { SubmitInquiry } from 'api/inquiry/entity';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
 import { ReactComponent as UploadIcon } from 'assets/svg/inquiry/image-upload.svg';
 import ToggleButton from 'components/common/ToggleButton';
+import useInquiryImages from 'pages/Inquiry/hooks/useInquiryImages';
 import useSubmitInquiry from 'pages/Inquiry/hooks/useSubmitInquiry';
 import RequiredLabel from 'pages/Inquiry/Inquire/components/InquireForm/RequiredLabel';
 import cn from 'utils/ts/classNames';
@@ -27,35 +28,9 @@ export default function InquireForm(): JSX.Element {
     isSecret: false,
   });
 
-  const isAttached = inquiry.inquiryImages.length > 0;
+  const { inquiryImages, addImage, removeImage } = useInquiryImages(inquiry, setInquiry);
+  const isAttached = inquiryImages.length > 0;
   const isSubmissionReady = !!(inquiry.title.trim() && inquiry.content.trim());
-
-  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files.length > 0) {
-      const url = URL.createObjectURL(event.target.files[0]);
-      const data: InquiryImage = {
-        imageUrl: url,
-        originalName: url, // 적당한 값
-        path: url, // 적당한 값
-      };
-
-      if (inquiry.inquiryImages.length < 3) {
-        setInquiry((prev) => (
-          prev.inquiryImages
-            ? { ...prev, inquiryImages: [...prev.inquiryImages, data] }
-            : { ...prev, inquiryImages: [data] }
-        ));
-      }
-    }
-  };
-
-  const handleDeleteImage = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const index = parseInt(event.currentTarget.name, 10);
-    setInquiry((prev) => ({
-      ...prev,
-      inquiryImages: prev.inquiryImages ? prev.inquiryImages.filter((_, i) => i !== index) : [],
-    }));
-  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -129,20 +104,20 @@ export default function InquireForm(): JSX.Element {
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label
               className={styles['contents__upload-button']}
-              htmlFor="upload"
+              htmlFor="inquiry-image-input"
             >
               <UploadIcon />
             </label>
             <input
               className={styles.contents__input}
-              id="upload"
               type="file"
-              accept="image/*"
+              id="inquiry-image-input"
               aria-label="이미지 업로드"
-              onChange={handleUpload}
+              accept="image/jpeg,image/png"
+              onChange={addImage}
             />
             <div className={styles.contents__images}>
-              {inquiry.inquiryImages.map((imageData, index) => (
+              {inquiryImages.map((imageData, index) => (
                 <div className={styles['contents__image-box']} key={imageData.imageUrl}>
                   <img
                     className={styles.contents__image}
@@ -153,8 +128,7 @@ export default function InquireForm(): JSX.Element {
                     className={styles['contents__delete-button']}
                     type="button"
                     aria-label="delete"
-                    name={`${index}`}
-                    onClick={handleDeleteImage}
+                    onClick={() => removeImage(index)}
                   >
                     <DeleteIcon />
                   </button>
