@@ -1,0 +1,16 @@
+.container {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  font-size: 14px;
+  border-radius: 10px;
+  box-shadow: 2px 3px 12px 1px;
+}
+
+.image {
+  width: 100%;
+  height: 150px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
