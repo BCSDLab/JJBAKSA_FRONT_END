@@ -14,10 +14,10 @@ $disabled: #c4c4c4;
   flex-direction: row;
   margin-left: 100px;
 
-  @include media.media-breakpoint-down(mobile) {
-    width: 100vw;
-    margin-left: 0;
-  }
+  // @include media.media-breakpoint-down(mobile) {
+  //   width: 100vw;
+  //   margin-left: 0;
+  // }
 }
 
 .inner-container {
@@ -26,18 +26,18 @@ $disabled: #c4c4c4;
   flex-direction: row;
   justify-content: center;
 
-  @media (max-width: 1148px) {
-    width: 720px;
-    margin-left: 0;
-  }
+  // @media (max-width: 1148px) {
+  //   width: 720px;
+  //   margin-left: 0;
+  // }
 
-  @media (max-width: 822px) {
-    width: calc(100vw - 100px);
-  }
+  // @media (max-width: 822px) {
+  //   width: calc(100vw - 100px);
+  // }
 
-  @include media.media-breakpoint-down(mobile) {
-    width: 100%;
-  }
+  // @include media.media-breakpoint-down(mobile) {
+  //   width: 100%;
+  // }
 }
 
 .menu {
@@ -51,9 +51,9 @@ $disabled: #c4c4c4;
     color: none;
   }
 
-  @media (max-width: 1148px) {
-    display: none;
-  }
+  // @media (max-width: 1148px) {
+  //   display: none;
+  // }
 
   &__item {
     display: flex;
@@ -114,9 +114,9 @@ $disabled: #c4c4c4;
   align-items: center;
   margin: 0 auto;
 
-  @include media.media-breakpoint-down(mobile) {
-    width: 100%;
-  }
+  // @include media.media-breakpoint-down(mobile) {
+  //   width: 100%;
+  // }
 }
 
 .search-bar {
@@ -129,22 +129,22 @@ $disabled: #c4c4c4;
   position: relative;
   z-index: 2;
 
-  @include media.media-breakpoint-down(mobile) {
-    background: transparent;
-    border-bottom: none;
-    height: 0;
-    align-items: center;
-  }
+  // @include media.media-breakpoint-down(mobile) {
+  //   background: transparent;
+  //   border-bottom: none;
+  //   height: 0;
+  //   align-items: center;
+  // }
 
   &__item {
     margin-top: 72px;
 
-    @include media.media-breakpoint-down(mobile) {
-      margin-top: 0;
-      position: fixed;
-      top: 24px;
-      z-index: 1;
-    }
+    // @include media.media-breakpoint-down(mobile) {
+    //   margin-top: 0;
+    //   position: fixed;
+    //   top: 24px;
+    //   z-index: 1;
+    // }
   }
 }
 
@@ -153,9 +153,9 @@ $disabled: #c4c4c4;
   display: flex;
   flex-direction: column;
 
-  @include media.media-breakpoint-down(mobile) {
-    height: calc(100vh - 80px);
-  }
+  // @include media.media-breakpoint-down(mobile) {
+  //   height: calc(100vh - 80px);
+  // }
 }
 
 ::-webkit-scrollbar {
