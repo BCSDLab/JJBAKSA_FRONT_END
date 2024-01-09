@@ -48,6 +48,21 @@ $normal: #666666;
     text-overflow: ellipsis;
   }
 
+  &__content {
+    font-size: 16px;
+    max-height: 39px;
+    margin: 0 0 8px;
+    padding: 0;
+    word-break: break-all;
+    overflow: hidden;
+    white-space: nowrap;
+    display: hidden;
+
+    &--visible {
+      display: block;
+    }
+  }
+
   &__expander {
     position: absolute;
     top: 14px;

@@ -44,9 +44,18 @@ export interface InquirySort {
   unsorted: boolean;
 }
 
+export type QueryType = '' | '/me' | `/search/${string}`;
+
 export interface InquiryProps {
-  queryType: string;
+  queryType: QueryType;
   dateCursor: string | null;
-  idCursor: number | null;
+  idCursor: number | 0;
   size: number;
+}
+
+export interface SubmitInquiry {
+  title: string;
+  content: string;
+  inquiryImages: InquiryImage[];
+  isSecret: boolean;
 }

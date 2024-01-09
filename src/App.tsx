@@ -40,7 +40,8 @@ export default function App(): JSX.Element {
           <Route path="/shop/:placeId" element={<ShopDetail />} />
           <Route path="/post" element={<SearchPost />} />
           <Route path="/search/not-found" element={<NotFoundPage />} />
-          <Route path="/inquiry/:type" element={<Inquiry />} />
+          <Route path="/inquiry/all" element={<Inquiry />} />
+          <Route path="/inquiry/my" element={<Inquiry />} />
           <Route path="/inquiry/search/:keyword" element={<Inquiry />} />
           <Route path="/inquiry/inquire" element={<Inquire />} />
           <Route path="/notice" element={<Notice />} />
