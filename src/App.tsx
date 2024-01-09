@@ -21,6 +21,7 @@ import Inquire from 'pages/Inquiry/Inquire';
 import Inquiry from 'pages/Inquiry/Inquiry';
 import MyPage from 'pages/MyPage';
 import Notice from 'pages/Notice';
+import Detail from 'pages/Notice/detail';
 import Post from 'pages/Post';
 import NotFoundPage from 'pages/Search/components/NotFoundPage';
 import SearchPost from 'pages/Search/SearchPost';
@@ -43,6 +44,7 @@ export default function App(): JSX.Element {
           <Route path="/inquiry/search/:keyword" element={<Inquiry />} />
           <Route path="/inquiry/inquire" element={<Inquire />} />
           <Route path="/notice" element={<Notice />} />
+          <Route path="/notice/:id" element={<Detail />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/" element={<DefaultLayout />}>
