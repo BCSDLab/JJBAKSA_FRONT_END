@@ -22,12 +22,6 @@ export default function SideNavigation(): JSX.Element {
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
 
-  const handleToggle = () => {
-    if (location.pathname === '/') {
-      setVisible(!visible);
-    }
-  };
-
   const TABS = [
     {
       name: '',
@@ -76,7 +70,7 @@ export default function SideNavigation(): JSX.Element {
                     [styles['side-navigation__button']]: true,
                     [styles['side-navigation__button--clicked']]: location.pathname === '/' || location.pathname === '/shop',
                   })}
-                  onClick={handleToggle}
+                  onClick={() => setVisible(true)}
                   tabIndex={0}
                 >
                   <div>{tab.icon}</div>
@@ -89,6 +83,7 @@ export default function SideNavigation(): JSX.Element {
                     [styles['side-navigation__link']]: true,
                     [styles['side-navigation__link--clicked']]: index >= 2 && tab.link === location.pathname,
                   })}
+                  onClick={() => setVisible(false)}
                 >
                   <div>{tab.icon}</div>
                   <div>{tab.name}</div>
