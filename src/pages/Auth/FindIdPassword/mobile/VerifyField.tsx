@@ -5,7 +5,8 @@ import error from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import { CodeInfo } from 'pages/Auth/FindIdPassword/entity';
 import style from 'pages/Auth/FindIdPassword/mobile/index.module.scss';
-import VerifyCode from 'pages/Auth/FindIdPassword/mobile/VerifyCode';
+
+import VerifyCode from './VerifyCode';
 
 export default function VerifyField(): JSX.Element {
   const {
