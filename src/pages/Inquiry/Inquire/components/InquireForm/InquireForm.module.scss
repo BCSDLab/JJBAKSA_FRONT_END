@@ -85,6 +85,10 @@ $disabled: #c4c4c4;
     border-bottom-right-radius: 3px;
     position: relative;
 
+    &--attached {
+      height: 122px;
+    }
+
     > svg {
       cursor: pointer;
       position: absolute;
@@ -94,12 +98,43 @@ $disabled: #c4c4c4;
   }
 
   &__upload-button {
+    color: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__input {
     display: none;
   }
 
   &__images {
+    height: 90px;
     position: absolute;
     left: 48px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__image-box {
+    margin-right: 32px;
+    position: relative;
+  }
+
+  &__image {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+  }
+
+  &__delete-button {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    cursor: pointer;
   }
 
   &__description {
@@ -139,7 +174,7 @@ $disabled: #c4c4c4;
     justify-content: center;
     width: 176px;
     height: 44px;
-    background: $highlight;
+    background: $disabled;
     border: none;
     appearance: none;
     border-radius: 22px;
@@ -147,10 +182,15 @@ $disabled: #c4c4c4;
     font-size: 16px;
     text-decoration: none;
     color: white;
-    cursor: pointer;
+    cursor: default;
     box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
     margin-top: 48px;
     position: absolute;
     right: 0;
+
+    &--active {
+      background: $highlight;
+      cursor: pointer;
+    }
   }
 }
