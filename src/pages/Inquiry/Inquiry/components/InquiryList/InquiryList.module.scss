@@ -32,9 +32,8 @@ $normal: #666666;
     padding-top: 10px;
   }
 
-  &__floor {
-    height: 2px;
+  &__loader-observer {
     width: 100%;
-    color: $highlight;
+    height: 1px;
   }
 }
