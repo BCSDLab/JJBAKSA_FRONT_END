@@ -8,8 +8,9 @@ import style from './PasswordSuccessModal.module.scss';
 
 interface Props {
   children: React.ReactNode;
+  setIsShowModal: (x: boolean) => void
 }
-export default function LogoutModal({ children }: Props) {
+export default function LogoutModal({ children, setIsShowModal }: Props) {
   const root = document.body;
   const clearAuth = useClearAuth();
   return createPortal(
@@ -17,7 +18,7 @@ export default function LogoutModal({ children }: Props) {
       <div className={style.overay} />
       <div className={style.modal}>
         <Favicon />
-        <button className={style.modal__close} type="button" onClick={clearAuth}>X</button>
+        <button className={style.modal__close} type="button" onClick={() => setIsShowModal(false)}>X</button>
         <div className={style.modal__title}>
           로그아웃을 진행하실건가요?
         </div>
