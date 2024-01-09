@@ -80,27 +80,30 @@ export default function VerifyCode({
           </button>
         </div>
         <button
-          type="submit"
+          type="button"
           ref={buttonRef}
           className={cn({
             [style.active]: isDone,
             [style.inactive]: true,
           })}
+          onClick={handleSubmit(findUserInfo)}
         >
           완료
         </button>
       </form>
-      {openModal && (
-        <Modal type="아이디">
-          {user.email}
-          으로
-          <br />
-          가입된 아이디는
-          {' '}
-          {user.id}
-          입니다
-        </Modal>
-      )}
+      {
+        openModal && (
+          <Modal type="아이디">
+            {user.email}
+            으로
+            <br />
+            가입된 아이디는
+            {' '}
+            {user.id}
+            입니다
+          </Modal>
+        )
+      }
     </div>
   );
 }
