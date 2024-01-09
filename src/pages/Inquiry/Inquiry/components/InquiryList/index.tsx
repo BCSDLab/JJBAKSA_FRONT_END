@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 
-import { InquiryContent, InquiryProps } from 'api/inquiry/entity';
+import { InquiryContent, InquiryProps, QueryType } from 'api/inquiry/entity';
 import useGetInquiry from 'pages/Inquiry/hooks/useGetInquiry';
 import InquiryBlock from 'pages/Inquiry/Inquiry/components/InquiryList/InquiryBlock';
 import cn from 'utils/ts/classNames';
@@ -17,7 +17,7 @@ const RENDER_SIZE = 10;
 
 interface InquiryListProps {
   className: string;
-  queryType: string;
+  queryType: QueryType;
 }
 
 export default function InquiryList({

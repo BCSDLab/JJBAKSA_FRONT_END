@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
+import { QueryType } from 'api/inquiry/entity';
 import { ReactComponent as WriteIcon } from 'assets/svg/inquiry/write.svg';
 import InquiryList from 'pages/Inquiry/Inquiry/components/InquiryList';
 import InquirySelectButton from 'pages/Inquiry/Inquiry/components/InquirySelectButton';
@@ -9,43 +10,37 @@ import SearchBar from 'pages/Inquiry/Inquiry/components/SearchBar';
 
 import styles from './Inquiry.module.scss';
 
-type QueryTypeMap = {
-  all: string;
-  my: string;
-  search: string;
-};
-
-type QueryType = keyof QueryTypeMap;
-
-const createQueryTypeMap = (keyword: string): QueryTypeMap => ({
-  all: '',
-  my: '/me',
-  search: `/search/${keyword}`,
-});
+type PageType = 'all' | 'my' | 'search';
 
 export default function Inquiry(): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
 
   const [keyword, setKeyword] = useState('');
-  const queryTypeMap = createQueryTypeMap(keyword);
 
-  const rawPageType = location.pathname.split('/')[2];
-  const pageType = Object.keys(queryTypeMap).includes(rawPageType) ? rawPageType as QueryType : 'all';
+  const pageType = location.pathname.split('/')[2];
 
-  const [queryType, setQueryType] = useState<string>(queryTypeMap[pageType] || '');
+  const getQueryType = (): QueryType => {
+    switch (pageType as PageType) {
+      case 'all': return '';
+      case 'my': return '/me';
+      case 'search': return `/search/${keyword}`;
+      default: return '';
+    }
+  };
+
+  const [queryType, setQueryType] = useState<QueryType>(getQueryType());
 
   useEffect(() => {
-    const newPageType = Object.keys(queryTypeMap).includes(rawPageType) ? rawPageType as QueryType : 'all';
-    setQueryType(queryTypeMap[newPageType] || '');
-  }, [location.pathname, keyword]);
+    setQueryType(getQueryType());
+  }, [location.pathname]);
 
   const handleSearchChange = (text: string) => {
     setKeyword(text);
   };
 
   const handleSearchSubmit = () => {
-    navigate(`${location.pathname}?keyword=${keyword}`);
+    navigate(`/inquiry/search/${keyword}`);
   };
 
   return (
