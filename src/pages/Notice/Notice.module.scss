@@ -1,15 +1,30 @@
+@use "src/utils/styles/mediaQuery" as media;
+
 $default: #222222;
 $highlight: #ff7f23;
 $back: white;
 $normal: #666666;
 
 .container {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 1048px;
+  width: 70vw;
   margin-left: auto;
   margin-right: auto;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 90vw;
+  }
 }
 
 .header {
