@@ -1,6 +1,6 @@
 import scrapApi from './scrapApiClient';
 
-import type { GetMyScrapShopResponse } from './entity';
+import type { GetMyScrapShopResponse, ScrapIdResponse } from './entity';
 
 export const postScrapShop = (shopId: string) =>
   // post된 음식점이 들어가는 최상위 directoryId는 0입니다.
@@ -9,3 +9,5 @@ export const postScrapShop = (shopId: string) =>
 export const getMyScrapShop = () => scrapApi.get<GetMyScrapShopResponse>('/scraps');
 
 export const deleteScrapShop = (scrapId: number) => scrapApi.delete(`/scraps/${scrapId}`);
+
+export const getScrapId = (placeId: string) => scrapApi.get<ScrapIdResponse>(`/shops/scraps/${placeId}`);

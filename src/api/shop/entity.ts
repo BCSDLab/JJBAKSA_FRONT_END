@@ -71,5 +71,5 @@ export interface FetchShopResponse {
   todayPeriod: [number, number];
   periods: Period[];
   scrap: number | null;
-  photos: string[];
+  photos: string[] | null;
 }
