@@ -22,7 +22,7 @@ export default function SearchItem({ shop, pathname }: Props) {
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
   const onClick = () => {
-    const newPath = pathname.includes('/post') ? `/post/${placeId}` : `/shop/${placeId}`;
+    const newPath = pathname.includes('/post') ? `/post/${name}` : `/shop/${name}`;
     navigate(newPath, { state: { placeId } });
   };
   return (
