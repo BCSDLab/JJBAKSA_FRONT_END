@@ -25,6 +25,15 @@ export default function RecentSearches() {
     setlist([]);
   };
 
+  // 단일 최근 검색한 상점 삭제
+  const deleteItem = (placeId: string) => {
+    const recent = localStorage.getItem('recent') as string; // 로컬 스토리지에 recent 키 값이 존재할 때만 deleteItem 실행 가능
+    const currentRecentList: List = JSON.parse(recent);
+    const removedRecentList = currentRecentList.filter((item) => item.placeId !== placeId);
+    localStorage.setItem('recent', JSON.stringify(removedRecentList));
+    setlist(removedRecentList);
+  };
+
   return (
     <div>
       <div className={styles.title}>
@@ -37,7 +46,9 @@ export default function RecentSearches() {
             photoToken={item.photoToken ?? null}
             name={item.name}
             category={item.category}
+            placeId={item.placeId}
             key={item.placeId}
+            deleteItem={deleteItem}
           />
         ))}
       </div>

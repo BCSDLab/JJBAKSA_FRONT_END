@@ -6,11 +6,49 @@
   font-size: 14px;
   border-radius: 10px;
   box-shadow: 2px 3px 12px 1px;
+  position: relative;
 }
 
 .image {
   width: 100%;
   height: 150px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.cover {
+  width: 150px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  border-radius: 10px;
+  opacity: 0;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &__delete {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50px;
+  padding-left: 0.5vw;
+
+  &__name {
+    font-weight: bold;
+  }
+
+  &__category {
+    color: #979797;
+  }
 }
