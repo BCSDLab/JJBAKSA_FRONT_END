@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import useMediaQuery from 'utils/hooks/useMediaQuery';
+
 import RecentItem from './components/RecentItem';
 import styles from './index.module.scss';
 
@@ -12,6 +14,7 @@ type List = {
 
 export default function RecentSearches() {
   const [list, setlist] = useState<List>();
+  const { isMobile } = useMediaQuery();
 
   useEffect(() => {
     if (localStorage.getItem('recent')) {
@@ -37,11 +40,11 @@ export default function RecentSearches() {
   return (
     <div>
       <div className={styles.title}>
-        <div>최근 검색한 식당</div>
+        {isMobile ? <div>최근 검색</div> : <div>최근 검색한 식당</div>}
         <button type="button" onClick={clearStorage}>전체 삭제</button>
       </div>
       <div className={styles.list}>
-        {list && list.map((item) => (
+        {list && list.map((item, index) => (
           <RecentItem
             photoToken={item.photoToken ?? null}
             name={item.name}
@@ -49,6 +52,8 @@ export default function RecentSearches() {
             placeId={item.placeId}
             key={item.placeId}
             deleteItem={deleteItem}
+            index={index}
+            isMobile={isMobile}
           />
         ))}
       </div>

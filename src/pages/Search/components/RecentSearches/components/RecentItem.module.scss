@@ -1,3 +1,5 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
 .container {
   width: 150px;
   display: flex;
@@ -7,6 +9,14 @@
   border-radius: 10px;
   box-shadow: 2px 3px 12px 1px;
   position: relative;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 90vw;
+    height: 20px;
+    box-shadow: none;
+    justify-content: space-between;
+    flex-direction: row;
+  }
 }
 
 .image {
@@ -51,4 +61,14 @@
   &__category {
     color: #979797;
   }
+
+  @include media.media-breakpoint-down(mobile) {
+    flex-direction: row;
+    justify-content: start;
+  }
+}
+
+.delete {
+  color: #898A8D;
+  cursor: pointer;
 }
