@@ -1,7 +1,7 @@
 import {
   useEffect, useState,
 } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { SubmitInquiry } from 'api/inquiry/entity';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
@@ -20,6 +20,7 @@ const MAX_LENGTH = 500;
 export default function InquireForm(): JSX.Element {
   const submit = useSubmitInquiry();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const [inquiry, setInquiry] = useState<SubmitInquiry>({
     title: '',
@@ -162,6 +163,7 @@ export default function InquireForm(): JSX.Element {
               [styles['submit__button--active']]: isSubmissionReady,
             })}
             type="submit"
+            onClick={() => navigate('/inquiry/my')}
           >
             등록하기
           </button>
