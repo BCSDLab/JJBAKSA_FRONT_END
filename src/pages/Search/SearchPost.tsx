@@ -13,6 +13,7 @@ import SearchDetails from 'pages/SearchDetails';
 import useSearchForm from 'store/text';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
+import RecentSearches from './components/RecentSearches';
 import styles from './Search.module.scss';
 
 export default function SearchPost(): JSX.Element {
@@ -41,6 +42,7 @@ export default function SearchPost(): JSX.Element {
           />
           {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
         </section>
+        <RecentSearches />
       </div>
     );
   }
@@ -61,6 +63,7 @@ export default function SearchPost(): JSX.Element {
             </>
           )}
       </section>
+      <RecentSearches />
     </div>
   );
 }
