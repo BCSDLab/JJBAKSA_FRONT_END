@@ -5,7 +5,7 @@ import useBooleanState from 'utils/hooks/useBooleanState';
 import makeToast from 'utils/ts/makeToast';
 
 export default function useHome() {
-  const [isClickLocation, active, unactive] = useBooleanState(false);
+  const [isClickLocation, activate, deactivate] = useBooleanState(false);
   const locationRef = useRef<HTMLDivElement | null>(null);
   const [userLocation, setUserLocation] = useState({
     latitude: null as number | null,
@@ -16,7 +16,7 @@ export default function useHome() {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (locationRef.current && !locationRef.current.contains(event.target as Node)) {
-        unactive();
+        deactivate();
       }
     }
 
@@ -25,7 +25,7 @@ export default function useHome() {
     return () => {
       document.removeEventListener('mouseup', handleClickOutside);
     };
-  }, [unactive]);
+  }, [deactivate]);
 
   const updateUserLocation = () => {
     if (navigator.geolocation) {
@@ -52,7 +52,7 @@ export default function useHome() {
 
   return {
     isClickLocation,
-    active,
+    activate,
     locationRef,
     userLocation,
   };

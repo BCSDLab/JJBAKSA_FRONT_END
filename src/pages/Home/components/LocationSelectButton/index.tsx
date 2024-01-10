@@ -1,13 +1,13 @@
 import { ReactComponent as Arrow } from 'assets/svg/home/arrow.svg';
 
-import styles from './LocationInfo.module.scss';
+import styles from './LocationSelectButton.module.scss';
 
 interface LocationInfoProps {
   address: string | null;
   onClick: () => void;
 }
 
-export default function LocationInfo({ address, onClick }: LocationInfoProps): JSX.Element {
+export default function LocationSelectButton({ address, onClick }: LocationInfoProps): JSX.Element {
   return (
     <button
       type="button"

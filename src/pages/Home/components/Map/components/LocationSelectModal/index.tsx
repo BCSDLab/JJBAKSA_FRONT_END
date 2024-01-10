@@ -1,15 +1,15 @@
 import { ReactComponent as Point } from 'assets/svg/home/point.svg';
 import { ReactComponent as Search } from 'assets/svg/home/search.svg';
 
-import styles from './Location.module.scss';
+import styles from './LocationSelectModal.module.scss';
 
-export default function Location(): JSX.Element {
+export default function LocationSelectModal(): JSX.Element {
   return (
     <div className={styles.container}>
       <div className={styles.box}>
         <div className={styles.box__title}>현재 위치가 올바르지 않은가요?</div>
-        <div className={styles.box__subTitle}>현재 계신 곳의 위치를 아래 검색창을 통해</div>
-        <div className={styles.box__subTitle}>알려주시면 반영하겠습니다.</div>
+        <div className={styles.box__subtitle}>현재 계신 곳의 위치를 아래 검색창을 통해</div>
+        <div className={styles.box__subtitle}>알려주시면 반영하겠습니다.</div>
       </div>
       <div className={styles.search}>
         <div className={styles.search__box}>
