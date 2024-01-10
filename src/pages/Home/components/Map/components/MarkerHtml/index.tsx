@@ -20,7 +20,7 @@ export function MarkerHtml(src:string | null, name:string) {
   `;
 }
 
-export function ClickedMarkerHtml(src:string, name:string, id: string) {
+export function ClickedMarkerHtml(src:string | null, name:string, id: string) {
   return `
   <a href='/shop/${id}'>
     <div class=${styles.continer}>
