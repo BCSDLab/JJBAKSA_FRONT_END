@@ -37,7 +37,7 @@ export default function Service() {
           로그아웃
 
         </button>
-        {isShowModal && <LogoutModal setIsShowModal={setIsShowModal}>로그인 페이지로 돌아갑니다.</LogoutModal>}
+        {isShowModal && <LogoutModal closeModal={setIsShowModal}>로그인 페이지로 돌아갑니다.</LogoutModal>}
         <Link to="/withdrawal">
           <div className={styles['bottom__delete-account']}>탈퇴하기</div>
         </Link>
