@@ -9,6 +9,7 @@ import Pin from 'components/common/SideNavigation/components';
 import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import { useSelected } from 'store/placeId';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 
@@ -23,6 +24,7 @@ export default function SideNavigation(): JSX.Element {
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+  const { selected } = useSelected();
 
   const TABS = [
     {
@@ -181,7 +183,7 @@ export default function SideNavigation(): JSX.Element {
           </div>
         </div>
         {(filterNearbyState || filterScrapState || filterFriendState)
-        && <Pin />}
+        && selected && <Pin placeId={selected} />}
       </div>
     </div>
   );
