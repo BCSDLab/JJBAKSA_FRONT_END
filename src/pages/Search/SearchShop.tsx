@@ -42,6 +42,7 @@ export default function SearchShop(): JSX.Element {
           />
           {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
         </section>
+        <RecentSearches />
       </div>
     );
   }
