@@ -7,7 +7,7 @@ import {
 } from './entity';
 import myPageApi from './mypageApiClient';
 
-export const getReviewedShops = async () => myPageApi.get<ReviewedShopsResponse>('/review/shops?size=10');
+export const getReviewedShops = async () => myPageApi.get<ReviewedShopsResponse>('/review/shops?size=50');
 
 export const getReviews = async (placeId:string) => myPageApi.get<ReviewsResponse>(`/review/shop/${placeId}`);
 
