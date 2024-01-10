@@ -14,7 +14,6 @@
   height: 230px;
   gap: 20px;
   align-items: center;
-  justify-content: center;
 
   @include media.media-breakpoint-down(mobile) {
     flex-direction: column;
