@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import defaultImage from 'assets/images/follow/default-image.png';
@@ -8,6 +9,7 @@ import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
 import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import useLocationActive from 'store/locationActive';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 
@@ -22,6 +24,9 @@ export default function SideNavigation(): JSX.Element {
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+  const {
+    state: isActive,
+  } = useLocationActive();
 
   const TABS = [
     {
@@ -57,6 +62,12 @@ export default function SideNavigation(): JSX.Element {
     setVisible(true);
     navigate('/');
   };
+
+  useEffect(() => {
+    if (isActive) {
+      setVisible(false);
+    }
+  }, [isActive, setVisible]);
 
   return (
     <div>
