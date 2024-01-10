@@ -2,13 +2,13 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { checkIdDuplicate, sendFindEmail } from 'api/user';
-import error from 'assets/svg/auth/error.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import { EmailParams, FindProp } from 'pages/Auth/FindIdPassword/entity';
 import cn from 'utils/ts/classNames';
 
-import style from './index.module.scss';
+import styles from './index.module.scss';
 
 export default function FindIdPasswordMobile({ type }: FindProp): JSX.Element {
   const {
@@ -51,42 +51,44 @@ export default function FindIdPasswordMobile({ type }: FindProp): JSX.Element {
     } else checkEmail(param);
   };
   return (
-    <div className={style.layout}>
-      <div className={style.back}>
+    <div className={styles.layout}>
+      <div className={styles.back}>
         <PreviousButton />
       </div>
-      <div className={style.page}>
+      <div className={styles.page}>
         <div>
           {type === 'id' && (
-            <p className={style.page__quote}>
+            <p className={styles.page__quote}>
               아이디를 찾을 때
               <br />
               사용할 이메일을 입력해 주세요.
             </p>
           )}
           {type === 'password' && (
-            <p className={style.page__quote}>
+            <p className={styles.page__quote}>
               비밀번호를 찾을 때 사용할
               <br />
               이메일과 아이디를 입력해 주세요.
             </p>
           )}
         </div>
-        <div className={style.page__error}>
+        <div className={styles.page__error}>
           {errors.email && (
-            <span className={style.page__caution}>
-              <img src={error} alt="warning" className={style.page__image} />
-              {errors.email?.message}
+            <span className={styles.page__caution}>
+              <span className={styles.page__image}>
+                <ErrorIcon />
+                {errors.email?.message}
+              </span>
             </span>
           )}
         </div>
-        <form className={style.form} onSubmit={handleSubmit(checkUserInfo)}>
-          <div className={style.form__center}>
-            <div className={style.form__label}>이메일</div>
+        <form className={styles.form} onSubmit={handleSubmit(checkUserInfo)}>
+          <div className={styles.form__center}>
+            <div className={styles.form__label}>이메일</div>
             <input
               type="email"
               placeholder="이메일을 입력하세요"
-              className={style.form__input}
+              className={styles.form__input}
               id="email"
               {...register('email', {
                 required: 'email을 입력해주세요',
@@ -98,10 +100,10 @@ export default function FindIdPasswordMobile({ type }: FindProp): JSX.Element {
             />
             {type === 'password' && (
               <>
-                <div className={style.form__label}>아이디</div>
+                <div className={styles.form__label}>아이디</div>
                 <input
                   placeholder="아이디를 입력하세요"
-                  className={style.form__input}
+                  className={styles.form__input}
                   id="account"
                   {...register('account', {
                     required: 'id를 입력해주세요',
@@ -114,8 +116,8 @@ export default function FindIdPasswordMobile({ type }: FindProp): JSX.Element {
             type="submit"
             disabled={isSubmitting || !isValid}
             className={cn({
-              [style['form__submit--active']]: isValid,
-              [style.form__submit]: true,
+              [styles['form__submit--active']]: isValid,
+              [styles.form__submit]: true,
             })}
           >
             인증번호 보내기
