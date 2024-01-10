@@ -14,39 +14,39 @@ import {
   SendRegisterEmailParams,
   User,
 } from './entity';
-import userApi from './userApiClient';
+import { userAccessApi, userApi } from './userApiClient';
 
 export const register = (param: RegisterParams) => userApi.post<User>('/', param);
 
-export const checkIdDuplicate = (param: CheckIdDuplicateParams) => userApi.get<User>(`/exists?account=${param.account}`);
+export const checkIdDuplicate = (param: CheckIdDuplicateParams) => userAccessApi.get<User>(`/exists?account=${param.account}`);
 
 export const login = async (param: LoginParams) => {
-  const { data } = await userApi.post<LoginResponse>('/login', param);
+  const { data } = await userAccessApi.post<LoginResponse>('/login', param);
   return { data };
 };
 
-export const getMe = () => userApi.get<User>('/me');
+export const getMe = () => userAccessApi.get<User>('/me');
 
-export const withdrawUser = () => userApi.delete<User>('/me');
+export const withdrawUser = () => userAccessApi.delete<User>('/me');
 
-export const modify = (param: ModifyParams) => userApi.patch<User>('/me', param);
+export const modify = (param: ModifyParams) => userAccessApi.patch<User>('/me', param);
 
-export const sendRegisterEmail = (param: SendRegisterEmailParams) => userApi.post(`/authenticate?email=${param.email}`);
+export const sendRegisterEmail = (param: SendRegisterEmailParams) => userAccessApi.post(`/authenticate?email=${param.email}`);
 
-export const sendFindEmail = (param: SendFindEmailParams) => userApi.post(`/email/account?email=${param.email}`);
+export const sendFindEmail = (param: SendFindEmailParams) => userAccessApi.post(`/email/account?email=${param.email}`);
 
-export const getAccount = (param: GetAccountParams) => userApi.get(`/account?email=${param.email}&code=${param.code}`);
+export const getAccount = (param: GetAccountParams) => userAccessApi.get(`/account?email=${param.email}&code=${param.code}`);
 
-export const findPassword = (param: FindPasswordParams) => userApi.post('/password', {
+export const findPassword = (param: FindPasswordParams) => userAccessApi.post('/password', {
   account: param.account,
   code: param.code,
   email: param.email,
 });
 
-export const checkPassword = (param: CheckPasswordParams) => userApi.post(`/check-password?password=${param.password}`);
+export const checkPassword = (param: CheckPasswordParams) => userAccessApi.post(`/check-password?password=${param.password}`);
 
-export const emailPassword = (Param: EmailParams) => userApi.post(`/email/password?account=${Param.account}&email=${Param.email}`);
+export const emailPassword = (Param: EmailParams) => userAccessApi.post(`/email/password?account=${Param.account}&email=${Param.email}`);
 
-export const emailId = (Param : EmailParams) => userApi.post(`/email/account?email=${Param.email}`);
+export const emailId = (Param : EmailParams) => userAccessApi.post(`/email/account?email=${Param.email}`);
 
-export const findId = (Param : AccountParams) => userApi.get(`/account?email=${Param.email}&code=${Param.code}`);
+export const findId = (Param : AccountParams) => userAccessApi.get(`/account?email=${Param.email}&code=${Param.code}`);
