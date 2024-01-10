@@ -30,4 +30,11 @@
   @include media.media-breakpoint-down(mobile) {
     width: 90vw;
   }
+
+  &__color {
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 14px;
+      color: #ff7f23;
+    }
+  }
 }
