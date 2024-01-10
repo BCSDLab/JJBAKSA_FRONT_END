@@ -74,7 +74,7 @@ export default function SideNavigation(): JSX.Element {
                   type="button"
                   className={cn({
                     [styles['side-navigation__button']]: true,
-                    [styles['side-navigation__button--clicked']]: visible,
+                    [styles['side-navigation__button--clicked']]: visible && tab.link === location.pathname,
                   })}
                   onClick={() => clickSearchButton()}
                   tabIndex={0}
