@@ -5,6 +5,10 @@
   .toastui-editor-contents {
     z-index: 1;
   }
+
+  img.ProseMirror-separator {
+    display: none !important;
+  }
 }
 
 .auto-height {
@@ -18,17 +22,8 @@
 }
 
 .wysiwygContainer.toastui-editor-contents {
-  font-family:
-    SUIT,
-    system-ui,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol";
+  font-family: SUIT, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 12px;
   z-index: 1;
 }
