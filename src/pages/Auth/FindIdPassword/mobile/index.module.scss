@@ -3,10 +3,10 @@
 .layout {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100vw;
   min-height: 100vh;
+  margin-top: 7vh;
 }
 
 .back {
@@ -49,7 +49,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 230px;
+  gap: 150px;
   margin-bottom: 12px;
 
   &__space {

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 
 import { modify } from 'api/user';
-import error from 'assets/svg/auth/error.svg';
+import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import { PasswordInfo } from 'pages/Auth/FindIdPassword/entity';
 import useBooleanState from 'utils/hooks/useBooleanState';
@@ -13,7 +13,7 @@ import Modal from './Modal';
 const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 
 export default function ChangePassword(): JSX.Element {
-  const [value, toggle] = useBooleanState(false);
+  const [value, toggle, , , setOpenModal] = useBooleanState(false);
   const {
     register, handleSubmit, formState: { errors, isValid }, getValues, setError,
   } = useForm<PasswordInfo>({
@@ -46,7 +46,10 @@ export default function ChangePassword(): JSX.Element {
         <div className={styles.page__error}>
           {(errors.password || errors.passwordCheck) && (
             <span className={styles.page__caution}>
-              <img src={error} alt="warning" className={styles.page__image} />
+              <span className={styles.page__image}>
+                <ErrorIcon />
+              </span>
+
               {errors.password?.message || errors.passwordCheck?.message}
             </span>
           )}
@@ -95,7 +98,7 @@ export default function ChangePassword(): JSX.Element {
         </form>
       </div>
       {value
-        && <Modal type="비밀번호">재설정된 비밀번호로 다시 로그인해 주세요</Modal>}
+        && <Modal setOpenModal={setOpenModal} type="비밀번호">재설정된 비밀번호로 다시 로그인해 주세요</Modal>}
     </div>
   );
 }

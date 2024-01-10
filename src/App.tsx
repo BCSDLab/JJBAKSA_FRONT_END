@@ -21,6 +21,8 @@ import Inquire from 'pages/Inquiry/Inquire';
 import Inquiry from 'pages/Inquiry/Inquiry';
 import MyPage from 'pages/MyPage';
 import Notice from 'pages/Notice';
+import Detail from 'pages/Notice/detail';
+import PageNotFound from 'pages/PageNotFound';
 import Post from 'pages/Post';
 import NotFoundPage from 'pages/Search/components/NotFoundPage';
 import SearchPost from 'pages/Search/SearchPost';
@@ -39,10 +41,12 @@ export default function App(): JSX.Element {
           <Route path="/shop/:placeId" element={<ShopDetail />} />
           <Route path="/post" element={<SearchPost />} />
           <Route path="/search/not-found" element={<NotFoundPage />} />
-          <Route path="/inquiry/:type" element={<Inquiry />} />
+          <Route path="/inquiry/all" element={<Inquiry />} />
+          <Route path="/inquiry/my" element={<Inquiry />} />
           <Route path="/inquiry/search/:keyword" element={<Inquiry />} />
           <Route path="/inquiry/inquire" element={<Inquire />} />
           <Route path="/notice" element={<Notice />} />
+          <Route path="/notice/:id" element={<Detail />} />
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/" element={<DefaultLayout />}>
@@ -54,6 +58,7 @@ export default function App(): JSX.Element {
           <Route path="/withdrawal" element={<Withdrawal />} />
           <Route path="/profile" element={<MyPage />} />
           <Route path="/post/:name" element={<Post />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
           <Route path="/login" element={<Login />} />
@@ -70,6 +75,7 @@ export default function App(): JSX.Element {
           <Route path="/login/oauth2/code/kakao" element={<KakaoLogin />} />
           <Route path="/login/oauth2/code/naver" element={<NaverLogin />} />
           <Route path="/login/oauth2/code/google" element={<GoogleLogin />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
       <Toast />

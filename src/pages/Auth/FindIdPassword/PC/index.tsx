@@ -241,7 +241,7 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
           </button>
         </form>
         {openModal && (
-          <Modal type="아이디">
+          <Modal setOpenModal={setOpenModal} type="아이디">
             {user.email}
             으로
             <br />

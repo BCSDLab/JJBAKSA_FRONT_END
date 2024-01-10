@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import defaultImage from 'assets/images/follow/default-image.png';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
@@ -17,16 +17,11 @@ export default function SideNavigation(): JSX.Element {
   const auth = useAuth();
   const clearAuth = useClearAuth();
   const location = useLocation();
+  const navigate = useNavigate();
   const [visible, , , toggle, setVisible] = useBooleanState(true);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
-
-  const handleToggle = () => {
-    if (location.pathname === '/') {
-      setVisible(!visible);
-    }
-  };
 
   const TABS = [
     {
@@ -58,6 +53,11 @@ export default function SideNavigation(): JSX.Element {
     },
   ];
 
+  const clickSearchButton = () => {
+    setVisible(true);
+    navigate('/');
+  };
+
   return (
     <div>
       <nav className={styles['side-navigation']}>
@@ -74,9 +74,9 @@ export default function SideNavigation(): JSX.Element {
                   type="button"
                   className={cn({
                     [styles['side-navigation__button']]: true,
-                    [styles['side-navigation__button--clicked']]: location.pathname === '/' || location.pathname === '/shop',
+                    [styles['side-navigation__button--clicked']]: visible,
                   })}
-                  onClick={handleToggle}
+                  onClick={() => clickSearchButton()}
                   tabIndex={0}
                 >
                   <div>{tab.icon}</div>
@@ -89,6 +89,7 @@ export default function SideNavigation(): JSX.Element {
                     [styles['side-navigation__link']]: true,
                     [styles['side-navigation__link--clicked']]: index >= 2 && tab.link === location.pathname,
                   })}
+                  onClick={() => setVisible(false)}
                 >
                   <div>{tab.icon}</div>
                   <div>{tab.name}</div>
