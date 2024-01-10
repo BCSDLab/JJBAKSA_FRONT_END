@@ -5,7 +5,7 @@ import { ReactComponent as Favicon } from 'assets/svg/common/favicon.svg';
 import { useClearAuth } from 'store/auth';
 import cn from 'utils/ts/classNames';
 
-import style from '../PC/PasswordSuccessModal.module.scss';
+import styles from '../PC/PasswordSuccessModal.module.scss';
 
 interface Props {
   children: React.ReactNode;
@@ -15,25 +15,25 @@ export default function MobileLogoutModal({ children, setIsShowModal }: Props) {
   const root = document.body;
   const clearAuth = useClearAuth();
   return createPortal(
-    <div className={style.container}>
-      <div className={style.overay} />
-      <div className={style.modal}>
+    <div className={styles.container}>
+      <div className={styles.overay} />
+      <div className={styles.modal}>
         <Favicon />
-        <div className={style.modal__title}>
+        <div className={styles.modal__title}>
           로그아웃을 진행하실건가요?
         </div>
-        <div className={style.modal__content}>{children}</div>
-        <div className={style.modal__container}>
+        <div className={styles.modal__content}>{children}</div>
+        <div className={styles.modal__container}>
           <button
             type="button"
             className={cn({
-              [style['modal__button--cancel']]: true,
+              [styles['modal__button--cancel']]: true,
             })}
             onClick={() => setIsShowModal(false)}
           >
             취소
           </button>
-          <Link to="/login" onClick={clearAuth}><button type="button" className={style.modal__button}>확인</button></Link>
+          <Link to="/login" onClick={clearAuth}><button type="button" className={styles.modal__button}>확인</button></Link>
         </div>
 
       </div>

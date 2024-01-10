@@ -9,7 +9,7 @@ import { useAuth } from 'store/auth';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 
-import style from './PcSetting.module.scss';
+import styles from './PcSetting.module.scss';
 
 export default function ManageAccount() {
   const [isCurrentBlind, , , changeCurrentBlind] = useBooleanState(false);
@@ -38,24 +38,24 @@ export default function ManageAccount() {
   const auth = useAuth();
 
   return (
-    <form className={style.formContainer}>
-      <div className={style.title}>계정</div>
-      <div className={style.account}>
+    <form className={styles.formContainer}>
+      <div className={styles.title}>계정</div>
+      <div className={styles.account}>
         <span>이메일</span>
-        <input className={style.account__input} value={auth ? auth.email : ''} disabled />
+        <input className={styles.account__input} value={auth ? auth.email : ''} disabled />
       </div>
       <div>
         <span>아이디</span>
-        <input className={style.account__input} value={isEmailLogin(auth)} disabled />
+        <input className={styles.account__input} value={isEmailLogin(auth)} disabled />
       </div>
-      <div className={style.title}>비밀번호 변경</div>
+      <div className={styles.title}>비밀번호 변경</div>
       <div>
         <span>현재 비밀번호</span>
-        <span className={style.blindBox}>
+        <span className={styles.blindBox}>
           <input
             className={cn({
-              [style.password]: true,
-              [style.password__error]:
+              [styles.password]: true,
+              [styles.password__error]:
                 message === currentError || message === typeError,
             })}
             type={isCurrentBlind ? 'text' : 'password'}
@@ -66,7 +66,7 @@ export default function ManageAccount() {
           <button
             type="button"
             onClick={() => (auth && 'account' in auth) && changeCurrentBlind()}
-            className={style.blindBox__button}
+            className={styles.blindBox__button}
           >
             {isCurrentBlind ? (
               <ShowIcon aria-hidden />
@@ -78,11 +78,11 @@ export default function ManageAccount() {
       </div>
       <div>
         <span>새 비밀번호</span>
-        <span className={style.blindBox}>
+        <span className={styles.blindBox}>
           <input
             className={cn({
-              [style.password]: true,
-              [style.password__error]:
+              [styles.password]: true,
+              [styles.password__error]:
                 message === correctError,
             })}
             type={isNewBlind ? 'text' : 'password'}
@@ -93,7 +93,7 @@ export default function ManageAccount() {
           <button
             type="button"
             onClick={() => (auth && 'account' in auth) && changeNewBlind()}
-            className={style.blindBox__button}
+            className={styles.blindBox__button}
           >
             {isNewBlind ? (
               <ShowIcon aria-hidden />
@@ -105,11 +105,11 @@ export default function ManageAccount() {
       </div>
       <div>
         <span>새 비밀번호 확인</span>
-        <span className={style.blindBox}>
+        <span className={styles.blindBox}>
           <input
             className={cn({
-              [style.password]: true,
-              [style.password__error]:
+              [styles.password]: true,
+              [styles.password__error]:
                 message === correctError,
             })}
             type={isNewCheckBlind ? 'text' : 'password'}
@@ -120,7 +120,7 @@ export default function ManageAccount() {
           <button
             type="button"
             onClick={() => (auth && 'account' in auth) && changeNewCheckBlind()}
-            className={style.blindBox__button}
+            className={styles.blindBox__button}
           >
             {isNewCheckBlind ? (
               <ShowIcon aria-hidden />
@@ -131,14 +131,14 @@ export default function ManageAccount() {
         </span>
       </div>
       {isShowError && (
-        <div className={style.errorMessageBox}>
+        <div className={styles.errorMessageBox}>
           <ErrorIcon />
-          <span className={style.errorMessage}>
+          <span className={styles.errorMessage}>
             {message}
           </span>
         </div>
       )}
-      <button className={style.button} type="button" onClick={modifyPassword}>비밀번호 변경</button>
+      <button className={styles.button} type="button" onClick={modifyPassword}>비밀번호 변경</button>
       {isShowModal && <PasswordSuccessModal>변경된 비밀번호로 로그인 해주세요.</PasswordSuccessModal>}
     </form>
   );

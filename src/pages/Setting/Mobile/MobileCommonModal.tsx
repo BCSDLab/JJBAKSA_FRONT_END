@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 
-import style from './MobileCommonModal.module.scss';
+import styles from './MobileCommonModal.module.scss';
 
 interface Props {
   children: React.ReactNode;
@@ -10,13 +10,13 @@ interface Props {
 export default function MobileCommonModal({ children, setIsShowError }: Props) {
   const root = document.body;
   return createPortal(
-    <div className={style.container}>
-      <div className={style.overay} />
-      <div className={style.modal}>
-        <div className={style.modal__content}>{children}</div>
+    <div className={styles.container}>
+      <div className={styles.overay} />
+      <div className={styles.modal}>
+        <div className={styles.modal__content}>{children}</div>
         <button
           type="button"
-          className={style.modal__close}
+          className={styles.modal__close}
           onClick={() => setIsShowError(false)}
         >
           닫기
