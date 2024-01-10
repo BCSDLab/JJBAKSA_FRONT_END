@@ -1,10 +1,12 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
+  margin-top: 7vh;
   width: 875px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 90vw;
+    margin-top: 5vh;
   }
 }
 
@@ -26,15 +28,21 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2vh;
 
   @include media.media-breakpoint-down(mobile) {
     width: 90vw;
   }
 
   &__color {
+    font-size: 14px;
+
     @include media.media-breakpoint-down(mobile) {
-      font-size: 14px;
       color: #ff7f23;
+    }
+
+    &--mobile {
+      color: #c4c4c4;
     }
   }
 }

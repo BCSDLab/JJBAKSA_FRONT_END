@@ -7,7 +7,7 @@
   height: 200px;
   font-size: 14px;
   border-radius: 10px;
-  box-shadow: 2px 3px 12px 1px;
+  box-shadow: 1px 1px 20px rgb(0 0 0 / 25%);
   position: relative;
 
   @include media.media-breakpoint-down(mobile) {
@@ -56,6 +56,7 @@
 
   &__name {
     font-weight: bold;
+    overflow: hidden;
   }
 
   &__category {
