@@ -16,6 +16,12 @@ export interface AccountParams {
   code: string
 }
 
+export interface FindParams {
+  email: string;
+  account?: string;
+  code: string;
+}
+
 export interface RegisterProp {
   register: UseFormRegister<CodeInfo>,
   handleSubmit: UseFormHandleSubmit<CodeInfo>,

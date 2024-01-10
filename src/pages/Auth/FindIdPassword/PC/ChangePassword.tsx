@@ -1,71 +1,140 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { modify } from 'api/user';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
+import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
+import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
 import { ReactComponent as SecondProgress } from 'assets/svg/auth/two-step-second-progress.svg';
 import Copyright from 'components/Auth/Copyright';
+import { PasswordInfo } from 'pages/Auth/FindIdPassword/entity';
+import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 
-import style from './index.module.scss';
-import { EmailParams } from '../entity';
+import styles from './index.module.scss';
 
 export default function ChangePasswordPC(): JSX.Element {
+  const [isNewBlind, , , toggleNewBlind] = useBooleanState(false);
+  const [isNewCheckBlind, , , toggleNewCheckBlind] = useBooleanState(false);
   const {
-    formState: { isSubmitting, isValid },
-  } = useForm<EmailParams>({
+    register,
+    formState: { isSubmitting, errors, isValid },
+    getValues,
+    setError,
+    handleSubmit,
+  } = useForm<PasswordInfo>({
     mode: 'onChange',
   });
+  const [openModal, setOpenModal] = useState(false);
+
+  const modifyPassword = async (params: PasswordInfo) => {
+    try {
+      if (getValues('password') === getValues('passwordCheck')) {
+        await modify({
+          password: params.password,
+        });
+        sessionStorage.removeItem('accessToken');
+        setOpenModal(true);
+      } else {
+        setError('passwordCheck', { message: '비밀번호가 일치하지 않습니다.' });
+      }
+    } catch {
+      //
+    }
+  };
+
   return (
     <div>
-      <div className={style.page}>
-        <div className={style.page__container}>
-          <div className={style.page__title}>
+      <div className={styles.page}>
+        <div className={styles.page__container}>
+          <div className={styles.page__title}>
             새 비밀번호 입력하기
           </div>
-          <p className={style.page__quote}>
+          <p className={styles.page__quote}>
             새 비밀번호를 입력해주세요.
           </p>
-          <div className={style.page__progress}>
+          <div className={styles.page__progress}>
             <SecondProgress />
           </div>
         </div>
-        <form className={style.form}>
-          <div className={style.form__box}>
-            <label className={style.form__label} htmlFor="password">
+        <form className={styles.form}>
+          <div className={styles.form__box}>
+            <label className={styles.form__label} htmlFor="password">
               새 비밀번호
               <input
+                type={isNewBlind ? 'text' : 'password'}
                 id="password"
                 placeholder="비밀번호를 입력해주세요."
-                className={style.form__input}
+                className={styles.form__input}
+                {...register('password')}
               />
+              <button
+                type="button"
+                onClick={() => toggleNewBlind()}
+                className={styles['form__blind-icon']}
+              >
+                {isNewBlind ? (
+                  <ShowIcon aria-hidden />
+                ) : (
+                  <BlindIcon aria-hidden />
+                )}
+              </button>
             </label>
           </div>
-          <div className={style.form__box}>
-            <label className={style.form__label} htmlFor="password-check">
-              <div className={cn({ [style['form__label--box']]: true })}>
+          <div className={styles.form__box}>
+            <label className={styles.form__label} htmlFor="password-check">
+              <div className={cn({ [styles['form__label--box']]: true })}>
                 새 비밀번호 확인
-                <ErrorIcon />
+                {errors.passwordCheck && (
+                  <span className={styles.form__message}>
+                    <ErrorIcon />
+                    {errors.passwordCheck.message}
+                  </span>
+                )}
               </div>
               <input
                 id="password-check"
+                type={isNewCheckBlind ? 'text' : 'password'}
                 placeholder="비밀번호를 입력해주세요."
-                className={style.form__input}
+                className={cn({
+                  [styles['form__input--active']]: !isValid,
+                  [styles.form__input]: true,
+                })}
+                {...register('passwordCheck')}
               />
+              <button
+                type="button"
+                onClick={() => toggleNewCheckBlind()}
+                className={styles['form__blind-icon']}
+              >
+                {isNewCheckBlind ? (
+                  !errors.passwordCheck && <ShowIcon aria-hidden />
+                ) : (
+                  !errors.passwordCheck && <BlindIcon aria-hidden />
+                )}
+              </button>
             </label>
-
-            <ErrorIcon className={style.form__error} />
+            {errors.passwordCheck && <ErrorIcon className={styles.form__error} />}
           </div>
           <button
-            type="submit"
+            type="button"
             disabled={isSubmitting || !isValid}
             className={cn({
-              [style.form__submit]: true,
-              [style['form__submit--active']]: isValid,
+              [styles['form__submit--active']]: isValid,
+              [styles.form__submit]: true,
             })}
+            onClick={handleSubmit(modifyPassword)}
           >
             완료
           </button>
         </form>
-        <div className={style.copyright}>
+        {openModal && (
+          <Modal setOpenModal={setOpenModal} type="비밀번호">
+            변경된 비밀번호로 로그인 해 주세요.
+          </Modal>
+        )}
+        <div className={styles.copyright}>
           <Copyright />
         </div>
       </div>

@@ -5,25 +5,25 @@ import ManageAccount from 'pages/Setting/PC/ManageAccount';
 import Service from 'pages/Setting/PC/Service';
 import cn from 'utils/ts/classNames';
 
-import style from './PcSetting.module.scss';
+import styles from './PcSetting.module.scss';
 
 export default function PcSetting() {
   const [isAccount, setIsAccount] = useState(true);
   return (
-    <div className={style.container}>
-      <div className={style.setting}>
-        <div className={style.setting__title}>설정</div>
-        <div className={style.selectContainer}>
-          <div className={style.select}>
+    <div className={styles.container}>
+      <div className={styles.setting}>
+        <div className={styles.setting__title}>설정</div>
+        <div className={styles.selectContainer}>
+          <div className={styles.select}>
             <div className={cn({
-              [style.select__mark]: true,
-              [style['select__mark--appear']]: isAccount,
+              [styles.select__mark]: true,
+              [styles['select__mark--appear']]: isAccount,
             })}
             />
             <button
               className={cn({
-                [style.select__button]: true,
-                [style['select__button--selected']]: isAccount,
+                [styles.select__button]: true,
+                [styles['select__button--selected']]: isAccount,
               })}
               type="button"
               onClick={() => setIsAccount(true)}
@@ -32,16 +32,16 @@ export default function PcSetting() {
 
             </button>
           </div>
-          <div className={style.select}>
+          <div className={styles.select}>
             <div className={cn({
-              [style.select__mark]: true,
-              [style['select__mark--appear']]: !isAccount,
+              [styles.select__mark]: true,
+              [styles['select__mark--appear']]: !isAccount,
             })}
             />
             <button
               className={cn({
-                [style.select__button]: true,
-                [style['select__button--selected']]: !isAccount,
+                [styles.select__button]: true,
+                [styles['select__button--selected']]: !isAccount,
               })}
               type="button"
               onClick={() => setIsAccount(false)}
@@ -53,7 +53,7 @@ export default function PcSetting() {
         </div>
       </div>
       {isAccount ? <ManageAccount /> : <Service />}
-      <div className={style.copyright}>
+      <div className={styles.copyright}>
         <Copyright />
       </div>
     </div>
