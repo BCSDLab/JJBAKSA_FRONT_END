@@ -19,7 +19,9 @@ export default function useHome() {
         unactive();
       }
     }
+
     document.addEventListener('mouseup', handleClickOutside);
+
     return () => {
       document.removeEventListener('mouseup', handleClickOutside);
     };

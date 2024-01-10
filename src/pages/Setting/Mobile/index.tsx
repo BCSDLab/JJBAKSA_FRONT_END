@@ -4,7 +4,7 @@ import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
 import { ReactComponent as Version } from 'assets/svg/setting/version-check.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import useModifyPassword from 'pages/Setting/hook/useModifyPassword';
+import useModifyPassword from 'pages/Setting/hooks/useModifyPassword';
 import MobileCommonModal from 'pages/Setting/Mobile/MobileCommonModal';
 import MobileLogoutModal from 'pages/Setting/Mobile/MobileLogoutModal';
 

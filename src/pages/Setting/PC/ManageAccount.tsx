@@ -2,7 +2,7 @@ import { User } from 'api/user/entity';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
 import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
-import useModifyPassword from 'pages/Setting/hook/useModifyPassword';
+import useModifyPassword from 'pages/Setting/hooks/useModifyPassword';
 import PasswordSuccessModal from 'pages/Setting/PC/PasswordSuccessModal';
 import { correctError, currentError, typeError } from 'pages/Setting/static/setting';
 import { useAuth } from 'store/auth';
