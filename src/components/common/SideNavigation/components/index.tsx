@@ -1,26 +1,20 @@
-import { useEffect, useState } from 'react';
-
 import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import usePin from 'components/common/SideNavigation/hooks/usePin';
 import ImageCarousel from 'components/ImageCarousel';
-import { useSelected } from 'store/placeId';
 import useScrap from 'utils/hooks/useScrap';
 
 import styles from './Pin.module.scss';
+import useScrapId from '../hooks/useScrapId';
 
-export default function Pin(): JSX.Element {
-  const { selected } = useSelected();
-  const { data } = usePin(String(selected));
-  const [scrapId, setScrapId] = useState<number | null>(null);
+interface PinProps {
+  placeId: string;
+}
 
-  useEffect(() => {
-    if (data) {
-      const scrapData = Number(data?.scrap);
-      setScrapId(scrapData);
-    }
-  }, [data]);
+export default function Pin({ placeId }:PinProps): JSX.Element {
+  const { data } = usePin(String(placeId));
+  const { scrapId } = useScrapId(String(placeId));
 
-  const { toggleScrap, isPending } = useScrap(String(selected), scrapId);
+  const { toggleScrap, isPending } = useScrap(String(placeId), Number(scrapId));
   return (
     <>
       <ImageCarousel pathname="pin" imageUrls={data?.photos} />
