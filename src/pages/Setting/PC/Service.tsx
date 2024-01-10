@@ -7,7 +7,7 @@ import useBooleanState from 'utils/hooks/useBooleanState';
 import styles from './Service.module.scss';
 
 export default function Service() {
-  const [isShowModal, setIsShowModal] = useBooleanState(false);
+  const [isShowModal, , , , setIsShowModal] = useBooleanState(false);
   return (
     <div className={styles.service}>
       <div className={styles.service__container}>
@@ -32,12 +32,12 @@ export default function Service() {
         <button
           type="button"
           className={styles['bottom__log-out']}
-          onClick={setIsShowModal}
+          onClick={() => setIsShowModal(true)}
         >
           로그아웃
 
         </button>
-        {isShowModal && <LogoutModal>로그인 페이지로 돌아갑니다.</LogoutModal>}
+        {isShowModal && <LogoutModal closeModal={setIsShowModal}>로그인 페이지로 돌아갑니다.</LogoutModal>}
         <Link to="/withdrawal">
           <div className={styles['bottom__delete-account']}>탈퇴하기</div>
         </Link>
