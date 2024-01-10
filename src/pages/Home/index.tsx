@@ -7,13 +7,13 @@ import styles from './Home.module.scss';
 
 export default function Home(): JSX.Element {
   const {
-    isClickLocation, activate, userLocation, locationRef,
+    isClickLocation, setActive, userLocation, locationRef,
   } = useHome();
 
   return (
     <>
       <Map />
-      <LocationSelectButton address={userLocation.address} onClick={activate} />
+      <LocationSelectButton address={userLocation.address} onClick={setActive} />
       {isClickLocation && (
         <div
           className={styles['location-box']}

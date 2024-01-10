@@ -10,6 +10,11 @@ const userApi = axios.create({
   timeout: 2000,
 });
 
+const userAccessApi = axios.create({
+  baseURL: `${API_PATH}/user`,
+  timeout: 2000,
+});
+
 export const refreshAccessToken = async () => {
   const refreshToken = localStorage.getItem('refreshToken');
   if (!refreshToken) {
@@ -29,7 +34,7 @@ export const refreshAccessToken = async () => {
   }
 };
 
-userApi.interceptors.request.use((config) => {
+userAccessApi.interceptors.request.use((config) => {
   const accessToken = sessionStorage.getItem('accessToken');
   // eslint-disable-next-line no-param-reassign
   if (config.headers && accessToken) { config.headers.Authorization = `Bearer ${accessToken}`; }
@@ -37,7 +42,7 @@ userApi.interceptors.request.use((config) => {
 });
 
 // App단에서 'user/me' 호출할 때 accessToken을 갱신하므로 userApi에 종속.
-userApi.interceptors.response.use(
+userAccessApi.interceptors.response.use(
   // 성공시
   (response) => response,
 
@@ -50,7 +55,7 @@ userApi.interceptors.response.use(
       if (originalRequest.url !== '/refresh') {
         return refreshAccessToken();
       }
-      return Promise.reject(error);
+      throw error;
     } catch {
       makeToast('error', '네트워크 오류가 발생했습니다.');
       return Promise.reject(error);
@@ -58,4 +63,4 @@ userApi.interceptors.response.use(
   },
 );
 
-export default userApi;
+export { userApi, userAccessApi };
