@@ -1,0 +1,63 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+$normal: #666666;
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  width: 70vw;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin-top: 10vh;
+    width: 90vw;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid $highlight;
+  margin-top: 20vh;
+  padding-bottom: 10px;
+  background-color: white;
+
+  &__title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  &__date {
+    color: #666666;
+    font-size: 14px;
+  }
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: 90vw;
+  justify-content: center;
+  gap: 2vh;
+  position: fixed;
+  top: 10vh;
+}
+
+.detail {
+  width: 90vw;
+  margin-top: 10px;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin-top: 100px;
+    width: 90vw;
+  }
+}
