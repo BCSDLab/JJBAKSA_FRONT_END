@@ -21,7 +21,7 @@ export const register = (param: RegisterParams) => userApi.post<User>('/', param
 export const checkIdDuplicate = (param: CheckIdDuplicateParams) => userAccessApi.get<User>(`/exists?account=${param.account}`);
 
 export const login = async (param: LoginParams) => {
-  const { data } = await userAccessApi.post<LoginResponse>('/login', param);
+  const { data } = await userApi.post<LoginResponse>('/login', param);
   return { data };
 };
 
