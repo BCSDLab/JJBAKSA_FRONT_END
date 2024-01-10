@@ -180,7 +180,7 @@ export default function SideNavigation(): JSX.Element {
             </button>
           </div>
         </div>
-        {(filterFriendState || filterFriendState || filterNearbyState)
+        {(filterNearbyState || filterScrapState || filterFriendState)
         && <Pin />}
       </div>
     </div>

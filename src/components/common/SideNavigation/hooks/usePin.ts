@@ -10,10 +10,8 @@ const usePin = (placeId: string) => {
     queryFn: () => fetchPinShop(placeId),
   });
 
-  const pinShop = data?.data;
-
   return {
-    isLoading, isError, data: pinShop, refetch,
+    isLoading, isError, data: data?.data, refetch,
   };
 };
 

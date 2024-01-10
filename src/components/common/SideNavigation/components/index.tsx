@@ -23,7 +23,6 @@ export default function Pin(): JSX.Element {
   const { toggleScrap, isPending } = useScrap(String(selected), scrapId);
   return (
     <>
-      안녕
       <ImageCarousel pathname="pin" imageUrls={data?.photos} />
       <div className={styles.container}>
         <div className={styles.container__name}>{data?.name}</div>
