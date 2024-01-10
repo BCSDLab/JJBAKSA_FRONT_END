@@ -5,9 +5,11 @@ import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
+import Pin from 'components/common/SideNavigation/components';
 import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import { useSelected } from 'store/placeId';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
 
@@ -22,6 +24,7 @@ export default function SideNavigation(): JSX.Element {
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+  const { selected } = useSelected();
 
   const TABS = [
     {
@@ -148,9 +151,9 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterNearbyState === 1,
+                [styles['side-pannel__search-button--clicked']]: filterNearbyState === true,
               })}
-              onClick={() => { setFilterNearby(filterNearbyState === 0 ? 1 : 0); }}
+              onClick={() => { setFilterNearby(!filterNearbyState); }}
             >
               가까운 음식점
               <NearbyIcon />
@@ -159,9 +162,9 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterScrapState === 1,
+                [styles['side-pannel__search-button--clicked']]: filterScrapState === true,
               })}
-              onClick={() => { setFilterScrap(filterScrapState === 0 ? 1 : 0); }}
+              onClick={() => { setFilterScrap(!filterScrapState); }}
             >
               북마크 음식점
               <BookMarkIcon />
@@ -170,15 +173,17 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterFriendState === 1,
+                [styles['side-pannel__search-button--clicked']]: filterFriendState === true,
               })}
-              onClick={() => { setFilterFriend(filterFriendState === 0 ? 1 : 0); }}
+              onClick={() => { setFilterFriend(!filterFriendState); }}
             >
               친구 음식점
               <GroupIcon />
             </button>
           </div>
         </div>
+        {(filterNearbyState || filterScrapState || filterFriendState)
+        && selected && <Pin placeId={selected} />}
       </div>
     </div>
   );

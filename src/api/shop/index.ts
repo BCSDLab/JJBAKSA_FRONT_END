@@ -26,3 +26,5 @@ export const fetchShops = (params: ShopsParams) => {
   };
   return shopApi.post<FetchShopsResponse>(url, requestBody);
 };
+
+export const fetchPinShop = (placeId: string) => shopApi.get<FetchShopResponse>(`/shops/pin/${placeId}`);

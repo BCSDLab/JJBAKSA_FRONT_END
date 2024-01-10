@@ -27,7 +27,7 @@ export default function MobileOptions(): JSX.Element {
         type="button"
         className={cn({
           [styles.nav__icon]: true,
-          [styles['nav__icon--changed']]: filterNearbyState === 1 || filterScrapState === 1 || filterFriendState === 1,
+          [styles['nav__icon--changed']]: filterNearbyState || filterScrapState || filterFriendState,
         })}
         onClick={toggle}
         aria-label="펼치기"
@@ -40,9 +40,9 @@ export default function MobileOptions(): JSX.Element {
             type="button"
             className={cn({
               [styles.filter__text]: true,
-              [styles['filter__text--clicked']]: filterNearbyState === 1,
+              [styles['filter__text--clicked']]: filterNearbyState === true,
             })}
-            onClick={() => { setFilterNearby(filterNearbyState === 0 ? 1 : 0); }}
+            onClick={() => { setFilterNearby(!filterNearbyState); }}
           >
             <NearbyIcon />
             가까운 음식점
@@ -51,9 +51,9 @@ export default function MobileOptions(): JSX.Element {
             type="button"
             className={cn({
               [styles.filter__text]: true,
-              [styles['filter__text--clicked']]: filterScrapState === 1,
+              [styles['filter__text--clicked']]: filterScrapState === true,
             })}
-            onClick={() => { setFilterScrap(filterScrapState === 0 ? 1 : 0); }}
+            onClick={() => { setFilterScrap(!filterScrapState); }}
           >
             <BookMarkIcon />
             북마크 음식점
@@ -62,9 +62,9 @@ export default function MobileOptions(): JSX.Element {
             type="button"
             className={cn({
               [styles.filter__text]: true,
-              [styles['filter__text--clicked']]: filterFriendState === 1,
+              [styles['filter__text--clicked']]: filterFriendState === true,
             })}
-            onClick={() => { setFilterFriend(filterFriendState === 0 ? 1 : 0); }}
+            onClick={() => { setFilterFriend(!filterFriendState); }}
           >
             <GroupIcon />
             친구 음식점

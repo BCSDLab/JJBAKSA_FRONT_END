@@ -44,3 +44,7 @@ export interface GetMyScrapShopResponse {
   totalElements: number;
   totalPages: number;
 }
+
+export interface ScrapIdResponse {
+  scrapId: number;
+}
