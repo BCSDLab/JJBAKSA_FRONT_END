@@ -1,5 +1,7 @@
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
+import { useQueryClient } from '@tanstack/react-query';
+
 import { postReview } from 'api/review';
 import TextEditor from 'components/editor/TextEditor';
 import { useReview } from 'store/review';
@@ -9,6 +11,7 @@ import styles from './Post.module.scss';
 
 export default function Post() {
   const { name: shopName } = useParams();
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { placeId } = useLocation().state as { placeId: string };
   const review = useReview();
@@ -17,6 +20,7 @@ export default function Post() {
       placeId,
       ...review,
     }).then(() => {
+      queryClient.invalidateQueries({ queryKey: ['reviewedShops'] });
       navigate('/');
       makeToast('success', '리뷰가 등록되었습니다.');
     });

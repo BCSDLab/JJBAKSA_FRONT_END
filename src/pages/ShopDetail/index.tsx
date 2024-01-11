@@ -5,8 +5,8 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchShop } from 'api/shop';
 import { ReactComponent as InfoIcon } from 'assets/svg/shop/info.svg';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+import ImageCarousel from 'components/ImageCarousel';
 import StarRatingPreview from 'components/StarRating/StarRatingPreview';
-import ImageCarousel from 'pages/ShopDetail/components/ImageCarousel/index';
 import Map from 'pages/ShopDetail/components/Map/index';
 import FriendReviewList from 'pages/ShopDetail/components/ReviewList/FriendReviewList';
 import MyReviewList from 'pages/ShopDetail/components/ReviewList/MyReviewList';
@@ -51,7 +51,7 @@ function ShopDetail() {
         </header>
 
         <div className={styles.container}>
-          <ImageCarousel imageUrls={photos} />
+          <ImageCarousel pathname="shop" imageUrls={photos} />
 
           <article className={styles['shop-detail']}>
             <section className={styles['detail-main']}>
