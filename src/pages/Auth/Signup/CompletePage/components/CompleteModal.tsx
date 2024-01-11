@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import AuthDetail from 'components/Auth/AuthDetail';
 import AuthTitle from 'components/Auth/AuthTitle';
 
@@ -8,6 +10,7 @@ interface Props {
 }
 
 export default function CompleteModal({ closeModal }: Props) {
+  const nav = useNavigate();
   return (
     <div className={styles.modal}>
       <div className={styles.modal__popup}>
@@ -16,7 +19,7 @@ export default function CompleteModal({ closeModal }: Props) {
         </div>
         <AuthTitle />
         <AuthDetail name="이메일을 알맞게 입력하셨나요?" first="가입한 이메일로 링크를 보냈습니다!" second="새로운 링크로 들어와주세요." />
-        <button className={styles.modal__button} type="submit" onClick={closeModal}>
+        <button className={styles.modal__button} type="submit" onClick={() => { closeModal(); nav('/login'); }}>
           확인
         </button>
 
