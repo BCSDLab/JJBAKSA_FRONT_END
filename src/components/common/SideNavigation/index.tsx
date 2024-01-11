@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import defaultImage from 'assets/images/follow/default-image.png';
@@ -9,6 +10,7 @@ import Pin from 'components/common/SideNavigation/components';
 import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import useLocationActive from 'store/locationActive';
 import { useSelected } from 'store/placeId';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import cn from 'utils/ts/classNames';
@@ -24,6 +26,9 @@ export default function SideNavigation(): JSX.Element {
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+  const {
+    state: isActive,
+  } = useLocationActive();
   const { selected } = useSelected();
 
   const TABS = [
@@ -61,6 +66,12 @@ export default function SideNavigation(): JSX.Element {
     navigate('/');
   };
 
+  useEffect(() => {
+    if (isActive) {
+      setVisible(false);
+    }
+  }, [isActive, setVisible]);
+
   return (
     <div>
       <nav className={styles['side-navigation']}>
@@ -77,7 +88,7 @@ export default function SideNavigation(): JSX.Element {
                   type="button"
                   className={cn({
                     [styles['side-navigation__button']]: true,
-                    [styles['side-navigation__button--clicked']]: visible,
+                    [styles['side-navigation__button--clicked']]: visible && tab.link === location.pathname,
                   })}
                   onClick={() => clickSearchButton()}
                   tabIndex={0}
