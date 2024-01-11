@@ -24,7 +24,7 @@
   z-index: 1;
 
   @include media.media-breakpoint-down(mobile) {
-    max-width: 343px;
+    max-width: 360px;
   }
 
   &::-webkit-scrollbar {
@@ -38,7 +38,6 @@
 
   &__item {
     display: flex;
-    justify-content: space-between;
     font-size: 20px;
     height: 48px;
     padding-left: 52px;
@@ -51,6 +50,12 @@
       border-radius: 24px;
       color: #ff7f23;
     }
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 14px;
+      padding-left: 12px;
+      height: 41px;
+    }
   }
 
   &__title {
@@ -60,6 +65,12 @@
   &__icon {
     display: flex;
     margin-right: 16px;
+    align-items: center;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   &__autoController {
