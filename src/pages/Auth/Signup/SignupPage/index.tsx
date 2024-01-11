@@ -18,20 +18,21 @@ import styles from './SignUp.module.scss';
 
 const useSignUp = ({ onError }: { onError: UseFormSetError<SignUpFormData> }) => {
   const navigate = useNavigate();
-  const signup = (form: SignUpFormData) => {
-    register({
-      account: form.id,
-      email: `${form.email}`,
-      password: form.password,
-    }).then(() => {
-      sendRegisterEmail({ email: `${form.email}` });
+  const signup = async (form: SignUpFormData) => {
+    try {
+      await register({
+        account: form.id,
+        email: `${form.email}`,
+        password: form.password,
+      });
+      const tokens = await sendRegisterEmail({ email: `${form.email}` });
+      sessionStorage.setItem('accessToken', tokens.data.accessToken);
       navigate('/signup/complete', { state: { signUpCheck: true }, replace: true });
-    }).catch((error) => {
-      // 아이디, 닉네임, 비밀번호 등은 폼 단에서 에러핸들링이 되어서 회원가입 요청에서 발생하는 에러는 서버 문제거나, 중복 이메일인 경우 뿐입니다.
+    } catch (error) {
       if (checkAxiosErrorMessage(error)) {
         onError('email', { message: error.response?.data.errorMessage ?? '서버 통신 중 오류가 발생했습니다.' });
       }
-    });
+    }
   };
 
   return signup;

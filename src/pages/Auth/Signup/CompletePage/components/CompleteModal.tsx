@@ -4,10 +4,10 @@ import AuthTitle from 'components/Auth/AuthTitle';
 import styles from './CompleteModal.module.scss';
 
 interface Props {
-  closeModal:()=>void
+  closeModal: () => void
 }
 
-export default function CompleteModal({ closeModal } : Props) {
+export default function CompleteModal({ closeModal }: Props) {
   return (
     <div className={styles.modal}>
       <div className={styles.modal__popup}>
