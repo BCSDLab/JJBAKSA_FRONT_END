@@ -19,7 +19,7 @@ export default function MobileOptions(): JSX.Element {
 
   return (
     <div className={styles.nav}>
-      <Link to="/search" className={styles.nav__search}>
+      <Link to="/shop" className={styles.nav__search}>
         검색어를 입력해주세요.
         <LensIcon />
       </Link>
