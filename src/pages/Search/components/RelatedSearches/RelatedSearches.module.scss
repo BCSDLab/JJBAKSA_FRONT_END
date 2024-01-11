@@ -6,7 +6,6 @@
   position: relative;
 
   @include media.media-breakpoint-up(mobile) {
-    max-width: 767px;
     margin: 0 auto;
   }
 }
@@ -23,6 +22,10 @@
   top: -40px;
   left: 15px;
   z-index: 1;
+
+  @include media.media-breakpoint-down(mobile) {
+    max-width: 343px;
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -47,10 +50,6 @@
       background: #eeeeee;
       border-radius: 24px;
       color: #ff7f23;
-    }
-
-    @include media.media-breakpoint-down(mobile) {
-      max-width: 343px;
     }
   }
 
