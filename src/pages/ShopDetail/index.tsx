@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query';
 
 import { fetchShop } from 'api/shop';
 import { Period } from 'api/shop/entity';
-import { ReactComponent as InfoIcon } from 'assets/svg/shop/info.svg';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 import ImageCarousel from 'components/ImageCarousel';
 // import StarRatingPreview from 'components/StarRating/StarRatingPreview';
@@ -86,10 +85,6 @@ function ShopDetail() {
                 <span>{formattedAddress}</span>
               </div>
             </div>
-            <button className={styles['detail-main__report']} type="button" onClick={() => {}}>
-              <InfoIcon />
-              <div>틀린 정보 신고</div>
-            </button>
           </section>
           <FriendReviewList placeId={placeId as string} />
           {!isMobile ? (
