@@ -32,38 +32,34 @@ export default function SearchShop(): JSX.Element {
   if (isMobile) {
     return (
       <div className={styles.search}>
-        <section>
-          <NavigationBar />
-          <Sentence subText={subText} />
-          <SearchInput
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            text={text}
-          />
-          {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-        </section>
+        <NavigationBar />
+        <Sentence subText={subText} />
+        <SearchInput
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+          text={text}
+        />
+        {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
         <RecentSearches />
       </div>
     );
   }
   return (
     <div className={styles.search}>
-      <section>
-        {isEnter
-          ? <SearchDetails />
-          : (
-            <>
-              <Sentence subText={subText} />
-              <SearchInput
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-                text={text}
-              />
-              {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-            </>
-          )}
-      </section>
-      <RecentSearches />
+      {isEnter
+        ? <SearchDetails />
+        : (
+          <>
+            <Sentence subText={subText} />
+            <SearchInput
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              text={text}
+            />
+            {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+            <RecentSearches />
+          </>
+        )}
     </div>
   );
 }
