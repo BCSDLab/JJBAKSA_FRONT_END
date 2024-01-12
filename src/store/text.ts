@@ -43,6 +43,7 @@ const useSearchForm = (pathname: string) => {
   };
 
   return {
+    setSearchForm,
     text: searchForm.text,
     handleChange,
     handleSubmit,
