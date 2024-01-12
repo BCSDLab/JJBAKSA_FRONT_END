@@ -12,7 +12,7 @@ const useSearchFriend = () => {
     queryKey: ['search', keyword],
     queryFn: ({ queryKey: [, target], pageParam = '' }) => searchUsers(target, pageParam),
     enabled: keyword !== '',
-    initialPageParam: 'cursor=0',
+    initialPageParam: '',
     getNextPageParam: (lastPage) => {
       const len = lastPage.data.content.length;
       if (lastPage.data.empty || lastPage.data.last) return null;

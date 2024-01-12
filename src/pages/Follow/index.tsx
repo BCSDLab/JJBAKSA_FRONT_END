@@ -73,18 +73,18 @@ export default function FollowPage() {
           </div>
         </div>
         {keyword.length === 0
-        && (
-          follower?.content.length === 0
-            && sent?.content.length === 0
-            && receive?.content.length === 0 ? <EmptyFriend />
-            : (
-              <div className={styles.container}>
-                {recent && <FollowList title="최근 접속한 친구" data={filterFollowInfo(recent.data)} />}
-                {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
-                {receive && sent && <FollowList title="친구 신청" data={filterSendOrReceiveInfo(receive, true)} sent={filterSendOrReceiveInfo(sent, false)} />}
-              </div>
-            )
-        )}
+          && (
+            follower?.content.length === 0
+              && sent?.content.length === 0
+              && receive?.content.length === 0 ? <EmptyFriend />
+              : (
+                <div className={styles.container}>
+                  {recent && <FollowList title="최근 접속한 친구" data={filterFollowInfo(recent.data)} />}
+                  {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
+                  {receive && sent && <FollowList title="친구 신청" data={filterSendOrReceiveInfo(receive, true)} sent={filterSendOrReceiveInfo(sent, false)} />}
+                </div>
+              )
+          )}
         {user && keyword.length > 0 && (user.content.length > 0
           ? (
             <div>
