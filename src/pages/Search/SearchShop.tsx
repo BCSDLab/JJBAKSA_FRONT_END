@@ -33,14 +33,20 @@ export default function SearchShop(): JSX.Element {
     return (
       <div className={styles.search}>
         <NavigationBar />
-        <Sentence subText={subText} />
-        <SearchInput
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          text={text}
-        />
-        {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-        <RecentSearches />
+        {isEnter
+          ? <SearchDetails />
+          : (
+            <>
+              <Sentence subText={subText} />
+              <SearchInput
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                text={text}
+              />
+              {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+              <RecentSearches />
+            </>
+          )}
       </div>
     );
   }
