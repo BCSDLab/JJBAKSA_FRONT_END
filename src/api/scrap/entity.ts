@@ -46,5 +46,5 @@ export interface GetMyScrapShopResponse {
 }
 
 export interface ScrapIdResponse {
-  scrapId: number;
+  scrapId: number | null;
 }

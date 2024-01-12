@@ -32,23 +32,7 @@ export default function SearchShop(): JSX.Element {
   if (isMobile) {
     return (
       <div className={styles.search}>
-        <section>
-          <NavigationBar />
-          <Sentence subText={subText} />
-          <SearchInput
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            text={text}
-          />
-          {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-        </section>
-        <RecentSearches />
-      </div>
-    );
-  }
-  return (
-    <div className={styles.search}>
-      <section>
+        <NavigationBar />
         {isEnter
           ? <SearchDetails />
           : (
@@ -60,10 +44,28 @@ export default function SearchShop(): JSX.Element {
                 text={text}
               />
               {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+              <RecentSearches />
             </>
           )}
-      </section>
-      <RecentSearches />
+      </div>
+    );
+  }
+  return (
+    <div className={styles.search}>
+      {isEnter
+        ? <SearchDetails />
+        : (
+          <>
+            <Sentence subText={subText} />
+            <SearchInput
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              text={text}
+            />
+            {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+            <RecentSearches />
+          </>
+        )}
     </div>
   );
 }
