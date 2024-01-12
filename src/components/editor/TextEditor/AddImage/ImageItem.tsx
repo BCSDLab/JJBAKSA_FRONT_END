@@ -18,7 +18,7 @@ export default function ImageItem({ value, onDelete, index }: Props) {
       <button
         type="button"
         aria-label="trash"
-        className={styles.container__button}
+        className={styles['container__trash-icon']}
         onClick={() => onDelete(index)}
       >
         <Trash />

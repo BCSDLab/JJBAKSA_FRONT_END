@@ -24,24 +24,11 @@ export default function TextEditor({ shop, onSubmit }: Props) {
         <div className={styles.header__button}>
           <PreviousButton />
         </div>
-        <div className={styles.header__title}>
-          리뷰하기
-        </div>
-        <button
-          type="button"
-          onClick={onSubmit}
-          className={cn({
-            [styles['header__save-button']]: true,
-            [styles['haeader__save-button--active']]: actived,
-          })}
-          disabled={!actived && shop != null}
-        >
-          저장
-        </button>
       </header>
       <title className={styles.heading}>
         <div className={styles.heading__contents}>
-          <div className={styles.heading__shopname}>{shop}</div>
+          <span className={styles['heading__title--shop']}>{shop}</span>
+          <span className={styles.heading__title}> 어땠나요?</span>
           <div className={styles.heading__subtitle}>음식에 대한 별점을 매겨주세요.</div>
           <StarRating onClick={active} />
         </div>
@@ -50,6 +37,19 @@ export default function TextEditor({ shop, onSubmit }: Props) {
         <div className={styles.item__tools}>
           <AddImage />
         </div>
+      </div>
+      <div className={styles['header__button-wrap']}>
+        <button
+          type="button"
+          onClick={onSubmit}
+          className={cn({
+            [styles['header__save-button']]: true,
+            [styles['header__save-button--active']]: actived,
+          })}
+          disabled={!actived && shop != null}
+        >
+          저장하기
+        </button>
       </div>
     </div>
   );
