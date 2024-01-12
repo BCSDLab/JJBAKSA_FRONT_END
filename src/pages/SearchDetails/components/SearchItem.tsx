@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
-import { ReactComponent as PhoneImg } from 'assets/svg/search/phone.svg';
-import { getMockItem } from 'pages/SearchDetails/static/mockup';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
 
 import styles from '../SearchDetails.module.scss';
 
@@ -61,10 +60,6 @@ export default function SearchItem({ shop, pathname }: Props) {
     name, formattedAddress, photoToken, placeId, dist, openNow, category,
   } = shop;
 
-  const {
-    imageAlt, defaultImage, phoneNumber,
-  } = getMockItem();
-
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
   const onClick = () => {
@@ -81,42 +76,25 @@ export default function SearchItem({ shop, pathname }: Props) {
       type="button"
       className={styles.item}
     >
-      <div className={styles.item__content}>
-        <section className={styles.item__name}>
-          <div className={styles.item__header}>
-            <h1 className={styles['item__header--title']}>{name}</h1>
-            <h2 className={styles['item__header--category']}>{category}</h2>
-          </div>
-          <div className={styles.item__header}>
-            <h2 className={styles['item__header--address']}>{formattedAddress}</h2>
-            <h2 className={styles['item__header--dist']}>{`${distInKm}Km`}</h2>
-          </div>
-        </section>
-        <section className={styles.item__info}>
-          <div>
-            <div className={styles.item__status}>
-              <span className={styles['item__status--open']}>
-                {openNow ? '영업중' : '영업 종료'}
-              </span>
-            </div>
-            <a
-              onClick={(e) => e.stopPropagation()}
-              href={`tel:${phoneNumber}`}
-              className={styles.item__phone}
-            >
-              <div className={styles['item__phone--image']}>
-                <PhoneImg />
-              </div>
-              <div className={styles['item__phone--text']}>
-                {phoneNumber}
-              </div>
-            </a>
-          </div>
-        </section>
+      <div className={styles.info}>
+        <div className={styles['info-data']}>
+          <span className={styles['info-data__name']}>{name}</span>
+          <span>{category}</span>
+        </div>
+        <div className={styles['info-data']}>
+          <span className={styles['info-data__formattedAddress']}>{formattedAddress.slice(4)}</span>|
+          <span>{`${distInKm}Km` || '정보 없음'}</span>
+        </div>
+        <div className={styles['info-data--open']}>{openNow ? '영업중' : '영업 종료'}</div>
       </div>
-      <div className={styles.image}>
-        <img className={styles.image__item} alt={imageAlt} src={photoToken ?? defaultImage} />
-      </div>
+      {photoToken ? (
+        <img className={styles.image} alt="가게 이미지" src={photoToken} />
+      ) : (
+        <div className={styles['empty-image']}>
+          <NotFoundImageIcon />
+          <div>등록된 사진이 없어요!</div>
+        </div>
+      )}
     </button>
   );
 }

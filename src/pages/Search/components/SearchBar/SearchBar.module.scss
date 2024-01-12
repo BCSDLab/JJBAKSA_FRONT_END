@@ -35,7 +35,7 @@
   border-radius: 100px;
   border: none;
   height: 62px;
-  width: 875px;
+  width: 112%;
   margin-top: 34px;
   margin-right: 16px;
   margin-left: 16px;
@@ -45,7 +45,7 @@
   z-index: 3;
 
   @include media.media-breakpoint-down(mobile) {
-    max-width: 343px;
+    width: 90%;
     height: 48px;
     font-size: 16px;
   }
@@ -111,7 +111,7 @@
   margin-right: 27px;
   margin-left: 27px;
   height: 32px;
-  width: 875px;
+  width: 110%;
   font-size: 16px;
   color: #666666;
   position: relative;
@@ -168,7 +168,7 @@
     }
 
     @include media.media-breakpoint-down(mobile) {
-      max-width: 343px;
+      max-width: 80%;
       font-size: 16px;
     }
   }

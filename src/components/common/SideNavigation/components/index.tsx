@@ -2,9 +2,9 @@ import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import usePin from 'components/common/SideNavigation/hooks/usePin';
 import ImageCarousel from 'components/ImageCarousel';
 import useScrap from 'utils/hooks/useScrap';
+import useScrapId from 'utils/hooks/useScrapId';
 
 import styles from './Pin.module.scss';
-import useScrapId from '../hooks/useScrapId';
 
 interface PinProps {
   placeId: string;
