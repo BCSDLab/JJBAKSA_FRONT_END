@@ -1,7 +1,7 @@
 import { ReactComponent as BlindIcon } from 'assets/svg/auth/pw-blind.svg';
 import { ReactComponent as ShowIcon } from 'assets/svg/auth/pw-show.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import useModifyPassword from 'pages/Setting/hook/useModifyPassword';
+import useModifyPassword from 'pages/Setting/hooks/useModifyPassword';
 import MobileCommonModal from 'pages/Setting/Mobile/MobileCommonModal';
 import PasswordSuccessModal from 'pages/Setting/PC/PasswordSuccessModal';
 import { correctError, currentError, typeError } from 'pages/Setting/static/setting';

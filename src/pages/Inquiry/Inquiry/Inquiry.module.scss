@@ -62,6 +62,10 @@ $disabled: #c4c4c4;
   &__link {
     text-decoration: none;
 
+    &:link {
+      color: currentcolor;
+    }
+
     &:visited {
       color: currentcolor;
     }

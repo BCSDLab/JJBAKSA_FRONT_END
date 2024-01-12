@@ -13,11 +13,11 @@ interface Props {
     id: number;
   }[];
   title: string;
-  subTitle: string;
+  subtitle: string;
 }
 
 export default function DataTable({
-  data, title, subTitle,
+  data, title, subtitle,
 }: Props): JSX.Element {
   const { isMobile } = useMediaQuery();
   const nav = useNavigate();
@@ -27,7 +27,7 @@ export default function DataTable({
         : (
           <header className={styles.header}>
             <h1 className={styles.header__title}>{title}</h1>
-            <h3 className={styles['header__sub-title']}>{subTitle}</h3>
+            <h3 className={styles.header__subtitle}>{subtitle}</h3>
           </header>
         )}
       <div className={styles.body} />
