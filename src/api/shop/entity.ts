@@ -52,24 +52,18 @@ export interface Shop {
 }
 
 type Period = {
-  close: { day: number; time: number };
-  open: { day: number; time: number };
+  closeTime: { hour: number; minute: number };
+  openTime: { hour: number; minute: number };
 } | null;
 
 export interface FetchShopResponse {
-  shopId: number;
-  placeId: string;
-  name: string;
-  formattedAddress: string;
-  lat: number;
-  lng: number;
-  formattedPhoneNumber: string;
-  openNow: boolean;
-  totalRating: number;
-  ratingCount: number;
   category: string;
-  todayPeriod: [number, number];
-  periods: Period[];
-  scrap: number | null;
+  coordinate: Coords;
+  formattedAddress: string;
+  formattedPhoneNumber: string;
+  name: string;
   photos: string[] | null;
+  placeId: string;
+  todayPeriod: Period;
+  // totalRating 추가 필요
 }
