@@ -9,7 +9,7 @@ import myPageApi from './mypageApiClient';
 
 export const getReviewedShops = async () => myPageApi.get<ReviewedShopsResponse>('/review/shops?size=10');
 
-export const getReviews = async (placeId:string) => myPageApi.get<ReviewsResponse>(`/review/shop/${placeId}`);
+export const getReviews = async (placeId:string) => myPageApi.get<ReviewsResponse>(`/review/shop/${placeId}?size=10`);
 
 export const getScraps = async (pageParam:number) => myPageApi.get<ScrapResponse>(`/scraps?cursor=${pageParam}`);
 
