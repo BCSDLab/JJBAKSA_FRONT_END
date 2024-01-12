@@ -1,4 +1,14 @@
-.location-box {
+.container {
+  position: relative;
+  width: calc(100vw - 100px);
+  height: 100vh;
+  margin-left: 100px;
+}
+
+.map-component {
   position: absolute;
-  z-index: 1;
+}
+
+.modal-component {
+  position: absolute;
 }
