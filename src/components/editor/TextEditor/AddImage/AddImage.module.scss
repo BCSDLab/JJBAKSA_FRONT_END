@@ -5,6 +5,10 @@
   flex-direction: column;
   height: 55vh;
 
+  @include media.media-breakpoint-down(mobile) {
+    height: 48vh;
+  }
+
   &__add-image {
     display: flex;
     border: 1px dashed #d3d3d3;
