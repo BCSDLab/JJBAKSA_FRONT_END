@@ -30,11 +30,12 @@ function ShopDetail() {
   const location = useLocation();
 
   const { data } = useQuery({
-    queryKey: ['shopDetail'],
+    queryKey: ['shopDetail', location.state.placeId],
     queryFn: () => fetchShop(location.state.placeId),
   });
 
   const { scrapId } = useScrapId(String(location.state.placeId));
+  console.log(data);
 
   if (data && scrapId) {
     const {
