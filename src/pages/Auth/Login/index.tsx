@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { login } from 'api/user';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
@@ -11,64 +10,12 @@ import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
 import AuthDetail from 'components/Auth/AuthDetail';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
-import { PASSWORD_REGEXP } from 'components/Auth/static/Regexp';
 import { GOOGLE_REDIRECT_URL, KAKAO_REDIRECT_URL, NAVER_REDIRECT_URL } from 'config/constants';
-import { useUpdateAuth } from 'store/auth';
-import checkAxiosErrorMessage from 'utils/ts/checkAxiosError';
 import cn from 'utils/ts/classNames';
 
+import { LoginFormInput } from './hooks/entity';
+import useLoginRequest from './hooks/useLoginRequest';
 import styles from './Login.module.scss';
-
-interface LoginFormInput {
-  id: string;
-  password: string;
-  isAutoLoginChecked: boolean;
-}
-
-const useLoginRequest = ({
-  onSuccess,
-  onError,
-}: {
-  onSuccess?: (success: string) => void;
-  onError?: (error: string) => void;
-}) => {
-  const navigate = useNavigate();
-  const updateAuth = useUpdateAuth();
-
-  const submitLogin = async ({
-    id,
-    password,
-    isAutoLoginChecked,
-  }: LoginFormInput) => {
-    if (!PASSWORD_REGEXP.test(password)) {
-      onError?.('비밀번호는 문자, 숫자, 특수문자를 포함한 8~16자리로 이루어져야 합니다.');
-    } else {
-      try {
-        const { data } = await login({
-          account: id,
-          password,
-        });
-
-        sessionStorage.setItem('accessToken', data.accessToken);
-        await updateAuth();
-
-        // 자동로그인
-        if (isAutoLoginChecked) {
-          localStorage.setItem('refreshToken', data.refreshToken);
-        }
-
-        navigate('/');
-        onSuccess?.('성공');
-      } catch (error) {
-        if (checkAxiosErrorMessage(error)) {
-          onError?.(error.response?.data.errorMessage ?? '서버 통신 중 오류가 발생했습니다.');
-        }
-      }
-    }
-  };
-
-  return submitLogin;
-};
 
 export default function Login(): JSX.Element {
   const {

@@ -17,6 +17,10 @@ $disabled: #c4c4c4;
   color: $disabled;
   text-decoration: none;
 
+  &:link {
+    color: none;
+  }
+
   &:visited {
     color: none;
   }

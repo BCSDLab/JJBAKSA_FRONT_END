@@ -11,6 +11,7 @@ import styles from './DefaultLayout.module.scss';
 export default function DefaultLayout(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const location = useLocation();
+
   return (
     <>
       {!isMobile && <SideNavigation />}

@@ -42,7 +42,7 @@ export default function TextEditor({ shop, onSubmit }: Props) {
       <title className={styles.heading}>
         <div className={styles.heading__contents}>
           <div className={styles.heading__shopname}>{shop}</div>
-          <div className={styles['heading__sub-title']}>음식에 대한 별점을 매겨주세요.</div>
+          <div className={styles.heading__subtitle}>음식에 대한 별점을 매겨주세요.</div>
           <StarRating onClick={active} />
         </div>
       </title>

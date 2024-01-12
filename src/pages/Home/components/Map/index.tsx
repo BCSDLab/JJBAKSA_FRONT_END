@@ -12,7 +12,7 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 
 import styles from './Map.module.scss';
 
-export default function Map(): JSX.Element {
+export default function Map({ className }: { className?: string }): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useLocation();
   const map = useNaverMap(location?.lat, location?.lng);
@@ -34,10 +34,10 @@ export default function Map(): JSX.Element {
   const { cluster } = useCluster({ markerArray, map });
 
   return (
-    <>
-      {isMobile && <MobileOptions />}
+    <div className={className}>
       <div id="map" className={styles.map} />
-      { cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
-    </>
+      {cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
+      {isMobile && <MobileOptions />}
+    </div>
   );
 }

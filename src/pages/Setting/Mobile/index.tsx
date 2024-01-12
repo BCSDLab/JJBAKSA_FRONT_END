@@ -4,7 +4,7 @@ import { ReactComponent as ArrowRight } from 'assets/svg/setting/arrow-right.svg
 import { ReactComponent as Move } from 'assets/svg/setting/movement.svg';
 import { ReactComponent as Version } from 'assets/svg/setting/version-check.svg';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import useModifyPassword from 'pages/Setting/hook/useModifyPassword';
+import useModifyPassword from 'pages/Setting/hooks/useModifyPassword';
 import MobileCommonModal from 'pages/Setting/Mobile/MobileCommonModal';
 import MobileLogoutModal from 'pages/Setting/Mobile/MobileLogoutModal';
 
@@ -23,7 +23,7 @@ export default function MobileSetting() {
         <div className={styles.header__title}>설정</div>
       </div>
       <div className={styles.account}>
-        <div className={styles['account__sub-title']}>계정 관리</div>
+        <div className={styles.account__subtitle}>계정 관리</div>
         <div className={styles.account__content}>
           <div className={styles.account__text}>비밀번호 변경 </div>
           <Link to="id-Change">
@@ -42,7 +42,7 @@ export default function MobileSetting() {
         </Link>
       </div>
       <div className={styles.service}>
-        <div className={styles['service__sub-title']}>서비스</div>
+        <div className={styles.service__subtitle}>서비스</div>
         <div className={styles.service__content}>
           <div className={styles.service__text}>공지사항</div>
           <Link to="/notice">

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { checkPassword, modify } from 'api/user';
-import usePasswordState from 'pages/Setting/hook/usePasswordState';
+import usePasswordState from 'pages/Setting/hooks/usePasswordState';
 import {
   correctError, currentError, PATTERN, typeError,
 } from 'pages/Setting/static/setting';
