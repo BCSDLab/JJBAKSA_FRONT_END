@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { ReactComponent as Picture } from 'assets/svg/post/picture.svg';
+import { ReactComponent as PictureIcon } from 'assets/svg/post/picture.svg';
 import ImageItem from 'components/editor/TextEditor/AddImage/ImageItem';
 import useImageList from 'components/editor/TextEditor/hooks/useImageList';
 import Wysiwyg, { WysiwygType } from 'components/editor/Wysiwyg';
@@ -26,7 +26,7 @@ function AddImage() {
       <div className={styles['container__add-image']}>
         <div className={styles.container__button}>
           <label htmlFor="image" className={styles['editor__add-image']} aria-label="이미지 추가">
-            <Picture />
+            <PictureIcon />
             <input
               type="file"
               onChange={addImage}

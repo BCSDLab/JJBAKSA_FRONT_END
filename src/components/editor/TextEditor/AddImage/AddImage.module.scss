@@ -7,19 +7,25 @@
 
   &__add-image {
     display: flex;
-    border: 1px solid #d3d3d3;
+    border: 1px dashed #d3d3d3;
+    padding: 16px;
+    height: 80px;
   }
 
   &__image-list {
     display: flex;
+    width: 100%;
+    overflow-y: scroll;
   }
 
   &__item {
     display: flex;
+    position: relative;
+    margin-left: 16px;
   }
 
   &__button {
-    margin: 16px;
+    margin-right: 16px;
   }
 
   &__image {
@@ -37,6 +43,9 @@
 
   &__trash-icon {
     margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
