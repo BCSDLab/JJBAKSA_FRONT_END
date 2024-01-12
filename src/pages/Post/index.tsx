@@ -23,6 +23,8 @@ export default function Post() {
       queryClient.invalidateQueries({ queryKey: ['reviewedShops'] });
       navigate('/');
       makeToast('success', '리뷰가 등록되었습니다.');
+    }).catch(() => {
+      makeToast('error', '에러가 발생했습니다.');
     });
   };
 

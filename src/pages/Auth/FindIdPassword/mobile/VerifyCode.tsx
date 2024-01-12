@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { findPassword, getAccount, sendFindEmail } from 'api/user';
-import useInputCheck from 'pages/Auth/FindIdPassword/hook/useInputCheck';
+import useInputCheck from 'pages/Auth/FindIdPassword/hooks/useInputCheck';
 import Input from 'pages/Auth/FindIdPassword/mobile/Input';
 import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
 import cn from 'utils/ts/classNames';

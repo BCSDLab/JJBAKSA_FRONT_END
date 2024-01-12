@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
 
 import styles from './SearchBar.module.scss';
@@ -21,7 +22,9 @@ export default function SearchInput({
           value={text}
           onChange={onChange}
         />
-        <LensIcon title="검색" className={styles['search-bar__icon']} />
+        <button type="submit">
+          <LensIcon title="검색" className={styles['search-bar__icon']} />
+        </button>
       </form>
     </label>
   );

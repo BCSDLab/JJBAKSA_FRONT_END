@@ -32,17 +32,21 @@ export default function SearchPost(): JSX.Element {
   if (isMobile) {
     return (
       <div className={styles.search}>
-        <section>
-          <NavigationBar />
-          <Sentence subText={subText} />
-          <SearchInput
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            text={text}
-          />
-          {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-        </section>
-        <RecentSearches />
+        <NavigationBar />
+        {isEnter
+          ? <SearchDetails />
+          : (
+            <>
+              <Sentence subText={subText} />
+              <SearchInput
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                text={text}
+              />
+              {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+              <RecentSearches />
+            </>
+          )}
       </div>
     );
   }
@@ -60,10 +64,10 @@ export default function SearchPost(): JSX.Element {
                 text={text}
               />
               {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+              <RecentSearches />
             </>
           )}
       </section>
-      <RecentSearches />
     </div>
   );
 }

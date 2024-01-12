@@ -14,10 +14,14 @@
 .template {
   min-height: 100vh;
   padding-top: 70px;
+  margin-left: 20vw;
+  margin-right: 20vw;
   box-sizing: border-box;
 
   @include media.media-breakpoint-down(mobile) {
     padding-top: 40px;
+    margin-left: 24px;
+    margin-right: 24px;
   }
 }
 
@@ -43,11 +47,17 @@
     font-weight: 500;
   }
 
+  &__button-wrap {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 30px;
+  }
+
   &__save-button {
-    width: 44px;
-    height: 30px;
+    width: 104px;
+    height: 44px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 15px;
     color: #ff7f23;
     cursor: pointer;
@@ -70,6 +80,17 @@
   display: flex;
   margin: 24px 24px 0;
   flex-direction: column;
+
+  &__title {
+    font-weight: 500;
+    font-size: 40px;
+
+    &--shop {
+      font-weight: 500;
+      font-size: 40px;
+      color: #ff7f23;
+    }
+  }
 
   &__button {
     border: none;
@@ -95,20 +116,14 @@
     border-bottom: 0.5px solid #c4c4c4;
   }
 
-  &__shopname {
-    font-size: 24px;
-    line-height: 30px;
-    color: #222222;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  &__sub-title {
+  &__subtitle {
     color: #898a8d;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    margin-bottom: 16px;
+    margin-top: 32px;
+    margin-left: 6px;
+    margin-bottom: 3px;
   }
 }
 

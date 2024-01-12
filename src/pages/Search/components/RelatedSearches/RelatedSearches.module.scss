@@ -6,7 +6,6 @@
   position: relative;
 
   @include media.media-breakpoint-up(mobile) {
-    max-width: 767px;
     margin: 0 auto;
   }
 }
@@ -24,6 +23,10 @@
   left: 15px;
   z-index: 1;
 
+  @include media.media-breakpoint-down(mobile) {
+    max-width: 360px;
+  }
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -35,7 +38,6 @@
 
   &__item {
     display: flex;
-    justify-content: space-between;
     font-size: 20px;
     height: 48px;
     padding-left: 52px;
@@ -50,7 +52,9 @@
     }
 
     @include media.media-breakpoint-down(mobile) {
-      max-width: 343px;
+      font-size: 14px;
+      padding-left: 12px;
+      height: 41px;
     }
   }
 
@@ -61,6 +65,12 @@
   &__icon {
     display: flex;
     margin-right: 16px;
+    align-items: center;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   &__autoController {

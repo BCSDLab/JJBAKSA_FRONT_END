@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import getAddress from 'api/location';
 import useLocationActive from 'store/locationActive';
@@ -6,26 +6,14 @@ import makeToast from 'utils/ts/makeToast';
 
 export default function useHome() {
   const {
-    state: isClickLocation, setFalse: setActiveFalse, setTrue: setActive,
+    state: isModalOpen, setTrue: setOpen, setFalse: setClose,
   } = useLocationActive();
-  const locationRef = useRef<HTMLDivElement | null>(null);
+
   const [userLocation, setUserLocation] = useState({
     latitude: null as number | null,
     longitude: null as number | null,
     address: null as string | null,
   });
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (locationRef.current && !locationRef.current.contains(event.target as Node)) {
-        setActiveFalse();
-      }
-    }
-    document.addEventListener('mouseup', handleClickOutside);
-    return () => {
-      document.removeEventListener('mouseup', handleClickOutside);
-    };
-  }, [setActiveFalse]);
 
   const updateUserLocation = () => {
     if (navigator.geolocation) {
@@ -51,9 +39,9 @@ export default function useHome() {
   }, []);
 
   return {
-    isClickLocation,
-    setActive,
-    locationRef,
     userLocation,
+    isModalOpen,
+    setOpen,
+    setClose,
   };
 }
