@@ -49,7 +49,6 @@ export default function LocationSelectModal({ className }: { className?: string 
           address={userLocation.address}
           onClick={setOpen}
         />
-
         {isModalOpen && (
           <>
             <div
