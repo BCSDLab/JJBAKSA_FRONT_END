@@ -45,11 +45,17 @@
     font-weight: 500;
   }
 
+  &__button-wrap {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 30px;
+  }
+
   &__save-button {
-    width: 44px;
-    height: 30px;
+    width: 104px;
+    height: 44px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 15px;
     color: #ff7f23;
     cursor: pointer;

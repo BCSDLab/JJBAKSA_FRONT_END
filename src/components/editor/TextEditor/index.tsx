@@ -38,17 +38,19 @@ export default function TextEditor({ shop, onSubmit }: Props) {
           <AddImage />
         </div>
       </div>
-      <button
-        type="button"
-        onClick={onSubmit}
-        className={cn({
-          [styles['header__save-button']]: true,
-          [styles['haeader__save-button--active']]: actived,
-        })}
-        disabled={!actived && shop != null}
-      >
-        저장
-      </button>
+      <div className={styles['header__button-wrap']}>
+        <button
+          type="button"
+          onClick={onSubmit}
+          className={cn({
+            [styles['header__save-button']]: true,
+            [styles['header__save-button--active']]: actived,
+          })}
+          disabled={!actived && shop != null}
+        >
+          저장하기
+        </button>
+      </div>
     </div>
   );
 }
