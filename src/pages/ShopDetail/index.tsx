@@ -35,7 +35,6 @@ function ShopDetail() {
   });
 
   const { scrapId } = useScrapId(String(location.state.placeId));
-  console.log(data);
 
   if (data && scrapId) {
     const {
@@ -57,6 +56,7 @@ function ShopDetail() {
           <section className={styles['detail-main']}>
             <div>
               <div className={styles['detail-main__rating']}>
+                {/* totalRating 추가 필요 */}
                 {/* <StarRatingPreview rate={totalRating} /> */}
                 {/* totalRating이 -1인 경우는 아예 별점이 없는 경우를 의미합니다. */}
                 {/* <span>{totalRating === -1 ? '0.0' : totalRating.toFixed(1)}</span> */}
