@@ -6,7 +6,7 @@ import styles from './ScrapButton.module.scss';
 
 interface Props {
   placeId: string;
-  initialScrapId?: number | null;
+  initialScrapId?: number | null | undefined;
 }
 
 function ScrapButton({ placeId, initialScrapId = null }: Props) {

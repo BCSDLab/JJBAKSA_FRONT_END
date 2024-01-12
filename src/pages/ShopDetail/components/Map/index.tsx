@@ -6,8 +6,8 @@ import styles from './Map.module.scss';
 
 interface Props {
   formattedAddress: string;
-  latitude: number;
-  longitude: number;
+  latitude: number | undefined;
+  longitude: number | undefined;
 }
 
 function Map({ formattedAddress, latitude, longitude }: Props) {
