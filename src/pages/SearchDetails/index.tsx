@@ -21,16 +21,16 @@ export default function SearchDetails() {
     text, handleChange, handleSubmit, isEnter, submittedText, resetText,
   } = useSearchForm(location.pathname);
   const {
-    isFetching, data: shops, count,
+    isFetching, data: shops, count, isError,
   } = useFetchShops(submittedText);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isFetching && count === 0 && submittedText.length !== 0) {
+    if ((!isFetching && count === 0 && submittedText.length !== 0) || isError) {
       navigate('/search/not-found');
       resetText();
     }
-  }, [isFetching, count, submittedText, navigate, resetText]);
+  }, [isFetching, count, submittedText, navigate, resetText, isError]);
 
   const componentsController = () => {
     if (isFetching) {

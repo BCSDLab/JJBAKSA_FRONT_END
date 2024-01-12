@@ -10,6 +10,12 @@ export const currentError = [
   </span>,
 ];
 
+export const existError = [
+  <span>
+    현재 비밀번호와 새 비밀번호가 일치합니다.
+  </span>,
+];
+
 export const typeError = [
   <span>
     비밀번호는 문자, 숫자, 특수문자를 포함한

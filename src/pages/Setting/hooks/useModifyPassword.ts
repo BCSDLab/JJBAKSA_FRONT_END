@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { checkPassword, modify } from 'api/user';
 import usePasswordState from 'pages/Setting/hooks/usePasswordState';
 import {
-  correctError, currentError, PATTERN, typeError,
+  correctError, currentError, existError, PATTERN, typeError,
 } from 'pages/Setting/static/setting';
 import useBooleanState from 'utils/hooks/useBooleanState';
 
@@ -42,6 +42,12 @@ const useModifyPassword = () => {
   };
 
   const passwordCorrectCheck = () => {
+    if (current === newPassword) {
+      setMessage(existError);
+      setIsShowError(true);
+      return false;
+    }
+
     if (newPassword !== check) {
       setMessage(correctError);
       setIsShowError(true);
