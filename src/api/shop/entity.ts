@@ -51,7 +51,7 @@ export interface Shop {
   category: string; // 추후 카테고리 확인 필요
 }
 
-type Period = {
+export type Period = {
   closeTime: { hour: number; minute: number };
   openTime: { hour: number; minute: number };
 } | null;
