@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
-import { ReactComponent as PhoneImg } from 'assets/svg/search/phone.svg';
-import { getMockItem } from 'pages/SearchDetails/static/mockup';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
 
 import styles from '../SearchDetails.module.scss';
 
@@ -61,10 +60,6 @@ export default function SearchItem({ shop, pathname }: Props) {
     name, formattedAddress, photoToken, placeId, dist, openNow, category,
   } = shop;
 
-  const {
-    imageAlt, defaultImage, phoneNumber,
-  } = getMockItem();
-
   const navigate = useNavigate();
   const distInKm = (dist / 1000).toFixed(1);
   const onClick = () => {
@@ -93,29 +88,22 @@ export default function SearchItem({ shop, pathname }: Props) {
           </div>
         </section>
         <section className={styles.item__info}>
-          <div>
-            <div className={styles.item__status}>
-              <span className={styles['item__status--open']}>
-                {openNow ? '영업중' : '영업 종료'}
-              </span>
-            </div>
-            <a
-              onClick={(e) => e.stopPropagation()}
-              href={`tel:${phoneNumber}`}
-              className={styles.item__phone}
-            >
-              <div className={styles['item__phone--image']}>
-                <PhoneImg />
-              </div>
-              <div className={styles['item__phone--text']}>
-                {phoneNumber}
-              </div>
-            </a>
+          <div className={styles.item__status}>
+            <span className={styles['item__status--open']}>
+              {openNow ? '영업중' : '영업 종료'}
+            </span>
           </div>
         </section>
       </div>
       <div className={styles.image}>
-        <img className={styles.image__item} alt={imageAlt} src={photoToken ?? defaultImage} />
+        {photoToken ? (
+          <img className={styles.image__item} alt="가게 이미지" src={photoToken} />
+        ) : (
+          <div className={styles.image__empty}>
+            <NotFoundImageIcon />
+            <div>등록된 사진이 없어요!</div>
+          </div>
+        )}
       </div>
     </button>
   );
