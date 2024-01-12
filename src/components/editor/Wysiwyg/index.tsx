@@ -28,7 +28,7 @@ const Wysiwyg = forwardRef((_props, ref) => {
       editorRef.current?.getInstance().exec('bold');
     },
     heading() {
-      editorRef.current?.getInstance().exec('fontSize', { fontSize: '16px' });
+      editorRef.current?.getInstance().exec('fontSize', { fontSize: '18px' });
     },
     paragraph() {
       editorRef.current?.getInstance().exec('fontSize', { fontSize: '12px' });

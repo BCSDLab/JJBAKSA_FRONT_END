@@ -13,14 +13,7 @@ function AddImage() {
   const wysiwygRef = useRef<WysiwygType | null>(null);
 
   return (
-    <div>
-      <div className={styles.container}>
-        {imageList.map((value, index) => (
-          <div key={value} className={styles.container__item}>
-            <ImageItem value={value} onDelete={removeImage} index={index} />
-          </div>
-        ))}
-      </div>
+    <div className={styles.container}>
       <div
         className={cn({
           [styles.editor]: true,
@@ -29,17 +22,28 @@ function AddImage() {
       >
         <Wysiwyg ref={wysiwygRef} />
       </div>
-      <div className={styles['button-container']}>
-        <label htmlFor="image" className={styles['editor__add-image']} aria-label="이미지 추가">
-          <Picture />
-          <input
-            type="file"
-            onChange={addImage}
-            id="image"
-            multiple
-            accept="image/jpeg,image/gif,image/png"
-          />
-        </label>
+
+      <div className={styles['container__add-image']}>
+        <div className={styles.container__button}>
+          <label htmlFor="image" className={styles['editor__add-image']} aria-label="이미지 추가">
+            <Picture />
+            <input
+              type="file"
+              onChange={addImage}
+              id="image"
+              multiple
+              accept="image/jpeg,image/gif,image/png"
+            />
+          </label>
+        </div>
+        <div className={styles['container__image-list']}>
+          {imageList.map((value, index) => (
+            <div key={value} className={styles.container__item}>
+              <ImageItem value={value} onDelete={removeImage} index={index} />
+            </div>
+          ))}
+        </div>
+
       </div>
     </div>
   );
