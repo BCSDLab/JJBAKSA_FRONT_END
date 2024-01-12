@@ -1,3 +1,5 @@
+@use "src/utils/styles/mediaQuery" as media;
+
 button {
   background: none;
   border: none;
@@ -84,6 +86,11 @@ button {
     position: relative;
     overflow-x: hidden;
     margin-top: 15px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+      margin: 0;
+    }
   }
 
   &__empty-image {
@@ -96,6 +103,10 @@ button {
     background-color: #eeeeee;
     gap: 10px;
     font-size: 11px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 573px;
+    }
   }
 
   &__image-carousel {
@@ -116,6 +127,11 @@ button {
       object-fit: contain;
       width: 550px;
       height: 362px;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 573px;
+        margin: 0;
+      }
     }
   }
 

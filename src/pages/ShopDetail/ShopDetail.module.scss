@@ -1,18 +1,15 @@
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  z-index: 10;
-  background: #fff;
-}
+@use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 80px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+    top: 0;
+  }
 }
 
 .line-divisor {
@@ -32,6 +29,13 @@
   width: 972px;
   margin: 52px auto;
   padding-bottom: 128px;
+
+  @include media.media-breakpoint-down(mobile) {
+    display: flex;
+    flex-direction: column;
+    width: 96.5%;
+    margin: 52px 10px;
+  }
 }
 
 .detail-main {
@@ -39,9 +43,17 @@
   flex-direction: column;
   grid-area: a;
 
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
+
   & > div:first-child {
     padding-bottom: 16px;
     border-bottom: 1px solid #c4c4c4;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+    }
   }
 
   & > div:nth-child(2) {
@@ -83,6 +95,7 @@
   }
 
   &__info-name {
+    font-size: 24px;
     font-weight: 700;
     color: #ff7f23;
   }
@@ -103,6 +116,11 @@
     color: #666;
     font-size: 14px;
     margin: 12px 0;
+    align-items: flex-start;
+
+    @include media.media-breakpoint-down(mobile) {
+      justify-content: flex-end;
+    }
   }
 }
 

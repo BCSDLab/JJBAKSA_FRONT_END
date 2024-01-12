@@ -12,6 +12,7 @@ import Map from 'pages/ShopDetail/components/Map/index';
 import FriendReviewList from 'pages/ShopDetail/components/ReviewList/FriendReviewList';
 import MyReviewList from 'pages/ShopDetail/components/ReviewList/MyReviewList';
 import ScrapButton from 'pages/ShopDetail/components/ScrapButton/index';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import useScrapId from 'utils/hooks/useScrapId';
 
 import styles from './ShopDetail.module.scss';
@@ -28,6 +29,7 @@ const formatPeriod = (period: Period) => {
 
 function ShopDetail() {
   const location = useLocation();
+  const { isMobile } = useMediaQuery();
 
   const { data } = useQuery({
     queryKey: ['shopDetail', location.state.placeId],
@@ -51,7 +53,7 @@ function ShopDetail() {
 
     return (
       <div className={styles.container}>
-        <ImageCarousel pathname="shop" imageUrls={photos} />
+        {!isMobile ? <ImageCarousel pathname="shop" imageUrls={photos} /> : <ImageCarousel pathname="pin" imageUrls={photos} />}
         <article className={styles['shop-detail']}>
           <section className={styles['detail-main']}>
             <div>
@@ -66,7 +68,6 @@ function ShopDetail() {
                 {placeId && <ScrapButton placeId={placeId} initialScrapId={scrapId.scrapId} />}
               </div>
             </div>
-
             <div>
               <div className={styles['detail-main__info-name']}>기본 정보</div>
               <div className={styles['detail-main__info']}>
@@ -90,14 +91,26 @@ function ShopDetail() {
               <div>틀린 정보 신고</div>
             </button>
           </section>
-
           <FriendReviewList placeId={placeId as string} />
-          <Map
-            formattedAddress={formattedAddress}
-            latitude={coordinate.lat}
-            longitude={coordinate.lng}
-          />
-          <MyReviewList placeId={placeId as string} />
+          {!isMobile ? (
+            <>
+              <Map
+                formattedAddress={formattedAddress}
+                latitude={coordinate.lat}
+                longitude={coordinate.lng}
+              />
+              <MyReviewList placeId={placeId as string} />
+            </>
+          ) : (
+            <>
+              <MyReviewList placeId={placeId as string} />
+              <Map
+                formattedAddress={formattedAddress}
+                latitude={coordinate.lat}
+                longitude={coordinate.lng}
+              />
+            </>
+          )}
         </article>
       </div>
     );
