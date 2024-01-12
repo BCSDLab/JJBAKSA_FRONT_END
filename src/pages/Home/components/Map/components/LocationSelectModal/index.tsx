@@ -12,12 +12,6 @@ export default function LocationSelectModal({ className }: { className?: string 
     userLocation, isModalOpen, setOpen, setClose,
   } = useHome();
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Escape') {
-      setClose();
-    }
-  };
-
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -48,7 +42,6 @@ export default function LocationSelectModal({ className }: { className?: string 
               className={styles.backdrop}
               role="presentation"
               onClick={setClose}
-              onKeyDown={handleKeyDown}
             />
             <div className={styles.modal}>
               <div className={styles.text}>
