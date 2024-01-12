@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchShop } from 'api/shop';
 import { Period } from 'api/shop/entity';
 import { ReactComponent as InfoIcon } from 'assets/svg/shop/info.svg';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+import LoadingSpinner from 'components/common/LoadingSpinner';
 import ImageCarousel from 'components/ImageCarousel';
 // import StarRatingPreview from 'components/StarRating/StarRatingPreview';
 import Map from 'pages/ShopDetail/components/Map/index';
@@ -15,7 +15,6 @@ import ScrapButton from 'pages/ShopDetail/components/ScrapButton/index';
 import useScrapId from 'utils/hooks/useScrapId';
 
 import styles from './ShopDetail.module.scss';
-// import mock from './mock';
 
 const formatPeriod = (period: Period) => {
   if (period) {
@@ -104,10 +103,9 @@ function ShopDetail() {
   }
 
   return (
-    <>
-      <AuthTopNavigation />
-      <div className={styles.container}>스켈레톤</div>
-    </>
+    <div className={styles.loading}>
+      <LoadingSpinner size={200} />
+    </div>
   );
 }
 
