@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { ReactComponent as Point } from 'assets/svg/home/point.svg';
 import { ReactComponent as Search } from 'assets/svg/home/search.svg';
@@ -11,6 +11,20 @@ export default function LocationSelectModal({ className }: { className?: string 
   const {
     userLocation, isModalOpen, setOpen, setClose,
   } = useHome();
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        setClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [setClose]);
 
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
@@ -41,9 +55,8 @@ export default function LocationSelectModal({ className }: { className?: string 
             <div
               className={styles.backdrop}
               role="presentation"
-              onClick={setClose}
             />
-            <div className={styles.modal}>
+            <div className={styles.modal} ref={modalRef}>
               <div className={styles.text}>
                 <div className={styles.text__title}>현재 위치가 올바르지 않은가요?</div>
                 <div className={styles.text__subtitle}>현재 계신 곳의 위치를 아래 검색창을 통해</div>
