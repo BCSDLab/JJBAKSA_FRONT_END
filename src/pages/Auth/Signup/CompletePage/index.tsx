@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import { modify } from 'api/user';
 import { ReactComponent as Complete } from 'assets/svg/auth/complete.svg';
@@ -23,18 +23,27 @@ interface CompleteFormData {
 
 export default function CompleteForm() {
   useRouteCheck('signUpCheck', '/signup');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { register, handleSubmit, watch } = useForm<CompleteFormData>();
+  const [modal, open, close] = useBooleanState(false);
 
   const onSubmit = async ({ nickname }: CompleteFormData) => {
+    try {
+      await modify({ nickname });
+      sessionStorage.removeItem('accessToken');
+      open();
+    } catch (error) {
+      makeToast('error', '닉네임 설정에 실패했습니다.');
+    }
+    /*
     modify({ nickname }).then(() => {
       navigate('/login', { replace: true });
     }).catch(() => {
       makeToast('error', '닉네임 설정에 실패했습니다.');
     });
+    */
   };
   const nicknameValue = watch('nickname');
-  const [modal,, close] = useBooleanState(true);
 
   return (
     <div className={styles.template}>
