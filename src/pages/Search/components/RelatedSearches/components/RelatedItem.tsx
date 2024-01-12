@@ -10,7 +10,7 @@ interface Props {
 
 export default function RelatedItem({ item }: Props) {
   return (
-    <Link to={`/search/${item}`} className={styles['search-related-list__wrapper']}>
+    <Link to={`/shop/${item}`} className={styles['search-related-list__wrapper']}>
       <li className={styles['search-related-list__item']}>
         <div className={styles['search-related-list__title']}>
           <div className={styles['search-related-list__icon']}>
