@@ -1,6 +1,5 @@
-import { Link } from 'react-router-dom';
-
 import { ReactComponent as PointerIcon } from 'assets/svg/search/pointer.svg';
+import useSearchForm from 'store/text';
 
 import styles from '../RelatedSearches.module.scss';
 
@@ -9,8 +8,18 @@ interface Props {
 }
 
 export default function RelatedItem({ item }: Props) {
+  const { setSearchForm } = useSearchForm('/shops');
+
+  const handleClick = () => {
+    setSearchForm((prevSearchForm) => ({
+      ...prevSearchForm,
+      submittedText: item,
+      isEnter: true,
+    }));
+  };
+
   return (
-    <Link to={`/search/${item}`} className={styles['search-related-list__wrapper']}>
+    <button type="button" className={styles['search-related-list__wrapper']} onClick={handleClick}>
       <li className={styles['search-related-list__item']}>
         <div className={styles['search-related-list__title']}>
           <div className={styles['search-related-list__icon']}>
@@ -19,6 +28,6 @@ export default function RelatedItem({ item }: Props) {
           {item}
         </div>
       </li>
-    </Link>
+    </button>
   );
 }

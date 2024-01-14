@@ -14,7 +14,7 @@ export default function NaverLogin() {
   const clientSecret = process.env.REACT_APP_NAVER_CLIENT_SECRET;
   const snsLogin = async () => {
     try {
-      const naverResponse = await axios.post(`/oauth2.0/token?grant_type=authorization_code&client_secret=${clientSecret}&client_id=${clientId}&code=${location.search.split('&')[0].slice(6)}&state=1`);
+      const naverResponse = await axios.post(`https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&client_secret=${clientSecret}&client_id=${clientId}&code=${location.search.split('&')[0].slice(6)}&state=1`);
       const headers = {
         authorization: naverResponse.data.access_token,
       };
