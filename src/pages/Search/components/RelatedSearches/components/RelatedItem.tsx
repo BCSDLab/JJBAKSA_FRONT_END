@@ -8,9 +8,10 @@ interface Props {
 }
 
 export default function RelatedItem({ item }: Props) {
-  const { setSearchForm } = useSearchForm('/shops');
+  const { setSearchForm } = useSearchForm('/shop');
 
   const handleClick = () => {
+    console.log('click');
     setSearchForm((prevSearchForm) => ({
       ...prevSearchForm,
       submittedText: item,
