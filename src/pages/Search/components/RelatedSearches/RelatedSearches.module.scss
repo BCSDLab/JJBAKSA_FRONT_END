@@ -11,6 +11,8 @@
 }
 
 .search-related-list {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   width: 876px;
   overflow: scroll;
@@ -25,6 +27,8 @@
 
   @include media.media-breakpoint-down(mobile) {
     width: 93%;
+    display: flex;
+    flex-direction: column;
   }
 
   &::-webkit-scrollbar {
@@ -42,7 +46,7 @@
     display: flex;
     font-size: 20px;
     height: 48px;
-    padding-left: 52px;
+    padding-left: 40px;
     padding-right: 57.14px;
     align-items: center;
     cursor: pointer;
