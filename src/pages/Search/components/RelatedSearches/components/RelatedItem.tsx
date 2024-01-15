@@ -11,7 +11,6 @@ export default function RelatedItem({ item }: Props) {
   const { setSearchForm } = useSearchForm('/shop');
 
   const handleClick = () => {
-    console.log('click');
     setSearchForm((prevSearchForm) => ({
       ...prevSearchForm,
       submittedText: item,
@@ -20,7 +19,11 @@ export default function RelatedItem({ item }: Props) {
   };
 
   return (
-    <button type="button" className={styles['search-related-list__wrapper']} onClick={handleClick}>
+    <button
+      type="button"
+      className={styles['search-related-list__wrapper']}
+      onClick={handleClick}
+    >
       <li className={styles['search-related-list__item']}>
         <div className={styles['search-related-list__title']}>
           <div className={styles['search-related-list__icon']}>
