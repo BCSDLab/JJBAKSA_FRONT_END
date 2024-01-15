@@ -6,7 +6,7 @@ const useScrapId = (placeId: string) => {
   const {
     isLoading, isError, data, refetch,
   } = useQuery({
-    queryKey: ['scrapId'],
+    queryKey: ['scrapId', placeId],
     queryFn: () => getScrapId(placeId),
   });
 

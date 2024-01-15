@@ -65,11 +65,11 @@
 
   & > div:last-child {
     display: flex;
-    align-items: center;
     color: #666;
     gap: 4px;
     margin: 12px 0;
     font-size: 14px;
+    align-items: flex-start;
   }
 
   &__rating {

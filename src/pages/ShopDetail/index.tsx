@@ -6,12 +6,13 @@ import { fetchShop } from 'api/shop';
 import { Period } from 'api/shop/entity';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 import ImageCarousel from 'components/ImageCarousel';
-// import StarRatingPreview from 'components/StarRating/StarRatingPreview';
+import StarRatingPreview from 'components/StarRating/StarRatingPreview';
 import Map from 'pages/ShopDetail/components/Map/index';
 import FriendReviewList from 'pages/ShopDetail/components/ReviewList/FriendReviewList';
 import MyReviewList from 'pages/ShopDetail/components/ReviewList/MyReviewList';
 import ScrapButton from 'pages/ShopDetail/components/ScrapButton/index';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+import useRate from 'utils/hooks/useRate';
 import useScrapId from 'utils/hooks/useScrapId';
 
 import styles from './ShopDetail.module.scss';
@@ -36,8 +37,9 @@ function ShopDetail() {
   });
 
   const { scrapId } = useScrapId(String(location.state.placeId));
+  const { rate } = useRate(String(location.state.placeId));
 
-  if (data && scrapId) {
+  if (data && scrapId && rate) {
     const {
       // category,
       placeId,
@@ -45,7 +47,6 @@ function ShopDetail() {
       name,
       formattedAddress,
       formattedPhoneNumber,
-      // totalRating,
       todayPeriod,
       photos,
     } = data.data;
@@ -57,10 +58,8 @@ function ShopDetail() {
           <section className={styles['detail-main']}>
             <div>
               <div className={styles['detail-main__rating']}>
-                {/* totalRating 추가 필요 */}
-                {/* <StarRatingPreview rate={totalRating} /> */}
-                {/* totalRating이 -1인 경우는 아예 별점이 없는 경우를 의미합니다. */}
-                {/* <span>{totalRating === -1 ? '0.0' : totalRating.toFixed(1)}</span> */}
+                <StarRatingPreview rate={rate.totalRating} />
+                <span>{rate.totalRating.toFixed(1)}</span>
               </div>
               <div className={styles['detail-main__name']}>
                 <h1>{name}</h1>

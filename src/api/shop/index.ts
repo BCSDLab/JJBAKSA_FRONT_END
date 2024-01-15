@@ -1,6 +1,6 @@
 import {
   Coords, FetchShopResponse, FetchShopsResponse, FetchTrendingsResponse,
-  FilterShopsListResponse, FilterShopsParams, ShopsParams,
+  FilterShopsListResponse, FilterShopsParams, ShopRateResponse, ShopsParams,
 } from './entity';
 import shopApi from './shopApiClient';
 
@@ -26,5 +26,7 @@ export const fetchShops = (params: ShopsParams) => {
   };
   return shopApi.post<FetchShopsResponse>(url, requestBody);
 };
+
+export const getShopRate = (placeId: string) => shopApi.get<ShopRateResponse>(`/shops/rates/${placeId}`);
 
 export const fetchPinShop = (placeId: string) => shopApi.get<FetchShopResponse>(`/shops/pin/${placeId}`);
