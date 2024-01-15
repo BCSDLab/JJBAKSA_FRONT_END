@@ -65,5 +65,9 @@ export interface FetchShopResponse {
   photos: string[] | null;
   placeId: string;
   todayPeriod: Period;
-  // totalRating 추가 필요
+}
+
+export interface ShopRateResponse {
+  totalRating: number;
+  ratingCount: number;
 }

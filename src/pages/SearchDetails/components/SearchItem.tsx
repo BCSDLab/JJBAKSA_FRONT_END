@@ -78,7 +78,7 @@ export default function SearchItem({ shop, pathname }: Props) {
     >
       <div className={styles.info}>
         <div className={styles['info-data']}>
-          <span className={styles['info-data__name']}>{name}</span>
+          <h2 className={styles['info-data__name']}>{name}</h2>
           <span>{category}</span>
         </div>
         <div className={styles['info-data']}>

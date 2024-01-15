@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Overlay } from 'react-naver-maps';
 
+import { ReactComponent as LoadingIcon } from 'assets/svg/home/map-loading.svg';
 import MobileOptions from 'pages/Home/components/Map/components/MobileOptions';
 import useCluster from 'pages/Home/components/Map/hooks/useCluster';
 import useFilterShops from 'pages/Home/components/Map/hooks/useFilterShops';
@@ -15,6 +16,7 @@ import styles from './Map.module.scss';
 export default function Map({ className }: { className?: string }): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useLocation();
+  const [loading, setLoading] = useState(true);
   const map = useNaverMap(location?.lat, location?.lng);
   const { filterFriendState } = useFilterFriend();
   const { filterScrapState } = useFilterScrap();
@@ -33,9 +35,16 @@ export default function Map({ className }: { className?: string }): JSX.Element 
 
   const { cluster } = useCluster({ markerArray, map });
 
+  useEffect(() => {
+    if (location) {
+      setLoading(false);
+    }
+  }, [location]);
+
   return (
     <div className={className}>
       <div id="map" className={styles.map} />
+      {loading ? <div className={styles.loading}><LoadingIcon /></div> : null }
       {cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
       {isMobile && <MobileOptions />}
     </div>
