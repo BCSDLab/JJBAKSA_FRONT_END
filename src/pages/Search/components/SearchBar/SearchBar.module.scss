@@ -32,10 +32,10 @@
 .search-bar {
   position: relative;
   display: flex;
+  width: 98%;
   border-radius: 100px;
   border: none;
   height: 62px;
-  width: 112%;
   margin-top: 34px;
   margin-right: 16px;
   margin-left: 16px;
@@ -43,6 +43,7 @@
   box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
   padding-left: 15px;
   z-index: 3;
+  flex-grow: 1;
 
   @include media.media-breakpoint-down(mobile) {
     width: 90%;
@@ -111,7 +112,7 @@
   margin-right: 27px;
   margin-left: 27px;
   height: 32px;
-  width: 110%;
+  width: 100%;
   font-size: 16px;
   color: #666666;
   position: relative;

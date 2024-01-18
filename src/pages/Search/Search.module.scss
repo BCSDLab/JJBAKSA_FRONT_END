@@ -10,3 +10,9 @@
     margin: 0 auto;
   }
 }
+
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 120%;
+}
