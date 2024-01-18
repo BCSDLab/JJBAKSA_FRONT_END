@@ -1,5 +1,9 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
+a {
+  text-decoration: none;
+}
+
 .container {
   width: 150px;
   display: flex;
@@ -57,6 +61,7 @@
   &__name {
     font-weight: bold;
     overflow: hidden;
+    color: black;
   }
 
   &__category {
