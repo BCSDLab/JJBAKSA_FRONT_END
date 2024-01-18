@@ -117,10 +117,12 @@
   font-weight: 400;
   cursor: pointer;
 
-  &__active {
+  &__button {
     display: flex;
+    justify-content: center;
     align-items: center;
-    margin-left: 30px;
+    margin-left: 6px;
+    width: 180px;
     height: 40px;
     border-radius: 20px;
 

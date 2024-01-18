@@ -73,7 +73,7 @@ export default function LocationSelectModal({ className }: { className?: string 
                 <button className={styles.search__button} type="button">등록</button>
               </div>
               <div className={styles.location}>
-                <div className={styles.location__active}>
+                <div className={styles.location__button}>
                   <Point className={styles.location__icon} />
                   현재 위치로 설정
                 </div>
