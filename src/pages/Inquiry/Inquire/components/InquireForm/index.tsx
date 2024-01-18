@@ -1,7 +1,7 @@
 import {
   useEffect, useState,
 } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { SubmitInquiry } from 'api/inquiry/entity';
 import { ReactComponent as DeleteIcon } from 'assets/svg/inquiry/image-delete.svg';
@@ -10,7 +10,6 @@ import ToggleButton from 'components/common/ToggleButton';
 import useInquiryImages from 'pages/Inquiry/hooks/useInquiryImages';
 import useSubmitInquiry from 'pages/Inquiry/hooks/useSubmitInquiry';
 import cn from 'utils/ts/classNames';
-import makeToast from 'utils/ts/makeToast';
 
 import styles from './InquireForm.module.scss';
 import RequiredLabel from './RequiredLabel';
@@ -20,7 +19,6 @@ const MAX_LENGTH = 500;
 export default function InquireForm(): JSX.Element {
   const submit = useSubmitInquiry();
   const location = useLocation();
-  const navigate = useNavigate();
 
   const [inquiry, setInquiry] = useState<SubmitInquiry>({
     title: '',
@@ -31,15 +29,13 @@ export default function InquireForm(): JSX.Element {
 
   const { inquiryImages, addImage, removeImage } = useInquiryImages(inquiry, setInquiry);
   const isAttached = inquiryImages.length > 0;
-  const isSubmissionReady = inquiry.title.trim().length + inquiry.content.trim().length > 0;
+  const isSubmissionReady = inquiry.title.trim().length > 0 && inquiry.content.trim().length > 0;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isSubmissionReady) {
       sessionStorage.removeItem('inquiryForm');
       submit(inquiry);
-    } else {
-      makeToast('error', '필수 항목을 기입해주세요.');
     }
   };
 
@@ -163,7 +159,6 @@ export default function InquireForm(): JSX.Element {
               [styles['submit__button--active']]: isSubmissionReady,
             })}
             type="submit"
-            onClick={() => navigate('/inquiry/my')}
           >
             등록하기
           </button>
