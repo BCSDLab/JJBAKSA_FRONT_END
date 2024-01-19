@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 
 import App from './App';
-import worker from './mocks/browser';
+// import worker from './mocks/browser';
 import reportWebVitals from './reportWebVitals';
 
 const queryClient = new QueryClient({
@@ -22,9 +22,9 @@ const queryClient = new QueryClient({
   },
 });
 
-if (process.env.NODE_ENV === 'development') {
-  worker.start({ onUnhandledRequest: 'bypass' });
-}
+// if (process.env.NODE_ENV === 'development') {
+//   worker.start({ onUnhandledRequest: 'bypass' });
+// }
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

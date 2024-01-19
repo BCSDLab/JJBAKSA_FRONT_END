@@ -10,7 +10,7 @@
     word-break: keep-all;
     height: 80px;
     padding-top: 168px;
-    padding-left: 30px;
+    padding-left: 24px;
     font-size: 40px;
     font-weight: 300;
     line-height: 49px;
@@ -37,8 +37,6 @@
   border: none;
   height: 62px;
   margin-top: 34px;
-  margin-right: 16px;
-  margin-left: 16px;
   background: #ffffff;
   box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
   padding-left: 15px;
@@ -46,9 +44,10 @@
   flex-grow: 1;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 90%;
+    width: 95%;
     height: 48px;
     font-size: 16px;
+    margin: 32px auto 0;
   }
 
   &__form {
@@ -106,16 +105,18 @@
 }
 
 .search-rolling-banner {
-  display: flex;
   overflow: hidden;
   margin-top: 24px;
-  margin-right: 27px;
-  margin-left: 27px;
   height: 32px;
   width: 100%;
   font-size: 16px;
   color: #666666;
   position: relative;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin-left: 10px;
+    width: 120%;
+  }
 
   &::before {
     content: "";
