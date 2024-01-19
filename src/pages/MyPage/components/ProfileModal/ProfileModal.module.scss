@@ -20,25 +20,26 @@
     padding: 0;
     display: block;
     margin: 0 auto;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 
     &--image {
-      width: 100px;
-      height: 100px;
+      width: 158px;
+      height: 158px;
       margin: 0 auto;
       position: relative;
     }
 
     &--profile {
-      width: 100px;
-      height: 100px;
+      width: 158px;
+      height: 158px;
       border-radius: 50%;
     }
 
     &--plus {
       position: absolute;
-      bottom: 3px;
-      right: 3px;
+      bottom: 0;
+      cursor: pointer;
+      right: 19px;
       border-radius: 50%;
     }
   }
@@ -52,9 +53,11 @@
 
   &__buttons {
     display: flex;
-    width: 100%;
-    justify-content: space-between;
+    width: 269px;
+    justify-content: center;
     margin: 0 auto;
+    gap: 19px;
+    cursor: pointer;
 
     &--cancel {
       all: unset;
@@ -85,7 +88,7 @@
 .name {
   &__input {
     display: block;
-    width: calc(100% - 40px);
+    width: 179px;
     border: none;
     margin: 0 auto;
     border-bottom: 1px solid #c4c4c4;
@@ -93,12 +96,14 @@
     padding-right: 30px;
     position: relative;
     outline: none;
+    text-align: center;
+    font-size: 16px;
   }
 
   &__length {
     display: block;
     width: 20px;
-    right: 3px;
+    right: 23px;
     top: 7px;
     position: absolute;
     font-size: 10px;

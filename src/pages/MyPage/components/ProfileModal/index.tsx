@@ -38,31 +38,23 @@ export default function ProfileModal({ imgUrl, nickname }:ProfileModalProps) {
   };
 
   return (
-    <>
-      <span className={styles.phrase}>
-        {nickname}
-        님,
-        <br />
-        프로필을 변경하시겠어요?
-      </span>
-      <form className={styles.form} onSubmit={(e) => onClick(e)}>
-        <label className={styles.form__upload} htmlFor="profileImageFile">
-          <input type="file" accept="image/*" id="profileImageFile" className={styles['form__image-input']} onChange={(e) => onChange(e)} />
-          <div className={styles['form__upload--image']}>
-            {previewUrl ? <img src={previewUrl} alt="profile" className={styles['form__upload--profile']} />
-              : <img src={imgUrl || defaultImage} alt="profile" className={styles['form__upload--profile']} />}
-            <img src={plus} alt="add_image" className={styles['form__upload--plus']} />
-          </div>
-        </label>
-        <div className={styles.form__name}>
-          <input type="text" defaultValue={nickname} placeholder="유저이름" onChange={(e) => changeName(e)} className={styles.name__input} maxLength={10} ref={nicknameRef} />
-          <span className={styles.name__length}>{`${nameLength}/10`}</span>
+    <form className={styles.form} onSubmit={(e) => onClick(e)}>
+      <label className={styles.form__upload} htmlFor="profileImageFile">
+        <input type="file" accept="image/*" id="profileImageFile" className={styles['form__image-input']} onChange={(e) => onChange(e)} />
+        <div className={styles['form__upload--image']}>
+          {previewUrl ? <img src={previewUrl} alt="profile" className={styles['form__upload--profile']} />
+            : <img src={imgUrl || defaultImage} alt="profile" className={styles['form__upload--profile']} />}
+          <img src={plus} alt="add_image" className={styles['form__upload--plus']} />
         </div>
-        <div className={styles.form__buttons}>
-          <button type="button" onClick={closeModal} className={styles['form__buttons--cancel']}>취소</button>
-          <button type="submit" className={styles['form__buttons--complete']}>완료</button>
-        </div>
-      </form>
-    </>
+      </label>
+      <div className={styles.form__name}>
+        <input type="text" defaultValue={nickname} placeholder="유저이름" onChange={(e) => changeName(e)} className={styles.name__input} maxLength={10} ref={nicknameRef} />
+        <span className={styles.name__length}>{`${nameLength}/10`}</span>
+      </div>
+      <div className={styles.form__buttons}>
+        <button type="button" onClick={closeModal} className={styles['form__buttons--cancel']}>취소</button>
+        <button type="submit" className={styles['form__buttons--complete']}>완료</button>
+      </div>
+    </form>
   );
 }
