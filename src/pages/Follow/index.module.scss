@@ -57,7 +57,7 @@
 
   &__search {
     width: 726px;
-    height: 36px;
+    height: 48px;
     background-color: #eeeeee;
     border-radius: 100px;
     display: flex;
@@ -65,16 +65,18 @@
     align-items: center;
     padding-left: 17px;
     padding-right: 10px;
+    margin-top: 16px;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 80vw;
+      width: 343px;
+      height: 48px;
       background-color: #ffffff;
       box-shadow: 2px 3px 12px 1px #eeeeee;
     }
 
     &--input {
       width: 720px;
-      height: 36px;
+      height: 48px;
       border-radius: 100px;
       background-color: #eeeeee;
       border: none;

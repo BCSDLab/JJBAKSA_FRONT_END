@@ -29,6 +29,7 @@
 
     @include media.media-breakpoint-down(mobile) {
       width: 200px;
+      padding-left: 16px;
       overflow-x: hidden;
     }
 
@@ -38,10 +39,18 @@
       background-color: #ffffff;
       cursor: pointer;
       margin-bottom: 8px;
+
+      @include media.media-breakpoint-down(mobile) {
+        font-size: 18px;
+      }
     }
 
     &__account {
       font-size: 16px;
+
+      @include media.media-breakpoint-down(mobile) {
+        font-size: 14px;
+      }
     }
   }
 
@@ -56,7 +65,9 @@
     margin: 0 10px;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 100px;
+      font-size: 12px;
+      width: 64px;
+      height: 31px;
     }
 
     &--cancel {
@@ -69,7 +80,8 @@
       cursor: pointer;
 
       @include media.media-breakpoint-down(mobile) {
-        width: 100px;
+        width: 64px;
+        height: 31px;
       }
     }
 
@@ -81,6 +93,11 @@
       background-color: #f6bf54;
       color: white;
       cursor: pointer;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 64px;
+        height: 31px;
+      }
     }
 
     &--request {
@@ -91,6 +108,11 @@
       background-color: #ff7f23;
       color: white;
       cursor: pointer;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 64px;
+        height: 31px;
+      }
     }
   }
 }
