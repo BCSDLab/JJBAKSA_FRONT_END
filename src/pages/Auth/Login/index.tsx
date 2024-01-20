@@ -6,11 +6,10 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
-import { ReactComponent as NaverIcon } from 'assets/svg/auth/naver.svg';
 import AuthDetail from 'components/Auth/AuthDetail';
 import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
-import { GOOGLE_REDIRECT_URL, KAKAO_REDIRECT_URL, NAVER_REDIRECT_URL } from 'config/constants';
+import { GOOGLE_REDIRECT_URL, KAKAO_REDIRECT_URL } from 'config/constants';
 import cn from 'utils/ts/classNames';
 
 import { LoginFormInput } from './hooks/entity';
@@ -124,15 +123,6 @@ export default function Login(): JSX.Element {
                 href={KAKAO_REDIRECT_URL}
               >
                 <KakaoIcon title="카카오 계정 연동" />
-              </a>
-              <a
-                className={cn({
-                  [styles.social__icon]: true,
-                  [styles['social__icon--naver']]: true,
-                })}
-                href={NAVER_REDIRECT_URL}
-              >
-                <NaverIcon title="네이버 계정 연동" />
               </a>
             </div>
           </div>
