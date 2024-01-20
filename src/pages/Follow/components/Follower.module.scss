@@ -4,8 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 112px;
-  width: 1150px;
+  height: 84px;
+  width: 755px;
   margin-top: 39px;
   margin-bottom: 39px;
 
@@ -14,8 +14,8 @@
   }
 
   &__image {
-    width: 112px;
-    height: 112px;
+    width: 84px;
+    height: 84px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 60px;
@@ -33,21 +33,26 @@
     }
 
     &--nickname {
-      font-size: 30px;
+      font-size: 24px;
       border: none;
       background-color: #ffffff;
       cursor: pointer;
+      margin-bottom: 8px;
+    }
+
+    &__account {
+      font-size: 16px;
     }
   }
 
   &__button {
     border: none;
     border-radius: 200px;
-    width: 120px;
-    height: 50px;
+    width: 90px;
+    height: 40px;
     background-color: #eeeeee;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     margin: 0 10px;
 
     @include media.media-breakpoint-down(mobile) {
@@ -55,13 +60,12 @@
     }
 
     &--cancel {
-      width: 120px;
-      height: 50px;
+      width: 90px;
+      height: 40px;
       border-radius: 200px;
       background-color: white;
       border: 1px solid #c4c4c4;
       color: #c4c4c4;
-      font-size: 20px;
       cursor: pointer;
 
       @include media.media-breakpoint-down(mobile) {
@@ -70,24 +74,22 @@
     }
 
     &--accept {
-      width: 120px;
-      height: 50px;
+      width: 90px;
+      height: 40px;
       border: none;
       border-radius: 200px;
       background-color: #f6bf54;
       color: white;
-      font-size: 20px;
       cursor: pointer;
     }
 
     &--request {
-      width: 120px;
-      height: 50px;
+      width: 90px;
+      height: 40px;
       border: none;
       border-radius: 200px;
       background-color: #ff7f23;
       color: white;
-      font-size: 20px;
       cursor: pointer;
     }
   }
