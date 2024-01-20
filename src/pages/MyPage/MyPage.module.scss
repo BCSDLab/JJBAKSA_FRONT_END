@@ -12,12 +12,12 @@
     width: 100%;
     margin-top: 0;
   }
+}
 
-  .Toastify {
-    top: 1em;
-    left: 40%;
-    transform: translateX(-50%);
-  }
+.Toastify__toast-container--top-center {
+  top: 1em;
+  left: 44%;
+  transform: translateX(-50%);
 }
 
 .modal-overlay {
@@ -36,8 +36,11 @@
   margin-top: 70%;
   padding: 64px 24px;
   border-radius: 45px;
+  right: 9vw;
 
   @include media.media-breakpoint-down(mobile) {
     width: 100%;
+    right: 0;
+    padding: 0;
   }
 }
