@@ -85,10 +85,10 @@ export default function Follower({
         >
           {nickname}
         </button>
-        <p>
+        <div className={styles['follower__content--account']}>
           @
           {account}
-        </p>
+        </div>
       </div>
       <button
         className={cn({

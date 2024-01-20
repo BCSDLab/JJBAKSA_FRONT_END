@@ -23,7 +23,7 @@ export default function MyPage() {
   const openModal = (url:string | undefined) => {
     setOpen(true);
     toast(<ProfileModal imgUrl={url} nickname={profile?.nickname} />, {
-      position: 'bottom-center',
+      position: 'top-center',
       autoClose: false,
       closeOnClick: false,
       closeButton: false,
