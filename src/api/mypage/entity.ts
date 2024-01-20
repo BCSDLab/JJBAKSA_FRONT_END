@@ -49,7 +49,8 @@ export interface PatchProfileImageResponse {
 }
 
 export interface PatchNicknameResponse {
-  nickname: string
+  nickname: string;
+  // password?: string;
 }
 
 export interface FollowersResponse {

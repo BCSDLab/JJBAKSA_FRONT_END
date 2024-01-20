@@ -14,6 +14,12 @@
   }
 }
 
+.Toastify__toast-container--top-center {
+  top: 1em;
+  left: 44%;
+  transform: translateX(-50%);
+}
+
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -25,16 +31,16 @@
 }
 
 .bottom-sheet {
-  width: 300px;
-  height: 500px;
-  margin-bottom: 30%;
-  padding: 24px 24px 35px;
+  width: 559px;
+  height: 434px;
+  margin-top: 70%;
+  padding: 64px 24px;
   border-radius: 45px;
+  right: 9vw;
 
   @include media.media-breakpoint-down(mobile) {
-    margin: 0;
-    padding: 24px 24px 100px;
-    bottom: -100px;
     width: 100%;
+    right: 0;
+    padding: 0;
   }
 }
