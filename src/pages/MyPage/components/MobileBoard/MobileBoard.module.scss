@@ -19,8 +19,8 @@
   display: block;
   width: 91%;
   margin: 0 auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 40px;
+  margin-top: 35px;
   font-size: 16px;
   font-weight: 700;
   color: #ff7f23;
@@ -50,13 +50,14 @@
 
 .store {
   display: flex;
-  margin-bottom: 8px;
+  margin-bottom: 24px;
   align-items: end;
   gap: 4px;
 
   &__name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
+    margin-right: 8px;
   }
 
   &__type {
@@ -75,7 +76,7 @@
   align-items: center;
 
   &__main-text {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 17.47px;
     margin-bottom: 8px;
   }
@@ -83,7 +84,7 @@
   &__detail {
     display: flex;
     gap: 4px;
-    font-size: 14px;
+    font-size: 12px;
     color: #666666;
     align-items: center;
     text-align: center;

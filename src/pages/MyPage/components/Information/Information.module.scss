@@ -6,6 +6,11 @@
   align-items: center;
   width: 91%;
   margin: 0 auto;
+  height: 30vh;
+
+  @include media.media-breakpoint-down(mobile) {
+    height: 3vh;
+  }
 }
 
 .user {
@@ -14,22 +19,38 @@
   justify-content: start;
 
   &__image {
-    width: 46px;
-    height: 46px;
+    width: 112px;
+    height: 112px;
     border-radius: 50%;
+    margin-right: 30px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 65px;
+      height: 65px;
+    }
   }
 
   &__nickname {
     margin: 0;
-    margin-bottom: 15px;
     display: inline;
-    font-size: 16px;
+    font-size: 30px;
     font-weight: 700;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 24px;
+      font-weight: 600;
+    }
   }
 
   &__account {
     display: block;
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    font-size: 16px;
     font-weight: 400;
   }
 }
@@ -87,8 +108,13 @@
 }
 
 .option {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .profile {
