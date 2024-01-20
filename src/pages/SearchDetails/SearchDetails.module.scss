@@ -166,9 +166,9 @@
   align-items: center;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 100%;
+    width: 95%;
     height: 375px;
-    margin: 0;
+    margin: 10px;
     flex-direction: column;
     align-items: flex-start;
   }
