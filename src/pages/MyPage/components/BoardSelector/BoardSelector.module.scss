@@ -13,6 +13,7 @@
     font-weight: 400;
     font-size: 18px;
     width: 80px;
+    cursor: pointer;
 
     &--selected {
       all: unset;
@@ -21,8 +22,9 @@
       width: 80px;
       font-size: 18px;
       color: #ff7f23;
+      cursor: pointer;
 
-      &::after {
+      s &::after {
         display: block;
         content: "";
         border-bottom: 1px solid #ff7f23;
