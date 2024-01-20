@@ -11,12 +11,13 @@ export default function BookMark() {
     scraps, isLoading, fetchNextPage, total,
   } = useScraps();
   const { target: bottom } = useObserver(fetchNextPage);
+
   return (
     <div className={styles.bookmarks}>
-      {!isLoading && scraps && (
+      {!isLoading && scraps?.length !== 0 && (
         <>
           <span className={styles.bookmarks__total}>{`총 ${total}개의 음식점`}</span>
-          {scraps.map((scrap) => (
+          {scraps?.map((scrap) => (
             <div className={styles.bookmark} key={scrap.scrapId}>
               <div className={styles.bookmark__detail}>
                 <span className={styles['bookmark__detail--name']}>{scrap.name}</span>
@@ -33,7 +34,7 @@ export default function BookMark() {
           ))}
         </>
       )}
-      {!isLoading && !scraps
+      {!isLoading && scraps?.length === 0
               && (
               <div className={styles['not-exist']}>
                 <span className={styles['not-exist__phrase']}>
