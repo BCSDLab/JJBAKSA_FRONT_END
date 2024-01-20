@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { fetchFollowerReview } from 'api/review';
+import defaultImage from 'assets/images/follow/default-image.png';
 import NotFoundDescription from 'pages/ShopDetail/components/NotFoundDescription/index';
 import SectionHeader from 'pages/ShopDetail/components/SectionHeader/index';
 
@@ -34,7 +35,7 @@ function FriendReviewList({ placeId }: Props) {
               <li key={id}>
                 <img
                   alt={`${userReviewResponse.nickname}의 프로필`}
-                  src={userReviewResponse?.profileImage?.url}
+                  src={userReviewResponse?.profileImage?.url || defaultImage}
                 />
                 <div className={styles['review-list__main--follower-content']}>
                   <h3>{userReviewResponse.nickname}</h3>
