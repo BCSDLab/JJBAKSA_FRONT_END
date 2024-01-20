@@ -57,14 +57,14 @@
 
   &__search {
     width: 726px;
-    height: 48px;
+    height: 64px;
     background-color: #eeeeee;
     border-radius: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 17px;
-    padding-right: 10px;
+    padding-left: 24px;
+    padding-right: 24px;
     margin-top: 16px;
 
     @include media.media-breakpoint-down(mobile) {
@@ -76,21 +76,29 @@
 
     &--input {
       width: 720px;
-      height: 48px;
+      height: 64px;
       border-radius: 100px;
       background-color: #eeeeee;
       border: none;
-      font-size: 18px;
+      font-size: 24px;
       outline: none;
 
       @include media.media-breakpoint-down(mobile) {
+        width: 343px;
+        height: 48px;
         background-color: #ffffff;
+        font-size: 16px;
       }
     }
 
     &--img {
-      width: 15px;
-      height: 15px;
+      width: 30px;
+      height: 30px;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 15px;
+        height: 15px;
+      }
     }
   }
 }
