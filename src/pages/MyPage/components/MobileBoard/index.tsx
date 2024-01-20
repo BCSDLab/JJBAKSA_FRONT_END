@@ -1,9 +1,5 @@
-import { useState } from 'react';
-
 import { Shop } from 'api/mypage/entity';
-import closeArrow from 'assets/svg/mypage/close-arrow.svg';
 import notExist from 'assets/svg/mypage/not-exist.svg';
-import openArrow from 'assets/svg/mypage/open-arrow.svg';
 import filledStar from 'assets/svg/mypage/star-filled.svg';
 import useMyProfile from 'pages/MyPage/hooks/useMyProfile';
 import useReviwes from 'pages/MyPage/hooks/useReviews';
@@ -13,15 +9,16 @@ import styles from './MobileBoard.module.scss';
 interface MobileBoardProps {
   posts: Array<Shop>,
 }
+
 interface ReviewProps {
   placeId: string,
   name:string,
   category:string
 }
+
 function Review({
   placeId, name, category,
 }:ReviewProps) {
-  const [isOpen, setOpen] = useState(false);
   const { reviews, isLoading } = useReviwes(placeId);
   return (
     <div className={styles.post}>
@@ -30,12 +27,8 @@ function Review({
           <span className={styles.store__name}>{name}</span>
           <span className={styles.store__type}>{category}</span>
         </div>
-        <button type="button" id={`open${placeId}`} onClick={() => setOpen(!isOpen)} className={styles.post__opener}>
-          <img src={isOpen ? closeArrow : openArrow} alt="post-opener" className={styles.post__opener} />
-        </button>
       </label>
       {!isLoading && reviews.map((review) => (
-        isOpen && (
         <div key={review.id}>
           <p className={styles['review__main-text']}>{review.content}</p>
           <div className={styles.review__detail}>
@@ -49,8 +42,6 @@ function Review({
             </div>
           </div>
         </div>
-        )
-
       ))}
     </div>
   );

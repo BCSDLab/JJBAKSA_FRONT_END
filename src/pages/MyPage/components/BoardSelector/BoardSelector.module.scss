@@ -11,15 +11,16 @@
     all: unset;
     text-align: center;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
     width: 80px;
 
     &--selected {
       all: unset;
       text-align: center;
       font-weight: 400;
-      font-size: 14px;
       width: 80px;
+      font-size: 18px;
+      color: #ff7f23;
 
       &::after {
         display: block;
