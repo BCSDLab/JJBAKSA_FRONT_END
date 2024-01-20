@@ -6,9 +6,7 @@ export interface FilterShopsParams {
 }
 
 export interface FilterShopsResponse {
-  geometry: {
-    location: Coords;
-  };
+  coordinate: Coords;
   name: string;
   photo: string;
   placeId: string;
