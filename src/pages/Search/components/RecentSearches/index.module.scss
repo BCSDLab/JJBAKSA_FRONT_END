@@ -1,9 +1,8 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
-  margin-top: 7vh;
-  margin-left: 20px;
-  width: 875px;
+  width: 830px;
+  margin: 72px auto 0;
 
   @include media.media-breakpoint-down(mobile) {
     width: 90vw;

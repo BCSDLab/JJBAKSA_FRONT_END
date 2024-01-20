@@ -58,14 +58,12 @@ export default function SearchPost(): JSX.Element {
           : (
             <>
               <Sentence subText={subText} />
-              <div className={styles.box}>
-                <SearchInput
-                  onChange={handleChange}
-                  onSubmit={handleSubmit}
-                  text={text}
-                />
-                {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-              </div>
+              <SearchInput
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                text={text}
+              />
+              {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
               <RecentSearches />
             </>
           )}
