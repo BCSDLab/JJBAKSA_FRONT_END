@@ -1,3 +1,5 @@
+@use "src/utils/styles/mediaQuery" as media;
+
 .phrase {
   display: block;
   color: #000000;
@@ -8,6 +10,10 @@
 }
 
 .form {
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
+
   &__image-input {
     display: none;
   }
@@ -47,8 +53,13 @@
   &__name {
     position: relative;
     margin: 0 auto;
-    width: 48%;
+    width: 52%;
     margin-bottom: 50px;
+    color: #c4c4c4;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 254px;
+    }
   }
 
   &__buttons {

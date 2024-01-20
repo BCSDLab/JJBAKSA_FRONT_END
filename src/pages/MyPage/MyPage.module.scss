@@ -12,6 +12,12 @@
     width: 100%;
     margin-top: 0;
   }
+
+  .Toastify {
+    top: 1em;
+    left: 40%;
+    transform: translateX(-50%);
+  }
 }
 
 .modal-overlay {
@@ -27,14 +33,11 @@
 .bottom-sheet {
   width: 559px;
   height: 434px;
-  margin-bottom: 30%;
+  margin-top: 70%;
   padding: 64px 24px;
   border-radius: 45px;
 
   @include media.media-breakpoint-down(mobile) {
-    margin: 0;
-    padding: 24px 24px 100px;
-    bottom: -100px;
     width: 100%;
   }
 }
