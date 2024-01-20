@@ -17,7 +17,7 @@ export default function Map({ className }: { className?: string }): JSX.Element 
   const { isMobile } = useMediaQuery();
   const { location } = useLocation();
   const [loading, setLoading] = useState(true);
-  const map = useNaverMap(36, 127);
+  const map = useNaverMap(location?.lat, location?.lng);
   const { filterFriendState } = useFilterFriend();
   const { filterScrapState } = useFilterScrap();
   const { filterNearbyState } = useFilterNearby();
