@@ -6,10 +6,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 3%;
 }
 
 .title {
-  width: 1187px;
+  width: 800px;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -22,6 +23,8 @@
   border-right: none;
   border-left: none;
   cursor: pointer;
+  font-size: 18px;
+  color: #666666;
 
   &__arrow {
     &--up {
@@ -40,7 +43,7 @@
   align-items: center;
   overflow: scroll;
   gap: 10px;
-  width: 1067px;
+  width: 800px;
   scrollbar-width: none; /* 파이어폭스 */
 
   &::-webkit-scrollbar {
