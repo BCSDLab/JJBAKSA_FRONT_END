@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { fetchFollowerReview, fetchMyReview } from 'api/review';
+import { ReactComponent as SwitchIcon } from 'assets/svg/home/switch.svg';
 import { ReactComponent as StarIcon } from 'assets/svg/post/star.svg';
 import cn from 'utils/ts/classNames';
 
@@ -19,7 +20,6 @@ export default function ReviewList({ placeId }: { placeId: string }) {
     queryKey: ['myReviews', placeId],
     queryFn: () => fetchMyReview(placeId),
   });
-
   return (
     <div className={styles.review}>
       <div className={styles['review-type']}>
@@ -42,25 +42,25 @@ export default function ReviewList({ placeId }: { placeId: string }) {
         >친구 리뷰
         </button>
       </div>
-      <div className={styles['review-list']}>
-        <button type="button">최신순</button>
-        <ul>
-          {myReview?.data.content.map((review) => (
-            <li key={review.id}>
+      <button className={styles['list-type']} type="button"><SwitchIcon />최신순</button>
+      <ul className={styles['review-data']}>
+        {type === 'my'
+          && myReview?.data.content.map((review) => (
+            <li className={styles['review-data__detail']} key={review.id}>
               <div>{review.content}</div>
-              <div>{review.createdAt} | <StarIcon fill="#FF7F23" width="18" height="18" />{review.rate}.0</div>
+              <div>{review.createdAt.replaceAll('-', '/').slice(3)} |<StarIcon fill="#FF7F23" width="18" height="18" />{review.rate}.0
+              </div>
             </li>
           ))}
-        </ul>
-        <ul>
-          {friendReview?.data.content.map((review) => (
-            <li key={review.id}>
-              <div>{review.content}</div>
-              <div>{review.createdAt} | <StarIcon fill="#FF7F23" width="18" height="18" />{review.rate}.0</div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      </ul>
+      <ul className={styles['review-data']}>
+        {type === 'friend' && friendReview?.data.content.map((review) => (
+          <li className={styles['review-data__detail']} key={review.id}>
+            <div>{review.content}</div>
+            <div>{review.createdAt.replaceAll('-', '/').slice(3)} | <StarIcon fill="#FF7F23" width="18" height="18" />{review.rate}.0</div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
