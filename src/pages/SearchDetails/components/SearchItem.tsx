@@ -67,7 +67,7 @@ export default function SearchItem({ shop, pathname }: Props) {
       name, photoToken, placeId, category,
     });
     // 음식점 상세 정보로 이동
-    const newPath = pathname.includes('/post') ? `/post/${name}` : `/shop/${name}`;
+    const newPath = pathname.includes('/post') ? `/post/${placeId}` : `/shop/${placeId}`;
     navigate(newPath, { state: { placeId } });
   };
   return (

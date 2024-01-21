@@ -24,7 +24,7 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
   const { rate } = useRate(placeId);
   const { latestDate } = useLatestDate(placeId);
   const onClick = () => {
-    navigate(`/post/${data?.name}`, { state: { placeId } });
+    navigate(`/post/${placeId}`, { state: { placeId } });
   };
 
   const { toggleScrap, isPending } = useScrap(String(placeId), Number(scrapId));

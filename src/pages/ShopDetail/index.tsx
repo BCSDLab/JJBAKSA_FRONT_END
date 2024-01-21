@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -28,15 +28,15 @@ const formatPeriod = (period: Period) => {
 };
 
 function ShopDetail() {
-  const location = useLocation();
+  const params = useParams();
   const { isMobile } = useMediaQuery();
   const { data } = useQuery({
-    queryKey: ['shopDetail', location.state.placeId],
-    queryFn: () => fetchShop(location.state.placeId),
+    queryKey: ['shopDetail', params.placeId],
+    queryFn: () => fetchShop(params.placeId as string),
   });
 
-  const { scrapId } = useScrapId(String(location.state.placeId));
-  const { rate } = useRate(String(location.state.placeId));
+  const { scrapId } = useScrapId(params.placeId as string);
+  const { rate } = useRate(params.placeId as string);
 
   if (data && scrapId) {
     const {
