@@ -39,3 +39,21 @@
     display: flex;
   }
 }
+
+.post {
+  display: flex;
+  border: 1px solid #c4c4c4;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+  background-color: #ffffff;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin: 0 auto;
+  left: calc((100% - 150px) / 2);
+  bottom: 40px;
+}

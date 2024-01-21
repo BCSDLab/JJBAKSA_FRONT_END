@@ -22,7 +22,6 @@ export default function ReviewList({ placeId }: { placeId: string }) {
     queryKey: ['myReviews', placeId],
     queryFn: () => fetchMyReview(placeId),
   });
-  console.log(myReview);
   return (
     <div className={styles.review}>
       <div className={styles['review-type']}>

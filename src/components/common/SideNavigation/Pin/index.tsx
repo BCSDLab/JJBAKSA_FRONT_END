@@ -1,3 +1,6 @@
+import { useNavigate } from 'react-router-dom';
+
+import { ReactComponent as PencilkIcon } from 'assets/svg/home/pencil.svg';
 import { ReactComponent as StarIcon } from 'assets/svg/post/star.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import useLatestDate from 'components/common/SideNavigation/hooks/useLatestDate';
@@ -16,9 +19,13 @@ interface PinProps {
 
 export default function Pin({ placeId }:PinProps): JSX.Element {
   const { data } = usePin(String(placeId));
+  const navigate = useNavigate();
   const { scrapId } = useScrapId(String(placeId));
   const { rate } = useRate(placeId);
   const { latestDate } = useLatestDate(placeId);
+  const onClick = () => {
+    navigate(`/post/${data?.name}`, { state: { placeId } });
+  };
 
   const { toggleScrap, isPending } = useScrap(String(placeId), Number(scrapId));
   return (
@@ -46,6 +53,12 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
         </li>
       </ul>
       <ReviewList placeId={placeId} />
+      <button
+        onClick={onClick}
+        type="button"
+        className={styles.post}
+      ><PencilkIcon fill="#666666" />리뷰 작성하기
+      </button>
     </>
   );
 }
