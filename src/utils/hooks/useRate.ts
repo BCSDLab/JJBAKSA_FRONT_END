@@ -10,8 +10,11 @@ const useRate = (placeId: string) => {
     queryFn: () => getShopRate(placeId),
   });
 
+  const rate = data && data.data.ratingCount !== 0
+    ? Number((data.data.totalRating / data.data.ratingCount).toFixed(0)) : 0;
+
   return {
-    isLoading, isError, rate: data?.data, refetch,
+    isLoading, isError, rate, refetch,
   };
 };
 

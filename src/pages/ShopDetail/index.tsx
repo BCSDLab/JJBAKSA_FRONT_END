@@ -30,7 +30,6 @@ const formatPeriod = (period: Period) => {
 function ShopDetail() {
   const location = useLocation();
   const { isMobile } = useMediaQuery();
-
   const { data } = useQuery({
     queryKey: ['shopDetail', location.state.placeId],
     queryFn: () => fetchShop(location.state.placeId),
@@ -39,7 +38,7 @@ function ShopDetail() {
   const { scrapId } = useScrapId(String(location.state.placeId));
   const { rate } = useRate(String(location.state.placeId));
 
-  if (data && scrapId && rate) {
+  if (data && scrapId) {
     const {
       // category,
       placeId,
@@ -58,8 +57,8 @@ function ShopDetail() {
           <section className={styles['detail-main']}>
             <div>
               <div className={styles['detail-main__rating']}>
-                <StarRatingPreview rate={rate.totalRating} />
-                <span>{rate.totalRating.toFixed(1)}</span>
+                <StarRatingPreview rate={rate} />
+                <span>{rate}.0</span>
               </div>
               <div className={styles['detail-main__name']}>
                 <h1>{name}</h1>
