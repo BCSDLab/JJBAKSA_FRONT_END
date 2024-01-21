@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
+import RecentItem from 'pages/Search/components/RecentItem';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import cn from 'utils/ts/classNames';
 
-import RecentItem from './components/RecentItem';
-import styles from './index.module.scss';
+import styles from './RecentSearches.module.scss';
 
 type List = {
   photoToken: string | null,

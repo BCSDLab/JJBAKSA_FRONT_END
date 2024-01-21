@@ -25,13 +25,13 @@ export default function RelatedSearches({ text }: Props) {
         [styles['search-related-list--hidden']]: !isSearching || text === '',
       })}
       >
-        <div className={styles['search-related-list__autoController']}>
+        <div className={styles['search-related-list__auto-controller']}>
           {!isMobile && (
             <>
-              <div className={`${styles['search-related-list__autoButtonTitle']} ${isActive ? styles.active : ''}`}>
+              <div className={`${styles['search-related-list__auto-button-title']} ${isActive ? styles.active : ''}`}>
                 자동완성
               </div>
-              <div className={styles['search-related-list__toggleButton']}>
+              <div className={styles['search-related-list__toggle-button']}>
                 <ToggleButton onClick={toggle} isActive={isActive} />
               </div>
             </>

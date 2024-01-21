@@ -4,9 +4,9 @@ import { useLocation } from 'react-router-dom';
 
 import NavigationBar from 'pages/Search/components/NavigationBar/index';
 import RelatedSearches from 'pages/Search/components/RelatedSearches/index';
-import RollingBanner from 'pages/Search/components/SearchBar/RollingBanner';
+import RollingBanner from 'pages/Search/components/RollingBanner/RollingBanner';
 import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
-import Sentence from 'pages/Search/components/SearchBar/Sentence';
+import Sentence from 'pages/Search/components/Sentence/Sentence';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import { POST_TEXT, SHOP_TEXT } from 'pages/Search/static/searchText';
 import SearchDetails from 'pages/SearchDetails';

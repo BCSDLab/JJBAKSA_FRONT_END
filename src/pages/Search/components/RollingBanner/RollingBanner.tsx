@@ -1,6 +1,6 @@
 import useTrendingList from 'pages/Search/hooks/useTrendings';
 
-import styles from './SearchBar.module.scss';
+import styles from './RollingBanner.module.scss';
 
 function renderTagList(tags: string[]) {
   return (

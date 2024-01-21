@@ -4,7 +4,7 @@ const useSearchingMode = () => {
   const [isSearching, setIsSearching] = useState(false);
 
   const changeMode = useCallback((event: MouseEvent) => {
-    if ((event.target as Element).id === 'searchBarInput') {
+    if ((event.target as Element).id === 'search-bar-input') {
       setIsSearching(true);
       event.stopPropagation();
     } else {

@@ -25,6 +25,10 @@
   left: 15px;
   z-index: 1;
 
+  &--hidden {
+    display: none;
+  }
+
   @include media.media-breakpoint-down(mobile) {
     width: 93%;
     display: flex;
@@ -79,14 +83,14 @@
     }
   }
 
-  &__autoController {
+  &__auto-controller {
     display: flex;
     flex-direction: row-reverse;
     margin-top: 25px;
     align-items: center;
   }
 
-  &__autoButtonTitle {
+  &__auto-button-title {
     display: flex;
     font-size: 20px;
     color: #ff7f23;
@@ -97,7 +101,7 @@
     }
   }
 
-  &__toggleButton {
+  &__toggle-button {
     display: flex;
     padding-top: 8px;
   }
@@ -111,9 +115,5 @@
     text-align: center;
     margin: 0 auto;
     margin-top: 164px;
-  }
-
-  &--hidden {
-    display: none;
   }
 }
