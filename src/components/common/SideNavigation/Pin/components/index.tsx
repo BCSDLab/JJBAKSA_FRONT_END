@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import { fetchFollowerReview, fetchMyReview } from 'api/review';
+import defaultImage from 'assets/images/follow/default-image.png';
 import { ReactComponent as FriendEmptyIcon } from 'assets/svg/home/friend-empty-review.svg';
 import { ReactComponent as MyEmptyIcon } from 'assets/svg/home/my-empty-review.svg';
 import { ReactComponent as SwitchIcon } from 'assets/svg/home/switch.svg';
@@ -59,7 +60,7 @@ export default function ReviewList({ placeId }: { placeId: string }) {
             <SwitchIcon />{sortType === 'createdAt' ? '최신순' : '별점순'}
           </button>
           {myReview?.data.content.map((review) => (
-            <li className={styles['review-data__detail']} key={review.id}>
+            <li className={styles['review-data__my']} key={review.id}>
               <div>{review.content}</div>
               <div>
                 {review.createdAt.replaceAll('-', '/').slice(3)} |{' '}
@@ -91,12 +92,24 @@ export default function ReviewList({ placeId }: { placeId: string }) {
             <SwitchIcon />{sortType === 'createdAt' ? '최신순' : '별점순'}
           </button>
           {friendReview?.data.content.map((review) => (
-            <li className={styles['review-data__detail']} key={review.id}>
-              <div>{review.content}</div>
-              <div>
-                {review.createdAt.replaceAll('-', '/').slice(3)} |{' '}
-                <StarIcon fill="#FF7F23" width="18" height="18" />
-                {review.rate}.0
+            <li className={styles['review-data__friend']} key={review.id}>
+              <div className={styles['review-data__image']}>
+                <img
+                  src={review.userReviewResponse.profileImage.url || defaultImage}
+                  alt={`${review.userReviewResponse.nickname}의 프로필`}
+                />
+              </div>
+              <div className={styles['review-data__content']}>
+                <div>
+                  <span>{review.userReviewResponse.nickname}</span>
+                  <span>{review.userReviewResponse.account}</span>
+                </div>
+                <div>{review.content}</div>
+                <div>
+                  {review.createdAt.replaceAll('-', '/').slice(3)}|
+                  <StarIcon fill="#FF7F23" width="16" height="16" />
+                  {review.rate}.0
+                </div>
               </div>
             </li>
           ))}
