@@ -65,6 +65,10 @@
 
     &--clicked {
       background-color: #fff1e8;
+
+      svg {
+        fill: #fff1e8;
+      }
     }
   }
 

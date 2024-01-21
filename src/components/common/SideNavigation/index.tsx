@@ -22,7 +22,7 @@ export default function SideNavigation(): JSX.Element {
   const clearAuth = useClearAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const [visible, , , toggle, setVisible] = useBooleanState(true);
+  const [visible, , , toggle, setVisible] = useBooleanState(false);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
@@ -88,7 +88,7 @@ export default function SideNavigation(): JSX.Element {
                   type="button"
                   className={cn({
                     [styles['side-navigation__button']]: true,
-                    [styles['side-navigation__button--clicked']]: visible && tab.link === location.pathname,
+                    [styles['side-navigation__button--clicked']]: (visible && tab.link === location.pathname) || location.pathname === '/shop',
                   })}
                   onClick={() => clickSearchButton()}
                   tabIndex={0}
