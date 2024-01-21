@@ -1,4 +1,4 @@
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useQueryClient } from '@tanstack/react-query';
 
@@ -13,11 +13,10 @@ export default function Post() {
   const { name: shopName } = useParams();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const { placeId } = useLocation().state as { placeId: string };
   const review = useReview();
   const submitReview = () => {
     postReview({
-      placeId,
+      placeId: shopName as string,
       ...review,
     }).then(() => {
       queryClient.invalidateQueries({ queryKey: ['reviewedShops'] });
