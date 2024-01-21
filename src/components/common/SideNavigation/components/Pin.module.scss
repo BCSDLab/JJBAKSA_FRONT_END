@@ -1,8 +1,13 @@
 .container {
   display: flex;
+  flex-direction: column;
   margin: 0 10px;
-  align-items: flex-end;
   gap: 5px;
+}
+
+.info {
+  display: flex;
+  align-items: flex-end;
 
   &__name {
     font-weight: 700;
@@ -28,5 +33,9 @@
       width: 26px;
       height: 32px;
     }
+  }
+
+  &__rate {
+    display: flex;
   }
 }
