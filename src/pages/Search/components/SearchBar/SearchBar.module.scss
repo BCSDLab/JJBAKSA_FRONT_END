@@ -1,5 +1,7 @@
-/* stylelint-disable declaration-colon-newline-after */
 @use "src/utils/styles/mediaQuery.scss" as media;
+
+$highlight: #ff7f23;
+$default: #c4c4c4;
 
 .search {
   width: 100%;
@@ -104,69 +106,48 @@
   }
 }
 
-.search-rolling-banner {
+.banner {
+  position: relative;
   overflow: hidden;
   margin-top: 24px;
   height: 32px;
   width: 100%;
   font-size: 16px;
-  color: #666666;
-  position: relative;
 
   @include media.media-breakpoint-down(mobile) {
     margin-left: 10px;
     width: 120%;
   }
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 30px;
-    background: linear-gradient(
-      to right,
-      rgba(255 255 255 / 100%),
-      rgba(255 255 255 / 0%)
-    );
-    backdrop-filter: blur(0.1px);
-    pointer-events: none;
-    z-index: 2;
-  }
-
+  &::before,
   &::after {
     content: "";
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
-    width: 30px;
-    background: linear-gradient(
-      to left,
-      rgba(255 255 255 / 100%),
-      rgba(255 255 255 / 0%)
-    );
-    backdrop-filter: blur(0.1px);
+    height: 100%;
+    width: 38px;
     pointer-events: none;
     z-index: 2;
   }
 
-  &__tag-list {
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, transparent);
+  }
+
+  &__tag-lists {
     display: flex;
-    flex: 0 0 auto;
     white-space: nowrap;
     overflow: hidden;
-    list-style: none;
 
     @keyframes text-loop {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-
-      100% {
-        transform: translate3d(-100%, 0, 0);
-      }
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
     }
 
     @include media.media-breakpoint-down(mobile) {
@@ -175,25 +156,24 @@
     }
   }
 
-  &__tag {
+  &__tag-list {
     display: flex;
     animation: text-loop 10s linear infinite;
-    text-align: center;
-    align-items: center;
+    list-style: none;
   }
 
-  &__tag-style {
-    margin-right: 10px;
-    border: 1px solid #c4c4c4;
-    color: #c4c4c4;
+  &__tag {
     border-radius: 15px;
+    margin-right: 10px;
     padding: 3px 7px;
+    color: $default;
+    border: 1px solid $default;
 
     &:hover {
-      border: 1px solid #ff7f23;
-      color: #ff7f23;
-      background-color: rgba(246 191 84 / 20%);
       cursor: default;
+      color: $highlight;
+      border: 1px solid $highlight;
+      background-color: rgba(246 191 84 / 20%);
     }
   }
 }

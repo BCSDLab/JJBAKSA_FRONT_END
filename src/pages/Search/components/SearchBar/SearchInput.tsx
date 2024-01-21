@@ -5,7 +5,7 @@ import styles from './SearchBar.module.scss';
 
 interface Props {
   text: string,
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 export default function SearchInput({

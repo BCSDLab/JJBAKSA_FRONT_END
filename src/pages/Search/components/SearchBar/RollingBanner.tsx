@@ -2,44 +2,29 @@ import useTrendingList from 'pages/Search/hooks/useTrendings';
 
 import styles from './SearchBar.module.scss';
 
+function renderTagList(tags: string[]) {
+  return (
+    <ul className={styles['banner__tag-list']}>
+      {tags.map((tag) => (
+        <li className={styles.banner__tag} key={tag}>
+          {`#${tag}`}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function RollingBanner() {
   const { isLoading, data: trendings } = useTrendingList();
+  const safeTrendings = trendings ? trendings.filter((e) => e.length > 0) : [];
 
-  return (
-    isLoading
-      ? <div />
-      : (
-        <div className={styles['search-rolling-banner']}>
-          <ul className={styles['search-rolling-banner__tag-list']}>
-            <li className={styles['search-rolling-banner__tag']}>
-              {trendings && trendings.map((tag) => (
-                tag !== '' && (
-                <span className={styles['search-rolling-banner__tag-style']} key={tag}>
-                  {`#${tag}`}
-                </span>
-                )
-              ))}
-            </li>
-            <li className={styles['search-rolling-banner__tag']}>
-              {trendings && trendings.map((tag) => (
-                tag !== '' && (
-                <span className={styles['search-rolling-banner__tag-style']} key={tag}>
-                  {`#${tag}`}
-                </span>
-                )
-              ))}
-            </li>
-            <li className={styles['search-rolling-banner__tag']}>
-              {trendings && trendings.map((tag) => (
-                tag !== '' && (
-                <span className={styles['search-rolling-banner__tag-style']} key={tag}>
-                  {`#${tag}`}
-                </span>
-                )
-              ))}
-            </li>
-          </ul>
-        </div>
-      )
+  return isLoading ? null : (
+    <div className={styles.banner}>
+      <div className={styles['banner__tag-lists']}>
+        {renderTagList(safeTrendings)}
+        {renderTagList(safeTrendings)}
+        {renderTagList(safeTrendings)}
+      </div>
+    </div>
   );
 }

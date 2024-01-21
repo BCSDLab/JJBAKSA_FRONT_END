@@ -29,45 +29,23 @@ export default function SearchPost(): JSX.Element {
     resetText();
   }, [location]);
 
-  if (isMobile) {
-    return (
-      <div className={styles.search}>
-        <NavigationBar />
-        {isEnter
-          ? <SearchDetails />
-          : (
-            <>
-              <Sentence subText={subText} />
-              <SearchInput
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-                text={text}
-              />
-              {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-              <RecentSearches />
-            </>
-          )}
-      </div>
-    );
-  }
   return (
     <div className={styles.search}>
-      <section>
-        {isEnter
-          ? <SearchDetails />
-          : (
-            <>
-              <Sentence subText={subText} />
-              <SearchInput
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-                text={text}
-              />
-              {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
-              <RecentSearches />
-            </>
-          )}
-      </section>
+      {isMobile && <NavigationBar />}
+      {isEnter
+        ? <SearchDetails />
+        : (
+          <>
+            <Sentence subText={subText} />
+            <SearchInput
+              onChange={handleChange}
+              onSubmit={handleSubmit}
+              text={text}
+            />
+            {isSearching ? <RelatedSearches text={text} /> : <RollingBanner />}
+            <RecentSearches />
+          </>
+        )}
     </div>
   );
 }
