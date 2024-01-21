@@ -13,7 +13,6 @@ interface MarkerProps {
 
 function useMarker({ map, filterShops }: MarkerProps) {
   const [markerArray, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
-  console.log(filterShops);
   const { setSelected } = useSelected();
   useEffect(() => {
     if (!map || !filterShops) return;
