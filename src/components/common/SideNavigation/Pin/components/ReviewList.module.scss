@@ -1,0 +1,25 @@
+.review {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+.review-type {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #eeeeee;
+
+  &__button {
+    font-size: 18px;
+    font-weight: 500;
+    width: 80px;
+    padding-bottom: 12px;
+
+    &--active {
+      color: #ff7f23;
+      border-bottom: 2px solid #ff7f23;
+    }
+  }
+}

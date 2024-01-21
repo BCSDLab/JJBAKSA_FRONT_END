@@ -1,11 +1,15 @@
+import { useState } from 'react';
+
 import { useQuery } from '@tanstack/react-query';
 
 import { fetchFollowerReview, fetchMyReview } from 'api/review';
 import { ReactComponent as StarIcon } from 'assets/svg/post/star.svg';
+import cn from 'utils/ts/classNames';
 
 import styles from './ReviewList.module.scss';
 
 export default function ReviewList({ placeId }: { placeId: string }) {
+  const [type, setType] = useState('my');
   const { data: friendReview } = useQuery({
     queryKey: ['followerReviews', placeId],
     queryFn: () => fetchFollowerReview(placeId),
@@ -19,8 +23,24 @@ export default function ReviewList({ placeId }: { placeId: string }) {
   return (
     <div className={styles.review}>
       <div className={styles['review-type']}>
-        <button type="button">내 리뷰</button>
-        <button type="button">친구 리뷰</button>
+        <button
+          className={cn({
+            [styles['review-type__button']]: true,
+            [styles['review-type__button--active']]: type === 'my',
+          })}
+          onClick={() => setType('my')}
+          type="button"
+        >내 리뷰
+        </button>
+        <button
+          className={cn({
+            [styles['review-type__button']]: true,
+            [styles['review-type__button--active']]: type === 'friend',
+          })}
+          onClick={() => setType('friend')}
+          type="button"
+        >친구 리뷰
+        </button>
       </div>
       <div className={styles['review-list']}>
         <button type="button">최신순</button>
