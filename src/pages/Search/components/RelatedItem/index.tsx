@@ -1,7 +1,7 @@
 import { ReactComponent as PointerIcon } from 'assets/svg/search/pointer.svg';
 import useSearchForm from 'store/text';
 
-import styles from '../RelatedSearches.module.scss';
+import styles from './RelatedItem.module.scss';
 
 interface Props {
   item: string;
@@ -21,12 +21,12 @@ export default function RelatedItem({ item }: Props) {
   return (
     <button
       type="button"
-      className={styles['search-related-list__wrapper']}
+      className={styles.suggestion__wrapper}
       onClick={handleClick}
     >
-      <li className={styles['search-related-list__item']}>
-        <div className={styles['search-related-list__title']}>
-          <div className={styles['search-related-list__icon']}>
+      <li className={styles.suggestion__item}>
+        <div className={styles.suggestion__title}>
+          <div className={styles.suggestion__icon}>
             <PointerIcon />
           </div>
           {item}

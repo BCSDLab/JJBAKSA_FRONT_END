@@ -1,5 +1,5 @@
-import RelatedItem from 'pages/Search/components/RelatedSearches/components/RelatedItem';
-import ToggleButton from 'pages/Search/components/RelatedSearches/components/ToggleButton';
+import RelatedItem from 'pages/Search/components/RelatedItem';
+import ToggleButton from 'pages/Search/components/ToggleButton/ToggleButton';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import useFetchAutoComplete from 'pages/SearchDetails/hooks/useFetchAutoComplete';
 import useBooleanState from 'utils/hooks/useBooleanState';
