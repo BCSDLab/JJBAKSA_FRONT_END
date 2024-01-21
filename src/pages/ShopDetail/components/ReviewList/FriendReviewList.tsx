@@ -15,7 +15,7 @@ interface Props {
 function FriendReviewList({ placeId }: Props) {
   const { data } = useQuery({
     queryKey: ['followerReviews', placeId],
-    queryFn: () => fetchFollowerReview(placeId),
+    queryFn: () => fetchFollowerReview({ placeId }),
   });
 
   if (data) {

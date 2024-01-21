@@ -5,6 +5,11 @@ export interface ReviewParams {
   reviewImages: File[];
 }
 
+export type ReviewListParams = {
+  placeId:string;
+  sort?: string;
+};
+
 export interface ShopReviewsResponse {
   content: {
     content: string;

@@ -1,7 +1,8 @@
 import reviewApi from './reviewApiClient';
 
 import type {
-  FollowerLatestDateResponse, MyLatestDateResponse, ReviewParams, ShopReviewsResponse,
+  FollowerLatestDateResponse, MyLatestDateResponse,
+  ReviewListParams, ReviewParams, ShopReviewsResponse,
 } from './entity';
 
 export const postReview = (params: ReviewParams) => {
@@ -21,10 +22,10 @@ export const postReview = (params: ReviewParams) => {
 
 export const deleteReview = (reviewId: string) => reviewApi.delete(`/${reviewId}`);
 
-export const fetchFollowerReview = (placeId: string) => reviewApi.get<ShopReviewsResponse>(`/followers/shop/${placeId}`);
+export const fetchFollowerReview = (params: ReviewListParams) => reviewApi.get<ShopReviewsResponse>(`/followers/shop/${params.placeId}?sort=${params.sort}`);
 
 export const fetchFollowerLatestDate = (placeId: string) => reviewApi.get<FollowerLatestDateResponse>(`/followers/last-date/shop/${placeId}`);
 
-export const fetchMyReview = (placeId: string) => reviewApi.get<ShopReviewsResponse>(`/shop/${placeId}`);
+export const fetchMyReview = (params: ReviewListParams) => reviewApi.get<ShopReviewsResponse>(`/shop/${params.placeId}?sort=${params.sort}`);
 
 export const fetchMyLatestDate = (placeId: string) => reviewApi.get<MyLatestDateResponse>(`/last-date/shop/${placeId}`);

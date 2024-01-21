@@ -13,15 +13,17 @@ import styles from './ReviewList.module.scss';
 
 export default function ReviewList({ placeId }: { placeId: string }) {
   const [type, setType] = useState('my');
+  const [sortType, setSortType] = useState('createdAt');
   const { data: friendReview } = useQuery({
-    queryKey: ['followerReviews', placeId],
-    queryFn: () => fetchFollowerReview(placeId),
+    queryKey: ['followerReviews', placeId, sortType],
+    queryFn: () => fetchFollowerReview({ placeId, sort: sortType }),
   });
 
   const { data: myReview } = useQuery({
-    queryKey: ['myReviews', placeId],
-    queryFn: () => fetchMyReview(placeId),
+    queryKey: ['myReviews', placeId, sortType],
+    queryFn: () => fetchMyReview({ placeId, sort: sortType }),
   });
+
   return (
     <div className={styles.review}>
       <div className={styles['review-type']}>
@@ -49,8 +51,12 @@ export default function ReviewList({ placeId }: { placeId: string }) {
       <ul className={styles['review-data']}>
         {myReview?.data.content.length !== 0 && (
         <>
-          <button className={styles['review-data__button']} type="button">
-            <SwitchIcon />최신순
+          <button
+            className={styles['review-data__button']}
+            type="button"
+            onClick={() => setSortType(sortType === 'createdAt' ? 'rate' : 'createdAt')}
+          >
+            <SwitchIcon />{sortType === 'createdAt' ? '최신순' : '별점순'}
           </button>
           {myReview?.data.content.map((review) => (
             <li className={styles['review-data__detail']} key={review.id}>
@@ -77,8 +83,12 @@ export default function ReviewList({ placeId }: { placeId: string }) {
       <ul className={styles['review-data']}>
         { friendReview?.data.content.length !== 0 && (
         <>
-          <button className={styles['review-data__button']} type="button">
-            <SwitchIcon />최신순
+          <button
+            className={styles['review-data__button']}
+            type="button"
+            onClick={() => setSortType(sortType === 'createdAt' ? 'rate' : 'createdAt')}
+          >
+            <SwitchIcon />{sortType === 'createdAt' ? '최신순' : '별점순'}
           </button>
           {friendReview?.data.content.map((review) => (
             <li className={styles['review-data__detail']} key={review.id}>
