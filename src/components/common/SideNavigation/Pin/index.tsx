@@ -2,6 +2,7 @@ import { ReactComponent as StarIcon } from 'assets/svg/post/star.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import useLatestDate from 'components/common/SideNavigation/hooks/useLatestDate';
 import usePin from 'components/common/SideNavigation/hooks/usePin';
+import ReviewList from 'components/common/SideNavigation/Pin/components';
 import ImageCarousel from 'components/ImageCarousel';
 import useRate from 'utils/hooks/useRate';
 import useScrap from 'utils/hooks/useScrap';
@@ -17,7 +18,7 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
   const { data } = usePin(String(placeId));
   const { scrapId } = useScrapId(String(placeId));
   const { rate } = useRate(placeId);
-  const { date } = useLatestDate(placeId);
+  const { latestDate } = useLatestDate(placeId);
 
   const { toggleScrap, isPending } = useScrap(String(placeId), Number(scrapId));
   return (
@@ -40,10 +41,11 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
         <li className={styles.info}>
           <div className={styles.info__rate}>
             <StarIcon fill="#FF7F23" width="18" height="18" />{rate}.0
-            {date !== null ? ` 마지막 리뷰 ${date?.replaceAll('-', '/')}` : ' 리뷰 없음'}
+            {latestDate?.lastDate === null ? ' 리뷰 없음' : ` ${latestDate?.lastDate.replaceAll('-', '/')}`}
           </div>
         </li>
       </ul>
+      <ReviewList placeId={placeId} />
     </>
   );
 }
