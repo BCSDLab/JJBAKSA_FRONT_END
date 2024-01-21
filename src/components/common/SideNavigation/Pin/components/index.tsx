@@ -8,6 +8,7 @@ import { ReactComponent as FriendEmptyIcon } from 'assets/svg/home/friend-empty-
 import { ReactComponent as MyEmptyIcon } from 'assets/svg/home/my-empty-review.svg';
 import { ReactComponent as SwitchIcon } from 'assets/svg/home/switch.svg';
 import { ReactComponent as StarIcon } from 'assets/svg/post/star.svg';
+import LoadingSpinner from 'components/common/LoadingSpinner';
 import cn from 'utils/ts/classNames';
 
 import styles from './ReviewList.module.scss';
@@ -25,29 +26,30 @@ export default function ReviewList({ placeId }: { placeId: string }) {
     queryFn: () => fetchMyReview({ placeId, sort: sortType }),
   });
 
-  return (
-    <div className={styles.review}>
-      <div className={styles['review-type']}>
-        <button
-          className={cn({
-            [styles['review-type__button']]: true,
-            [styles['review-type__button--active']]: type === 'my',
-          })}
-          onClick={() => setType('my')}
-          type="button"
-        >내 리뷰
-        </button>
-        <button
-          className={cn({
-            [styles['review-type__button']]: true,
-            [styles['review-type__button--active']]: type === 'friend',
-          })}
-          onClick={() => setType('friend')}
-          type="button"
-        >친구 리뷰
-        </button>
-      </div>
-      {type === 'my'
+  if (friendReview && myReview) {
+    return (
+      <div className={styles.review}>
+        <div className={styles['review-type']}>
+          <button
+            className={cn({
+              [styles['review-type__button']]: true,
+              [styles['review-type__button--active']]: type === 'my',
+            })}
+            onClick={() => setType('my')}
+            type="button"
+          >내 리뷰
+          </button>
+          <button
+            className={cn({
+              [styles['review-type__button']]: true,
+              [styles['review-type__button--active']]: type === 'friend',
+            })}
+            onClick={() => setType('friend')}
+            type="button"
+          >친구 리뷰
+          </button>
+        </div>
+        {type === 'my'
       && (
       <ul className={styles['review-data']}>
         {myReview?.data.content.length !== 0 && (
@@ -80,49 +82,56 @@ export default function ReviewList({ placeId }: { placeId: string }) {
         )}
       </ul>
       )}
-      {type === 'friend' && (
-      <ul className={styles['review-data']}>
-        { friendReview?.data.content.length !== 0 && (
-        <>
-          <button
-            className={styles['review-data__button']}
-            type="button"
-            onClick={() => setSortType(sortType === 'createdAt' ? 'rate' : 'createdAt')}
-          >
-            <SwitchIcon />{sortType === 'createdAt' ? '최신순' : '별점순'}
-          </button>
-          {friendReview?.data.content.map((review) => (
-            <li className={styles['review-data__friend']} key={review.id}>
-              <div className={styles['review-data__image']}>
-                <img
-                  src={review.userReviewResponse.profileImage.url || defaultImage}
-                  alt={`${review.userReviewResponse.nickname}의 프로필`}
-                />
-              </div>
-              <div className={styles['review-data__content']}>
-                <div>
-                  <span>{review.userReviewResponse.nickname}</span>
-                  <span>{review.userReviewResponse.account}</span>
+        {type === 'friend' && (
+        <ul className={styles['review-data']}>
+          { friendReview?.data.content.length !== 0 && (
+          <>
+            <button
+              className={styles['review-data__button']}
+              type="button"
+              onClick={() => setSortType(sortType === 'createdAt' ? 'rate' : 'createdAt')}
+            >
+              <SwitchIcon />{sortType === 'createdAt' ? '최신순' : '별점순'}
+            </button>
+            {friendReview?.data.content.map((review) => (
+              <li className={styles['review-data__friend']} key={review.id}>
+                <div className={styles['review-data__image']}>
+                  <img
+                    src={review.userReviewResponse.profileImage.url || defaultImage}
+                    alt={`${review.userReviewResponse.nickname}의 프로필`}
+                  />
                 </div>
-                <div>{review.content}</div>
-                <div>
-                  {review.createdAt.replaceAll('-', '/').slice(3)}|
-                  <StarIcon fill="#FF7F23" width="16" height="16" />
-                  {review.rate}.0
+                <div className={styles['review-data__content']}>
+                  <div>
+                    <span>{review.userReviewResponse.nickname}</span>
+                    <span>{review.userReviewResponse.account}</span>
+                  </div>
+                  <div>{review.content}</div>
+                  <div>
+                    {review.createdAt.replaceAll('-', '/').slice(3)}|
+                    <StarIcon fill="#FF7F23" width="16" height="16" />
+                    {review.rate}.0
+                  </div>
                 </div>
-              </div>
-            </li>
-          ))}
-        </>
-        )}
-        {friendReview?.data.content.length === 0 && (
+              </li>
+            ))}
+          </>
+          )}
+          {friendReview?.data.content.length === 0 && (
           <div className={styles['review-data__empty']}>
             <div>작성한 리뷰가 없어요</div>
             <div><FriendEmptyIcon /></div>
           </div>
+          )}
+        </ul>
         )}
-      </ul>
-      )}
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles.loading}>
+      <LoadingSpinner size={100} />
     </div>
   );
 }

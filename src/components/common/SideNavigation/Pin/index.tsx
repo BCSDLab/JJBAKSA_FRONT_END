@@ -41,7 +41,7 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
             disabled={isPending}
             className={styles['info__scrap-button']}
           >
-            {scrapId ? <BookMarkIcon fill="#FF7F23" /> : <BookMarkIcon stroke="#FF7F23" />}
+            {scrapId?.scrapId ? <BookMarkIcon fill="#FF7F23" /> : <BookMarkIcon stroke="#FF7F23" />}
             <div>북마크</div>
           </button>
         </li>
