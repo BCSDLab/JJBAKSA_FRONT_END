@@ -54,3 +54,11 @@ export interface ShopReviewsResponse {
   totalElements: number;
   totalPages: number;
 }
+
+export interface LatestDateResponse {
+  lastDate: null | string;
+}
+
+export interface FollowerLatestDateResponse extends LatestDateResponse {}
+
+export interface MyLatestDateResponse extends LatestDateResponse {}
