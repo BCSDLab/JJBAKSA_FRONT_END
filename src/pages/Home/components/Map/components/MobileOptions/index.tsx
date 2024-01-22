@@ -12,7 +12,7 @@ import cn from 'utils/ts/classNames';
 import styles from './MobileOptions.module.scss';
 
 export default function MobileOptions(): JSX.Element {
-  const [visible, , , toggle] = useBooleanState(true);
+  const [visible, , , toggle] = useBooleanState(false);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
@@ -40,33 +40,33 @@ export default function MobileOptions(): JSX.Element {
             type="button"
             className={cn({
               [styles.filter__text]: true,
-              [styles['filter__text--clicked']]: filterNearbyState === true,
+              [styles['filter__text--clicked']]: filterNearbyState,
             })}
             onClick={() => { setFilterNearby(!filterNearbyState); }}
           >
-            <NearbyIcon />
+            <div><NearbyIcon /></div>
             가까운 음식점
           </button>
           <button
             type="button"
             className={cn({
               [styles.filter__text]: true,
-              [styles['filter__text--clicked']]: filterScrapState === true,
+              [styles['filter__text--clicked']]: filterScrapState,
             })}
             onClick={() => { setFilterScrap(!filterScrapState); }}
           >
-            <BookMarkIcon />
+            <div><BookMarkIcon /></div>
             북마크 음식점
           </button>
           <button
             type="button"
             className={cn({
               [styles.filter__text]: true,
-              [styles['filter__text--clicked']]: filterFriendState === true,
+              [styles['filter__text--clicked']]: filterFriendState,
             })}
             onClick={() => { setFilterFriend(!filterFriendState); }}
           >
-            <GroupIcon />
+            <div><GroupIcon /></div>
             친구 음식점
           </button>
         </div>

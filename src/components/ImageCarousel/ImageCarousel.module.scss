@@ -99,7 +99,7 @@ button {
     align-items: center;
     justify-content: center;
     width: 550px;
-    height: 362px;
+    height: 350px;
     background-color: #eeeeee;
     gap: 10px;
     font-size: 11px;
@@ -126,7 +126,7 @@ button {
     img {
       object-fit: contain;
       width: 550px;
-      height: 362px;
+      height: 350px;
 
       @include media.media-breakpoint-down(mobile) {
         width: 573px;
@@ -145,7 +145,7 @@ button {
       background: #000;
       opacity: 0.7;
       width: 50px;
-      height: 362px;
+      height: 350px;
 
       svg {
         width: 80%;
@@ -161,7 +161,7 @@ button {
       background: #000;
       opacity: 0.7;
       width: 50px;
-      height: 362px;
+      height: 350px;
 
       svg {
         width: 80%;
