@@ -99,7 +99,7 @@
 .name {
   &__input {
     display: block;
-    width: 179px;
+    min-width: 179px;
     border: none;
     margin: 0 auto;
     border-bottom: 1px solid #c4c4c4;
@@ -113,7 +113,7 @@
 
   &__length {
     display: block;
-    width: 20px;
+    width: 30px;
     right: 23px;
     top: 7px;
     position: absolute;

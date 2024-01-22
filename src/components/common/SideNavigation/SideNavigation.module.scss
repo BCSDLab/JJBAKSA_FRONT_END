@@ -65,6 +65,10 @@
 
     &--clicked {
       background-color: #fff1e8;
+
+      svg {
+        fill: #fff1e8;
+      }
     }
   }
 
@@ -154,6 +158,7 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
+  box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
   animation: slide-in 0.3s ease-out normal forwards;
 
   &--expand {

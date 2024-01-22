@@ -20,22 +20,22 @@ export function MarkerHtml(src:string | null, name:string) {
   `;
 }
 
-export function ClickedMarkerHtml(src:string | null, name:string, id: string) {
+export function ClickedMarkerHtml(src: string | null, name: string, placeId: string) {
   return `
-  <a href='/shop/${id}'>
-    <div class=${styles.continer}>
-      <img src=${Selected} class=${styles['marker--clicked']}>
-      <div class=${styles.bubble}>
-        <div class=${styles['bubble__photo--clicked']}>
-          <img src=${src || `${defaultImage}`} alt="사진" />
-        </div>
-        <div class=${styles['bubble__name--clicked']}>
-          ${name}
+    <a href="/shop/${placeId}">
+      <div class=${styles.container}>
+        <img src=${Selected} class=${styles['marker--clicked']}>
+        <div class=${styles.bubble}>
+          <div class=${styles['bubble__photo--clicked']}>
+            <img src=${src || `${defaultImage}`} alt="사진" />
+          </div>
+          <div class=${styles['bubble__name--clicked']}>
+            ${name}
+          </div>
         </div>
       </div>
-    </div>
-  </a>
-`;
+    </a>
+  `;
 }
 
 export function ClusterHtml() {
