@@ -24,7 +24,7 @@
       color: #ff7f23;
       cursor: pointer;
 
-      s &::after {
+      &::after {
         display: block;
         content: "";
         border-bottom: 1px solid #ff7f23;
