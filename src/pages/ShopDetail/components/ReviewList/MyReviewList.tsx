@@ -13,8 +13,8 @@ interface Props {
 
 function MyReviewList({ placeId }: Props) {
   const { data } = useQuery({
-    queryKey: ['myReviews'],
-    queryFn: () => fetchMyReview(placeId),
+    queryKey: ['myReviews', placeId],
+    queryFn: () => fetchMyReview({ placeId, sort: 'createdAt' }),
   });
   if (data) {
     const { content } = data.data;

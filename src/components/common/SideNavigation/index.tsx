@@ -6,7 +6,7 @@ import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
-import Pin from 'components/common/SideNavigation/components';
+import Pin from 'components/common/SideNavigation/Pin';
 import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
@@ -22,7 +22,7 @@ export default function SideNavigation(): JSX.Element {
   const clearAuth = useClearAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const [visible, , , toggle, setVisible] = useBooleanState(true);
+  const [visible, , , toggle, setVisible] = useBooleanState(false);
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
@@ -88,7 +88,7 @@ export default function SideNavigation(): JSX.Element {
                   type="button"
                   className={cn({
                     [styles['side-navigation__button']]: true,
-                    [styles['side-navigation__button--clicked']]: visible && tab.link === location.pathname,
+                    [styles['side-navigation__button--clicked']]: (visible && tab.link === location.pathname) || location.pathname === '/shop',
                   })}
                   onClick={() => clickSearchButton()}
                   tabIndex={0}

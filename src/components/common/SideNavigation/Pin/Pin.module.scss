@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+  gap: 5px;
+}
+
+.info {
+  display: flex;
+  align-items: flex-end;
+
+  &__name {
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  &__category {
+    font-size: 14px;
+    color: #666666;
+  }
+
+  &__scrap-button {
+    position: relative;
+    top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    font-size: 14px;
+    color: #666666;
+
+    svg {
+      width: 26px;
+      height: 32px;
+    }
+  }
+
+  &__rate {
+    display: flex;
+  }
+}
+
+.post {
+  display: flex;
+  border: 1px solid #c4c4c4;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+  background-color: #ffffff;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin: 0 auto;
+  left: calc((100% - 150px) / 2);
+  bottom: 40px;
+}

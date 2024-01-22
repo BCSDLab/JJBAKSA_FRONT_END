@@ -5,6 +5,11 @@ export interface ReviewParams {
   reviewImages: File[];
 }
 
+export type ReviewListParams = {
+  placeId:string;
+  sort?: string;
+};
+
 export interface ShopReviewsResponse {
   content: {
     content: string;
@@ -54,3 +59,11 @@ export interface ShopReviewsResponse {
   totalElements: number;
   totalPages: number;
 }
+
+export interface LatestDateResponse {
+  lastDate: null | string;
+}
+
+export interface FollowerLatestDateResponse extends LatestDateResponse {}
+
+export interface MyLatestDateResponse extends LatestDateResponse {}
