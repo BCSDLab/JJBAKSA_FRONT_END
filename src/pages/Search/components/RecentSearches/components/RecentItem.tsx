@@ -21,7 +21,7 @@ export default function RecentItem({
 }: Props) {
   if (index < 5) {
     return (
-      <Link to={`/shop/${name}`} state={{ placeId }} className={styles.item}>
+      <Link to={`/shop/${placeId}`} state={{ placeId }} className={styles.item}>
         <div className={styles.container}>
           {!isMobile && <img alt="imageAlt" src={photoToken ?? defaultImage} className={styles.image} />}
           <div className={styles.description}>
