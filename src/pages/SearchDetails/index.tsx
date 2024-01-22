@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
-import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
+import SearchInput from 'pages/Search/components/SearchInput';
 import Suggestions from 'pages/Search/components/Suggestions';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import LoadingView from 'pages/SearchDetails/components/LoadingView';

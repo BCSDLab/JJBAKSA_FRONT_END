@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
 
-import styles from './SearchBar.module.scss';
+import styles from './SearchInput.module.scss';
 
 interface Props {
   className: string,

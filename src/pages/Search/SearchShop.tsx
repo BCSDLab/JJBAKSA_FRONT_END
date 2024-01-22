@@ -2,10 +2,10 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import NavigationBar from 'pages/Search/components/NavigationBar/index';
-import RollingBanner from 'pages/Search/components/RollingBanner/RollingBanner';
-import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
-import Sentence from 'pages/Search/components/Sentence/Sentence';
+import NavigationBar from 'pages/Search/components/NavigationBar';
+import RollingBanner from 'pages/Search/components/RollingBanner';
+import SearchInput from 'pages/Search/components/SearchInput';
+import Sentence from 'pages/Search/components/Sentence';
 import Suggestions from 'pages/Search/components/Suggestions';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import { POST_TEXT, SHOP_TEXT } from 'pages/Search/static/searchText';
