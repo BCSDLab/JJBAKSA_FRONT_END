@@ -144,7 +144,7 @@ export default function InquireForm(): JSX.Element {
           </span>
           <ToggleButton
             className={styles['secret__toggle-button']}
-            active={inquiry.isSecret}
+            isActive={inquiry.isSecret}
             toggle={() => setInquiry((prev) => ({ ...prev, isSecret: !prev.isSecret }))}
           />
         </div>

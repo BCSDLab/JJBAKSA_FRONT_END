@@ -31,11 +31,11 @@ export interface Coords {
   lat: number;
 }
 
-export interface FetchAutoCompleteParams {
+export interface FetchAutocompleteParams {
   query: string;
   location?: Coords;
 }
 
-export interface FetchAutoCompleteResponse {
+export interface FetchAutocompleteResponse {
   data: string[];
 }

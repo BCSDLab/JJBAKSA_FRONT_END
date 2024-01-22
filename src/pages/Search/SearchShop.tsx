@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import NavigationBar from 'pages/Search/components/NavigationBar/index';
-import RelatedSearches from 'pages/Search/components/RelatedSearches/index';
 import RollingBanner from 'pages/Search/components/RollingBanner/RollingBanner';
 import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
 import Sentence from 'pages/Search/components/Sentence/Sentence';
+import Suggestions from 'pages/Search/components/Suggestions';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import { POST_TEXT, SHOP_TEXT } from 'pages/Search/static/searchText';
 import SearchDetails from 'pages/SearchDetails';
@@ -30,21 +30,25 @@ export default function SearchShop(): JSX.Element {
   }, [location]);
 
   return (
-    <div className={styles.search}>
+    <div className={styles.container}>
       {isMobile && <NavigationBar />}
       {isEnter
         ? <SearchDetails />
         : (
           <>
             <Sentence subText={subText} />
-            <SearchInput
-              onChange={handleChange}
-              onSubmit={handleSubmit}
-              text={text}
-            />
-            <RollingBanner />
-            {isSearching && <RelatedSearches text={text} />}
-            <RecentSearches />
+            <div className={styles.search}>
+              <SearchInput
+                className={styles.search__input}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                text={text}
+              />
+              <Suggestions className={styles['search__related-searches']} text={text} />
+              <RollingBanner />
+              <RecentSearches />
+              {isSearching ? <>d</> : <>a</>}
+            </div>
           </>
         )}
     </div>

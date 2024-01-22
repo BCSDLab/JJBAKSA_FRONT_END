@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
-import RelatedSearches from 'pages/Search/components/RelatedSearches';
 import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
+import Suggestions from 'pages/Search/components/Suggestions';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import LoadingView from 'pages/SearchDetails/components/LoadingView';
 import SearchItem from 'pages/SearchDetails/components/SearchItem';
@@ -48,12 +48,13 @@ export default function SearchDetails() {
     <div className={styles.details}>
       <div className={styles.details__search}>
         <SearchInput
+          className={styles.details__search}
           onChange={handleChange}
           onSubmit={handleSubmit}
           text={text}
         />
       </div>
-      {!isMobile && isSearching && !isEnter && <RelatedSearches text={text} />}
+      {!isMobile && isSearching && !isEnter && <Suggestions className={styles['related-searches']} text={text} />}
       <div className={styles.details__result}>
         {`${count}개의 검색결과`}
       </div>

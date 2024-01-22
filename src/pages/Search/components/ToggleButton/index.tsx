@@ -2,25 +2,19 @@ import cn from 'utils/ts/classNames';
 
 import styles from './ToggleButton.module.scss';
 
-interface ToggleButtonProps {
+interface Props {
   className: string;
+  onClick: () => void;
   isActive: boolean;
-  toggle: () => void;
 }
 
-export default function ToggleButton({
-  className, isActive, toggle,
-}: ToggleButtonProps): JSX.Element {
-  const handleToggle = () => {
-    toggle();
-  };
-
+export default function ToggleButton({ className, onClick, isActive }: Props) {
   return (
-    <span className={className}>
+    <div className={className}>
       <label
         className={cn({
-          [styles.toggle__label]: true,
-          [styles['toggle__label--active']]: isActive,
+          [styles.toggle]: true,
+          [styles['toggle--active']]: isActive,
         })}
         htmlFor="toggle-input"
       >
@@ -30,7 +24,7 @@ export default function ToggleButton({
           aria-label="토글"
           id="toggle-input"
           checked={isActive}
-          onChange={() => handleToggle()}
+          onChange={onClick}
         />
         <span
           className={cn({
@@ -39,6 +33,6 @@ export default function ToggleButton({
           })}
         />
       </label>
-    </span>
+    </div>
   );
 }

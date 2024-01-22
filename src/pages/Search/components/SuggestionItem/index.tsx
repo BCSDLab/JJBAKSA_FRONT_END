@@ -1,13 +1,13 @@
 import { ReactComponent as PointerIcon } from 'assets/svg/search/pointer.svg';
 import useSearchForm from 'store/text';
 
-import styles from './RelatedItem.module.scss';
+import styles from './SuggestionItem.module.scss';
 
 interface Props {
   item: string;
 }
 
-export default function RelatedItem({ item }: Props) {
+export default function SuggestionItem({ item }: Props) {
   const { setSearchForm } = useSearchForm('/shop');
 
   const handleClick = () => {

@@ -1,33 +1,30 @@
-.ToggleButton {
-  width: 40px;
-  height: 18px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.5s ease-in-out;
+.toggle {
+  width: 34px;
+  height: 13px;
   background-color: #fff1e8;
+  border-radius: 6.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 0.2s;
+  cursor: pointer;
 
-  &.active {
-    background-color: whitesmoke;
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
   }
-}
 
-.circle {
-  background-color: #f6bf54;
-  width: 21px;
-  height: 21px;
-  border-radius: 50px;
-  position: absolute;
-  left: 5%;
-  transition: all 0.2s ease-in-out;
-
-  .ToggleButton.active & {
-    transform: translate(20px, 0);
+  &__circle {
+    width: 17px;
+    height: 17px;
+    border-radius: 8.5px;
     transition: all 0.2s ease-in-out;
-    background-color: gainsboro;
+    left: 5%;
+    background-color: #f6bf54;
+
+    &--active {
+      transform: translate(17px, 0);
+    }
   }
 }
