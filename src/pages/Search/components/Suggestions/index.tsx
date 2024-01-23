@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import SuggestionItem from 'pages/Search/components/SuggestionItem';
 import ToggleButton from 'pages/Search/components/ToggleButton';
-import useFetchAutocomplete from 'pages/SearchDetails/hooks/useFetchAutocomplete';
+import useFetchAutoComplete from 'pages/SearchDetails/hooks/useFetchAutoComplete';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import cn from 'utils/ts/classNames';
@@ -18,7 +18,7 @@ export default function Suggestions({ className, text }: Props) {
   const { isMobile } = useMediaQuery();
   const [isActive, , , toggle] = useBooleanState(false);
 
-  const { shop } = useFetchAutocomplete(text ?? '');
+  const { shop } = useFetchAutoComplete(text ?? '');
   const [safeAuto, setSafeAuto] = useState<Array<string>>([]);
 
   useEffect(() => {

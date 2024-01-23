@@ -1,6 +1,6 @@
 import {
-  FetchAutocompleteParams,
-  FetchAutocompleteResponse,
+  FetchAutoCompleteParams,
+  FetchAutoCompleteResponse,
   FetchShopsResponse,
   FetchTrendingsResponse,
   ShopsParams,
@@ -22,12 +22,12 @@ export const fetchShops = (params: ShopsParams) => {
   return searchApi.post<FetchShopsResponse>(url, requestBody);
 };
 
-export const fetchAutocomplete = (params: FetchAutocompleteParams) => {
+export const fetchAutoComplete = (params: FetchAutoCompleteParams) => {
   const { query, location } = params;
   const url = `/shops/auto-complete?query=${query}`;
   const requestBody = {
     lat: location?.lat,
     lng: location?.lng,
   };
-  return searchApi.post<FetchAutocompleteResponse>(url, requestBody);
+  return searchApi.post<FetchAutoCompleteResponse>(url, requestBody);
 };
