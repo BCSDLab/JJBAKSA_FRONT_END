@@ -1,16 +1,20 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+import { forwardRef } from 'react';
+
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
 
 import styles from './SearchInput.module.scss';
 
 interface Props {
   className: string,
-  text: string,
+  value: string,
+  inputRef: React.MutableRefObject<null>,
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
-export default function SearchInput({
-  className, text, onChange, onSubmit,
+
+function SearchInput({
+  className, value, inputRef, onChange, onSubmit,
 }: Props) {
   return (
     <div className={className}>
@@ -29,7 +33,8 @@ export default function SearchInput({
             className={styles['search-bar__input']}
             placeholder="검색어를 입력해주세요."
             id="search-bar-input"
-            value={text}
+            value={value}
+            ref={inputRef}
             onChange={onChange}
           />
           <button type="submit">
@@ -40,3 +45,5 @@ export default function SearchInput({
     </div>
   );
 }
+
+export default forwardRef(SearchInput);

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import NavigationBar from 'pages/Search/components/NavigationBar';
@@ -22,7 +22,10 @@ export default function SearchShop(): JSX.Element {
   const {
     text, handleChange, handleSubmit, isEnter, resetText,
   } = useSearchForm(location.pathname);
-  const isSearching = useSearchingMode();
+
+  const inputRef = useRef(null);
+  const isSearching = useSearchingMode({ inputRef });
+
   const { isMobile } = useMediaQuery();
 
   useEffect(() => {
@@ -37,17 +40,18 @@ export default function SearchShop(): JSX.Element {
         : (
           <>
             <Sentence subText={subText} />
+            {isSearching ? <>d</> : <>a</>}
             <div className={styles.search}>
               <SearchInput
                 className={styles.search__input}
+                value={text}
+                inputRef={inputRef}
                 onChange={handleChange}
                 onSubmit={handleSubmit}
-                text={text}
               />
               <Suggestions className={styles['search__related-searches']} text={text} />
               <RollingBanner />
               <RecentSearches />
-              {isSearching ? <>d</> : <>a</>}
             </div>
           </>
         )}

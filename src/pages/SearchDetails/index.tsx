@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
@@ -14,7 +14,8 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './SearchDetails.module.scss';
 
 export default function SearchDetails() {
-  const isSearching = useSearchingMode();
+  const inputRef = useRef(null);
+  const isSearching = useSearchingMode({ inputRef });
   const { isMobile } = useMediaQuery();
   const location = useLocation();
   const {
@@ -49,9 +50,10 @@ export default function SearchDetails() {
       <div className={styles.details__search}>
         <SearchInput
           className={styles.details__search}
+          value={text}
+          inputRef={inputRef}
           onChange={handleChange}
           onSubmit={handleSubmit}
-          text={text}
         />
       </div>
       {!isMobile && isSearching && !isEnter && <Suggestions className={styles['related-searches']} text={text} />}
