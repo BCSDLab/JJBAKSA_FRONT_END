@@ -26,6 +26,8 @@ export default function SearchShop(): JSX.Element {
   const inputRef = useRef(null);
   const isSearching = useSearchingMode({ inputRef });
 
+  console.log(isSearching);
+
   const { isMobile } = useMediaQuery();
 
   useEffect(() => {
@@ -40,16 +42,21 @@ export default function SearchShop(): JSX.Element {
         : (
           <>
             <Sentence subText={subText} />
-            {isSearching ? <>d</> : <>a</>}
             <div className={styles.search}>
               <SearchInput
                 className={styles.search__input}
                 value={text}
-                inputRef={inputRef}
+                ref={inputRef}
                 onChange={handleChange}
                 onSubmit={handleSubmit}
+                onDelete={resetText}
               />
-              <Suggestions className={styles['search__related-searches']} text={text} />
+              {isSearching && (
+                <Suggestions
+                  className={styles['search__related-searches']}
+                  text={text}
+                />
+              )}
               <RollingBanner />
               <RecentSearches />
             </div>

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import SuggestionItem from 'pages/Search/components/SuggestionItem';
 import ToggleButton from 'pages/Search/components/ToggleButton';
 import useFetchAutocomplete from 'pages/SearchDetails/hooks/useFetchAutocomplete';
@@ -17,7 +19,11 @@ export default function Suggestions({ className, text }: Props) {
   const [isActive, , , toggle] = useBooleanState(false);
 
   const { shop } = useFetchAutocomplete(text ?? '');
-  const safeAuto = shop ? shop.data.filter((e) => e.includes(e)) : [];
+  const [safeAuto, setSafeAuto] = useState<Array<string>>([]);
+
+  useEffect(() => {
+    setSafeAuto((shop && shop.data) ? shop.data.filter((e) => e.includes(text)) : []);
+  }, [shop, text]);
 
   return (
     <div className={className}>

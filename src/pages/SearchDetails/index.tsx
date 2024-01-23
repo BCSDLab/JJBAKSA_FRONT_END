@@ -51,9 +51,10 @@ export default function SearchDetails() {
         <SearchInput
           className={styles.details__search}
           value={text}
-          inputRef={inputRef}
+          ref={inputRef}
           onChange={handleChange}
           onSubmit={handleSubmit}
+          onDelete={resetText}
         />
       </div>
       {!isMobile && isSearching && !isEnter && <Suggestions className={styles['related-searches']} text={text} />}

@@ -6,11 +6,38 @@ const useSearchingMode = ({ inputRef }: Props) => {
   const [isSearching, setIsSearching] = useState(false);
   const [isText, setIsText] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const safeTextValue = inputRef.current && inputRef.current.value;
 
   useEffect(() => {
-    setIsText(inputRef.current ? inputRef.current.value.length > 0 : false);
-  }, [inputRef, safeTextValue]);
+    const handleValueChange = () => {
+      setIsText(inputRef.current ? inputRef.current.value.length > 0 : false);
+    };
+
+    const observer = new MutationObserver(handleValueChange);
+    if (inputRef.current) {
+      observer.observe(inputRef.current, { attributes: true, childList: true, subtree: true });
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [inputRef]);
+
+  useEffect(() => {
+    const node = inputRef.current;
+    const handleInputChange = () => {
+      setIsText(node ? node.value.length > 0 : false);
+    };
+
+    if (node) {
+      node.addEventListener('input', handleInputChange);
+    }
+
+    return () => {
+      if (node) {
+        node.removeEventListener('input', handleInputChange);
+      }
+    };
+  }, [inputRef]);
 
   useEffect(() => {
     const handleFocus = () => setIsFocused(true);

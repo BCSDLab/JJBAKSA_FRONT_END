@@ -83,8 +83,8 @@ export default function Inquiry(): JSX.Element {
           <div className={styles['search-bar']}>
             <SearchBar
               className={styles['search-bar__item']}
-              onSearchChange={handleSearchChange}
-              onSearchSubmit={handleSearchSubmit}
+              onChange={handleSearchChange}
+              onSubmit={handleSearchSubmit}
             />
           </div>
 

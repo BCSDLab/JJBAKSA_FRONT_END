@@ -44,9 +44,10 @@ export default function SearchPost(): JSX.Element {
               <SearchInput
                 className={styles.search__input}
                 value={text}
-                inputRef={inputRef}
+                ref={inputRef}
                 onChange={handleChange}
                 onSubmit={handleSubmit}
+                onDelete={resetText}
               />
               <Suggestions className={styles['search__related-searches']} text={text} />
               <RollingBanner />

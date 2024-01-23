@@ -60,12 +60,21 @@
     }
   }
 
-  &__icon {
-    display: flex;
-    width: 34px;
-    height: 34px;
+  &__delete {
+    & > * {
+      stroke: #666666;
+    }
+  }
+
+  &__lens {
+    width: 25.5px;
+    height: 25.5px;
     padding: 20px;
     cursor: pointer;
+
+    & > * {
+      stroke: #666666;
+    }
 
     @include media.media-breakpoint-down(mobile) {
       width: 18px;

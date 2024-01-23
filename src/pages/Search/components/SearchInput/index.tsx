@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { forwardRef } from 'react';
 
+import { ReactComponent as DeleteIcon } from 'assets/svg/search/delete.svg';
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
 
 import styles from './SearchInput.module.scss';
@@ -8,14 +9,16 @@ import styles from './SearchInput.module.scss';
 interface Props {
   className: string,
   value: string,
-  inputRef: React.MutableRefObject<null>,
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  onDelete: () => void;
 }
 
-function SearchInput({
-  className, value, inputRef, onChange, onSubmit,
-}: Props) {
+const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const {
+    className, value, onChange, onSubmit, onDelete,
+  } = props;
+
   return (
     <div className={className}>
       <label
@@ -34,16 +37,19 @@ function SearchInput({
             placeholder="검색어를 입력해주세요."
             id="search-bar-input"
             value={value}
-            ref={inputRef}
+            ref={ref}
             onChange={onChange}
           />
+          <button type="button" onClick={onDelete}>
+            <DeleteIcon title="삭제" className={styles['search-bar__delete']} />
+          </button>
           <button type="submit">
-            <LensIcon title="검색" className={styles['search-bar__icon']} />
+            <LensIcon title="검색" className={styles['search-bar__lens']} />
           </button>
         </form>
       </label>
     </div>
   );
-}
+});
 
-export default forwardRef(SearchInput);
+export default SearchInput;
