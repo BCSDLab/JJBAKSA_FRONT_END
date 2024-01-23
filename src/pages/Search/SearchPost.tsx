@@ -25,7 +25,6 @@ export default function SearchPost(): JSX.Element {
 
   const inputRef = useRef(null);
   const isSearching = useSearchingMode({ inputRef });
-
   const { isMobile } = useMediaQuery();
 
   useEffect(() => {
@@ -49,10 +48,14 @@ export default function SearchPost(): JSX.Element {
                 onSubmit={handleSubmit}
                 onDelete={resetText}
               />
-              <Suggestions className={styles['search__related-searches']} text={text} />
+              {isSearching && (
+                <Suggestions
+                  className={styles['search__related-searches']}
+                  text={text}
+                />
+              )}
               <RollingBanner />
               <RecentSearches />
-              {isSearching ? <>d</> : <>a</>}
             </div>
           </>
         )}

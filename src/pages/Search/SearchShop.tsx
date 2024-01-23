@@ -25,9 +25,6 @@ export default function SearchShop(): JSX.Element {
 
   const inputRef = useRef(null);
   const isSearching = useSearchingMode({ inputRef });
-
-  console.log(isSearching);
-
   const { isMobile } = useMediaQuery();
 
   useEffect(() => {
