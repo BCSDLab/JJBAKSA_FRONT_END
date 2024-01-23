@@ -22,10 +22,6 @@ const useSearchForm = (pathname: string) => {
     }));
   };
 
-  const resetText = () => {
-    setSearchForm(initialSearchFormState);
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (searchForm.text.trim().length === 0) {
@@ -42,6 +38,17 @@ const useSearchForm = (pathname: string) => {
     }
   };
 
+  const setText = (text: string) => {
+    setSearchForm((prevSearchForm) => ({
+      ...prevSearchForm,
+      text,
+    }));
+  };
+
+  const resetText = () => {
+    setSearchForm(initialSearchFormState);
+  };
+
   return {
     setSearchForm,
     text: searchForm.text,
@@ -49,6 +56,7 @@ const useSearchForm = (pathname: string) => {
     handleSubmit,
     submittedText: searchForm.submittedText,
     isEnter: searchForm.isEnter,
+    setText,
     resetText,
   };
 };
