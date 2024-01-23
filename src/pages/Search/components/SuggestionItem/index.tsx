@@ -20,18 +20,16 @@ export default function SuggestionItem({ item }: Props) {
   };
 
   return (
-    <li className={styles.suggestion}>
-      <button
-        className={styles.suggestion__item}
-        type="button"
-        onClick={handleClick}
-      >
-        <PinIcon className={styles.suggestion__pin} />
-        <div className={styles.suggestion__title}>
-          {item}
-        </div>
-        <DeleteIcon className={styles.suggestion__delete} />
-      </button>
-    </li>
+    <button
+      className={styles.suggestion}
+      type="button"
+      onClick={handleClick}
+    >
+      <PinIcon className={styles.suggestion__pin} />
+      <div className={styles.suggestion__title}>
+        {item}
+      </div>
+      <DeleteIcon className={styles.suggestion__delete} />
+    </button>
   );
 }

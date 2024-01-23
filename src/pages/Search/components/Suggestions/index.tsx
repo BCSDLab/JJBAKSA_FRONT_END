@@ -14,11 +14,10 @@ interface Props {
 
 export default function Suggestions({ className, text }: Props) {
   const { isMobile } = useMediaQuery();
-  const { shop } = useFetchAutocomplete(text ?? '');
   const [isActive, , , toggle] = useBooleanState(false);
 
+  const { shop } = useFetchAutocomplete(text ?? '');
   const safeAuto = shop ? shop.data.filter((e) => e.includes(e)) : [];
-  // const safeAutos = ['a', 'b', 'c', 'd', ...safeAuto];
 
   return (
     <div className={className}>
@@ -43,7 +42,9 @@ export default function Suggestions({ className, text }: Props) {
         </div>
         <ul className={styles.suggestions}>
           {text.length > 0 && safeAuto.map((item) => (
-            <SuggestionItem item={item} key={item} />
+            <li className={styles.suggestions__item}>
+              <SuggestionItem item={item} key={item} />
+            </li>
           ))}
         </ul>
       </div>
