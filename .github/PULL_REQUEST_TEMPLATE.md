@@ -2,9 +2,7 @@
 
 <!--
 - Write here your development contents 
-- e.g.) Make a main page.
 -->
-
 
 ## Please check if the PR fulfills these requirements
 
@@ -15,3 +13,7 @@
 
 
 ### Screenshot
+
+### Precautions (main files for this PR ...)
+
+Closes #ISSUE_NUMBER
