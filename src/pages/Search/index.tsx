@@ -20,7 +20,7 @@ export default function Search(): JSX.Element {
   const location = useLocation();
   const subText = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
   const {
-    text, handleChange, handleSubmit, isEnter, resetText,
+    text, resetText, isEnter,
   } = useSearchForm(location.pathname);
 
   const inputRef = useRef(null);
@@ -42,11 +42,7 @@ export default function Search(): JSX.Element {
             <div className={styles.search}>
               <SearchInput
                 className={styles.search__input}
-                value={text}
                 ref={inputRef}
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-                onDelete={resetText}
               />
               {isSearching && (
                 <Suggestions

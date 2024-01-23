@@ -1,23 +1,24 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { forwardRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { ReactComponent as DeleteIcon } from 'assets/svg/search/delete.svg';
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
+import useSearchForm from 'store/text';
 
 import styles from './SearchInput.module.scss';
 
 interface Props {
-  className: string,
-  value: string,
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  onDelete: () => void;
+  className: string
 }
 
 const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
+  const { className } = props;
+
+  const location = useLocation();
   const {
-    className, value, onChange, onSubmit, onDelete,
-  } = props;
+    text, resetText, handleChange, handleSubmit,
+  } = useSearchForm(location.pathname);
 
   return (
     <div className={className}>
@@ -29,18 +30,18 @@ const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
       >
         <form
           className={styles['search-bar__form']}
-          onSubmit={onSubmit}
+          onSubmit={handleSubmit}
           autoComplete="off"
         >
           <input
             className={styles['search-bar__input']}
             placeholder="검색어를 입력해주세요."
             id="search-bar-input"
-            value={value}
+            value={text}
             ref={ref}
-            onChange={onChange}
+            onChange={handleChange}
           />
-          <button type="button" onClick={onDelete}>
+          <button type="button" onClick={resetText}>
             <DeleteIcon title="삭제" className={styles['search-bar__delete']} />
           </button>
           <button type="submit">

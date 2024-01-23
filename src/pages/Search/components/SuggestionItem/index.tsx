@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import { ReactComponent as DeleteIcon } from 'assets/svg/search/delete.svg';
 import { ReactComponent as PinIcon } from 'assets/svg/search/pin.svg';
 import useSearchForm from 'store/text';
@@ -9,7 +11,8 @@ interface Props {
 }
 
 export default function SuggestionItem({ item }: Props) {
-  const { setSearchForm } = useSearchForm('/shop');
+  const location = useLocation();
+  const { setSearchForm } = useSearchForm(location.pathname);
 
   const handleClick = () => {
     setSearchForm((prevSearchForm) => ({

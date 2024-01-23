@@ -19,7 +19,7 @@ export default function SearchDetails() {
   const { isMobile } = useMediaQuery();
   const location = useLocation();
   const {
-    text, handleChange, handleSubmit, isEnter, submittedText, resetText,
+    text, resetText, isEnter, submittedText,
   } = useSearchForm(location.pathname);
   const {
     isFetching, data: shops, count, isError,
@@ -49,11 +49,7 @@ export default function SearchDetails() {
     <div className={styles.details}>
       <SearchInput
         className={styles.details__search}
-        value={text}
         ref={inputRef}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        onDelete={resetText}
       />
       {!isMobile && isSearching && !isEnter && <Suggestions className={styles['related-searches']} text={text} />}
       <div className={styles.details__result}>
