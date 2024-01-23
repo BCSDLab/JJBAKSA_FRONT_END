@@ -1,4 +1,5 @@
-import { ReactComponent as PointerIcon } from 'assets/svg/search/pointer.svg';
+import { ReactComponent as DeleteIcon } from 'assets/svg/search/delete.svg';
+import { ReactComponent as PinIcon } from 'assets/svg/search/pin.svg';
 import useSearchForm from 'store/text';
 
 import styles from './SuggestionItem.module.scss';
@@ -19,19 +20,18 @@ export default function SuggestionItem({ item }: Props) {
   };
 
   return (
-    <button
-      type="button"
-      className={styles.suggestion__wrapper}
-      onClick={handleClick}
-    >
-      <li className={styles.suggestion__item}>
+    <li className={styles.suggestion}>
+      <button
+        className={styles.suggestion__item}
+        type="button"
+        onClick={handleClick}
+      >
+        <PinIcon className={styles.suggestion__pin} />
         <div className={styles.suggestion__title}>
-          <div className={styles.suggestion__icon}>
-            <PointerIcon />
-          </div>
           {item}
         </div>
-      </li>
-    </button>
+        <DeleteIcon className={styles.suggestion__delete} />
+      </button>
+    </li>
   );
 }

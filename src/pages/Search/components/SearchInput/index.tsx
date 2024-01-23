@@ -23,6 +23,7 @@ export default function SearchInput({
         <form
           className={styles['search-bar__form']}
           onSubmit={onSubmit}
+          autoComplete="off"
         >
           <input
             className={styles['search-bar__input']}
