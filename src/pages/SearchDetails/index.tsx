@@ -47,16 +47,14 @@ export default function SearchDetails() {
 
   return (
     <div className={styles.details}>
-      <div className={styles.details__search}>
-        <SearchInput
-          className={styles.details__search}
-          value={text}
-          ref={inputRef}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          onDelete={resetText}
-        />
-      </div>
+      <SearchInput
+        className={styles.details__search}
+        value={text}
+        ref={inputRef}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        onDelete={resetText}
+      />
       {!isMobile && isSearching && !isEnter && <Suggestions className={styles['related-searches']} text={text} />}
       <div className={styles.details__result}>
         {`${count}개의 검색결과`}
