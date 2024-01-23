@@ -8,11 +8,11 @@ const useSearchingMode = ({ inputRef }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
-    const handleValueChange = () => {
+    const handleInputChange = () => {
       setIsText(inputRef.current ? inputRef.current.value.length > 0 : false);
     };
 
-    const observer = new MutationObserver(handleValueChange);
+    const observer = new MutationObserver(handleInputChange);
     if (inputRef.current) {
       observer.observe(inputRef.current, { attributes: true, childList: true, subtree: true });
     }
