@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import NavigationBar from 'pages/Search/components/NavigationBar';
+import RecentSearches from 'pages/Search/components/RecentSearches';
 import RollingBanner from 'pages/Search/components/RollingBanner';
 import SearchInput from 'pages/Search/components/SearchInput';
 import Sentence from 'pages/Search/components/Sentence';
@@ -13,7 +14,6 @@ import SearchDetails from 'pages/SearchDetails';
 import useSearchForm from 'store/text';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
-import RecentSearches from './components/RecentSearches';
 import styles from './Search.module.scss';
 
 export default function SearchShop(): JSX.Element {

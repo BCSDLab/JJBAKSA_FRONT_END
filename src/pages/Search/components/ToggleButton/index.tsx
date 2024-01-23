@@ -21,7 +21,7 @@ export default function ToggleButton({ className, onClick, isActive }: Props) {
         <input
           className={styles.toggle__input}
           type="checkbox"
-          aria-label="토글"
+          aria-label="자동완성 활성화/비활성화"
           id="toggle-input"
           checked={isActive}
           onChange={onClick}
