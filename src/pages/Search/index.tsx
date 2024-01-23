@@ -16,7 +16,7 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 
 import styles from './Search.module.scss';
 
-export default function SearchPost(): JSX.Element {
+export default function Search(): JSX.Element {
   const location = useLocation();
   const subText = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
   const {
