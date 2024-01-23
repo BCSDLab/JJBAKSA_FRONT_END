@@ -23,18 +23,18 @@ const useSearchingMode = ({ inputRef }: Props) => {
   }, [inputRef]);
 
   useEffect(() => {
-    const node = inputRef.current;
+    const inputTag = inputRef.current;
     const handleInputChange = () => {
-      setIsText(node ? node.value.length > 0 : false);
+      setIsText(inputTag ? inputTag.value.length > 0 : false);
     };
 
-    if (node) {
-      node.addEventListener('input', handleInputChange);
+    if (inputTag) {
+      inputTag.addEventListener('input', handleInputChange);
     }
 
     return () => {
-      if (node) {
-        node.removeEventListener('input', handleInputChange);
+      if (inputTag) {
+        inputTag.removeEventListener('input', handleInputChange);
       }
     };
   }, [inputRef]);
@@ -43,16 +43,16 @@ const useSearchingMode = ({ inputRef }: Props) => {
     const handleFocus = () => setIsFocused(true);
     const handleBlur = () => setIsFocused(false);
 
-    const node = inputRef.current;
-    if (node) {
-      node.addEventListener('focus', handleFocus);
-      node.addEventListener('blur', handleBlur);
+    const inputTag = inputRef.current;
+    if (inputTag) {
+      inputTag.addEventListener('focus', handleFocus);
+      inputTag.addEventListener('blur', handleBlur);
     }
 
     return () => {
-      if (node) {
-        node.removeEventListener('focus', handleFocus);
-        node.removeEventListener('blur', handleBlur);
+      if (inputTag) {
+        inputTag.removeEventListener('focus', handleFocus);
+        inputTag.removeEventListener('blur', handleBlur);
       }
     };
   }, [inputRef]);
