@@ -25,6 +25,8 @@ export default function RollingBanner() {
         {renderTagList(safeTrendings)}
         {renderTagList(safeTrendings)}
       </div>
+      <div className={styles['banner__left-gradient']} />
+      <div className={styles['banner__right-gradient']} />
     </div>
   );
 }

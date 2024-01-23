@@ -16,26 +16,24 @@ $default: #c4c4c4;
     width: 120%;
   }
 
-  &::before,
-  &::after {
+  &__left-gradient,
+  &__right-gradient {
     content: "";
     position: absolute;
     top: 0;
     height: 100%;
     width: 38px;
     pointer-events: none;
-
-    // z-index: 1;
   }
 
-  &::before {
-    left: 0;
-    background: linear-gradient(to right, #ffffff, transparent);
-  }
-
-  &::after {
+  &__left-gradient {
     right: 0;
     background: linear-gradient(to left, #ffffff, transparent);
+  }
+
+  &__right-gradient {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
   }
 
   &__tag-lists {
