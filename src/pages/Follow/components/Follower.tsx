@@ -32,7 +32,7 @@ export default function Follower({
   const {
     del, isMobile, mobileUnfollow, value, toggle,
   } = useDeleteFollow();
-  const cancel = useCancelFollow();
+  const cancel = useCancelFollow(account);
   const reject = useRejectRequest();
   const navigate = useNavigate();
   const buttonConfigs: {
