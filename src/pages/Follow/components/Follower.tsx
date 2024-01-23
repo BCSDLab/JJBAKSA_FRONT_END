@@ -27,7 +27,7 @@ interface Props {
 export default function Follower({
   nickname, account, followedType, id, requestId, userCountResponse,
 }: Props) {
-  const request = useRequestAndUpdate();
+  const request = useRequestAndUpdate(account);
   const accept = useAcceptFollow();
   const {
     del, isMobile, mobileUnfollow, value, toggle,
@@ -45,7 +45,7 @@ export default function Follower({
   } = {
     NONE: {
       className: styles['follower__button--request'],
-      onClick: () => account && request(account),
+      onClick: () => account && request(),
       text: '팔로우',
     },
     REQUEST_SENT: {
@@ -100,16 +100,16 @@ export default function Follower({
         {config.text}
       </button>
       {followedType === 'REQUEST_RECEIVE' && requestId && (
-      <button
-        type="button"
-        className={styles.follower__button}
-        onClick={() => reject(requestId)}
-      >
-        거절
-      </button>
+        <button
+          type="button"
+          className={styles.follower__button}
+          onClick={() => reject(requestId)}
+        >
+          거절
+        </button>
       )}
       {value && isMobile
-      && <MobileUnfollow nickname={nickname} del={del} toggle={toggle} account={account} />}
+        && <MobileUnfollow nickname={nickname} del={del} toggle={toggle} account={account} />}
     </div>
   );
 }
