@@ -10,19 +10,25 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './RecentItem.module.scss';
 
 interface Props {
-  data: Card;
+  card: Card;
   index: number;
-  deleteCard: (x: string) => void;
+  deleteCard: (target: Card) => void;
 }
 
 export default function RecentItem({
-  data, index, deleteCard,
+  card, index, deleteCard,
 }: Props) {
   const {
     category, name, photoToken, placeId,
-  } = data;
+  } = card;
 
   const { isMobile } = useMediaQuery();
+
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    event.preventDefault();
+    deleteCard(card);
+  };
 
   if (index < 5) {
     return (
@@ -45,30 +51,30 @@ export default function RecentItem({
               : <div className={styles.description__category}>{category}</div>}
             <div className={styles.description__name}>{name}</div>
           </div>
+        </div>
 
-          {isMobile
-            ? (
+        {isMobile
+          ? (
+            <button
+              className={styles.delete}
+              type="button"
+              onClick={handleDelete}
+              aria-label="삭제"
+            >
+              <MobileDeleteIcon />
+            </button>
+          ) : (
+            <div className={styles.cover}>
               <button
-                className={styles.delete}
+                className={styles.cover__delete}
                 type="button"
-                onClick={() => deleteCard(placeId)}
+                onClick={handleDelete}
                 aria-label="삭제"
               >
-                <MobileDeleteIcon />
+                <PcDeleteIcon />
               </button>
-            ) : (
-              <div className={styles.cover}>
-                <button
-                  className={styles.cover__delete}
-                  type="button"
-                  onClick={() => deleteCard(placeId)}
-                  aria-label="삭제"
-                >
-                  <PcDeleteIcon />
-                </button>
-              </div>
-            )}
-        </div>
+            </div>
+          )}
       </Link>
     );
   } return null;
