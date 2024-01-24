@@ -120,11 +120,8 @@ export default function ChangePasswordPC(): JSX.Element {
                 onClick={() => toggleNewBlind()}
                 className={styles['form__blind-icon']}
               >
-                {isNewBlind ? (
-                  !errors.password && <ShowIcon aria-hidden />
-                ) : (
-                  !errors.password && <BlindIcon aria-hidden />
-                )}
+                {isNewBlind && !errors.password ? <ShowIcon aria-hidden />
+                  : <BlindIcon aria-hidden />}
               </button>
             </label>
             {errors.password && <ErrorIcon className={styles.form__error} />}
@@ -155,11 +152,8 @@ export default function ChangePasswordPC(): JSX.Element {
                 onClick={() => toggleNewCheckBlind()}
                 className={styles['form__blind-icon']}
               >
-                {isNewCheckBlind ? (
-                  !errors.passwordCheck && <ShowIcon aria-hidden />
-                ) : (
-                  !errors.passwordCheck && <BlindIcon aria-hidden />
-                )}
+                {isNewBlind && !errors.password ? <ShowIcon aria-hidden />
+                  : <BlindIcon aria-hidden />}
               </button>
             </label>
             {errors.passwordCheck && <ErrorIcon className={styles.form__error} />}
