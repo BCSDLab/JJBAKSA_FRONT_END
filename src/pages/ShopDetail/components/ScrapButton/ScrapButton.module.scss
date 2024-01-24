@@ -1,3 +1,5 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
 .scrap-button {
   display: flex;
   gap: 2px;
@@ -13,5 +15,11 @@
   &--active {
     background: #ff7f23;
     color: #fff;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    flex-direction: column;
+    gap: 5px;
+    background: none;
   }
 }
