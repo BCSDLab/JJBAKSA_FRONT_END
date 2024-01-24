@@ -1,8 +1,8 @@
 export interface Card {
-  photoToken: string | null;
-  name: string;
   category: string;
+  name: string;
+  photoToken: string | null;
   placeId: string;
 }
 
-export interface Cards extends Array<Card> {}
+export type Cards = Card[];

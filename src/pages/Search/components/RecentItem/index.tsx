@@ -19,7 +19,7 @@ export default function RecentItem({
   data, index, deleteCard,
 }: Props) {
   const {
-    photoToken, name, category, placeId,
+    category, name, photoToken, placeId,
   } = data;
 
   const { isMobile } = useMediaQuery();
@@ -52,8 +52,9 @@ export default function RecentItem({
                 className={styles.delete}
                 type="button"
                 onClick={() => deleteCard(placeId)}
+                aria-label="삭제"
               >
-                <MobileDeleteIcon className={styles['delete__delete-icon']} />
+                <MobileDeleteIcon />
               </button>
             ) : (
               <div className={styles.cover}>
@@ -61,6 +62,7 @@ export default function RecentItem({
                   className={styles.cover__delete}
                   type="button"
                   onClick={() => deleteCard(placeId)}
+                  aria-label="삭제"
                 >
                   <PcDeleteIcon />
                 </button>

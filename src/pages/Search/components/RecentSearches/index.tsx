@@ -1,36 +1,13 @@
-import { useEffect, useState } from 'react';
-
 import RecentItem from 'pages/Search/components/RecentItem';
-import { Cards } from 'pages/Search/static/entity';
+import useRecentSearches from 'pages/Search/hooks/useRecentSearches';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import cn from 'utils/ts/classNames';
 
 import styles from './RecentSearches.module.scss';
 
 export default function RecentSearches() {
-  const [cards, setCards] = useState<Cards>([]);
+  const { cards, deleteCard, clearStorage } = useRecentSearches();
   const { isMobile } = useMediaQuery();
-
-  useEffect(() => {
-    const recenteSearchData = localStorage.getItem('recent_search');
-    if (!recenteSearchData) {
-      localStorage.setItem('recent_search', '[]');
-    } else {
-      setCards(JSON.parse(recenteSearchData));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('recent_search', JSON.stringify(cards));
-  }, [cards]);
-
-  const deleteCard = (placeId: string) => {
-    setCards((prev) => prev.filter((item) => item.placeId !== placeId));
-  };
-
-  const clearStorage = () => {
-    setCards([]);
-  };
 
   return (
     <div className={styles.container}>
@@ -51,7 +28,7 @@ export default function RecentSearches() {
             key={card.placeId}
             data={card}
             index={index}
-            deleteCard={deleteCard}
+            deleteCard={() => deleteCard(card)}
           />
         ))}
       </div>

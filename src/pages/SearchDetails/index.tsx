@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Shop } from 'api/shop/entity';
 import SearchInput from 'pages/Search/components/SearchInput';
 import Suggestions from 'pages/Search/components/Suggestions';
+import useRecentSearches from 'pages/Search/hooks/useRecentSearches';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import LoadingView from 'pages/SearchDetails/components/LoadingView';
 import SearchItem from 'pages/SearchDetails/components/SearchItem';
@@ -14,6 +15,8 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './SearchDetails.module.scss';
 
 export default function SearchDetails() {
+  const { addCard } = useRecentSearches();
+
   const inputRef = useRef(null);
   const isSearching = useSearchingMode({ inputRef });
   const { isMobile } = useMediaQuery();
@@ -40,7 +43,11 @@ export default function SearchDetails() {
 
     return shops?.map((shop: Shop) => (
       <div className={styles.details__line} key={shop.placeId}>
-        <SearchItem shop={shop} pathname={location.pathname} />
+        <SearchItem
+          shop={shop}
+          pathname={location.pathname}
+          addCard={addCard}
+        />
       </div>
     ));
   };
