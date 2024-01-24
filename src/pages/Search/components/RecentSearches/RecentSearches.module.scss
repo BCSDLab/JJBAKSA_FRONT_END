@@ -3,6 +3,7 @@
 .container {
   width: 830px;
   margin: 72px auto 0;
+  z-index: 0;
 
   @include media.media-breakpoint-down(mobile) {
     width: 90vw;
