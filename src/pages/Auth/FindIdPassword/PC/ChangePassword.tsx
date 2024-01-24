@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { checkPassword, modify } from 'api/user';
 import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
@@ -29,7 +30,7 @@ export default function ChangePasswordPC(): JSX.Element {
     mode: 'onChange',
   });
   const [openModal, setOpenModal] = useState(false);
-
+  const navigate = useNavigate();
   const modifyPassword = async (params: PasswordInfo) => {
     try {
       if (getValues('password') && getValues('passwordCheck')) {
@@ -60,7 +61,7 @@ export default function ChangePasswordPC(): JSX.Element {
 
   // 브라우저에 렌더링 시 한 번만 실행하는 코드
   useEffect(() => {
-    if (sessionStorage.getItem('accessToken') === null) makeToast('warning', '잘못된 접근입니다.');
+    if (sessionStorage.getItem('accessToken') === null) navigate('/login');
 
     (() => {
       window.addEventListener('beforeunload', preventClose);
@@ -69,7 +70,7 @@ export default function ChangePasswordPC(): JSX.Element {
     return () => {
       window.removeEventListener('beforeunload', preventClose);
     };
-  }, []);
+  });
 
   return (
     <div>
@@ -88,12 +89,12 @@ export default function ChangePasswordPC(): JSX.Element {
         <form className={styles.form}>
           <div className={styles.form__box}>
             <label className={styles.form__label} htmlFor="password">
-              <div className={cn({ [styles['form__label--box']]: true })}>
+              <div className={styles['form__label--box']}>
                 새 비밀번호
                 {errors.password && (
                   <span className={styles.form__message}>
                     <ErrorIcon />
-                    <span className={cn({ [styles['form__message--pattern']]: true })}>
+                    <span className={styles['form__message--pattern']}>
                       {errors.password.message}
                     </span>
                   </span>
@@ -130,7 +131,7 @@ export default function ChangePasswordPC(): JSX.Element {
           </div>
           <div className={styles.form__box}>
             <label className={styles.form__label} htmlFor="password-check">
-              <div className={cn({ [styles['form__label--box']]: true })}>
+              <div className={styles['form__label--box']}>
                 새 비밀번호 확인
                 {errors.passwordCheck && (
                   <span className={styles.form__message}>
