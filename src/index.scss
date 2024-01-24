@@ -16,9 +16,6 @@ html {
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
-
   @include media.media-breakpoint-down(mobile) {
     min-width: 320px;
     height: 100dvh;

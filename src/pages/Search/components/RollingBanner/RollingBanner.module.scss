@@ -12,8 +12,8 @@ $default: #c4c4c4;
   font-size: 16px;
 
   @include media.media-breakpoint-down(mobile) {
-    margin-left: 10px;
-    width: 120%;
+    display: flex;
+    justify-content: center;
   }
 
   &__left-gradient,
@@ -42,12 +42,17 @@ $default: #c4c4c4;
     overflow: hidden;
 
     @keyframes text-loop {
-      0% { transform: translate3d(0, 0, 0); }
-      100% { transform: translate3d(-100%, 0, 0); }
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
     }
 
     @include media.media-breakpoint-down(mobile) {
-      max-width: 80%;
+      max-width: 90%;
       font-size: 16px;
     }
   }
