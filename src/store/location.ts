@@ -1,11 +1,8 @@
 import { atom, useAtom } from 'jotai';
 
-export interface GeolocationPosition {
-  lat: number;
-  lng: number;
-}
+import { Coords } from 'api/search/entity';
 
-export const locationAtom = atom<GeolocationPosition | undefined>(undefined);
+export const locationAtom = atom<Coords | undefined>(undefined);
 
 export const useLocation = () => {
   const [location, setLocation] = useAtom(locationAtom);

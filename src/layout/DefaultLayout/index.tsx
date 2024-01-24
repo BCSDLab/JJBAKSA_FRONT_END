@@ -14,11 +14,11 @@ export default function DefaultLayout(): JSX.Element {
 
   return (
     <>
-      {!isMobile && <SideNavigation />}
       <Outlet />
       <div className={cn({ [styles.home]: location.pathname !== '/' })}>
         <Home />
       </div>
+      {!isMobile && <SideNavigation />}
       {isMobile && <BottomNavigation />}
     </>
   );

@@ -10,7 +10,10 @@ const useAcceptFollow = () => {
     mutationFn: (id: number) => acceptFollow({ id }),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ['received', 'follower'],
+        queryKey: ['follower'],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['received'],
       });
     },
   });
