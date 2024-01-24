@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import defaultImage from 'assets/images/search/default-image.png';
 import notExist from 'assets/svg/mypage/not-exist.svg';
 import filledStar from 'assets/svg/mypage/star-filled.svg';
@@ -18,19 +20,21 @@ export default function BookMark() {
         <>
           <span className={styles.bookmarks__total}>{`총 ${total}개의 음식점`}</span>
           {scraps?.map((scrap) => (
-            <div className={styles.bookmark} key={scrap.scrapId}>
-              <div className={styles.bookmark__detail}>
-                <span className={styles['bookmark__detail--name']}>{scrap.name}</span>
-                <span className={styles['bookmark__detail--type']}>{scrap.category}</span>
+            <Link to={`/shop/${scrap.placeId}`}>
+              <div className={styles.bookmark} key={scrap.scrapId}>
+                <div className={styles.bookmark__detail}>
+                  <span className={styles['bookmark__detail--name']}>{scrap.name}</span>
+                  <span className={styles['bookmark__detail--type']}>{scrap.category}</span>
+                </div>
+                <div className={styles['bookmark__star-rate']}>
+                  <img src={filledStar} alt="satr-rate" className={styles['bookmark__star-rate--image']} />
+                  <span className={styles['bookmark__star-rate--rate']}>{(scrap.rate.totalRating / scrap.rate.ratingCount).toFixed(1)}</span>
+                </div>
+                <div className={styles['bookmark__store-image']}>
+                  <img className={styles['bookmark__store-image--crop']} src={scrap.photo || defaultImage} alt="store" />
+                </div>
               </div>
-              <div className={styles['bookmark__star-rate']}>
-                <img src={filledStar} alt="satr-rate" className={styles['bookmark__star-rate--image']} />
-                <span className={styles['bookmark__star-rate--rate']}>{(scrap.totalRating / scrap.ratingCount).toFixed(1)}</span>
-              </div>
-              <div className={styles['bookmark__store-image']}>
-                <img className={styles['bookmark__store-image--crop']} src={scrap.photo || defaultImage} alt="store" />
-              </div>
-            </div>
+            </Link>
           ))}
         </>
       ) : (
