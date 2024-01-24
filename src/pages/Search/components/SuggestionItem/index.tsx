@@ -23,16 +23,18 @@ export default function SuggestionItem({ item }: Props) {
   };
 
   return (
-    <button
-      className={styles.suggestion}
-      type="button"
-      onClick={handleClick}
-    >
-      <PinIcon className={styles.suggestion__pin} />
-      <div className={styles.suggestion__title}>
-        {item}
-      </div>
+    <>
+      <button
+        className={styles.suggestion}
+        type="button"
+        onClick={handleClick}
+      >
+        <PinIcon className={styles.suggestion__pin} />
+        <div className={styles.suggestion__title}>
+          {item}
+        </div>
+      </button>
       <DeleteIcon className={styles.suggestion__delete} />
-    </button>
+    </>
   );
 }
