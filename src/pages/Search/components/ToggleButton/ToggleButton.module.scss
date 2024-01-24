@@ -1,0 +1,30 @@
+.toggle {
+  width: 34px;
+  height: 13px;
+  background-color: #fff1e8;
+  border-radius: 6.5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &__input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__circle {
+    width: 17px;
+    height: 17px;
+    border-radius: 8.5px;
+    transition: all 0.2s ease-in-out;
+    left: 5%;
+    background-color: #f6bf54;
+
+    &--active {
+      transform: translate(17px, 0);
+    }
+  }
+}

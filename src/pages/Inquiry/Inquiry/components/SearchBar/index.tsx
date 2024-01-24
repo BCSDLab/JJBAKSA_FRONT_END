@@ -6,12 +6,12 @@ import styles from './SearchBar.module.scss';
 
 interface SearchBarProps {
   className?: string;
-  onSearchChange: (text: string) => void;
-  onSearchSubmit: () => void;
+  onChange: (text: string) => void;
+  onSubmit: () => void;
 }
 
 export default function SearchBar({
-  className, onSearchChange, onSearchSubmit,
+  className, onChange, onSubmit,
 }: SearchBarProps) {
   const [text, setText] = useState('');
 
@@ -19,14 +19,14 @@ export default function SearchBar({
     setText(e.target.value);
 
     // 부모 컴포넌트에 상태 변화 전달
-    onSearchChange(e.target.value);
+    onChange(e.target.value);
   };
 
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
 
     // 제출 시 부모 컴포넌트에서 작업 수행
-    onSearchSubmit();
+    onSubmit();
   };
 
   return (

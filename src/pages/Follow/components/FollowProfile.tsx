@@ -32,7 +32,7 @@ export default function FollowProfile() {
   } = location.state as User;
   const { data } = useGetFollowerReview(id);
   const { del, isFollowed } = useDeleteState();
-  const request = useRequestAndUpdate();
+  const request = useRequestAndUpdate(account);
   const reviewCount = useGetFollowerReviewCount(id);
 
   return (
@@ -54,7 +54,7 @@ export default function FollowProfile() {
               type="button"
               className={styles.user__button}
               onClick={() => (isFollowed && del(account))
-                || (!isFollowed && request(account))}
+                || (!isFollowed && request())}
             >
               {isFollowed
                 ? '팔로잉'

@@ -24,9 +24,8 @@ import Notice from 'pages/Notice';
 import Detail from 'pages/Notice/detail';
 import PageNotFound from 'pages/PageNotFound';
 import Post from 'pages/Post';
+import Search from 'pages/Search';
 import NotFoundPage from 'pages/Search/components/NotFoundPage';
-import SearchPost from 'pages/Search/SearchPost';
-import SearchShop from 'pages/Search/SearchShop';
 import Setting from 'pages/Setting';
 import IdChange from 'pages/Setting/Mobile/IdChange';
 import Withdrawal from 'pages/Setting/Withdrawal';
@@ -37,9 +36,9 @@ export default function App(): JSX.Element {
     <Suspense fallback={<div />}>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
-          <Route path="/shop" element={<SearchShop />} />
+          <Route path="/shop" element={<Search />} />
           <Route path="/shop/:placeId" element={<ShopDetail />} />
-          <Route path="/post" element={<SearchPost />} />
+          <Route path="/post" element={<Search />} />
           <Route path="/search/not-found" element={<NotFoundPage />} />
           <Route path="/inquiry/all" element={<Inquiry />} />
           <Route path="/inquiry/my" element={<Inquiry />} />

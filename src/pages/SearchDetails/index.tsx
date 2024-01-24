@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
-import RelatedSearches from 'pages/Search/components/RelatedSearches';
-import SearchInput from 'pages/Search/components/SearchBar/SearchInput';
+import SearchInput from 'pages/Search/components/SearchInput';
+import Suggestions from 'pages/Search/components/Suggestions';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import LoadingView from 'pages/SearchDetails/components/LoadingView';
 import SearchItem from 'pages/SearchDetails/components/SearchItem';
@@ -14,7 +14,8 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './SearchDetails.module.scss';
 
 export default function SearchDetails() {
-  const isSearching = useSearchingMode();
+  const inputRef = useRef(null);
+  const isSearching = useSearchingMode({ inputRef });
   const { isMobile } = useMediaQuery();
   const location = useLocation();
   const {
@@ -46,14 +47,15 @@ export default function SearchDetails() {
 
   return (
     <div className={styles.details}>
-      <div className={styles.details__search}>
-        <SearchInput
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          text={text}
-        />
-      </div>
-      {!isMobile && isSearching && !isEnter && <RelatedSearches text={text} />}
+      <SearchInput
+        className={styles.details__search}
+        value={text}
+        ref={inputRef}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        onDelete={resetText}
+      />
+      {!isMobile && isSearching && !isEnter && <Suggestions className={styles['related-searches']} text={text} />}
       <div className={styles.details__result}>
         {`${count}개의 검색결과`}
       </div>
