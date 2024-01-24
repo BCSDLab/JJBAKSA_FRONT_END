@@ -2,6 +2,7 @@ import AddImage from 'components/editor/TextEditor/AddImage/index';
 import PreviousButton from 'components/PreviousButton/PreviousButton';
 import StarRating from 'components/StarRating';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import cn from 'utils/ts/classNames';
 
 import styles from './TextEditor.module.scss';
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function TextEditor({ shop, onSubmit }: Props) {
+  const { isMobile } = useMediaQuery();
   const [actived, active] = useBooleanState(false);
 
   return (
@@ -20,11 +22,13 @@ export default function TextEditor({ shop, onSubmit }: Props) {
       [styles['template--active']]: shop != null,
     })}
     >
+      {isMobile && (
       <header className={styles.header}>
         <div className={styles.header__button}>
           <PreviousButton />
         </div>
       </header>
+      )}
       <title className={styles.heading}>
         <div className={styles.heading__contents}>
           <span className={styles['heading__title--shop']}>{shop}</span>
