@@ -14,8 +14,8 @@ interface Props {
 
 const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { className } = props;
-
   const location = useLocation();
+
   const {
     text, resetText, handleChange, handleSubmit,
   } = useSearchForm(location.pathname);
@@ -41,9 +41,11 @@ const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
             ref={ref}
             onChange={handleChange}
           />
-          <button type="button" onClick={resetText}>
-            <DeleteIcon title="삭제" className={styles['search-bar__delete']} />
-          </button>
+          {text.length > 0 && (
+            <button type="button" onClick={resetText}>
+              <DeleteIcon title="삭제" className={styles['search-bar__delete']} />
+            </button>
+          )}
           <button type="submit">
             <LensIcon title="검색" className={styles['search-bar__lens']} />
           </button>
