@@ -20,7 +20,7 @@ export default function BookMark() {
         <>
           <span className={styles.bookmarks__total}>{`총 ${total}개의 음식점`}</span>
           {scraps?.map((scrap) => (
-            <Link to={`/shop/${scrap.placeId}`}>
+            <Link to={`/shop/${scrap.placeId}`} className={styles.bookmark__container}>
               <div className={styles.bookmark} key={scrap.scrapId}>
                 <div className={styles.bookmark__detail}>
                   <span className={styles['bookmark__detail--name']}>{scrap.name}</span>
