@@ -40,6 +40,7 @@ export default function FollowList({
           <Recent
             key={item.id}
             nickname={item.nickname}
+            profileImage={item.profileImage}
           />
         ))}
       </div>
@@ -52,6 +53,7 @@ export default function FollowList({
           followedType={item.followedType}
           requestId={item.requestId}
           userCountResponse={item.userCountResponse}
+          profileImage={item.profileImage}
         />
       ))}
       {isShow && sent && sent.map((item) => (
@@ -62,6 +64,7 @@ export default function FollowList({
           account={item.account}
           followedType={item.followedType}
           requestId={item.requestId}
+          profileImage={item.profileImage}
         />
       ))}
     </div>

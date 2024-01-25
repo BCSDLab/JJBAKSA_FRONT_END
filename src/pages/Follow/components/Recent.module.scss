@@ -9,14 +9,15 @@
   &__profile {
     border: 2px solid #ff7f23;
     border-radius: 60px;
-    width: 112px;
-    height: 112px;
+    width: 84px;
+    height: 84px;
   }
 
   &__nickname {
     width: 100px;
     height: 20px;
     overflow-y: hidden;
+    text-align: center;
   }
 
   &__nickname::-webkit-scrollbar {

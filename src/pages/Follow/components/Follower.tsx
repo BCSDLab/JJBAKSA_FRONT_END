@@ -21,11 +21,17 @@ interface Props {
     id: number;
     reviewCount: number;
     friendCount: number;
-  }
+  },
+  profileImage?: {
+    id: number,
+    originalName: string,
+    path: string,
+    url: string
+  },
 }
 
 export default function Follower({
-  nickname, account, followedType, id, requestId, userCountResponse,
+  nickname, account, followedType, id, requestId, userCountResponse, profileImage,
 }: Props) {
   const request = useRequestAndUpdate(account);
   const accept = useAcceptFollow();
@@ -68,7 +74,7 @@ export default function Follower({
 
   return (
     <div className={styles.follower} id={`${id}`}>
-      <img className={styles.follower__image} src={defaultImage} alt="default" />
+      <img className={styles.follower__image} src={profileImage?.url ?? defaultImage} alt="default" />
       <div className={styles.follower__content}>
         <button
           type="button"

@@ -30,6 +30,7 @@ export default function FollowProfile() {
   const {
     nickname, account, userCountResponse, id,
   } = location.state as User;
+
   const { data } = useGetFollowerReview(id);
   const { del, isFollowed } = useDeleteState();
   const request = useRequestAndUpdate(account);

@@ -30,6 +30,7 @@ const filterSendOrReceiveInfo = (
     nickname: isReceive ? item.user.nickname : item.follower.nickname,
     userType: isReceive ? item.user.userType : item.follower.userType,
     requestId: item.id,
+    profileImage: isReceive ? item.user.profileImage : item.follower.profileImage,
   }));
   return filteredData;
 };
@@ -43,6 +44,7 @@ const filterFollowInfo = (data: GetFollowListResponse): FollowerInfo[] => {
     userType: item.userType,
     followedType: 'FOLLOWED',
     userCountResponse: item.userCountResponse,
+    profileImage: item.profileImage,
   }));
   return filteredData;
 };
