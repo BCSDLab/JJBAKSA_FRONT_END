@@ -5,12 +5,13 @@ import { getScraps } from 'api/mypage';
 const useScraps = () => {
   const { data, isLoading, fetchNextPage } = useInfiniteQuery({
     queryKey: ['scraps'],
-    queryFn: ({ pageParam = 0 }) => getScraps(pageParam),
-    initialPageParam: 0,
+    queryFn: ({ pageParam = '' }) => getScraps(pageParam),
+    initialPageParam: '',
     // eslint-disable-next-line consistent-return
-    getNextPageParam: (lastResponse, allResponse) => {
-      const currentPage = allResponse.length - 1;
-      if (lastResponse.data.totalPages > currentPage) return currentPage + 1;
+    getNextPageParam: (last) => {
+      const len = last.data.content.length;
+      if (last.data.empty || last.data.last) return null;
+      return `cursor=${last.data.content[len - 1].placeId}`;
     },
     select: (response) => ({
       pages: response.pages.flatMap((page) => [page.data]),

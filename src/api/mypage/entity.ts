@@ -38,7 +38,9 @@ export type Scrap = {
 export interface ScrapResponse {
   content: Scrap[],
   totalPages: number,
-  totalElements: number
+  totalElements: number,
+  empty: boolean,
+  last: boolean,
 }
 
 export interface PatchProfileImageResponse {
