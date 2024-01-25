@@ -84,7 +84,6 @@ button {
   &__container {
     width: 550px;
     position: relative;
-    overflow-x: hidden;
     margin-top: 15px;
 
     @include media.media-breakpoint-down(mobile) {

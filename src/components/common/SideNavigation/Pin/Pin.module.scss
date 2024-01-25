@@ -1,13 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  margin: 0 10px;
+  overflow-x: hidden;
   gap: 5px;
 }
 
 .info {
   display: flex;
   align-items: flex-end;
+  padding: 0 10px;
 
   &__name {
     font-weight: 700;
