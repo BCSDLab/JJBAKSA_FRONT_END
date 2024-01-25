@@ -53,6 +53,7 @@ export default function FollowPage() {
   const { data: sent } = useSentOrReceivedFollow('sent', checkSentFollow);
   const { data: follower } = useGetFollowList();
   const { data: recent } = useGetRecentlyActiveFollower();
+
   return (
     <div className={styles.template}>
       <div className={styles.content}>

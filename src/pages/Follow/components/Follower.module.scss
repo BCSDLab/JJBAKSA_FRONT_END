@@ -39,9 +39,17 @@
       background-color: #ffffff;
       cursor: pointer;
       margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
 
       @include media.media-breakpoint-down(mobile) {
         font-size: 18px;
+        width: 200px;  
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
