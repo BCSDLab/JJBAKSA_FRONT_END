@@ -10,7 +10,7 @@ import cn from 'utils/ts/classNames';
 import styles from './index.module.scss';
 import Modal from './Modal';
 
-const PATTERN = /^.*(?=^.{2,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
+export const PATTERN = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/; // 비밀번호 형식 패턴
 
 export default function ChangePassword(): JSX.Element {
   const [value, toggle, , , setOpenModal] = useBooleanState(false);
@@ -71,7 +71,7 @@ export default function ChangePassword(): JSX.Element {
                 required: '비밀번호를 입력하세요',
                 pattern: {
                   value: PATTERN,
-                  message: '비밀번호는 문자, 숫자, 특수문자를 포함한\n2~16자리로 이루어져야 합니다.',
+                  message: '비밀번호는 문자, 숫자, 특수문자를 포함한 8~16자리로 이루어져야 합니다.',
                 },
               })}
             />
