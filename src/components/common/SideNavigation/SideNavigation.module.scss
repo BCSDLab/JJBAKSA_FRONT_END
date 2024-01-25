@@ -124,6 +124,13 @@
   align-items: center;
   list-style: none;
 
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
   &__profile-image {
     width: 48px;
     height: 48px;
