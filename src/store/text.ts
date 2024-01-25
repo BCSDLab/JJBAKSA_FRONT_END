@@ -15,15 +15,22 @@ const useSearchForm = (pathname: string) => {
   const searchFormAtom = pathname === '/shop' ? shopSearchFormAtom : postSearchFormAtom;
   const [searchForm, setSearchForm] = useAtom(searchFormAtom);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const setText = (text: string) => {
     setSearchForm((prevSearchForm) => ({
       ...prevSearchForm,
-      text: e.target.value,
+      text,
     }));
   };
 
   const resetText = () => {
     setSearchForm(initialSearchFormState);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchForm((prevSearchForm) => ({
+      ...prevSearchForm,
+      text: e.target.value,
+    }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,13 +50,14 @@ const useSearchForm = (pathname: string) => {
   };
 
   return {
-    setSearchForm,
     text: searchForm.text,
+    setSearchForm,
+    setText,
+    resetText,
     handleChange,
     handleSubmit,
-    submittedText: searchForm.submittedText,
     isEnter: searchForm.isEnter,
-    resetText,
+    submittedText: searchForm.submittedText,
   };
 };
 

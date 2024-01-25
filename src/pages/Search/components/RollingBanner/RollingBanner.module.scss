@@ -9,7 +9,6 @@ $default: #c4c4c4;
   margin-top: 24px;
   height: 32px;
   width: 100%;
-  font-size: 16px;
 
   @include media.media-breakpoint-down(mobile) {
     margin-left: 10px;
@@ -62,14 +61,22 @@ $default: #c4c4c4;
     border-radius: 15px;
     margin-right: 10px;
     padding: 3px 7px;
-    color: $default;
     border: 1px solid $default;
+
+    &:hover {
+      color: $highlight;
+      border: 1px solid $highlight;
+      background-color: rgba(246 191 84 / 20%);
+    }
+  }
+
+  &__tag-button {
+    color: $default;
+    font-size: 16px;
 
     &:hover {
       cursor: default;
       color: $highlight;
-      border: 1px solid $highlight;
-      background-color: rgba(246 191 84 / 20%);
     }
   }
 }
