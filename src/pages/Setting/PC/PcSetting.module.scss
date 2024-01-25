@@ -123,9 +123,16 @@ $title: #ff7f23;
   border-radius: 20px;
   color: $title;
   font-weight: 600px;
-  box-shadow: 2px 3px 12px 1px #0000001a;
+  box-shadow: 1px 2px 7px 1px #3131311a;
   margin-top: 7px;
   cursor: pointer;
+
+  &__disabled {
+    pointer-events : none;
+    border: 1px solid #c4c4c4;
+    color: #c4c4c4;
+    background-color: #FAFAFA;
+  }
 }
 
 .blindBox {

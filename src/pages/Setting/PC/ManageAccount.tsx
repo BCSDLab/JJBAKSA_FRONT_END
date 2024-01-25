@@ -138,7 +138,17 @@ export default function ManageAccount() {
           </span>
         </div>
       )}
-      <button className={styles.button} type="button" onClick={modifyPassword} disabled={!(auth && 'account' in auth)}>비밀번호 변경</button>
+      <button
+        className={cn({
+          [styles.button__disabled]:
+            !(auth && 'account' in auth),
+          [styles.button]: true,
+        })}
+        type="button"
+        onClick={modifyPassword}
+        disabled={!(auth && 'account' in auth)}
+      >비밀번호 변경
+      </button>
       {isShowModal && <PasswordSuccessModal>변경된 비밀번호로 로그인 해주세요.</PasswordSuccessModal>}
     </form>
   );
