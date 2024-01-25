@@ -4,19 +4,23 @@ import { useQueryClient } from '@tanstack/react-query';
 
 import { postReview } from 'api/review';
 import TextEditor from 'components/editor/TextEditor';
+import useShop from 'pages/Post/hooks/useShop';
 import { useReview } from 'store/review';
 import makeToast from 'utils/ts/makeToast';
 
 import styles from './Post.module.scss';
 
 export default function Post() {
-  const { name: shopName } = useParams();
+  const { placeId } = useParams();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const review = useReview();
+
+  const { shopName } = useShop(placeId as string);
+
   const submitReview = () => {
     postReview({
-      placeId: shopName as string,
+      placeId: placeId as string,
       ...review,
     }).then(() => {
       queryClient.invalidateQueries({ queryKey: ['reviewedShops'] });
@@ -29,7 +33,7 @@ export default function Post() {
 
   return (
     <div className={styles.post}>
-      <TextEditor shop={shopName!} onSubmit={submitReview} />
+      <TextEditor shop={shopName || '가게 이름을 불러올 수 없습니다.'} onSubmit={submitReview} />
     </div>
   );
 }

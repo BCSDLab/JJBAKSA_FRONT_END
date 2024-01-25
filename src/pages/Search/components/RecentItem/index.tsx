@@ -38,7 +38,6 @@ export default function RecentItem({
       <Link
         className={styles.item}
         to={newPath}
-        state={{ placeId }}
       >
         <div className={styles.container}>
           {!isMobile && (

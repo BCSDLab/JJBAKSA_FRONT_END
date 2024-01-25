@@ -29,7 +29,7 @@ export default function SearchItem({ shop, addCard }: Props) {
 
     // 음식점 상세 정보로 이동
     const newPath = location.pathname.includes('/post') ? `/post/${placeId}` : `/shop/${placeId}`;
-    navigate(newPath, { state: { placeId } });
+    navigate(newPath);
   };
 
   return (
