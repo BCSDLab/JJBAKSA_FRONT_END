@@ -39,33 +39,19 @@ export default function RecentItem({
         className={styles.item}
         to={newPath}
       >
-        <div className={styles.container}>
-          {!isMobile && (
-            <img
-              alt="imageAlt"
-              src={photoToken ?? defaultImage}
-              className={styles.image}
-            />
-          )}
-          <div className={styles.description}>
-            {isMobile
-              ? <ClockIcon />
-              : <div className={styles.description__category}>{category}</div>}
-            <div className={styles.description__name}>{name}</div>
-          </div>
-        </div>
-
-        {isMobile
-          ? (
-            <button
-              className={styles.delete}
-              type="button"
-              onClick={handleDelete}
-              aria-label="삭제"
-            >
-              <MobileDeleteIcon />
-            </button>
-          ) : (
+        {!isMobile && (
+          <>
+            <div className={styles.container}>
+              <img
+                alt="imageAlt"
+                src={photoToken ?? defaultImage}
+                className={styles.image}
+              />
+              <div className={styles.description}>
+                <div className={styles.description__category}>{category}</div>
+                <div className={styles.description__name}>{name}</div>
+              </div>
+            </div>
             <div className={styles.cover}>
               <button
                 className={styles.cover__delete}
@@ -76,7 +62,27 @@ export default function RecentItem({
                 <PcDeleteIcon />
               </button>
             </div>
-          )}
+          </>
+        )}
+
+        {isMobile && (
+          <>
+            <div className={styles.container}>
+              <div className={styles.description}>
+                <ClockIcon />
+                <div className={styles.description__name}>{name}</div>
+              </div>
+            </div>
+            <button
+              className={styles.delete}
+              type="button"
+              onClick={handleDelete}
+              aria-label="삭제"
+            >
+              <MobileDeleteIcon />
+            </button>
+          </>
+        )}
       </Link>
     );
   } return null;
