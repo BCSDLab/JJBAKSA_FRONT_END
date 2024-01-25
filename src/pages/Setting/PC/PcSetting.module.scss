@@ -128,10 +128,10 @@ $title: #ff7f23;
   cursor: pointer;
 
   &__disabled {
-    pointer-events : none;
+    pointer-events: none;
     border: 1px solid #c4c4c4;
     color: #c4c4c4;
-    background-color: #FAFAFA;
+    background-color: #fafafa;
   }
 }
 
