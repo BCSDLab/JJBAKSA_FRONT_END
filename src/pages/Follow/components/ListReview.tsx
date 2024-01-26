@@ -22,6 +22,7 @@ export default function ListReview({ createdAt, content, rate }: Props) {
         {' | '}
         {isMobile ? (
           <span>
+            <Rating />
             {rate}
             .0
           </span>

@@ -10,7 +10,8 @@
   margin-bottom: 39px;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 85vw;
+    width: 88vw;
+    justify-content: space-between;
   }
 
   &__image {
@@ -25,7 +26,7 @@
   }
 
   &__content {
-    width: calc(65vw - 204px);
+    width: calc(100% - 204px);
     padding-left: 30px;
 
     @include media.media-breakpoint-down(mobile) {
@@ -45,7 +46,7 @@
       text-overflow: ellipsis;
       text-align: left;
       white-space: nowrap;
-      width: 100%;
+      width: 90%;
       overflow: hidden;
       text-overflow: ellipsis;
 
