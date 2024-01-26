@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
+import NavigationBar from 'pages/Search/components/NavigationBar';
 import SearchInput from 'pages/Search/components/SearchInput';
 import Suggestions from 'pages/Search/components/Suggestions';
 import useRecentSearches from 'pages/Search/hooks/useRecentSearches';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import LoadingView from 'pages/SearchDetails/components/LoadingView';
-import SearchItem from 'pages/SearchDetails/components/SearchItem';
+import SearchItem from 'pages/SearchDetails/components/SearchItem/SearchItem';
 import useFetchShops from 'pages/SearchDetails/hooks/useFetchShops';
 import useSearchForm from 'store/text';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
@@ -29,6 +30,8 @@ export default function SearchDetails() {
     isFetching, data: shops, shopCount,
   } = useFetchShops(keyword);
 
+  const prevWord = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
+
   useEffect(() => {
     setText(keyword);
 
@@ -38,6 +41,7 @@ export default function SearchDetails() {
   return (
     <div className={styles.container}>
       <div className={styles.details}>
+        {isMobile && <NavigationBar prevWord={prevWord} />}
         <div className={styles.details__search}>
           <SearchInput
             className={styles.details__input}

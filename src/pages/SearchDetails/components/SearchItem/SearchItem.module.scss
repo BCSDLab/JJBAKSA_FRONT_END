@@ -1,0 +1,164 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.container {
+  width: 100%;
+  height: 145px;
+  padding: 24px 0;
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &__info {
+    width: 205px;
+    height: 100%;
+  }
+
+  &__pictures {
+    width: calc(100% - 244px);
+    height: 100%;
+  }
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__shop {
+    max-width: 100%;
+    height: 30px;
+  }
+
+  &__location {
+    max-width: 100%;
+    height: 20px;
+    margin-top: 8px;
+    color: #c4c4c4;
+  }
+
+  &__state {
+    max-width: 100%;
+    height: 20px;
+    margin-top: auto;
+    color: #c4c4c4
+  }
+
+  &__call {
+    max-width: 100%;
+    height: 20px;
+    margin-top: 8px;
+  }
+}
+
+.pictures {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow: hidden;
+
+  &__picture {
+    border: 1px solid black;
+    max-width: 226px;
+    height: 100%;
+    margin-right: 2px;
+  }
+}
+
+.review {
+  width: 100%;
+}
+
+.shop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin-right: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__category {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    margin-right: auto;
+    white-space: nowrap;
+  }
+}
+
+.location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__address {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    margin-right: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__distance {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    margin-left: 8px;
+    margin-right: auto;
+  }
+}
+
+.state {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__open {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ff0000;
+    margin-right: 8px;
+  }
+
+  &__time {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+    margin-left: 8px;
+    margin-right: auto;
+  }
+}
+
+.call {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+    color: #222222;
+    margin-right: 4px;
+  }
+
+  &__number {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000000;
+    margin-right: auto;
+  }
+}
