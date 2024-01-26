@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
-import { ReactComponent as Point } from 'assets/svg/home/point.svg';
-import { ReactComponent as Search } from 'assets/svg/home/search.svg';
+import { ReactComponent as TargetIcon } from 'assets/svg/home/point.svg';
+import { ReactComponent as LensIcon } from 'assets/svg/home/search.svg';
 import LocationSelectButton from 'pages/Home/components/Map/components/LocationSelectButton';
 import useHome from 'pages/Home/components/Map/hooks/useHome';
 
@@ -63,7 +63,7 @@ export default function LocationSelectModal({ className }: { className?: string 
               </div>
               <div className={styles.search}>
                 <div className={styles.search__box}>
-                  <Search className={styles.search__icon} />
+                  <LensIcon className={styles.search__icon} />
                   <input
                     type="text"
                     className={styles.search__text}
@@ -74,7 +74,7 @@ export default function LocationSelectModal({ className }: { className?: string 
               </div>
               <div className={styles.location}>
                 <div className={styles.location__button}>
-                  <Point className={styles.location__icon} />
+                  <TargetIcon className={styles.location__icon} />
                   현재 위치로 설정
                 </div>
               </div>

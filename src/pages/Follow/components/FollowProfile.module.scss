@@ -1,12 +1,16 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
-  width: 100vw;
+  width: calc(100vw - 100px);
   height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100vw;
+  }
 }
 
 .top {

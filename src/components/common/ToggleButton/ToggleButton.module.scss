@@ -3,16 +3,15 @@ $disabled: #c4c4c4;
 
 .toggle {
   &__label {
-    position: relative;
     width: 27px;
     height: 13.5px;
     margin: 0;
     background-color: $disabled;
     border-radius: 6.75px;
-    transition: background-color 0.2s;
     display: flex;
     flex-direction: row;
     align-items: center;
+    transition: background-color 0.2s;
 
     &--active {
       background-color: $active;
@@ -27,12 +26,12 @@ $disabled: #c4c4c4;
 
   &__circle {
     box-sizing: border-box;
-    margin-left: 1.12px;
-    transform: translate(0, 0);
     width: 11.25px;
     height: 11.25px;
+    margin-left: 1.12px;
     background-color: white;
     border-radius: 50%;
+    transform: translate(0, 0);
     transition: transform 0.2s;
 
     &--active {

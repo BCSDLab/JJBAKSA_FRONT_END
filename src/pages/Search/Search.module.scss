@@ -1,12 +1,27 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
-.search {
-  width: 100%;
-  height: 100vh;
-  font-size: 32px;
+.container {
+  width: calc(100vw - 100px);
+  max-width: 875px;
+  height: 100dvh;
+  margin: 0 auto;
 
-  @include media.media-breakpoint-up(mobile) {
-    max-width: 875px;
-    margin: 0 auto;
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
+}
+
+.search {
+  position: relative;
+
+  &__input {
+    z-index: 2;
+  }
+
+  &__related-searches {
+    position: absolute;
+    top: 31px;
+    width: 100%;
+    z-index: 1;
   }
 }
