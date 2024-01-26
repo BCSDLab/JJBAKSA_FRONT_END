@@ -34,17 +34,19 @@ function useMarker({ map, filterShops }: MarkerProps) {
 
       naver.maps.Event.addListener(marker, 'click', () => {
         const clickedPlaceId = shop.placeId;
-        newMarkers.forEach((m) => {
+        newMarkers.forEach((m, idx) => {
           m?.setIcon({
             content: MarkerHtml(m.getTitle(), m.getTitle()),
             anchor: new naver.maps.Point(30, 62),
           });
+          m?.setZIndex(filterShops.length - idx);
         });
 
         marker.setIcon({
           content: ClickedMarkerHtml(shop.photo, shop.name, shop.placeId),
           anchor: new naver.maps.Point(30, 62),
         });
+        marker.setZIndex(10000);
         setSelected(clickedPlaceId);
         if (map) {
           map.panTo(marker.getPosition());
