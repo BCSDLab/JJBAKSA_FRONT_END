@@ -25,13 +25,16 @@ export interface ReviewsResponse {
 }
 
 export type Scrap = {
-  placeId: string,
+  address: string,
   category: string,
+  createdAt: number,
   name: string,
   photo: string,
-  ratingCount: number,
-  scrapId: number,
-  totalRating: number
+  placeId: string,
+  rate: {
+    ratingCount: number,
+    totalRating: number
+  }
 };
 export interface ScrapResponse {
   content: Scrap[],
