@@ -28,6 +28,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
         zIndex: filterShops.length - index,
         icon: {
           content: MarkerHtml(shop.photo, shop.name),
+          anchor: new naver.maps.Point(30, 62),
         },
       });
 
@@ -36,11 +37,13 @@ function useMarker({ map, filterShops }: MarkerProps) {
         newMarkers.forEach((m) => {
           m?.setIcon({
             content: MarkerHtml(m.getTitle(), m.getTitle()),
+            anchor: new naver.maps.Point(30, 62),
           });
         });
 
         marker.setIcon({
           content: ClickedMarkerHtml(shop.photo, shop.name, shop.placeId),
+          anchor: new naver.maps.Point(30, 62),
         });
         setSelected(clickedPlaceId);
         if (map) {

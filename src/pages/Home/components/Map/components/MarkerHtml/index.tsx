@@ -1,39 +1,31 @@
-import defaultImage from 'assets/images/home/favicon.png';
-import MarkerLogo from 'assets/images/home/location-marker.png';
-import Selected from 'assets/images/home/selected-marker.png';
+import defaultImage from 'assets/svg/common/favicon.svg';
 
 import styles from './MarkerHtml.module.scss';
 
 export function MarkerHtml(src:string | null, name:string) {
   return `
   <div class=${styles.container}>
-    <img src=${MarkerLogo}  class=${styles.marker} alt="marker" />
     <div class=${styles.bubble}>
-      <div class=${styles.bubble__photo}>
-        <img src=${src || `${defaultImage}`} alt="사진"/>
-      </div>
-      <div class=${styles.bubble__name}>
-        ${name}
-      </div>
+      <picture>
+        <source srcset=${defaultImage} style="width: 45px; height: 45px; box-sizing: content-box; object-fit: contain;"/>
+        <img src=${src || `${defaultImage}`} alt="음식점 사진" />
+      </picture>
     </div>
+    <div class=${styles.name}>${name}</div>
   </div>
   `;
 }
 
 export function ClickedMarkerHtml(src: string | null, name: string, placeId: string) {
   return `
-    <a href="/shop/${placeId}">
-      <div class=${styles.container}>
-        <img src=${Selected} class=${styles['marker--clicked']}>
-        <div class=${styles.bubble}>
-          <div class=${styles['bubble__photo--clicked']}>
-            <img src=${src || `${defaultImage}`} alt="사진" />
-          </div>
-          <div class=${styles['bubble__name--clicked']}>
-            ${name}
-          </div>
-        </div>
+    <a href="/shop/${placeId}" class=${styles['clicked-container']}>
+      <div class=${styles['clicked-bubble']}>
+        <picture>
+          <source srcset=${defaultImage} style="width: 45px; height: 45px; box-sizing: content-box; object-fit: contain;"/>
+          <img src=${src || `${defaultImage}`} alt="음식점 사진" />
+        </picture>
       </div>
+      <div class=${styles['clicked-name']}>${name}</div>
     </a>
   `;
 }
