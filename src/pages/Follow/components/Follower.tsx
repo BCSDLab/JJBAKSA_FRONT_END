@@ -21,20 +21,27 @@ interface Props {
     id: number;
     reviewCount: number;
     friendCount: number;
-  }
+  },
+  profileImage?: {
+    id: number,
+    originalName: string,
+    path: string,
+    url: string
+  },
 }
 
 export default function Follower({
-  nickname, account, followedType, id, requestId, userCountResponse,
+  nickname, account, followedType, id, requestId, userCountResponse, profileImage,
 }: Props) {
   const request = useRequestAndUpdate(account);
   const accept = useAcceptFollow();
   const {
-    del, isMobile, mobileUnfollow, value, toggle,
+    del, isMobile, mobileUnfollow, value: isDelete, toggle,
   } = useDeleteFollow();
   const cancel = useCancelFollow(account);
   const reject = useRejectRequest();
   const navigate = useNavigate();
+
   const buttonConfigs: {
     [key: string]:
     {
@@ -56,7 +63,7 @@ export default function Follower({
     FOLLOWED: {
       className: styles.follower__button,
       onClick: () => (isMobile ? mobileUnfollow() : del(account)),
-      text: '팔로잉',
+      text: isDelete ? '팔로우' : '팔로잉',
     },
     REQUEST_RECEIVE: {
       className: styles['follower__button--accept'],
@@ -68,7 +75,7 @@ export default function Follower({
 
   return (
     <div className={styles.follower} id={`${id}`}>
-      <img className={styles.follower__image} src={defaultImage} alt="default" />
+      <img className={styles.follower__image} src={profileImage?.url ?? defaultImage} alt="default" />
       <div className={styles.follower__content}>
         <button
           type="button"
@@ -80,6 +87,7 @@ export default function Follower({
               account,
               followedType,
               userCountResponse,
+              profileImage,
             },
           })}
         >
@@ -108,7 +116,7 @@ export default function Follower({
           거절
         </button>
       )}
-      {value && isMobile
+      {isDelete && isMobile
         && <MobileUnfollow nickname={nickname} del={del} toggle={toggle} account={account} />}
     </div>
   );

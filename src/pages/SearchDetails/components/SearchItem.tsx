@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
+import defaultImage from 'assets/svg/common/favicon.svg';
 import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
 import { Card } from 'pages/Search/static/entity';
 
@@ -49,7 +50,10 @@ export default function SearchItem({ shop, addCard }: Props) {
         <div className={styles['info-data--open']}>{openNow ? '영업중' : '영업 종료'}</div>
       </div>
       {photoToken ? (
-        <img className={styles.image} alt="가게 이미지" src={photoToken} />
+        <picture className={styles.picture}>
+          <source srcSet={defaultImage} />
+          <img className={styles.image} alt="가게 이미지" src={photoToken} />
+        </picture>
       ) : (
         <div className={styles['empty-image']}>
           <NotFoundImageIcon />

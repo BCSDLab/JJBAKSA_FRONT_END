@@ -30,6 +30,7 @@ const filterSendOrReceiveInfo = (
     nickname: isReceive ? item.user.nickname : item.follower.nickname,
     userType: isReceive ? item.user.userType : item.follower.userType,
     requestId: item.id,
+    profileImage: isReceive ? item.user.profileImage : item.follower.profileImage,
   }));
   return filteredData;
 };
@@ -43,6 +44,7 @@ const filterFollowInfo = (data: GetFollowListResponse): FollowerInfo[] => {
     userType: item.userType,
     followedType: 'FOLLOWED',
     userCountResponse: item.userCountResponse,
+    profileImage: item.profileImage,
   }));
   return filteredData;
 };
@@ -53,6 +55,7 @@ export default function FollowPage() {
   const { data: sent } = useSentOrReceivedFollow('sent', checkSentFollow);
   const { data: follower } = useGetFollowList();
   const { data: recent } = useGetRecentlyActiveFollower();
+
   return (
     <div className={styles.template}>
       <div className={styles.content}>
@@ -87,7 +90,7 @@ export default function FollowPage() {
           )}
         {user && keyword.length > 0 && (user.content.length > 0
           ? (
-            <div>
+            <div className={styles.container}>
               <SearchPage data={user.content} />
               {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
             </div>

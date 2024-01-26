@@ -32,82 +32,82 @@ function ShopDetail() {
 
   const { isMobile } = useMediaQuery();
   const { rate } = useRate(placeId);
-  const { scrapId } = useScrapId(placeId);
   const { shop } = useShop(placeId);
+  const { scrapId } = useScrapId(placeId);
 
-  if (shop && scrapId) {
-    const {
-      // category,
-      coordinate,
-      name,
-      formattedAddress,
-      formattedPhoneNumber,
-      todayPeriod,
-      photos,
-    } = shop;
-
+  if (!shop) {
     return (
-      <div className={styles.container}>
-        {!isMobile ? <ImageCarousel pathname="shop" imageUrls={photos} /> : <ImageCarousel pathname="pin" imageUrls={photos} />}
-        <article className={styles['shop-detail']}>
-          <section className={styles['detail-main']}>
-            <div>
-              <div className={styles['detail-main__rating']}>
-                <StarRatingPreview rate={rate} />
-                <span>{rate}.0</span>
-              </div>
-              <div className={styles['detail-main__name']}>
-                <h1>{name}</h1>
-                {placeId && <ScrapButton placeId={placeId} initialScrapId={scrapId.scrapId} />}
-              </div>
-            </div>
-            <div>
-              <div className={styles['detail-main__info-name']}>기본 정보</div>
-              <div className={styles['detail-main__info']}>
-                <span>영업시간</span>
-                <div className={styles['line-divisor']} />
-                <span>{formatPeriod(todayPeriod)}</span>
-              </div>
-              <div className={styles['detail-main__info']}>
-                <span>전화번호</span>
-                <div className={styles['line-divisor']} />
-                <span>{formattedPhoneNumber ?? '정보 없음'}</span>
-              </div>
-              <div className={styles['detail-main__info']}>
-                <span>주소</span>
-                <div className={styles['line-divisor']} />
-                <span>{formattedAddress}</span>
-              </div>
-            </div>
-          </section>
-          <FriendReviewList placeId={placeId} />
-          {!isMobile ? (
-            <>
-              <Map
-                formattedAddress={formattedAddress}
-                latitude={coordinate.lat}
-                longitude={coordinate.lng}
-              />
-              <MyReviewList placeId={placeId} />
-            </>
-          ) : (
-            <>
-              <MyReviewList placeId={placeId} />
-              <Map
-                formattedAddress={formattedAddress}
-                latitude={coordinate.lat}
-                longitude={coordinate.lng}
-              />
-            </>
-          )}
-        </article>
+      <div className={styles.loading}>
+        <LoadingSpinner size={200} />
       </div>
     );
   }
 
+  const {
+    // category,
+    coordinate,
+    name,
+    formattedAddress,
+    formattedPhoneNumber,
+    todayPeriod,
+    photos,
+  } = shop;
+
   return (
-    <div className={styles.loading}>
-      <LoadingSpinner size={200} />
+    <div className={styles.container}>
+      {!isMobile ? <ImageCarousel pathname="shop" imageUrls={photos} /> : <ImageCarousel pathname="pin" imageUrls={photos} />}
+      <article className={styles['shop-detail']}>
+        <section className={styles['detail-main']}>
+          <div>
+            <div className={styles['detail-main__rating']}>
+              <StarRatingPreview rate={rate} />
+              <span>{rate}.0</span>
+            </div>
+            <div className={styles['detail-main__name']}>
+              <h1>{name}</h1>
+              {placeId && <ScrapButton placeId={placeId} initialScrapId={scrapId?.scrapId} />}
+            </div>
+          </div>
+          <div>
+            <div className={styles['detail-main__info-name']}>기본 정보</div>
+            <div className={styles['detail-main__info']}>
+              <span>영업시간</span>
+              <div className={styles['line-divisor']} />
+              <span>{formatPeriod(todayPeriod)}</span>
+            </div>
+            <div className={styles['detail-main__info']}>
+              <span>전화번호</span>
+              <div className={styles['line-divisor']} />
+              <span>{formattedPhoneNumber ?? '정보 없음'}</span>
+            </div>
+            <div className={styles['detail-main__info']}>
+              <span>주소</span>
+              <div className={styles['line-divisor']} />
+              <span>{formattedAddress}</span>
+            </div>
+          </div>
+        </section>
+        <FriendReviewList placeId={placeId} />
+        {!isMobile ? (
+          <>
+            <Map
+              formattedAddress={formattedAddress}
+              latitude={coordinate.lat}
+              longitude={coordinate.lng}
+            />
+            <MyReviewList placeId={placeId} />
+          </>
+        ) : (
+          <>
+            <MyReviewList placeId={placeId} />
+            <Map
+              formattedAddress={formattedAddress}
+              latitude={coordinate.lat}
+              longitude={coordinate.lng}
+            />
+          </>
+        )}
+      </article>
     </div>
   );
 }

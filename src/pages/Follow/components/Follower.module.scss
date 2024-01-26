@@ -5,17 +5,19 @@
   align-items: center;
   justify-content: center;
   height: 84px;
-  width: 755px;
+  width: 90%;
   margin-top: 39px;
   margin-bottom: 39px;
 
   @include media.media-breakpoint-down(mobile) {
-    width: 85vw;
+    width: 88vw;
+    justify-content: space-between;
   }
 
   &__image {
     width: 84px;
     height: 84px;
+    border-radius: 150px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 60px;
@@ -24,8 +26,8 @@
   }
 
   &__content {
-    width: 720px;
-    padding-left: 60px;
+    width: calc(100% - 204px);
+    padding-left: 30px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 200px;
@@ -39,9 +41,18 @@
       background-color: #ffffff;
       cursor: pointer;
       margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+      width: 90%;
 
       @include media.media-breakpoint-down(mobile) {
         font-size: 18px;
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
 
@@ -61,7 +72,6 @@
     height: 40px;
     background-color: #eeeeee;
     cursor: pointer;
-    font-size: 16px;
     margin: 0 10px;
 
     @include media.media-breakpoint-down(mobile) {

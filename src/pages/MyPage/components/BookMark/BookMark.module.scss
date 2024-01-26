@@ -34,6 +34,10 @@
     border-bottom: 1px solid #eeeeee;
   }
 
+  &__container {
+    text-decoration: none;
+  }
+
   &__detail {
     display: flex;
     gap: 2px;
@@ -41,6 +45,7 @@
     &--name {
       font-size: 18px;
       font-weight: 700;
+      color: #222;
     }
 
     &--type {
@@ -70,10 +75,15 @@
   }
 
   &__store-image {
-    width: 100%;
-    height: 200px;
+    display: flex;
     position: relative;
     overflow: hidden;
+
+    img {
+      display: flex;
+      width: 100%;
+      height: 200px;
+    }
 
     @include media.media-breakpoint-down(mobile) {
       height: 96px;
@@ -82,6 +92,17 @@
     &--crop {
       width: 100%;
       position: absolute;
+    }
+  }
+
+  &__store-picture {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    align-items: center;
+
+    img {
+      height: 80px;
     }
   }
 }

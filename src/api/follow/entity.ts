@@ -17,7 +17,13 @@ export interface GetFollowListResponse {
       id: number;
       reviewCount: number;
       friendCount: number;
-    }
+    },
+    profileImage?: {
+      id: number,
+      originalName: string,
+      path: string,
+      url: string
+    },
   }[];
   empty: boolean;
   last: boolean;
@@ -79,7 +85,7 @@ export interface GetFollowReviewResponse {
     name: string;
     placeId: string;
     photos?: string[];
-    shopId: number;
+    id: number;
     category: string;
   }[]
   empty: boolean;

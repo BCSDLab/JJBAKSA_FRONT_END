@@ -4,12 +4,19 @@ import styles from './Recent.module.scss';
 
 interface Props {
   nickname: string;
+  profileImage?: {
+    url: string
+  }
 }
 
-export default function Recent({ nickname }: Props) {
+export default function Recent({ nickname, profileImage }: Props) {
   return (
     <div className={styles.person}>
-      <img src={defaultImage} alt={nickname} className={styles.person__profile} />
+      <img
+        src={profileImage?.url ?? defaultImage}
+        alt={nickname}
+        className={styles.person__profile}
+      />
       <span className={styles.person__nickname}>{nickname}</span>
     </div>
   );

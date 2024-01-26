@@ -18,6 +18,7 @@ import styles from './Search.module.scss';
 export default function Search(): JSX.Element {
   const location = useLocation();
   const subText = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
+  const keyword = location.pathname === '/shop' ? '검색' : '리뷰하기';
   const {
     text, resetText,
   } = useSearchForm(location.pathname);
@@ -32,7 +33,7 @@ export default function Search(): JSX.Element {
 
   return (
     <div className={styles.container}>
-      {isMobile && <NavigationBar />}
+      {isMobile && <NavigationBar keyword={keyword} />}
       <Sentence subText={subText} />
       <div className={styles.search}>
         <SearchInput

@@ -18,7 +18,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #eeeeee;
   height: 250px;
   width: 70vw;
 
@@ -59,12 +58,22 @@
     margin-left: 20px;
 
     &--span {
-      font-size: 25px;
-      width: 150px;
+      font-size: 18px;
+      font-weight: bold;
+      width: 100px;
       display: block;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+  }
+
+  &__set {
+    display: flex;
+    align-items: center;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 50vw;
     }
   }
 
@@ -77,9 +86,18 @@
   &__button {
     border: none;
     border-radius: 2em;
-    width: 80px;
+    width: 60px;
     height: 40px;
     background-color: #eeeeee;
+
+    &--unfollow {
+      border: none;
+      border-radius: 2em;
+      width: 60px;
+      height: 40px;
+      background-color: #ff7f23;
+      color: white;
+    }
   }
 
   &__count {
@@ -93,11 +111,21 @@
   }
 }
 
+.set {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #eeeeee;
+}
+
 .count {
   color: #ff7f23;
   font-weight: bold;
   font-size: 16px;
   width: 70vw;
+  margin-bottom: 20px;
 }
 
 .type {
