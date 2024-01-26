@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
 
 import { deleteScrapShop, postScrapShop } from 'api/scrap';
 
 const useScrap = (placeId: string, initialScrapId: number | null) => {
+  const navigate = useNavigate();
+
   const [scrapId, setScrapId] = useState<number | null>(initialScrapId);
   const queryClient = useQueryClient();
   const { mutate: postScrap, isPending: postPending } = useMutation({
@@ -13,6 +17,11 @@ const useScrap = (placeId: string, initialScrapId: number | null) => {
     onSuccess: (res) => {
       setScrapId(res.data.id);
       queryClient.invalidateQueries({ queryKey: ['scraps'] });
+    },
+    onError: (error) => {
+      if (axios.isAxiosError(error) && error.response?.status === 401) {
+        navigate('/login');
+      }
     },
   });
 
