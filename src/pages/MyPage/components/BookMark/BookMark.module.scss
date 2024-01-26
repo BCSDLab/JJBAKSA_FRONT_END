@@ -99,6 +99,14 @@
     img {
       height: 80px;
     }
+
+    @include media.media-breakpoint-down(mobile) {
+      height: 96px;
+
+      img {
+        height: 50px;
+      }
+    }
   }
 }
 
