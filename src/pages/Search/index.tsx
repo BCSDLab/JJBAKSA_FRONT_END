@@ -10,7 +10,6 @@ import Sentence from 'pages/Search/components/Sentence';
 import Suggestions from 'pages/Search/components/Suggestions';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import { POST_TEXT, SHOP_TEXT } from 'pages/Search/static/searchText';
-import SearchDetails from 'pages/SearchDetails';
 import useSearchForm from 'store/text';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
@@ -20,7 +19,7 @@ export default function Search(): JSX.Element {
   const location = useLocation();
   const subText = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
   const {
-    text, resetText, isEnter,
+    text, resetText,
   } = useSearchForm(location.pathname);
 
   const inputRef = useRef(null);
@@ -34,27 +33,21 @@ export default function Search(): JSX.Element {
   return (
     <div className={styles.container}>
       {isMobile && <NavigationBar />}
-      {isEnter
-        ? <SearchDetails />
-        : (
-          <>
-            <Sentence subText={subText} />
-            <div className={styles.search}>
-              <SearchInput
-                className={styles.search__input}
-                ref={inputRef}
-              />
-              {isSearching && (
-                <Suggestions
-                  className={styles['search__related-searches']}
-                  text={text}
-                />
-              )}
-              <RollingBanner />
-              <RecentSearches />
-            </div>
-          </>
+      <Sentence subText={subText} />
+      <div className={styles.search}>
+        <SearchInput
+          className={styles.search__input}
+          ref={inputRef}
+        />
+        {isSearching && (
+          <Suggestions
+            className={styles.search__suggestions}
+            text={text}
+          />
         )}
+        <RollingBanner />
+        <RecentSearches />
+      </div>
     </div>
   );
 }

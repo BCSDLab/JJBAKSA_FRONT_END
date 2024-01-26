@@ -1,11 +1,20 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
+.container {
+  width: calc(100vw - 100px);
+  height: 100dvh;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
+}
+
 .details {
+  max-width: 875px;
   margin: 0 auto;
-  width: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 135px;
+  margin-top: 119px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 100%;
@@ -13,14 +22,23 @@
   }
 
   &__search {
-    display: flex;
+    position: relative;
+  }
+
+  &__input {
     margin-bottom: 25px;
 
     @include media.media-breakpoint-down(mobile) {
       position: sticky;
       top: 40px;
-      width: 100%;
     }
+  }
+
+  &__suggestions {
+    position: absolute;
+    top: 62px;
+    width: 100%;
+    z-index: 1;
   }
 
   &__result {

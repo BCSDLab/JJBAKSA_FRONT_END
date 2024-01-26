@@ -26,7 +26,7 @@ const useFetchShops = (text: string) => {
 
   const isFetching = isLoading || !(location);
   const shops = useMemo(() => data?.data.shopQueryResponseList, [data]);
-  const count = useMemo(() => {
+  const shopCount = useMemo(() => {
     if (shops) {
       return shops.filter((shop) => shop.name && shop.name.trim() !== '').length;
     }
@@ -34,7 +34,7 @@ const useFetchShops = (text: string) => {
   }, [shops]);
 
   return {
-    isFetching, isError, data: shops, refetch, count,
+    isFetching, isError, data: shops, refetch, shopCount,
   };
 };
 

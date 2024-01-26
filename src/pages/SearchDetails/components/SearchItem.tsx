@@ -27,7 +27,6 @@ export default function SearchItem({ shop, addCard }: Props) {
 
     addCard(card);
 
-    // 음식점 상세 정보로 이동
     const newPath = location.pathname.includes('/post') ? `/post/${placeId}` : `/shop/${placeId}`;
     navigate(newPath);
   };
