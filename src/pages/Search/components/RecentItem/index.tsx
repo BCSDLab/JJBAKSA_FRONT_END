@@ -53,7 +53,7 @@ export default function RecentItem({
                   />
                 </picture>
               ) : (
-                <div className={styles['empty-image']}>
+                <div className={styles['card__image--empty']}>
                   <NotFoundImageIcon />
                   <div>등록된 사진이 없어요!</div>
                 </div>
