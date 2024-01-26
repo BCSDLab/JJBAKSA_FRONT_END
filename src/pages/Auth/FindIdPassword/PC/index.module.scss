@@ -5,7 +5,7 @@ $body: #666666;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
+  margin-top: 50px;
 
   &__container {
     width: 365px;
@@ -45,11 +45,13 @@ $body: #666666;
     line-height: 20px;
     margin-bottom: 10px;
     gap: 10px;
+    height: 100px;
 
     &--box {
       display: flex;
       align-items: center;
       gap: 10px;
+      height: 40px;
     }
   }
 
@@ -82,12 +84,17 @@ $body: #666666;
     align-items: center;
     color: $title;
     gap: 5px;
+
+    &--pattern {
+      margin-left: 5px;
+      width: 250px;
+    }
   }
 
   &__blind-icon {
     position: absolute;
     right: 15px;
-    top: 40px;
+    top: 60px;
   }
 
   &__error {
@@ -95,7 +102,7 @@ $body: #666666;
     width: 18px;
     height: 18px;
     right: 15px;
-    top: 40px;
+    top: 60px;
   }
 
   &__box {
@@ -143,7 +150,7 @@ $body: #666666;
     color: white;
     font-size: 15px;
     background-color: #c4c4c4;
-    margin-top: 60px;
+    margin-top: 40px;
     margin-bottom: 90px;
     box-shadow: 2px 3px 12px 1px #0000001a;
 

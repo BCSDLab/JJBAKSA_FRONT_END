@@ -1,25 +1,23 @@
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 
 import { postReview } from 'api/review';
-import { fetchShop } from 'api/shop';
-import LoadingSpinner from 'components/common/LoadingSpinner';
 import TextEditor from 'components/editor/TextEditor';
+import useShop from 'pages/Post/hooks/useShop';
 import { useReview } from 'store/review';
 import makeToast from 'utils/ts/makeToast';
 
 import styles from './Post.module.scss';
 
 export default function Post() {
-  const { name: placeId } = useParams();
-  const { data } = useQuery({
-    queryKey: ['shopDetail', placeId],
-    queryFn: () => fetchShop(placeId as string),
-  });
+  const { placeId } = useParams();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const review = useReview();
+
+  const { shopName } = useShop(placeId as string);
+
   const submitReview = () => {
     postReview({
       placeId: placeId as string,
@@ -33,16 +31,9 @@ export default function Post() {
     });
   };
 
-  if (data) {
-    return (
-      <div className={styles.post}>
-        <TextEditor shop={data?.data.name!} onSubmit={submitReview} />
-      </div>
-    );
-  }
   return (
-    <div className={styles.loading}>
-      <LoadingSpinner size={200} />
+    <div className={styles.post}>
+      <TextEditor shop={shopName || '가게 이름을 불러올 수 없습니다.'} onSubmit={submitReview} />
     </div>
   );
 }

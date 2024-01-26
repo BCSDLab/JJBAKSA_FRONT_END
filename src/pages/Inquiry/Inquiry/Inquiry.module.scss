@@ -12,16 +12,14 @@ $disabled: #c4c4c4;
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-left: 100px;
 
-  // @include media.media-breakpoint-down(mobile) {
-  //   width: 100vw;
-  //   margin-left: 0;
-  // }
+  @include media.media-breakpoint-down(mobile) {
+    width: 100vw;
+  }
 }
 
 .inner-container {
-  width: 947px;
+  max-width: 947px;
   display: flex;
   flex-direction: row;
   justify-content: center;

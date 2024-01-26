@@ -10,16 +10,16 @@ import cn from 'utils/ts/classNames';
 import styles from './Suggestions.module.scss';
 
 interface Props {
-  className: string,
-  text: string,
+  className: string;
+  text: string;
 }
 
 export default function Suggestions({ className, text }: Props) {
   const { isMobile } = useMediaQuery();
   const [isActive, , , toggle] = useBooleanState(false);
 
-  const { shop } = useFetchAutoComplete(text ?? '');
-  const [safeAuto, setSafeAuto] = useState<Array<string>>([]);
+  const { shop } = useFetchAutoComplete(text);
+  const [safeAuto, setSafeAuto] = useState<string[]>([]);
 
   useEffect(() => {
     setSafeAuto((shop && shop.data) ? shop.data.filter((e) => e.includes(text)) : []);

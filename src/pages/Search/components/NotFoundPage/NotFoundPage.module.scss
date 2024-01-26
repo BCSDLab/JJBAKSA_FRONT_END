@@ -1,7 +1,6 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
-  margin-left: 100px;
   width: calc(100vw - 100px);
   height: 100dvh;
 

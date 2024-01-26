@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Shop } from 'api/shop/entity';
 import SearchInput from 'pages/Search/components/SearchInput';
 import Suggestions from 'pages/Search/components/Suggestions';
+import useRecentSearches from 'pages/Search/hooks/useRecentSearches';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import LoadingView from 'pages/SearchDetails/components/LoadingView';
 import SearchItem from 'pages/SearchDetails/components/SearchItem';
@@ -14,12 +15,14 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './SearchDetails.module.scss';
 
 export default function SearchDetails() {
+  const { addCard } = useRecentSearches();
+
   const inputRef = useRef(null);
   const isSearching = useSearchingMode({ inputRef });
   const { isMobile } = useMediaQuery();
   const location = useLocation();
   const {
-    text, handleChange, handleSubmit, isEnter, submittedText, resetText,
+    text, resetText, isEnter, submittedText,
   } = useSearchForm(location.pathname);
   const {
     isFetching, data: shops, count, isError,
@@ -33,34 +36,26 @@ export default function SearchDetails() {
     }
   }, [isFetching, count, submittedText, navigate, resetText, isError]);
 
-  const componentsController = () => {
-    if (isFetching) {
-      return <LoadingView />;
-    }
-
-    return shops?.map((shop: Shop) => (
-      <div className={styles.details__line} key={shop.placeId}>
-        <SearchItem shop={shop} pathname={location.pathname} />
-      </div>
-    ));
-  };
-
   return (
     <div className={styles.details}>
       <SearchInput
         className={styles.details__search}
-        value={text}
         ref={inputRef}
-        onChange={handleChange}
-        onSubmit={handleSubmit}
-        onDelete={resetText}
       />
       {!isMobile && isSearching && !isEnter && <Suggestions className={styles['related-searches']} text={text} />}
       <div className={styles.details__result}>
         {`${count}개의 검색결과`}
       </div>
       <div className={styles.details__list}>
-        {componentsController()}
+        {isFetching ? <LoadingView />
+          : shops?.map((shop: Shop) => (
+            <div className={styles.details__line} key={shop.placeId}>
+              <SearchItem
+                shop={shop}
+                addCard={addCard}
+              />
+            </div>
+          ))}
       </div>
     </div>
   );

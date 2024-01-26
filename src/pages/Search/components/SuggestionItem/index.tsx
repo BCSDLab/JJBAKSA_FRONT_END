@@ -1,3 +1,5 @@
+import { useLocation } from 'react-router-dom';
+
 import { ReactComponent as DeleteIcon } from 'assets/svg/search/delete.svg';
 import { ReactComponent as PinIcon } from 'assets/svg/search/pin.svg';
 import useSearchForm from 'store/text';
@@ -9,7 +11,8 @@ interface Props {
 }
 
 export default function SuggestionItem({ item }: Props) {
-  const { setSearchForm } = useSearchForm('/shop');
+  const location = useLocation();
+  const { setSearchForm } = useSearchForm(location.pathname);
 
   const handleClick = () => {
     setSearchForm((prevSearchForm) => ({
@@ -20,16 +23,18 @@ export default function SuggestionItem({ item }: Props) {
   };
 
   return (
-    <button
-      className={styles.suggestion}
-      type="button"
-      onClick={handleClick}
-    >
-      <PinIcon className={styles.suggestion__pin} />
-      <div className={styles.suggestion__title}>
-        {item}
-      </div>
+    <>
+      <button
+        className={styles.suggestion}
+        type="button"
+        onClick={handleClick}
+      >
+        <PinIcon className={styles.suggestion__pin} />
+        <div className={styles.suggestion__title}>
+          {item}
+        </div>
+      </button>
       <DeleteIcon className={styles.suggestion__delete} />
-    </button>
+    </>
   );
 }

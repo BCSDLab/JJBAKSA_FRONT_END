@@ -6,6 +6,7 @@ const getInquiry = async ({
 }: InquiryProps) => {
   const queryParams = `${queryType}?dateCursor=${dateCursor}&idCursor=${idCursor}&size=${size}`;
   const { data } = await inquiryApi.get<GetInquiryResponse>(`/inquiry${queryParams}`);
+
   return data;
 };
 

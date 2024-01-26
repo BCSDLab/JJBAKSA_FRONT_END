@@ -21,7 +21,7 @@ export default function Search(): JSX.Element {
   const subText = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
   const keyword = location.pathname === '/shop' ? '검색' : '리뷰하기';
   const {
-    text, handleChange, handleSubmit, isEnter, resetText,
+    text, resetText, isEnter,
   } = useSearchForm(location.pathname);
 
   const inputRef = useRef(null);
@@ -43,11 +43,7 @@ export default function Search(): JSX.Element {
             <div className={styles.search}>
               <SearchInput
                 className={styles.search__input}
-                value={text}
                 ref={inputRef}
-                onChange={handleChange}
-                onSubmit={handleSubmit}
-                onDelete={resetText}
               />
               {isSearching && (
                 <Suggestions
