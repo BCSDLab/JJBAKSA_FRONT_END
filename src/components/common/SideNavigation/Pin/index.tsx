@@ -29,9 +29,9 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
 
   const { toggleScrap, isPending } = useScrap(String(placeId), Number(scrapId));
   return (
-    <>
+    <div className={styles.container}>
       <ImageCarousel pathname="pin" imageUrls={data?.photos} />
-      <ul className={styles.container}>
+      <ul>
         <li className={styles.info}>
           <span className={styles.info__name}>{data?.name}</span>
           <span className={styles.info__category}>{data?.category}</span>
@@ -59,6 +59,6 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
         className={styles.post}
       ><PencilkIcon fill="#666666" />리뷰 작성하기
       </button>
-    </>
+    </div>
   );
 }

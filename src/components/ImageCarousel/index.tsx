@@ -1,3 +1,4 @@
+import defaultImage from 'assets/svg/common/favicon.svg';
 import { ReactComponent as NextIcon } from 'assets/svg/shop/next-arrow.svg';
 import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
 import { ReactComponent as PrevIcon } from 'assets/svg/shop/prev-arrow.svg';
@@ -48,7 +49,10 @@ function ImageCarousel({ pathname, imageUrls }: Props) {
           >
             {imageUrls.map((url, index) => (
               <li key={url}>
-                <img src={url} alt={`${index}번 음식점`} />
+                <picture>
+                  <source srcSet={defaultImage} />
+                  <img src={url} alt={`${index}번 음식점`} />
+                </picture>
               </li>
             ))}
           </ul>

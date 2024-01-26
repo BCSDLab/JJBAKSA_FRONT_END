@@ -1,12 +1,13 @@
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import styles from 'pages/Search/components/NavigationBar/NavigationBar.module.scss';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
+import styles from './NavigationBar.module.scss';
+
 interface Props {
-  keyword?: string;
+  keyword: string;
 }
 
-export default function NavigationBar({ keyword = '검색' }: Props) {
+export default function NavigationBar({ keyword }: Props) {
   const { isMobile } = useMediaQuery();
 
   return (
