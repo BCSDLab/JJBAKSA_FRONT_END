@@ -1,12 +1,10 @@
 import { useParams } from 'react-router-dom';
 
-import { useQuery } from '@tanstack/react-query';
-
-import { fetchShop } from 'api/shop';
 import { Period } from 'api/shop/entity';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 import ImageCarousel from 'components/ImageCarousel';
 import StarRatingPreview from 'components/StarRating/StarRatingPreview';
+import useShop from 'pages/Post/hooks/useShop';
 import Map from 'pages/ShopDetail/components/Map/index';
 import FriendReviewList from 'pages/ShopDetail/components/ReviewList/FriendReviewList';
 import MyReviewList from 'pages/ShopDetail/components/ReviewList/MyReviewList';
@@ -24,31 +22,29 @@ const formatPeriod = (period: Period) => {
     const closeTime = `${formatTime(period.closeTime.hour)}:${formatTime(period.closeTime.minute)}`;
     return `${openTime} - ${closeTime}`;
   }
+
   return '정보 없음';
 };
 
 function ShopDetail() {
   const params = useParams();
+  const placeId = params.placeId as string;
+
   const { isMobile } = useMediaQuery();
-  const { data } = useQuery({
-    queryKey: ['shopDetail', params.placeId],
-    queryFn: () => fetchShop(params.placeId as string),
-  });
+  const { rate } = useRate(placeId);
+  const { scrapId } = useScrapId(placeId);
+  const { shop } = useShop(placeId);
 
-  const { scrapId } = useScrapId(params.placeId as string);
-  const { rate } = useRate(params.placeId as string);
-
-  if (data && scrapId) {
+  if (shop && scrapId) {
     const {
       // category,
-      placeId,
       coordinate,
       name,
       formattedAddress,
       formattedPhoneNumber,
       todayPeriod,
       photos,
-    } = data.data;
+    } = shop;
 
     return (
       <div className={styles.container}>
@@ -84,7 +80,7 @@ function ShopDetail() {
               </div>
             </div>
           </section>
-          <FriendReviewList placeId={placeId as string} />
+          <FriendReviewList placeId={placeId} />
           {!isMobile ? (
             <>
               <Map
@@ -92,11 +88,11 @@ function ShopDetail() {
                 latitude={coordinate.lat}
                 longitude={coordinate.lng}
               />
-              <MyReviewList placeId={placeId as string} />
+              <MyReviewList placeId={placeId} />
             </>
           ) : (
             <>
-              <MyReviewList placeId={placeId as string} />
+              <MyReviewList placeId={placeId} />
               <Map
                 formattedAddress={formattedAddress}
                 latitude={coordinate.lat}

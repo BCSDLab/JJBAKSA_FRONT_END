@@ -36,22 +36,6 @@ export default function SearchDetails() {
     }
   }, [isFetching, count, submittedText, navigate, resetText, isError]);
 
-  const componentsController = () => {
-    if (isFetching) {
-      return <LoadingView />;
-    }
-
-    return shops?.map((shop: Shop) => (
-      <div className={styles.details__line} key={shop.placeId}>
-        <SearchItem
-          shop={shop}
-          pathname={location.pathname}
-          addCard={addCard}
-        />
-      </div>
-    ));
-  };
-
   return (
     <div className={styles.details}>
       <SearchInput
@@ -63,7 +47,15 @@ export default function SearchDetails() {
         {`${count}개의 검색결과`}
       </div>
       <div className={styles.details__list}>
-        {componentsController()}
+        {isFetching ? <LoadingView />
+          : shops?.map((shop: Shop) => (
+            <div className={styles.details__line} key={shop.placeId}>
+              <SearchItem
+                shop={shop}
+                addCard={addCard}
+              />
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import defaultImage from 'assets/images/search/default-image.png';
 import { ReactComponent as ClockIcon } from 'assets/svg/common/clock.svg';
@@ -22,7 +22,10 @@ export default function RecentItem({
     category, name, photoToken, placeId,
   } = card;
 
+  const location = useLocation();
   const { isMobile } = useMediaQuery();
+
+  const newPath = location.pathname.includes('/post') ? `/post/${placeId}` : `/shop/${placeId}`;
 
   const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -34,8 +37,7 @@ export default function RecentItem({
     return (
       <Link
         className={styles.item}
-        to={`/shop/${placeId}`}
-        state={{ placeId }}
+        to={newPath}
       >
         <div className={styles.container}>
           {!isMobile && (
