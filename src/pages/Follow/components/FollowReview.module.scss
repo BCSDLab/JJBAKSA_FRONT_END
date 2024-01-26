@@ -12,8 +12,8 @@
   display: flex;
   justify-content: space-between;
   padding-right: 1vw;
-  padding-left: 1vw;
-  margin-top: 1vh;
+  padding-left: 2vw;
+  margin-top: 2vh;
   margin-bottom: 1vh;
 
   @include media.media-breakpoint-down(mobile) {
@@ -24,9 +24,21 @@
     cursor: pointer;
   }
 
+  &__set {
+    display: flex;
+  }
+
   &__name {
     font-size: 25px;
     margin-right: 5px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 70vw;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
+    }
   }
 
   &__category {

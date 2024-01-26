@@ -37,8 +37,8 @@ export const deleteFollow = (param: DeleteFollowerParams) => followApi.delete('/
 
 export const recentlyActiveFollow = () => followApi.get<GetFollowListResponse>('/recently-active-followers?pageSize=15');
 
-export const getFollowReview = (id: number, pageParam: string) => followApi.get<GetFollowReviewResponse>(`/review/follower/${id}/shops?size=9&${pageParam}`);
+export const getFollowReview = (id: number, pageParam: string) => followApi.get<GetFollowReviewResponse>(`/review/follower/${id}/shops?size=10&${pageParam}`);
 
-export const getDetailReview = (followId: number, placeId: string) => followApi.get<GetDetailReviewResponse>(`/review/follower/${followId}/shop/${placeId}`);
+export const getDetailReview = (followId: number, placeId: string) => followApi.get<GetDetailReviewResponse>(`/review/follower/${followId}/shop/${placeId}?size=5`);
 
 export const getFollowerReviewCount = (param: GetFollowerReviewCountParam) => followApi.get(`/review/follower/${param.id}/count`);

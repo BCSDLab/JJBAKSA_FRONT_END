@@ -15,6 +15,9 @@ const useAcceptFollow = () => {
       queryClient.invalidateQueries({
         queryKey: ['received'],
       });
+      queryClient.invalidateQueries({
+        queryKey: ['recent'],
+      });
     },
   });
   return accept;
