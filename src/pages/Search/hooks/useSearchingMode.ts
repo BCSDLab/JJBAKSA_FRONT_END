@@ -45,7 +45,7 @@ const useSearchingMode = ({ inputRef }: Props) => {
     setIsSearching(isText || isFocused);
   }, [isText, isFocused]);
 
-  return isSearching;
+  return { isSearching, isText, isFocused };
 };
 
 export default useSearchingMode;

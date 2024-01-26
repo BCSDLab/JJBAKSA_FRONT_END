@@ -22,7 +22,7 @@ export default function SearchDetails() {
   const keyword = params.keyword as string;
 
   const { isMobile } = useMediaQuery();
-  const isSearching = useSearchingMode({ inputRef });
+  const { isText: isSearching } = useSearchingMode({ inputRef });
   const { text, setText } = useSearchForm(location.pathname);
   const { addCard } = useRecentSearches();
 
@@ -43,6 +43,7 @@ export default function SearchDetails() {
       <div className={styles.details}>
         {isMobile && <NavigationBar prevWord={prevWord} />}
         <div className={styles.details__search}>
+          <div className={styles.details__shade} />
           <SearchInput
             className={styles.details__input}
             ref={inputRef}
@@ -58,9 +59,7 @@ export default function SearchDetails() {
           {isFetching
             ? <LoadingView />
             : shops?.map((shop: Shop) => (
-              <div className={styles.details__line} key={shop.placeId}>
-                <SearchItem shop={shop} addCard={addCard} />
-              </div>
+              <SearchItem shop={shop} addCard={addCard} />
             ))}
         </div>
       </div>

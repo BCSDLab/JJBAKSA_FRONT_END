@@ -12,7 +12,7 @@
 
 .details {
   max-width: 875px;
-  margin: 0 auto;
+  margin-top: 135px;
   display: flex;
   flex-direction: column;
 
@@ -22,12 +22,20 @@
   }
 
   &__search {
-    position: relative;
+    position: sticky;
+    top: 16px;
+  }
+
+  &__shade {
+    position: fixed;
+    top: 0px;
+    width: calc(100vw - 100px);
+    height: 78px;
+    padding-top: auto;
+    background-color: white;
   }
 
   &__input {
-    margin-bottom: 25px;
-
     @include media.media-breakpoint-down(mobile) {
       position: sticky;
       top: 40px;
@@ -45,7 +53,7 @@
     display: flex;
     font-size: 18px;
     color: #ff7f23;
-    padding-left: 16px;
+    padding: 32px 0 33px 16px;
 
     @include media.media-breakpoint-down(mobile) {
       font-size: 16px;
@@ -57,14 +65,9 @@
   &__list {
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
 
     @include media.media-breakpoint-down(mobile) {
       width: 100%;
     }
-  }
-
-  &__line {
-    border-bottom: solid 1px #eeeeee;
   }
 }

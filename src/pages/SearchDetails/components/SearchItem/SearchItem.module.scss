@@ -4,6 +4,7 @@
   width: 100%;
   height: 145px;
   padding: 24px 0;
+  border-top: solid 1px #eeeeee;
 }
 
 .box {
@@ -56,14 +57,12 @@
 }
 
 .pictures {
-  border: 1px solid black;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   overflow: hidden;
 
   &__picture {
-    border: 1px solid black;
     max-width: 226px;
     height: 100%;
     margin-right: 2px;
