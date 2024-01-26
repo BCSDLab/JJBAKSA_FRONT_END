@@ -131,6 +131,22 @@
   &:hover {
     filter: brightness(50%);
   }
+
+  &__pencil {
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    width: 112px;
+    height: 112px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
 .change--image {

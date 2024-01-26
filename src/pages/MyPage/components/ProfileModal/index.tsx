@@ -9,13 +9,13 @@ import useChangeProfile from 'pages/MyPage/hooks/useChangeProfile';
 import styles from './ProfileModal.module.scss';
 
 interface ProfileModalProps {
-  imgUrl:string | undefined,
-  nickname?:string
+  imgUrl: string | undefined,
+  nickname?: string
 }
 
-export default function ProfileModal({ imgUrl, nickname }:ProfileModalProps) {
+export default function ProfileModal({ imgUrl, nickname }: ProfileModalProps) {
   const [nameLength, setName] = useState(nickname?.length);
-  const changeName = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const changeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value.length <= 10) {
       setName(e.target.value.length);
     }
@@ -28,7 +28,7 @@ export default function ProfileModal({ imgUrl, nickname }:ProfileModalProps) {
   } = useChangeProfile();
   const { onClick: changeNickname, nicknameRef } = useChangeNickname();
 
-  const onClick = (e:React.FormEvent<HTMLFormElement>) => {
+  const onClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     changeProfile();
     if (nicknameRef.current) {
