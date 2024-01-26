@@ -50,9 +50,10 @@ $title: #ff7f23;
 }
 
 .container {
-  justify-content: center;
-  align-items: center;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100vw - 100px);
   height: calc(100vh - 80px);
 }
 

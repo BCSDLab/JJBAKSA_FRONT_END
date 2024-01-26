@@ -6,9 +6,9 @@ $active: #ff7f23;
 $passive: #c4c4c4;
 
 .template {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   justify-content: center;
   align-items: center;
 }

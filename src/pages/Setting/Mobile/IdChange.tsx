@@ -31,6 +31,7 @@ export default function IdChange(): JSX.Element {
     isShowModal,
     setIsShowError,
   } = useModifyPassword();
+
   return (
     <div className={styles.layout}>
       <div className={styles.back}>
