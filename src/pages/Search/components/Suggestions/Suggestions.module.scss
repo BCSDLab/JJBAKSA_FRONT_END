@@ -4,13 +4,14 @@
   width: 100%;
   min-height: 98px;
   max-height: 359px;
+  margin: 0 auto;
   overflow: scroll;
   border-radius: 0 0 15px 15px;
   box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
   background-color: white;
 
-  @include media.media-breakpoint-up(mobile) {
-    margin: 0 auto;
+  @include media.media-breakpoint-down(mobile) {
+    width: 95%;
   }
 }
 

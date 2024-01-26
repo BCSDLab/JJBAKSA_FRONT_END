@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import defaultImage from 'assets/images/search/default-image.png';
 import { ReactComponent as ClockIcon } from 'assets/svg/common/clock.svg';
 import { ReactComponent as PcDeleteIcon } from 'assets/svg/common/close.svg';
-import { ReactComponent as MobileDeleteIcon } from 'assets/svg/search/delete.svg';
+import { ReactComponent as MobileDeleteIcon } from 'assets/svg/search/mobile-delete.svg';
 import { Card } from 'pages/Search/static/entity';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
@@ -36,16 +36,16 @@ export default function RecentItem({
   if (index < 5) {
     return (
       <Link
-        className={styles.item}
+        className={styles.container}
         to={newPath}
       >
         {!isMobile && (
           <>
-            <div className={styles.container}>
+            <div className={styles.card}>
               <img
                 alt="imageAlt"
                 src={photoToken ?? defaultImage}
-                className={styles.image}
+                className={styles.card__image}
               />
               <div className={styles.description}>
                 <div className={styles.description__category}>{category}</div>
@@ -66,22 +66,22 @@ export default function RecentItem({
         )}
 
         {isMobile && (
-          <>
-            <div className={styles.container}>
-              <div className={styles.description}>
-                <ClockIcon />
-                <div className={styles.description__name}>{name}</div>
-              </div>
+          <div className={styles.card}>
+            <div className={styles.description}>
+              <ClockIcon />
+              <div className={styles.description__name}>{name}</div>
             </div>
-            <button
-              className={styles.delete}
-              type="button"
-              onClick={handleDelete}
-              aria-label="삭제"
-            >
-              <MobileDeleteIcon />
-            </button>
-          </>
+            <div className={styles.cover}>
+              <button
+                className={styles.cover__delete}
+                type="button"
+                onClick={handleDelete}
+                aria-label="삭제"
+              >
+                <MobileDeleteIcon />
+              </button>
+            </div>
+          </div>
         )}
       </Link>
     );
