@@ -1,43 +1,75 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
-.item {
+.container {
   position: relative;
   text-decoration: none;
 }
 
-.container {
+.card {
   position: relative;
-  width: 150px;
+  width: 155px;
+  height: 220px;
   display: flex;
   flex-direction: column;
-  height: 200px;
   font-size: 14px;
   border-radius: 4px;
   box-shadow: 1px 1px 20px rgb(0 0 0 / 25%);
 
+  &__image {
+    width: 155px;
+    height: 155px;
+    border-radius: 4px;
+    position: relative;
+  }
+
   @include media.media-breakpoint-down(mobile) {
     width: 90vw;
-    height: 20px;
+    height: 33px;
     box-shadow: none;
-    justify-content: space-between;
     flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
-.image {
-  width: 100%;
-  height: 150px;
-  border-radius: 4px;
+.description {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  overflow: hidden;
+
+  &__category {
+    color: #979797;
+    font-size: 14px;
+  }
+
+  &__name {
+    overflow: hidden;
+    padding-left: 3px;
+    color: black;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    padding: 0;
+  }
 }
 
 .cover {
-  width: 150px;
-  height: 200px;
-  background-color: rgb(0 0 0 / 50%);
   position: absolute;
   top: 0;
-  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(34 34 34 / 30%);
+  border-radius: 4px;
   opacity: 0;
 
   &:hover {
@@ -50,35 +82,28 @@
     right: 8px;
     cursor: pointer;
   }
-}
-
-.description {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 50px;
-  padding: 0 16px;
-  overflow: hidden;
-
-  &__category {
-    color: #979797;
-    font-size: 14px;
-  }
-
-  &__name {
-    font-weight: bold;
-    overflow: hidden;
-    color: black;
-    font-size: 16px;
-  }
 
   @include media.media-breakpoint-down(mobile) {
-    flex-direction: row;
-    justify-content: start;
-  }
-}
+    position: static;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    opacity: 1;
 
-.delete {
-  color: #898a8d;
-  cursor: pointer;
+    &:hover {
+      background-color: #eeeeee;
+    }
+
+    &__delete {
+      position: static;
+      width: 100%;
+      height: 100%;
+      color: #898a8d;
+      cursor: pointer;
+    }
+  }
 }

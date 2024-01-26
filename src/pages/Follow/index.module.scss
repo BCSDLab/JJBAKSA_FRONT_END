@@ -1,10 +1,8 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .template {
-  display: grid;
-  grid-template-columns: 100px 1fr 100px;
   height: 100vh;
-  width: 100vw;
+  width: calc(100vw - 100px);
   padding-top: 60px;
   box-sizing: border-box;
 
@@ -14,6 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 100px;
   }
 }
 
@@ -21,7 +20,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  grid-column-start: 2;
   width: 100%;
   height: 100%;
 }
@@ -29,7 +27,7 @@
 .top {
   display: flex;
   justify-content: center;
-  width: 800px;
+  width: 50vw;
   margin-left: 3%;
   margin-bottom: 50px;
 
@@ -41,6 +39,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 85vw;
   }
 
   &__prev {
@@ -56,7 +55,7 @@
   }
 
   &__search {
-    width: 726px;
+    width: 100%;
     height: 64px;
     background-color: #eeeeee;
     border-radius: 100px;
@@ -68,10 +67,12 @@
     margin-top: 16px;
 
     @include media.media-breakpoint-down(mobile) {
-      width: 343px;
+      width: 85vw;
       height: 48px;
       background-color: #ffffff;
       box-shadow: 2px 3px 12px 1px #eeeeee;
+      padding-left: 3vw;
+      padding-right: 3vw;
     }
 
     &--input {
@@ -84,7 +85,7 @@
       outline: none;
 
       @include media.media-breakpoint-down(mobile) {
-        width: 343px;
+        width: 85vw;
         height: 48px;
         background-color: #ffffff;
         font-size: 16px;
@@ -107,7 +108,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1207px;
+  width: 65vw;
   height: 100vh;
 
   @include media.media-breakpoint-down(mobile) {

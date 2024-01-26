@@ -18,10 +18,6 @@ export interface FetchTrendingsResponse {
   trendings: string[];
 }
 
-export interface SearchQueryParams {
-  searchText: string;
-}
-
 export interface ShopsParams {
   keyword: string;
   location?: Coords;

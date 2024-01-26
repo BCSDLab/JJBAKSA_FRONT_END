@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
 import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
@@ -8,17 +8,18 @@ import styles from '../SearchDetails.module.scss';
 
 interface Props {
   shop: Shop;
-  pathname: string;
   addCard: (card: Card) => void;
 }
 
-export default function SearchItem({ shop, pathname, addCard }: Props) {
+export default function SearchItem({ shop, addCard }: Props) {
   const {
     name, formattedAddress, photoToken, placeId, dist, openNow, category,
   } = shop;
 
   const navigate = useNavigate();
+  const location = useLocation();
   const distInKm = (dist / 1000).toFixed(1);
+
   const handleClick = () => {
     const card: Card = {
       category, name, photoToken, placeId,
@@ -27,8 +28,8 @@ export default function SearchItem({ shop, pathname, addCard }: Props) {
     addCard(card);
 
     // 음식점 상세 정보로 이동
-    const newPath = pathname.includes('/post') ? `/post/${placeId}` : `/shop/${placeId}`;
-    navigate(newPath, { state: { placeId } });
+    const newPath = location.pathname.includes('/post') ? `/post/${placeId}` : `/shop/${placeId}`;
+    navigate(newPath);
   };
 
   return (

@@ -13,7 +13,7 @@ const useGetFollowerReview = (id: number) => {
       const len = last.data.content.length;
       if (last.data.empty) return null;
       // cursor: 마지막으로 조회한 상점 id
-      return `cursor=${last.data.content[len - 1].shopId}`;
+      return `cursor=${last.data.content[len - 1].id}`;
     },
   });
   const flatData = {

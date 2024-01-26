@@ -12,7 +12,13 @@ export interface Follower {
     id: number;
     reviewCount: number;
     friendCount: number;
-  }
+  },
+  profileImage?: {
+    id: number,
+    originalName: string,
+    path: string,
+    url: string
+  },
 }
 
 export interface RequestUserInfo {
