@@ -10,7 +10,7 @@ export default function Home(): JSX.Element {
   return (
     <div className={styles.container}>
       <Map className={styles['map-component']} />
-      {!isMobile && <LocationSelectModal className={styles['modal-component']} />}
+      {!isMobile && <LocationSelectModal />}
     </div>
   );
 }

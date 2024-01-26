@@ -1,4 +1,4 @@
-import { ReactComponent as Arrow } from 'assets/svg/home/arrow.svg';
+// import { ReactComponent as Arrow } from 'assets/svg/home/arrow.svg';
 
 import styles from './LocationSelectButton.module.scss';
 
@@ -19,7 +19,7 @@ export default function LocationSelectButton({ address, onClick }: Props): JSX.E
       ) : (
         <div className={styles.button__text}>위치 정보를 가져오는 중...</div>
       )}
-      <Arrow className={styles['button__down-arrow']} />
+      {/* <Arrow className={styles['button__down-arrow']} /> */}
     </button>
   );
 }
