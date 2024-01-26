@@ -110,6 +110,17 @@
   }
 }
 
+.picture {
+  display: flex;
+  height: 145px;
+  width: 615px;
+
+  img {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
 .image {
   display: flex;
   margin-left: auto;

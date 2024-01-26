@@ -30,6 +30,18 @@
   position: relative;
 }
 
+.empty-image {
+  display: flex;
+  color: #979797;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  position: relative;
+}
+
 .cover {
   width: 150px;
   height: 200px;
