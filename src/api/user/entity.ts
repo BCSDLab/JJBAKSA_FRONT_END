@@ -43,6 +43,7 @@ export interface User {
     reviewCount: number;
     friendCount: number;
   };
+  followedType?: 'FOLLOWED' | 'NONE' | 'REQUEST_RECEIVE' | 'REQUEST_SENT',
 }
 
 export interface SendRegisterEmailParams {

@@ -9,6 +9,7 @@ const useRejectRequest = () => {
     mutationFn: (requestId: number) => rejectFollow({ id: requestId }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['received'] });
+      queryClient.invalidateQueries({ queryKey: ['search'] });
     },
   });
 
