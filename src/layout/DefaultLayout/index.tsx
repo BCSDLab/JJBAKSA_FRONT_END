@@ -13,13 +13,14 @@ export default function DefaultLayout(): JSX.Element {
   const location = useLocation();
 
   return (
-    <>
+    <div className={styles.layout}>
+      {!isMobile && <span className={styles['sidebar-space']} />}
       <Outlet />
       <div className={cn({ [styles.home]: location.pathname !== '/' })}>
         <Home />
       </div>
       {!isMobile && <SideNavigation />}
       {isMobile && <BottomNavigation />}
-    </>
+    </div>
   );
 }

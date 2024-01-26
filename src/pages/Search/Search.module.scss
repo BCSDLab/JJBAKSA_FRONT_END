@@ -1,12 +1,13 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
-  width: 100%;
+  width: calc(100vw - 100px);
+  max-width: 875px;
   height: 100dvh;
+  margin: 0 auto;
 
-  @include media.media-breakpoint-up(mobile) {
-    max-width: 875px;
-    margin: 0 auto;
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
   }
 }
 

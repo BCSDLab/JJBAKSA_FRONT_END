@@ -4,7 +4,6 @@
   position: relative;
   width: calc(100vw - 100px);
   height: 100vh;
-  margin-left: 100px;
 
   @include media.media-breakpoint-down(mobile) {
     margin: 0;
