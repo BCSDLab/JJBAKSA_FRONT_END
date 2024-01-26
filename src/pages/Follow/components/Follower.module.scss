@@ -45,14 +45,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       text-align: left;
-      white-space: nowrap;
       width: 90%;
-      overflow: hidden;
-      text-overflow: ellipsis;
 
       @include media.media-breakpoint-down(mobile) {
         font-size: 18px;
-        width: 200px;  
+        width: 200px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
