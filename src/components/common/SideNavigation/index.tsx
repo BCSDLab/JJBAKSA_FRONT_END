@@ -73,7 +73,7 @@ export default function SideNavigation(): JSX.Element {
   }, [isActive, setVisible]);
 
   return (
-    <div>
+    <>
       <nav className={styles['side-navigation']}>
         <ul className={styles['side-navigation__lists']}>
           {TABS.map((tab, index) => (
@@ -196,6 +196,6 @@ export default function SideNavigation(): JSX.Element {
         {(filterNearbyState || filterScrapState || filterFriendState)
         && selected && <Pin placeId={selected} />}
       </div>
-    </div>
+    </>
   );
 }
