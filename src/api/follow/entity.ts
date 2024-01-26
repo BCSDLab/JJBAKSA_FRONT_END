@@ -85,7 +85,7 @@ export interface GetFollowReviewResponse {
     name: string;
     placeId: string;
     photos?: string[];
-    shopId: number;
+    id: number;
     category: string;
   }[]
   empty: boolean;
