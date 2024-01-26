@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 
-import defaultImage from 'assets/images/search/default-image.png';
 import { ReactComponent as ClockIcon } from 'assets/svg/common/clock.svg';
 import { ReactComponent as PcDeleteIcon } from 'assets/svg/common/close.svg';
+import defaultImage from 'assets/svg/common/favicon.svg';
 import { ReactComponent as MobileDeleteIcon } from 'assets/svg/search/mobile-delete.svg';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
 import { Card } from 'pages/Search/static/entity';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
@@ -42,11 +43,21 @@ export default function RecentItem({
         {!isMobile && (
           <>
             <div className={styles.card}>
-              <img
-                alt="imageAlt"
-                src={photoToken ?? defaultImage}
-                className={styles.card__image}
-              />
+              {photoToken ? (
+                <picture>
+                  <source srcSet={defaultImage} />
+                  <img
+                    alt="imageAlt"
+                    src={photoToken}
+                    className={styles.card__image}
+                  />
+                </picture>
+              ) : (
+                <div className={styles['card__image--empty']}>
+                  <NotFoundImageIcon />
+                  <div>등록된 사진이 없어요!</div>
+                </div>
+              )}
               <div className={styles.description}>
                 <div className={styles.description__category}>{category}</div>
                 <div className={styles.description__name}>{name}</div>

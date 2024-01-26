@@ -53,6 +53,7 @@
 
     @include media.media-breakpoint-down(mobile) {
       width: 100%;
+      padding: 0;
     }
   }
 
@@ -106,6 +107,7 @@
     align-items: center;
 
     & > span:first-child {
+      width: 50px;
       font-weight: 500;
     }
   }

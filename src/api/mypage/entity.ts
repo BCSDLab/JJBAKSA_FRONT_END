@@ -25,10 +25,12 @@ export interface ReviewsResponse {
 }
 
 export type Scrap = {
-  placeId: string,
+  address: string,
   category: string,
+  createdAt: number,
   name: string,
   photo: string,
+  placeId: string,
   scrapId: number,
   rate: {
     totalRating: number,

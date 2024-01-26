@@ -3,7 +3,7 @@
 .sentence {
   word-break: keep-all;
   height: 80px;
-  padding-top: 168px;
+  padding-top: 100px;
   padding-left: 24px;
   font-size: 40px;
   font-weight: 300;
@@ -16,8 +16,10 @@
   }
 
   @include media.media-breakpoint-down(mobile) {
+    font-size: 32px;
+    font-weight: 400;
     max-width: 767px;
-    padding-top: 64px;
+    padding-top: 50px;
     margin: 0 auto;
   }
 }
