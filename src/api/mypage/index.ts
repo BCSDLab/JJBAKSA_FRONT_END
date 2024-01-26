@@ -11,7 +11,7 @@ export const getReviewedShops = async () => myPageApi.get<ReviewedShopsResponse>
 
 export const getReviews = async (placeId:string) => myPageApi.get<ReviewsResponse>(`/review/shop/${placeId}?size=10`);
 
-export const getScraps = async (pageParam:number) => myPageApi.get<ScrapResponse>(`/scraps?cursor=${pageParam}`);
+export const getScraps = async (pageParam:string) => myPageApi.get<ScrapResponse>(`/scraps?cursor=${pageParam}`);
 
 export const patchProfileImage = async (image:FormData | null) => myPageApi.patch<PatchProfileImageResponse>('/user/profile', image, {
   headers: {

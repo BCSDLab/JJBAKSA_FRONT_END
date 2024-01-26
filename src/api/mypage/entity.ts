@@ -31,15 +31,18 @@ export type Scrap = {
   name: string,
   photo: string,
   placeId: string,
+  scrapId: number,
   rate: {
+    totalRating: number,
     ratingCount: number,
-    totalRating: number
   }
 };
 export interface ScrapResponse {
   content: Scrap[],
   totalPages: number,
-  totalElements: number
+  totalElements: number,
+  empty: boolean,
+  last: boolean,
 }
 
 export interface PatchProfileImageResponse {
