@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { forwardRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as DeleteIcon } from 'assets/svg/search/delete.svg';
 import { ReactComponent as LensIcon } from 'assets/svg/search/lens.svg';
@@ -14,11 +14,18 @@ interface Props {
 
 const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { className } = props;
+  const navigate = useNavigate();
   const location = useLocation();
 
   const {
-    text, resetText, handleChange, handleSubmit,
+    text, resetText, handleChange,
   } = useSearchForm(location.pathname);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (text.length === 0) return;
+    navigate(`/search/${text}`);
+  };
 
   return (
     <div className={className}>

@@ -1,24 +1,21 @@
 import PreviousButton from 'components/PreviousButton/PreviousButton';
-import useMediaQuery from 'utils/hooks/useMediaQuery';
 
 import styles from './NavigationBar.module.scss';
 
 interface Props {
-  keyword: string;
+  className: string;
+  previous: string;
 }
 
-export default function NavigationBar({ keyword }: Props) {
-  const { isMobile } = useMediaQuery();
-
+export default function NavigationBar({ className, previous }: Props) {
   return (
-    <nav className={styles['search-nav']}>
-      {isMobile
-        && (
+    <div className={className}>
+      <div className={styles['search-nav']}>
         <div className={styles['search-nav__button']}>
           <PreviousButton />
         </div>
-        )}
-      <h1 className={styles['search-nav__text']}>{keyword}</h1>
-    </nav>
+        <h1 className={styles['search-nav__text']}>{previous}</h1>
+      </div>
+    </div>
   );
 }

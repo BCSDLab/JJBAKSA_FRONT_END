@@ -10,7 +10,6 @@ import Sentence from 'pages/Search/components/Sentence';
 import Suggestions from 'pages/Search/components/Suggestions';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import { POST_TEXT, SHOP_TEXT } from 'pages/Search/static/searchText';
-import SearchDetails from 'pages/SearchDetails';
 import useSearchForm from 'store/text';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
@@ -18,14 +17,14 @@ import styles from './Search.module.scss';
 
 export default function Search(): JSX.Element {
   const location = useLocation();
-  const subText = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
-  const keyword = location.pathname === '/shop' ? '검색' : '리뷰하기';
+  const subtext = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
+  const previous = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
   const {
-    text, resetText, isEnter,
+    text, resetText,
   } = useSearchForm(location.pathname);
 
   const inputRef = useRef(null);
-  const isSearching = useSearchingMode({ inputRef });
+  const { isText: isSearching } = useSearchingMode({ inputRef });
   const { isMobile } = useMediaQuery();
 
   useEffect(() => {
@@ -34,28 +33,28 @@ export default function Search(): JSX.Element {
 
   return (
     <div className={styles.container}>
-      {isMobile && <NavigationBar keyword={keyword} />}
-      {isEnter
-        ? <SearchDetails />
-        : (
-          <>
-            <Sentence subText={subText} />
-            <div className={styles.search}>
-              <SearchInput
-                className={styles.search__input}
-                ref={inputRef}
-              />
-              {isSearching && (
-                <Suggestions
-                  className={styles['search__related-searches']}
-                  text={text}
-                />
-              )}
-              <RollingBanner />
-              <RecentSearches />
-            </div>
-          </>
-        )}
+      <div className={styles.box}>
+        <div className={styles.box__shade} />
+        {isMobile && <NavigationBar className={styles.box__navigation} previous={previous} />}
+        <Sentence
+          className={styles.box__subtext}
+          subtext={subtext}
+        />
+        <div className={styles.search}>
+          <SearchInput
+            className={styles.search__input}
+            ref={inputRef}
+          />
+          {isSearching && (
+            <Suggestions
+              className={styles.search__suggestions}
+              text={text}
+            />
+          )}
+          <RollingBanner />
+          <RecentSearches />
+        </div>
+      </div>
     </div>
   );
 }

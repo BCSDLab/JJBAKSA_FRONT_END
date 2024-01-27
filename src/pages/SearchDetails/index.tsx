@@ -1,13 +1,14 @@
 import { useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { Shop } from 'api/shop/entity';
+import NavigationBar from 'pages/Search/components/NavigationBar';
 import SearchInput from 'pages/Search/components/SearchInput';
 import Suggestions from 'pages/Search/components/Suggestions';
 import useRecentSearches from 'pages/Search/hooks/useRecentSearches';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
 import LoadingView from 'pages/SearchDetails/components/LoadingView';
-import SearchItem from 'pages/SearchDetails/components/SearchItem';
+import SearchItem from 'pages/SearchDetails/components/SearchItem/SearchItem';
 import useFetchShops from 'pages/SearchDetails/hooks/useFetchShops';
 import useSearchForm from 'store/text';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
@@ -15,47 +16,52 @@ import useMediaQuery from 'utils/hooks/useMediaQuery';
 import styles from './SearchDetails.module.scss';
 
 export default function SearchDetails() {
+  const inputRef = useRef(null);
+  const location = useLocation();
+  const params = useParams();
+  const keyword = params.keyword as string;
+
+  const { isMobile } = useMediaQuery();
+  const { isText: isSearching } = useSearchingMode({ inputRef });
+  const { text, setText } = useSearchForm(location.pathname);
   const { addCard } = useRecentSearches();
 
-  const inputRef = useRef(null);
-  const isSearching = useSearchingMode({ inputRef });
-  const { isMobile } = useMediaQuery();
-  const location = useLocation();
   const {
-    text, resetText, isEnter, submittedText,
-  } = useSearchForm(location.pathname);
-  const {
-    isFetching, data: shops, count, isError,
-  } = useFetchShops(submittedText);
-  const navigate = useNavigate();
+    isFetching, data: shops, shopCount,
+  } = useFetchShops(keyword);
+
+  const previous = location.pathname.startsWith('/search') ? '검색' : '리뷰하기';
 
   useEffect(() => {
-    if ((!isFetching && count === 0 && submittedText.length !== 0) || isError) {
-      navigate('/search/not-found');
-      resetText();
-    }
-  }, [isFetching, count, submittedText, navigate, resetText, isError]);
+    setText(keyword);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div className={styles.details}>
-      <SearchInput
-        className={styles.details__search}
-        ref={inputRef}
-      />
-      {!isMobile && isSearching && !isEnter && <Suggestions className={styles['related-searches']} text={text} />}
-      <div className={styles.details__result}>
-        {`${count}개의 검색결과`}
-      </div>
-      <div className={styles.details__list}>
-        {isFetching ? <LoadingView />
-          : shops?.map((shop: Shop) => (
-            <div className={styles.details__line} key={shop.placeId}>
-              <SearchItem
-                shop={shop}
-                addCard={addCard}
-              />
-            </div>
-          ))}
+    <div className={styles.container}>
+      <div className={styles.details}>
+        {isMobile && <NavigationBar className={styles.details__navigation} previous={previous} />}
+        <div className={styles.details__search}>
+          <div className={styles.details__shade} />
+          <SearchInput
+            className={styles.details__input}
+            ref={inputRef}
+          />
+          {!isMobile && isSearching
+            && <Suggestions className={styles.details__suggestions} text={text} />}
+        </div>
+
+        <div className={styles.details__result}>
+          {`${shopCount}개의 검색결과`}
+        </div>
+        <div className={styles.details__list}>
+          {isFetching
+            ? <LoadingView />
+            : shops?.map((shop: Shop) => (
+              <SearchItem shop={shop} addCard={addCard} />
+            ))}
+        </div>
       </div>
     </div>
   );

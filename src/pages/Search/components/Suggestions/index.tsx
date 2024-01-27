@@ -15,8 +15,8 @@ interface Props {
 }
 
 export default function Suggestions({ className, text }: Props) {
-  const { isMobile } = useMediaQuery();
   const [isActive, , , toggle] = useBooleanState(false);
+  const { isMobile } = useMediaQuery();
 
   const { shop } = useFetchAutoComplete(text);
   const [safeAuto, setSafeAuto] = useState<string[]>([]);
@@ -46,6 +46,7 @@ export default function Suggestions({ className, text }: Props) {
             </div>
           )}
         </div>
+
         <ul className={styles.suggestions}>
           {text.length > 0 && safeAuto.map((item) => (
             <li className={styles.suggestions__item}>

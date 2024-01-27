@@ -1,31 +1,17 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
-.search {
-  width: 100%;
-  height: 100vh;
-  font-size: 32px;
-
-  @include media.media-breakpoint-up(mobile) {
-    max-width: 767px;
-    margin: 0 auto;
-  }
-}
-
 .search-nav {
   display: flex;
-  padding-left: 17px;
-  padding-top: 72px;
   align-items: center;
 
   &__text {
+    padding-left: 16px;
     font-size: 32px;
-    line-height: 40px;
     font-weight: 700;
 
     @include media.media-breakpoint-down(mobile) {
       font-size: 18px;
       font-weight: 500;
-      padding-left: 16px;
     }
   }
 
@@ -37,11 +23,5 @@
       background: none;
       border: none;
     }
-  }
-}
-
-.search-wrapper {
-  &--search {
-    padding-bottom: 24px;
   }
 }

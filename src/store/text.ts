@@ -51,7 +51,6 @@ const useSearchForm = (pathname: string) => {
 
   return {
     text: searchForm.text,
-    setSearchForm,
     setText,
     resetText,
     handleChange,

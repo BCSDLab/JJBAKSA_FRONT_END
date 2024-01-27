@@ -28,8 +28,8 @@ export default function useHome() {
           longitude: position.coords.longitude,
           address: addressData,
         }));
-      }, (error) => {
-        makeToast('error', error.message);
+      }, () => {
+        makeToast('error', '현재 위치를 설정해주세요.');
       });
     }
   };
