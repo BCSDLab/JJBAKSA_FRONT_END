@@ -2,11 +2,12 @@
 
 .container {
   position: relative;
-  width: 100vw;
+  width: calc(100vw - 100px);
   height: 100vh;
 
   @include media.media-breakpoint-down(mobile) {
     margin: 0;
+    width: 100%
   }
 }
 
