@@ -78,15 +78,10 @@ export default function SearchItem({ shop, addCard }: Props) {
             </div>
           )}
         </div>
-
         <div className={`${styles.box__pictures} ${styles.pictures}`}>
-          {photoToken
-          && (
-            <picture className={styles.pictures__picture}>
-              <source srcSet={defaultImage} />
-              <img className={styles.pictures__image} alt="가게 이미지" src={photoToken} />
-            </picture>
-          )}
+          <picture className={styles.pictures__picture}>
+            <img className={styles.pictures__image} alt="가게 이미지" src={photoToken ?? defaultImage} />
+          </picture>
           {/* <picture className={styles.pictures__picture}>
             <source srcSet={defaultImage} />
             <img className={styles.pictures__image} alt="가게 이미지" />
