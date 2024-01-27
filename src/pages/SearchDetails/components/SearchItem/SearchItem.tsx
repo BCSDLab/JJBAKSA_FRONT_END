@@ -3,7 +3,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Shop } from 'api/shop/entity';
 import defaultImage from 'assets/svg/common/favicon.svg';
 import { ReactComponent as PhoneIcon } from 'assets/svg/search/phone.svg';
+import { ReactComponent as Star } from 'assets/svg/search/star.svg';
 import { Card } from 'pages/Search/static/entity';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 
 import styles from './SearchItem.module.scss';
 
@@ -19,6 +21,7 @@ export default function SearchItem({ shop, addCard }: Props) {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const { isMobile } = useMediaQuery();
   const distInKm = (dist / 1000).toFixed(1);
 
   const handleClick = () => {
@@ -52,18 +55,31 @@ export default function SearchItem({ shop, addCard }: Props) {
           </div>
 
           <div className={`${styles.info__state} ${styles.state}`}>
-            <div className={styles.state__open}>{openNow ? '영업중' : '영업 종료'}</div>
-            |
-            <div className={styles.state__time}>Operating Time</div>
+            {isMobile ? (
+              <>
+                <Star />
+                <div className={styles.state__time}>0.0</div>
+                |
+                <div className={styles.state__open}>{openNow ? '영업중' : '영업 종료'}</div>
+              </>
+            ) : (
+              <>
+                <div className={styles.state__open}>{openNow ? '영업중' : '영업 종료'}</div>
+                |
+                <div className={styles.state__time}>Operating Time</div>
+              </>
+            )}
           </div>
 
-          <div className={`${styles.info__call} ${styles.call}`}>
-            <PhoneIcon className={styles.call__icon} />
-            <div className={styles.call__number}>Phone Number</div>
-          </div>
+          {!isMobile && (
+            <div className={`${styles.info__call} ${styles.call}`}>
+              <PhoneIcon className={styles.call__icon} />
+              <div className={styles.call__number}>Phone Number</div>
+            </div>
+          )}
         </div>
 
-        <div className={styles.pictures}>
+        <div className={`${styles.box__pictures} ${styles.pictures}`}>
           {photoToken
           && (
             <picture className={styles.pictures__picture}>
@@ -80,6 +96,12 @@ export default function SearchItem({ shop, addCard }: Props) {
             <img className={styles.pictures__image} alt="가게 이미지" />
           </picture> */}
         </div>
+
+        {isMobile && (
+          <div className={`${styles.box__review} ${styles.review}`}>
+            review ? $reviewApi.length개의 리뷰 : 리뷰 없음
+          </div>
+        )}
       </button>
     </div>
   );

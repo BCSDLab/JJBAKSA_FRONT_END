@@ -3,16 +3,17 @@ import { useRef } from 'react';
 import styles from './Sentence.module.scss';
 
 interface SentenceProps {
-  subText: JSX.Element[];
+  className: string;
+  subtext: JSX.Element[];
 }
 
-export default function Sentence({ subText }: SentenceProps) {
-  const textIndex = useRef(Math.floor(Math.random() * subText.length));
-  const sentence = subText[textIndex.current];
+export default function Sentence({ className, subtext }: SentenceProps) {
+  const textIndex = useRef(Math.floor(Math.random() * subtext.length));
+  const sentence = subtext[textIndex.current];
 
   return (
-    <h1 className={styles.sentence}>
-      {sentence}
-    </h1>
+    <div className={className}>
+      <h1 className={styles.sentence}>{sentence}</h1>
+    </div>
   );
 }

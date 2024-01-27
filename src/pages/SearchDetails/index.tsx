@@ -30,7 +30,7 @@ export default function SearchDetails() {
     isFetching, data: shops, shopCount,
   } = useFetchShops(keyword);
 
-  const prevWord = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
+  const previous = location.pathname.startsWith('/search') ? '검색' : '리뷰하기';
 
   useEffect(() => {
     setText(keyword);
@@ -41,7 +41,7 @@ export default function SearchDetails() {
   return (
     <div className={styles.container}>
       <div className={styles.details}>
-        {isMobile && <NavigationBar prevWord={prevWord} />}
+        {isMobile && <NavigationBar className={styles.details__navigation} previous={previous} />}
         <div className={styles.details__search}>
           <div className={styles.details__shade} />
           <SearchInput

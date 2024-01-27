@@ -2,8 +2,18 @@
 
 .search-nav {
   display: flex;
-  padding-left: 17px;
   align-items: center;
+
+  &__text {
+    padding-left: 16px;
+    font-size: 32px;
+    font-weight: 700;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
 
   &__button {
     &--previous {
@@ -12,18 +22,6 @@
       cursor: pointer;
       background: none;
       border: none;
-    }
-  }
-
-  &__text {
-    font-size: 32px;
-    line-height: 40px;
-    font-weight: 700;
-
-    @include media.media-breakpoint-down(mobile) {
-      font-size: 18px;
-      font-weight: 500;
-      padding-left: 16px;
     }
   }
 }
