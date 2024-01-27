@@ -1,10 +1,9 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { useQueryClient } from '@tanstack/react-query';
 
 import { postReview } from 'api/review';
 import TextEditor from 'components/editor/TextEditor';
-import useShop from 'pages/Post/hooks/useShop';
 import { useReview } from 'store/review';
 import makeToast from 'utils/ts/makeToast';
 
@@ -15,8 +14,10 @@ export default function Post() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const review = useReview();
+  const location = useLocation();
 
-  const { shopName } = useShop(placeId as string);
+  const searchParams = new URLSearchParams(location.search);
+  const shopName = searchParams.get('shopName');
 
   const submitReview = () => {
     postReview({
