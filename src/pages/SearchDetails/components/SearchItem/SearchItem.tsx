@@ -91,12 +91,11 @@ export default function SearchItem({ shop, addCard }: Props) {
             <img className={styles.pictures__image} alt="가게 이미지" />
           </picture> */}
         </div>
-
-        {isMobile && (
+        {/* {isMobile && (
           <div className={`${styles.box__review} ${styles.review}`}>
-            review ? $reviewApi.length개의 리뷰 : 리뷰 없음
+            {review ? `${$reviewApi.length}개의 리뷰` : '리뷰 없음'}
           </div>
-        )}
+        )} */}
       </button>
     </div>
   );
