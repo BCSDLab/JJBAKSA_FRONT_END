@@ -22,6 +22,8 @@ const useSentOrReceivedFollow = (
       if (lastPage.data.empty || lastPage.data.last) return null;
       return lastPage.data.number + 1;
     },
+    refetchOnWindowFocus: true,
+    staleTime: 0,
   });
   // 이차원 배열을 일차원 배열로 변경 및 반환 타입 일치
   const flatData: SentOrReceivedFollowResponse = {
