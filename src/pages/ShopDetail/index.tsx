@@ -9,10 +9,12 @@ import Map from 'pages/ShopDetail/components/Map/index';
 import FriendReviewList from 'pages/ShopDetail/components/ReviewList/FriendReviewList';
 import MyReviewList from 'pages/ShopDetail/components/ReviewList/MyReviewList';
 import ScrapButton from 'pages/ShopDetail/components/ScrapButton/index';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import useRate from 'utils/hooks/useRate';
 import useScrapId from 'utils/hooks/useScrapId';
 
+import ImageModal from './components/ImageModal';
 import styles from './ShopDetail.module.scss';
 
 const formatPeriod = (period: Period) => {
@@ -29,6 +31,7 @@ const formatPeriod = (period: Period) => {
 function ShopDetail() {
   const params = useParams();
   const placeId = params.placeId as string;
+  const [value, , , toggle] = useBooleanState(false);
 
   const { isMobile } = useMediaQuery();
   const { rate } = useRate(placeId);
@@ -55,7 +58,14 @@ function ShopDetail() {
 
   return (
     <div className={styles.container}>
-      {!isMobile ? <ImageCarousel pathname="shop" imageUrls={photos} /> : <ImageCarousel pathname="pin" imageUrls={photos} />}
+      {!isMobile
+        ? (
+          <button type="button" onClick={toggle} aria-labelledby="image-carousel-label">
+            <ImageCarousel pathname="shop" imageUrls={photos} />
+          </button>
+        ) : <ImageCarousel pathname="pin" imageUrls={photos} />}
+      {!isMobile && value && photos && photos.length > 0
+        && <ImageModal toggle={toggle} photos={photos} />}
       <article className={styles['shop-detail']}>
         <section className={styles['detail-main']}>
           <div>

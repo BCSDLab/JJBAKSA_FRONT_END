@@ -3,7 +3,6 @@ import { ReactComponent as NextIcon } from 'assets/svg/shop/next-arrow.svg';
 import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
 import { ReactComponent as PrevIcon } from 'assets/svg/shop/prev-arrow.svg';
 import useCounter from 'utils/hooks/useCounter';
-import makeToast from 'utils/ts/makeToast';
 
 import styles from './ImageCarousel.module.scss';
 
@@ -19,7 +18,6 @@ function ImageCarousel({ pathname, imageUrls }: Props) {
 
   const next = () => {
     if (imageUrls && currentIndex >= imageUrls.length - imageCheck) {
-      makeToast('info', '마지막 이미지입니다.');
       return;
     }
     increment();
@@ -27,7 +25,6 @@ function ImageCarousel({ pathname, imageUrls }: Props) {
 
   const prev = () => {
     if (currentIndex === 0) {
-      makeToast('info', '첫 이미지입니다.');
       return;
     }
 
