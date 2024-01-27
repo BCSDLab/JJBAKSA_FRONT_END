@@ -26,7 +26,7 @@ export default function RecentItem({
   const location = useLocation();
   const { isMobile } = useMediaQuery();
 
-  const newPath = location.pathname.includes('/post') ? `/post/${placeId}` : `/shop/${placeId}`;
+  const newPath = location.pathname.includes('/post') ? `/post/${placeId}?shopName=${name}` : `/shop/${placeId}?shopName=${name}`;
 
   const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
