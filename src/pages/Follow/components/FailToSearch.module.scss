@@ -1,0 +1,19 @@
+.template {
+  width: 726px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 172px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__svg {
+    margin-top: 8vh;
+  }
+}

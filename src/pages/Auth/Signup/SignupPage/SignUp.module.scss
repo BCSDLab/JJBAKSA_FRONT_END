@@ -1,0 +1,318 @@
+@use "src/utils/styles/mediaQuery" as media;
+@use "../Mixin.module.scss" as mixin;
+
+$active: #ff7f23;
+$passive: #c4c4c4;
+$input-background: #eeeeee;
+
+@mixin error-outline() {
+  border: 1px solid $active;
+}
+
+.template {
+  @include mixin.template;
+}
+
+.container {
+  width: 368px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 227px;
+    height: 500px;
+    margin: auto;
+  }
+}
+
+.form {
+  height: 480px;
+  position: relative;
+  margin-top: 80px;
+  margin-bottom: 200px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+    margin: 0;
+    position: relative;
+    height: 415px;
+  }
+
+  &__progress {
+    margin: 20px 0;
+  }
+
+  &__form {
+    margin-bottom: 24px;
+    position: relative;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+      height: 57px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__blind-icon {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    border: none;
+    width: 30px;
+    height: 30px;
+
+    @include media.media-breakpoint-down(mobile) {
+      position: absolute;
+      bottom: 1px;
+      right: 12px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__label {
+    font-weight: 500;
+    font-size: 16px;
+    padding: 5px;
+    width: 408px;
+    display: flex;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+      height: 24px;
+      align-items: center;
+      font-weight: 500;
+      font-size: 12px;
+    }
+  }
+
+  &__error-icon {
+    display: none;
+    width: 11px;
+    height: 11px;
+
+    &--active {
+      display: inline-block;
+      padding: 0 10px;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 26px;
+        padding: 0;
+      }
+    }
+  }
+
+  &__input {
+    width: 356px;
+    height: 28px;
+    padding: 7px 0 8px 12px;
+    outline: none;
+    background: $input-background;
+    border-radius: 20px;
+    border: 1px solid $input-background;
+    font-size: 12px;
+    color: #222222;
+    position: relative;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 213px;
+      height: 13px;
+      padding: 8px 0 7px 11px;
+    }
+
+    // chrome 자동완성 background 제거
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 1000px $input-background inset;
+    }
+
+    &::placeholder {
+      font-size: 12px;
+      color: #c4c4c4;
+    }
+
+    &--id {
+      width: 290px;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 215px;
+      }
+    }
+
+    &--email {
+      width: 356px;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 215px;
+      }
+    }
+
+    &--error {
+      @include error-outline;
+    }
+  }
+
+  &__error {
+    font-size: 11px;
+    color: $active;
+
+    @include media.media-breakpoint-down(mobile) {
+      display: grid;
+      font-size: 9px;
+      width: 159px;
+      grid-template-columns: 26px 1fr;
+      align-items: center;
+      letter-spacing: -0.7px;
+    }
+  }
+
+  &__id-check-button {
+    background: $passive;
+    border: 1px solid $passive;
+    border-radius: 22px;
+    width: 104px;
+    height: 44px;
+    position: absolute;
+    right: 0;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+    line-height: 12px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 61px;
+      height: 30px;
+      bottom: -7px;
+    }
+
+    &--active {
+      background: $active;
+    }
+
+    &--error {
+      background: #ffffff;
+      border: 1px solid $active;
+      color: $active;
+      font-weight: 400;
+    }
+  }
+
+  &__select {
+    width: 123px;
+    height: 15px;
+    background: $input-background;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding: 7px 34px 8px 12px;
+    appearance: none;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    z-index: 12;
+    font-size: 12px;
+    color: rgb(34 34 34);
+
+    &::placeholder {
+      font-weight: 400;
+      font-size: 12px;
+      color: #c4c4c4;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      display: none;
+    }
+
+    &--error {
+      @include error-outline;
+    }
+  }
+
+  &__option-wrap {
+    display: none;
+
+    &--open {
+      display: block;
+      padding-top: 36px;
+      width: 167px;
+      position: absolute;
+      top: 27px;
+      right: 0;
+      border: 1px solid $input-background;
+      border-radius: 15px;
+      z-index: 10;
+      background: #ffffff;
+    }
+  }
+
+  &__option {
+    padding: 4px 12px;
+    list-style: none;
+    font-size: 11px;
+    background-color: none;
+    z-index: 10;
+    cursor: pointer;
+
+    &:hover {
+      background: $input-background;
+      border-radius: 15px;
+    }
+  }
+
+  &__arrow-icon {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    z-index: 15;
+    cursor: pointer;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      display: none;
+    }
+  }
+
+  &__email-sign {
+    display: inline;
+    font-size: 14px;
+    color: #999999;
+    padding: 0 7px;
+
+    @include media.media-breakpoint-down(mobile) {
+      display: none;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 368px;
+    height: 40px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    margin-top: 50px;
+
+    &[disabled] {
+      background-color: $passive;
+      cursor: default;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+      position: relative;
+      margin-top: 73px;
+    }
+  }
+}

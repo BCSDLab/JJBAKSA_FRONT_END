@@ -1,0 +1,196 @@
+$highlight: #ff7f23;
+$disabled: #c4c4c4;
+
+.container {
+  width: 571px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 0;
+}
+
+.form {
+  width: 571px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  box-sizing: border-box;
+  width: 571px;
+
+  &__input {
+    box-sizing: border-box;
+    width: 571px;
+    height: 52px;
+    border: 1px solid $disabled;
+    border-radius: 3px;
+    margin: 8px 0 32px;
+    padding: 0 16px;
+    font-size: 16px;
+    font-weight: 400;
+
+    &::placeholder {
+      color: $disabled;
+    }
+  }
+}
+
+.contents {
+  position: relative;
+
+  &__length {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: $disabled;
+    font-size: 12px;
+  }
+
+  &__inputs {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__textarea {
+    resize: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 252px;
+    border: 1px solid $disabled;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    margin: 8px 0 0;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: inherit;
+
+    &::placeholder {
+      color: $disabled;
+    }
+  }
+
+  &__attach {
+    box-sizing: border-box;
+    width: 100%;
+    height: 49px;
+    display: flex;
+    align-items: center;
+    margin-top: -5px;
+    margin-bottom: 32px;
+    border: 1px solid $disabled;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    position: relative;
+
+    &--attached {
+      height: 122px;
+    }
+
+    > svg {
+      cursor: pointer;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+    }
+  }
+
+  &__upload-button {
+    color: transparent;
+    cursor: pointer;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__images {
+    height: 90px;
+    position: absolute;
+    left: 48px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__image-box {
+    margin-right: 32px;
+    position: relative;
+  }
+
+  &__image {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+  }
+
+  &__delete-button {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    cursor: pointer;
+  }
+
+  &__description {
+    position: absolute;
+    right: 16px;
+    font-size: 14px;
+    color: $disabled;
+  }
+}
+
+.secret {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+
+  > span {
+    margin-bottom: 0;
+  }
+
+  &__toggle-button {
+    margin-left: 8px;
+  }
+
+  &__description {
+    color: $disabled;
+    font-size: 14px;
+  }
+}
+
+.submit {
+  position: relative;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 176px;
+    height: 44px;
+    background: $disabled;
+    border: none;
+    appearance: none;
+    border-radius: 22px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: default;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    margin-top: 48px;
+    position: absolute;
+    right: 0;
+
+    &--active {
+      background: $highlight;
+      cursor: pointer;
+    }
+  }
+}

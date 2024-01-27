@@ -1,0 +1,134 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 80px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+    top: 0;
+  }
+}
+
+.line-divisor {
+  width: 1px;
+  height: 12px;
+  background: #c4c4c4;
+}
+
+.shop-detail {
+  display: grid;
+  grid-template-areas:
+    "a a"
+    "b c"
+    "d .";
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  width: 972px;
+  margin: 52px auto;
+  padding-bottom: 128px;
+
+  @include media.media-breakpoint-down(mobile) {
+    display: flex;
+    flex-direction: column;
+    width: 96.5%;
+    margin: 52px 10px;
+  }
+}
+
+.detail-main {
+  display: flex;
+  flex-direction: column;
+  grid-area: a;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
+
+  & > div:first-child {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #c4c4c4;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  & > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 16px;
+  }
+
+  & > div:last-child {
+    display: flex;
+    color: #666;
+    gap: 4px;
+    margin: 12px 0;
+    font-size: 14px;
+    align-items: flex-start;
+  }
+
+  &__rating {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+
+    & > span {
+      color: #c4c4c4;
+      font-size: 18px;
+    }
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > h1 {
+      font-size: 36px;
+      font-weight: normal;
+    }
+  }
+
+  &__info-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ff7f23;
+  }
+
+  &__info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    & > span:first-child {
+      width: 50px;
+      font-weight: 500;
+    }
+  }
+
+  &__report {
+    display: flex;
+    gap: 4px;
+    color: #666;
+    font-size: 14px;
+    margin: 12px 0;
+    align-items: flex-start;
+
+    @include media.media-breakpoint-down(mobile) {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

@@ -1,0 +1,60 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.container {
+  width: calc(100vw - 100px);
+  max-width: 875px;
+  height: 100dvh;
+  margin: 0 auto;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
+}
+
+.box {
+  &__shade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    z-index: 4;
+  }
+
+  &__navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-left: 30px;
+    padding-top: 53px;
+    z-index: 4;
+  }
+
+  &__subtext {
+    @include media.media-breakpoint-down(mobile) {
+      margin-top: 64px;
+    }
+  }
+}
+
+.search {
+  position: relative;
+  width: calc(100% - 32px);
+  margin: 0 auto;
+
+  @include media.media-breakpoint-down(mobile) {
+    top: 50px;
+  }
+
+  &__input {
+    z-index: 2;
+  }
+
+  &__suggestions {
+    position: absolute;
+    top: 31px;
+    width: 100%;
+    z-index: 1;
+  }
+}

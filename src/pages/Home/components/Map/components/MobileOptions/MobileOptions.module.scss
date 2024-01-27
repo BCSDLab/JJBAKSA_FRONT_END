@@ -1,0 +1,92 @@
+.nav {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 55px;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 90%;
+  z-index: 10;
+
+  &__search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    background: #ffffff;
+    box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+    opacity: 0.8;
+    border-radius: 100px;
+    text-decoration: none;
+    color: #666666;
+    padding-left: 18px;
+    padding-right: 15px;
+  }
+
+  &__icon {
+    display: flex;
+    width: 48px;
+    height: 48px;
+    background-color: #ffffff;
+    border-radius: 37px;
+    opacity: 0.8;
+    box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+    border: 1px solid #eeeeee;
+    position: absolute;
+    top: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &--changed {
+      path {
+        stroke: #ff7f23;
+      }
+    }
+  }
+}
+
+.filter {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  float: right;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 118px;
+  height: 78px;
+  border-radius: 15px;
+  opacity: 0.8;
+  border: 1px solid #eeeeee;
+  background-color: #ffffff;
+  box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
+
+  &__text {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    gap: 5px;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 12px;
+    color: #595959;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+
+    div {
+      width: 15px;
+    }
+
+    &--clicked {
+      color: #ff7f23;
+
+      svg {
+        fill: #ff7f23;
+      }
+    }
+  }
+}

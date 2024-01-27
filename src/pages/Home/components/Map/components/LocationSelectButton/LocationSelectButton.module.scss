@@ -1,0 +1,33 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.button {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+  height: 57px;
+  max-width: 100%;
+  border-radius: 100px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24.96px;
+  color: #222222;
+  backdrop-filter: blur(2px);
+  background-color: #ffffff99;
+  box-shadow: 1px 1px 10px 1px #0000001a;
+  cursor: default;
+
+  &__text {
+    display: flex;
+    padding: 0 24px;
+  }
+
+  &__down-arrow {
+    display: flex;
+    margin-right: 24px;
+    margin-left: 10px;
+  }
+}

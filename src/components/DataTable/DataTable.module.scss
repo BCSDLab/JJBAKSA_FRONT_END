@@ -1,0 +1,99 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+$default: #222222;
+$highlight: #ff7f23;
+$back: white;
+$normal: #666666;
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 15vh;
+  padding: 10px;
+
+  &__title {
+    color: $highlight;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    color: $normal;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &__my-inquiry {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-color: $highlight;
+    border-radius: 10px;
+    width: 178px;
+    height: 36px;
+    color: $highlight;
+    margin-top: 190px;
+    cursor: pointer;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__move {
+    margin-left: 9px;
+  }
+}
+
+.body {
+  border: 1px;
+  border-top-color: $highlight;
+  border-bottom-color: #eeeeee;
+  border-top-style: solid;
+  border-bottom-style: solid;
+
+  @include media.media-breakpoint-down(mobile) {
+    display: none;
+  }
+
+  &__content {
+    @include media.media-breakpoint-down(mobile) {
+      margin-top: 10vh;
+    }
+  }
+
+  &__list-title {
+    display: grid;
+    place-items: center;
+    color: $normal;
+    grid-template-columns: 200px 400px 150px 150px 150px;
+    grid-template-rows: 37px;
+  }
+
+  &__list {
+    width: 100%;
+    border: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #eeeeee;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1vh;
+    box-sizing: border-box;
+
+    &--title {
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    &--date {
+      color: $normal;
+      font-size: 14px;
+    }
+  }
+}

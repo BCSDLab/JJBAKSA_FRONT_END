@@ -1,0 +1,75 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+
+  @include media.media-breakpoint-down(mobile) {
+    height: 48vh;
+  }
+
+  &__add-image {
+    display: flex;
+    border: 1px dashed #d3d3d3;
+    padding: 16px;
+    height: 80px;
+  }
+
+  &__image-list {
+    display: flex;
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+  &__item {
+    display: flex;
+    position: relative;
+    margin-left: 16px;
+  }
+
+  &__button {
+    margin-right: 16px;
+  }
+
+  &__image {
+    display: flex;
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+    scrollbar-width: none;
+  }
+
+  &__trash-icon {
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.editor {
+  line-height: 24px;
+  height: 450px;
+  width: 100%;
+  font-size: 18px;
+  color: #222222;
+  z-index: 1;
+
+  @include media.media-breakpoint-down(mobile) {
+    height: 340px;
+  }
+
+  &__add-image {
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+  }
+}

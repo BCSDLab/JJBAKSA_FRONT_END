@@ -1,0 +1,29 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+$default: #222222;
+$active: #ff7f23;
+$passive: #c4c4c4;
+
+@mixin template {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin font-title($margin-bottom) {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: $margin-bottom;
+
+  @include media.media-breakpoint-down(mobile) {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
+
+@mixin font-medium {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+}

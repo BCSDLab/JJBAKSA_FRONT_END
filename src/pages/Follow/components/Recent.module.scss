@@ -1,0 +1,26 @@
+.person {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 39px;
+  margin-bottom: 39px;
+
+  &__profile {
+    border: 2px solid #ff7f23;
+    border-radius: 60px;
+    width: 84px;
+    height: 84px;
+  }
+
+  &__nickname {
+    width: 100px;
+    height: 20px;
+    overflow-y: hidden;
+    text-align: center;
+  }
+
+  &__nickname::-webkit-scrollbar {
+    display: none;
+  }
+}

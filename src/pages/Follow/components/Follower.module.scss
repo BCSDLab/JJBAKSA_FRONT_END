@@ -1,0 +1,128 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.follower {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 84px;
+  width: 90%;
+  margin-top: 39px;
+  margin-bottom: 39px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 88vw;
+    justify-content: space-between;
+  }
+
+  &__image {
+    width: 84px;
+    height: 84px;
+    border-radius: 150px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__content {
+    width: calc(100% - 204px);
+    padding-left: 30px;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 200px;
+      padding-left: 16px;
+      overflow-x: hidden;
+    }
+
+    &--nickname {
+      font-size: 24px;
+      border: none;
+      background-color: #ffffff;
+      cursor: pointer;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
+      width: 90%;
+
+      @include media.media-breakpoint-down(mobile) {
+        font-size: 18px;
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &__account {
+      font-size: 16px;
+
+      @include media.media-breakpoint-down(mobile) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  &__button {
+    border: none;
+    border-radius: 200px;
+    width: 90px;
+    height: 40px;
+    background-color: #eeeeee;
+    cursor: pointer;
+    margin: 0 10px;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 12px;
+      width: 64px;
+      height: 31px;
+    }
+
+    &--cancel {
+      width: 90px;
+      height: 40px;
+      border-radius: 200px;
+      background-color: white;
+      border: 1px solid #c4c4c4;
+      color: #c4c4c4;
+      cursor: pointer;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 64px;
+        height: 31px;
+      }
+    }
+
+    &--accept {
+      width: 90px;
+      height: 40px;
+      border: none;
+      border-radius: 200px;
+      background-color: #f6bf54;
+      color: white;
+      cursor: pointer;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 64px;
+        height: 31px;
+      }
+    }
+
+    &--request {
+      width: 90px;
+      height: 40px;
+      border: none;
+      border-radius: 200px;
+      background-color: #ff7f23;
+      color: white;
+      cursor: pointer;
+
+      @include media.media-breakpoint-down(mobile) {
+        width: 64px;
+        height: 31px;
+      }
+    }
+  }
+}

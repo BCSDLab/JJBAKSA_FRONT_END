@@ -1,0 +1,27 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.box {
+  display: flex;
+  flex-direction: row;
+}
+
+.previous-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  & > * {
+    @include media.media-breakpoint-down(mobile) {
+      width: 7px;
+      height: 14px;
+    }
+  }
+
+  &--fixed-left {
+    position: absolute;
+    left: 14px;
+    top: 19px;
+    width: 7px;
+    height: 14px;
+  }
+}

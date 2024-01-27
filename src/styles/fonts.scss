@@ -1,0 +1,4 @@
+@use "../utils/styles/mixin/index";
+@include index.font-face("SUIT", "/assets/fonts/SUIT-Regular", 400);
+@include index.font-face("SUIT", "/assets/fonts/SUIT-Medium", 500);
+@include index.font-face("SUIT", "/assets/fonts/SUIT-Bold", 700);

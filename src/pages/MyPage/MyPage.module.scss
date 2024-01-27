@@ -1,0 +1,46 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.my-page {
+  width: 65%;
+  margin: 0 auto;
+  padding-top: 50px;
+
+  @include media.media-breakpoint-down(mobile) {
+    position: fixed;
+    top: 30px;
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+.Toastify__toast-container--top-center {
+  top: 1em;
+  left: 44%;
+  transform: translateX(-50%);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0 0 0 / 50%);
+  opacity: 1;
+}
+
+.bottom-sheet {
+  width: 559px;
+  height: 434px;
+  margin-top: 40%;
+  padding: 64px 24px;
+  border-radius: 45px;
+  right: 9vw;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+    right: 0;
+    padding: 0;
+    margin-top: 60%;
+  }
+}

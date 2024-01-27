@@ -1,0 +1,27 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.search-nav {
+  display: flex;
+  align-items: center;
+
+  &__text {
+    padding-left: 16px;
+    font-size: 32px;
+    font-weight: 700;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  &__button {
+    &--previous {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+  }
+}

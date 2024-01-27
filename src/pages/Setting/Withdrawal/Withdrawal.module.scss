@@ -1,0 +1,184 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+$default: #222222;
+$common: #666666;
+$active: #ff7f23;
+$passive: #c4c4c4;
+
+.template {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 564px;
+  margin-top: 80px;
+  margin-bottom: 20px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 314px;
+    margin: 0;
+  }
+}
+
+.navbar {
+  position: absolute;
+  height: 80px;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #eeeeee;
+}
+
+.detail {
+  margin: 50px 0;
+
+  &__title {
+    font-weight: 700;
+    line-height: 40px;
+    font-size: 32px;
+    color: #ff7f23;
+    padding-bottom: 10px;
+  }
+
+  &__text {
+    margin: 8px 0;
+    white-space: pre;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: $common;
+  }
+
+  &__nickname {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.form {
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 176px;
+    height: 44px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    margin: 20px 0;
+
+    &[disabled] {
+      background-color: $passive;
+      cursor: default;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 184px;
+      position: relative;
+    }
+  }
+
+  &__checkbox {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid $default;
+    appearance: none;
+    cursor: pointer;
+    transition: 0.2s;
+    margin: 0 5px;
+
+    &:checked {
+      background: $active;
+      border: none;
+    }
+  }
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: column;
+  color: $common;
+  margin: 32px 0;
+
+  &__title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  &__label {
+    margin: 8px 0;
+  }
+}
+
+.feedback {
+  margin: 32px 0;
+
+  &__title {
+    color: $common;
+    margin: 8px 0;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  &__detail {
+    margin: 16px 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    white-space: pre-line;
+    color: $active;
+  }
+
+  &__input {
+    resize: none;
+    width: 464px;
+    height: 99px;
+    padding: 10px;
+    border: 1px solid $passive;
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 14px;
+
+    &::placeholder {
+      color: $passive;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 312px;
+    }
+  }
+}
+
+.caution {
+  margin: 32px 0;
+  color: $passive;
+
+  &__title {
+    text-decoration: underline;
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  &__list {
+    margin: 0 24px 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+  }
+}

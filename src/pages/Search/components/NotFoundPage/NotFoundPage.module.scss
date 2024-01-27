@@ -1,0 +1,77 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.container {
+  width: calc(100vw - 100px);
+  height: 100dvh;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin-left: 0;
+    width: 100vw;
+  }
+}
+
+.info {
+  position: relative;
+  width: 1080px;
+  height: 658px;
+  margin: 100px auto;
+
+  @media (max-width: 1180px) {
+    width: 676px;
+  }
+
+  &__title {
+    margin-left: 30px;
+    width: 544px;
+    height: 100px;
+    color: #000;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 49.92px;
+  }
+
+  &__subtitle {
+    margin-left: 30px;
+    margin-top: 22px;
+    width: 240px;
+    height: 30px;
+    color: #666;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29.95px;
+  }
+
+  &__image {
+    position: absolute;
+    top: 207px;
+    right: 0;
+    width: 676px;
+    height: 451px;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    margin-top: 60px;
+    width: 100%;
+
+    &__title {
+      margin-left: 30px;
+      height: 50px;
+      font-size: 25px;
+      line-height: 29px;
+    }
+
+    &__subtitle {
+      margin-left: 30px;
+      margin-top: 11px;
+      font-size: 16px;
+      line-height: 18px;
+    }
+
+    &__image {
+      position: inherit;
+      margin-left: 80px;
+      width: 338px;
+      height: 225.5px;
+    }
+  }
+}

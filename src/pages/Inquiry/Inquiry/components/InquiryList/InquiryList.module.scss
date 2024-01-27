@@ -1,0 +1,39 @@
+$highlight: #ff7f23;
+$normal: #666666;
+
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+.list {
+  overflow-y: auto;
+  max-height: calc(100vh - 173px);
+
+  &__gradient {
+    &::before {
+      content: "";
+      position: absolute;
+      top: -27px;
+      left: 0;
+      right: 0;
+      height: 93px;
+      background: linear-gradient(to bottom, rgba(85 85 85 / 50%), rgba(255 255 255 / 0%));
+      backdrop-filter: blur(1px);
+      pointer-events: none;
+      z-index: 1;
+    }
+  }
+
+  &--no-data {
+    color: $normal;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  &__loader-observer {
+    width: 100%;
+    height: 1px;
+  }
+}

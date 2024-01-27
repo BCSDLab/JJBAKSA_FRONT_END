@@ -1,0 +1,101 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  margin-top: 7vh;
+}
+
+.back {
+  grid-column-start: 2;
+  width: 270px;
+  padding-bottom: 30px;
+  padding-top: 16px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__quote {
+    font-size: 18px;
+    font-weight: 500;
+    width: 240px;
+    line-height: 22px;
+  }
+
+  &__image {
+    padding-right: 5px;
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    color: #ff7f23;
+    height: 100px;
+    font-size: 12px;
+  }
+
+  &__caution {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 150px;
+  margin-bottom: 12px;
+
+  &__space {
+    gap: 190px !important;
+  }
+
+  &__center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 23px;
+  }
+
+  &__label {
+    padding-left: 10px;
+    padding-bottom: 5px;
+
+    &--paddingTop {
+      padding-left: 10px;
+      padding-bottom: 5px;
+      padding-top: 5px;
+    }
+  }
+
+  &__input {
+    border: 1px solid #eeeeee;
+    border-radius: 100px;
+    width: 220px;
+    height: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+  }
+
+  &__submit {
+    border: none;
+    border-radius: 100px;
+    width: 250px;
+    height: 40px;
+    color: white;
+    background-color: #c4c4c4;
+
+    &--active {
+      background-color: #ff7f23;
+      cursor: pointer;
+    }
+  }
+}

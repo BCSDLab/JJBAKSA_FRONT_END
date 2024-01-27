@@ -1,3 +1,20 @@
-.home {
-  font-size: 32px;
+@use "src/utils/styles/mediaQuery" as media;
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin: 0;
+  }
+}
+
+.map-component {
+  position: absolute;
+  margin: 0 auto;
+}
+
+.modal-component {
+  position: absolute;
 }

@@ -1,0 +1,87 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+$highlight: #ff7f23;
+$default: #c4c4c4;
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  margin-top: 24px;
+  height: 32px;
+  width: 100%;
+
+  @include media.media-breakpoint-down(mobile) {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__left-gradient,
+  &__right-gradient {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 38px;
+    pointer-events: none;
+  }
+
+  &__left-gradient {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, transparent);
+  }
+
+  &__right-gradient {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
+  }
+
+  &__tag-lists {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+
+    @keyframes text-loop {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      max-width: 90%;
+      font-size: 16px;
+    }
+  }
+
+  &__tag-list {
+    display: flex;
+    animation: text-loop 10s linear infinite;
+    list-style: none;
+  }
+
+  &__tag {
+    border-radius: 15px;
+    margin-right: 10px;
+    padding: 3px 7px;
+    border: 1px solid $default;
+
+    &:hover {
+      color: $highlight;
+      border: 1px solid $highlight;
+      background-color: rgba(246 191 84 / 20%);
+    }
+  }
+
+  &__tag-button {
+    color: $default;
+    font-size: 16px;
+
+    &:hover {
+      cursor: default;
+      color: $highlight;
+    }
+  }
+}

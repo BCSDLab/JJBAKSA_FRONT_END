@@ -1,0 +1,258 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+@keyframes show-out {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.template {
+  margin: 0 auto;
+  max-width: 920px;
+  box-sizing: border-box;
+
+  @include media.media-breakpoint-down(mobile) {
+    padding-top: 24px;
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  margin: 0 30px;
+  justify-content: space-between;
+  align-items: center;
+
+  &__button {
+    border: none;
+    background-color: none;
+    color: #c4c4c4;
+    width: 44px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 18px;
+    line-height: 22.5px;
+    font-weight: 500;
+  }
+
+  &__button-wrap {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 30px;
+  }
+
+  &__save-button {
+    width: 104px;
+    height: 44px;
+    border-radius: 20px;
+    font-size: 16px;
+    line-height: 15px;
+    color: #ff7f23;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid #ff7f23;
+
+    :hover {
+      background-color: #ff7f23;
+      color: white;
+    }
+
+    &--active {
+      background-color: #ff7f23;
+      color: white;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 80px;
+      height: 32px;
+      font-size: 12px;
+    }
+  }
+}
+
+.heading {
+  display: flex;
+  padding: 45px 24px 0;
+  flex-direction: column;
+
+  &__title {
+    font-weight: 500;
+    font-size: 40px;
+
+    &--shop {
+      font-weight: 500;
+      font-size: 40px;
+      color: #ff7f23;
+    }
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    &__title {
+      display: none;
+
+      &--shop {
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &__button {
+    border: none;
+    background-color: none;
+    color: #c4c4c4;
+
+    &--prev {
+      cursor: pointer;
+    }
+
+    &--add {
+      width: 26px;
+      height: 26px;
+      background-color: #eeeeee;
+      border-radius: 25px;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  &__contents {
+    padding-bottom: 16px;
+    border-bottom: 0.5px solid #c4c4c4;
+  }
+
+  &__subtitle {
+    color: #898a8d;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 32px;
+    margin-left: 6px;
+    margin-bottom: 3px;
+
+    @include media.media-breakpoint-down(mobile) {
+      margin: 10px 0;
+    }
+  }
+}
+
+.isEditor {
+  line-height: 15px;
+  height: 100%;
+  font-size: 16px;
+  color: #222222;
+  padding: 24px;
+
+  &--withImage {
+    height: calc(100% - 196px);
+  }
+}
+
+.item {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  z-index: 1;
+  width: 100%;
+  background-color: transparent;
+
+  button {
+    border: none;
+    font-family: inherit;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  &__tools {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__gg {
+    display: flex;
+    margin: 15px 30px;
+  }
+
+  &__button {
+    font-size: 24px;
+    line-height: 30px;
+    margin: 16px 20px 48px 307px;
+    width: 40px;
+    height: 40px;
+    color: #222222;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+
+    &--tool {
+      font-weight: 200;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &__text-tools {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    background-color: #d9d9d9d9;
+    transition: all 0.4s ease-out;
+
+    &--show {
+      width: 160px;
+
+      .slide-tool-box {
+        :nth-child(n) {
+          animation: show-out 0.2s ease-out normal forwards;
+        }
+
+        @for $i from 1 through 4 {
+          :nth-child(#{$i}) {
+            animation-delay: calc(0.1s * #{$i});
+          }
+        }
+      }
+    }
+
+    .slide-tool-box {
+      visibility: hidden;
+      display: flex;
+
+      &__button {
+        background: none;
+        font-size: 16px;
+        padding: 0 8px;
+        height: 20px;
+        line-height: 20px;
+        cursor: pointer;
+
+        &--bold {
+          font-weight: 700;
+        }
+
+        &--paragraph {
+          font-size: 12px;
+        }
+
+        &--through {
+          text-decoration-line: line-through;
+        }
+      }
+    }
+  }
+}

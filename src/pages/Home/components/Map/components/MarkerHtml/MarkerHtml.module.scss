@@ -1,0 +1,90 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.bubble {
+  background-image: url("/assets/images/home/location-marker.png");
+  width: 69px;
+  height: 69px;
+
+  img {
+    background-color: #fff;
+    position: relative;
+    top: 9px;
+    left: 12px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+}
+
+.name {
+  width: 100%;
+  position: absolute;
+  top: 65px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  justify-content: space-around;
+  font-size: 15px;
+  font-weight: 500;
+  text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff;
+}
+
+.clicked-container {
+  display: flex;
+  background-image: url("/assets/images/home/selected-marker.png");
+  background-repeat: no-repeat;
+  background-size: 170px;
+  height: 69px;
+  min-width: 179px;
+  text-decoration: none;
+}
+
+.clicked-bubble {
+  img {
+    background-color: #fff;
+    position: relative;
+    top: 2px;
+    left: 3px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+  }
+}
+
+.clicked-name {
+  display: flex;
+  align-items: center;
+  background-color: #ff7f23;
+  border-radius: 40px;
+  padding: 0 15px;
+  margin-bottom: 10.3px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.cluster {
+  background-image: url("/assets/images/home/location-marker.png");
+  display: flex;
+  cursor: pointer;
+  width: 69px;
+  height: 69px;
+  font-size: 24px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  background-size: contain;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 48px;
+    height: 48px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,26 @@
+$default: #222222;
+$normal: #666666;
+
+.explain {
+  width: 168px;
+  cursor: default;
+
+  &__icon {
+    margin-bottom: 23px;
+  }
+
+  &__title {
+    color: $default;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.97px;
+    margin-bottom: 8px;
+  }
+
+  &__small-title {
+    color: $normal;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13.73px;
+  }
+}

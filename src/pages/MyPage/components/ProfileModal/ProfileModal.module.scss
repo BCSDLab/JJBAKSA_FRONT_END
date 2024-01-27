@@ -1,0 +1,122 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.phrase {
+  display: block;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22.46px;
+  margin-bottom: 30px;
+}
+
+.form {
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
+
+  &__image-input {
+    display: none;
+  }
+
+  &__upload {
+    background: inherit;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+
+    &--image {
+      width: 158px;
+      height: 158px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    &--profile {
+      width: 158px;
+      height: 158px;
+      border-radius: 50%;
+    }
+
+    &--plus {
+      position: absolute;
+      bottom: 0;
+      cursor: pointer;
+      right: 19px;
+      border-radius: 50%;
+    }
+  }
+
+  &__name {
+    position: relative;
+    margin: 0 auto;
+    width: 52%;
+    margin-bottom: 50px;
+    color: #c4c4c4;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 254px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    width: 269px;
+    justify-content: center;
+    margin: 0 auto;
+    gap: 19px;
+    cursor: pointer;
+
+    &--cancel {
+      all: unset;
+      width: 45%;
+      height: 40px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #c4c4c4;
+      outline: 0;
+      text-align: center;
+      border-radius: 999px;
+    }
+
+    &--complete {
+      all: unset;
+      width: 45%;
+      height: 40px;
+      font-size: 16px;
+      color: #ffffff;
+      background-color: #ff7f23;
+      outline: 0;
+      text-align: center;
+      border-radius: 999px;
+    }
+  }
+}
+
+.name {
+  &__input {
+    display: block;
+    min-width: 179px;
+    border: none;
+    margin: 0 auto;
+    border-bottom: 1px solid #c4c4c4;
+    padding: 4px 10px;
+    padding-right: 30px;
+    position: relative;
+    outline: none;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  &__length {
+    display: block;
+    width: 30px;
+    right: 23px;
+    top: 7px;
+    position: absolute;
+    font-size: 10px;
+  }
+}

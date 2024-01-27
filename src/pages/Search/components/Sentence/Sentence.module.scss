@@ -1,0 +1,25 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.sentence {
+  word-break: keep-all;
+  height: 80px;
+  padding-top: 100px;
+  padding-left: 24px;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 49px;
+  white-space: pre-wrap;
+  color: #000000;
+
+  strong {
+    color: #ff7f23;
+  }
+
+  @include media.media-breakpoint-down(mobile) {
+    font-size: 32px;
+    font-weight: 400;
+    max-width: 767px;
+    padding-top: 50px;
+    margin: 0 auto;
+  }
+}

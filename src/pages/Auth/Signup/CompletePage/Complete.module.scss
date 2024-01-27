@@ -1,0 +1,108 @@
+@use "src/utils/styles/mediaQuery" as media;
+@use "../Mixin.module.scss" as mixin;
+
+$default: #222222;
+$active: #ff7f23;
+$passive: #c4c4c4;
+
+.template {
+  @include mixin.template;
+}
+
+.container {
+  width: 368px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 227px;
+    margin: auto;
+  }
+}
+
+.nickname-progress {
+  margin: 20px 0;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin: auto;
+  }
+}
+
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 227px;
+    padding-top: 104px;
+    margin: 0;
+  }
+
+  &__logo {
+    width: 100%;
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 200px;
+      height: auto;
+    }
+  }
+
+  &__text {
+    white-space: pre;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+
+    @include media.media-breakpoint-down(mobile) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+
+  &__input {
+    margin-top: 32px;
+    width: 258px;
+    height: 44px;
+    background: #eeeeee;
+    border-radius: 20px;
+    border: none;
+    text-align: center;
+    outline: none;
+
+    &::placeholder {
+      color: #c4c4c4;
+      font-size: 12px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 368px;
+    height: 44px;
+    background: $active;
+    border: none;
+    appearance: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    margin: 32px 0 62px;
+
+    &[disabled] {
+      background-color: $passive;
+      cursor: default;
+    }
+
+    @include media.media-breakpoint-down(mobile) {
+      width: 184px;
+      position: relative;
+    }
+  }
+}

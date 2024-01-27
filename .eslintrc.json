@@ -1,35 +1,81 @@
 {
-	"env": {
-		"browser": true,
-		"es6": true
-	},
-	"extends": [
-		"airbnb",
-		"airbnb/hooks",
-		"airbnb-typescript"
-	],
-	"globals": {
-		"Atomics": "readonly",
-		"SharedArrayBuffer": "readonly"
-	},
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		},
-		"ecmaVersion": 2018,
-		"project": "./tsconfig.json"
-	},
-	"plugins": [
-		"react",
-		"@typescript-eslint"
-	],
-	"rules": {
-		"react/react-in-jsx-scope": "off"
-	},
-	"settings": {
-		"import/resolver": {
-			"typescript": {}
-		}
-	}
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": ["airbnb", "airbnb/hooks", "airbnb-typescript"],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["CustomLabel"],
+        "labelAttributes": ["inputLabel"],
+        "controlComponents": ["CustomInput"],
+        "assert": "both",
+        "depth": 3
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "linebreak-style": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "implicit-arrow-linebreak": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["../../*"],
+            "message": "Usage of relative parent imports is not allowed."
+          }
+        ]
+      }
+    ],
+    "import/order": [
+      "error",{
+        "groups": ["builtin", "external", "internal", ["sibling", "parent", "index"], "type", "unknown"],
+        "pathGroups": [
+          {
+            "pattern": "react*",
+            "group": "builtin",
+            "position": "after"
+          }
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between":"always",
+        "pathGroupsExcludedImportTypes": ["react*"]
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
 }

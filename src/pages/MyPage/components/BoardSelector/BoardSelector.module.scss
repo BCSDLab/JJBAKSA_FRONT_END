@@ -1,0 +1,43 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.selector {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 41px;
+
+  &__option {
+    all: unset;
+    text-align: center;
+    font-weight: 400;
+    font-size: 18px;
+    width: 80px;
+    cursor: pointer;
+
+    &--selected {
+      all: unset;
+      text-align: center;
+      font-weight: 400;
+      width: 80px;
+      font-size: 18px;
+      color: #ff7f23;
+      cursor: pointer;
+
+      &::after {
+        display: block;
+        content: "";
+        border-bottom: 1px solid #ff7f23;
+        font-size: 14px;
+        width: 80px;
+        padding-top: 10px;
+        margin-bottom: -11px;
+      }
+    }
+  }
+}
+
+.underline {
+  margin-top: 10px;
+  border-bottom: 1px solid #eeeeee;
+}
