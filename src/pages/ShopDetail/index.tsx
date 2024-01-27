@@ -59,14 +59,13 @@ function ShopDetail() {
   return (
     <div className={styles.container}>
       {!isMobile
-          ? (
-            <button type="button" onClick={toggle} aria-labelledby="image-carousel-label">
-              <ImageCarousel pathname="shop" imageUrls={photos} />
-            </button>
-          ) : <ImageCarousel pathname="pin" imageUrls={photos} />}
-        {!isMobile && value && photos && photos.length > 0
+        ? (
+          <button type="button" onClick={toggle} aria-labelledby="image-carousel-label">
+            <ImageCarousel pathname="shop" imageUrls={photos} />
+          </button>
+        ) : <ImageCarousel pathname="pin" imageUrls={photos} />}
+      {!isMobile && value && photos && photos.length > 0
         && <ImageModal toggle={toggle} photos={photos} />}
-        <article className={styles['shop-detail']}>
       <article className={styles['shop-detail']}>
         <section className={styles['detail-main']}>
           <div>
