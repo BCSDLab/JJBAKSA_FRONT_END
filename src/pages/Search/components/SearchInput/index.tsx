@@ -16,6 +16,7 @@ const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const { className } = props;
   const navigate = useNavigate();
   const location = useLocation();
+  const previous = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
 
   const {
     text, resetText, handleChange,
@@ -24,7 +25,7 @@ const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (text.length === 0) return;
-    navigate(`/search/${text}`);
+    navigate(previous === '검색' ? `/shop/search/${text}` : `/post/search/${text}`);
   };
 
   return (
