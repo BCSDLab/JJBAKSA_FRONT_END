@@ -20,7 +20,7 @@ export default function MyPage() {
   const [isOpen, setOpen] = useState(false);
   const { profile, followerNumber } = useMyProfile();
 
-  const openModal = (url:string | undefined) => {
+  const openModal = (url: string | undefined) => {
     setOpen(true);
     toast(<ProfileModal imgUrl={url} nickname={profile?.nickname} />, {
       position: 'top-center',
@@ -36,17 +36,18 @@ export default function MyPage() {
     <>
       {!isMobile && <SideNavigation />}
       {profile && (
-      <div className={styles['my-page']}>
-        <Information openModal={openModal} profile={profile} followerNumber={followerNumber} />
-        <BoardSelector setBoard={setBoard} board={board} />
-        <Suspense fallback={<LoadingSpinner size={100} />}>
-          {board === 'MYPOST' && <MyPost />}
-        </Suspense>
-        {board === 'BOOKMARK' && <BookMark />}
-      </div>
+        <div className={styles['my-page']}>
+          <Information openModal={openModal} profile={profile} followerNumber={followerNumber} />
+          <BoardSelector setBoard={setBoard} board={board} />
+          <Suspense fallback={<LoadingSpinner size={100} />}>
+            {board === 'MYPOST' && <MyPost />}
+          </Suspense>
+          {board === 'BOOKMARK' && <BookMark />}
+        </div>
       )}
       {isMobile && <BottomNavigation />}
-      {isOpen && <div className={styles['modal-overlay']} />}
+      {/* eslint-disable-next-line */}
+      {isOpen && <div className={styles['modal-overlay']} onClick={() => toast.dismiss()} />}
     </>
   );
 }

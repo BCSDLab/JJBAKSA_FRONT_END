@@ -34,6 +34,10 @@
     border-bottom: 1px solid #eeeeee;
   }
 
+  &__container {
+    text-decoration: none;
+  }
+
   &__detail {
     display: flex;
     gap: 2px;
@@ -41,6 +45,7 @@
     &--name {
       font-size: 18px;
       font-weight: 700;
+      color: #222;
     }
 
     &--type {

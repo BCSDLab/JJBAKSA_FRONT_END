@@ -114,7 +114,7 @@ export default function SideNavigation(): JSX.Element {
         </ul>
         <ul className={styles['bottom-navigation']}>
           {auth ? (
-            <li>
+            <li className={styles['bottom-navigation__box']}>
               <img
                 src={auth?.profileImage?.url || defaultImage}
                 alt="프로필 이미지"
@@ -194,7 +194,7 @@ export default function SideNavigation(): JSX.Element {
           </div>
         </div>
         {(filterNearbyState || filterScrapState || filterFriendState)
-        && selected && <Pin placeId={selected} />}
+          && selected && <Pin placeId={selected} />}
       </div>
     </>
   );

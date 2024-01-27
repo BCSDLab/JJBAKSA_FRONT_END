@@ -90,7 +90,7 @@ export default function FollowPage() {
           )}
         {user && keyword.length > 0 && (user.content.length > 0
           ? (
-            <div>
+            <div className={styles.container}>
               <SearchPage data={user.content} />
               {follower && <FollowList title="모든 친구" data={filterFollowInfo(follower)} />}
             </div>
