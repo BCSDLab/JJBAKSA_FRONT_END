@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { Shop } from 'api/mypage/entity';
 import notExist from 'assets/svg/mypage/not-exist.svg';
 import filledStar from 'assets/svg/mypage/star-filled.svg';
@@ -12,22 +14,24 @@ interface MobileBoardProps {
 
 interface ReviewProps {
   placeId: string,
-  name:string,
-  category:string
+  name: string,
+  category: string
 }
 
 function Review({
   placeId, name, category,
-}:ReviewProps) {
+}: ReviewProps) {
   const { reviews, isLoading } = useReviwes(placeId);
   return (
     <div className={styles.post}>
-      <label className={styles.post__store} htmlFor={`open${placeId}`}>
+      <div className={styles.post__store}>
         <div className={styles.store}>
-          <span className={styles.store__name}>{name}</span>
-          <span className={styles.store__type}>{category}</span>
+          <Link to={`/shop/${placeId}`} className={styles.post__link}>
+            <span className={styles.store__name}>{name}</span>
+            <span className={styles.store__type}>{category}</span>
+          </Link>
         </div>
-      </label>
+      </div>
       {!isLoading && reviews.map((review) => (
         <div key={review.id}>
           <p className={styles['review__main-text']}>{review.content}</p>
@@ -47,7 +51,7 @@ function Review({
   );
 }
 
-export default function MoileBoard({ posts }:MobileBoardProps) {
+export default function MoileBoard({ posts }: MobileBoardProps) {
   const { getTotal } = useMyProfile();
   return (
     <div className={styles.board}>
