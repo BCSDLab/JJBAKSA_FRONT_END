@@ -7,10 +7,9 @@ import { ShopsParams } from 'api/shop/entity';
 import useDebounce from 'utils/hooks/useDebounce';
 import useGeolocation from 'utils/hooks/useGeolocation';
 
+const OPTIONS = { maximumAge: 1000 };
+
 const useFetchShops = (text: string) => {
-  const OPTIONS = {
-    maximumAge: 1000,
-  };
   const { location } = useGeolocation(OPTIONS);
   const debouncedText = useDebounce(text, 500);
 
