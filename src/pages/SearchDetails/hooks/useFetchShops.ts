@@ -7,13 +7,11 @@ import { ShopsParams } from 'api/shop/entity';
 import useDebounce from 'utils/hooks/useDebounce';
 import useGeolocation from 'utils/hooks/useGeolocation';
 
+const OPTIONS = { maximumAge: 1000 };
+
 const useFetchShops = (text: string) => {
-  const OPTIONS = {
-    maximumAge: 1000,
-  };
   const { location } = useGeolocation(OPTIONS);
   const debouncedText = useDebounce(text, 500);
-
   const params: ShopsParams = { keyword: debouncedText, location };
 
   const {
@@ -30,11 +28,12 @@ const useFetchShops = (text: string) => {
     if (shops) {
       return shops.filter((shop) => shop.name && shop.name.trim() !== '').length;
     }
+
     return 0;
   }, [shops]);
 
   return {
-    isFetching, isError, data: shops, refetch, shopCount,
+    isFetching, isError, shops, refetch, shopCount,
   };
 };
 

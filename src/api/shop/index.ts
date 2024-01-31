@@ -1,6 +1,6 @@
 import {
-  Coords, FetchShopResponse, FetchShopsResponse, FetchTrendingsResponse,
-  FilterShopsListResponse, FilterShopsParams, ShopRateResponse, ShopsParams,
+  Coords, FetchShopResponse, FetchTrendingsResponse, FilterShopsListResponse,
+  FilterShopsParams, ShopQueryResponses, ShopRateResponse, ShopsParams,
 } from './entity';
 import shopApi from './shopApiClient';
 
@@ -30,7 +30,7 @@ export const fetchShops = (params: ShopsParams) => {
     lng: location?.lng,
   };
 
-  return shopApi.post<FetchShopsResponse>(url, requestBody);
+  return shopApi.post<ShopQueryResponses>(url, requestBody);
 };
 
 export const getShopRate = (placeId: string) => shopApi.get<ShopRateResponse>(`/shops/rates/${placeId}`);

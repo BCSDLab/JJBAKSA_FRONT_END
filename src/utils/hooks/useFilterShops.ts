@@ -5,9 +5,8 @@ import { FilterShopsParams } from 'api/shop/entity';
 import { useAuth } from 'store/auth';
 import useGeolocation from 'utils/hooks/useGeolocation';
 
-const OPTIONS = {
-  maximumAge: 1000,
-};
+const OPTIONS = { maximumAge: 1000 };
+
 const useFilterShops = ({
   options_friend, options_nearby, options_scrap,
 }: FilterShopsParams) => {

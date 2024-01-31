@@ -7,9 +7,9 @@ import useLatestDate from 'components/common/SideNavigation/hooks/useLatestDate'
 import usePin from 'components/common/SideNavigation/hooks/usePin';
 import ReviewList from 'components/common/SideNavigation/Pin/components';
 import ImageCarousel from 'components/ImageCarousel';
-import useRate from 'utils/hooks/useRate';
 import useScrap from 'utils/hooks/useScrap';
 import useScrapId from 'utils/hooks/useScrapId';
+import useShopRate from 'utils/hooks/useShopRate';
 
 import styles from './Pin.module.scss';
 
@@ -21,7 +21,7 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
   const { data } = usePin(String(placeId));
   const navigate = useNavigate();
   const { scrapId } = useScrapId(String(placeId));
-  const { rate } = useRate(placeId);
+  const { rate } = useShopRate(placeId);
   const { latestDate } = useLatestDate(placeId);
   const onClick = () => {
     navigate(`/post/${placeId}`, { state: { placeId } });
@@ -47,7 +47,7 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
         </li>
         <li className={styles.info}>
           <div className={styles.info__rate}>
-            <StarIcon fill="#FF7F23" width="18" height="18" />{rate}.0
+            <StarIcon fill="#FF7F23" width="18" height="18" />{rate}
             {latestDate?.lastDate === null ? ' 마지막 리뷰 없음' : ` 마지막 리뷰 ${latestDate?.lastDate.replaceAll('-', '/')}`}
           </div>
         </li>
