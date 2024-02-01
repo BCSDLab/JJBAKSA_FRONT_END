@@ -22,7 +22,7 @@ export default function SearchDetails() {
   const keyword = params.keyword as string;
 
   const { isMobile } = useMediaQuery();
-  const { isText: isSearching } = useSearchingMode({ inputRef });
+  const { isSearching } = useSearchingMode({ inputRef });
   const { text, setText } = useSearchForm(location.pathname);
   const { addCard } = useRecentSearches();
 
