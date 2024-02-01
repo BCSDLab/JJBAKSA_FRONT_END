@@ -24,7 +24,7 @@ export default function Search(): JSX.Element {
   } = useSearchForm(location.pathname);
 
   const inputRef = useRef(null);
-  const { isText: isSearching } = useSearchingMode({ inputRef });
+  const { isSearching } = useSearchingMode({ inputRef });
   const { isMobile } = useMediaQuery();
 
   useEffect(() => {

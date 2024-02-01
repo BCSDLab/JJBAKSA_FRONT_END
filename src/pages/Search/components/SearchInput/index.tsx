@@ -13,14 +13,15 @@ interface Props {
 }
 
 const SearchInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
-  const { className } = props;
   const navigate = useNavigate();
   const location = useLocation();
-  const previous = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
 
   const {
     text, resetText, handleChange,
   } = useSearchForm(location.pathname);
+
+  const { className } = props;
+  const previous = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
