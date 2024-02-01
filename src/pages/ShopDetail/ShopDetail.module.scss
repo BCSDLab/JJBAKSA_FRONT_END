@@ -1,7 +1,7 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
-  width: 100%;
+  width: calc(100vw - 100px);
   height: 100%;
   position: absolute;
   top: 80px;
