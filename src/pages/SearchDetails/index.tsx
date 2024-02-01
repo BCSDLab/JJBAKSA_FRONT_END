@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { ShopQueryResponse } from 'api/shop/entity';
@@ -23,7 +23,7 @@ export default function SearchDetails() {
 
   const { isMobile } = useMediaQuery();
   const { isSearching } = useSearchingMode({ inputRef });
-  const { text, setText } = useSearchForm(location.pathname);
+  const { text } = useSearchForm(location.pathname);
   const { addCard } = useRecentSearches();
 
   const {
@@ -31,12 +31,6 @@ export default function SearchDetails() {
   } = useFetchShops(keyword);
 
   const previous = location.pathname.startsWith('/search') ? '검색' : '리뷰하기';
-
-  useEffect(() => {
-    setText(keyword);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <div className={styles.container}>
