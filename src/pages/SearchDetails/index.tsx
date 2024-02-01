@@ -59,7 +59,7 @@ export default function SearchDetails() {
           {isFetching
             ? <LoadingView />
             : shops?.map((shop: ShopQueryResponse) => (
-              <SearchItem shop={shop} addCard={addCard} />
+              <SearchItem key={shop.placeId} shop={shop} addCard={addCard} />
             ))}
         </div>
       </div>
