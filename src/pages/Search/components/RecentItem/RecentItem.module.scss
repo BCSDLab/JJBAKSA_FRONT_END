@@ -1,12 +1,11 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
-  position: relative;
+  width: 100%;
   text-decoration: none;
 }
 
 .card {
-  position: relative;
   width: 155px;
   height: 220px;
   display: flex;
@@ -19,7 +18,6 @@
     width: 155px;
     height: 155px;
     border-radius: 4px;
-    position: relative;
 
     &--empty {
       display: flex;
@@ -30,22 +28,11 @@
       width: 100%;
       height: 600px;
       border-radius: 10px;
-      position: relative;
     }
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    width: 90vw;
-    height: 33px;
-    box-shadow: none;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
   }
 }
 
 .description {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,13 +51,6 @@
     color: black;
     font-size: 16px;
     font-weight: 700;
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    padding: 0;
   }
 }
 
@@ -93,9 +73,28 @@
     right: 8px;
     cursor: pointer;
   }
+}
 
-  @include media.media-breakpoint-down(mobile) {
-    position: static;
+.line {
+  position: relative;
+  width: 100%;
+  height: 33px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__description {
+    margin-left: 4px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 6px;
+    right: 0;
     width: 20px;
     height: 20px;
     border-radius: 50%;
