@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { ShopQueryResponse } from 'api/shop/entity';
-import NavigationBar from 'pages/Search/components/NavigationBar';
+import Previous from 'pages/Search/components/Previous';
 import SearchInput from 'pages/Search/components/SearchInput';
 import Suggestions from 'pages/Search/components/Suggestions';
 import useRecentSearches from 'pages/Search/hooks/useRecentSearches';
@@ -30,12 +30,12 @@ export default function SearchDetails() {
     isFetching, shops, shopCount,
   } = useFetchShops(keyword);
 
-  const previous = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
+  const prevText = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
 
   return (
     <div className={styles.container}>
       <div className={styles.details}>
-        {isMobile && <NavigationBar className={styles.details__navigation} previous={previous} />}
+        {isMobile && <Previous className={styles.details__navigation} prevText={prevText} />}
         <div className={styles.details__search}>
           <div className={styles.details__shade} />
           <SearchInput

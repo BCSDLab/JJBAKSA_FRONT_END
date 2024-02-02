@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import NavigationBar from 'pages/Search/components/NavigationBar';
+import Previous from 'pages/Search/components/Previous';
 import RecentSearches from 'pages/Search/components/RecentSearches';
 import RollingBanner from 'pages/Search/components/RollingBanner';
 import SearchInput from 'pages/Search/components/SearchInput';
@@ -18,7 +18,7 @@ import styles from './Search.module.scss';
 export default function Search(): JSX.Element {
   const location = useLocation();
   const subtext = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
-  const previous = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
+  const prevText = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
   const {
     text, resetText,
   } = useSearchForm(location.pathname);
@@ -35,7 +35,7 @@ export default function Search(): JSX.Element {
     <div className={styles.container}>
       <div className={styles.box}>
         <div className={styles.box__shade} />
-        {isMobile && <NavigationBar className={styles.box__navigation} previous={previous} />}
+        {isMobile && <Previous className={styles.box__previous} prevText={prevText} />}
       </div>
 
       <div className={styles.search}>
