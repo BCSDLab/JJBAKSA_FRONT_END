@@ -2,16 +2,20 @@
 
 .container {
   width: calc(100vw - 100px);
-  max-width: 875px;
   height: 100dvh;
-  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 16px;
 
   @include media.media-breakpoint-down(mobile) {
     width: 100%;
+    height: calc(100dvh - 80px);
   }
 }
 
 .box {
+  width: 100%;
+  margin: 0 auto;
+
   &__shade {
     position: fixed;
     top: 0;
@@ -24,36 +28,37 @@
 
   &__navigation {
     position: fixed;
-    top: 0;
-    left: 0;
-    padding-left: 30px;
-    padding-top: 53px;
+    top: 53px;
+    left: 30px;
     z-index: 4;
-  }
-
-  &__subtext {
-    @include media.media-breakpoint-down(mobile) {
-      margin-top: 64px;
-    }
   }
 }
 
 .search {
   position: relative;
-  width: calc(100% - 32px);
+  max-width: 875px;
   margin: 0 auto;
 
   @include media.media-breakpoint-down(mobile) {
     top: 50px;
   }
 
+  &__subtext {
+    margin-top: 100px;
+    padding: 24px;
+
+    @include media.media-breakpoint-down(mobile) {
+      margin-top: 64px;
+    }
+  }
+
   &__input {
-    z-index: 2;
+    padding-bottom: 24px;
   }
 
   &__suggestions {
     position: absolute;
-    top: 31px;
+    top: 176px;
     width: 100%;
     z-index: 1;
   }

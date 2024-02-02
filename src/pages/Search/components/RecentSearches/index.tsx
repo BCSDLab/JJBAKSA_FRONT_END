@@ -25,14 +25,23 @@ export default function RecentSearches() {
         </div>
       )}
       <div className={styles.list}>
-        {cards.map((card, index) => (
-          <RecentItem
-            key={card.placeId}
-            card={card}
-            index={index}
-            deleteCard={deleteCard}
-          />
-        ))}
+        {isMobile ? (
+          cards.slice(0, 3).map((card) => (
+            <RecentItem
+              key={card.placeId}
+              card={card}
+              deleteCard={deleteCard}
+            />
+          ))
+        ) : (
+          cards.slice(0, 5).map((card) => (
+            <RecentItem
+              key={card.placeId}
+              card={card}
+              deleteCard={deleteCard}
+            />
+          ))
+        )}
       </div>
     </div>
   );

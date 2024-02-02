@@ -36,24 +36,25 @@ export default function Search(): JSX.Element {
       <div className={styles.box}>
         <div className={styles.box__shade} />
         {isMobile && <NavigationBar className={styles.box__navigation} previous={previous} />}
+      </div>
+
+      <div className={styles.search}>
         <Sentence
-          className={styles.box__subtext}
+          className={styles.search__subtext}
           subtext={subtext}
         />
-        <div className={styles.search}>
-          <SearchInput
-            className={styles.search__input}
-            ref={inputRef}
+        {isSearching && (
+          <Suggestions
+            className={styles.search__suggestions}
+            text={text}
           />
-          {isSearching && (
-            <Suggestions
-              className={styles.search__suggestions}
-              text={text}
-            />
-          )}
-          <RollingBanner />
-          <RecentSearches />
-        </div>
+        )}
+        <SearchInput
+          className={styles.search__input}
+          ref={inputRef}
+        />
+        <RollingBanner />
+        <RecentSearches />
       </div>
     </div>
   );
