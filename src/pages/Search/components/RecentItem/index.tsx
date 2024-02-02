@@ -40,27 +40,30 @@ export default function RecentItem({
     >
       {!isMobile && (
         <div className={styles.card}>
-          {photoToken ? (
-            <picture>
-              <source srcSet={defaultImage} />
-              <img
-                alt="imageAlt"
-                src={photoToken}
-                className={styles.card__image}
-              />
-            </picture>
-          ) : (
-            <div className={styles['card__image--empty']}>
-              <NotFoundImageIcon />
-              <div>등록된 사진이 없어요!</div>
-            </div>
-          )}
-          <div className={styles.description}>
+          <div className={styles['card__image-box']}>
+            {photoToken ? (
+              <picture className={styles.card__imagea}>
+                <img
+                  className={styles.card__image}
+                  alt="가게 이미지"
+                  src={photoToken}
+                />
+                <source srcSet={defaultImage} />
+              </picture>
+            ) : (
+              <div className={styles['card__empty-image']}>
+                <NotFoundImageIcon />
+                <div>등록된 사진이 없어요!</div>
+              </div>
+            )}
+          </div>
+
+          <div className={`${styles.card__description} ${styles.description}`}>
             <div className={styles.description__category}>{category}</div>
             <div className={styles.description__name}>{name}</div>
           </div>
 
-          <div className={styles.cover}>
+          <div className={`${styles.card__cover} ${styles.cover}`}>
             <button
               className={styles.cover__delete}
               type="button"

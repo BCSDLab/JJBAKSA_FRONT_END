@@ -10,7 +10,7 @@ interface Props {
   position?: string,
 }
 
-export default function PreviousButton({ fallback = '/', position } : Props) {
+export default function PreviousButton({ fallback = '', position } : Props) {
   const navigate = useNavigate();
   const isPreviousPath = window.history.state?.idx > 0;
 
@@ -24,7 +24,7 @@ export default function PreviousButton({ fallback = '/', position } : Props) {
         })
       }
       onClick={() => {
-        if (fallback) {
+        if (fallback !== '') {
           navigate(fallback);
           return;
         }
