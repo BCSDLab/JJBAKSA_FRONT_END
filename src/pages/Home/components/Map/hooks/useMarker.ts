@@ -27,11 +27,10 @@ function useMarker({ map, filterShops }: MarkerProps) {
         map,
         zIndex: filterShops.length - index,
         icon: {
-          content: MarkerHtml(shop.photo, shop.name),
+          content: MarkerHtml(shop.photos, shop.name),
           anchor: new naver.maps.Point(30, 62),
         },
       });
-
       naver.maps.Event.addListener(marker, 'click', () => {
         const clickedPlaceId = shop.placeId;
         newMarkers.forEach((m, idx) => {
@@ -43,7 +42,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
         });
 
         marker.setIcon({
-          content: ClickedMarkerHtml(shop.photo, shop.name, shop.placeId),
+          content: ClickedMarkerHtml(shop.photos, shop.name, shop.placeId),
           anchor: new naver.maps.Point(30, 62),
         });
         marker.setZIndex(10000);

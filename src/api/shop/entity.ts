@@ -5,11 +5,8 @@ export interface FilterShopsParams {
   location?: Coords;
 }
 
-export interface FilterShopsResponse {
-  coordinate: Coords;
-  name: string;
-  photo: string;
-  placeId: string;
+interface FilterShopsResponse extends Omit<Shop, 'photoToken'> {
+  photos: string[] | null;
 }
 
 export type FilterShopsListResponse = FilterShopsResponse[];
@@ -35,14 +32,12 @@ export interface Shop {
   placeId: string;
   name: string;
   formattedAddress: string;
-  lat: number;
-  lng: number;
+  simpleFormattedAddress: string;
+  coordinate: Coords;
   openNow: boolean | null;
-  totalRating: number | null;
-  ratingCount: number | null;
   photoToken: string | null;
   dist: number;
-  category: string; // 추후 카테고리 확인 필요
+  category: string;
 }
 
 export type Period = {
