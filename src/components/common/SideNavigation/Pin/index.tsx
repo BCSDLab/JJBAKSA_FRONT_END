@@ -26,10 +26,9 @@ const newAddress = (address:string) => {
   return address.substring(0, firstCommaIndex);
 };
 export default function Pin({ filterShops }:PinProps): JSX.Element {
+  const navigate = useNavigate();
   const { selected, setSelected } = useSelected();
   const { data } = usePin(selected as string);
-
-  const navigate = useNavigate();
   const { scrapId } = useScrapId(selected as string);
   const { rate } = useRate(selected as string);
   const { latestDate } = useLatestDate(selected as string);

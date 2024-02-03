@@ -32,7 +32,7 @@ const useFilterShops = ({
   const filterShops = data?.data;
 
   return {
-    isFetching, isError, data: filterShops, refetch,
+    isLoading, isFetching, isError, data: filterShops, refetch,
   };
 };
 

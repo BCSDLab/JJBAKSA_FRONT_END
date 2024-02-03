@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import defaultImage from 'assets/images/follow/default-image.png';
+import filterShopsEmpty from 'assets/images/search/not-found-img.jpeg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
+import LoadingSpinner from 'components/common/LoadingSpinner';
 import Pin from 'components/common/SideNavigation/Pin/index';
 import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
@@ -29,11 +31,38 @@ export default function SideNavigation(): JSX.Element {
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
   const { setSelected } = useSelected();
 
-  const { data: filterShops } = useFilterShops({
+  const { isLoading, data: filterShops } = useFilterShops({
     options_friend: filterFriendState ? 1 : 0,
     options_scrap: filterScrapState ? 1 : 0,
     options_nearby: filterNearbyState ? 1 : 0,
   });
+
+  const renderingPin = () => {
+    if (isLoading) {
+      return (
+        <div className={styles.loading}>
+          <LoadingSpinner size={100} />
+        </div>
+      );
+    }
+
+    if (auth === null || (filterShops && filterShops.length === 0)
+     || (!filterNearbyState && !filterScrapState && !filterFriendState)) {
+      return (
+        <div className={styles['filterShops-empty']}>
+          <div>아쉽게도 현재 관련 음식점이 없습니다.</div>
+          <div>원하는 음식점을 북마크로 저장해보세요.</div>
+          <img src={filterShopsEmpty} alt="음식점 없음" />
+          <div>친구를 팔로우하면 친구가 북마크한 음식점을 볼 수 있어요!</div>
+        </div>
+      );
+    }
+
+    if (filterShops && filterShops.length > 0) {
+      return <Pin filterShops={filterShops} />;
+    }
+    return null;
+  };
   const {
     state: isActive,
   } = useLocationActive();
@@ -200,8 +229,7 @@ export default function SideNavigation(): JSX.Element {
             </button>
           </div>
         </div>
-        {(filterNearbyState || filterScrapState || filterFriendState)
-        && filterShops && <Pin filterShops={filterShops} />}
+        {renderingPin()}
       </div>
     </>
   );
