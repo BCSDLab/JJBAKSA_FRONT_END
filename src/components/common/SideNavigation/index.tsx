@@ -11,8 +11,8 @@ import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import useLocationActive from 'store/locationActive';
-import { useSelected } from 'store/placeId';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import useFilterShops from 'utils/hooks/useFilterShops';
 import cn from 'utils/ts/classNames';
 
 import styles from './SideNavigation.module.scss';
@@ -26,10 +26,15 @@ export default function SideNavigation(): JSX.Element {
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+
+  const { data: filterShops } = useFilterShops({
+    options_friend: filterFriendState ? 1 : 0,
+    options_scrap: filterScrapState ? 1 : 0,
+    options_nearby: filterNearbyState ? 1 : 0,
+  });
   const {
     state: isActive,
   } = useLocationActive();
-  const { selected } = useSelected();
 
   const TABS = [
     {
@@ -194,7 +199,7 @@ export default function SideNavigation(): JSX.Element {
           </div>
         </div>
         {(filterNearbyState || filterScrapState || filterFriendState)
-          && selected && <Pin placeId={selected} />}
+        && filterShops && <Pin filterShops={filterShops} />}
       </div>
     </>
   );
