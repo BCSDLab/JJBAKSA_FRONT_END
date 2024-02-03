@@ -7,6 +7,7 @@ export interface FilterShopsParams {
 
 interface FilterShopsResponse extends Omit<Shop, 'photoToken'> {
   photos: string[] | null;
+  rate: ShopRateResponse;
 }
 
 export type FilterShopsListResponse = FilterShopsResponse[];
