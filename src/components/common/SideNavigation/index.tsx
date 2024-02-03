@@ -11,6 +11,7 @@ import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import useLocationActive from 'store/locationActive';
+import { useSelected } from 'store/placeId';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import useFilterShops from 'utils/hooks/useFilterShops';
 import cn from 'utils/ts/classNames';
@@ -26,6 +27,7 @@ export default function SideNavigation(): JSX.Element {
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+  const { setSelected } = useSelected();
 
   const { data: filterShops } = useFilterShops({
     options_friend: filterFriendState ? 1 : 0,
@@ -169,7 +171,7 @@ export default function SideNavigation(): JSX.Element {
                 [styles['side-pannel__search-button']]: true,
                 [styles['side-pannel__search-button--clicked']]: filterNearbyState === true,
               })}
-              onClick={() => { setFilterNearby(!filterNearbyState); }}
+              onClick={() => { setFilterNearby(!filterNearbyState); setSelected(null); }}
             >
               가까운 음식점
               <NearbyIcon />
@@ -180,7 +182,7 @@ export default function SideNavigation(): JSX.Element {
                 [styles['side-pannel__search-button']]: true,
                 [styles['side-pannel__search-button--clicked']]: filterScrapState === true,
               })}
-              onClick={() => { setFilterScrap(!filterScrapState); }}
+              onClick={() => { setFilterScrap(!filterScrapState); setSelected(null); }}
             >
               북마크 음식점
               <BookMarkIcon />
@@ -191,7 +193,7 @@ export default function SideNavigation(): JSX.Element {
                 [styles['side-pannel__search-button']]: true,
                 [styles['side-pannel__search-button--clicked']]: filterFriendState === true,
               })}
-              onClick={() => { setFilterFriend(!filterFriendState); }}
+              onClick={() => { setFilterFriend(!filterFriendState); setSelected(null); }}
             >
               친구 음식점
               <GroupIcon />
