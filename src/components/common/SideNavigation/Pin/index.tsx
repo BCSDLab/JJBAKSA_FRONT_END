@@ -1,36 +1,95 @@
-import { useNavigate } from 'react-router-dom';
-
-import { ReactComponent as PencilkIcon } from 'assets/svg/home/pencil.svg';
+// import { useNavigate } from 'react-router-dom';
+import { FilterShopsListResponse } from 'api/shop/entity';
+import defaultImage from 'assets/svg/common/favicon.svg';
 import { ReactComponent as StarIcon } from 'assets/svg/post/star.svg';
-import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
-import useLatestDate from 'components/common/SideNavigation/hooks/useLatestDate';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
 import usePin from 'components/common/SideNavigation/hooks/usePin';
-import ReviewList from 'components/common/SideNavigation/Pin/components';
-import ImageCarousel from 'components/ImageCarousel';
-import useRate from 'utils/hooks/useRate';
-import useScrap from 'utils/hooks/useScrap';
-import useScrapId from 'utils/hooks/useScrapId';
+import { useSelected } from 'store/placeId';
+// import { ReactComponent as PencilkIcon } from 'assets/svg/home/pencil.svg';
+// import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
+// import useLatestDate from 'components/common/SideNavigation/hooks/useLatestDate';
+// import ReviewList from 'components/common/SideNavigation/Pin/components';
+// import ImageCarousel from 'components/ImageCarousel';
+// import useRate from 'utils/hooks/useRate';
+// import useScrap from 'utils/hooks/useScrap';
+// import useScrapId from 'utils/hooks/useScrapId';
 
 import styles from './Pin.module.scss';
 
 interface PinProps {
-  placeId: string;
+  filterShops:FilterShopsListResponse;
 }
 
-export default function Pin({ placeId }:PinProps): JSX.Element {
-  const { data } = usePin(String(placeId));
-  const navigate = useNavigate();
-  const { scrapId } = useScrapId(String(placeId));
-  const { rate } = useRate(placeId);
-  const { latestDate } = useLatestDate(placeId);
-  const onClick = () => {
-    navigate(`/post/${placeId}`, { state: { placeId } });
-  };
+const newAddress = (address:string) => {
+  const firstCommaIndex = address.indexOf(',');
+  return address.substring(0, firstCommaIndex);
+};
+export default function Pin({ filterShops }:PinProps): JSX.Element {
+  const { selected, setSelected } = useSelected();
+  const { data } = usePin(selected as string);
 
-  const { toggleScrap, isPending } = useScrap(String(placeId), Number(scrapId));
+  // const navigate = useNavigate();
+  // const { scrapId } = useScrapId(String(placeId));
+  // const { rate } = useRate(placeId);
+  // const { latestDate } = useLatestDate(placeId);
+  // const onClick = () => {
+  //   navigate(`/post/${placeId}`, { state: { placeId } });
+  // };
+
+  // const { toggleScrap, isPending } = useScrap(String(placeId), Number(scrapId));
   return (
     <div className={styles.container}>
-      <ImageCarousel pathname="pin" imageUrls={data?.photos} />
+      <div className={styles.shops}>
+        {filterShops.map((shop) => (
+          <button
+            type="button"
+            key={shop.placeId}
+            className={styles.shop}
+            onClick={() => setSelected(shop.placeId)}
+          >
+            <div className={styles.detail}>
+              <span className={styles.detail__name}>{shop.name}</span>
+              <span className={styles.detail__category}>{shop.category}</span>
+            </div>
+            <div className={styles.detail}>
+              <span className={styles.detail__address}>
+                {newAddress(shop.simpleFormattedAddress)}
+              </span>
+              <span className={styles.detail__dist}>| {(shop.dist / 1000).toFixed(1)}Km</span>
+            </div>
+            <div className={styles.detail}>
+              <span className={styles.detail__rate}>
+                <StarIcon fill="#FF7F23" width="15" />{shop.rate?.ratingCount === 0 ? 0
+                  : (shop.rate.totalRating / shop.rate.ratingCount).toFixed(1)} |
+              </span>
+              <span className={styles.detail__open}>{shop.openNow ? '영업중' : '영업종료'}</span>
+            </div>
+            {shop.photos === null ? (
+              <div className={styles['empty-photos']}>
+                <NotFoundImageIcon />
+                <div>등록된 사진이 없습니다.</div>
+              </div>
+            ) : (
+              <ul className={styles.photos}>
+                {shop.photos.slice(0, 3).map((photo) => (
+                  <li className={styles.photo}>
+                    <picture>
+                      <source srcSet={defaultImage} />
+                      <img
+                        src={photo}
+                        alt="가게 이미지"
+                        className={styles.detail__photo}
+                      />
+                    </picture>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </button>
+        ))}
+      </div>
+      {selected && data && <div>선택된 가게: {data?.name}</div>}
+      {/* <ImageCarousel pathname="pin" imageUrls={data?.photos} />
       <ul>
         <li className={styles.info}>
           <span className={styles.info__name}>{data?.name}</span>
@@ -48,7 +107,8 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
         <li className={styles.info}>
           <div className={styles.info__rate}>
             <StarIcon fill="#FF7F23" width="18" height="18" />{rate}.0
-            {latestDate?.lastDate === null ? ' 마지막 리뷰 없음' : ` 마지막 리뷰 ${latestDate?.lastDate.replaceAll('-', '/')}`}
+            {latestDate?.lastDate === null ? ' 마지막 리뷰 없음' : `
+            // 마지막 리뷰 ${latestDate?.lastDate.replaceAll('-', '/')}`}
           </div>
         </li>
       </ul>
@@ -58,7 +118,7 @@ export default function Pin({ placeId }:PinProps): JSX.Element {
         type="button"
         className={styles.post}
       ><PencilkIcon fill="#666666" />리뷰 작성하기
-      </button>
+      </button> */}
     </div>
   );
 }
