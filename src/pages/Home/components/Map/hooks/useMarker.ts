@@ -8,7 +8,7 @@ import { useSelected } from 'store/placeId';
 
 interface MarkerProps {
   map: naver.maps.Map | null;
-  filterShops: FilterShopsListResponse | undefined;
+  filterShops: FilterShopsListResponse | null;
 }
 
 function useMarker({ map, filterShops }: MarkerProps) {
