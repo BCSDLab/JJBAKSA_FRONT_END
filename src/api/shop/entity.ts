@@ -2,7 +2,6 @@ export interface FilterShopsParams {
   options_friend: 0 | 1;
   options_nearby: 0 | 1;
   options_scrap: 0 | 1;
-  location?: Coords;
 }
 
 interface FilterShopsResponse extends Omit<Shop, 'photoToken'> {

@@ -21,7 +21,7 @@ function useCluster({ markerArray, map } : ClusterProps) {
     const markerList = markerArray.map((_marker) => _marker);
     const cluster = new MarkerClustering({
       minClusterSize: 2,
-      maxZoom: 14,
+      maxZoom: 21,
       map,
       markers: markerList.filter((marker) => marker),
       disableClickZoom: false,

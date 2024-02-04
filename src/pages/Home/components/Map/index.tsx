@@ -21,17 +21,18 @@ export default function Map({ className }: { className?: string }): JSX.Element 
   const { filterFriendState } = useFilterFriend();
   const { filterScrapState } = useFilterScrap();
   const { filterNearbyState } = useFilterNearby();
-  const { data: filterShops, refetch } = useFilterShops({
-    options_friend: filterFriendState ? 1 : 0,
-    options_scrap: filterScrapState ? 1 : 0,
-    options_nearby: filterNearbyState ? 1 : 0,
-  });
 
-  const { markerArray } = useMarker({ map, filterShops });
+  const { filterShops, filterButtons } = useFilterShops();
 
   useEffect(() => {
-    refetch();
-  }, [filterFriendState, filterScrapState, filterNearbyState, refetch]);
+    filterButtons({
+      options_nearby: filterNearbyState ? 1 : 0,
+      options_friend: filterFriendState ? 1 : 0,
+      options_scrap: filterScrapState ? 1 : 0,
+    });
+  }, [filterNearbyState, filterFriendState, filterScrapState, filterButtons]);
+
+  const { markerArray } = useMarker({ map, filterShops });
 
   const { cluster } = useCluster({ markerArray, map });
 

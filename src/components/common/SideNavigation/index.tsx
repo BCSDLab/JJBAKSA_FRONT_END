@@ -26,19 +26,24 @@ export default function SideNavigation(): JSX.Element {
   const location = useLocation();
   const navigate = useNavigate();
   const [visible, , , toggle, setVisible] = useBooleanState(false);
+
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
   const { setSelected } = useSelected();
 
-  const { isLoading, data: filterShops } = useFilterShops({
-    options_friend: filterFriendState ? 1 : 0,
-    options_scrap: filterScrapState ? 1 : 0,
-    options_nearby: filterNearbyState ? 1 : 0,
-  });
+  const { isPending, filterShops, filterButtons } = useFilterShops();
+
+  useEffect(() => {
+    filterButtons({
+      options_nearby: filterNearbyState ? 1 : 0,
+      options_friend: filterFriendState ? 1 : 0,
+      options_scrap: filterScrapState ? 1 : 0,
+    });
+  }, [filterNearbyState, filterFriendState, filterScrapState, filterButtons]);
 
   const renderingPin = () => {
-    if (isLoading) {
+    if (isPending) {
       return (
         <div className={styles.loading}>
           <LoadingSpinner size={100} />
@@ -198,9 +203,11 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterNearbyState === true,
+                [styles['side-pannel__search-button--clicked']]: filterNearbyState,
               })}
-              onClick={() => { setFilterNearby(!filterNearbyState); setSelected(null); }}
+              onClick={() => {
+                setFilterNearby(!filterNearbyState); setSelected(null);
+              }}
             >
               가까운 음식점
               <NearbyIcon />
@@ -209,9 +216,11 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterScrapState === true,
+                [styles['side-pannel__search-button--clicked']]: filterScrapState,
               })}
-              onClick={() => { setFilterScrap(!filterScrapState); setSelected(null); }}
+              onClick={() => {
+                setFilterScrap(!filterScrapState); setSelected(null);
+              }}
             >
               북마크 음식점
               <BookMarkIcon />
@@ -220,9 +229,11 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterFriendState === true,
+                [styles['side-pannel__search-button--clicked']]: filterFriendState,
               })}
-              onClick={() => { setFilterFriend(!filterFriendState); setSelected(null); }}
+              onClick={() => {
+                setFilterFriend(!filterFriendState); setSelected(null);
+              }}
             >
               친구 음식점
               <GroupIcon />
