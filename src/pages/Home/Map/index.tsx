@@ -36,7 +36,8 @@ export default function Map(): JSX.Element {
 
   return (
     <>
-      {location === undefined ? <div className={styles.loading}><LoadingIcon /></div> : <div id="map" className={styles.map} />}
+      {location === undefined ? <div className={styles.loading}><LoadingIcon /></div> : null}
+      <div id="map" className={styles.map} />
       {cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
       {isMobile && <MobileOptions />}
     </>

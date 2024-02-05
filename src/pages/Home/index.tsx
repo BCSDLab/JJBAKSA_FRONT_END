@@ -9,8 +9,8 @@ export default function Home(): JSX.Element {
 
   return (
     <div className={styles.container}>
-      <Map />
       {!isMobile && <LocationSelectModal />}
+      <Map />
     </div>
   );
 }
