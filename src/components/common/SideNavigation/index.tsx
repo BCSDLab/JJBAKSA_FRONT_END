@@ -181,7 +181,7 @@ export default function SideNavigation(): JSX.Element {
           onClick={toggle}
           aria-label="펼치기"
         >
-          {visible ? <SpriteSvg id="fold" /> : <SpriteSvg id="expand" />}
+          {visible ? <SpriteSvg id="fold" width="12px" /> : <SpriteSvg id="expand" width="12px" />}
         </button>
       </nav>
       <div
