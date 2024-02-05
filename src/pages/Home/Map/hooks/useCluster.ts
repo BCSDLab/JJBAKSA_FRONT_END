@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
-import { ClusterHtml } from 'pages/Home/components/Map/components/MarkerHtml/index';
+import { ClusterHtml } from 'pages/Home/Map/components/MarkerHtml/index';
 import MarkerClustering from 'utils/js/MarkerClustering';
 
 interface ClusterProps {
