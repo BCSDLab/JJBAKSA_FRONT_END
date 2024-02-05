@@ -1,4 +1,4 @@
-import LocationSelectModal from 'pages/Home/Map/components/LocationSelectModal/index';
+import LocationSelectModal from 'pages/Home/LocationSelectModal/index';
 import Map from 'pages/Home/Map/index';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
