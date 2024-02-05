@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { FilterShopsListResponse } from 'api/shop/entity';
 import defaultImage from 'assets/svg/common/favicon.svg';
-import { ReactComponent as PencilkIcon } from 'assets/svg/home/pencil.svg';
+import { ReactComponent as PencilIcon } from 'assets/svg/home/pencil.svg';
 import { ReactComponent as StarIcon } from 'assets/svg/post/star.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
 import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
@@ -116,7 +116,7 @@ export default function Pin({ filterShops }:PinProps): JSX.Element {
               onClick={() => navigate(`/post/${selected}`)}
               type="button"
               className={styles.post}
-            ><PencilkIcon fill="#666666" />리뷰 작성하기
+            ><PencilIcon fill="#666666" width="15px" />리뷰 작성하기
             </button>
           </>
         )}
