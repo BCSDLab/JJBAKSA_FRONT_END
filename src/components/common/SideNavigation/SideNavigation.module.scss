@@ -1,8 +1,11 @@
 @use "src/utils/styles/mediaQuery" as media;
 
+$side-navigation-width: 90px;
+$side-pannel-width: 480px;
+
 @keyframes slide-out {
   from {
-    margin-left: -550px;
+    margin-left: -$side-pannel-width;
   }
 
   to {
@@ -16,13 +19,13 @@
   }
 
   to {
-    margin-left: -550px;
+    margin-left: -$side-pannel-width;
   }
 }
 
 .side-navigation {
   background-color: #ffffff;
-  width: 100px;
+  width: $side-navigation-width;
   height: 100%;
   position: fixed;
   top: 0;
@@ -48,7 +51,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100px;
+    width: 100%;
+    height: $side-navigation-width;
     font-weight: 500;
     cursor: pointer;
   }
@@ -60,8 +64,7 @@
     text-align: center;
     text-decoration: none;
     color: #666666;
-    height: 100px;
-    width: 100px;
+    height: $side-navigation-width;
 
     &--clicked {
       background-color: #fff1e8;
@@ -75,13 +78,12 @@
   &__button {
     border: none;
     background-color: transparent;
-    width: 100px;
     font-weight: 500;
     cursor: pointer;
 
     &--clicked {
-      width: 100px;
-      height: 100px;
+      width: 100%;
+      height: $side-navigation-width;
       background-color: #fff1e8;
     }
   }
@@ -93,7 +95,7 @@
 
   &__arrow {
     position: absolute;
-    left: 100px;
+    left: 90px;
     top: 43%;
     width: 30px;
     height: 100px;
@@ -102,7 +104,7 @@
     border-radius: 0 5px 5px 0;
     border: none;
     box-shadow: 2px 3px 4px 0 rgba(0 0 0 / 20%);
-    transform: translate(550px, 0);
+    transform: translate($side-pannel-width, 0);
     animation: slide-in 0.3s ease-out normal forwards;
     cursor: pointer;
 
@@ -156,11 +158,11 @@
 }
 
 .side-pannel {
-  width: 550px;
+  width: $side-pannel-width;
   height: 100%;
   position: fixed;
   top: 0;
-  left: 100px;
+  left: 90px;
   z-index: 5;
   background-color: #ffffff;
   display: flex;
@@ -259,7 +261,7 @@
   align-items: center;
 }
 
-.filterShops-empty {
+.filter-shops-empty {
   display: flex;
   flex-direction: column;
   height: 100%;

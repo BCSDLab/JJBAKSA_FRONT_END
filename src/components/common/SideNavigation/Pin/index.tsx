@@ -28,15 +28,15 @@ const newAddress = (address:string) => {
 export default function Pin({ filterShops }:PinProps): JSX.Element {
   const navigate = useNavigate();
   const { selected, setSelected } = useSelected();
-  const { data } = usePin(selected as string);
-  const { scrapId } = useScrapId(selected as string);
-  const { rate } = useRate(selected as string);
-  const { latestDate } = useLatestDate(selected as string);
-  const { toggleScrap, isPending } = useScrap(selected as string, scrapId?.scrapId as number);
+  const { data } = usePin(selected);
+  const { scrapId } = useScrapId(selected);
+  const { rate } = useRate(selected);
+  const { latestDate } = useLatestDate(selected);
+  const { toggleScrap, isPending } = useScrap(selected, scrapId?.scrapId as number);
 
   return (
     <div className={styles.container}>
-      {selected === null ? (
+      {selected === '' ? (
         <div className={styles.shops}>
           {filterShops.map((shop) => (
             <button

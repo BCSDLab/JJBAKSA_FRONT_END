@@ -81,7 +81,7 @@ button {
 
 .pin {
   &__container {
-    width: 550px;
+    width: 480px;
     position: relative;
     margin-top: 15px;
 
@@ -96,8 +96,8 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 550px;
-    height: 350px;
+    width: 480px;
+    height: 310px;
     background-color: #eeeeee;
     gap: 10px;
     font-size: 11px;
@@ -123,8 +123,8 @@ button {
 
     img {
       object-fit: contain;
-      width: 550px;
-      height: 350px;
+      width: 480px;
+      height: 310px;
 
       @include media.media-breakpoint-down(mobile) {
         width: 573px;
@@ -142,8 +142,8 @@ button {
       position: absolute;
       background: #000;
       opacity: 0.7;
-      width: 50px;
-      height: 350px;
+      width: 30px;
+      height: 310px;
 
       svg {
         width: 80%;
@@ -158,8 +158,8 @@ button {
       position: absolute;
       background: #000;
       opacity: 0.7;
-      width: 50px;
-      height: 350px;
+      width: 30px;
+      height: 310px;
 
       svg {
         width: 80%;

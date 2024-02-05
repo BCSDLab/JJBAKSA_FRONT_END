@@ -54,7 +54,7 @@ export default function SideNavigation(): JSX.Element {
     if (auth === null || (filterShops && filterShops.length === 0)
      || (!filterNearbyState && !filterScrapState && !filterFriendState)) {
       return (
-        <div className={styles['filterShops-empty']}>
+        <div className={styles['filter-shops-empty']}>
           <div>아쉽게도 현재 관련 음식점이 없습니다.</div>
           <div>원하는 음식점을 북마크로 저장해보세요.</div>
           <img src={filterShopsEmpty} alt="음식점 없음" />
@@ -104,7 +104,7 @@ export default function SideNavigation(): JSX.Element {
 
   const clickSearchButton = () => {
     setVisible(true);
-    navigate('/');
+    navigate('/shop');
   };
 
   useEffect(() => {
@@ -129,7 +129,7 @@ export default function SideNavigation(): JSX.Element {
                   type="button"
                   className={cn({
                     [styles['side-navigation__button']]: true,
-                    [styles['side-navigation__button--clicked']]: (visible && tab.link === location.pathname) || location.pathname === '/shop',
+                    [styles['side-navigation__button--clicked']]: (visible && location.pathname === '/') || location.pathname === '/shop',
                   })}
                   onClick={() => clickSearchButton()}
                   tabIndex={0}
@@ -206,7 +206,7 @@ export default function SideNavigation(): JSX.Element {
                 [styles['side-pannel__search-button--clicked']]: filterNearbyState,
               })}
               onClick={() => {
-                setFilterNearby(!filterNearbyState); setSelected(null);
+                setFilterNearby(!filterNearbyState); setSelected('');
               }}
             >
               가까운 음식점
@@ -219,7 +219,7 @@ export default function SideNavigation(): JSX.Element {
                 [styles['side-pannel__search-button--clicked']]: filterScrapState,
               })}
               onClick={() => {
-                setFilterScrap(!filterScrapState); setSelected(null);
+                setFilterScrap(!filterScrapState); setSelected('');
               }}
             >
               북마크 음식점
@@ -232,7 +232,7 @@ export default function SideNavigation(): JSX.Element {
                 [styles['side-pannel__search-button--clicked']]: filterFriendState,
               })}
               onClick={() => {
-                setFilterFriend(!filterFriendState); setSelected(null);
+                setFilterFriend(!filterFriendState); setSelected('');
               }}
             >
               친구 음식점
