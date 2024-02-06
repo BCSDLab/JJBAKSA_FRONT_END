@@ -42,6 +42,9 @@
     "lint:eslint": "eslint src/ --ext .tsx,.ts",
     "lint:stylelint": "stylelint \"src/**/*.scss\" --config .stylelint.json"
   },
+  "optionalDependencies": {
+    "fsevents": "*"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

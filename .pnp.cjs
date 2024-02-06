@@ -53,6 +53,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-jsx-a11y", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:6.8.0"],\
             ["eslint-plugin-react", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:7.33.2"],\
             ["eslint-plugin-react-hooks", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:4.6.0"],\
+            ["fsevents", "patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1"],\
             ["http-proxy-middleware", "npm:1.3.1"],\
             ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:1.13.1"],\
             ["msw", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.1.6"],\
@@ -12763,6 +12764,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-jsx-a11y", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:6.8.0"],\
             ["eslint-plugin-react", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:7.33.2"],\
             ["eslint-plugin-react-hooks", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:4.6.0"],\
+            ["fsevents", "patch:fsevents@npm%3A2.3.3#~builtin<compat/fsevents>::version=2.3.3&hash=df0bf1"],\
             ["http-proxy-middleware", "npm:1.3.1"],\
             ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:1.13.1"],\
             ["msw", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.1.6"],\
