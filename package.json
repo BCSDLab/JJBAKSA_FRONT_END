@@ -82,5 +82,6 @@
   "proxy": "https://naveropenapi.apigw.ntruss.com",
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "packageManager": "yarn@3.8.0"
 }
