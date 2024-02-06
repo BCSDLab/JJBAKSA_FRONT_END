@@ -53,7 +53,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:7.33.2"],\
             ["eslint-plugin-react-hooks", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:4.6.0"],\
             ["http-proxy-middleware", "npm:1.3.1"],\
-            ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:1.13.1"],\
+            ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.6.4"],\
             ["msw", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.1.6"],\
             ["node", "npm:21.6.1"],\
             ["qs", "npm:6.11.2"],\
@@ -12760,7 +12760,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:7.33.2"],\
             ["eslint-plugin-react-hooks", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:4.6.0"],\
             ["http-proxy-middleware", "npm:1.3.1"],\
-            ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:1.13.1"],\
+            ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.6.4"],\
             ["msw", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.1.6"],\
             ["node", "npm:21.6.1"],\
             ["qs", "npm:6.11.2"],\
@@ -12783,66 +12783,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["jotai", [\
-        ["npm:1.13.1", {\
-          "packageLocation": "./.yarn/cache/jotai-npm-1.13.1-1a4b1cff07-bc1f88ec1d.zip/node_modules/jotai/",\
+        ["npm:2.6.4", {\
+          "packageLocation": "./.yarn/cache/jotai-npm-2.6.4-9f4bf61444-1a27de808e.zip/node_modules/jotai/",\
           "packageDependencies": [\
-            ["jotai", "npm:1.13.1"]\
+            ["jotai", "npm:2.6.4"]\
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:1.13.1", {\
-          "packageLocation": "./.yarn/__virtual__/jotai-virtual-f0e4229a66/0/cache/jotai-npm-1.13.1-1a4b1cff07-bc1f88ec1d.zip/node_modules/jotai/",\
+        ["virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.6.4", {\
+          "packageLocation": "./.yarn/__virtual__/jotai-virtual-ad29aae745/0/cache/jotai-npm-2.6.4-9f4bf61444-1a27de808e.zip/node_modules/jotai/",\
           "packageDependencies": [\
-            ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:1.13.1"],\
-            ["@babel/core", null],\
-            ["@babel/template", null],\
-            ["@types/babel__core", null],\
-            ["@types/babel__template", null],\
-            ["@types/jotai-devtools", null],\
-            ["@types/jotai-immer", null],\
-            ["@types/jotai-optics", null],\
-            ["@types/jotai-redux", null],\
-            ["@types/jotai-tanstack-query", null],\
-            ["@types/jotai-urql", null],\
-            ["@types/jotai-valtio", null],\
-            ["@types/jotai-xstate", null],\
-            ["@types/jotai-zustand", null],\
+            ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.6.4"],\
             ["@types/react", "npm:18.2.55"],\
-            ["jotai-devtools", null],\
-            ["jotai-immer", null],\
-            ["jotai-optics", null],\
-            ["jotai-redux", null],\
-            ["jotai-tanstack-query", null],\
-            ["jotai-urql", null],\
-            ["jotai-valtio", null],\
-            ["jotai-xstate", null],\
-            ["jotai-zustand", null],\
             ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
-            "@babel/core",\
-            "@babel/template",\
-            "@types/babel__core",\
-            "@types/babel__template",\
-            "@types/jotai-devtools",\
-            "@types/jotai-immer",\
-            "@types/jotai-optics",\
-            "@types/jotai-redux",\
-            "@types/jotai-tanstack-query",\
-            "@types/jotai-urql",\
-            "@types/jotai-valtio",\
-            "@types/jotai-xstate",\
-            "@types/jotai-zustand",\
             "@types/react",\
-            "jotai-devtools",\
-            "jotai-immer",\
-            "jotai-optics",\
-            "jotai-redux",\
-            "jotai-tanstack-query",\
-            "jotai-urql",\
-            "jotai-valtio",\
-            "jotai-xstate",\
-            "jotai-zustand",\
             "react"\
           ],\
           "linkType": "HARD"\
