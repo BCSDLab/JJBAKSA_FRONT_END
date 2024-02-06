@@ -161,7 +161,15 @@ export default function SideNavigation(): JSX.Element {
                 alt="프로필 이미지"
                 className={styles['bottom-navigation__profile-image']}
               />
-              <Link to="/" onClick={clearAuth}>
+              <Link
+                to="/"
+                onClick={() => {
+                  clearAuth(); setSelected('');
+                  setFilterFriend(true);
+                  setFilterNearby(true);
+                  setFilterScrap(true);
+                }}
+              >
                 <div className={styles['bottom-navigation__logout']}>로그아웃</div>
               </Link>
             </li>
