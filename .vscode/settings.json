@@ -3,5 +3,10 @@
     "**/.node_modules": true,
     "**/package-lock.json": true,
     "**/yarn.lock": true,
+    "**/.yarn": true,
+    "**/.pnp.*": true
   },
+  "eslint.nodePath": ".yarn/sdks",
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
