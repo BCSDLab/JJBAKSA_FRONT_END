@@ -37,6 +37,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.5.2"],\
             ["@types/navermaps", "npm:3.7.4"],\
             ["@types/node", "npm:20.11.16"],\
+            ["@types/qs", "npm:6.9.11"],\
             ["@types/react", "npm:18.2.55"],\
             ["@types/react-dom", "npm:18.2.18"],\
             ["@types/sha256", "npm:0.2.2"],\
@@ -4685,6 +4686,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prosemirror-keymap", "npm:1.2.2"],\
             ["prosemirror-model", "npm:1.19.4"],\
             ["prosemirror-state", "npm:1.4.3"],\
+            ["prosemirror-transform", "npm:1.8.0"],\
             ["prosemirror-view", "npm:1.32.7"]\
           ],\
           "linkType": "HARD"\
@@ -4704,6 +4706,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toast-ui/react-editor", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:3.2.3"],\
             ["@toast-ui/editor", "npm:3.2.2"],\
             ["@types/react", "npm:18.2.55"],\
+            ["prosemirror-transform", "npm:1.8.0"],\
             ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
@@ -12744,6 +12747,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:27.5.2"],\
             ["@types/navermaps", "npm:3.7.4"],\
             ["@types/node", "npm:20.11.16"],\
+            ["@types/qs", "npm:6.9.11"],\
             ["@types/react", "npm:18.2.55"],\
             ["@types/react-dom", "npm:18.2.18"],\
             ["@types/sha256", "npm:0.2.2"],\

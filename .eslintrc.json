@@ -45,22 +45,12 @@
         ]
       }
     ],
-    "import/order": [
-      "error",{
-        "groups": ["builtin", "external", "internal", ["sibling", "parent", "index"], "type", "unknown"],
-        "pathGroups": [
-          {
-            "pattern": "react*",
-            "group": "builtin",
-            "position": "after"
-          }
-        ],
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        },
-        "newlines-between":"always",
-        "pathGroupsExcludedImportTypes": ["react*"]
+    "import/extensions": [
+      "error",
+      "never",
+      {
+        "json": "always",
+        "svg": "always"
       }
     ],
     "sort-imports": [
