@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react';
 
 // import { ReactComponent as TargetIcon } from 'assets/svg/home/point.svg';
 // import { ReactComponent as LensIcon } from 'assets/svg/home/search.svg';
-import LocationSelectButton from 'pages/Home/components/Map/components/LocationSelectButton';
-import useHome from 'pages/Home/components/Map/hooks/useHome';
+import LocationSelectButton from 'pages/Home/LocationSelectModal/components/LocationSelectButton';
+import useHome from 'pages/Home/Map/hooks/useHome';
 
 import styles from './LocationSelectModal.module.scss';
 

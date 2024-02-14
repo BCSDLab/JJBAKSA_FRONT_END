@@ -3,12 +3,12 @@
 import { useEffect, useState } from 'react';
 
 import { FilterShopsListResponse } from 'api/shop/entity';
-import { ClickedMarkerHtml, MarkerHtml } from 'pages/Home/components/Map/components/MarkerHtml/index';
+import { ClickedMarkerHtml, MarkerHtml } from 'pages/Home/Map/components/MarkerHtml/index';
 import { useSelected } from 'store/placeId';
 
 interface MarkerProps {
   map: naver.maps.Map | null;
-  filterShops: FilterShopsListResponse | undefined;
+  filterShops: FilterShopsListResponse | null;
 }
 
 function useMarker({ map, filterShops }: MarkerProps) {
@@ -16,6 +16,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
   const { setSelected } = useSelected();
   useEffect(() => {
     if (!map || !filterShops) return;
+
     const newMarkers = filterShops.map((shop, index) => {
       const lat = shop?.coordinate?.lat;
       const lng = shop?.coordinate?.lng;
@@ -27,23 +28,22 @@ function useMarker({ map, filterShops }: MarkerProps) {
         map,
         zIndex: filterShops.length - index,
         icon: {
-          content: MarkerHtml(shop.photo, shop.name),
+          content: MarkerHtml(shop.name),
           anchor: new naver.maps.Point(30, 62),
         },
       });
-
       naver.maps.Event.addListener(marker, 'click', () => {
         const clickedPlaceId = shop.placeId;
-        newMarkers.forEach((m, idx) => {
+        newMarkers?.forEach((m, idx) => {
           m?.setIcon({
-            content: MarkerHtml(m.getTitle(), m.getTitle()),
+            content: MarkerHtml(m.getTitle()),
             anchor: new naver.maps.Point(30, 62),
           });
           m?.setZIndex(filterShops.length - idx);
         });
 
         marker.setIcon({
-          content: ClickedMarkerHtml(shop.photo, shop.name, shop.placeId),
+          content: ClickedMarkerHtml(shop.name, shop.placeId),
           anchor: new naver.maps.Point(30, 62),
         });
         marker.setZIndex(10000);

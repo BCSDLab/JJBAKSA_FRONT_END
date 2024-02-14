@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 
-import { ClusterHtml } from 'pages/Home/components/Map/components/MarkerHtml/index';
+import { ClusterHtml } from 'pages/Home/Map/components/MarkerHtml/index';
 import MarkerClustering from 'utils/js/MarkerClustering';
 
 interface ClusterProps {
@@ -21,7 +21,7 @@ function useCluster({ markerArray, map } : ClusterProps) {
     const markerList = markerArray.map((_marker) => _marker);
     const cluster = new MarkerClustering({
       minClusterSize: 2,
-      maxZoom: 14,
+      maxZoom: 21,
       map,
       markers: markerList.filter((marker) => marker),
       disableClickZoom: false,

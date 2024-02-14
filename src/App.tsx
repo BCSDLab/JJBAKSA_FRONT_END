@@ -17,6 +17,7 @@ import SignUp from 'pages/Auth/Signup/SignupPage/index';
 import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage';
 import FollowProfile from 'pages/Follow/components/FollowProfile';
 import FollowPage from 'pages/Follow/index';
+import Home from 'pages/Home';
 import Inquire from 'pages/Inquiry/Inquire';
 import Inquiry from 'pages/Inquiry/Inquiry';
 import MyPage from 'pages/MyPage';
@@ -37,6 +38,7 @@ export default function App(): JSX.Element {
     <Suspense fallback={<div />}>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
+          <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Search />} />
           <Route path="/post" element={<Search />} />
           <Route path="/shop/:placeId" element={<ShopDetail />} />
