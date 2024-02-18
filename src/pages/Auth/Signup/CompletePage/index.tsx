@@ -29,19 +29,14 @@ export default function CompleteForm() {
 
   const onSubmit = async ({ nickname }: CompleteFormData) => {
     try {
-      await modify({ nickname });
-      sessionStorage.removeItem('accessToken');
-      open();
+      if (nickname !== 'admin') {
+        await modify({ nickname });
+        sessionStorage.removeItem('accessToken');
+        open();
+      } else makeToast('error', '사용할 수 없는 닉네임입니다.');
     } catch (error) {
       makeToast('error', '닉네임 설정에 실패했습니다.');
     }
-    /*
-    modify({ nickname }).then(() => {
-      navigate('/login', { replace: true });
-    }).catch(() => {
-      makeToast('error', '닉네임 설정에 실패했습니다.');
-    });
-    */
   };
   const nicknameValue = watch('nickname');
 
