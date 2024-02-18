@@ -60,7 +60,12 @@ function ShopDetail() {
     <div className={styles.container}>
       {!isMobile
         ? (
-          <button type="button" onClick={toggle} aria-labelledby="image-carousel-label">
+          <button
+            type="button"
+            onClick={toggle}
+            title="image-carousel-label"
+            aria-labelledby="image-carousel-label"
+          >
             <ImageCarousel pathname="shop" imageUrls={photos} />
           </button>
         ) : <ImageCarousel pathname="pin" imageUrls={photos} />}

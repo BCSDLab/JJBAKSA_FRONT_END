@@ -53,15 +53,17 @@ $title: #ff7f23;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100vw - 100px);
+  width: 100%;
   height: calc(100vh - 80px);
 }
 
 .setting {
-  position: relative;
-  bottom: 17vh;
-  padding-bottom: 90px;
-  right: 100px;
+  width: 246px;
+  height: 100%;
+  margin-top: 160px;
+  display: flex;
+  flex-direction: column;
+
 
   &__title {
     font-size: 32px;
