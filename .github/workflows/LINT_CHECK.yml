@@ -25,9 +25,8 @@ jobs:
       - name: Install package
         run: |
            yarn set version 3.8.0
+           yarn install
            yarn
-      - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
       - name: Check lint
         run: yarn lint
       - name: TS check
