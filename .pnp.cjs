@@ -57,7 +57,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["http-proxy-middleware", "npm:1.3.1"],\
             ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:1.13.1"],\
             ["msw", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.1.6"],\
-            ["node", "npm:21.6.1"],\
             ["qs", "npm:6.11.2"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:18.2.0"],\
@@ -12768,7 +12767,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["http-proxy-middleware", "npm:1.3.1"],\
             ["jotai", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:1.13.1"],\
             ["msw", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:2.1.6"],\
-            ["node", "npm:21.6.1"],\
             ["qs", "npm:6.11.2"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:1363e212a0d85072a2f9b51b0ea2dc90735c0fd2fa902ed32f684b785e2b7963d1217ca4a6d041d9e487e349544882f804f723d01a8b8a3a18debe8791269d6e#npm:18.2.0"],\
@@ -14035,25 +14033,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["no-case", "npm:3.0.4"],\
             ["lower-case", "npm:2.0.2"],\
             ["tslib", "npm:2.6.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["node", [\
-        ["npm:21.6.1", {\
-          "packageLocation": "./.yarn/unplugged/node-npm-21.6.1-4da738f0d4/node_modules/node/",\
-          "packageDependencies": [\
-            ["node", "npm:21.6.1"],\
-            ["node-bin-setup", "npm:1.1.3"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["node-bin-setup", [\
-        ["npm:1.1.3", {\
-          "packageLocation": "./.yarn/cache/node-bin-setup-npm-1.1.3-e2630416da-ae09c036dd.zip/node_modules/node-bin-setup/",\
-          "packageDependencies": [\
-            ["node-bin-setup", "npm:1.1.3"]\
           ],\
           "linkType": "HARD"\
         }]\
