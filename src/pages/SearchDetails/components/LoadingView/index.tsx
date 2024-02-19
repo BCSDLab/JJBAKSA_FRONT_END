@@ -1,4 +1,4 @@
-import styles from '../SearchDetails.module.scss';
+import styles from './LoadingView.module.scss';
 
 export default function LoadingView() {
   return (
