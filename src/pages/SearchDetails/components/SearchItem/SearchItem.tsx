@@ -97,7 +97,7 @@ export default function SearchItem({ shop, addCard }: Props) {
               </>
             )}
           </div>
-          {/* {!isMobile && (
+          {/* api 없음 생략 {!isMobile && (
             <div className={`${styles.info__call} ${styles.call}`}>
               <PhoneIcon className={styles.call__icon} />
               <div className={styles.call__number}>{safePhoneNumber}</div>
@@ -117,7 +117,7 @@ export default function SearchItem({ shop, addCard }: Props) {
           />
         </div>
 
-        {/* {isMobile && (
+        {/* api 없음 생략 {isMobile && (
           <div className={`${styles.box__review} ${styles.review}`}>
             {review ? `${$reviewApi.length}개의 리뷰` : '리뷰 없음'}
           </div>
