@@ -1,28 +1,34 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Shop } from 'api/shop/entity';
+import { ShopQueryResponse } from 'api/shop/entity';
 import defaultImage from 'assets/svg/common/favicon.svg';
 import { ReactComponent as PhoneIcon } from 'assets/svg/search/phone.svg';
 import { ReactComponent as Star } from 'assets/svg/search/star.svg';
 import { Card } from 'pages/Search/static/entity';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+import cn from 'utils/ts/classNames';
+import useShopRate from 'utils/hooks/useShopRate';
 
 import styles from './SearchItem.module.scss';
 
 interface Props {
-  shop: Shop;
+  shop: ShopQueryResponse;
   addCard: (card: Card) => void;
 }
 
 export default function SearchItem({ shop, addCard }: Props) {
   const {
-    name, formattedAddress, photoToken, placeId, dist, openNow, category,
+    name, formattedAddress, photoToken,
+    placeId, dist, openNow, category,
   } = shop;
+  const { rate } = useShopRate(placeId);
+  const formattedPhoneNumber = null;
 
   const navigate = useNavigate();
   const location = useLocation();
   const { isMobile } = useMediaQuery();
   const distInKm = (dist / 1000).toFixed(1);
+  const safePhoneNumber = formattedPhoneNumber && formattedPhoneNumber !== '' ? formattedPhoneNumber : 'No Phone Number';
 
   const handleClick = () => {
     const card: Card = {
@@ -55,26 +61,28 @@ export default function SearchItem({ shop, addCard }: Props) {
           </div>
 
           <div className={`${styles.info__state} ${styles.state}`}>
-            {isMobile ? (
+            {isMobile && (
               <>
                 <Star />
-                <div className={styles.state__time}>0.0</div>
+                <div className={styles.state__rating}>{rate}</div>
                 |
-                <div className={styles.state__open}>{openNow ? '영업중' : '영업 종료'}</div>
-              </>
-            ) : (
-              <>
-                <div className={styles.state__open}>{openNow ? '영업중' : '영업 종료'}</div>
-                |
-                <div className={styles.state__time}>Operating Time</div>
               </>
             )}
+            <div
+              className={cn({
+                [styles.state__operating]: true,
+                [styles['state__operating--open']]: !!openNow,
+              })}
+            >
+              {openNow ? '영업중' : '영업 종료'}
+            </div>
+            {!isMobile && <>|<div className={styles.state__time}>운영 시간</div></> }
           </div>
 
           {!isMobile && (
             <div className={`${styles.info__call} ${styles.call}`}>
               <PhoneIcon className={styles.call__icon} />
-              <div className={styles.call__number}>Phone Number</div>
+              <div className={styles.call__number}>{safePhoneNumber}</div>
             </div>
           )}
         </div>

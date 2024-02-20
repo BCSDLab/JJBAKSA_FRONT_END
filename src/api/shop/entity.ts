@@ -4,7 +4,7 @@ export interface FilterShopsParams {
   options_scrap: 0 | 1;
 }
 
-interface FilterShopsResponse extends Omit<Shop, 'photoToken'> {
+interface FilterShopsResponse extends Omit<ShopQueryResponse, 'photoToken'> {
   photos: string[] | null;
   rate: ShopRateResponse;
 }
@@ -24,20 +24,31 @@ export interface Coords {
   lng: number | undefined;
 }
 
-export interface FetchShopsResponse {
-  shopQueryResponseList: Shop[];
+export interface ShopsQueryResponse {
+  pageToken: string;
+  shopQueryResponseList: ShopQueryResponse[];
 }
 
-export interface Shop {
-  placeId: string;
-  name: string;
-  formattedAddress: string;
-  simpleFormattedAddress: string;
+interface Time {
+  hour: number;
+  minute: number;
+}
+
+export interface TodayPeriod {
+  closeTime: Time;
+  openTime: Time;
+}
+
+export interface ShopQueryResponse {
+  category: string;
   coordinate: Coords;
+  dist: number;
+  formattedAddress: string;
+  name: string;
   openNow: boolean | null;
   photoToken: string | null;
-  dist: number;
-  category: string;
+  placeId: string;
+  simpleFormattedAddress: string;
 }
 
 export type Period = {

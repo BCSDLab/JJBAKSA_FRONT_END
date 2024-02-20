@@ -66,8 +66,10 @@ export default function SideNavigation(): JSX.Element {
     if (filterShops && filterShops.length > 0) {
       return <Pin filterShops={filterShops} />;
     }
+
     return null;
   };
+
   const {
     state: isActive,
   } = useLocationActive();

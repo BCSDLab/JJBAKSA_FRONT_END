@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import { getShopRate } from 'api/shop';
 
-const useRate = (placeId: string) => {
+const useShopRate = (placeId: string) => {
   const {
     isLoading, isError, data, refetch,
   } = useQuery({
@@ -11,11 +11,11 @@ const useRate = (placeId: string) => {
   });
 
   const rate = data && data.data.ratingCount !== 0
-    ? Number((data.data.totalRating / data.data.ratingCount).toFixed(0)) : 0;
+    ? (data.data.totalRating / data.data.ratingCount).toFixed(1) : '0.0';
 
   return {
     isLoading, isError, rate, refetch,
   };
 };
 
-export default useRate;
+export default useShopRate;

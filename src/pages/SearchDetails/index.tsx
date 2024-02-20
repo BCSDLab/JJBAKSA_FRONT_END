@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
-import { Shop } from 'api/shop/entity';
+import { ShopQueryResponse } from 'api/shop/entity';
 import NavigationBar from 'pages/Search/components/NavigationBar';
 import SearchInput from 'pages/Search/components/SearchInput';
 import Suggestions from 'pages/Search/components/Suggestions';
@@ -58,7 +58,7 @@ export default function SearchDetails() {
         <div className={styles.details__list}>
           {isFetching
             ? <LoadingView />
-            : shops?.map((shop: Shop) => (
+            : shops?.map((shop: ShopQueryResponse) => (
               <SearchItem shop={shop} addCard={addCard} />
             ))}
         </div>
