@@ -29,8 +29,17 @@ export default function SearchItem({ shop, addCard }: Props) {
 
   const { todayPeriod } = useShop(placeId);
   const { rate } = useShopRate(placeId);
-  const newPath = location.pathname.includes('/shop') ? `/shop/${placeId}` : `/post/${placeId}`;
   const distInKm = (dist / 1000).toFixed(1);
+
+  let newPath: string;
+
+  if (location.pathname.includes('/shop')) {
+    newPath = `/shop/${placeId}`;
+  } else if (location.pathname.includes('/post')) {
+    newPath = `/post/${placeId}`;
+  } else {
+    newPath = '/';
+  }
 
   // api 없음 생략
   // const { reviewCount } = useReviewCount(placeId);
