@@ -111,8 +111,7 @@ export default function SearchItem({ shop, addCard }: Props) {
             alt="가게 이미지"
             src={photoToken ?? defaultImage}
             onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = defaultImage;
+              if (e.target instanceof HTMLImageElement) e.target.src = defaultImage;
             }}
           />
         </div>

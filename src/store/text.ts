@@ -11,7 +11,7 @@ const useSearchForm = (pathname: string) => {
     setText('');
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setText(e.target.value);
   };
 
