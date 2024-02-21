@@ -29,9 +29,11 @@ export interface ShopsQueryResponse {
   shopQueryResponseList: ShopQueryResponse[];
 }
 
+type Enumerate<T, Arr extends number[] = []> = Arr['length'] extends T ? Arr[number] : Enumerate<T, [...Arr, Arr['length']]>;
+
 interface Time {
-  hour: number;
-  minute: number;
+  hour: Enumerate<24>;
+  minute: Enumerate<60>;
 }
 
 export interface TodayPeriod {

@@ -47,7 +47,6 @@ function ShopDetail() {
   }
 
   const {
-    // category,
     coordinate,
     name,
     formattedAddress,
