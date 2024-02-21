@@ -10,9 +10,14 @@ interface Props {
   position?: string,
 }
 
-export default function PreviousButton({ fallback = '', position } : Props) {
+export default function PreviousButton({ fallback, position } : Props) {
   const navigate = useNavigate();
   const isPreviousPath = window.history.state?.idx > 0;
+
+  const handleClick = () => {
+    if (fallback) navigate(fallback);
+    else if (isPreviousPath) navigate(-1);
+  };
 
   return (
     <button
@@ -23,15 +28,7 @@ export default function PreviousButton({ fallback = '', position } : Props) {
           [styles['previous-button--fixed-left']]: position === 'left',
         })
       }
-      onClick={() => {
-        if (fallback !== '') {
-          navigate(fallback);
-          return;
-        }
-        if (isPreviousPath) {
-          navigate(-1);
-        }
-      }}
+      onClick={() => handleClick()}
       aria-label="이전 페이지로 이동"
     >
       <ChevronRight title="이전 페이지로 이동" />
