@@ -114,16 +114,18 @@ export default function SearchItem({ shop, addCard }: Props) {
           )} */}
         </div>
 
-        <div className={`${styles.box__images} ${styles.images}`}>
+        <picture className={`${styles.box__images} ${styles.images}`}>
+          {photoToken !== null && (
+            <source
+              srcSet={photoToken}
+            />
+          )}
           <img
             className={styles.images__image}
             alt="가게 이미지"
-            src={photoToken ?? defaultImage}
-            onError={(e) => {
-              if (e.target instanceof HTMLImageElement) e.target.src = defaultImage;
-            }}
+            src={defaultImage}
           />
-        </div>
+        </picture>
 
         {/* api 없음 생략 {isMobile && (
           <div className={`${styles.box__review} ${styles.review}`}>
