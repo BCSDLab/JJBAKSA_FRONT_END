@@ -43,7 +43,7 @@ export default function Search(): JSX.Element {
           className={styles.search__subtext}
           subtext={subtext}
         />
-        {isSearching && (
+        {!isMobile && isSearching && (
           <Suggestions
             className={styles.search__suggestions}
             text={text}
