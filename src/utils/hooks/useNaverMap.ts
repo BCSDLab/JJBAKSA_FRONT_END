@@ -15,10 +15,6 @@ function useNaverMap(latitude: number | undefined, longitude: number | undefined
         mapDataControl: false,
       });
       setMap(newMaps);
-
-      return () => {
-        newMaps.destroy();
-      };
     }
   }, [latitude, longitude]);
 

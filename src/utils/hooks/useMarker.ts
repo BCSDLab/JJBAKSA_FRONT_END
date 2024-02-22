@@ -5,13 +5,16 @@ import { useEffect, useState } from 'react';
 import { FilterShopsListResponse } from 'api/shop/entity';
 import { ClickedMarkerHtml, MarkerHtml } from 'pages/Home/Map/components/MarkerHtml/index';
 import { useSelected } from 'store/placeId';
+import { useLocation } from 'store/location';
+import useNaverMap from 'utils/hooks/useNaverMap';
 
 interface MarkerProps {
-  map: naver.maps.Map | null;
   filterShops: FilterShopsListResponse | null;
 }
 
-function useMarker({ map, filterShops }: MarkerProps) {
+function useMarker({ filterShops }: MarkerProps) {
+  const { location } = useLocation();
+  const map = useNaverMap(location?.lat, location?.lng);
   const [markerArray, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
   const { setSelected } = useSelected();
   useEffect(() => {
