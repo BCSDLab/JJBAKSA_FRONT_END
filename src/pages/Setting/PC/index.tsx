@@ -12,50 +12,54 @@ export default function PcSetting() {
   return (
     <div className={styles.container}>
       <div className={styles.setting}>
-        <div className={styles.setting__title}>설정</div>
-        <div className={styles.selectContainer}>
-          <div className={styles.select}>
-            <div className={cn({
-              [styles.select__mark]: true,
-              [styles['select__mark--appear']]: isAccount,
-            })}
-            />
-            <button
-              className={cn({
-                [styles.select__button]: true,
-                [styles['select__button--selected']]: isAccount,
+        <div className={styles.menu}>
+          <div className={styles.menu__title}>설정</div>
+          <div className={styles['select-container']}>
+            <div className={styles.select}>
+              <div className={cn({
+                [styles.select__mark]: true,
+                [styles['select__mark--appear']]: isAccount,
               })}
-              type="button"
-              onClick={() => setIsAccount(true)}
-            >
-              계정관리
-
-            </button>
-          </div>
-          <div className={styles.select}>
-            <div className={cn({
-              [styles.select__mark]: true,
-              [styles['select__mark--appear']]: !isAccount,
-            })}
-            />
-            <button
-              className={cn({
-                [styles.select__button]: true,
-                [styles['select__button--selected']]: !isAccount,
+              />
+              <button
+                className={cn({
+                  [styles.select__button]: true,
+                  [styles['select__button--selected']]: isAccount,
+                })}
+                type="button"
+                onClick={() => setIsAccount(true)}
+              >
+                계정관리
+              </button>
+            </div>
+            <div className={styles.select}>
+              <div className={cn({
+                [styles.select__mark]: true,
+                [styles['select__mark--appear']]: !isAccount,
               })}
-              type="button"
-              onClick={() => setIsAccount(false)}
-            >
-              서비스
-
-            </button>
+              />
+              <button
+                className={cn({
+                  [styles.select__button]: true,
+                  [styles['select__button--selected']]: !isAccount,
+                })}
+                type="button"
+                onClick={() => setIsAccount(false)}
+              >
+                서비스
+              </button>
+            </div>
           </div>
         </div>
+
+        <div className={styles.content}>
+          {isAccount ? <ManageAccount /> : <Service />}
+        </div>
       </div>
-      {isAccount ? <ManageAccount /> : <Service />}
-      <div className={styles.copyright}>
+
+      <footer className={styles.copyright}>
         <Copyright />
-      </div>
+      </footer>
     </div>
   );
 }
