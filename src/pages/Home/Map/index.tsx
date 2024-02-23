@@ -2,14 +2,16 @@ import { useEffect } from 'react';
 import { Overlay } from 'react-naver-maps';
 
 import { ReactComponent as LoadingIcon } from 'assets/svg/home/map-loading.svg';
+import usePin from 'components/common/SideNavigation/hooks/usePin';
 import MobileOptions from 'pages/Home/Map/components/MobileOptions';
 import useCluster from 'pages/Home/Map/hooks/useCluster';
-import useMarker from 'pages/Home/Map/hooks/useMarker';
-import useNaverMap from 'pages/Home/Map/hooks/useNaverMap';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import { useLocation } from 'store/location';
+import { useSelected } from 'store/placeId';
 import useFilterShops from 'utils/hooks/useFilterShops';
+import useMarker from 'utils/hooks/useMarker';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+import useNaverMap from 'utils/hooks/useNaverMap';
 
 import styles from './Map.module.scss';
 
@@ -17,11 +19,14 @@ export default function Map(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const { location } = useLocation();
   const map = useNaverMap(location?.lat, location?.lng);
+
   const { filterFriendState } = useFilterFriend();
   const { filterScrapState } = useFilterScrap();
   const { filterNearbyState } = useFilterNearby();
+  const { selected } = useSelected();
 
   const { filterShops, filterButtons } = useFilterShops();
+  const { data } = usePin(selected);
 
   useEffect(() => {
     filterButtons({
@@ -34,10 +39,17 @@ export default function Map(): JSX.Element {
   const { markerArray } = useMarker({ map, filterShops });
   const { cluster } = useCluster({ markerArray, map });
 
+  useEffect(() => {
+    if (selected !== '') {
+      markerArray.find((marker) => marker?.getTitle() === data?.name)?.trigger('click');
+    }
+  }, [selected, data?.name, markerArray]);
+
   return (
     <>
-      {location === undefined ? <div className={styles.loading}><LoadingIcon /></div> : null}
-      <div id="map" className={styles.map} />
+      <div id="map" className={styles.map}>
+        {!location && <div className={styles.loading}><LoadingIcon /></div>}
+      </div>
       {cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
       {isMobile && <MobileOptions />}
     </>
