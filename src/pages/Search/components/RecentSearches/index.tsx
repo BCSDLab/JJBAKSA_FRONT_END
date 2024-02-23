@@ -19,9 +19,9 @@ export default function RecentSearches() {
       const { left, right, width } = list.getBoundingClientRect();
       const { clientX } = event;
 
-      if (clientX - left < width / 5) {
+      if (clientX - left < width / 10) {
         list.scrollLeft -= 10;
-      } else if (right - clientX < width / 5) {
+      } else if (right - clientX < width / 10) {
         list.scrollLeft += 10;
       }
     }

@@ -41,23 +41,21 @@ export default function RecentItem({
       {!isMobile && (
         <div className={styles.card}>
           <div className={styles['card__image-box']}>
-            <picture>
-              {photoToken === null ? (
-                <div className={styles['card__empty-image']}>
-                  <NotFoundImageIcon />
-                  <div>등록된 사진이 없어요!</div>
-                </div>
-              ) : (
-                <source
-                  srcSet={photoToken}
+            {photoToken ? (
+              <picture className={styles.card__imagea}>
+                <img
+                  className={styles.card__image}
+                  alt="가게 이미지"
+                  src={photoToken}
                 />
-              )}
-              <img
-                className={styles.card__image}
-                alt="가게 이미지"
-                src={defaultImage}
-              />
-            </picture>
+                <source srcSet={defaultImage} />
+              </picture>
+            ) : (
+              <div className={styles['card__empty-image']}>
+                <NotFoundImageIcon />
+                <div>등록된 사진이 없어요!</div>
+              </div>
+            )}
           </div>
 
           <div className={`${styles.card__description} ${styles.description}`}>
