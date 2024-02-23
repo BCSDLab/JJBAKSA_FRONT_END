@@ -1,16 +1,24 @@
 import LocationSelectModal from 'pages/Home/LocationSelectModal/index';
 import Map from 'pages/Home/Map/index';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
+import cn from 'utils/ts/classNames';
 
 import styles from './Home.module.scss';
 
-export default function Home(): JSX.Element {
+export default function Home({ visible }: { visible: boolean }): JSX.Element {
   const { isMobile } = useMediaQuery();
 
   return (
     <div className={styles.container}>
       {!isMobile && <LocationSelectModal />}
-      <Map />
+      <div
+        className={cn({
+          [styles['map-container']]: true,
+          [styles['map-container--expand']]: visible,
+        })}
+      >
+        <Map />
+      </div>
     </div>
   );
 }

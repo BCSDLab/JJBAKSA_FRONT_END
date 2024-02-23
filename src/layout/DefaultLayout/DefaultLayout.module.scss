@@ -1,8 +1,5 @@
-.sidebar-space {
-  width: 100px;
-  flex-shrink: 0;
-}
-
-.home {
-  display: none;
+.home-container {
+  &--invisible {
+    display: none;
+  }
 }

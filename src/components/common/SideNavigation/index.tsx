@@ -12,20 +12,25 @@ import Pin from 'components/common/SideNavigation/Pin/index';
 import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
-import useLocationActive from 'store/locationActive';
 import { useSelected } from 'store/placeId';
-import useBooleanState from 'utils/hooks/useBooleanState';
 import useFilterShops from 'utils/hooks/useFilterShops';
 import cn from 'utils/ts/classNames';
 
 import styles from './SideNavigation.module.scss';
 
-export default function SideNavigation(): JSX.Element {
+interface SideNavigationProps {
+  visible: boolean;
+  toggle: () => void;
+  setVisible: (state: boolean) => void;
+}
+
+export default function SideNavigation({
+  visible, toggle, setVisible,
+}: SideNavigationProps): JSX.Element {
   const auth = useAuth();
   const clearAuth = useClearAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const [visible, , , toggle, setVisible] = useBooleanState(false);
 
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
@@ -68,9 +73,6 @@ export default function SideNavigation(): JSX.Element {
     }
     return null;
   };
-  const {
-    state: isActive,
-  } = useLocationActive();
 
   const TABS = [
     {
@@ -102,17 +104,6 @@ export default function SideNavigation(): JSX.Element {
     },
   ];
 
-  const clickSearchButton = () => {
-    setVisible(true);
-    navigate('/shop');
-  };
-
-  useEffect(() => {
-    if (isActive) {
-      setVisible(false);
-    }
-  }, [isActive, setVisible]);
-
   return (
     <>
       <nav className={styles['side-navigation']}>
@@ -120,9 +111,7 @@ export default function SideNavigation(): JSX.Element {
           {TABS.map((tab, index) => (
             <li
               key={tab.name}
-              className={cn({
-                [styles['side-navigation__list']]: true,
-              })}
+              className={styles['side-navigation__list']}
             >
               {tab.name === '검색' ? (
                 <button
@@ -131,7 +120,7 @@ export default function SideNavigation(): JSX.Element {
                     [styles['side-navigation__button']]: true,
                     [styles['side-navigation__button--clicked']]: (visible && location.pathname === '/') || location.pathname === '/shop',
                   })}
-                  onClick={() => clickSearchButton()}
+                  onClick={() => { navigate('/shop'); }}
                   tabIndex={0}
                 >
                   <div>{tab.icon}</div>
