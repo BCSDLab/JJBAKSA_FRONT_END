@@ -5,16 +5,13 @@ import { useEffect, useState } from 'react';
 import { FilterShopsListResponse } from 'api/shop/entity';
 import { ClickedMarkerHtml, MarkerHtml } from 'pages/Home/Map/components/MarkerHtml/index';
 import { useSelected } from 'store/placeId';
-import { useLocation } from 'store/location';
-import useNaverMap from 'utils/hooks/useNaverMap';
 
 interface MarkerProps {
+  map: naver.maps.Map | null;
   filterShops: FilterShopsListResponse | null;
 }
 
-function useMarker({ filterShops }: MarkerProps) {
-  const { location } = useLocation();
-  const map = useNaverMap(location?.lat, location?.lng);
+function useMarker({ map, filterShops }: MarkerProps) {
   const [markerArray, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
   const { setSelected } = useSelected();
   useEffect(() => {
@@ -35,8 +32,8 @@ function useMarker({ filterShops }: MarkerProps) {
           anchor: new naver.maps.Point(30, 62),
         },
       });
+
       naver.maps.Event.addListener(marker, 'click', () => {
-        const clickedPlaceId = shop.placeId;
         newMarkers?.forEach((m, idx) => {
           m?.setIcon({
             content: MarkerHtml(m.getTitle()),
@@ -50,7 +47,7 @@ function useMarker({ filterShops }: MarkerProps) {
           anchor: new naver.maps.Point(30, 62),
         });
         marker.setZIndex(10000);
-        setSelected(clickedPlaceId);
+        setSelected(shop.placeId);
         if (map) {
           map.panTo(marker.getPosition());
         }
