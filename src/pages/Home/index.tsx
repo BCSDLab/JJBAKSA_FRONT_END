@@ -9,7 +9,7 @@ export default function Home({ visible }: { visible: boolean }): JSX.Element {
   const { isMobile } = useMediaQuery();
 
   return (
-    <div className={styles.container}>
+    <>
       {!isMobile && <LocationSelectModal />}
       <div
         className={cn({
@@ -19,6 +19,6 @@ export default function Home({ visible }: { visible: boolean }): JSX.Element {
       >
         <Map />
       </div>
-    </div>
+    </>
   );
 }
