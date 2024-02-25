@@ -8,9 +8,12 @@ const useShop = (placeId: string) => {
     queryFn: () => fetchShop(placeId),
   });
 
-  const shopName = data?.name;
+  const formattedPhoneNumber = data?.formattedPhoneNumber ?? '';
+  const todayPeriod = data?.todayPeriod;
 
-  return { shop: data, shopName };
+  return {
+    shop: data, formattedPhoneNumber, todayPeriod,
+  };
 };
 
 export default useShop;

@@ -1,7 +1,7 @@
 @use "src/utils/styles/mediaQuery.scss" as media;
 
 .container {
-  position: relative;
+  width: 100%;
   text-decoration: none;
 }
 
@@ -11,47 +11,46 @@
   height: 220px;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
   border-radius: 4px;
-  box-shadow: 1px 1px 20px rgb(0 0 0 / 25%);
+  box-shadow: 2px 3px 12px 1px rgba(0 0 0 / 10%);
 
-  &__image {
+  &__image-box {
     width: 155px;
     height: 155px;
-    border-radius: 4px;
-    position: relative;
-
-    &--empty {
-      display: flex;
-      color: #979797;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 600px;
-      border-radius: 10px;
-      position: relative;
-    }
   }
 
-  @include media.media-breakpoint-down(mobile) {
-    width: 90vw;
-    height: 33px;
-    box-shadow: none;
-    flex-direction: row;
+  &__image {
+    height: 155px;
+    border-radius: 4px;
+  }
+
+  &__empty-image {
+    height: 155px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
+    border-radius: 4px;
+    color: #979797;
+  }
+
+  &__description {
+    height: 300px;
+    padding: 0 10px;
+  }
+
+  &__cover {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 
 .description {
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 300px;
-  padding: 0 10px;
-  overflow: hidden;
 
   &__category {
     color: #979797;
@@ -60,17 +59,9 @@
 
   &__name {
     overflow: hidden;
-    padding-left: 3px;
     color: black;
     font-size: 16px;
     font-weight: 700;
-  }
-
-  @include media.media-breakpoint-down(mobile) {
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    padding: 0;
   }
 }
 
@@ -93,9 +84,28 @@
     right: 8px;
     cursor: pointer;
   }
+}
 
-  @include media.media-breakpoint-down(mobile) {
-    position: static;
+.line {
+  position: relative;
+  width: 100%;
+  height: 33px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__description {
+    margin-left: 4px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 6px;
+    right: 0;
     width: 20px;
     height: 20px;
     border-radius: 50%;

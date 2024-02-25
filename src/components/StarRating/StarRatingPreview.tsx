@@ -3,7 +3,7 @@ import { ReactComponent as Star } from 'assets/svg/post/star.svg';
 import styles from './StarRating.module.scss';
 
 interface Props {
-  rate: number;
+  rate: string;
 }
 
 function StarRatingPreview({ rate }: Props) {
@@ -14,7 +14,7 @@ function StarRatingPreview({ rate }: Props) {
           key={num}
           className={styles.wrapper__star}
           width={40}
-          fill={rate >= num ? '#ff7f23' : '#eee'}
+          fill={Number(rate) >= num ? '#ff7f23' : '#eee'}
         />
       ))}
     </div>
