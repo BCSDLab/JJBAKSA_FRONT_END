@@ -21,11 +21,6 @@ interface Props {
   filterShops:FilterShopsListResponse;
 }
 
-const newAddress = (address:string) => {
-  const firstCommaIndex = address.indexOf(',');
-  return address.substring(0, firstCommaIndex);
-};
-
 export default function Pin({ filterShops }:Props): JSX.Element {
   const navigate = useNavigate();
   const { selected, setSelected } = useSelected();
@@ -52,7 +47,7 @@ export default function Pin({ filterShops }:Props): JSX.Element {
               </div>
               <div className={styles.detail}>
                 <span className={styles.detail__address}>
-                  {newAddress(shop.simpleFormattedAddress)}
+                  {shop.simpleFormattedAddress}
                 </span>
                 <span className={styles.detail__dist}>| {(shop.dist / 1000).toFixed(1)}Km</span>
               </div>
