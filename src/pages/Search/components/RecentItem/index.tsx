@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { ReactComponent as ClockIcon } from 'assets/svg/common/clock.svg';
 import { ReactComponent as PcDeleteIcon } from 'assets/svg/common/close.svg';
-import defaultImage from 'assets/svg/common/favicon.svg';
+import defaultImage from 'assets/svg/common/403-image.svg';
 import { ReactComponent as MobileDeleteIcon } from 'assets/svg/search/mobile-delete.svg';
 import { ReactComponent as NotFoundImageIcon } from 'assets/svg/common/not-found.svg';
 import { Card } from 'pages/Search/static/entity';
@@ -42,13 +42,13 @@ export default function RecentItem({
         <div className={styles.card}>
           <div className={styles['card__image-box']}>
             {photoToken ? (
-              <picture className={styles.card__imagea}>
+              <picture>
+                <source srcSet={defaultImage} />
                 <img
                   className={styles.card__image}
                   alt="가게 이미지"
                   src={photoToken}
                 />
-                <source srcSet={defaultImage} />
               </picture>
             ) : (
               <div className={styles['card__empty-image']}>

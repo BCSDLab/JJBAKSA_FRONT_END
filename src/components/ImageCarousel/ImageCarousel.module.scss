@@ -46,6 +46,7 @@ button {
     img {
       width: 360px;
       height: 400px;
+      object-fit: cover;
 
       @include media.media-breakpoint-down(mobile) {
         width: 100%;

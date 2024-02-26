@@ -65,7 +65,7 @@ export default function Pin({ filterShops }:Props): JSX.Element {
                 </div>
               ) : (
                 <ul className={styles.photos}>
-                  {shop.photos.slice(0, 2).map((photo) => (
+                  {shop.photos.slice(0, 3).map((photo) => (
                     <li className={styles.photo}>
                       <picture>
                         <source srcSet={defaultImage} />
