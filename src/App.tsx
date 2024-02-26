@@ -58,8 +58,8 @@ export default function App(): JSX.Element {
             <Route path="/setting/id-change" element={<IdChange />} />
             <Route path="/profile" element={<MyPage />} />
             <Route path="/post/:placeId" element={<Post />} />
+            <Route path="/withdrawal" element={<Withdrawal />} />
           </Route>
-          <Route path="/withdrawal" element={<Withdrawal />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>
