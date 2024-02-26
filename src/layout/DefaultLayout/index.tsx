@@ -24,8 +24,8 @@ export default function DefaultLayout(): JSX.Element {
           })}
         >
           <Home visible={visible} />
-          <Outlet />
         </div>
+        <Outlet />
       </main>
       {isMobile && <BottomNavigation />}
     </>
