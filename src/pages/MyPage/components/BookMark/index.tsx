@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-import defaultImage from 'assets/images/search/default-image.png';
+import defaultImage from 'assets/svg/common/403-image.svg';
 import notExist from 'assets/svg/mypage/not-exist.svg';
 import filledStar from 'assets/svg/mypage/star-filled.svg';
-import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/common/not-found.svg';
 import LoadingSpinner from 'components/common/LoadingSpinner';
 import useObserver from 'pages/MyPage/hooks/useObeserver';
 import useScraps from 'pages/MyPage/hooks/useScraps';
@@ -45,12 +45,12 @@ export default function BookMark() {
                 </div>
                 <div className={styles['bookmark__store-image']}>
                   {scrap.photo ? (
-                    <picture className={styles['bookmark__store-picture']}>
+                    <picture>
                       <source srcSet={defaultImage} />
                       <img
                         alt="imageAlt"
                         src={scrap.photo}
-                        className={styles['bookmark__store-image--image']}
+                        className={styles['bookmark__store-image']}
                       />
                     </picture>
                   ) : (

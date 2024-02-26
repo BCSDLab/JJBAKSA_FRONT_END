@@ -4,7 +4,7 @@ import { ReactComponent as ClockIcon } from 'assets/svg/common/clock.svg';
 import { ReactComponent as PcDeleteIcon } from 'assets/svg/common/close.svg';
 import defaultImage from 'assets/svg/common/favicon.svg';
 import { ReactComponent as MobileDeleteIcon } from 'assets/svg/search/mobile-delete.svg';
-import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/common/not-found.svg';
 import { Card } from 'pages/Search/static/entity';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 

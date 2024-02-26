@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 
 import { FilterShopsListResponse } from 'api/shop/entity';
-import defaultImage from 'assets/svg/common/favicon.svg';
+import defaultImage from 'assets/svg/common/403-image.svg';
 import { ReactComponent as PencilIcon } from 'assets/svg/home/pencil.svg';
 import { ReactComponent as StarIcon } from 'assets/svg/post/star.svg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/shop/book-mark.svg';
-import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/common/not-found.svg';
 import useLatestDate from 'components/common/SideNavigation/hooks/useLatestDate';
 import usePin from 'components/common/SideNavigation/hooks/usePin';
 import ReviewList from 'components/common/SideNavigation/Pin/components';
