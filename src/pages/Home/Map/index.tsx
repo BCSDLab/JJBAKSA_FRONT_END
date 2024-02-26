@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
-import { Overlay } from 'react-naver-maps';
 
 import { ReactComponent as LoadingIcon } from 'assets/svg/home/map-loading.svg';
 import usePin from 'components/common/SideNavigation/hooks/usePin';
 import MobileOptions from 'pages/Home/Map/components/MobileOptions';
-import useCluster from 'pages/Home/Map/hooks/useCluster';
+// import useCluster from 'pages/Home/Map/hooks/useCluster';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import { useLocation } from 'store/location';
 import { useSelected } from 'store/placeId';
@@ -37,11 +36,11 @@ export default function Map(): JSX.Element {
   }, [filterNearbyState, filterFriendState, filterScrapState, filterButtons]);
 
   const { markerArray } = useMarker({ map, filterShops });
-  const { cluster } = useCluster({ markerArray, map });
+  // useCluster({ markerArray, map }); // 마커 클러스터 수정 필요
 
   useEffect(() => {
     if (selected !== '') {
-      markerArray.find((marker) => marker?.getTitle() === data?.name)?.trigger('click');
+      markerArray.find((marker: any) => marker?.getTitle() === data?.name)?.trigger('click');
     }
   }, [selected, data?.name, markerArray]);
 
@@ -50,7 +49,6 @@ export default function Map(): JSX.Element {
       <div id="map" className={styles.map}>
         {!location && <div className={styles.loading}><LoadingIcon /></div>}
       </div>
-      {cluster && <Overlay element={{ ...cluster, setMap: () => null, getMap: () => null }} />}
       {isMobile && <MobileOptions />}
     </>
   );
