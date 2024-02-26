@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import NavigationBar from 'pages/Search/components/NavigationBar';
+import Previous from 'pages/Search/components/Previous';
 import RecentSearches from 'pages/Search/components/RecentSearches';
 import RollingBanner from 'pages/Search/components/RollingBanner';
 import SearchInput from 'pages/Search/components/SearchInput';
@@ -18,13 +18,13 @@ import styles from './Search.module.scss';
 export default function Search(): JSX.Element {
   const location = useLocation();
   const subtext = location.pathname === '/shop' ? SHOP_TEXT : POST_TEXT;
-  const previous = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
+  const prevText = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
   const {
     text, resetText,
   } = useSearchForm(location.pathname);
 
   const inputRef = useRef(null);
-  const { isText: isSearching } = useSearchingMode({ inputRef });
+  const { isSearching } = useSearchingMode({ inputRef });
   const { isMobile } = useMediaQuery();
 
   useEffect(() => {
@@ -35,25 +35,26 @@ export default function Search(): JSX.Element {
     <div className={styles.container}>
       <div className={styles.box}>
         <div className={styles.box__shade} />
-        {isMobile && <NavigationBar className={styles.box__navigation} previous={previous} />}
+        {isMobile && <Previous className={styles.box__previous} prevText={prevText} />}
+      </div>
+
+      <div className={styles.search}>
         <Sentence
-          className={styles.box__subtext}
+          className={styles.search__subtext}
           subtext={subtext}
         />
-        <div className={styles.search}>
-          <SearchInput
-            className={styles.search__input}
-            ref={inputRef}
+        {!isMobile && isSearching && (
+          <Suggestions
+            className={styles.search__suggestions}
+            text={text}
           />
-          {isSearching && (
-            <Suggestions
-              className={styles.search__suggestions}
-              text={text}
-            />
-          )}
-          <RollingBanner />
-          <RecentSearches />
-        </div>
+        )}
+        <SearchInput
+          className={styles.search__input}
+          ref={inputRef}
+        />
+        <RollingBanner />
+        <RecentSearches />
       </div>
     </div>
   );

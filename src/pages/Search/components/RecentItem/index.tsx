@@ -12,12 +12,11 @@ import styles from './RecentItem.module.scss';
 
 interface Props {
   card: Card;
-  index: number;
   deleteCard: (target: Card) => void;
 }
 
 export default function RecentItem({
-  card, index, deleteCard,
+  card, deleteCard,
 }: Props) {
   const {
     category, name, photoToken, placeId,
@@ -34,67 +33,65 @@ export default function RecentItem({
     deleteCard(card);
   };
 
-  if (index < 5) {
-    return (
-      <Link
-        className={styles.container}
-        to={newPath}
-      >
-        {!isMobile && (
-          <>
-            <div className={styles.card}>
-              {photoToken ? (
-                <picture>
-                  <source srcSet={defaultImage} />
-                  <img
-                    alt="imageAlt"
-                    src={photoToken}
-                    className={styles.card__image}
-                  />
-                </picture>
-              ) : (
-                <div className={styles['card__image--empty']}>
-                  <NotFoundImageIcon />
-                  <div>등록된 사진이 없어요!</div>
-                </div>
-              )}
-              <div className={styles.description}>
-                <div className={styles.description__category}>{category}</div>
-                <div className={styles.description__name}>{name}</div>
+  return (
+    <Link
+      className={styles.container}
+      to={newPath}
+    >
+      {!isMobile && (
+        <div className={styles.card}>
+          <div className={styles['card__image-box']}>
+            {photoToken ? (
+              <picture className={styles.card__imagea}>
+                <img
+                  className={styles.card__image}
+                  alt="가게 이미지"
+                  src={photoToken}
+                />
+                <source srcSet={defaultImage} />
+              </picture>
+            ) : (
+              <div className={styles['card__empty-image']}>
+                <NotFoundImageIcon />
+                <div>등록된 사진이 없어요!</div>
               </div>
-            </div>
-            <div className={styles.cover}>
-              <button
-                className={styles.cover__delete}
-                type="button"
-                onClick={handleDelete}
-                aria-label="삭제"
-              >
-                <PcDeleteIcon />
-              </button>
-            </div>
-          </>
-        )}
-
-        {isMobile && (
-          <div className={styles.card}>
-            <div className={styles.description}>
-              <ClockIcon />
-              <div className={styles.description__name}>{name}</div>
-            </div>
-            <div className={styles.cover}>
-              <button
-                className={styles.cover__delete}
-                type="button"
-                onClick={handleDelete}
-                aria-label="삭제"
-              >
-                <MobileDeleteIcon />
-              </button>
-            </div>
+            )}
           </div>
-        )}
-      </Link>
-    );
-  } return null;
+
+          <div className={`${styles.card__description} ${styles.description}`}>
+            <div className={styles.description__category}>{category}</div>
+            <div className={styles.description__name}>{name}</div>
+          </div>
+
+          <div className={`${styles.card__cover} ${styles.cover}`}>
+            <button
+              className={styles.cover__delete}
+              type="button"
+              onClick={handleDelete}
+              aria-label="삭제"
+            >
+              <PcDeleteIcon />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {isMobile && (
+        <div className={styles.line}>
+          <ClockIcon />
+          <div className={styles.line__description}>
+            {name}
+          </div>
+          <button
+            className={styles.line__delete}
+            type="button"
+            onClick={handleDelete}
+            aria-label="삭제"
+          >
+            <MobileDeleteIcon />
+          </button>
+        </div>
+      )}
+    </Link>
+  );
 }
