@@ -1,3 +1,15 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.main {
+  width: calc(100% - 90px);
+  margin-left: 90px;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin: 0;
+    width: 100%;
+  }
+}
+
 .home-container {
   &--invisible {
     display: none;

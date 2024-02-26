@@ -71,6 +71,7 @@ export default function SideNavigation({
     if (filterShops && filterShops.length > 0) {
       return <Pin filterShops={filterShops} />;
     }
+
     return null;
   };
 
