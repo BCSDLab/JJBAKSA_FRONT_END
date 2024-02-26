@@ -1,6 +1,12 @@
+@use "src/utils/styles/mediaQuery" as media;
+
 .map {
   width: 100vw;
   height: 100vh;
+
+  @include media.media-breakpoint-down(mobile) {
+    height: calc(100vh - 80px);
+  }
 }
 
 .bottom-options {
