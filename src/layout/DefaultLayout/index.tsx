@@ -16,15 +16,15 @@ export default function DefaultLayout(): JSX.Element {
   return (
     <>
       {!isMobile && <SideNavigation visible={visible} toggle={toggle} setVisible={setVisible} />}
+      <div
+        className={cn({
+          [styles['home-container']]: true,
+          [styles['home-container--invisible']]: location.pathname !== '/',
+        })}
+      >
+        <Home visible={visible} />
+      </div>
       <main className={styles.main}>
-        <div
-          className={cn({
-            [styles['home-container']]: true,
-            [styles['home-container--invisible']]: location.pathname !== '/',
-          })}
-        >
-          <Home visible={visible} />
-        </div>
         <Outlet />
       </main>
       {isMobile && <BottomNavigation />}
