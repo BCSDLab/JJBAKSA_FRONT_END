@@ -65,9 +65,12 @@
 
   &__result {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     font-size: 18px;
     color: #ff7f23;
-    padding: 32px 0 33px 16px;
+    padding: 32px 0 33px 0;
 
     @include media.media-breakpoint-down(mobile) {
       font-size: 16px;

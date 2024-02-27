@@ -1,0 +1,29 @@
+.select {
+  width: 211px;
+  height: 37px;
+  background-color: rgba(238 238 238 / 50%);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.category {
+  width: 101px;
+  height: 31px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #C4C4C4;
+
+  &--selected {
+    background-color: #FFFFFF;
+    color:#222222;
+  }
+}
