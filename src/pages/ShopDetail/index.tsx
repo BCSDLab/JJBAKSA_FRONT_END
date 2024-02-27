@@ -11,7 +11,7 @@ import MyReviewList from 'pages/ShopDetail/components/ReviewList/MyReviewList';
 import ScrapButton from 'pages/ShopDetail/components/ScrapButton/index';
 import useBooleanState from 'utils/hooks/useBooleanState';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
-import useRate from 'utils/hooks/useRate';
+import useShopRate from 'utils/hooks/useShopRate';
 import useScrapId from 'utils/hooks/useScrapId';
 
 import ImageModal from './components/ImageModal';
@@ -34,7 +34,7 @@ function ShopDetail() {
   const [value, , , toggle] = useBooleanState(false);
 
   const { isMobile } = useMediaQuery();
-  const { rate } = useRate(placeId);
+  const { rate } = useShopRate(placeId);
   const { shop } = useShop(placeId);
   const { scrapId } = useScrapId(placeId);
 
@@ -47,7 +47,6 @@ function ShopDetail() {
   }
 
   const {
-    // category,
     coordinate,
     name,
     formattedAddress,
@@ -60,7 +59,12 @@ function ShopDetail() {
     <div className={styles.container}>
       {!isMobile
         ? (
-          <button type="button" onClick={toggle} aria-labelledby="image-carousel-label">
+          <button
+            type="button"
+            onClick={toggle}
+            title="image-carousel-label"
+            aria-labelledby="image-carousel-label"
+          >
             <ImageCarousel pathname="shop" imageUrls={photos} />
           </button>
         ) : <ImageCarousel pathname="pin" imageUrls={photos} />}
@@ -71,7 +75,7 @@ function ShopDetail() {
           <div>
             <div className={styles['detail-main__rating']}>
               <StarRatingPreview rate={rate} />
-              <span>{rate}.0</span>
+              <span>{rate}</span>
             </div>
             <div className={styles['detail-main__name']}>
               <h1>{name}</h1>

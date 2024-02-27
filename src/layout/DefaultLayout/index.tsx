@@ -4,12 +4,16 @@ import BottomNavigation from 'components/common/BottomNavigation';
 import SideNavigation from 'components/common/SideNavigation';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
+import styles from './DefaultLayout.module.scss';
+
 export default function DefaultLayout(): JSX.Element {
   const { isMobile } = useMediaQuery();
   return (
     <>
       {!isMobile && <SideNavigation />}
-      <Outlet />
+      <main className={styles.main}>
+        <Outlet />
+      </main>
       {isMobile && <BottomNavigation />}
     </>
   );

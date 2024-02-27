@@ -9253,7 +9253,6 @@ __metadata:
     http-proxy-middleware: 1
     jotai: ^1.11.0
     msw: ^2.0.6
-    node: ^21.1.0
     qs: ^6.11.2
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -10358,13 +10357,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-bin-setup@npm:^1.0.0":
-  version: 1.1.3
-  resolution: "node-bin-setup@npm:1.1.3"
-  checksum: ae09c036dde8133f5226dc984445a8bdecc9b56078fd091f9e243e3965e544275f4786054041db60cc4ebc2957a5e44e8f316dfc15d100f3988ee2d04661d4bf
-  languageName: node
-  linkType: hard
-
 "node-forge@npm:^1":
   version: 1.3.1
   resolution: "node-forge@npm:1.3.1"
@@ -10403,17 +10395,6 @@ __metadata:
   version: 2.0.14
   resolution: "node-releases@npm:2.0.14"
   checksum: 59443a2f77acac854c42d321bf1b43dea0aef55cd544c6a686e9816a697300458d4e82239e2d794ea05f7bbbc8a94500332e2d3ac3f11f52e4b16cbe638b3c41
-  languageName: node
-  linkType: hard
-
-"node@npm:^21.1.0":
-  version: 21.6.1
-  resolution: "node@npm:21.6.1"
-  dependencies:
-    node-bin-setup: ^1.0.0
-  bin:
-    node: bin/node
-  checksum: 2fa20eb5ff341c66d93b286271a5cf3974ff6d88eb8697bbc819fd978ff0a7ba75a4ff26b6a46577135bf7e2c1d6153b6955a87dd880433ea8f5b4576ebc4538
   languageName: node
   linkType: hard
 
