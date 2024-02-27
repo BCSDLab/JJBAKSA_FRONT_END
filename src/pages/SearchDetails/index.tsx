@@ -7,10 +7,12 @@ import SearchInput from 'pages/Search/components/SearchInput';
 import Suggestions from 'pages/Search/components/Suggestions';
 import useRecentSearches from 'pages/Search/hooks/useRecentSearches';
 import useSearchingMode from 'pages/Search/hooks/useSearchingMode';
+import CategorySelect from 'pages/SearchDetails/components/CategorySelect';
 import LoadingView from 'pages/SearchDetails/components/LoadingView';
-import SearchItem from 'pages/SearchDetails/components/SearchItem/SearchItem';
+import SearchItem from 'pages/SearchDetails/components/SearchItem';
 import useFetchShops from 'pages/SearchDetails/hooks/useFetchShops';
 import useSearchForm from 'store/text';
+import useBooleanState from 'utils/hooks/useBooleanState';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 
 import styles from './SearchDetails.module.scss';
@@ -26,9 +28,12 @@ export default function SearchDetails() {
   const { text } = useSearchForm(location.pathname);
   const { addCard } = useRecentSearches();
 
+  const [isCafe, , , changeCategory] = useBooleanState(false);
+  const category = isCafe ? 'cafe' : 'restaurant';
+
   const {
     isFetching, data: shops, shopCount,
-  } = useFetchShops(keyword);
+  } = useFetchShops({ keyword, category });
 
   const prevText = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
 
@@ -47,7 +52,14 @@ export default function SearchDetails() {
         </div>
 
         <div className={styles.details__result}>
-          {`${shopCount}개의 검색결과`}
+          <div className={styles.result__count}>
+            {`${shopCount}개의 검색결과`}
+          </div>
+          <CategorySelect
+            className={styles.result__category}
+            isCafe={isCafe}
+            onClick={changeCategory}
+          />
         </div>
         <div className={styles.details__list}>
           {isFetching

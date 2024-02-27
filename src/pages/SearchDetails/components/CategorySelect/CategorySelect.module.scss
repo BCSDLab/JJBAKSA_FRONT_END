@@ -1,0 +1,42 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
+.select {
+  width: 211px;
+  height: 37px;
+  border-radius: 20px;
+  background-color: rgba(238 238 238 / 50%);
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 177px;
+    height: 32px;
+  }
+}
+
+.category {
+  width: 101px;
+  height: 31px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #c4c4c4;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 85px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  &--selected {
+    background-color: #ffffff;
+    color: #222222;
+  }
+}
