@@ -22,6 +22,9 @@
   &__image {
     height: 155px;
     border-radius: 4px;
+    object-fit: fill;
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    width: -webkit-fill-available;
   }
 
   &__empty-image {
