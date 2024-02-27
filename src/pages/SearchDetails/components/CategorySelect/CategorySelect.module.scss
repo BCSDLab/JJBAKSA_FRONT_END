@@ -1,14 +1,21 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
 .select {
   width: 211px;
   height: 37px;
-  background-color: rgba(238 238 238 / 50%);
   border-radius: 20px;
+  background-color: rgba(238 238 238 / 50%);
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
   transition: all 0.2s;
   cursor: pointer;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 177px;
+    height: 32px;
+  }
 }
 
 .category {
@@ -21,6 +28,12 @@
   font-size: 18px;
   font-weight: 500;
   color: #C4C4C4;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 85px;
+    height: 26px;
+    font-size: 14px;
+  }
 
   &--selected {
     background-color: #FFFFFF;
