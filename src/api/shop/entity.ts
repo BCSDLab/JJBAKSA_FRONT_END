@@ -17,6 +17,7 @@ export interface FetchTrendingsResponse {
 
 export interface ShopsParams {
   keyword: string;
+  category: 'cafe' | 'restaurant';
   location?: Coords;
 }
 export interface Coords {
