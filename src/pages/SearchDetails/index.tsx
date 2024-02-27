@@ -28,13 +28,14 @@ export default function SearchDetails() {
   const { text } = useSearchForm(location.pathname);
   const { addCard } = useRecentSearches();
 
+  const [isCafe, , , changeCategory] = useBooleanState(false);
+  const category = isCafe ? 'cafe' : 'restaurant';
+
   const {
     isFetching, data: shops, shopCount,
-  } = useFetchShops(keyword);
+  } = useFetchShops({ keyword, category });
 
   const prevText = location.pathname.startsWith('/shop') ? '검색' : '리뷰하기';
-
-  const [isCafe, , , changeCategory] = useBooleanState(true);
 
   return (
     <div className={styles.container}>
