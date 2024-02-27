@@ -19,7 +19,6 @@
     "http-proxy-middleware": "1",
     "jotai": "^1.11.0",
     "msw": "^2.0.6",
-    "node": "^21.1.0",
     "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -41,6 +40,9 @@
     "lint": "yarn lint:eslint && yarn lint:stylelint",
     "lint:eslint": "eslint src/ --ext .tsx,.ts",
     "lint:stylelint": "stylelint \"src/**/*.scss\" --config .stylelint.json"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +66,7 @@
     ]
   },
   "devDependencies": {
+    "@types/qs": "^6.9.11",
     "@types/sha256": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
@@ -71,7 +74,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
@@ -82,5 +85,6 @@
   "proxy": "https://naveropenapi.apigw.ntruss.com",
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "packageManager": "yarn@3.8.0"
 }

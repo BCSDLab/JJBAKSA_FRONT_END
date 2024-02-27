@@ -2,14 +2,11 @@ export interface FilterShopsParams {
   options_friend: 0 | 1;
   options_nearby: 0 | 1;
   options_scrap: 0 | 1;
-  location?: Coords;
 }
 
-export interface FilterShopsResponse {
-  coordinate: Coords;
-  name: string;
-  photo: string;
-  placeId: string;
+interface FilterShopsResponse extends Omit<ShopQueryResponse, 'photoToken'> {
+  photos: string[] | null;
+  rate: ShopRateResponse;
 }
 
 export type FilterShopsListResponse = FilterShopsResponse[];
@@ -20,6 +17,7 @@ export interface FetchTrendingsResponse {
 
 export interface ShopsParams {
   keyword: string;
+  category: 'cafe' | 'restaurant';
   location?: Coords;
 }
 export interface Coords {
@@ -27,22 +25,33 @@ export interface Coords {
   lng: number | undefined;
 }
 
-export interface FetchShopsResponse {
-  shopQueryResponseList: Shop[];
+export interface ShopsQueryResponse {
+  pageToken: string;
+  shopQueryResponseList: ShopQueryResponse[];
 }
 
-export interface Shop {
-  placeId: string;
-  name: string;
-  formattedAddress: string;
-  lat: number;
-  lng: number;
-  openNow: boolean | null;
-  totalRating: number | null;
-  ratingCount: number | null;
-  photoToken: string | null;
+type Enumerate<T, Arr extends number[] = []> = Arr['length'] extends T ? Arr[number] : Enumerate<T, [...Arr, Arr['length']]>;
+
+interface Time {
+  hour: Enumerate<24>;
+  minute: Enumerate<60>;
+}
+
+export interface TodayPeriod {
+  closeTime: Time;
+  openTime: Time;
+}
+
+export interface ShopQueryResponse {
+  category: string;
+  coordinate: Coords;
   dist: number;
-  category: string; // 추후 카테고리 확인 필요
+  formattedAddress: string;
+  name: string;
+  openNow: boolean | null;
+  photoToken: string | null;
+  placeId: string;
+  simpleFormattedAddress: string;
 }
 
 export type Period = {

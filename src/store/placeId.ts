@@ -1,6 +1,6 @@
 import { atom, useAtom } from 'jotai';
 
-export const placeIdAtom = atom<string | null>(null);
+export const placeIdAtom = atom('');
 
 export const useSelected = () => {
   const [selected, setSelected] = useAtom(placeIdAtom);

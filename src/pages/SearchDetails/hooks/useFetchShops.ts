@@ -7,19 +7,23 @@ import { ShopsParams } from 'api/shop/entity';
 import useDebounce from 'utils/hooks/useDebounce';
 import useGeolocation from 'utils/hooks/useGeolocation';
 
-const useFetchShops = (text: string) => {
-  const OPTIONS = {
-    maximumAge: 1000,
-  };
-  const { location } = useGeolocation(OPTIONS);
-  const debouncedText = useDebounce(text, 500);
+type Props = {
+  keyword: string;
+  category: 'cafe' | 'restaurant';
+};
 
-  const params: ShopsParams = { keyword: debouncedText, location };
+const OPTIONS = { maximumAge: 1000 };
+
+const useFetchShops = ({ keyword: text, category }: Props) => {
+  const { location } = useGeolocation(OPTIONS);
+  const keyword = useDebounce(text, 500);
+
+  const params: ShopsParams = { keyword, category, location };
 
   const {
     isLoading, isError, data, refetch,
   } = useQuery({
-    queryKey: ['shop', location, debouncedText],
+    queryKey: ['shop', keyword, category, location],
     queryFn: () => fetchShops(params),
     enabled: !!location,
   });

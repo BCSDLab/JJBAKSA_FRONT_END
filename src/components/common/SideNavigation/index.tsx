@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import defaultImage from 'assets/images/follow/default-image.png';
+import filterShopsEmpty from 'assets/images/search/not-found-img.jpeg';
 import { ReactComponent as BookMarkIcon } from 'assets/svg/home/bookmark.svg';
 import { ReactComponent as GroupIcon } from 'assets/svg/home/group.svg';
 import { ReactComponent as NearbyIcon } from 'assets/svg/home/nearby.svg';
 import { ReactComponent as SearchIcon } from 'assets/svg/search/lens.svg';
+import LoadingSpinner from 'components/common/LoadingSpinner';
 import Pin from 'components/common/SideNavigation/Pin/index';
 import SpriteSvg from 'components/common/SpriteSvg';
 import { useAuth, useClearAuth } from 'store/auth';
@@ -13,6 +15,7 @@ import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import useLocationActive from 'store/locationActive';
 import { useSelected } from 'store/placeId';
 import useBooleanState from 'utils/hooks/useBooleanState';
+import useFilterShops from 'utils/hooks/useFilterShops';
 import cn from 'utils/ts/classNames';
 
 import styles from './SideNavigation.module.scss';
@@ -23,13 +26,53 @@ export default function SideNavigation(): JSX.Element {
   const location = useLocation();
   const navigate = useNavigate();
   const [visible, , , toggle, setVisible] = useBooleanState(false);
+
   const { filterFriendState, setFilterFriend } = useFilterFriend();
   const { filterScrapState, setFilterScrap } = useFilterScrap();
   const { filterNearbyState, setFilterNearby } = useFilterNearby();
+  const { setSelected } = useSelected();
+
+  const { isPending, filterShops, filterButtons } = useFilterShops();
+
+  useEffect(() => {
+    filterButtons({
+      options_nearby: filterNearbyState ? 1 : 0,
+      options_friend: filterFriendState ? 1 : 0,
+      options_scrap: filterScrapState ? 1 : 0,
+    });
+  }, [filterNearbyState, filterFriendState, filterScrapState, filterButtons]);
+
+  const renderingPin = () => {
+    if (isPending) {
+      return (
+        <div className={styles.loading}>
+          <LoadingSpinner size={100} />
+        </div>
+      );
+    }
+
+    if (auth === null || (filterShops && filterShops.length === 0)
+     || (!filterNearbyState && !filterScrapState && !filterFriendState)) {
+      return (
+        <div className={styles['filter-shops-empty']}>
+          <div>아쉽게도 현재 관련 음식점이 없습니다.</div>
+          <div>원하는 음식점을 북마크로 저장해보세요.</div>
+          <img src={filterShopsEmpty} alt="음식점 없음" />
+          <div>친구를 팔로우하면 친구가 북마크한 음식점을 볼 수 있어요!</div>
+        </div>
+      );
+    }
+
+    if (filterShops && filterShops.length > 0) {
+      return <Pin filterShops={filterShops} />;
+    }
+
+    return null;
+  };
+
   const {
     state: isActive,
   } = useLocationActive();
-  const { selected } = useSelected();
 
   const TABS = [
     {
@@ -63,7 +106,7 @@ export default function SideNavigation(): JSX.Element {
 
   const clickSearchButton = () => {
     setVisible(true);
-    navigate('/');
+    navigate('/shop');
   };
 
   useEffect(() => {
@@ -88,7 +131,7 @@ export default function SideNavigation(): JSX.Element {
                   type="button"
                   className={cn({
                     [styles['side-navigation__button']]: true,
-                    [styles['side-navigation__button--clicked']]: (visible && tab.link === location.pathname) || location.pathname === '/shop',
+                    [styles['side-navigation__button--clicked']]: (visible && location.pathname === '/') || location.pathname === '/shop',
                   })}
                   onClick={() => clickSearchButton()}
                   tabIndex={0}
@@ -120,7 +163,15 @@ export default function SideNavigation(): JSX.Element {
                 alt="프로필 이미지"
                 className={styles['bottom-navigation__profile-image']}
               />
-              <Link to="/" onClick={clearAuth}>
+              <Link
+                to="/"
+                onClick={() => {
+                  clearAuth(); setSelected('');
+                  setFilterFriend(true);
+                  setFilterNearby(true);
+                  setFilterScrap(true);
+                }}
+              >
                 <div className={styles['bottom-navigation__logout']}>로그아웃</div>
               </Link>
             </li>
@@ -140,7 +191,7 @@ export default function SideNavigation(): JSX.Element {
           onClick={toggle}
           aria-label="펼치기"
         >
-          {visible ? <SpriteSvg id="fold" /> : <SpriteSvg id="expand" />}
+          {visible ? <SpriteSvg id="fold" width="12px" /> : <SpriteSvg id="expand" width="12px" />}
         </button>
       </nav>
       <div
@@ -162,9 +213,11 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterNearbyState === true,
+                [styles['side-pannel__search-button--clicked']]: filterNearbyState,
               })}
-              onClick={() => { setFilterNearby(!filterNearbyState); }}
+              onClick={() => {
+                setFilterNearby(!filterNearbyState); setSelected('');
+              }}
             >
               가까운 음식점
               <NearbyIcon />
@@ -173,9 +226,11 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterScrapState === true,
+                [styles['side-pannel__search-button--clicked']]: filterScrapState,
               })}
-              onClick={() => { setFilterScrap(!filterScrapState); }}
+              onClick={() => {
+                setFilterScrap(!filterScrapState); setSelected('');
+              }}
             >
               북마크 음식점
               <BookMarkIcon />
@@ -184,17 +239,18 @@ export default function SideNavigation(): JSX.Element {
               type="button"
               className={cn({
                 [styles['side-pannel__search-button']]: true,
-                [styles['side-pannel__search-button--clicked']]: filterFriendState === true,
+                [styles['side-pannel__search-button--clicked']]: filterFriendState,
               })}
-              onClick={() => { setFilterFriend(!filterFriendState); }}
+              onClick={() => {
+                setFilterFriend(!filterFriendState); setSelected('');
+              }}
             >
               친구 음식점
               <GroupIcon />
             </button>
           </div>
         </div>
-        {(filterNearbyState || filterScrapState || filterFriendState)
-          && selected && <Pin placeId={selected} />}
+        {renderingPin()}
       </div>
     </>
   );

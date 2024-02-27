@@ -97,7 +97,7 @@ export default function ReviewList({ placeId }: { placeId: string }) {
               <li className={styles['review-data__friend']} key={review.id}>
                 <div className={styles['review-data__image']}>
                   <img
-                    src={review.userReviewResponse.profileImage.url || defaultImage}
+                    src={review.userReviewResponse?.profileImage?.url || defaultImage}
                     alt={`${review.userReviewResponse.nickname}의 프로필`}
                   />
                 </div>

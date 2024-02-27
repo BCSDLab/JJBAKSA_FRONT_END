@@ -1,18 +1,45 @@
 $title: #ff7f23;
 
-.formContainer {
-  padding-right: 100px;
-  padding-bottom: 40px;
+.container {
+  width: 100%;
+  height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  white-space: nowrap;
 }
 
-.selectContainer {
+.setting {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.menu {
+  width: 246px;
+  height: 100%;
+  margin-top: 160px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+
+  &__title {
+    font-size: 32px;
+    color: $title;
+    font-weight: 700;
+    margin-bottom: 70px;
+  }
+}
+
+.select-container {
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
+  gap: 15px;
 }
 
 .select {
@@ -49,26 +76,17 @@ $title: #ff7f23;
   }
 }
 
-.container {
+.content {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: calc(100vw - 100px);
-  height: calc(100vh - 80px);
 }
 
-.setting {
-  position: relative;
-  bottom: 17vh;
-  padding-bottom: 90px;
-  right: 100px;
-
-  &__title {
-    font-size: 32px;
-    color: $title;
-    font-weight: 700;
-    margin-bottom: 70px;
-  }
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .title {

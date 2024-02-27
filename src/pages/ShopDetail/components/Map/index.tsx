@@ -1,4 +1,4 @@
-import useNaverMap from 'pages/Home/components/Map/hooks/useNaverMap';
+import useNaverMap from 'pages/Home/Map/hooks/useNaverMap';
 import SectionHeader from 'pages/ShopDetail/components/SectionHeader/index';
 
 import styles from './Map.module.scss';

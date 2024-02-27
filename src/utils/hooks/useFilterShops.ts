@@ -1,39 +1,53 @@
-import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
 
 import { getFilterShops } from 'api/shop';
-import { FilterShopsParams } from 'api/shop/entity';
+import { FilterShopsListResponse, FilterShopsParams } from 'api/shop/entity';
 import { useAuth } from 'store/auth';
+import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import useGeolocation from 'utils/hooks/useGeolocation';
+import makeToast from 'utils/ts/makeToast';
 
-const OPTIONS = {
-  maximumAge: 1000,
-};
-const useFilterShops = ({
-  options_friend, options_nearby, options_scrap,
-}: FilterShopsParams) => {
+const OPTIONS = { maximumAge: 1000 };
+
+const useFilterShops = () => {
   const { location } = useGeolocation(OPTIONS);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const { setFilterFriend } = useFilterFriend();
+  const { setFilterScrap } = useFilterScrap();
+  const { setFilterNearby } = useFilterNearby();
+  const [filterShops, setfilterShops] = useState<FilterShopsListResponse | null>(null);
   const auth = useAuth();
-  const enabled = !!(location) && !!auth;
-
-  const params: FilterShopsParams = {
-    options_friend, options_nearby, options_scrap,
-  };
   const {
-    isLoading, isError, data, refetch,
-  } = useQuery({
-    queryKey: ['filterShops'],
-    queryFn: () => getFilterShops(params, {
+    isPending, isError, mutate: filterButtons,
+  } = useMutation({
+    mutationFn: (param: FilterShopsParams) => getFilterShops(param, {
       lat: location?.lat,
       lng: location?.lng,
     }),
-    enabled,
+    onSuccess: (res) => {
+      if (auth) {
+        queryClient.invalidateQueries({ queryKey: ['filterShops'] });
+        setfilterShops(res.data);
+      }
+    },
+    onError: (error) => {
+      if (axios.isAxiosError(error) && error.response?.status === 401) {
+        makeToast('error', '로그인 후 이용해 보세요');
+        navigate('/login');
+        setFilterFriend(true);
+        setFilterScrap(true);
+        setFilterNearby(true);
+      }
+    },
   });
 
-  const isFetching = isLoading || !(location);
-  const filterShops = data?.data;
-
   return {
-    isFetching, isError, data: filterShops, refetch,
+    isPending, isError, filterShops, filterButtons,
   };
 };
 

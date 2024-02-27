@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Favicon } from 'assets/svg/common/favicon.svg';
 import { useClearAuth } from 'store/auth';
+import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
+import { useSelected } from 'store/placeId';
 
 import styles from './PasswordSuccessModal.module.scss';
 
@@ -13,6 +15,10 @@ interface Props {
 export default function LogoutModal({ children, closeModal }: Props) {
   const root = document.body;
   const clearAuth = useClearAuth();
+  const { setFilterFriend } = useFilterFriend();
+  const { setFilterScrap } = useFilterScrap();
+  const { setFilterNearby } = useFilterNearby();
+  const { setSelected } = useSelected();
   return createPortal(
     <div className={styles.container}>
       <div className={styles.overay} />
@@ -23,7 +29,16 @@ export default function LogoutModal({ children, closeModal }: Props) {
           로그아웃을 진행하실건가요?
         </div>
         <div className={styles.modal__content}>{children}</div>
-        <Link to="/login" onClick={clearAuth}><button type="button" className={styles.modal__button}>확인</button></Link>
+        <Link
+          to="/login"
+          onClick={() => {
+            clearAuth(); setSelected('');
+            setFilterFriend(true);
+            setFilterNearby(true);
+            setFilterScrap(true);
+          }}
+        ><button type="button" className={styles.modal__button}>확인</button>
+        </Link>
       </div>
     </div>,
     root,
