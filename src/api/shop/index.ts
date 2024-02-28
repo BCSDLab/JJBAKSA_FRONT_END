@@ -23,8 +23,8 @@ export const getFilterShops = (params: FilterShopsParams, location: Coords) => {
 };
 
 export const fetchShops = (params: ShopsParams) => {
-  const { location, keyword } = params;
-  const url = `/shops?keyword=${keyword}`;
+  const { keyword, category, location } = params;
+  const url = `/shops?keyword=${keyword}?category=${category}`;
   const requestBody = {
     lat: location?.lat,
     lng: location?.lng,
