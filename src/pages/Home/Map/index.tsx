@@ -16,7 +16,7 @@ import styles from './Map.module.scss';
 
 export default function Map(): JSX.Element {
   const { isMobile } = useMediaQuery();
-  const { location } = useLocation();
+  const { location, loading } = useLocation();
   const map = useNaverMap(location?.lat, location?.lng);
 
   const { filterFriendState } = useFilterFriend();
@@ -47,7 +47,7 @@ export default function Map(): JSX.Element {
   return (
     <>
       <div id="map" className={styles.map}>
-        {!location && <div className={styles.loading}><LoadingIcon /></div>}
+        {loading && <div className={styles.loading}><LoadingIcon /></div>}
       </div>
       {isMobile && <MobileOptions />}
     </>
