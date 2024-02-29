@@ -1,6 +1,8 @@
 .container {
   position: absolute;
-  width: 100%;
+  width: calc(100% - 90px);
+
+  // right: 0;
   height: 100vh;
   pointer-events: none;
   z-index: 1;

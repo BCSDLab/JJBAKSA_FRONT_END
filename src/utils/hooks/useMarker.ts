@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { FilterShopsListResponse } from 'api/shop/entity';
 import { ClickedMarkerHtml, MarkerHtml } from 'pages/Home/Map/components/MarkerHtml/index';
+import { useAuth } from 'store/auth';
 import { useSelected } from 'store/placeId';
 
 interface MarkerProps {
@@ -12,6 +13,7 @@ interface MarkerProps {
 }
 
 function useMarker({ map, filterShops }: MarkerProps) {
+  const auth = useAuth();
   const [markerArray, setMarkerArray] = useState<(naver.maps.Marker | undefined)[]>([]);
   const { setSelected } = useSelected();
   useEffect(() => {
@@ -32,8 +34,8 @@ function useMarker({ map, filterShops }: MarkerProps) {
           anchor: new naver.maps.Point(30, 62),
         },
       });
+
       naver.maps.Event.addListener(marker, 'click', () => {
-        const clickedPlaceId = shop.placeId;
         newMarkers?.forEach((m, idx) => {
           m?.setIcon({
             content: MarkerHtml(m.getTitle()),
@@ -47,7 +49,7 @@ function useMarker({ map, filterShops }: MarkerProps) {
           anchor: new naver.maps.Point(30, 62),
         });
         marker.setZIndex(10000);
-        setSelected(clickedPlaceId);
+        setSelected(shop.placeId);
         if (map) {
           map.panTo(marker.getPosition());
         }
@@ -61,7 +63,15 @@ function useMarker({ map, filterShops }: MarkerProps) {
         marker?.setMap(null);
       });
     };
-  }, [map, filterShops]);
+  }, [filterShops, map]);
+
+  useEffect(() => {
+    if (!auth && markerArray.length > 0) {
+      markerArray.forEach((marker) => {
+        marker?.setMap(null);
+      });
+    }
+  }, [auth, markerArray]);
 
   return { markerArray };
 }

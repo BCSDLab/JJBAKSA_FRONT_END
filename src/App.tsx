@@ -17,7 +17,6 @@ import SignUp from 'pages/Auth/Signup/SignupPage/index';
 import TermsOfService from 'pages/Auth/Signup/TermsOfServicePage';
 import FollowProfile from 'pages/Follow/components/FollowProfile';
 import FollowPage from 'pages/Follow/index';
-import Home from 'pages/Home';
 import Inquire from 'pages/Inquiry/Inquire';
 import Inquiry from 'pages/Inquiry/Inquiry';
 import MyPage from 'pages/MyPage';
@@ -38,7 +37,6 @@ export default function App(): JSX.Element {
     <Suspense fallback={<div />}>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
-          <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Search />} />
           <Route path="/post" element={<Search />} />
           <Route path="/shop/:placeId" element={<ShopDetail />} />
@@ -58,10 +56,10 @@ export default function App(): JSX.Element {
             <Route path="/friend-list/:id" element={<FollowProfile />} />
             <Route path="/setting" element={<Setting />} />
             <Route path="/setting/id-change" element={<IdChange />} />
+            <Route path="/profile" element={<MyPage />} />
+            <Route path="/post/:placeId" element={<Post />} />
+            <Route path="/withdrawal" element={<Withdrawal />} />
           </Route>
-          <Route path="/withdrawal" element={<Withdrawal />} />
-          <Route path="/profile" element={<MyPage />} />
-          <Route path="/post/:placeId" element={<Post />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
         <Route element={<AuthRoute needAuth={false} redirectRoute="/" />}>

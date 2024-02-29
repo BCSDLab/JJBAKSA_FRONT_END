@@ -3,7 +3,6 @@ import { toast } from 'react-toastify';
 
 import BottomNavigation from 'components/common/BottomNavigation';
 import LoadingSpinner from 'components/common/LoadingSpinner';
-import SideNavigation from 'components/common/SideNavigation';
 import BoardSelector from 'pages/MyPage/components/BoardSelector/index';
 import BookMark from 'pages/MyPage/components/BookMark/index';
 import Information from 'pages/MyPage/components/Information/index';
@@ -34,7 +33,6 @@ export default function MyPage() {
   };
   return (
     <>
-      {!isMobile && <SideNavigation />}
       {profile && (
         <div className={styles['my-page']}>
           <Information openModal={openModal} profile={profile} followerNumber={followerNumber} />

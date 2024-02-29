@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { withdrawUser } from 'api/user';
-import AuthTitle from 'components/Auth/AuthTitle';
 import WithdrawalModal from 'pages/Setting/Withdrawal/components/WithdrawalModal';
 import useWithDrawal from 'pages/Setting/Withdrawal/useWithdrawal';
 import { useAuth } from 'store/auth';
@@ -28,9 +27,7 @@ export default function Withdrawal() {
   return (
     <div className={styles.template}>
       {modal && createPortal(<WithdrawalModal />, document.body)}
-      <div className={styles.navbar}>
-        <AuthTitle />
-      </div>
+
       <div className={styles.content}>
         <div className={styles.detail}>
           <div className={styles.detail__title}>회원 탈퇴</div>

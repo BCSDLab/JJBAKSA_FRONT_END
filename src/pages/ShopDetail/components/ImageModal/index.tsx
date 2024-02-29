@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 
-import defaultImage from 'assets/svg/common/favicon.svg';
+import defaultImage from 'assets/svg/common/403-image.svg';
 import { ReactComponent as CloseIcon } from 'assets/svg/shop/close.svg';
 import { ReactComponent as NextIcon } from 'assets/svg/shop/next-arrow.svg';
 import { ReactComponent as PrevIcon } from 'assets/svg/shop/prev-arrow.svg';
