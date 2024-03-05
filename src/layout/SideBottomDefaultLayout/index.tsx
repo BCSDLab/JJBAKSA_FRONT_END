@@ -7,9 +7,9 @@ import useBooleanState from 'utils/hooks/useBooleanState';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
 import cn from 'utils/ts/classNames';
 
-import styles from './SideDefaultLayout.module.scss';
+import styles from './SideBottomDefaultLayout.module.scss';
 
-export default function SideDefaultLayout(): JSX.Element {
+export default function SideBottomDefaultLayout(): JSX.Element {
   const { isMobile } = useMediaQuery();
   const location = useLocation();
   const [visible, , , toggle, setVisible] = useBooleanState(false);

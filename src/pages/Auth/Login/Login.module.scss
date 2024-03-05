@@ -18,6 +18,10 @@
 .form {
   margin-top: 15vh;
   margin-bottom: 70px;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin: 0;
+  }
 }
 
 .loginform {
