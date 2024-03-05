@@ -1,3 +1,5 @@
+@use "src/utils/styles/mediaQuery.scss" as media;
+
 .container {
   display: flex;
   width: 100%;
@@ -9,4 +11,8 @@
   margin: 0 auto;
   width: 486px;
   height: 320px;
+
+  @include media.media-breakpoint-down(mobile) {
+    width: 100%;
+  }
 }

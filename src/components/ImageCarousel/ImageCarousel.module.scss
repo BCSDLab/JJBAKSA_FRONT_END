@@ -9,7 +9,6 @@ button {
 .shop {
   &__container {
     width: 100vw;
-    min-width: 1196px;
     position: relative;
     overflow-x: hidden;
   }
@@ -25,6 +24,10 @@ button {
     background-color: #eeeeee;
     gap: 10px;
     font-size: 14px;
+
+    @include media.media-breakpoint-down(mobile) {
+      margin: 0;
+    }
   }
 
   &__image-carousel {
@@ -38,6 +41,10 @@ button {
     align-items: center;
     transition: all 0.4s ease;
 
+    @include media.media-breakpoint-down(mobile) {
+      padding-left: max(calc((100vw - 1080px) / 2), 40px);
+    }
+
     & > li {
       width: fit-content;
       list-style: none;
@@ -47,10 +54,6 @@ button {
       width: 360px;
       height: 400px;
       object-fit: cover;
-
-      @include media.media-breakpoint-down(mobile) {
-        width: 100%;
-      }
     }
   }
 
@@ -67,6 +70,14 @@ button {
       width: calc((100vw - 1080px) / 2);
       min-width: 68px;
       height: 400px;
+
+      @include media.media-breakpoint-down(mobile) {
+        min-width: 40px;
+
+        svg {
+          width: 80%;
+        }
+      }
     }
 
     &__right {
@@ -80,6 +91,14 @@ button {
       width: calc((100vw - 1080px) / 2);
       min-width: 68px;
       height: 400px;
+
+      @include media.media-breakpoint-down(mobile) {
+        min-width: 40px;
+
+        svg {
+          width: 80%;
+        }
+      }
     }
   }
 }
