@@ -41,7 +41,6 @@ export default function App(): JSX.Element {
         <Route path="/" element={<SideBottomDefaultLayout />}>
           <Route path="/shop" element={<Search />} />
           <Route path="/post" element={<Search />} />
-          <Route path="/post/:placeId" element={<Post />} />
           <Route path="/shop/search/:keyword" element={<SearchDetails />} />
           <Route path="/post/search/:keyword" element={<SearchDetails />} />
           <Route path="/search/not-found" element={<NotFoundPage />} />
@@ -51,6 +50,7 @@ export default function App(): JSX.Element {
         </Route>
         <Route element={<AuthRoute needAuth redirectRoute="/login" />}>
           <Route path="/" element={<TopBottomDefaultLayout />}>
+            <Route path="/post/:placeId" element={<Post />} />
             <Route path="/friend-list" element={<FollowPage />} />
             <Route path="/friend-list/:id" element={<FollowProfile />} />
             <Route path="/setting" element={<Setting />} />
