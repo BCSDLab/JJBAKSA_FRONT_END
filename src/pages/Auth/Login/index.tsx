@@ -7,7 +7,6 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
 import AuthDetail from 'components/Auth/AuthDetail';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
 import { GOOGLE_REDIRECT_URL, KAKAO_REDIRECT_URL } from 'config/constants';
 import cn from 'utils/ts/classNames';
@@ -35,7 +34,6 @@ export default function Login(): JSX.Element {
 
   return (
     <div className={styles.template}>
-      <AuthTopNavigation />
       <div className={styles.content}>
         <div className={styles.form}>
           <form

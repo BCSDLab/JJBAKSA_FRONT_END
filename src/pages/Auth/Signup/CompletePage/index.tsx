@@ -1,12 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-// import { useNavigate } from 'react-router-dom';
 
 import { modify } from 'api/user';
 import { ReactComponent as Complete } from 'assets/svg/auth/complete.svg';
 import { ReactComponent as Progress } from 'assets/svg/auth/third-progress.svg';
 import AuthDetail from 'components/Auth/AuthDetail';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
 import { NICKNAME_REGEXP } from 'components/Auth/static/Regexp';
 import CompleteModal from 'pages/Auth/Signup/CompletePage/components/CompleteModal';
@@ -23,7 +21,6 @@ interface CompleteFormData {
 
 export default function CompleteForm() {
   useRouteCheck('signUpCheck', '/signup');
-  // const navigate = useNavigate();
   const { register, handleSubmit, watch } = useForm<CompleteFormData>();
   const [modal, open, close] = useBooleanState(false);
 
@@ -51,7 +48,6 @@ export default function CompleteForm() {
 
   return (
     <div className={styles.template}>
-      <AuthTopNavigation />
       {modal && <CompleteModal closeModal={close} />}
       <div className={styles.container}>
         <div className={styles.nickname}>
