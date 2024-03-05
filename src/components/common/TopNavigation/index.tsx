@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 import AuthTitle from 'components/Auth/AuthTitle';
 import { useAuth, useClearAuth } from 'store/auth';
-
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import { useSelected } from 'store/placeId';
+
 import styles from './TopNavigation.module.scss';
 
 export default function TopNavigation() {
@@ -17,9 +17,10 @@ export default function TopNavigation() {
   return (
     <div className={styles.navbar}>
       <AuthTitle />
-      <div>
+      <div className={styles.info}>
         {auth ? (
-          <li className={styles['bottom-navigation__box']}>
+          <>
+            <div className={styles.info__nickname}>{auth.nickname}님</div>
             <Link
               to="/"
               onClick={() => {
@@ -28,20 +29,15 @@ export default function TopNavigation() {
                 setFilterNearby(true);
                 setFilterScrap(true);
               }}
+              className={styles.info__logout}
             >
-              <div className={styles['bottom-navigation__logout']}>로그아웃</div>
+              로그아웃
             </Link>
-          </li>
+          </>
         ) : (
           <>
-            <li>
-              <Link to="/login" className={styles['bottom-navigation__login']}>로그인</Link>
-            </li>
-            <li>
-              <Link to="/terms-of-service" className={styles.navbar__link}>
-                <button className={styles.navbar__signup} type="button">회원가입</button>
-              </Link>
-            </li>
+            <Link to="/login" className={styles.info__login}>로그인</Link>
+            <Link to="/terms-of-service" className={styles.info__signup}>회원가입</Link>
           </>
         )}
       </div>
