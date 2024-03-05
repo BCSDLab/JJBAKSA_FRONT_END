@@ -28,6 +28,10 @@
   flex-direction: column;
   text-align: center;
 
+  &__logo {
+    margin-bottom: 30px;
+  }
+
   &__input {
     width: 352px;
     height: 38px;
