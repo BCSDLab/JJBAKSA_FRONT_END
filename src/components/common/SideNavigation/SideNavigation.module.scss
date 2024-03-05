@@ -3,26 +3,6 @@
 $side-navigation-width: 90px;
 $side-pannel-width: 480px;
 
-@keyframes slide-out {
-  from {
-    margin-left: -$side-pannel-width;
-  }
-
-  to {
-    margin-left: 0;
-  }
-}
-
-@keyframes slide-in {
-  from {
-    margin-left: 0;
-  }
-
-  to {
-    margin-left: -$side-pannel-width;
-  }
-}
-
 .side-navigation {
   background-color: #ffffff;
   width: $side-navigation-width;
@@ -107,12 +87,13 @@ $side-pannel-width: 480px;
     border-radius: 0 5px 5px 0;
     border: none;
     box-shadow: 2px 3px 4px 0 rgba(0 0 0 / 20%);
-    transform: translate($side-pannel-width, -50%);
-    animation: slide-in 0.3s ease-out normal forwards;
+    transform: translate(0, -50%);
+    transition: 0.3s ease-in;
     cursor: pointer;
 
     &--expand {
-      animation: slide-out 0.3s ease-out forwards;
+      transform: translate($side-pannel-width, -50%);
+      transition: 0.3s ease-out;
     }
 
     &--invisible {
@@ -171,10 +152,12 @@ $side-pannel-width: 480px;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
-  animation: slide-in 0.3s ease-out normal forwards;
+  transform: translateX(-$side-pannel-width);
+  transition: 0.3s ease-in;
 
   &--expand {
-    animation: slide-out 0.3s ease-out forwards;
+    transform: translateX(0);
+    transition: 0.3s ease-out;
   }
 
   &--invisible {

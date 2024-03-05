@@ -1,11 +1,16 @@
 @use "src/utils/styles/mediaQuery" as media;
 
-.container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
+.map-container {
+  transform: translateX(0);
+  transition: 0.3s ease-in;
 
-  @include media.media-breakpoint-down(mobile) {
-    margin: 0;
+  &--expand {
+    transform: translateX(200px);
+    transition: 0.3s ease-out;
+
+    @include media.media-breakpoint-down(mobile) {
+      transform: translateX(0);
+      transition: 0.3s ease-in;
+    }
   }
 }

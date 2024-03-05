@@ -1,7 +1,6 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable consistent-return */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
-
+import { useEffect, useRef, useState } from 'react';
 import { ClusterHtml } from 'pages/Home/Map/components/MarkerHtml/index';
 import MarkerClustering from 'utils/js/MarkerClustering';
 
@@ -10,39 +9,47 @@ interface ClusterProps {
   map: naver.maps.Map | null;
 }
 
-function useCluster({ markerArray, map } : ClusterProps) {
-  const htmlMarker = {
-    content: ClusterHtml(),
-    size: new naver.maps.Size(40, 40),
-    anchor: new naver.maps.Point(20, 20),
-  };
+const HTMLMARKER = {
+  content: ClusterHtml(),
+  size: new naver.maps.Size(40, 40),
+  anchor: new naver.maps.Point(20, 20),
+};
 
-  const getCluster = () => {
-    const markerList = markerArray.map((_marker) => _marker);
-    const cluster = new MarkerClustering({
+function useCluster({ markerArray, map }: ClusterProps) {
+  const [cluster, setCluster] = useState<MarkerClustering | null>(null);
+  const clusterElementRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const markerClustering = new MarkerClustering({
       minClusterSize: 2,
-      maxZoom: 21,
+      maxZoom: 20,
       map,
-      markers: markerList.filter((marker) => marker),
+      markers: markerArray,
       disableClickZoom: false,
       gridSize: 120,
-      icons: [htmlMarker],
+      icons: [HTMLMARKER],
       indexGenerator: [120],
-      stylingFunction(clusterMarker: any, count: number) {
-        clusterMarker.getElement().querySelector('div:first-child').innerText = count;
+      stylingFunction: (clusterMarker: any, count: number) => {
+        if (clusterMarker) {
+          const firstChild = clusterMarker.getElement().querySelector('div:first-child');
+          if (firstChild) {
+            firstChild.innerHTML = count;
+            clusterElementRef.current = firstChild;
+          }
+        }
       },
     });
 
-    return cluster;
-  };
+    setCluster(markerClustering);
 
-  const [cluster, setCluster] = useState(getCluster());
-
-  useEffect(() => {
-    const newCluster = getCluster();
-    setCluster(newCluster);
-  }, []);
+    return () => {
+      if (clusterElementRef.current) {
+        clusterElementRef.current.remove();
+      }
+    };
+  }, [map, markerArray]);
 
   return { cluster };
 }
+
 export default useCluster;

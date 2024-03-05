@@ -1,4 +1,4 @@
-import { ReactComponent as NotFoundIcon } from 'assets/svg/shop/not-found.svg';
+import { ReactComponent as NotFoundIcon } from 'assets/svg/common/not-found.svg';
 
 import styles from './NotFoundDescription.module.scss';
 

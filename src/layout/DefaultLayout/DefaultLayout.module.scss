@@ -10,6 +10,8 @@
   }
 }
 
-.home {
-  display: none;
+.home-container {
+  &--invisible {
+    display: none;
+  }
 }

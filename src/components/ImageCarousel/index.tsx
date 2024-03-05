@@ -1,6 +1,6 @@
-import defaultImage from 'assets/svg/common/favicon.svg';
+import defaultImage from 'assets/svg/common/403-image.svg';
 import { ReactComponent as NextIcon } from 'assets/svg/shop/next-arrow.svg';
-import { ReactComponent as NotFoundImageIcon } from 'assets/svg/shop/not-found.svg';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/common/not-found.svg';
 import { ReactComponent as PrevIcon } from 'assets/svg/shop/prev-arrow.svg';
 import useCounter from 'utils/hooks/useCounter';
 

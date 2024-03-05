@@ -1,9 +1,10 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { ShopQueryResponse } from 'api/shop/entity';
-import defaultImage from 'assets/svg/common/favicon.svg';
+import defaultImage from 'assets/svg/common/403-image.svg';
 // import { ReactComponent as PhoneIcon } from 'assets/svg/search/phone.svg';
 import { ReactComponent as Star } from 'assets/svg/search/star.svg';
+import { ReactComponent as NotFoundImageIcon } from 'assets/svg/common/not-found.svg';
 import useShop from 'pages/Post/hooks/useShop';
 import { Card } from 'pages/Search/static/entity';
 import useMediaQuery from 'utils/hooks/useMediaQuery';
@@ -113,20 +114,23 @@ export default function SearchItem({ shop, addCard }: Props) {
             </div>
           )} */}
         </div>
-
-        <picture className={`${styles.box__images} ${styles.images}`}>
-          {photoToken !== null && (
-            <source
-              srcSet={photoToken}
-            />
+        <div className={styles.image}>
+          {photoToken === null ? (
+            <div className={styles.image__empty}>
+              <NotFoundImageIcon />
+              <div>등록된 사진이 없습니다.</div>
+            </div>
+          ) : (
+            <picture>
+              <source srcSet={defaultImage} />
+              <img
+                alt="imageAlt"
+                src={photoToken}
+              />
+            </picture>
           )}
-          <img
-            className={styles.images__image}
-            alt="가게 이미지"
-            src={defaultImage}
-          />
-        </picture>
 
+        </div>
         {/* api 없음 생략 {isMobile && (
           <div className={`${styles.box__review} ${styles.review}`}>
             {review ? `${$reviewApi.length}개의 리뷰` : '리뷰 없음'}
