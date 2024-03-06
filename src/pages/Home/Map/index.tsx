@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { ReactComponent as LoadingIcon } from 'assets/svg/home/map-loading.svg';
 import usePin from 'components/common/SideNavigation/hooks/usePin';
 import MobileOptions from 'pages/Home/Map/components/MobileOptions';
-// import useCluster from 'pages/Home/Map/hooks/useCluster';
+import useCluster from 'pages/Home/Map/hooks/useCluster';
 import { useFilterFriend, useFilterNearby, useFilterScrap } from 'store/filter';
 import { useLocation } from 'store/location';
 import { useSelected } from 'store/placeId';
@@ -36,7 +36,7 @@ export default function Map(): JSX.Element {
   }, [filterNearbyState, filterFriendState, filterScrapState, filterButtons]);
 
   const { markerArray } = useMarker({ map, filterShops });
-  // useCluster({ markerArray, map }); // 마커 클러스터 수정 필요
+  useCluster({ markerArray, map });
 
   useEffect(() => {
     if (selected !== '') {
