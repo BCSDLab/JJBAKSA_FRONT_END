@@ -1,7 +1,9 @@
 /* eslint-disable consistent-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+
 import { ClusterHtml } from 'pages/Home/Map/components/MarkerHtml/index';
+import { useAuth } from 'store/auth';
 import MarkerClustering from 'utils/js/MarkerClustering';
 
 interface ClusterProps {
@@ -17,6 +19,7 @@ const HTMLMARKER = {
 
 function useCluster({ markerArray, map }: ClusterProps) {
   const [cluster, setCluster] = useState<any | null>(null);
+  const auth = useAuth();
 
   useEffect(() => {
     if (map && markerArray.length > 0) {
@@ -44,10 +47,10 @@ function useCluster({ markerArray, map }: ClusterProps) {
   }, [map, markerArray]);
 
   useEffect(() => {
-    if (cluster) {
+    if (!auth && cluster && markerArray.length > 0) {
       cluster.setMap(null);
     }
-  }, [map, markerArray]);
+  }, [auth, markerArray]);
 
   return { cluster };
 }
