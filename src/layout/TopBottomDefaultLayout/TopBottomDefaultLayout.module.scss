@@ -1,0 +1,9 @@
+@use "src/utils/styles/mediaQuery" as media;
+
+.main {
+  margin-top: 80px;
+
+  @include media.media-breakpoint-down(mobile) {
+    margin: 0;
+  }
+}

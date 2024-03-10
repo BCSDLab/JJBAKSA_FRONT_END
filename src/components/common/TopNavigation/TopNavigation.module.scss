@@ -23,15 +23,32 @@
       color: #000000;
     }
   }
+}
+
+.info {
+  display: flex;
+  gap: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  align-items: center;
+
+  &__login {
+    color: #666666;
+    text-decoration: none;
+  }
+
+  &__logout {
+    color: #ff7f23;
+    text-decoration: none;
+  }
 
   &__signup {
-    font-weight: 500;
-    font-size: 16px;
     background-color: transparent;
     color: #ff7f23;
     border: 1px solid #ff7f23;
     padding: 10px;
     border-radius: 30px;
+    text-decoration: none;
 
     &:hover {
       color: #ffffff;
