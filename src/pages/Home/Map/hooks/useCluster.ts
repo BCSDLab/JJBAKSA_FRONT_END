@@ -47,10 +47,10 @@ function useCluster({ markerArray, map }: ClusterProps) {
   }, [map, markerArray]);
 
   useEffect(() => {
-    if (!auth && cluster && markerArray.length > 0) {
+    if (cluster) {
       cluster.setMap(null);
     }
-  }, [auth, markerArray]);
+  }, [auth, map, markerArray]);
 
   return { cluster };
 }
