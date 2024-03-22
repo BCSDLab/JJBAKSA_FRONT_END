@@ -7,8 +7,15 @@ const useTrendingList = () => {
     isLoading, isError, data,
   } = useQuery({ queryKey: ['trending'], queryFn: fetchTrendings });
   const trendings = data?.data.trendings;
+  const precessedTrendings = trendings?.map((trending) => {
+    if (trending.indexOf('?') === -1) {
+      return trending;
+    }
+    return trending.slice(0, trending.indexOf('?'));
+  });
+
   return {
-    isLoading, isError, data: trendings,
+    isLoading, isError, data: precessedTrendings,
   };
 };
 
