@@ -9,12 +9,12 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as FirstProgress } from 'assets/svg/auth/two-step-first-progress.svg';
 import Copyright from 'components/Auth/Copyright';
 import { EMAIL_REGEXP } from 'components/Auth/static/Regexp';
+import Modal from 'pages/Auth/FindIdPassword/mobile/Modal';
+import Timer from 'pages/Auth/FindIdPassword/PC/Timer';
 import { FindParams, FindProp } from 'pages/Auth/FindIdPassword/entity';
 import cn from 'utils/ts/classNames';
 
 import styles from './index.module.scss';
-import Timer from './Timer';
-import Modal from '../mobile/Modal';
 
 const useChangePage = () => {
   const nav = useNavigate();
@@ -100,160 +100,155 @@ export default function FindIdPasswordPC({ type }: FindProp): JSX.Element {
     }
   };
   return (
-    <div>
-      <div className={styles.page}>
-
-        <div className={styles.page__container}>
-          {type === 'id' && (
-            <div className={styles.page__title}>
-              아이디 찾기
-            </div>
-          )}
-          {type === 'password' && (
-            <div className={styles.page__title}>
-              비밀번호 찾기
-            </div>
-          )}
-          <div>
-            {type === 'id' && (
-              <p className={styles.page__quote}>
-                쩝쩝박사 가입 이메일을 통해
-                <br />
-                아이디를 찾을 수 있어요.
-              </p>
-            )}
-            {type === 'password' && (
-              <p className={styles.page__quote}>
-                쩝쩝박사 가입 아이디를 통해
-                <br />
-                비밀번호를 찾을 수 있어요.
-              </p>
-            )}
-          </div>
-          <div className={styles.page__progress}>
-            <FirstProgress />
-          </div>
+    <div className={styles.page}>
+      <div className={styles.page__container}>
+        {type === 'id' && (
+        <div className={styles.page__title}>
+          아이디 찾기
         </div>
-        <form className={styles.form}>
-          {type === 'password' && (
-            <div className={styles.form__box}>
-              <label className={styles.form__label} htmlFor="id">
-                <div className={cn({ [styles['form__label--box']]: true })}>
-                  아이디
-                  {errors.account && (
-                    <span className={styles.form__message}>
-                      <ErrorIcon />
-                      {errors.account.message}
-                    </span>
-                  )}
-                </div>
-                <input
-                  id="id"
-                  placeholder="아이디를 입력하세요."
-                  className={cn({
-                    [styles['form__input--active']]: !isValid,
-                    [styles.form__input]: true,
-                  })}
-                  {...register('account')}
-                />
-                {errors.account && <ErrorIcon className={styles.form__error} />}
-              </label>
-
-            </div>
+        )}
+        {type === 'password' && (
+        <div className={styles.page__title}>
+          비밀번호 찾기
+        </div>
+        )}
+        <div>
+          {type === 'id' && (
+          <p className={styles.page__quote}>
+            쩝쩝박사 가입 이메일을 통해
+            <br />
+            아이디를 찾을 수 있어요.
+          </p>
           )}
+          {type === 'password' && (
+          <p className={styles.page__quote}>
+            쩝쩝박사 가입 아이디를 통해
+            <br />
+            비밀번호를 찾을 수 있어요.
+          </p>
+          )}
+        </div>
+        <div className={styles.page__progress}>
+          <FirstProgress />
+        </div>
+      </div>
+      <form className={styles.form}>
+        {type === 'password' && (
           <div className={styles.form__box}>
-            <label className={styles.form__label} htmlFor="email">
+            <label className={styles.form__label} htmlFor="id">
               <div className={cn({ [styles['form__label--box']]: true })}>
-                이메일
-                {errors.email && (
-                  <span className={styles.form__message}>
-                    <ErrorIcon />
-                    {errors.email.message}
-                  </span>
+                아이디
+                {errors.account && (
+                <span className={styles.form__message}>
+                  <ErrorIcon />
+                  {errors.account.message}
+                </span>
                 )}
               </div>
               <input
-                id="email"
-                placeholder="이메일을 입력하세요."
+                id="id"
+                placeholder="아이디를 입력하세요."
                 className={cn({
                   [styles['form__input--active']]: !isValid,
                   [styles.form__input]: true,
                 })}
-                {...register('email', {
-                  pattern: {
-                    value: EMAIL_REGEXP,
-                    message: '이메일이 올바르지 않습니다.',
-                  },
-                })}
+                {...register('account')}
               />
-              {errors.email && <ErrorIcon className={styles.form__error} />}
+              {errors.account && <ErrorIcon className={styles.form__error} />}
             </label>
           </div>
-          <div className={styles.form__box}>
-            <label className={styles.form__label} htmlFor="verify">
-              <div className={cn({ [styles['form__label--box']]: true })}>
-                인증번호
-                {errors.code && (
-                  <span className={styles.form__message}>
-                    <ErrorIcon />
-                    {errors.code.message}
-                  </span>
-                )}
-              </div>
-              <div className={styles.form__box}>
-                <input
-                  id="verify"
-                  placeholder="인증번호를 입력하세요."
-                  className={cn({
-                    [styles['form__input--active']]: !!errors.code,
-                    [styles.form__input]: true,
-                  })}
-                  {...register('code')}
-                />
-                <div className={styles.form__timer}>
-                  {isClicked && <Timer />}
-                </div>
-                <button
-                  type="button"
-                  disabled={isClicked || !isValid}
-                  className={cn({
-                    [styles['form__button--active']]: !isClicked,
-                    [styles.form__button]: isClicked,
-                  })}
-                  onClick={handleSubmit(checkUser)}
-                >
-                  인증번호 발송
-                </button>
-              </div>
-            </label>
-
-          </div>
-          <button
-            type="button"
-            disabled={isSubmitting || !isValid}
-            className={cn({
-              [styles['form__submit--active']]: isValid,
-              [styles.form__submit]: true,
-            })}
-            onClick={handleSubmit(toNextPage)}
-          >
-            다음
-          </button>
-        </form>
-        {openModal && (
-          <Modal setOpenModal={setOpenModal} type="아이디">
-            {user.email}
-            으로
-            <br />
-            가입된 아이디는
-            {' '}
-            {user.id}
-            입니다
-          </Modal>
         )}
-        <div className={styles.copyright}>
-          <Copyright />
+        <div className={styles.form__box}>
+          <label className={styles.form__label} htmlFor="email">
+            <div className={cn({ [styles['form__label--box']]: true })}>
+              이메일
+              {errors.email && (
+              <span className={styles.form__message}>
+                <ErrorIcon />
+                {errors.email.message}
+              </span>
+              )}
+            </div>
+            <input
+              id="email"
+              placeholder="이메일을 입력하세요."
+              className={cn({
+                [styles['form__input--active']]: !isValid,
+                [styles.form__input]: true,
+              })}
+              {...register('email', {
+                pattern: {
+                  value: EMAIL_REGEXP,
+                  message: '이메일이 올바르지 않습니다.',
+                },
+              })}
+            />
+            {errors.email && <ErrorIcon className={styles.form__error} />}
+          </label>
         </div>
+        <div className={styles.form__box}>
+          <label className={styles.form__label} htmlFor="verify">
+            <div className={cn({ [styles['form__label--box']]: true })}>
+              인증번호
+              {errors.code && (
+              <span className={styles.form__message}>
+                <ErrorIcon />
+                {errors.code.message}
+              </span>
+              )}
+            </div>
+            <div className={styles.form__box}>
+              <input
+                id="verify"
+                placeholder="인증번호를 입력하세요."
+                className={cn({
+                  [styles['form__input--active']]: !!errors.code,
+                  [styles.form__input]: true,
+                })}
+                {...register('code')}
+              />
+              <div className={styles.form__timer}>
+                {isClicked && <Timer />}
+              </div>
+              <button
+                type="button"
+                disabled={isClicked || !isValid}
+                className={cn({
+                  [styles['form__button--active']]: !isClicked,
+                  [styles.form__button]: isClicked,
+                })}
+                onClick={handleSubmit(checkUser)}
+              >
+                인증번호 발송
+              </button>
+            </div>
+          </label>
+        </div>
+        <button
+          type="button"
+          disabled={isSubmitting || !isValid}
+          className={cn({
+            [styles['form__submit--active']]: isValid,
+            [styles.form__submit]: true,
+          })}
+          onClick={handleSubmit(toNextPage)}
+        >
+          다음
+        </button>
+      </form>
+      {openModal && (
+        <Modal setOpenModal={setOpenModal} type="아이디">
+          {user.email}
+          으로
+          <br />
+          가입된 아이디는
+          {' '}
+          {user.id}
+          입니다
+        </Modal>
+      )}
+      <div className={styles.copyright}>
+        <Copyright />
       </div>
     </div>
   );

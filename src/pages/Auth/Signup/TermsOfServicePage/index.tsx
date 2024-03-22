@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { ReactComponent as Progress } from 'assets/svg/auth/first-progress.svg';
 import { ReactComponent as Arrow } from 'assets/svg/common/arrow.svg';
 import AuthDetail from 'components/Auth/AuthDetail';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
 import PRIVACY from 'pages/Auth/Signup/static/privacy';
 
@@ -15,7 +14,6 @@ export default function TermsOfService() {
 
   return (
     <div className={styles.template}>
-      <AuthTopNavigation />
       <div className={styles.container}>
         <div className={styles['terms-of-service']}>
           <AuthDetail name="약관동의" first="쩝쩝박사의 서비스를 이용하려면" second="회원가입하세요." />

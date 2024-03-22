@@ -67,7 +67,7 @@ function ShopDetail() {
           >
             <ImageCarousel pathname="shop" imageUrls={photos} />
           </button>
-        ) : <ImageCarousel pathname="pin" imageUrls={photos} />}
+        ) : <ImageCarousel pathname="shop" imageUrls={photos} />}
       {!isMobile && value && photos && photos.length > 3
         && <ImageModal toggle={toggle} photos={photos} />}
       <article className={styles['shop-detail']}>

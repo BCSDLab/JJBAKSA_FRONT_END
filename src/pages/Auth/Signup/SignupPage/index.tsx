@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { register, sendRegisterEmail } from 'api/user';
 import { ReactComponent as Progress } from 'assets/svg/auth/second-progress.svg';
 import AuthDetail from 'components/Auth/AuthDetail';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
 import Copyright from 'components/Auth/Copyright';
 import useRouteCheck from 'pages/Auth/Signup/hooks/useRouteCheck';
 import EmailInput from 'pages/Auth/Signup/SignupPage/components/EmailInput';
@@ -60,7 +59,6 @@ export default function SignUpForm() {
 
   return (
     <div className={styles.template}>
-      <AuthTopNavigation />
       <div className={styles.container}>
         <FormProvider {...methods}>
           <form

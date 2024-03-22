@@ -7,16 +7,18 @@ import { ReactComponent as ErrorIcon } from 'assets/svg/auth/error.svg';
 import { ReactComponent as GoogleIcon } from 'assets/svg/auth/google.svg';
 import { ReactComponent as KakaoIcon } from 'assets/svg/auth/kakao.svg';
 import AuthDetail from 'components/Auth/AuthDetail';
-import AuthTopNavigation from 'components/Auth/AuthTopNavigation';
+import AuthTitle from 'components/Auth/AuthTitle';
 import Copyright from 'components/Auth/Copyright';
 import { GOOGLE_REDIRECT_URL, KAKAO_REDIRECT_URL } from 'config/constants';
+import { LoginFormInput } from 'pages/Auth/Login/hooks/entity';
+import useLoginRequest from 'pages/Auth/Login/hooks/useLoginRequest';
+import useMediaQuery from 'utils/hooks/useMediaQuery';
 import cn from 'utils/ts/classNames';
 
-import { LoginFormInput } from './hooks/entity';
-import useLoginRequest from './hooks/useLoginRequest';
 import styles from './Login.module.scss';
 
 export default function Login(): JSX.Element {
+  const { isMobile } = useMediaQuery();
   const {
     register,
     handleSubmit,
@@ -35,7 +37,6 @@ export default function Login(): JSX.Element {
 
   return (
     <div className={styles.template}>
-      <AuthTopNavigation />
       <div className={styles.content}>
         <div className={styles.form}>
           <form
@@ -46,7 +47,7 @@ export default function Login(): JSX.Element {
               {errorMsg && <ErrorIcon aria-hidden />}
               {errorMsg}
             </div>
-            <AuthDetail name="로그인하기" first="쩝쩝박사의 서비스를 이용하려면" second="로그인하세요." />
+            {!isMobile ? <AuthDetail name="로그인하기" first="쩝쩝박사의 서비스를 이용하려면" second="로그인하세요." /> : <div className={styles.loginform__logo}><AuthTitle /></div>}
             <input
               className={styles.loginform__input}
               type="text"

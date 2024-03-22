@@ -3,7 +3,6 @@
 .my-page {
   width: 65%;
   margin: 0 auto;
-  padding-top: 50px;
 
   @include media.media-breakpoint-down(mobile) {
     position: fixed;
