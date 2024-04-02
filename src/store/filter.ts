@@ -1,8 +1,8 @@
 import { atom, useAtomValue, useSetAtom } from 'jotai';
 
-export const filterFriendAtom = atom<boolean>(true);
-export const filterScrapAtom = atom<boolean>(true);
-export const filterNearbyAtom = atom<boolean>(true);
+export const filterFriendAtom = atom<boolean>(false);
+export const filterScrapAtom = atom<boolean>(false);
+export const filterNearbyAtom = atom<boolean>(false);
 
 export const useFilterFriend = () => {
   const filterFriendState = useAtomValue(filterFriendAtom);

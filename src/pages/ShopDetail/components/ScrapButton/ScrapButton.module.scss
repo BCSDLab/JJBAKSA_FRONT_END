@@ -18,8 +18,18 @@
   }
 
   @include media.media-breakpoint-down(mobile) {
+    padding: 10px;
+    margin-bottom: 5px;
     flex-direction: column;
     gap: 5px;
-    background: none;
+
+    &--active {
+      background: #ff7f23;
+      color: #fff;
+    }
+
+    span {
+      display: none;
+    }
   }
 }

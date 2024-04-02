@@ -15,10 +15,6 @@ const useShopRate = (placeId: string) => {
     }),
   });
 
-  if (isError) {
-    throw new Error('Shop rate 정보를 불러오는 데 실패했습니다.');
-  }
-
   const rate = !isLoading && data ? data?.rate : '정보 없음';
 
   return {
