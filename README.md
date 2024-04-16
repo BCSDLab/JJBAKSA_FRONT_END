@@ -230,14 +230,13 @@
     <td>정해성</td>
     <td>채승윤</td>
   </tr>
-  
   <tr align="center">
-    <td><a target="_blank" href="https://github.com/kimeodml"><img src="https://avatars.githubusercontent.com/u/88065770?v=4" width="100px"></a> <br> [@kimeodml](https://github.com/kimeodml)</td>
-    <td><a target="_blank" href="https://github.com/D0Dam"><img src="https://avatars.githubusercontent.com/u/51052049?v=4" width="100px"></a> <br> [@D0Dam](https://github.com/D0Dam)</td>
-    <td><a target="_blank" href="https://github.com/hyejun0228"><img src="https://avatars.githubusercontent.com/u/114041848?v=4" width="100px"></a> <br> [@hyejun0228](https://github.com/hyejun0228)</td>
-    <td><a target="_blank" href="https://github.com/HAEROOL"><img src="https://avatars.githubusercontent.com/u/71335694?v=4" width="100px"></a> <br> [@HAEROOL](https://github.com/HAEROOL)</td>
-    <td><a target="_blank" href="https://github.com/junghaesung79"><img src="https://avatars.githubusercontent.com/u/96577250?v=4" width="100px"></a> <br> [@junhaesung79](https://github.com/junghaesung79)</td>
-    <td><a target="_blank" href="https://github.com/chaeseungyun"><img src="https://avatars.githubusercontent.com/u/101871802?v=4" width="100px"></a> <br> [@chaeseungyun](https://github.com/chaeseungyun)</td>
+    <td><a target="_blank" href="https://github.com/kimeodml"><img src="https://avatars.githubusercontent.com/u/88065770?v=4" width="100px"><br>@kimeodml</a></td>
+    <td><a target="_blank" href="https://github.com/D0Dam"><img src="https://avatars.githubusercontent.com/u/51052049?v=4" width="100px"><br> @D0Dam</a> </td>
+    <td><a target="_blank" href="https://github.com/hyejun0228"><img src="https://avatars.githubusercontent.com/u/114041848?v=4" width="100px"><br> @hyejun0228 </a> </td>
+    <td><a target="_blank" href="https://github.com/HAEROOL"><img src="https://avatars.githubusercontent.com/u/71335694?v=4" width="100px"><br> @HAEROOL</a>  </td>
+    <td><a target="_blank" href="https://github.com/junghaesung79"><img src="https://avatars.githubusercontent.com/u/96577250?v=4" width="100px"><br> @junhaesung79</a>  </td>
+    <td><a target="_blank" href="https://github.com/chaeseungyun"><img src="https://avatars.githubusercontent.com/u/101871802?v=4" width="100px"><br> @chaeseungyun</a>  </td>
   </tr>
 </table>
 <table>
@@ -250,8 +249,8 @@
     <td>임예준</td>
   </tr>
   <tr align="center" width="100%" >
-    <td><a target="_blank" href="https://github.com/Yoojkim"><img src="https://avatars.githubusercontent.com/u/81635224?v=4" width="100px"></a> <br> [@Yoojkim](https://github.com/Yoojkim)</td>
-    <td><a target="_blank" href="https://github.com/insukL"><img src="https://avatars.githubusercontent.com/u/66675919?v=4" width="100px"></a> <br> [@insukL](https://github.com/insukL) </td>
-    <td><a target="_blank" href="https://github.com/dpwns523"><img src="https://avatars.githubusercontent.com/u/84260096?v=4" width="100px"></a> <br> [@dpwns523](https://github.com/dpwns523) </td>
+    <td><a target="_blank" href="https://github.com/Yoojkim"><img src="https://avatars.githubusercontent.com/u/81635224?v=4" width="100px"><br>@Yoojkim</a>  </td>
+    <td><a target="_blank" href="https://github.com/insukL"><img src="https://avatars.githubusercontent.com/u/66675919?v=4" width="100px"><br> @insukL</a>  </td>
+    <td><a target="_blank" href="https://github.com/dpwns523"><img src="https://avatars.githubusercontent.com/u/84260096?v=4" width="100px"><br> @dpwns523</a>  </td>
   </tr>
 </table>
